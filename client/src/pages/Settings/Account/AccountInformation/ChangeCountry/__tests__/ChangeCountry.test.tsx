@@ -17,7 +17,7 @@ describe("ChangeCountry", () => {
     it("should render correctly and select country", () => {
         const wrapper = mountWithStore(<ChangeCountry/>, mockStore);
 
-        expect(wrapper.text().includes("Country")).toBe(true);
+        expect(wrapper.text().includes("Quốc gia")).toBe(true);
         expect(wrapper.find(FilledSelect).prop("value")).toBe("UA");
         
         wrapper.find(FilledSelect).find("select").simulate("change", {target: {value: "US"}});

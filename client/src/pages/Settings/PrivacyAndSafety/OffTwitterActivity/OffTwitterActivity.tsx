@@ -19,7 +19,7 @@ const OffTwitterActivity: FC = (): ReactElement => {
             <div className={globalClasses.itemInfoWrapper}>
                 <div className={globalClasses.infoItemCheckbox}>
                     <Typography variant={"body1"} component={"span"}>
-                        Allow use of where you see Twitter content across the Web
+                        Cho phép sử dụng nơi bạn xem nội dung Twitter trên web
                     </Typography>
                     <Checkbox/>
                 </div>
@@ -29,7 +29,7 @@ const OffTwitterActivity: FC = (): ReactElement => {
                         personalizing your experience. This web browsing history will never be stored with your name, email,
                         or phone number. `}
                     <MuiLink href={TAILORED_SUGGESTIONS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -46,7 +46,7 @@ const OffTwitterActivity: FC = (): ReactElement => {
                         other inferences about your identity, like devices and browsers you haven’t used to log in to
                         Twitter or email addresses and phone numbers similar to those linked to your Twitter account. `}
                     <MuiLink href={ACROSS_YOUR_DEVICES} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -54,4 +54,4 @@ const OffTwitterActivity: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(OffTwitterActivity)("Off-Twitter activity");
+export default withDocumentTitle(OffTwitterActivity)("Hoạt động ngoài Twitter");

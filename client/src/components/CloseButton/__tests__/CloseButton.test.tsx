@@ -18,6 +18,6 @@ describe("CloseButton", () => {
 
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
         expect(wrapper.find(HoverAction).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Close");
+        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Đóng");
     });
 });

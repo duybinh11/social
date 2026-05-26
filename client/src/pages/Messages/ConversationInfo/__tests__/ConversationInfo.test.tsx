@@ -45,8 +45,8 @@ describe("ConversationInfo", () => {
         expect(wrapper.find(Avatar).prop("src")).toBe(mockUserProfile.avatar.src);
         expect(wrapper.text().includes(mockUserProfile.fullName)).toBe(true);
         expect(wrapper.text().includes(`@${mockUserProfile.username}`)).toBe(true);
-        expect(wrapper.find(Button).text().includes("Following")).toBe(true);
-        expect(wrapper.text().includes("Notifications")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang theo dõi")).toBe(true);
+        expect(wrapper.text().includes("Thông báo")).toBe(true);
         expect(wrapper.text().includes(`Snooze notifications from ${mockUserProfile.fullName}`)).toBe(true);
         expect(wrapper.text().includes(`Block  @${mockUserProfile.username}`)).toBe(true);
         expect(wrapper.text().includes(`Report @${mockUserProfile.username}`)).toBe(true);
@@ -91,19 +91,19 @@ describe("ConversationInfo", () => {
     it("should open unfollow modal and unfollow participant", () => {
         const wrapper = mountWithStore(<ConversationInfo participantId={1} chatId={1}/>, mockUserProfileStore);
 
-        expect(wrapper.find(Button).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang theo dõi")).toBe(true);
         expect(wrapper.find(UnfollowModal).prop("visible")).toBe(false);
 
         wrapper.find(Button).simulate("mouseover");
-        expect(wrapper.find(Button).text().includes("Unfollow")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Bỏ theo dõi")).toBe(true);
 
         wrapper.find(Button).simulate("mouseleave");
-        expect(wrapper.find(Button).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang theo dõi")).toBe(true);
 
         wrapper.find(Button).simulate("click");
 
         expect(wrapper.find(UnfollowModal).prop("visible")).toBe(true);
-        expect(wrapper.find(UnfollowModal).find(Button).at(1).text().includes("Unfollow")).toBe(true);
+        expect(wrapper.find(UnfollowModal).find(Button).at(1).text().includes("Bỏ theo dõi")).toBe(true);
 
         wrapper.find(UnfollowModal).find(Button).at(1).simulate("click");
 
@@ -120,13 +120,13 @@ describe("ConversationInfo", () => {
         };
         const wrapper = mountWithStore(<ConversationInfo participantId={1} chatId={1}/>, mockUserProfileStore);
 
-        expect(wrapper.find(Button).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang theo dõi")).toBe(true);
         expect(wrapper.find(UnfollowModal).prop("visible")).toBe(false);
 
         wrapper.find(Button).simulate("click");
 
         expect(wrapper.find(UnfollowModal).prop("visible")).toBe(true);
-        expect(wrapper.find(UnfollowModal).find(Button).at(1).text().includes("Unfollow")).toBe(true);
+        expect(wrapper.find(UnfollowModal).find(Button).at(1).text().includes("Bỏ theo dõi")).toBe(true);
 
         wrapper.find(UnfollowModal).find(Button).at(1).simulate("click");
 
@@ -139,13 +139,13 @@ describe("ConversationInfo", () => {
     it("should open unfollow modal and close", () => {
         const wrapper = mountWithStore(<ConversationInfo participantId={1} chatId={1}/>, mockUserProfileStore);
 
-        expect(wrapper.find(Button).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang theo dõi")).toBe(true);
         expect(wrapper.find(UnfollowModal).prop("visible")).toBe(false);
 
         wrapper.find(Button).simulate("click");
 
         expect(wrapper.find(UnfollowModal).prop("visible")).toBe(true);
-        expect(wrapper.find(UnfollowModal).find(Button).at(0).text().includes("Cancel")).toBe(true);
+        expect(wrapper.find(UnfollowModal).find(Button).at(0).text().includes("Hủy")).toBe(true);
 
         wrapper.find(UnfollowModal).find(Button).at(0).simulate("click");
 
@@ -184,7 +184,7 @@ describe("ConversationInfo", () => {
         wrapper.find("#leaveFromConversation").simulate("click");
 
         expect(wrapper.find(LeaveFromConversationModal).prop("visible")).toBe(true);
-        expect(wrapper.find(LeaveFromConversationModal).find(Button).at(1).text().includes("Cancel")).toBe(true);
+        expect(wrapper.find(LeaveFromConversationModal).find(Button).at(1).text().includes("Hủy")).toBe(true);
 
         wrapper.find(LeaveFromConversationModal).find(Button).at(1).simulate("click");
 
@@ -198,7 +198,7 @@ describe("ConversationInfo", () => {
         };
         const wrapper = mountWithStore(<ConversationInfo participantId={1} chatId={1}/>, mockUserProfileStore);
 
-        expect(wrapper.find(Button).text().includes("Follow")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Theo dõi")).toBe(true);
 
         wrapper.find(Button).simulate("click");
 
@@ -218,7 +218,7 @@ describe("ConversationInfo", () => {
         };
         const wrapper = mountWithStore(<ConversationInfo participantId={1} chatId={1}/>, mockUserProfileStore);
 
-        expect(wrapper.find(Button).text().includes("Follow")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Theo dõi")).toBe(true);
 
         wrapper.find(Button).simulate("click");
 
@@ -246,13 +246,13 @@ describe("ConversationInfo", () => {
         };
         const wrapper = mountWithStore(<ConversationInfo participantId={1} chatId={1}/>, mockUserProfileStore);
 
-        expect(wrapper.find(Button).text().includes("Blocked")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đã chặn")).toBe(true);
 
         wrapper.find(Button).simulate("mouseover");
-        expect(wrapper.find(Button).text().includes("Unblock")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Bỏ chặn")).toBe(true);
 
         wrapper.find(Button).simulate("mouseleave");
-        expect(wrapper.find(Button).text().includes("Blocked")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đã chặn")).toBe(true);
         
         wrapper.find(Button).simulate("click");
         expect(wrapper.find(BlockUserModal).prop("visible")).toBe(false);
@@ -268,13 +268,13 @@ describe("ConversationInfo", () => {
         };
         const wrapper = mountWithStore(<ConversationInfo participantId={1} chatId={1}/>, mockUserProfileStore);
 
-        expect(wrapper.find(Button).text().includes("Pending")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang chờ")).toBe(true);
 
         wrapper.find(Button).simulate("mouseover");
-        expect(wrapper.find(Button).text().includes("Cancel")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Hủy")).toBe(true);
 
         wrapper.find(Button).simulate("mouseleave");
-        expect(wrapper.find(Button).text().includes("Pending")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang chờ")).toBe(true);
 
         wrapper.find(Button).simulate("click");
         expect(mockDispatchFn).nthCalledWith(2, {

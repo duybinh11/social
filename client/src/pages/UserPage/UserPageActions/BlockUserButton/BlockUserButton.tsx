@@ -38,7 +38,7 @@ const BlockUserButton = memo((): ReactElement => {
             <ListItem id={"openBlockUserModal"} onClick={onOpenBlockUserModal}>
                 <>{isUserBlocked ? UnblockIcon : BlockIcon}</>
                 <Typography component={"span"}>
-                    {isUserBlocked ? "Unblock" : "Block"} @{username}
+                    {isUserBlocked ? "Bỏ chặn" : "Chặn"} @{username}
                 </Typography>
             </ListItem>
             <BlockUserModal

@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserProfileProjection getUserById(Long userId) {
         return userRepository.getUserProfileById(userId)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
     }
 
     @Override
@@ -136,7 +136,7 @@ public class UserServiceImpl implements UserService {
     public NotificationInfoProjection getUserNotificationById(Long notificationId) {
         Long userId = authenticationService.getAuthenticatedUserId();
         return notificationRepository.getUserNotificationById(userId, notificationId)
-                .orElseThrow(() -> new ApiRequestException("Notification not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy thông báo", HttpStatus.NOT_FOUND));
     }
 
     @Override
@@ -163,7 +163,7 @@ public class UserServiceImpl implements UserService {
     public Boolean processUserBookmarks(Long tweetId) {
         User user = authenticationService.getAuthenticatedUser();
         Tweet tweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Tweet not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
         List<Bookmark> bookmarks = user.getBookmarks();
         Optional<Bookmark> bookmark = bookmarks.stream()
                 .filter(b -> b.getTweet().getId().equals(tweet.getId()))
@@ -223,7 +223,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public AuthUserProjection updateUserProfile(User userInfo) {
         if (userInfo.getUsername().length() == 0 || userInfo.getUsername().length() > 50) {
-            throw new ApiRequestException("Incorrect username length", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Độ dài tên người dùng không hợp lệ", HttpStatus.BAD_REQUEST);
         }
         User user = authenticationService.getAuthenticatedUser();
 
@@ -262,7 +262,7 @@ public class UserServiceImpl implements UserService {
     public Map<String, Object> processFollow(Long userId) {
         User user = authenticationService.getAuthenticatedUser();
         User currentUser = userRepository.findById(userId)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         List<User> followers = user.getFollowers();
         Optional<User> follower = followers.stream()
                 .filter(f -> f.getId().equals(currentUser.getId()))
@@ -317,7 +317,7 @@ public class UserServiceImpl implements UserService {
     public UserProfileProjection processFollowRequestToPrivateProfile(Long userId) {
         User user = authenticationService.getAuthenticatedUser();
         User currentUser = userRepository.findById(userId)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         List<User> followerRequests = currentUser.getFollowerRequests();
         Optional<User> followerRequest = currentUser.getFollowerRequests().stream()
                 .filter(follower -> follower.getId().equals(user.getId()))
@@ -336,7 +336,7 @@ public class UserServiceImpl implements UserService {
     public String acceptFollowRequest(Long userId) {
         User user = authenticationService.getAuthenticatedUser();
         User currentUser = userRepository.findById(userId)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         user.getFollowerRequests().remove(currentUser);
         user.getFollowers().add(currentUser);
         return "User (id:" + userId + ") accepted.";
@@ -347,7 +347,7 @@ public class UserServiceImpl implements UserService {
     public String declineFollowRequest(Long userId) {
         User user = authenticationService.getAuthenticatedUser();
         User currentUser = userRepository.findById(userId)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         user.getFollowerRequests().remove(currentUser);
         return "User (id:" + userId + ") declined.";
     }
@@ -357,7 +357,7 @@ public class UserServiceImpl implements UserService {
     public Boolean processSubscribeToNotifications(Long userId) {
         User user = authenticationService.getAuthenticatedUser();
         User currentUser = userRepository.findById(userId)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         return processUserList(user, currentUser.getSubscribers());
     }
 
@@ -366,7 +366,7 @@ public class UserServiceImpl implements UserService {
     public Long processPinTweet(Long tweetId) {
         User user = authenticationService.getAuthenticatedUser();
         Tweet tweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Tweet not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
 
         if (user.getPinnedTweet() == null || !user.getPinnedTweet().getId().equals(tweet.getId())) {
             user.setPinnedTweet(tweet);
@@ -388,7 +388,7 @@ public class UserServiceImpl implements UserService {
     public Boolean processBlockList(Long userId) {
         User user = authenticationService.getAuthenticatedUser();
         User currentUser = userRepository.findById(userId)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         List<User> userBlockedList = user.getUserBlockedList();
         Optional<User> userFromList = userBlockedList.stream()
                 .filter(blockedUser -> blockedUser.getId().equals(currentUser.getId()))
@@ -418,14 +418,14 @@ public class UserServiceImpl implements UserService {
     public Boolean processMutedList(Long userId) {
         User user = authenticationService.getAuthenticatedUser();
         User currentUser = userRepository.findById(userId)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         return processUserList(currentUser, user.getUserMutedList());
     }
 
     @Override
     public UserDetailProjection getUserDetails(Long userId) {
         return userRepository.getUserDetails(userId)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
     }
 
     @Override

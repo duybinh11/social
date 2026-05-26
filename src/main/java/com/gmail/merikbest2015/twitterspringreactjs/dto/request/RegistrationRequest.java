@@ -9,11 +9,11 @@ import lombok.Data;
 @Data
 public class RegistrationRequest {
 
-    @Email(regexp = ".+@.+\\..+", message = "Please enter a valid email address.")
+    @Email(regexp = ".+@.+\\..+", message = "Vui lòng nhập địa chỉ email hợp lệ.")
     private String email;
 
     @NotBlank(message = "What’s your name?")
-    @Size(min = 1, max = 50, message = "Please enter a valid name.")
+    @Size(min = 1, max = 50, message = "Vui lòng nhập tên hợp lệ.")
     private String username;
 
     private String birthday;

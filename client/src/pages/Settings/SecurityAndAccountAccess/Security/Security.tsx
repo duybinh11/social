@@ -20,7 +20,7 @@ const Security: FC = (): ReactElement => {
             </div>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h5"} component={"div"}>
-                    Two-factor authentication
+                    Xác thực hai yếu tố
                 </Typography>
             </div>
             <div className={globalClasses.itemInfoWrapper}>
@@ -29,14 +29,14 @@ const Security: FC = (): ReactElement => {
                         method in addition to your Twitter password. You can choose a text message, authentication
                         app, or security key. `}
                     <MuiLink href={TWO_FACTOR_AUTHENTICATION} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
             <Link to={SETTINGS_SECURITY_LOGIN_VERIFICATION} className={globalClasses.linkWrapper}>
                 <div className={globalClasses.contentLink}>
                     <Typography variant={"body1"} component={"span"}>
-                        Two-factor authentication
+                        Xác thực hai yếu tố
                     </Typography>
                     {ArrowRightIcon}
                 </div>
@@ -44,7 +44,7 @@ const Security: FC = (): ReactElement => {
             <Divider/>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h5"} component={"div"}>
-                    Additional password protection
+                    Bảo vệ mật khẩu bổ sung
                 </Typography>
             </div>
             <div className={globalClasses.itemInfoWrapper}>
@@ -62,11 +62,11 @@ const Security: FC = (): ReactElement => {
                     <Checkbox/>
                 </div>
                 <MuiLink href={ACCOUNT_SECURITY_TIPS} variant="body1" target="_blank" rel="noopener">
-                    Learn more
+                    Tìm hiểu thêm
                 </MuiLink>
             </div>
         </>
     );
 };
 
-export default withDocumentTitle(Security)("Security");
+export default withDocumentTitle(Security)("Bảo mật");

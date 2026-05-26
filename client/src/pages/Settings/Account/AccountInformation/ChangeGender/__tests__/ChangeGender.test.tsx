@@ -18,9 +18,9 @@ describe("ChangeGender", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<ChangeGender/>, mockStore);
 
-        expect(wrapper.text().includes("Female")).toBe(true);
+        expect(wrapper.text().includes("Nữ")).toBe(true);
         expect(wrapper.find(Radio).at(0).prop("checked")).toBe(true);
-        expect(wrapper.text().includes("Male")).toBe(true);
+        expect(wrapper.text().includes("Nam")).toBe(true);
         expect(wrapper.find(Radio).at(1).prop("checked")).toBe(false);
         expect(wrapper.text().includes("Other")).toBe(true);
         expect(wrapper.find(Radio).at(2).prop("checked")).toBe(false);
@@ -29,26 +29,26 @@ describe("ChangeGender", () => {
     it("should render Male gender", () => {
         const mockMaleGender = {
             ...mockStore,
-            user: {...mockStore.user, data: {...mockStore.user.data, gender: "Male"}}
+            user: {...mockStore.user, data: {...mockStore.user.data, gender: "Nam"}}
         };
         const wrapper = mountWithStore(<ChangeGender/>, mockMaleGender);
 
-        expect(wrapper.text().includes("Female")).toBe(true);
+        expect(wrapper.text().includes("Nữ")).toBe(true);
         expect(wrapper.find(Radio).at(0).prop("checked")).toBe(false);
-        expect(wrapper.text().includes("Male")).toBe(true);
+        expect(wrapper.text().includes("Nam")).toBe(true);
         expect(wrapper.find(Radio).at(1).prop("checked")).toBe(true);
     });
 
     it("should render Female gender", () => {
         const mockFemaleGender = {
             ...mockStore,
-            user: {...mockStore.user, data: {...mockStore.user.data, gender: "Female"}}
+            user: {...mockStore.user, data: {...mockStore.user.data, gender: "Nữ"}}
         };
         const wrapper = mountWithStore(<ChangeGender/>, mockFemaleGender);
 
-        expect(wrapper.text().includes("Female")).toBe(true);
+        expect(wrapper.text().includes("Nữ")).toBe(true);
         expect(wrapper.find(Radio).at(0).prop("checked")).toBe(true);
-        expect(wrapper.text().includes("Male")).toBe(true);
+        expect(wrapper.text().includes("Nam")).toBe(true);
         expect(wrapper.find(Radio).at(1).prop("checked")).toBe(false);
     });
 
@@ -60,30 +60,30 @@ describe("ChangeGender", () => {
         };
         const wrapper = mountWithStore(<ChangeGender/>, mockFemaleGender);
 
-        expect(wrapper.text().includes("Female")).toBe(true);
+        expect(wrapper.text().includes("Nữ")).toBe(true);
         expect(wrapper.find(Radio).at(0).prop("checked")).toBe(true);
-        expect(wrapper.text().includes("Male")).toBe(true);
+        expect(wrapper.text().includes("Nam")).toBe(true);
         expect(wrapper.find(Radio).at(1).prop("checked")).toBe(false);
     });
 
     it("should change gender", () => {
         const wrapper = mountWithStore(<ChangeGender/>, mockStore);
 
-        expect(wrapper.text().includes("Female")).toBe(true);
+        expect(wrapper.text().includes("Nữ")).toBe(true);
         expect(wrapper.find(Radio).at(0).prop("checked")).toBe(true);
-        expect(wrapper.text().includes("Male")).toBe(true);
+        expect(wrapper.text().includes("Nam")).toBe(true);
         expect(wrapper.find(Radio).at(1).prop("checked")).toBe(false);
         
         wrapper.find(Radio).at(1).find("input").simulate("change");
 
-        expect(wrapper.text().includes("Female")).toBe(true);
+        expect(wrapper.text().includes("Nữ")).toBe(true);
         expect(wrapper.find(Radio).at(0).prop("checked")).toBe(false);
-        expect(wrapper.text().includes("Male")).toBe(true);
+        expect(wrapper.text().includes("Nam")).toBe(true);
         expect(wrapper.find(Radio).at(1).prop("checked")).toBe(true);
 
         wrapper.find(Button).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {
-            payload: {gender: "Male"},
+            payload: {gender: "Nam"},
             type: UserActionsType.UPDATE_GENDER
         });
     });

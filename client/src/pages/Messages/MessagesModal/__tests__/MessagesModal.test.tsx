@@ -28,8 +28,8 @@ describe("MessagesModal", () => {
         const wrapper = mountWithStore(<MessagesModal visible={true} onClose={jest.fn()}/>, mockStore);
 
         expect(wrapper.find(Dialog).exists()).toBeTruthy();
-        expect(wrapper.text().includes("New message")).toBe(true);
-        expect(wrapper.find(Button).text().includes("Next")).toBe(true);
+        expect(wrapper.text().includes("Tin nhắn mới")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Tiếp")).toBe(true);
         expect(wrapper.find(MessagesModalUser).length).toEqual(2);
     });
 

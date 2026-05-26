@@ -12,7 +12,7 @@ describe("SideSearch", () => {
         const pushSpy = jest.spyOn(history, "push");
         const wrapper = mountWithStore(<SideSearch/>, createMockRootState(LoadingStatus.SUCCESS), history);
         
-        expect(wrapper.find(SideSearchTextField).prop("placeholder")).toBe("Search Twitter");
+        expect(wrapper.find(SideSearchTextField).prop("placeholder")).toBe("Tìm kiếm trên Twitter");
         expect(wrapper.find(SideSearchTextField).prop("value")).toBe("");
 
         wrapper.find(SideSearchTextField).find("input").at(0).simulate("change", {target: {value: "test_value"}});

@@ -74,7 +74,7 @@ const ProfileHeaderModal: FC<ProfileHeaderModalProps> = (
                     size="medium"
                     fullWidth
                 >
-                    {wallpaper?.src ? "Next" : "Skip for now"}
+                    {wallpaper?.src ? "Tiếp" : "Bỏ qua"}
                 </Button>
             </DialogContent>
         </Dialog>

@@ -26,7 +26,7 @@ const MuteAccountButton: FC<MuteAccountButtonProps> = memo(({userId, username, i
         <div className={classes.muteButton}>
             <ActionIconButton
                 onClick={unmuteUser}
-                actionText={isUserMuted ? "Unmute" : "Mute"}
+                actionText={isUserMuted ? "Bật tiếng" : "Tắt tiếng"}
                 icon={isUserMuted ? MuteIcon : UnmuteIcon}
             />
         </div>

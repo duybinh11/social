@@ -183,13 +183,13 @@ describe("tweetReducer:", () => {
             tweetReducer(initialTweetState,
                 {
                     type: TweetActionType.SET_ERROR_MESSAGE,
-                    payload: "Tweet not found"
+                    payload: "Không tìm thấy tweet"
                 }
             ),
             {
                 ...initialTweetState,
                 loadingState: LoadingStatus.ERROR,
-                errorMessage: "Tweet not found",
+                errorMessage: "Không tìm thấy tweet",
             }
         );
 

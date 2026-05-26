@@ -21,7 +21,7 @@ const TopTweetsActionsModal = (): ReactElement => {
         <>
             <ClickAwayListener onClickAway={handleClickAway}>
                 <div className={classes.root}>
-                    <ActionIconButton onClick={handleClick} actionText={"More"} icon={EditIcon}/>
+                    <ActionIconButton onClick={handleClick} actionText={"Thêm"} icon={EditIcon}/>
                     {open && (
                         <div className={classes.dropdown}>
                             <List>

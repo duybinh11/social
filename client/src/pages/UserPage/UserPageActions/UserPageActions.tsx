@@ -41,7 +41,7 @@ const UserPageActions = memo((): ReactElement => {
         <ClickAwayListener onClickAway={handleClickAway}>
             <div className={classes.container}>
                 <span className={globalClasses.userPageIconButton}>
-                    <ActionIconButton actionText={"More"} onClick={handleClick} icon={EditIcon}/>
+                    <ActionIconButton actionText={"Thêm"} onClick={handleClick} icon={EditIcon}/>
                 </span>
                 {open && (
                     <div className={classes.dropdown}>

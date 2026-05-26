@@ -83,7 +83,7 @@ const EditProfileModal: FC<EditProfileModalProps> = ({visible, onClose}): ReactE
                         variant="contained"
                         color="primary"
                     >
-                        Save
+                        Lưu
                     </Button>
                 </DialogTitle>
                 <DialogContent className={classes.content}>
@@ -120,7 +120,7 @@ const EditProfileModal: FC<EditProfileModalProps> = ({visible, onClose}): ReactE
                                             name="username"
                                             helperText={errors.username?.message}
                                             error={!!errors.username}
-                                            label={"Name"}
+                                            label={"Tên"}
                                             maxTextLength={50}
                                             onChange={onChange}
                                             value={value}
@@ -134,7 +134,7 @@ const EditProfileModal: FC<EditProfileModalProps> = ({visible, onClose}): ReactE
                                     render={({field: {onChange, value}}) => (
                                         <TweeterInput
                                             name="about"
-                                            label={"Bio"}
+                                            label={"Tiểu sử"}
                                             maxTextLength={160}
                                             onChange={onChange}
                                             value={value}
@@ -148,7 +148,7 @@ const EditProfileModal: FC<EditProfileModalProps> = ({visible, onClose}): ReactE
                                     render={({field: {onChange, value}}) => (
                                         <TweeterInput
                                             name="location"
-                                            label={"Location"}
+                                            label={"Vị trí"}
                                             maxTextLength={30}
                                             onChange={onChange}
                                             value={value}
@@ -162,7 +162,7 @@ const EditProfileModal: FC<EditProfileModalProps> = ({visible, onClose}): ReactE
                                     render={({field: {onChange, value}}) => (
                                         <TweeterInput
                                             name="website"
-                                            label={"Website"}
+                                            label={"Trang web"}
                                             maxTextLength={100}
                                             onChange={onChange}
                                             value={value}

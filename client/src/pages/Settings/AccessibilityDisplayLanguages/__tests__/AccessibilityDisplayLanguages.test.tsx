@@ -15,10 +15,10 @@ describe("AccessibilityDisplayLanguages", () => {
         const wrapper = mountWithStore(<AccessibilityDisplayLanguages/>, createMockRootState());
 
         expect(wrapper.text().includes("Manage how Twitter content is displayed to you.")).toBe(true);
-        expect(wrapper.text().includes("Accessibility")).toBe(true);
-        expect(wrapper.text().includes("Display")).toBe(true);
-        expect(wrapper.text().includes("Languages")).toBe(true);
-        expect(wrapper.text().includes("Data usage")).toBe(true);
+        expect(wrapper.text().includes("Trợ năng")).toBe(true);
+        expect(wrapper.text().includes("Hiển thị")).toBe(true);
+        expect(wrapper.text().includes("Ngôn ngữ")).toBe(true);
+        expect(wrapper.text().includes("Sử dụng dữ liệu")).toBe(true);
     });
 
     it("should link to Accessibility", () => {

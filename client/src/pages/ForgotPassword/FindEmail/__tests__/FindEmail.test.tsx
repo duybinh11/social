@@ -19,7 +19,7 @@ describe("FindEmail", () => {
 
         expect(wrapper.text().includes("Find your Twitter account")).toBe(true);
         expect(wrapper.text().includes("Enter your email, phone number, or username.")).toBe(true);
-        expect(wrapper.find(Button).at(0).text()).toEqual("Search");
+        expect(wrapper.find(Button).at(0).text()).toEqual("Tìm kiếm");
     });
 
     it("should email exist", (done) => {

@@ -65,7 +65,7 @@ const AdditionalResources: FC = (): ReactElement => {
                         <ListItem>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Ads info
+                                    Thông tin quảng cáo
                                 </Typography>
                             </div>
                             <div className={globalClasses.arrowIcon}>
@@ -89,7 +89,7 @@ const AdditionalResources: FC = (): ReactElement => {
                         <ListItem>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Privacy Policy
+                                    Chính sách quyền riêng tư
                                 </Typography>
                             </div>
                             <div className={globalClasses.arrowIcon}>
@@ -101,7 +101,7 @@ const AdditionalResources: FC = (): ReactElement => {
                         <ListItem>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Terms of Service
+                                    Điều khoản dịch vụ
                                 </Typography>
                             </div>
                             <div className={globalClasses.arrowIcon}>
@@ -119,7 +119,7 @@ const AdditionalResources: FC = (): ReactElement => {
                         <ListItem>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    About
+                                    Giới thiệu
                                 </Typography>
                             </div>
                             <div className={globalClasses.arrowIcon}>
@@ -131,7 +131,7 @@ const AdditionalResources: FC = (): ReactElement => {
                         <ListItem>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Advertising
+                                    Quảng cáo
                                 </Typography>
                             </div>
                             <div className={globalClasses.arrowIcon}>
@@ -155,7 +155,7 @@ const AdditionalResources: FC = (): ReactElement => {
                         <ListItem>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Brand Resources
+                                    Tài nguyên thương hiệu
                                 </Typography>
                             </div>
                             <div className={globalClasses.arrowIcon}>
@@ -167,7 +167,7 @@ const AdditionalResources: FC = (): ReactElement => {
                         <ListItem>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Careers
+                                    Tuyển dụng
                                 </Typography>
                             </div>
                             <div className={globalClasses.arrowIcon}>
@@ -203,7 +203,7 @@ const AdditionalResources: FC = (): ReactElement => {
                         <ListItem>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Help Center
+                                    Trung tâm trợ giúp
                                 </Typography>
                             </div>
                             <div className={globalClasses.arrowIcon}>
@@ -253,4 +253,4 @@ const AdditionalResources: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(AdditionalResources)("Additional resources");
+export default withDocumentTitle(AdditionalResources)("Tài nguyên bổ sung");

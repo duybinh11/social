@@ -87,10 +87,10 @@ const UserTweets: FC<UserTweetsProps> = memo(({activeTab, handleChangeTab}): Rea
         <>
             <div className={classes.tabs}>
                 <Tabs value={activeTab} indicatorColor="primary" textColor="primary" onChange={handleChange}>
-                    <Tab onClick={() => handleShowTweets(handleShowUserTweets)} label="Tweets"/>
+                    <Tab onClick={() => handleShowTweets(handleShowUserTweets)} label="Đăng"/>
                     <Tab onClick={() => handleShowTweets(handleShowUserRetweetsAndReplies)} label="Tweets & replies"/>
-                    <Tab onClick={() => handleShowTweets(handleShowMediaTweets)} label="Media"/>
-                    <Tab onClick={() => handleShowTweets(handleShowLikedTweets)} label="Likes"/>
+                    <Tab onClick={() => handleShowTweets(handleShowMediaTweets)} label="Phương tiện"/>
+                    <Tab onClick={() => handleShowTweets(handleShowLikedTweets)} label="Lượt thích"/>
                 </Tabs>
             </div>
             <Divider/>

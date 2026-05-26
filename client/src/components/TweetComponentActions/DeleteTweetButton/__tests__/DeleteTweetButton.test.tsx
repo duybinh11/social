@@ -22,7 +22,7 @@ describe("DeleteTweetButton", () => {
                 addressedTweetId={1}
                 onCloseActionsDropdown={jest.fn()}
             />);
-        expect(wrapper.text().includes("Delete")).toBe(true);
+        expect(wrapper.text().includes("Xóa")).toBe(true);
         expect(wrapper.find(TweetComponentActionsModal).prop("visibleTweetComponentActionsModal")).toBe(false);
         wrapper.find("#delete").at(0).simulate("click");
         expect(wrapper.find(TweetComponentActionsModal).prop("visibleTweetComponentActionsModal")).toBe(true);

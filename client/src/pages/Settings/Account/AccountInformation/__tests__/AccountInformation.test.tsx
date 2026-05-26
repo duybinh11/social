@@ -30,21 +30,21 @@ describe("AccountInformation", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<AccountInformation/>, mockStore);
 
-        expect(wrapper.text().includes("Username")).toBe(true);
+        expect(wrapper.text().includes("Tên người dùng")).toBe(true);
         expect(wrapper.text().includes(`@${mockUser.username}`)).toBe(true);
-        expect(wrapper.text().includes("Phone")).toBe(true);
+        expect(wrapper.text().includes("Điện thoại")).toBe(true);
         expect(wrapper.text().includes(`${getPhoneCode(mockUser.countryCode)}${mockUser.phone}`)).toBe(true);
         expect(wrapper.text().includes("Email")).toBe(true);
         expect(wrapper.text().includes(mockUser.email)).toBe(true);
-        expect(wrapper.text().includes("Protected Tweets")).toBe(true);
-        expect(wrapper.text().includes("No")).toBe(true);
-        expect(wrapper.text().includes("Account creation")).toBe(true);
+        expect(wrapper.text().includes("Tweet được bảo vệ")).toBe(true);
+        expect(wrapper.text().includes("Không")).toBe(true);
+        expect(wrapper.text().includes("Tạo tài khoản")).toBe(true);
         expect(wrapper.text().includes(formatScheduleDate(new Date(mockUser.registrationDate)))).toBe(true);
-        expect(wrapper.text().includes("Country")).toBe(true);
+        expect(wrapper.text().includes("Quốc gia")).toBe(true);
         expect(wrapper.text().includes(getCountry(mockUser.countryCode))).toBe(true);
-        expect(wrapper.text().includes("Languages")).toBe(true);
+        expect(wrapper.text().includes("Ngôn ngữ")).toBe(true);
         expect(wrapper.text().includes(mockUser.language)).toBe(true);
-        expect(wrapper.text().includes("Gender")).toBe(true);
+        expect(wrapper.text().includes("Giới tính")).toBe(true);
         expect(wrapper.text().includes(mockUser.gender)).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {type: UserActionsType.FETCH_USER_DATA});
     });

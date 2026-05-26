@@ -18,7 +18,7 @@ const EmailNotifications: FC = (): ReactElement => {
         <>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h6"} component={"div"} style={{paddingBottom: 4}}>
-                    Email notifications
+                    Thông báo email
                     <span className={globalClasses.switch}>
                         <Switch defaultChecked/>
                     </span>
@@ -28,7 +28,7 @@ const EmailNotifications: FC = (): ReactElement => {
                 <Typography variant={"subtitle2"} component={"div"}>
                     {"Get emails to find out what’s going on when you’re not on Twitter. You can turn them off anytime. "}
                     <MuiLink href={TWEET_ACTIVITY} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -209,4 +209,4 @@ const EmailNotifications: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(EmailNotifications)("Email notifications");
+export default withDocumentTitle(EmailNotifications)("Thông báo email");

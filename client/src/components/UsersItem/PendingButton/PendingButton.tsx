@@ -13,7 +13,7 @@ interface PendingButtonProps {
 const PendingButton: FC<PendingButtonProps> = ({user}): ReactElement => {
     const classes = usePendingButtonStyles();
     const dispatch = useDispatch();
-    const [btnText, setBtnText] = useState<string>("Pending");
+    const [btnText, setBtnText] = useState<string>("Đang chờ");
 
     const cancelFollow = (event: React.MouseEvent<HTMLButtonElement>): void => {
         event.preventDefault();
@@ -24,8 +24,8 @@ const PendingButton: FC<PendingButtonProps> = ({user}): ReactElement => {
         <Button
             className={classes.outlinedButton}
             onClick={cancelFollow}
-            onMouseOver={() => setBtnText("Cancel")}
-            onMouseLeave={() => setBtnText("Pending")}
+            onMouseOver={() => setBtnText("Hủy")}
+            onMouseLeave={() => setBtnText("Đang chờ")}
             color="primary"
             variant="outlined"
             size="small"

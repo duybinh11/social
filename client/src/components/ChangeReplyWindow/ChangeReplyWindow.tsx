@@ -36,7 +36,7 @@ const ChangeReplyWindow: FC<ChangeReplyWindowProps> = memo(({replyType, onChange
                         </span>
                     </div>
                     <Typography variant={"body1"} component={"span"}>
-                        Everyone
+                        Mọi người
                     </Typography>
                     {(replyType === ReplyType.EVERYONE) && (
                         <span className={classes.checkIcon}>
@@ -55,7 +55,7 @@ const ChangeReplyWindow: FC<ChangeReplyWindowProps> = memo(({replyType, onChange
                         </span>
                     </div>
                     <Typography variant={"body1"} component={"span"}>
-                        People you follow
+                        Người bạn theo dõi
                     </Typography>
                     {(replyType === ReplyType.FOLLOW) && (
                         <span className={classes.checkIcon}>
@@ -75,7 +75,7 @@ const ChangeReplyWindow: FC<ChangeReplyWindowProps> = memo(({replyType, onChange
                         </span>
                     </div>
                     <Typography variant={"body1"} component={"span"}>
-                        Only people you mention
+                        Chỉ người bạn đề cập
                     </Typography>
                     {(replyType === ReplyType.MENTION) && (
                         <span className={classes.checkIcon}>

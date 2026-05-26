@@ -47,7 +47,7 @@ const UnsentTweetsHeader: FC<UnsentTweetsHeaderProps> = memo((
                     color="primary"
                     size="small"
                 >
-                    {visibleEditListFooter ? "Done" : "Edit"}
+                    {visibleEditListFooter ? "Xong" : "Sửa"}
                 </Button>
             )}
         </DialogTitle>

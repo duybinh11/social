@@ -18,7 +18,7 @@ describe("UserTweets", () => {
     });
 
     it("should click tweet Tab and fetch user tweets", () => {
-        testClickTab(0, "Tweets", UserTweetsActionType.FETCH_TWEETS);
+        testClickTab(0, "Đăng", UserTweetsActionType.FETCH_TWEETS);
     });
 
     it("should click tweet Tab and fetch user tweets", () => {
@@ -26,11 +26,11 @@ describe("UserTweets", () => {
     });
 
     it("should click tweet Tab and fetch user tweets", () => {
-        testClickTab(2, "Media", UserTweetsActionType.FETCH_MEDIA_TWEETS);
+        testClickTab(2, "Phương tiện", UserTweetsActionType.FETCH_MEDIA_TWEETS);
     });
 
     it("should click tweet Tab and fetch user tweets", () => {
-        testClickTab(3, "Likes", UserTweetsActionType.FETCH_LIKED_TWEETS);
+        testClickTab(3, "Lượt thích", UserTweetsActionType.FETCH_LIKED_TWEETS);
     });
 
     it("should scroll and fetch User Tweets", () => {

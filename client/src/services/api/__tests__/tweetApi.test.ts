@@ -24,7 +24,7 @@ import {ReplyType} from "../../../store/types/common";
 
 describe("TweetApi", () => {
     const mockAdapter = new MockAdapter(axios);
-    const tweetNotFoundError = "Tweet not found";
+    const tweetNotFoundError = "Không tìm thấy tweet";
     const mockAddTweetRequest = {text: "test", images: [], replyType: ReplyType.EVERYONE};
     const mockNotificationTweet = {id: 1, text: "test", user: {id: 1}, notificationCondition: true};
     const tweetActionRequest = {tweetId: 1, userId: 1};
@@ -98,7 +98,7 @@ describe("TweetApi", () => {
         });
 
         it("[400] should return Incorrect tweet text length", () => {
-            testApiCall(mockAdapter, "onPost", API_TWEETS, 400, "Incorrect tweet text length", TweetApi.createTweet, mockAddTweetRequest);
+            testApiCall(mockAdapter, "onPost", API_TWEETS, 400, "Độ dài nội dung tweet không hợp lệ", TweetApi.createTweet, mockAddTweetRequest);
         });
     });
 
@@ -108,7 +108,7 @@ describe("TweetApi", () => {
         });
 
         it("[400] should return incorrect poll choices", () => {
-            testApiCall(mockAdapter, "onPost", API_TWEETS_SCHEDULE, 400, "Incorrect poll choices", TweetApi.createScheduledTweet, mockAddTweetRequest);
+            testApiCall(mockAdapter, "onPost", API_TWEETS_SCHEDULE, 400, "Lựa chọn bình chọn không hợp lệ", TweetApi.createScheduledTweet, mockAddTweetRequest);
         });
     });
 
@@ -118,7 +118,7 @@ describe("TweetApi", () => {
         });
 
         it("[400] should return Incorrect tweet text length", () => {
-            testApiCall(mockAdapter, "onPut", API_TWEETS_SCHEDULE, 400, "Incorrect tweet text length", TweetApi.updateScheduledTweet, mockAddTweetRequest);
+            testApiCall(mockAdapter, "onPut", API_TWEETS_SCHEDULE, 400, "Độ dài nội dung tweet không hợp lệ", TweetApi.updateScheduledTweet, mockAddTweetRequest);
         });
 
         it("[404] should return tweet Not Found", () => {

@@ -26,7 +26,7 @@ const Notifications: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Filters
+                                    Bộ lọc
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Choose the notifications you’d like to see — and those you don’t.
@@ -44,7 +44,7 @@ const Notifications: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Preferences
+                                    Tùy chọn
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Select your preferences by notification type.
@@ -61,4 +61,4 @@ const Notifications: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Notifications)("Notifications");
+export default withDocumentTitle(Notifications)("Thông báo");

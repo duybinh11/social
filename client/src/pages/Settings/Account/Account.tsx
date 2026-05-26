@@ -25,7 +25,7 @@ const Account: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Account information
+                                    Thông tin tài khoản
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     See your account information like your phone number and email address.
@@ -43,10 +43,10 @@ const Account: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Change your password
+                                    Đổi mật khẩu
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
-                                    Change your password at any time.
+                                    Đổi mật khẩu bất cứ lúc nào.
                                 </Typography>
                             </div>
                             <div className={globalClasses.arrowIcon}>
@@ -60,7 +60,7 @@ const Account: FC = (): ReactElement => {
                         </div>
                         <div>
                             <Typography variant={"body1"} component={"div"}>
-                                Download an archive of your data
+                                Tải bản lưu dữ liệu của bạn
                             </Typography>
                             <Typography variant={"subtitle2"} component={"div"}>
                                 Get insights into the type of information stored for your account.
@@ -77,7 +77,7 @@ const Account: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    TweetDeck Teams
+                                    Nhóm TweetDeck
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Invite anyone to Tweet from this account using the Teams feature in
@@ -96,7 +96,7 @@ const Account: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Deactivate your account
+                                    Vô hiệu hóa tài khoản
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Find out how you can deactivate your account.
@@ -113,4 +113,4 @@ const Account: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Account)("Settings");
+export default withDocumentTitle(Account)("Cài đặt");

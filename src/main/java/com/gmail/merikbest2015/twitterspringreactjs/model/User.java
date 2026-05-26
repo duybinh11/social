@@ -199,6 +199,7 @@ public class User {
         this.subscribers = new ArrayList<>();
         this.backgroundColor = BackgroundColorType.LIGHTS_OUT;
         this.colorScheme = ColorSchemeType.YELLOW;
+        this.language = "Tiếng Việt";
     }
 
     @PostLoad

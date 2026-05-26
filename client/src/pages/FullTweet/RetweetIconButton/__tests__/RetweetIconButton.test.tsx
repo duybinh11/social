@@ -23,7 +23,7 @@ describe("RetweetIconButton", () => {
         const wrapper = mountWithStore(<RetweetIconButton/>, mockRootStore);
         wrapper.find(ActionIconButton).find(IconButton).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {payload: {tweetId: 9}, type: TweetsActionType.RETWEET});
-        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Undo Retweet");
+        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Hoàn tác đăng lại");
         expect(wrapper.find(ActionIconButton).prop("icon")).toBe(RetweetIcon);
     });
 
@@ -32,7 +32,7 @@ describe("RetweetIconButton", () => {
         const wrapper = mountWithStore(<RetweetIconButton/>, mockStore);
         wrapper.find(ActionIconButton).find(IconButton).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {payload: {tweetId: 9}, type: TweetsActionType.RETWEET});
-        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Retweet");
+        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Đăng lại");
         expect(wrapper.find(ActionIconButton).prop("icon")).toBe(RetweetOutlinedIcon);
     });
 });

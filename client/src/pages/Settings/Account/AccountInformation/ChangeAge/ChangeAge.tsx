@@ -14,7 +14,7 @@ const ChangeAge: FC = (): ReactElement => {
                 {`If you haven’t provided a date of birth, we’ve provided an age range based on your Twitter
                     profile and activity. Age information is used to personalize your experience. `}
                 <MuiLink href={BIRTHDAY_VISIBILITY_SETTINGS} target="_blank" rel="noopener">
-                    Learn more
+                    Tìm hiểu thêm
                 </MuiLink>
             </Typography>
             <Divider/>
@@ -29,4 +29,4 @@ const ChangeAge: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(ChangeAge)("Age");
+export default withDocumentTitle(ChangeAge)("Tuổi");

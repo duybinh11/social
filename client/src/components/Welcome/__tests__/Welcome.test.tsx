@@ -16,9 +16,9 @@ describe("Welcome", () => {
 
     it("should render correctly", () => {
         const wrapper = mountWithStore(<Welcome/>, mockRootState);
-        expect(wrapper.text().includes("Welcome to Twitter!")).toBe(true);
+        expect(wrapper.text().includes("Chào mừng đến Twitter!")).toBe(true);
         expect(wrapper.text().includes("This is the best place to see what’s happening in your world.")).toBe(true);
-        expect(wrapper.find(Button).text().includes("Let's go")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Bắt đầu thôi")).toBe(true);
     });
 
     it("should click start use Twitter", () => {

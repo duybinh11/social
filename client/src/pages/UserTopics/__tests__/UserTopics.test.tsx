@@ -20,7 +20,7 @@ describe("UserTopics", () => {
 
     it("should render loading spinner", () => {
         const wrapper = mountWithStore(<UserTopics/>, createMockRootState());
-        expect(wrapper.text().includes("Topics")).toBe(true);
+        expect(wrapper.text().includes("Chủ đề")).toBe(true);
         expect(wrapper.find(Spinner).exists()).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: 2,

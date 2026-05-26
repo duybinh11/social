@@ -10,7 +10,7 @@ const CancelUserButton = memo((): ReactElement => {
     const classes = useUserPageStyles();
     const dispatch = useDispatch();
     const userProfileId = useSelector(selectUserProfileId);
-    const [btnText, setBtnText] = useState<string>("Pending");
+    const [btnText, setBtnText] = useState<string>("Đang chờ");
 
     const cancelFollow = (): void => {
         dispatch(processFollowRequest(userProfileId!));
@@ -20,8 +20,8 @@ const CancelUserButton = memo((): ReactElement => {
         <Button
             className={classes.outlinedButton}
             onClick={cancelFollow}
-            onMouseOver={() => setBtnText("Cancel")}
-            onMouseLeave={() => setBtnText("Pending")}
+            onMouseOver={() => setBtnText("Hủy")}
+            onMouseLeave={() => setBtnText("Đang chờ")}
             color="primary"
             variant="outlined"
             size="large"

@@ -13,8 +13,8 @@ describe("SettingsModal", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<SettingsModal/>, mockRootState);
         wrapper.find(ActionIconButton).find(IconButton).simulate("click");
-        expect(wrapper.text().includes("Trends")).toBe(true);
-        expect(wrapper.text().includes("Location")).toBe(true);
+        expect(wrapper.text().includes("Xu hướng")).toBe(true);
+        expect(wrapper.text().includes("Vị trí")).toBe(true);
         expect(wrapper.text().includes("Show content in this location")).toBe(true);
         expect(wrapper.text().includes("When this is on, you’ll see what’s happening around you right now.")).toBe(true);
         expect(wrapper.text().includes("Personalization")).toBe(true);

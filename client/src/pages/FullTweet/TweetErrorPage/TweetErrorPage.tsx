@@ -24,7 +24,7 @@ const TweetErrorPage = (): ReactElement => {
         <>
             <Typography variant={"h5"} component={"div"} className={classes.error}>
                 Hmm...this page doesn’t exist. <br/>
-                Try searching for something else.
+                Hãy thử tìm nội dung khác.
             </Typography>
             <Link to={SEARCH} className={globalClasses.link}>
                 <Button
@@ -33,7 +33,7 @@ const TweetErrorPage = (): ReactElement => {
                     variant="contained"
                     size="small"
                 >
-                    Search
+                    Tìm kiếm
                 </Button>
             </Link>
         </>

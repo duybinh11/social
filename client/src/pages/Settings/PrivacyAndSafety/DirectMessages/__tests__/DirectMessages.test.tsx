@@ -19,7 +19,7 @@ describe("DirectMessages", () => {
         const wrapper = mountWithStore(<DirectMessages/>, mockStore);
         
         expect(wrapper.text().includes("Manage who can message you directly.")).toBe(true);
-        expect(wrapper.text().includes("Allow message requests from everyone")).toBe(true);
+        expect(wrapper.text().includes("Cho phép yêu cầu tin nhắn từ mọi người")).toBe(true);
         expect(wrapper.text().includes("Filter low-quality messages")).toBe(true);
         expect(wrapper.text().includes("Show read receipts")).toBe(true);
         expect(wrapper.find(Checkbox).at(0).prop("checked")).toBe(false);

@@ -14,8 +14,8 @@ const UnsentTweetsTab: FC<UnsentTweetsTabProps> = memo(({activeTab, handleChange
     return (
         <div className={classes.tabs}>
             <Tabs value={activeTab} indicatorColor="primary" textColor="primary" onChange={handleChangeTab}>
-                <Tab className={classes.tab} label="Scheduled"/>
-                <Tab className={classes.tab} label="Drafts"/>
+                <Tab className={classes.tab} label="Đã lên lịch"/>
+                <Tab className={classes.tab} label="Bản nháp"/>
             </Tabs>
         </div>
     );

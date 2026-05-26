@@ -50,7 +50,7 @@ const LeaveFromConversationModal: FC<LeaveFromConversationModalProps> = (
                         size="large"
                         fullWidth
                     >
-                        Cancel
+                        Hủy
                     </Button>
                 </div>
             </DialogContent>

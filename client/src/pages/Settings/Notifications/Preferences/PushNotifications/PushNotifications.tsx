@@ -11,7 +11,7 @@ const PushNotifications: FC = (): ReactElement => {
         <>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h6"} component={"div"}>
-                    Push notifications
+                    Thông báo đẩy
                     <span className={globalClasses.switch}>
                         <Switch defaultChecked/>
                     </span>
@@ -36,4 +36,4 @@ const PushNotifications: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(PushNotifications)("Push notifications");
+export default withDocumentTitle(PushNotifications)("Thông báo đẩy");

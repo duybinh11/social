@@ -21,19 +21,19 @@ const LoggedDevices: FC = (): ReactElement => {
                     This includes devices and browsers you haven’t used to log in to Twitter, as well as email
                     addresses and phone numbers like those linked to your Twitter account. <MuiLink
                     href={ACROSS_YOUR_DEVICES} variant="subtitle2" target="_blank" rel="noopener">
-                    Learn more
+                    Tìm hiểu thêm
                 </MuiLink>
                 </Typography>
             </div>
             <Divider/>
             <div className={classnames(classes.infoItemWrapper, globalClasses.itemInfoWrapper)}>
                 <Typography variant={"h6"} component={"div"}>
-                    Browsers
+                    Trình duyệt
                 </Typography>
                 <Typography variant={"subtitle2"} component={"div"}>
                     {`You can remove this information by disabling “Personalize based on your inferred identity” in your `}
                     <MuiLink component={Link} variant="subtitle2" to={SETTINGS_PRIVACY_AND_SAFETY_OFF_TWITTER_ACTIVITY}>
-                        Off-Twitter activity
+                        Hoạt động ngoài Twitter
                     </MuiLink> settings.
                 </Typography>
             </div>
@@ -45,7 +45,7 @@ const LoggedDevices: FC = (): ReactElement => {
                 <Typography variant={"subtitle2"} component={"div"}>
                     {`You can remove this information by disabling “Personalize based on your inferred identity” in your `}
                     <MuiLink component={Link} variant="subtitle2" to={SETTINGS_PRIVACY_AND_SAFETY_OFF_TWITTER_ACTIVITY}>
-                        Off-Twitter activity
+                        Hoạt động ngoài Twitter
                     </MuiLink> settings.
                 </Typography>
             </div>
@@ -59,7 +59,7 @@ const LoggedDevices: FC = (): ReactElement => {
                         address you have provided to Twitter. You can remove this information by disabling
                         “Personalize based on your inferred identity” in your `}
                     <MuiLink component={Link} variant="subtitle2" to={SETTINGS_PRIVACY_AND_SAFETY_OFF_TWITTER_ACTIVITY}>
-                        Off-Twitter activity
+                        Hoạt động ngoài Twitter
                     </MuiLink> settings.
                 </Typography>
             </div>
@@ -67,4 +67,4 @@ const LoggedDevices: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(LoggedDevices)("Logged-in devices and apps");
+export default withDocumentTitle(LoggedDevices)("Thiết bị và ứng dụng đã đăng nhập");

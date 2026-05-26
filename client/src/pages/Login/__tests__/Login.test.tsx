@@ -8,7 +8,7 @@ import {LoginTextField} from "../LoginInputField";
 import {UserActionsType} from "../../../store/ducks/user/contracts/actionTypes";
 import {LoadingStatus} from "../../../store/types/common";
 
-describe("Login", () => {
+describe("Đăng nhập", () => {
     const mockStore = createMockRootState(LoadingStatus.LOADED);
     let mockDispatchFn: jest.Mock;
 
@@ -19,10 +19,10 @@ describe("Login", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<Login/>, mockStore);
 
-        expect(wrapper.text().includes("Log in to Twitter")).toBe(true);
-        expect(wrapper.find(Button).text().includes("Login")).toBe(true);
-        expect(wrapper.text().includes("Forgot password?")).toBe(true);
-        expect(wrapper.text().includes("Sign up for Twitter")).toBe(true);
+        expect(wrapper.text().includes("Đăng nhập Twitter")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đăng nhập")).toBe(true);
+        expect(wrapper.text().includes("Quên mật khẩu?")).toBe(true);
+        expect(wrapper.text().includes("Đăng ký Twitter")).toBe(true);
     });
 
     it("should submit Login form", () => {

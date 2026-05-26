@@ -52,7 +52,7 @@ describe("FullList", () => {
         expect(wrapper.text().includes(`@${mockFullList.listOwner.username}`)).toBe(true);
         expect(wrapper.text().includes(`${mockFullList.membersSize} Members`)).toBe(true);
         expect(wrapper.text().includes(`${mockFullList.followersSize} Followers`)).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Edit List")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Sửa danh sách")).toBe(true);
         expect(wrapper.find(TweetComponent).length).toEqual(2);
     });
 

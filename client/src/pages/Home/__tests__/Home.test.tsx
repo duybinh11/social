@@ -18,7 +18,7 @@ import ActionIconButton from "../../../components/ActionIconButton/ActionIconBut
 
 window.scrollTo = jest.fn();
 
-describe("Home", () => {
+describe("Trang chủ", () => {
     const mockStore = createMockRootState(LoadingStatus.SUCCESS);
     let mockDispatchFn: jest.Mock;
     let history: MemoryHistory<unknown>;
@@ -44,10 +44,10 @@ describe("Home", () => {
         expect(mockDispatchFn).nthCalledWith(1, {payload: LoadingStatus.NEVER, type: TweetsActionType.SET_LOADING_STATE});
         expect(mockDispatchFn).nthCalledWith(2, {type: UserActionsType.FETCH_USER_DATA});
         expect(mockDispatchFn).nthCalledWith(3, {payload: 0, type: TweetsActionType.FETCH_TWEETS});
-        expect(wrapper.text().includes("Home")).toBe(true);
+        expect(wrapper.text().includes("Trang chủ")).toBe(true);
         expect(wrapper.find(AddTweetForm).exists()).toBe(true);
-        expect(wrapper.find(AddTweetForm).prop("title")).toBe("What's happening?");
-        expect(wrapper.find(AddTweetForm).prop("buttonName")).toBe("Tweet");
+        expect(wrapper.find(AddTweetForm).prop("title")).toBe("Chuyện gì đang xảy ra?");
+        expect(wrapper.find(AddTweetForm).prop("buttonName")).toBe("Đăng");
         expect(wrapper.find(TweetComponent).length).toEqual(2);
     });
 
@@ -84,9 +84,9 @@ describe("Home", () => {
         }, history);
 
         expect(wrapper.find(Welcome).exists()).toBe(true);
-        expect(wrapper.find(Welcome).text().includes("Welcome to Twitter!")).toBe(true);
+        expect(wrapper.find(Welcome).text().includes("Chào mừng đến Twitter!")).toBe(true);
         expect(wrapper.find(Welcome).text().includes("This is the best place to see what’s happening in your world.")).toBe(true);
         expect(wrapper.find(Welcome).text().includes("Find some people and topics to follow now.")).toBe(true);
-        expect(wrapper.find(Welcome).find(Button).text().includes("Let's go")).toBe(true);
+        expect(wrapper.find(Welcome).find(Button).text().includes("Bắt đầu thôi")).toBe(true);
     });
 });

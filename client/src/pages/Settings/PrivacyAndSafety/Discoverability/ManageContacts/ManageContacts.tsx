@@ -24,7 +24,7 @@ const ManageContacts: FC = (): ReactElement => {
                         contacts you’ve previously uploaded and turn off syncing with Twitter on all devices. Please be
                         aware that this takes a little time. `}
                     <MuiLink href={EMAIL_AND_PHONE_DISCOVERABILITY_SETTINGS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -33,4 +33,4 @@ const ManageContacts: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(ManageContacts)("Manage contacts");
+export default withDocumentTitle(ManageContacts)("Quản lý danh bạ");

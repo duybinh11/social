@@ -139,7 +139,7 @@ describe("userReducer:", () => {
             userReducer(
                 {
                     ...initialUserState,
-                    data: {id: 1, gender: "Male"} as AuthUserResponse
+                    data: {id: 1, gender: "Nam"} as AuthUserResponse
                 },
                 {
                     type: UserActionsType.SET_GENDER,

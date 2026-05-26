@@ -78,9 +78,9 @@ describe("tweet actions", () => {
         payload: LoadingStatus.LOADING
     });
 
-    testAction(setErrorMessage, setErrorMessage("Tweet not found"), {
+    testAction(setErrorMessage, setErrorMessage("Không tìm thấy tweet"), {
         type: TweetActionType.SET_ERROR_MESSAGE,
-        payload: "Tweet not found"
+        payload: "Không tìm thấy tweet"
     });
 
     testAction(addTweetToBookmarks, addTweetToBookmarks(1), {

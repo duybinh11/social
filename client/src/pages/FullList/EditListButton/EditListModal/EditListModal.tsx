@@ -83,7 +83,7 @@ const EditListModal: FC<EditListModalProps> = ({visible, onClose}): ReactElement
             <form onSubmit={handleSubmit(onSubmit)}>
                 <DialogTitle id="form-dialog-title">
                     <CloseButton onClose={onClose}/>
-                    Edit List
+                    Sửa danh sách
                     <Button
                         className={classes.button}
                         type="submit"
@@ -91,7 +91,7 @@ const EditListModal: FC<EditListModalProps> = ({visible, onClose}): ReactElement
                         color="primary"
                         size="small"
                     >
-                        Done
+                        Xong
                     </Button>
                 </DialogTitle>
                 <DialogContent className={classes.content}>
@@ -113,7 +113,7 @@ const EditListModal: FC<EditListModalProps> = ({visible, onClose}): ReactElement
                             defaultValue=""
                             render={({field: {onChange, value}}) => (
                                 <CreateListsModalInput
-                                    label={"Name"}
+                                    label={"Tên"}
                                     name="name"
                                     helperText={errors.name?.message}
                                     error={!!errors.name}

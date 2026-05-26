@@ -129,7 +129,7 @@ const ManageMembersModal = (): ReactElement => {
                         <div className={classes.container}>
                             <ManageMembersInput
                                 fullWidth
-                                placeholder="Search people"
+                                placeholder="Tìm người"
                                 variant="outlined"
                                 onChange={(event) => onSearch(event.target.value)}
                                 value={searchText}

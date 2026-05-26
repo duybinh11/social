@@ -31,11 +31,11 @@ describe("BlockUserButton", () => {
     });
 
     it("should click unblock user", () => {
-        testClickButton(true, "#unblockIcon", "Unblock", "unblocked");
+        testClickButton(true, "#unblockIcon", "Bỏ chặn", "unblocked");
     });
 
     it("should click block user", () => {
-        testClickButton(false, "#blockIcon", "Block", "blocked");
+        testClickButton(false, "#blockIcon", "Chặn", "blocked");
     });
 
     const testClickButton = (isUserBlocked: boolean, iconId: string, blockMessage: string, snackbarMessage: string) => {

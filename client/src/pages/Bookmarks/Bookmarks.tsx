@@ -58,4 +58,4 @@ const Bookmarks: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Bookmarks)("Bookmarks");
+export default withDocumentTitle(Bookmarks)("Dấu trang");

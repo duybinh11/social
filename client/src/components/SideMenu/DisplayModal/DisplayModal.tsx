@@ -79,12 +79,11 @@ const DisplayModal: FC<DisplayModalProps & DisplayProps> = (
     return (
         <Dialog open={visible} onClose={onClose} className={classes.dialog} aria-labelledby="form-dialog-title">
             <Typography variant={"h3"} component={"div"} className={classes.title}>
-                Customize your view
+                Tùy chỉnh giao diện
             </Typography>
             <DialogContent className={classes.content}>
                 <Typography variant={"subtitle1"} component={"div"} className={classes.text}>
-                    Manage your font size, color, and background. These settings affect all the Twitter accounts on this
-                    browser.
+                    Quản lý cỡ chữ, màu sắc và nền. Cài đặt này áp dụng cho mọi tài khoản Twitter trên trình duyệt này.
                 </Typography>
                 <div className={classes.tweetInfoWrapper}>
                     <div>
@@ -117,7 +116,7 @@ const DisplayModal: FC<DisplayModalProps & DisplayProps> = (
                     </div>
                 </div>
                 <Typography variant={"subtitle2"} component={"div"} className={classes.subtitle}>
-                    Font size
+                    Cỡ chữ
                 </Typography>
                 <div className={classes.stepperWrapper}>
                     <Typography variant={"body1"} id={"xs"} component={"span"} className={classes.tweetText}>
@@ -135,7 +134,7 @@ const DisplayModal: FC<DisplayModalProps & DisplayProps> = (
                     </Typography>
                 </div>
                 <Typography variant={"subtitle2"} component={"div"} className={classes.subtitle}>
-                    Color
+                    Màu
                 </Typography>
                 <div className={classes.colorWrapper}>
                     <ColorSelector color={ColorScheme.BLUE}/>
@@ -146,7 +145,7 @@ const DisplayModal: FC<DisplayModalProps & DisplayProps> = (
                     <ColorSelector color={ColorScheme.GREEN}/>
                 </div>
                 <Typography variant={"subtitle2"} component={"div"} className={classes.subtitle}>
-                    Background
+                    Nền
                 </Typography>
                 <div className={classes.backgroundContainer}>
                     <div className={classes.backgroundWrapper}>
@@ -159,14 +158,14 @@ const DisplayModal: FC<DisplayModalProps & DisplayProps> = (
                                     onChange={handleChangeBackgroundColor}
                                     value={BackgroundTheme.DEFAULT}
                                     name="radio-buttons"
-                                    inputProps={{"aria-label": "Default"}}
+                                    inputProps={{"aria-label": "Mặc định"}}
                                     icon={<RadioButtonUnchecked color={"primary"}/>}
                                     checkedIcon={<CheckCircle color={"primary"}/>}
                                     size="small"
                                 />
                             </div>
                             <Typography variant={"h6"} component={"span"}>
-                                Default
+                                Mặc định
                             </Typography>
                         </div>
                     </div>
@@ -180,14 +179,14 @@ const DisplayModal: FC<DisplayModalProps & DisplayProps> = (
                                     onChange={handleChangeBackgroundColor}
                                     value={BackgroundTheme.DIM}
                                     name="radio-buttons"
-                                    inputProps={{"aria-label": "Dim"}}
+                                    inputProps={{"aria-label": "Tối"}}
                                     icon={<RadioButtonUnchecked color={"primary"}/>}
                                     checkedIcon={<CheckCircle color={"primary"}/>}
                                     size="small"
                                 />
                             </div>
                             <Typography variant={"h6"} component={"span"}>
-                                Dim
+                                Tối
                             </Typography>
                         </div>
                     </div>
@@ -201,14 +200,14 @@ const DisplayModal: FC<DisplayModalProps & DisplayProps> = (
                                     onChange={handleChangeBackgroundColor}
                                     value={BackgroundTheme.LIGHTS_OUT}
                                     name="radio-buttons"
-                                    inputProps={{"aria-label": "Lights-out"}}
+                                    inputProps={{"aria-label": "Tắt đèn"}}
                                     icon={<RadioButtonUnchecked color={"primary"}/>}
                                     checkedIcon={<CheckCircle color={"primary"}/>}
                                     size="small"
                                 />
                             </div>
                             <Typography variant={"h6"} component={"span"}>
-                                Lights out
+                                Tắt đèn
                             </Typography>
                         </div>
                     </div>
@@ -220,7 +219,7 @@ const DisplayModal: FC<DisplayModalProps & DisplayProps> = (
                         color="primary"
                         size="small"
                     >
-                        Done
+                        Xong
                     </Button>
                 </div>
             </DialogContent>

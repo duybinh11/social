@@ -47,7 +47,7 @@ describe("ProfileHeaderModal", () => {
         expect(wrapper.find(Avatar).prop("src")).toEqual(DEFAULT_PROFILE_IMG);
         expect(wrapper.text().includes(mockUser!.fullName)).toBe(true);
         expect(wrapper.text().includes(mockUser!.username)).toBe(true);
-        expect(wrapper.find(Button).text().includes("Skip for now")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Bỏ qua")).toBe(true);
     });
 
     it("should render correctly avatar and image and click", () => {
@@ -68,6 +68,6 @@ describe("ProfileHeaderModal", () => {
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
         expect(wrapper.find("img").at(0).prop("src")).toBe(mockImage.src);
         expect(wrapper.find(Avatar).prop("src")).toEqual(mockImage.src);
-        expect(wrapper.find(Button).text().includes("Next")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Tiếp")).toBe(true);
     });
 });

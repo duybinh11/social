@@ -15,11 +15,11 @@ describe("TweeterInput", () => {
                 onChange={jest.fn()}
                 value={undefined}
                 name={"username"}
-                label={"Name"}
+                label={"Tên"}
                 maxTextLength={50}
             />, mockRootState);
 
-        expect(wrapper.text().includes("Name")).toBe(true);
+        expect(wrapper.text().includes("Tên")).toBe(true);
 
         wrapper.find(TweetInputField).at(0).find("input").at(0).simulate("focus");
         expect(wrapper.find(InputLabel).at(1).text().includes("0 / 50")).toBe(true);
@@ -34,13 +34,13 @@ describe("TweeterInput", () => {
                 onChange={jest.fn()}
                 value={"50"}
                 name={"username"}
-                label={"Bio"}
+                label={"Tiểu sử"}
                 maxTextLength={50}
             />, mockRootState);
 
         wrapper.find(TweetInputField).at(0).find("textarea").at(0).simulate("focus");
 
-        expect(wrapper.text().includes("Bio")).toBe(true);
+        expect(wrapper.text().includes("Tiểu sử")).toBe(true);
         expect(wrapper.find(InputLabel).at(1).text().includes("2 / 50")).toBe(true);
         expect(wrapper.find(TweetInputField).prop("multiline")).toBe(true);
         expect(wrapper.find(TweetInputField).prop("rows")).toBe(3);

@@ -24,10 +24,10 @@ describe("UnfollowListButton", () => {
 
     it("should hover button", () => {
         const wrapper = mountWithStore(<UnfollowListButton/>, mockListDetail);
-        expect(wrapper.find(Button).at(0).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Đang theo dõi")).toBe(true);
         wrapper.find(Button).at(0).simulate("mouseover");
-        expect(wrapper.find(Button).at(0).text().includes("Unfollow")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Bỏ theo dõi")).toBe(true);
         wrapper.find(Button).at(0).simulate("mouseleave");
-        expect(wrapper.find(Button).at(0).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Đang theo dõi")).toBe(true);
     });
 });

@@ -34,7 +34,7 @@ const RecommendationsModal: FC<RecommendationsModalProps> = ({visible, onClose})
                     </Typography>
                     <div className={classnames(globalClasses.infoItemCheckbox, classes.checkboxWrapper)}>
                         <Typography variant={"body1"} component={"span"}>
-                            English
+                            Tiếng Anh
                         </Typography>
                         <Checkbox/>
                     </div>
@@ -61,7 +61,7 @@ const RecommendationsModal: FC<RecommendationsModalProps> = ({visible, onClose})
                         size="large"
                         fullWidth
                     >
-                        Done
+                        Xong
                     </Button>
                 </div>
             </DialogContent>

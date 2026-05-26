@@ -192,7 +192,7 @@ const ScheduleModal: FC<ScheduleModalProps> = (
                         </Typography>
                         <FormControl variant="filled" error={isValidSelectedDate}>
                             <InputLabel htmlFor="select-month">
-                                Month
+                                Tháng
                             </InputLabel>
                             <FilledSelect
                                 variant="filled"
@@ -202,25 +202,25 @@ const ScheduleModal: FC<ScheduleModalProps> = (
                                 native
                                 value={month}
                                 onChange={changeMonth}
-                                label="Month"
+                                label="Tháng"
                             >
-                                <option value={"01"}>January</option>
-                                <option value={"02"}>February</option>
-                                <option value={"03"}>March</option>
-                                <option value={"04"}>April</option>
-                                <option value={"05"}>May</option>
-                                <option value={"06"}>June</option>
-                                <option value={"07"}>July</option>
-                                <option value={"08"}>August</option>
-                                <option value={"09"}>September</option>
-                                <option value={"10"}>October</option>
-                                <option value={"11"}>November</option>
-                                <option value={"12"}>December</option>
+                                <option value={"01"}>Tháng 1</option>
+                                <option value={"02"}>Tháng 2</option>
+                                <option value={"03"}>Tháng 3</option>
+                                <option value={"04"}>Tháng 4</option>
+                                <option value={"05"}>Tháng 5</option>
+                                <option value={"06"}>Tháng 6</option>
+                                <option value={"07"}>Tháng 7</option>
+                                <option value={"08"}>Tháng 8</option>
+                                <option value={"09"}>Tháng 9</option>
+                                <option value={"10"}>Tháng 10</option>
+                                <option value={"11"}>Tháng 11</option>
+                                <option value={"12"}>Tháng 12</option>
                             </FilledSelect>
                         </FormControl>
                         <FormControl variant="filled" error={isValidSelectedDate}>
                             <InputLabel htmlFor="select-day">
-                                Day
+                                Ngày
                             </InputLabel>
                             <FilledSelect
                                 variant="filled"
@@ -230,7 +230,7 @@ const ScheduleModal: FC<ScheduleModalProps> = (
                                 native
                                 value={day}
                                 onChange={changeDay}
-                                label="Day"
+                                label="Ngày"
                             >
                                 {showDays()}
                                 {(daysCount === 30) && (
@@ -250,7 +250,7 @@ const ScheduleModal: FC<ScheduleModalProps> = (
                         </FormControl>
                         <FormControl variant="filled" error={isValidSelectedDate}>
                             <InputLabel htmlFor="select-year">
-                                Year
+                                Năm
                             </InputLabel>
                             <FilledSelect
                                 variant="filled"
@@ -260,7 +260,7 @@ const ScheduleModal: FC<ScheduleModalProps> = (
                                 native
                                 value={year}
                                 onChange={changeYear}
-                                label="Year"
+                                label="Năm"
                             >
                                 <option value={showYear(0)}>
                                     {showYear(0)}

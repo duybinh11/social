@@ -151,7 +151,7 @@ describe("FollowingFollowers", () => {
         expect(wrapper.text().includes(mockMyProfile.fullName)).toBe(true);
         expect(wrapper.text().includes(`@${mockMyProfile.username}`)).toBe(true);
         expect(wrapper.find(Tab).at(0).prop("selected")).toBe(true);
-        expect(wrapper.find(Tab).at(0).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Tab).at(0).text().includes("Đang theo dõi")).toBe(true);
         expect(wrapper.find(UsersItem).length).toEqual(2);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: parseInt(mockMyProfileId),
@@ -186,7 +186,7 @@ describe("FollowingFollowers", () => {
         expect(wrapper.text().includes(mockMyProfile.fullName)).toBe(true);
         expect(wrapper.text().includes(`@${mockMyProfile.username}`)).toBe(true);
         expect(wrapper.find(Tab).at(1).prop("selected")).toBe(true);
-        expect(wrapper.find(Tab).at(1).text().includes("Followers")).toBe(true);
+        expect(wrapper.find(Tab).at(1).text().includes("Người theo dõi")).toBe(true);
         expect(wrapper.find(UsersItem).length).toEqual(2);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: parseInt(mockMyProfileId),

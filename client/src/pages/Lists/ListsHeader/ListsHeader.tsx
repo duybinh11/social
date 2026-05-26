@@ -41,7 +41,7 @@ const ListsHeader = (): ReactElement => {
             {!isLoading && (
                 <div>
                     <Typography variant="h5" component={"div"}>
-                        Lists
+                        Danh sách
                     </Typography>
                     <Typography variant="subtitle2" component={"div"}>
                         @{myProfileUsername}
@@ -53,7 +53,7 @@ const ListsHeader = (): ReactElement => {
                 <div className={classes.icon}>
                     <ClickAwayListener onClickAway={handleClickAway}>
                         <div>
-                            <ActionIconButton onClick={handleClick} actionText={"More"} icon={EditIcon}/>
+                            <ActionIconButton onClick={handleClick} actionText={"Thêm"} icon={EditIcon}/>
                             {openPopover && (
                                 <Link to={`${LISTS_MEMBERSHIPS}/${myProfileId}`} className={classes.dropdownLink}>
                                     <div className={classes.dropdown}>

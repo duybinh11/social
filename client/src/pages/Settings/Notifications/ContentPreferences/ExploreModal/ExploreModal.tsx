@@ -33,7 +33,7 @@ const ExploreModal: FC<ExploreModalProps> = ({visible, onClose, isSearchModal}):
                 {!isSearchModal && (
                     <div className={globalClasses.itemInfoWrapper}>
                         <Typography variant={"h5"} component={"div"}>
-                            Location
+                            Vị trí
                         </Typography>
                     </div>
                 )}
@@ -49,7 +49,7 @@ const ExploreModal: FC<ExploreModalProps> = ({visible, onClose, isSearchModal}):
                             <>
                                 {`This prevents Tweets with potentially sensitive content from displaying in your search results. `}
                                 <MuiLink href={TWITTER_SEARCH} variant="subtitle2" target="_blank" rel="noopener">
-                                    Learn more
+                                    Tìm hiểu thêm
                                 </MuiLink>
                             </>
                         ) : (
@@ -79,7 +79,7 @@ const ExploreModal: FC<ExploreModalProps> = ({visible, onClose, isSearchModal}):
                             <>
                                 {`Use this to eliminate search results from accounts you’ve blocked or muted. `}
                                 <MuiLink href={TWITTER_SEARCH} variant="subtitle2" target="_blank" rel="noopener">
-                                    Learn more
+                                    Tìm hiểu thêm
                                 </MuiLink>
                             </>
                         ) : (

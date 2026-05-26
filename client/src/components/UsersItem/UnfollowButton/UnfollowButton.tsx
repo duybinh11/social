@@ -14,7 +14,7 @@ interface UnfollowButtonProps {
 const UnfollowButton: FC<UnfollowButtonProps> = ({user}): ReactElement => {
     const classes = useUnfollowButtonStyles();
     const dispatch = useDispatch();
-    const [btnText, setBtnText] = useState<string>("Following");
+    const [btnText, setBtnText] = useState<string>("Đang theo dõi");
     const [visibleUnfollowModal, setVisibleUnfollowModal] = useState<boolean>(false);
 
     const handleClickOpenUnfollowModal = (event: React.MouseEvent<HTMLButtonElement>): void => {
@@ -40,8 +40,8 @@ const UnfollowButton: FC<UnfollowButtonProps> = ({user}): ReactElement => {
             <Button
                 className={classes.containedButton}
                 onClick={handleClickOpenUnfollowModal}
-                onMouseOver={() => setBtnText("Unfollow")}
-                onMouseLeave={() => setBtnText("Following")}
+                onMouseOver={() => setBtnText("Bỏ theo dõi")}
+                onMouseLeave={() => setBtnText("Đang theo dõi")}
                 color="primary"
                 variant="contained"
                 size="small"

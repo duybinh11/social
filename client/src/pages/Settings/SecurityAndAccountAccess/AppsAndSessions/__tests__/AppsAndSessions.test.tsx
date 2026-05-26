@@ -14,10 +14,10 @@ describe("AppsAndSessions", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<AppsAndSessions/>, createMockRootState());
         expect(wrapper.text().includes("See information about when you logged into your account")).toBe(true);
-        expect(wrapper.text().includes("Connected apps")).toBe(true);
-        expect(wrapper.text().includes("Sessions")).toBe(true);
-        expect(wrapper.text().includes("Account access history")).toBe(true);
-        expect(wrapper.text().includes("Logged-in devices and apps")).toBe(true);
+        expect(wrapper.text().includes("Ứng dụng đã kết nối")).toBe(true);
+        expect(wrapper.text().includes("Phiên")).toBe(true);
+        expect(wrapper.text().includes("Lịch sử truy cập tài khoản")).toBe(true);
+        expect(wrapper.text().includes("Thiết bị và ứng dụng đã đăng nhập")).toBe(true);
     });
 
     it("should link to Connected apps", () => {

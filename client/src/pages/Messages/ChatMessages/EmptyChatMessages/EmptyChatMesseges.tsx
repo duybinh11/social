@@ -24,7 +24,7 @@ const EmptyChatMessages = memo((): ReactElement => {
                 color="primary"
                 size="large"
             >
-                New message
+                Tin nhắn mới
             </Button>
             <MessagesModal visible={visibleModalWindow} onClose={onCloseModalWindow}/>
         </div>

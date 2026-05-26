@@ -18,18 +18,18 @@ const MessagesHeader = memo((): ReactElement => {
     return (
         <Paper className={classnames(globalClasses.pageHeader, classes.header)} variant="outlined">
             <Typography variant="h5" className={globalClasses.pageHeaderTitleWrapper}>
-                Messages
+                Tin nhắn
             </Typography>
             <div className={classes.iconGroup}>
                 <ActionIcon
                     path={MESSAGES_SETTINGS}
-                    actionText={"Settings"}
+                    actionText={"Cài đặt"}
                     className={"icon"}
                     icon={SettingsIcon}
                 />
                 <ActionIcon
                     onClick={onOpenModalWindow}
-                    actionText={"New message"}
+                    actionText={"Tin nhắn mới"}
                     className={"icon"}
                     icon={NewMessageIcon}
                 />

@@ -29,7 +29,7 @@ describe("ListsItem", () => {
         expect(wrapper.find(Avatar).at(1).prop("src")).toEqual(mockList.listOwner.avatar.src);
         expect(wrapper.text().includes(mockList.listOwner.fullName)).toBe(true);
         expect(wrapper.text().includes(`@${mockList.listOwner.username}`)).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Follow")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Theo dõi")).toBe(true);
     });
 
     it("should click follow ListsItem", () => {
@@ -45,10 +45,10 @@ describe("ListsItem", () => {
         const mockButton = wrapper.find(Button).at(0);
         
         mockButton.simulate("mouseover");
-        expect(mockButton.text().includes("Unfollow")).toBe(true);
+        expect(mockButton.text().includes("Bỏ theo dõi")).toBe(true);
         
         mockButton.simulate("mouseleave");
-        expect(mockButton.text().includes("Following")).toBe(true);
+        expect(mockButton.text().includes("Đang theo dõi")).toBe(true);
         wrapper.find(Button).at(0).simulate("click");
 
         expect(mockDispatchFn).nthCalledWith(1, {payload: 2, type: ListsActionType.UNFOLLOW_LIST});

@@ -103,8 +103,8 @@ const ReplyModal: FC<ReplyModalProps> = (
                         tweetId={tweetId}
                         addressedUsername={user.username}
                         addressedId={user.id}
-                        title={"Tweet your reply"}
-                        buttonName={"Reply"}
+                        title={"Đăng trả lời"}
+                        buttonName={"Trả lời"}
                         onCloseModal={onClose}
                     />
                 </div>

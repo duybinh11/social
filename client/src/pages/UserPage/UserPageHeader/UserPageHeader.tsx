@@ -32,9 +32,9 @@ const UserPageHeader: FC<UserPageHeaderProps> = memo(({activeTab}): ReactElement
             if (activeTab === 2) {
                 return `${mediaTweetCount} ${(mediaTweetCount === 1) ? "Photo & video" : "Photos & videos"}`;
             } else if (activeTab === 3) {
-                return `${likeCount} ${(likeCount === 1) ? "Like" : "Likes"}`;
+                return `${likeCount} ${(likeCount === 1) ? "Thích" : "Lượt thích"}`;
             } else {
-                return `${tweetCount} ${(tweetCount === 1) ? "Tweet" : "Tweets"}`;
+                return `${tweetCount} ${(tweetCount === 1) ? "Đăng" : "Đăng"}`;
             }
         }
         return "";

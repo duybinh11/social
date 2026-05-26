@@ -66,7 +66,7 @@ const DeactivateAccount: FC = (): ReactElement => {
                 <Typography variant={"subtitle2"} component={"div"}>
                     {"Some account information may still be available in search engines, such as Google or Bing. "}
                     <MuiLink href={REMOVE_TWITTER_PROFILE_FROM_GOOGLE_SEARCH} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -107,4 +107,4 @@ const DeactivateAccount: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(DeactivateAccount)("Deactivate account");
+export default withDocumentTitle(DeactivateAccount)("Vô hiệu hóa tài khoản");

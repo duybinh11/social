@@ -9,8 +9,8 @@ describe("PhotoTagging", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<PhotoTagging/>, createMockRootState());
 
-        expect(wrapper.text().includes("Photo tagging")).toBe(true);
-        expect(wrapper.text().includes("Anyone can tag you")).toBe(true);
+        expect(wrapper.text().includes("Gắn thẻ ảnh")).toBe(true);
+        expect(wrapper.text().includes("Mọi người có thể gắn thẻ bạn")).toBe(true);
         expect(wrapper.text().includes("Only people you follow can tag you")).toBe(true);
         expect(wrapper.find(Radio).at(0).prop("checked")).toBe(true);
         expect(wrapper.find(Radio).at(1).prop("checked")).toBe(false);

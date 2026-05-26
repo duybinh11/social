@@ -31,7 +31,7 @@ const AdsPreferences: FC = (): ReactElement => {
                     Twitter activity with other online activity and information from our partners.
                     {" "}
                     <MuiLink href={EMAIL_AND_PHONE_DISCOVERABILITY_SETTINGS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -46,7 +46,7 @@ const AdsPreferences: FC = (): ReactElement => {
             <Link to={SETTINGS_PRIVACY_AND_SAFETY_AUDIENCES} className={globalClasses.linkWrapper}>
                 <div className={globalClasses.contentLink}>
                     <Typography variant={"body1"} component={"span"}>
-                        Your advertiser list
+                        Danh sách nhà quảng cáo của bạn
                     </Typography>
                     {ArrowRightIcon}
                 </div>
@@ -55,4 +55,4 @@ const AdsPreferences: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(AdsPreferences)("Ads preferences");
+export default withDocumentTitle(AdsPreferences)("Tùy chọn quảng cáo");

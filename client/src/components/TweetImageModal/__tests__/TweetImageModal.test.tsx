@@ -127,15 +127,15 @@ describe("TweetImageModal", () => {
     });
 
     it("should hover Reply icon and render Hover Action", () => {
-        testHoverIcon(0, "Reply");
+        testHoverIcon(0, "Trả lời");
     });
 
     it("should hover Undo Retweet icon and render Hover Action", () => {
-        testHoverIcon(1, "Undo Retweet");
+        testHoverIcon(1, "Hoàn tác đăng lại");
     });
 
     it("should hover Retweet icon and render Hover Action", () => {
-        testHoverIcon(1, "Retweet", mockState);
+        testHoverIcon(1, "Đăng lại", mockState);
     });
 
     it("should hover Unlike icon and render Hover Action", () => {
@@ -143,7 +143,7 @@ describe("TweetImageModal", () => {
     });
 
     it("should hover Like icon and render Hover Action", () => {
-        testHoverIcon(2, "Like", mockState);
+        testHoverIcon(2, "Thích", mockState);
     });
 
     it("should unmount TweetImageModal", () => {

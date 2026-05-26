@@ -48,7 +48,7 @@ const ScheduleTitle: FC<ScheduleModalTitleProps> = memo((
                     size="small"
                     disabled={isValidSelectedDate}
                 >
-                    {selectedScheduleDate ? "Update" : "Confirm"}
+                    {selectedScheduleDate ? "Cập nhật" : "Xác nhận"}
                 </Button>
             </div>
         </DialogTitle>

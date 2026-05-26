@@ -8,7 +8,7 @@ import ReplyIconButton from "../ReplyIconButton";
 describe("ReplyIconButton", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<ReplyIconButton/>);
-        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Reply");
+        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Trả lời");
         expect(wrapper.find(ActionIconButton).prop("icon")).toBe(ReplyIcon);
     });
 });

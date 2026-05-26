@@ -10,7 +10,7 @@ import {LoadingStatus} from "../../../store/types/common";
 
 window.scrollTo = jest.fn();
 
-describe("Bookmarks", () => {
+describe("Dấu trang", () => {
     const mockRootState = createMockRootState(LoadingStatus.LOADED);
     let mockDispatchFn: jest.Mock;
     
@@ -20,7 +20,7 @@ describe("Bookmarks", () => {
 
     it("should render loading Spinner", () => {
         const wrapper = mountWithStore(<Bookmarks/>, createMockRootState());
-        expect(wrapper.text().includes("Bookmarks")).toBe(true);
+        expect(wrapper.text().includes("Dấu trang")).toBe(true);
         expect(wrapper.text().includes(`@${mockUser.username}`)).toBe(true);
         expect(wrapper.find(Spinner).exists()).toBe(true);
         expect(mockDispatchFn).toHaveBeenCalledWith({payload: 0, type: TweetsActionType.FETCH_BOOKMARKS});
@@ -28,7 +28,7 @@ describe("Bookmarks", () => {
 
     it("should render list of TweetComponent", () => {
         const wrapper = mountWithStore(<Bookmarks/>, mockRootState);
-        expect(wrapper.text().includes("Bookmarks")).toBe(true);
+        expect(wrapper.text().includes("Dấu trang")).toBe(true);
         expect(wrapper.text().includes(`@${mockUser.username}`)).toBe(true);
         expect(wrapper.find(TweetComponent).length).toEqual(2);
         expect(mockDispatchFn).toHaveBeenCalledWith({payload: 0, type: TweetsActionType.FETCH_BOOKMARKS});
@@ -40,7 +40,7 @@ describe("Bookmarks", () => {
             tweets: {items: [], pagesCount: 1, loadingState: LoadingStatus.LOADED}
         };
         const wrapper = mountWithStore(<Bookmarks/>, mockStore);
-        expect(wrapper.text().includes("Bookmarks")).toBe(true);
+        expect(wrapper.text().includes("Dấu trang")).toBe(true);
         expect(wrapper.text().includes(`@${mockUser.username}`)).toBe(true);
         expect(wrapper.text().includes("You haven’t added any Tweets to your Bookmarks yet")).toBe(true);
         expect(wrapper.text().includes("When you do, they’ll show up here.")).toBe(true);

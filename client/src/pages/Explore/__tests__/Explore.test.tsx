@@ -14,7 +14,7 @@ import {LoadingStatus} from "../../../store/types/common";
 
 window.scrollTo = jest.fn();
 
-describe("Explore", () => {
+describe("Khám phá", () => {
     const mockStore = createMockRootState(LoadingStatus.LOADED);
     let mockDispatchFn: jest.Mock;
 
@@ -26,23 +26,23 @@ describe("Explore", () => {
     });
 
     it("should render list of Top tweets", () => {
-        testRenderItems(0, "Top", TweetComponent, TweetsActionType.FETCH_TWEETS);
+        testRenderItems(0, "Hàng đầu", TweetComponent, TweetsActionType.FETCH_TWEETS);
     });
 
     it("should render list of Latest tweets", () => {
-        testRenderItems(1, "Latest", TweetComponent, TweetsActionType.FETCH_TWEETS);
+        testRenderItems(1, "Mới nhất", TweetComponent, TweetsActionType.FETCH_TWEETS);
     });
 
     it("should render list of People", () => {
-        testRenderItems(2, "People", UsersItem, UsersSearchActionsType.FETCH_USERS);
+        testRenderItems(2, "Mọi người", UsersItem, UsersSearchActionsType.FETCH_USERS);
     });
 
     it("should render list of Photos", () => {
-        testRenderItems(3, "Photos", TweetComponent, TweetsActionType.FETCH_MEDIA_TWEETS);
+        testRenderItems(3, "Ảnh", TweetComponent, TweetsActionType.FETCH_MEDIA_TWEETS);
     });
 
     it("should render list of Videos", () => {
-        testRenderItems(4, "Videos", TweetComponent, TweetsActionType.FETCH_TWEETS_WITH_VIDEO);
+        testRenderItems(4, "Video", TweetComponent, TweetsActionType.FETCH_TWEETS_WITH_VIDEO);
     });
 
     it("should render list of Tweets by input text", () => {

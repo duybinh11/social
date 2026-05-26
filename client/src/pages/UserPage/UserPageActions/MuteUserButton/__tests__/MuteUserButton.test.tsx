@@ -18,7 +18,7 @@ describe("MuteUserButton", () => {
     it("should click mute user", () => {
         const wrapper = mountWithStore(<MuteUserButton onCloseUserPageActions={jest.fn()}/>, mockRootState);
         wrapper.find("#handleMuteUser").at(0).simulate("click");
-        expect(wrapper.text().includes("Mute")).toBe(true);
+        expect(wrapper.text().includes("Tắt tiếng")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: {userId: 2},
             type: UserActionsType.PROCESS_USER_TO_MUTELIST
@@ -38,7 +38,7 @@ describe("MuteUserButton", () => {
             }
         });
         wrapper.find("#handleMuteUser").at(0).simulate("click");
-        expect(wrapper.text().includes("Unmute")).toBe(true);
+        expect(wrapper.text().includes("Bật tiếng")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: {userId: 2},
             type: UserActionsType.PROCESS_USER_TO_MUTELIST

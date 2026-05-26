@@ -35,13 +35,13 @@ describe("RegistrationModal", () => {
             />, mockStore);
 
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
-        expect(wrapper.text().includes("Create your account")).toBe(true);
-        expect(wrapper.text().includes("Use phone instead")).toBe(true);
+        expect(wrapper.text().includes("Tạo tài khoản của bạn")).toBe(true);
+        expect(wrapper.text().includes("Dùng số điện thoại")).toBe(true);
         expect(wrapper.text().includes("Date of birth")).toBe(true);
-        expect(wrapper.text().includes("Month")).toBe(true);
-        expect(wrapper.text().includes("Day")).toBe(true);
-        expect(wrapper.text().includes("Year")).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Next")).toBe(true);
+        expect(wrapper.text().includes("Tháng")).toBe(true);
+        expect(wrapper.text().includes("Ngày")).toBe(true);
+        expect(wrapper.text().includes("Năm")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Tiếp")).toBe(true);
     });
 
     it("should change inputs correctly and submit form", (done) => {
@@ -68,8 +68,8 @@ describe("RegistrationModal", () => {
 
     it("should return error on submit form", (done) => {
         const mockError = {
-            username: "Please enter a valid name.",
-            email: "Please enter a valid email address."
+            username: "Vui lòng nhập tên hợp lệ.",
+            email: "Vui lòng nhập địa chỉ email hợp lệ."
         };
         const {mockRegistrationData, mock, wrapper} = initializeTest();
 

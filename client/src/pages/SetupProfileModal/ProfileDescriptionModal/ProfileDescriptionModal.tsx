@@ -51,7 +51,7 @@ const ProfileDescriptionModal: FC<ProfileDescriptionModalProps> = (
                     size="medium"
                     fullWidth
                 >
-                    {text ? "Next" : "Skip for now"}
+                    {text ? "Tiếp" : "Bỏ qua"}
                 </Button>
             </DialogContent>
         </Dialog>

@@ -27,8 +27,8 @@ describe("QuoteIconButton", () => {
 
         wrapper.find(IconButton).simulate("click");
 
-        expect(wrapper.text().includes("Undo Retweet")).toBe(true);
-        expect(wrapper.text().includes("Quote Tweet")).toBe(true);
+        expect(wrapper.text().includes("Hoàn tác đăng lại")).toBe(true);
+        expect(wrapper.text().includes("Tweet trích dẫn")).toBe(true);
         expect(wrapper.find("#retweetOutlinedIcon").exists()).toBeTruthy();
         expect(wrapper.find("#quoteTweetIcon").exists()).toBeTruthy();
     });
@@ -41,7 +41,7 @@ describe("QuoteIconButton", () => {
 
         wrapper.find(IconButton).simulate("click");
 
-        expect(wrapper.text().includes("Retweet")).toBe(true);
+        expect(wrapper.text().includes("Đăng lại")).toBe(true);
     });
 
     it("should open and close QuoteTweetModal", () => {

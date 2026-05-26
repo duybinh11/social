@@ -19,9 +19,9 @@ import {testApiCall} from "../../../util/apiTestHelper";
 
 describe("ChatApi", () => {
     const mockAdapter = new MockAdapter(axios);
-    const mockUserErrorResponse = "Participant not found";
-    const mockUserBlockedErrorResponse = "Participant is blocked";
-    const mockChatErrorResponse = "Chat not found";
+    const mockUserErrorResponse = "Không tìm thấy người tham gia";
+    const mockUserBlockedErrorResponse = "Người tham gia đã bị chặn";
+    const mockChatErrorResponse = "Không tìm thấy cuộc trò chuyện";
 
     beforeEach(() => mockAdapter.reset());
 
@@ -99,7 +99,7 @@ describe("ChatApi", () => {
         });
 
         it("[404] should tweet not found", () => {
-            testApiCall(mockAdapter, "onPost", API_CHAT_ADD_MESSAGE_TWEET, 404, "Tweet not found", ChatApi.addMessageWithTweet, mockRequest);
+            testApiCall(mockAdapter, "onPost", API_CHAT_ADD_MESSAGE_TWEET, 404, "Không tìm thấy tweet", ChatApi.addMessageWithTweet, mockRequest);
         });
     });
 

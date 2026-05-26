@@ -46,7 +46,7 @@ const SendDirectMessageFooter: FC<SendDirectMessageFooterProps> = memo((
                 value={text}
                 onChange={handleSetMessage}
                 variant="outlined"
-                placeholder="Add a comment"
+                placeholder="Thêm bình luận"
             />
             <div className={classes.chatIcon}>
                 <IconButton

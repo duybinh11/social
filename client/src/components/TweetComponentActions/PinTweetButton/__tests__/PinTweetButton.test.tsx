@@ -26,11 +26,11 @@ describe("PinTweetButton", () => {
     });
 
     it("should click pin tweet", () => {
-        testClickDeleteTweet(1, "Pin to your profile", "Your Tweet was pinned to your profile.");
+        testClickDeleteTweet(1, "Ghim lên hồ sơ", "Your Tweet was pinned to your profile.");
     });
 
     it("should click unpin tweet", () => {
-        testClickDeleteTweet(102, "Unpin from profile", "Your Tweet was unpinned from your profile.");
+        testClickDeleteTweet(102, "Bỏ ghim khỏi hồ sơ", "Your Tweet was unpinned from your profile.");
     });
 
     const testClickDeleteTweet = (tweetId: number, textMessage: string, snackbarMessage: string): void => {

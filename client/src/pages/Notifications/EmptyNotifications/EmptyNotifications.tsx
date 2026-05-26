@@ -13,7 +13,7 @@ const EmptyNotifications: FC<EmptyNotificationsProps> = ({isNotification}): Reac
     return (
         <div className={classes.infoWindow}>
             <Typography variant={"h4"} component={"div"}>
-                Nothing to see here — yet
+                Chưa có gì để xem
             </Typography>
             <Typography variant={"subtitle1"} component={"div"}>
                 {isNotification ? (

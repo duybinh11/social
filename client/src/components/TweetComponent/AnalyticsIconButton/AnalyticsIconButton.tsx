@@ -35,7 +35,7 @@ const AnalyticsIconButton: FC<AnalyticsIconButtonProps> = memo((
     return (
         <div id={"analytics"} className={classes.replyIcon}>
             <ActionIconButton
-                actionText={"Analytics"}
+                actionText={"Phân tích"}
                 icon={AnalyticsIcon}
                 onClick={onOpenTweetAnalyticsModalWindow}
                 disabled={isUserCanReply}

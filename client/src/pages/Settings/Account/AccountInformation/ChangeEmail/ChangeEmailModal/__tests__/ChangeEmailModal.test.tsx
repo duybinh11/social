@@ -24,7 +24,7 @@ describe("ChangeEmailModal", () => {
         const wrapper = mountWithStore(<ChangeEmailModal visible={true} onClose={jest.fn()}/>, mockStore);
 
         expect(wrapper.find(Dialog).exists()).toBeTruthy();
-        expect(wrapper.text().includes("Change email")).toBe(true);
+        expect(wrapper.text().includes("Đổi email")).toBe(true);
         expect(wrapper.text().includes(`Your current email is ${mockStore.user.data?.email}.`)).toBe(true);
 
         wrapper.find(ChangeInfoTextField).at(0).find("input").simulate("change", {target: {value: "test@test.test"}});
@@ -33,7 +33,7 @@ describe("ChangeEmailModal", () => {
             wrapper.update();
             done();
             wrapper.find(Button).simulate("submit");
-            expect(wrapper.find(Button).text().includes("Cancel")).toBe(true);
+            expect(wrapper.find(Button).text().includes("Hủy")).toBe(true);
         });
     });
 

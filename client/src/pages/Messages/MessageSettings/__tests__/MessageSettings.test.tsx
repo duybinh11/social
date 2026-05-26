@@ -7,6 +7,6 @@ import MessageSettings from "../MessageSettings";
 describe("MessageSettings", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<MessageSettings/>, createMockRootState(LoadingStatus.LOADED));
-        expect(wrapper.text().includes("Direct Messages")).toBe(true);
+        expect(wrapper.text().includes("Tin nhắn trực tiếp")).toBe(true);
     });
 });

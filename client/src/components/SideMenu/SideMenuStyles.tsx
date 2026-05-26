@@ -4,10 +4,15 @@ export const useSideMenuStyles = makeStyles((theme: Theme) => ({
     container: {
         position: 'fixed',
         top: 0,
+        left: 'max(16px, calc((100vw - 1273px) / 2))',
+        "@media (max-width: 1280px)": {
+            left: 16,
+        },
         listStyle: 'none',
         padding: 0,
         margin: 0,
-        maxWidth: 230,
+        width: 275,
+        maxWidth: 275,
         "& li .selected": {
             "& .MuiTypography-h5": {
                 color: theme.palette.primary.main,

@@ -178,7 +178,7 @@ const UnsentTweetsModal: FC<UnsentTweetsModalProps> = ({visible, onClose}): Reac
                                     color="primary"
                                     size="small"
                                 >
-                                    Delete
+                                    Xóa
                                 </Button>
                             </div>
                         )}
@@ -190,7 +190,7 @@ const UnsentTweetsModal: FC<UnsentTweetsModalProps> = ({visible, onClose}): Reac
                         <AddTweetForm
                             unsentTweet={unsentTweet!}
                             minRows={3}
-                            title={"What's happening?"}
+                            title={"Chuyện gì đang xảy ra?"}
                             buttonName={"Schedule"}
                             onCloseModal={onCloseEditTweetModal}
                         />

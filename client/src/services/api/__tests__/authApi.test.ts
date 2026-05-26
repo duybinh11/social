@@ -20,14 +20,14 @@ import {testApiCall} from "../../../util/apiTestHelper";
 
 describe("AuthApi", () => {
     const mockAdapter = new MockAdapter(axios);
-    const mockUserErrorResponse = "User not found";
+    const mockUserErrorResponse = "Không tìm thấy người dùng";
     const mockAuthUserResponse = {user: mockUser, token: "test_token"};
 
     beforeEach(() => mockAdapter.reset());
 
     describe("should fetch AuthApi.signIn", () => {
         const mockRequest = {email: "test@test.com", password: "test_password"};
-        const mockPasswordErrorResponse = "Incorrect password or email";
+        const mockPasswordErrorResponse = "Mật khẩu hoặc email không đúng";
 
         it("[200] should Login Success", () => {
             testApiCall(mockAdapter, "onPost", API_AUTH_LOGIN, 200, mockAuthUserResponse, AuthApi.signIn, mockRequest);
@@ -44,8 +44,8 @@ describe("AuthApi", () => {
 
     describe("should fetch AuthApi.checkEmail", () => {
         const mockRequest = {username: "test_username", email: "test@test.com", birthday: "test_birthday"};
-        const mockResponse = "User data checked.";
-        const mockErrorResponse = "Email has already been taken.";
+        const mockResponse = "Đã kiểm tra dữ liệu người dùng.";
+        const mockErrorResponse = "Email đã được sử dụng.";
 
         it("[200] should Check Email Success", () => {
             testApiCall(mockAdapter, "onPost", API_AUTH_REGISTRATION_CHECK, 200, mockResponse, AuthApi.checkEmail, mockRequest);
@@ -73,7 +73,7 @@ describe("AuthApi", () => {
         const mockRequest = "test_code";
         const mockUrl = `${API_AUTH_REGISTRATION_ACTIVATE}/${mockRequest}`;
         const mockResponse = "User successfully activated.";
-        const mockErrorResponse = "Activation code not found.";
+        const mockErrorResponse = "Không tìm thấy mã kích hoạt.";
 
         it("[200] should check registration code success", () => {
             testApiCall(mockAdapter, "onGet", mockUrl, 200, mockResponse, AuthApi.checkRegistrationCode, mockRequest);
@@ -86,7 +86,7 @@ describe("AuthApi", () => {
 
     describe("should fetch AuthApi.endRegistration", () => {
         const mockRequest = {email: "test@test.com", password: "test_birthday"};
-        const mockPasswordError = "Your password needs to be at least 8 characters";
+        const mockPasswordError = "Mật khẩu cần có ít nhất 8 ký tự";
 
         it("[200] should end registration success", () => {
             testApiCall(mockAdapter, "onPost", API_AUTH_REGISTRATION_CONFIRM, 200, mockAuthUserResponse, AuthApi.endRegistration, mockRequest);
@@ -104,7 +104,7 @@ describe("AuthApi", () => {
     describe("should fetch AuthApi.findExistingEmail", () => {
         const mockRequest = {email: "test@test.com"};
         const mockResponse = "Reset password code is send to your E-mail";
-        const mockError = "Email not found";
+        const mockError = "Không tìm thấy email";
 
         it("[200] should find existing email success", () => {
             testApiCall(mockAdapter, "onPost", API_AUTH_FORGOT_EMAIL, 200, mockResponse, AuthApi.findExistingEmail, mockRequest);
@@ -118,7 +118,7 @@ describe("AuthApi", () => {
     describe("should fetch AuthApi.sendPasswordResetCode", () => {
         const mockRequest = {email: "test@test.com"};
         const mockResponse = "Reset password code is send to your E-mail";
-        const mockError = "Email not found";
+        const mockError = "Không tìm thấy email";
 
         it("[200] should send password reset code success", () => {
             testApiCall(mockAdapter, "onPost", API_AUTH_FORGOT, 200, mockResponse, AuthApi.sendPasswordResetCode, mockRequest);
@@ -133,7 +133,7 @@ describe("AuthApi", () => {
         const mockRequest = "test_code";
         const mockUrl = `${API_AUTH_RESET}/${mockRequest}`;
         const mockResponse = {id: 1} as AuthUserResponse;
-        const mockErrorResponse = "Password reset code is invalid!";
+        const mockErrorResponse = "Mã đặt lại mật khẩu không hợp lệ!";
 
         it("[200] should get user by reset code success", () => {
             testApiCall(mockAdapter, "onGet", mockUrl, 200, mockResponse, AuthApi.getUserByResetCode, mockRequest);
@@ -147,7 +147,7 @@ describe("AuthApi", () => {
     describe("should fetch AuthApi.passwordReset", () => {
         const mockRequest = {email: "test@test.com", password: "password_test", password2: "password2_test"};
         const mockResponse = "Password successfully changed!";
-        const mockError = "Email not found";
+        const mockError = "Không tìm thấy email";
 
         it("[200] should password reset success", () => {
             testApiCall(mockAdapter, "onPost", API_AUTH_RESET, 200, mockResponse, AuthApi.passwordReset, mockRequest);
@@ -161,7 +161,7 @@ describe("AuthApi", () => {
     describe("should fetch AuthApi.currentPasswordReset", () => {
         const mockRequest = {currentPassword: "password_test", password: "password_test", password2: "password2_test"};
         const mockResponse = "Your password has been successfully updated.";
-        const mockError = "The password you entered was incorrect.";
+        const mockError = "Mật khẩu bạn nhập không đúng.";
 
         it("[200] should current password reset success", () => {
             testApiCall(mockAdapter, "onPost", API_AUTH_RESET_CURRENT, 200, mockResponse, AuthApi.currentPasswordReset, mockRequest);

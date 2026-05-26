@@ -20,24 +20,24 @@ const Languages: FC = (): ReactElement => {
         <>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"subtitle2"} component={"div"}>
-                    Manage which languages are used to personalize your Twitter experience.
+                    Quản lý ngôn ngữ dùng để cá nhân hóa trải nghiệm Twitter của bạn.
                 </Typography>
             </div>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h5"} component={"div"}>
-                    Display language
+                    Ngôn ngữ hiển thị
                 </Typography>
             </div>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"subtitle2"} component={"div"}>
-                    Select your preferred language for headlines, buttons, and other text from Twitter.
+                    Chọn ngôn ngữ ưa thích cho tiêu đề, nút bấm và văn bản khác trên Twitter.
                 </Typography>
             </div>
             <Link to={SETTINGS_INFO_LANGUAGES} className={globalClasses.linkWrapper}>
                 <div className={classnames(globalClasses.contentLink, classes.accessibilityWrapper)}>
                     <div className={classes.accessibilityInfo}>
                         <Typography variant={"body1"} component={"div"}>
-                            Display language
+                            Ngôn ngữ hiển thị
                         </Typography>
                         <Typography variant={"subtitle1"} component={"div"}>
                             {myProfileLanguage}
@@ -49,35 +49,34 @@ const Languages: FC = (): ReactElement => {
             <Divider/>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h5"} component={"div"}>
-                    Select additional languages
+                    Chọn thêm ngôn ngữ
                 </Typography>
             </div>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"subtitle2"} component={"div"}>
-                    Select additional languages for the content you want to see on Twitter.
+                    Chọn thêm ngôn ngữ cho nội dung bạn muốn xem trên Twitter.
                 </Typography>
             </div>
             <div className={globalClasses.contentLink}>
                 <Typography variant={"body1"} component={"span"}>
-                    Additional languages you speak
+                    Ngôn ngữ bổ sung bạn biết
                 </Typography>
                 {ArrowRightIcon}
             </div>
             <Divider/>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h5"} component={"div"}>
-                    Languages you may know
+                    Ngôn ngữ bạn có thể biết
                 </Typography>
             </div>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"subtitle2"} component={"div"}>
-                    Manage the languages Twitter inferred based on your activity, such as the accounts you follow and
-                    the Tweets you engage with.
+                    Quản lý ngôn ngữ Twitter suy luận từ hoạt động của bạn, như tài khoản bạn theo dõi và các tweet bạn tương tác.
                 </Typography>
             </div>
             <div className={globalClasses.contentLink}>
                 <Typography variant={"body1"} component={"span"}>
-                    Languages you may know
+                    Ngôn ngữ bạn có thể biết
                 </Typography>
                 {ArrowRightIcon}
             </div>
@@ -85,4 +84,4 @@ const Languages: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Languages)("Languages");
+export default withDocumentTitle(Languages)("Ngôn ngữ");

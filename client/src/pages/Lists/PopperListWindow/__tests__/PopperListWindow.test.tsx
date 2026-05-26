@@ -29,7 +29,7 @@ describe("PopperListWindow", () => {
         expect(wrapper.text().includes(`@${mockUserFullList.listOwner.username}`)).toBe(true);
         expect(wrapper.text().includes(`${mockUserFullList.membersSize} Members`)).toBe(true);
         expect(wrapper.text().includes(`${mockUserFullList.followersSize} Followers`)).toBe(true);
-        expect(wrapper.find(Button).text().includes("Follow")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Theo dõi")).toBe(true);
     });
 
     it("should component not exist", () => {
@@ -75,10 +75,10 @@ describe("PopperListWindow", () => {
         const mockButton = wrapper.find(Button).at(0);
 
         mockButton.simulate("mouseover");
-        expect(mockButton.text().includes("Unfollow")).toBe(true);
+        expect(mockButton.text().includes("Bỏ theo dõi")).toBe(true);
 
         mockButton.simulate("mouseleave");
-        expect(mockButton.text().includes("Following")).toBe(true);
+        expect(mockButton.text().includes("Đang theo dõi")).toBe(true);
         wrapper.find(Button).at(0).simulate("click");
 
         expect(mockDispatchFn).nthCalledWith(1, {payload: 1, type: ListsActionType.UNFOLLOW_LIST});

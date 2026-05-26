@@ -10,7 +10,7 @@ const UnfollowListButton = memo((): ReactElement => {
     const classes = usePopperListWindowStyles();
     const dispatch = useDispatch();
     const listId = useSelector(selectListDetailItemId);
-    const [btnText, setBtnText] = useState<string>("Following");
+    const [btnText, setBtnText] = useState<string>("Đang theo dõi");
 
     const handleUnfollow = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
         event.preventDefault();
@@ -21,8 +21,8 @@ const UnfollowListButton = memo((): ReactElement => {
     return (
         <Button
             className={classes.primaryButton}
-            onMouseOver={() => setBtnText("Unfollow")}
-            onMouseLeave={() => setBtnText("Following")}
+            onMouseOver={() => setBtnText("Bỏ theo dõi")}
+            onMouseLeave={() => setBtnText("Đang theo dõi")}
             onClick={handleUnfollow}
             variant="contained"
             color="primary"

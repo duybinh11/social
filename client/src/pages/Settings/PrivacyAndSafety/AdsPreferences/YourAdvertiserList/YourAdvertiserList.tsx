@@ -16,7 +16,7 @@ const YourAdvertiserList: FC = (): ReactElement => {
                     reach prospective customers or people who have already expressed interest in their business.
                     {" "}
                     <MuiLink href={PRIVACY_CONTROLS_FOR_TAILORED_ADS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -44,4 +44,4 @@ const YourAdvertiserList: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(YourAdvertiserList)("Your advertiser list");
+export default withDocumentTitle(YourAdvertiserList)("Danh sách nhà quảng cáo của bạn");

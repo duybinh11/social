@@ -59,8 +59,8 @@ describe("BlockButton", () => {
     it("should hover BlockButton", () => {
         const wrapper = mountWithStore(<BlockButton user={mockUser}/>, mockRootState);
         wrapper.find(Button).simulate("mouseover");
-        expect(wrapper.find(Button).text().includes("Unblock")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Bỏ chặn")).toBe(true);
         wrapper.find(Button).simulate("mouseleave");
-        expect(wrapper.find(Button).text().includes("Blocked")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đã chặn")).toBe(true);
     });
 });

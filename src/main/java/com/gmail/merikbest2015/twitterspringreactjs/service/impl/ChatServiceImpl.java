@@ -31,7 +31,7 @@ public class ChatServiceImpl implements ChatService {
     public ChatProjection getChatById(Long chatId) {
         Long userId = authenticationService.getAuthenticatedUserId();
         return chatRepository.getChatById(chatId, userId)
-                .orElseThrow(() -> new ApiRequestException("Chat not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy cuộc trò chuyện", HttpStatus.NOT_FOUND));
     }
 
     @Override
@@ -49,10 +49,10 @@ public class ChatServiceImpl implements ChatService {
     public ChatProjection createChat(Long userId) {
         User authUser = authenticationService.getAuthenticatedUser();
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ApiRequestException("Participant not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người tham gia", HttpStatus.NOT_FOUND));
 
         if (userService.isUserBlockedByMyProfile(user.getId())) {
-            throw new ApiRequestException("Participant is blocked", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Người tham gia đã bị chặn", HttpStatus.BAD_REQUEST);
         }
         Optional<ChatParticipant> chatWithParticipant = getChatParticipant(user, userId);
 
@@ -88,13 +88,13 @@ public class ChatServiceImpl implements ChatService {
     public Map<String, Object> addMessage(ChatMessage chatMessage, Long chatId) {
         User author = authenticationService.getAuthenticatedUser();
         Chat chat = chatRepository.findById(chatId)
-                .orElseThrow(() -> new ApiRequestException("Chat not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy cuộc trò chuyện", HttpStatus.NOT_FOUND));
         Optional<ChatParticipant> chatParticipant = chat.getParticipants().stream()
                 .filter(participant -> participant.getUser().getId().equals(author.getId()))
                 .findAny();
 
         if (chatParticipant.isEmpty()) {
-            throw new ApiRequestException("Chat participant not found", HttpStatus.NOT_FOUND);
+            throw new ApiRequestException("Không tìm thấy người tham gia trò chuyện", HttpStatus.NOT_FOUND);
         }
 
         Optional<ChatParticipant> blockedChatParticipant = chat.getParticipants().stream()
@@ -104,7 +104,7 @@ public class ChatServiceImpl implements ChatService {
                 .findFirst();
 
         if (blockedChatParticipant.isPresent()) {
-            throw new ApiRequestException("Participant is blocked", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Người tham gia đã bị chặn", HttpStatus.BAD_REQUEST);
         }
         chatMessage.setAuthor(author);
         chatMessage.setChat(chat);
@@ -126,7 +126,7 @@ public class ChatServiceImpl implements ChatService {
     public Map<String, Object> addMessageWithTweet(String text, Long tweetId, List<Long> usersIds) {
         User author = authenticationService.getAuthenticatedUser();
         Tweet tweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Tweet not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
         List<User> users = userRepository.findByIdIn(usersIds);
         List<Long> chatParticipantsIds = new ArrayList<>();
         ChatMessage chatMessage = new ChatMessage();
@@ -166,10 +166,10 @@ public class ChatServiceImpl implements ChatService {
         Long userId = authenticationService.getAuthenticatedUserId();
 
         if (!chatRepository.getChatByUserId(chatId, userId)) {
-            throw new ApiRequestException("Chat not found", HttpStatus.NOT_FOUND);
+            throw new ApiRequestException("Không tìm thấy cuộc trò chuyện", HttpStatus.NOT_FOUND);
         } else {
             return chatParticipantRepository.getChatParticipant(participantId, chatId)
-                    .orElseThrow(() -> new ApiRequestException("Participant not found", HttpStatus.NOT_FOUND));
+                    .orElseThrow(() -> new ApiRequestException("Không tìm thấy người tham gia", HttpStatus.NOT_FOUND));
         }
     }
 
@@ -177,11 +177,11 @@ public class ChatServiceImpl implements ChatService {
     @Transactional
     public String leaveFromConversation(Long participantId, Long chatId) {
         Chat chat = chatRepository.findById(chatId)
-                .orElseThrow(() -> new ApiRequestException("Chat not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy cuộc trò chuyện", HttpStatus.NOT_FOUND));
         int isChatParticipantUpdated = chatParticipantRepository.leaveFromConversation(participantId, chatId);
 
         if (isChatParticipantUpdated != 1) {
-            throw new ApiRequestException("Participant not found", HttpStatus.NOT_FOUND);
+            throw new ApiRequestException("Không tìm thấy người tham gia", HttpStatus.NOT_FOUND);
         }
 
         boolean isParticipantsLeftFromChat = chat.getParticipants().stream().allMatch(ChatParticipant::isLeftChat);

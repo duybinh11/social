@@ -39,7 +39,7 @@ const Discoverability: FC = (): ReactElement => {
                 <Typography variant={"subtitle2"} component={"div"}>
                     {"Let people who have your email address find and connect with you on Twitter. "}
                     <MuiLink href={EMAIL_AND_PHONE_DISCOVERABILITY_SETTINGS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -53,7 +53,7 @@ const Discoverability: FC = (): ReactElement => {
                 <Typography variant={"subtitle2"} component={"div"}>
                     {"Let people who have your phone number find and connect with you on Twitter. "}
                     <MuiLink href={EMAIL_AND_PHONE_DISCOVERABILITY_SETTINGS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -67,14 +67,14 @@ const Discoverability: FC = (): ReactElement => {
                 <Typography variant={"subtitle2"} component={"div"}>
                     {"Manage contacts that you have imported from your mobile devices. "}
                     <MuiLink href={UPLOAD_YOUR_CONTACTS_TO_SEARCH} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
             <Link to={SETTINGS_PRIVACY_AND_SAFETY_CONTACTS_DASHBOARD} className={globalClasses.linkWrapper}>
                 <div className={globalClasses.contentLink}>
                     <Typography variant={"body1"} component={"span"}>
-                        Manage contacts
+                        Quản lý danh bạ
                     </Typography>
                     {ArrowRightIcon}
                 </div>
@@ -83,4 +83,4 @@ const Discoverability: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Discoverability)("Discoverability and contacts");
+export default withDocumentTitle(Discoverability)("Khả năng tìm thấy và danh bạ");

@@ -9,8 +9,8 @@ describe("SecurityAndAccountAccess", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<SecurityAndAccountAccess/>, createMockRootState());
         expect(wrapper.text().includes("Manage your account’s security and keep track")).toBe(true);
-        expect(wrapper.text().includes("Security")).toBe(true);
-        expect(wrapper.text().includes("Apps and sessions")).toBe(true);
+        expect(wrapper.text().includes("Bảo mật")).toBe(true);
+        expect(wrapper.text().includes("Ứng dụng và phiên")).toBe(true);
         expect(wrapper.text().includes("Connected accounts")).toBe(true);
     });
 

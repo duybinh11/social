@@ -30,7 +30,7 @@ const Users: FC = (): ReactElement => {
                 <Paper className={classes.container}>
                     <Paper className={classes.header} variant="outlined">
                         <Typography variant={"h5"} component={"div"}>
-                            Who to follow
+                            Nên theo dõi
                         </Typography>
                     </Paper>
                     {isUsersLoading ? (
@@ -42,7 +42,7 @@ const Users: FC = (): ReactElement => {
                             ))}
                             <ListItem id={"clickToConnect"} onClick={clickToConnect} className={classes.footer}>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Show more
+                                    Xem thêm
                                 </Typography>
                             </ListItem>
                         </List>

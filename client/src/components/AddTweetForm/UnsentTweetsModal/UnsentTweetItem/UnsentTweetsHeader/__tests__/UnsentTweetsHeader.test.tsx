@@ -36,7 +36,7 @@ describe("UnsentTweetsHeader", () => {
             />, createMockRootState(LoadingStatus.LOADED));
         wrapper.find(Button).simulate("click");
         expect(wrapper.text().includes("Unsent Tweets")).toBe(true);
-        expect(wrapper.text().includes("Done")).toBe(true);
+        expect(wrapper.text().includes("Xong")).toBe(true);
         expect(onCloseEditTweetList).toHaveBeenCalled();
     });
 
@@ -52,7 +52,7 @@ describe("UnsentTweetsHeader", () => {
                 onClose={jest.fn()}
             />, createMockRootState(LoadingStatus.LOADED));
         wrapper.find(Button).simulate("click");
-        expect(wrapper.text().includes("Edit")).toBe(true);
+        expect(wrapper.text().includes("Sửa")).toBe(true);
         expect(mockOnOpenEditTweetList).toHaveBeenCalled();
     });
 });

@@ -26,7 +26,7 @@ describe("EmailVerificationModal", () => {
 
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
         expect(wrapper.text().includes(`Enter it below to verify ${mockEmail}.`)).toBe(true);
-        expect(wrapper.find(Button).text().includes("Next")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Tiếp")).toBe(true);
 
         wrapper.find(RegistrationInputField).find("input").simulate("change", {target: {value: "test"}});
         wrapper.find(Button).simulate("click");

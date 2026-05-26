@@ -30,7 +30,7 @@ export interface RegistrationProps {
 }
 
 const SetPasswordFormSchema = yup.object().shape({
-    password: yup.string().min(8, "Your password needs to be at least 8 characters. Please enter a longer one.").required(),
+    password: yup.string().min(8, "Mật khẩu cần có ít nhất 8 ký tự. Vui lòng nhập dài hơn.").required(),
 });
 
 const SetPasswordModal: FC<SetPasswordProps> = ({email, open, onClose}): ReactElement => {
@@ -75,7 +75,7 @@ const SetPasswordModal: FC<SetPasswordProps> = ({email, open, onClose}): ReactEl
                             defaultValue=""
                             render={({field: {onChange, value}}) => (
                                 <RegistrationInputField
-                                    label="Password"
+                                    label="Mật khẩu"
                                     id="password"
                                     name="password"
                                     type="password"
@@ -98,7 +98,7 @@ const SetPasswordModal: FC<SetPasswordProps> = ({email, open, onClose}): ReactEl
                         size="small"
                         fullWidth
                     >
-                        Next
+                        Tiếp
                     </Button>
                 </form>
             </DialogContent>

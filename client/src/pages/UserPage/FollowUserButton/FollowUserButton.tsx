@@ -28,7 +28,7 @@ const FollowUserButton = memo((): ReactElement => {
             variant="outlined"
             size="large"
         >
-            Follow
+            Theo dõi
         </Button>
     );
 });

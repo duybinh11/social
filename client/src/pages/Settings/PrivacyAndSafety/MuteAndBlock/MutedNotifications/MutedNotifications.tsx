@@ -67,7 +67,7 @@ const MutedNotifications: FC = (): ReactElement => {
                 <Typography variant={"subtitle2"} component={"div"}>
                     {`These filters won’t affect notifications from people you follow. `}
                     <MuiLink href={UNDERSTANDING_THE_NOTIFICATIONS_TIMELINE} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -75,4 +75,4 @@ const MutedNotifications: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(MutedNotifications)("Muted notifications");
+export default withDocumentTitle(MutedNotifications)("Thông báo đã tắt tiếng");

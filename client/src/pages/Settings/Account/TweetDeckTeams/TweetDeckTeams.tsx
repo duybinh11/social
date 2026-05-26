@@ -33,7 +33,7 @@ const TweetDeckTeams: FC = (): ReactElement => {
                 <Typography variant={"subtitle2"} component={"div"}>
                     {"When this setting is on, you can invite anyone to Tweet from this account using TweetDeck Teams. "}
                     <MuiLink href={TWEETDECK_TEAMS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -41,7 +41,7 @@ const TweetDeckTeams: FC = (): ReactElement => {
             <div className={globalClasses.itemInfoWrapper}>
                 <div className={globalClasses.infoItemRadioCheckbox}>
                     <Typography variant={"body1"} component={"span"}>
-                        Allow anyone to add you to their team
+                        Cho phép mọi người thêm bạn vào nhóm
                     </Typography>
                     <Radio
                         checked={selectedValue === "Anyone"}
@@ -74,4 +74,4 @@ const TweetDeckTeams: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(TweetDeckTeams)("TweetDeck Teams");
+export default withDocumentTitle(TweetDeckTeams)("Nhóm TweetDeck");

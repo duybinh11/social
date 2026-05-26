@@ -24,7 +24,7 @@ describe("ManageMemberButton", () => {
                 isMemberInList
                 isSuggested
             />, mockStore);
-        expect(wrapper.text().includes("Remove")).toBe(true);
+        expect(wrapper.text().includes("Xóa")).toBe(true);
         expect(wrapper.find(Button).prop("variant")).toBe("contained");
         wrapper.find(Button).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {
@@ -41,7 +41,7 @@ describe("ManageMemberButton", () => {
                 isMemberInList={false}
                 isSuggested
             />, mockStore);
-        expect(wrapper.text().includes("Add")).toBe(true);
+        expect(wrapper.text().includes("Thêm")).toBe(true);
         expect(wrapper.find(Button).prop("variant")).toBe("outlined");
         wrapper.find(Button).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {

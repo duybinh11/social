@@ -21,7 +21,7 @@ describe("NotificationsTimeline", () => {
     it("should render loading Spinner", () => {
         const wrapper = mountWithStore(<NotificationsTimeline/>, createMockRootState());
         
-        expect(wrapper.text().includes("Tweets")).toBe(true);
+        expect(wrapper.text().includes("Đăng")).toBe(true);
         expect(wrapper.find(Spinner).exists()).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: 0,

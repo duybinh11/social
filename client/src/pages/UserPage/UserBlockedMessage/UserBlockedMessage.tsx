@@ -18,7 +18,7 @@ const UserBlockedMessage = memo((): ReactElement => {
             <Typography variant={"subtitle1"} component={"div"}>
                 {`You can’t follow or see @${username}’s Tweets.`}
                 <MuiLink href={SOMEONE_BLOCKED_ME_ON_TWITTER} variant="subtitle1" target="_blank" rel="noopener">
-                    Learn more
+                    Tìm hiểu thêm
                 </MuiLink>
             </Typography>
         </div>

@@ -4,7 +4,7 @@ export const useTagsStyles = makeStyles((theme) => ({
     container: {
         backgroundColor: theme.palette.secondary.main,
         borderRadius: 16,
-        marginTop: 20,
+        marginTop: 12,
         '& .MuiList-root': {
             '& .MuiListItem-root': {
                 '&:hover': {

@@ -21,11 +21,11 @@ describe("UnsentTweetsModal", () => {
     });
 
     it("should render empty Scheduled tweets", () => {
-        testTabClick(0, "Scheduled", "You don’t have any scheduled Tweets");
+        testTabClick(0, "Đã lên lịch", "You don’t have any scheduled Tweets");
     });
 
     it("should render empty Unsent tweets", () => {
-        testTabClick(1, "Drafts", "You don’t have any unsent Tweets");
+        testTabClick(1, "Bản nháp", "You don’t have any unsent Tweets");
     });
 
     it("should render Scheduled tweets and open edit tweet modal", () => {
@@ -51,7 +51,7 @@ describe("UnsentTweetsModal", () => {
         wrapper.find(Button).at(0).simulate("click");
 
         expect(wrapper.find(Button).at(1).text().includes("Select All")).toBe(true);
-        expect(wrapper.find(Button).at(2).text().includes("Delete")).toBe(true);
+        expect(wrapper.find(Button).at(2).text().includes("Xóa")).toBe(true);
         expect(wrapper.find(Checkbox).at(0).prop("value")).toBe(1);
         expect(wrapper.find(Checkbox).at(0).prop("checked")).toBe(false);
         expect(wrapper.find(Checkbox).at(1).prop("value")).toBe(15);
@@ -92,19 +92,19 @@ describe("UnsentTweetsModal", () => {
     it("should click Edit Tweets", () => {
         const wrapper = mountWithStore(<UnsentTweetsModal visible={true} onClose={jest.fn()}/>, mockRootState);
 
-        expect(wrapper.find(Button).at(0).text().includes("Edit")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Sửa")).toBe(true);
         expect(wrapper.find("#editListFooter").exists()).toBe(false);
 
         wrapper.find(Button).at(0).simulate("click");
 
-        expect(wrapper.find(Button).at(0).text().includes("Done")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Xong")).toBe(true);
         expect(wrapper.find("#editListFooter").exists()).toBe(true);
         expect(wrapper.find(Button).at(1).text().includes("Select All")).toBe(true);
-        expect(wrapper.find(Button).at(2).text().includes("Delete")).toBe(true);
+        expect(wrapper.find(Button).at(2).text().includes("Xóa")).toBe(true);
 
         wrapper.find(Button).at(0).simulate("click");
 
-        expect(wrapper.find(Button).at(0).text().includes("Edit")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Sửa")).toBe(true);
         expect(wrapper.find("#editListFooter").exists()).toBe(false);
     });
 
@@ -112,11 +112,11 @@ describe("UnsentTweetsModal", () => {
         const wrapper = mountWithStore(<UnsentTweetsModal visible={true} onClose={jest.fn()}/>, createMockRootState());
 
         expect(wrapper.find(Spinner).exists()).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Edit")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Sửa")).toBe(true);
         expect(wrapper.find(Tab).at(0).prop("selected")).toBe(true);
-        expect(wrapper.find(Tab).at(0).text().includes("Scheduled")).toBe(true);
+        expect(wrapper.find(Tab).at(0).text().includes("Đã lên lịch")).toBe(true);
         expect(wrapper.find(Tab).at(1).prop("selected")).toBe(false);
-        expect(wrapper.find(Tab).at(1).text().includes("Drafts")).toBe(true);
+        expect(wrapper.find(Tab).at(1).text().includes("Bản nháp")).toBe(true);
     });
 
     it("should render loading Spinner", () => {

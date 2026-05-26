@@ -20,7 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserPrincipalProjection user = userRepository.findUserPrincipalByEmail(email)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
 
         if (user.getActivationCode() != null) {
             throw new LockedException("email not activated");

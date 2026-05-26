@@ -28,12 +28,12 @@ describe("EditListModal", () => {
         const wrapper = mountWithStore(<EditListModal visible={true} onClose={jest.fn()}/>, mockListStore);
         expect(wrapper.find(Dialog).at(0).exists()).toBeTruthy();
         expect(wrapper.find(Dialog).at(0).prop("open")).toBe(true);
-        expect(wrapper.text().includes("Edit List")).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Done")).toBe(true);
+        expect(wrapper.text().includes("Sửa danh sách")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Xong")).toBe(true);
         expect(wrapper.text().includes("Make private")).toBe(true);
         expect(wrapper.text().includes("When you make a List private, only you can see it.")).toBe(true);
         expect(wrapper.text().includes("Manage members")).toBe(true);
-        expect(wrapper.text().includes("Delete List")).toBe(true);
+        expect(wrapper.text().includes("Xóa danh sách")).toBe(true);
     });
 
     it("should open Manage Members Modal window", () => {

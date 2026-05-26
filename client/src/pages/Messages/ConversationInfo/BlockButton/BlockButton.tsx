@@ -10,14 +10,14 @@ interface ButtonButtonProps {
 
 const BlockButton: FC<ButtonButtonProps> = ({onBlockUser}): ReactElement => {
     const classes = useConversationInfoStyles();
-    const [btnText, setBtnText] = useState<string>("Blocked");
+    const [btnText, setBtnText] = useState<string>("Đã chặn");
 
     return (
         <Button
             onClick={onBlockUser}
             className={classnames(classes.containedButton, classes.blockButton)}
-            onMouseOver={() => setBtnText("Unblock")}
-            onMouseLeave={() => setBtnText("Blocked")}
+            onMouseOver={() => setBtnText("Bỏ chặn")}
+            onMouseLeave={() => setBtnText("Đã chặn")}
             color="primary"
             variant="contained"
         >

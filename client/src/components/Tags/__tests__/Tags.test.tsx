@@ -27,7 +27,7 @@ describe("Tags", () => {
     it("should render Tags", () => {
         const wrapper = mountWithStore(<Tags/>, mockState);
         expect(wrapper.find(TagItem).length).toEqual(3);
-        expect(wrapper.text().includes("Show more")).toBe(true);
+        expect(wrapper.text().includes("Xem thêm")).toBe(true);
     });
 
     it("should click open and close SettingsModal", () => {
@@ -62,7 +62,7 @@ describe("Tags", () => {
         
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
         expect(wrapper.find(HoverAction).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Settings");
+        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Cài đặt");
         
         wrapper.find(IconButton).simulate("mouseleave");
         expect(wrapper.find(HoverAction).prop("visible")).toBe(false);

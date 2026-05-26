@@ -24,15 +24,15 @@ describe("ScheduleModal", () => {
 
         expect(wrapper.text().includes("Schedule")).toBe(true);
         expect(wrapper.text().includes("Date")).toBe(true);
-        expect(wrapper.text().includes("Month")).toBe(true);
-        expect(wrapper.text().includes("Day")).toBe(true);
+        expect(wrapper.text().includes("Tháng")).toBe(true);
+        expect(wrapper.text().includes("Ngày")).toBe(true);
         expect(wrapper.text().includes("Time")).toBe(true);
         expect(wrapper.text().includes("Hour")).toBe(true);
         expect(wrapper.text().includes("Minute")).toBe(true);
 
         wrapper.find(Button).at(0).simulate("click");
 
-        expect(wrapper.find(Button).at(0).text().includes("Confirm")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Xác nhận")).toBe(true);
         expect(mockOnClose).toHaveBeenCalled();
         expect(mockHandleScheduleDate).toHaveBeenCalled();
     });

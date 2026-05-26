@@ -45,7 +45,7 @@ describe("TweetComponent", () => {
         const mockState = {...mockRootState, user: {...mockRootState.user, data: {...mockUser, pinnedTweetId: 9}}}
         const {wrapper} = createTweetComponentWrapper(mockState, mockFullTweet, 0);
         expect(wrapper.find(TweetActionResult).exists()).toBeTruthy();
-        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Pinned Tweet");
+        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Tweet đã ghim");
         expect(wrapper.find(TweetActionResult).at(1).prop("action")).toBe(TweetActionResults.PIN);
     });
 
@@ -64,7 +64,7 @@ describe("TweetComponent", () => {
         }
         const {wrapper} = createTweetComponentWrapper(mockState, mockFullTweet, 0);
         expect(wrapper.find(TweetActionResult).exists()).toBeTruthy();
-        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Pinned Tweet");
+        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Tweet đã ghim");
         expect(wrapper.find(TweetActionResult).at(1).prop("action")).toBe(TweetActionResults.PIN);
     });
 
@@ -304,12 +304,12 @@ describe("TweetComponent", () => {
     });
 
     it("should hover and leave reply IconButton", () => {
-        testHoverIconButton(1, "Reply");
+        testHoverIconButton(1, "Trả lời");
     });
 
     it("should hover and leave like IconButton", () => {
         const mockTweet = {...mockFullTweet, isTweetLiked: false};
-        testHoverIconButton(3, "Like", mockTweet);
+        testHoverIconButton(3, "Thích", mockTweet);
     });
 
     it("should hover and leave unlike IconButton", () => {
@@ -318,7 +318,7 @@ describe("TweetComponent", () => {
 
     it("should hover and leave analytics IconButton", () => {
         const mockTweet = {...mockFullTweet, user: {...mockFullTweet.user, id: 2}};
-        testHoverIconButton(5, "Analytics", mockTweet);
+        testHoverIconButton(5, "Phân tích", mockTweet);
     });
 
     it("should change tweet styles", () => {

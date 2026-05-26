@@ -149,7 +149,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                         <span>{HomeIcon}</span>
                                     )}
                                     <Typography variant={"h5"}>
-                                        Home
+                                        Trang chủ
                                     </Typography>
                                 </>
                             </Hidden>
@@ -167,7 +167,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                         <span>{ExploreIcon}</span>
                                     )}
                                     <Typography variant={"h5"}>
-                                        Explore
+                                        Khám phá
                                     </Typography>
                                 </>
                             </Hidden>
@@ -190,7 +190,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                         <span>{NotificationsIcon}</span>
                                     )}
                                     <Typography variant={"h5"}>
-                                        Notifications
+                                        Thông báo
                                     </Typography>
                                 </>
                             </Hidden>
@@ -213,7 +213,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                         <span>{MessagesIcon}</span>
                                     )}
                                     <Typography variant={"h5"}>
-                                        Messages
+                                        Tin nhắn
                                     </Typography>
                                 </>
                             </Hidden>
@@ -231,7 +231,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                         <span>{BookmarksIcon}</span>
                                     )}
                                     <Typography variant={"h5"}>
-                                        Bookmarks
+                                        Dấu trang
                                     </Typography>
                                 </>
                             </Hidden>
@@ -249,7 +249,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                         <span>{ListsIcon}</span>
                                     )}
                                     <Typography variant={"h5"}>
-                                        Lists
+                                        Danh sách
                                     </Typography>
                                 </>
                             </Hidden>
@@ -267,7 +267,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                         <span>{ProfileIcon}</span>
                                     )}
                                     <Typography variant={"h5"}>
-                                        Profile
+                                        Hồ sơ
                                     </Typography>
                                 </>
                             </Hidden>
@@ -284,7 +284,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                             <>
                                 <span>{MoreIcon}</span>
                                 <Typography variant={"h5"}>
-                                    More
+                                    Thêm
                                 </Typography>
                             </>
                         </Hidden>
@@ -312,7 +312,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                     <ListItem id={"openFollowerRequestsModal"} onClick={onOpenFollowerRequestsModal}>
                                         {FollowerRequestIcon}
                                         <Typography variant={"body1"} component={"span"}>
-                                            Follower requests
+                                            Yêu cầu theo dõi
                                             <span className={classes.followerRequestsCount}>
                                                 {followerRequestsSize}
                                             </span>
@@ -323,21 +323,21 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                     <ListItem id={"closePopup"} onClick={handleClosePopup}>
                                         {TopicIcon}
                                         <Typography variant={"body1"} component={"span"}>
-                                            Topics
+                                            Chủ đề
                                         </Typography>
                                     </ListItem>
                                 </Link>
                                 <ListItem>
                                     {NewslettersIcon}
                                     <Typography variant={"body1"} component={"span"}>
-                                        Newsletters
+                                        Bản tin
                                     </Typography>
                                 </ListItem>
                                 <a href={TWITTER_LOGIN} target="_blank">
                                     <ListItem>
                                         {TwitterAdsIcon}
                                         <Typography variant={"body1"} component={"span"}>
-                                            Twitter Ads
+                                            Quảng cáo Twitter
                                         </Typography>
                                     </ListItem>
                                 </a>
@@ -345,7 +345,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                     <ListItem>
                                         {AnalyticsIcon}
                                         <Typography variant={"body1"} component={"span"}>
-                                            Analytics
+                                            Phân tích
                                         </Typography>
                                     </ListItem>
                                 </a>
@@ -354,7 +354,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                     <ListItem id={"closePopup"} onClick={handleClosePopup}>
                                         {SettingsIcon}
                                         <Typography variant={"body1"} component={"span"}>
-                                            Settings and privacy
+                                            Cài đặt và quyền riêng tư
                                         </Typography>
                                     </ListItem>
                                 </Link>
@@ -362,20 +362,20 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                     <ListItem>
                                         {HelpCenterIcon}
                                         <Typography variant={"body1"} component={"span"}>
-                                            Help Center
+                                            Trung tâm trợ giúp
                                         </Typography>
                                     </ListItem>
                                 </a>
                                 <ListItem id={"openDisplayModal"} onClick={onOpenDisplayModal}>
                                     {DisplayIcon}
                                     <Typography variant={"body1"} component={"span"}>
-                                        Display
+                                        Hiển thị
                                     </Typography>
                                 </ListItem>
                                 <ListItem>
                                     {KeyboardShortcutsIcon}
                                     <Typography variant={"body1"} component={"span"}>
-                                        Keyboard shortcuts
+                                        Phím tắt
                                     </Typography>
                                 </ListItem>
                             </List>
@@ -391,7 +391,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                         fullWidth
                     >
                         <Hidden smDown>
-                            Tweet
+                            Đăng
                         </Hidden>
                         <Hidden mdUp>
                             <CreateIcon/>

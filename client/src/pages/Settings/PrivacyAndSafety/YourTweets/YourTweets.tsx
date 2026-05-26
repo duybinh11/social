@@ -29,14 +29,14 @@ const YourTweets: FC = (): ReactElement => {
                     {`When enabled, pictures and videos you Tweet will be marked as sensitive for people who don’t want to
                         see sensitive content. `}
                     <MuiLink href={MEDIA_POLICY} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
             <Link to={SETTINGS_PRIVACY_AND_SAFETY_LOCATION} className={globalClasses.linkWrapper}>
                 <div className={globalClasses.contentLink}>
                     <Typography variant={"body1"} component={"span"}>
-                        Add location information to your Tweets
+                        Thêm thông tin vị trí vào tweet của bạn
                     </Typography>
                     {ArrowRightIcon}
                 </div>
@@ -45,4 +45,4 @@ const YourTweets: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(YourTweets)("Your Tweets");
+export default withDocumentTitle(YourTweets)("Tweet của bạn");

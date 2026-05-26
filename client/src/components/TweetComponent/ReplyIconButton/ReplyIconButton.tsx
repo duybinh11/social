@@ -42,7 +42,7 @@ const ReplyIconButton: FC<TweetReplyIconButtonProps> = memo((
     return (
         <div className={classes.replyIcon}>
             <ActionIconButton
-                actionText={"Reply"}
+                actionText={"Trả lời"}
                 icon={ReplyIcon}
                 onClick={onOpenReplyModalWindow}
                 disabled={isUserCanReply}

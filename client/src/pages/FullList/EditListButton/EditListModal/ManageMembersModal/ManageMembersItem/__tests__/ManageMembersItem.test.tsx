@@ -30,7 +30,7 @@ describe("ManageMembersItem", () => {
         expect(wrapper.text().includes(mockMember.fullName)).toBe(true);
         expect(wrapper.text().includes(`@${mockMember.username}`)).toBe(true);
         expect(wrapper.text().includes(mockMember.about)).toBe(true);
-        expect(wrapper.find(Button).at(0).text()).toEqual("Add");
+        expect(wrapper.find(Button).at(0).text()).toEqual("Thêm");
     });
 
     it("should click Add Member to list", () => {

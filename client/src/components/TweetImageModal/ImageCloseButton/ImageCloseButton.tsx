@@ -1,8 +1,17 @@
 import React, {FC, memo, ReactElement} from "react";
-import {IconButton} from "@material-ui/core";
+import {IconButton, makeStyles} from "@material-ui/core";
 
 import {CloseIcon} from "../../../icons";
-import {useImageCloseButtonStyles} from "./ImageCloseButtonStyles";
+
+const useImageCloseButtonStyles = makeStyles((theme) => ({
+    imageModalClose: {
+        margin: 10,
+        "& svg": {
+            height: "0.9em",
+            color: theme.palette.common.white
+        },
+    },
+}));
 
 interface ImageCloseButtonProps {
     onCloseModalWindow: () => void;

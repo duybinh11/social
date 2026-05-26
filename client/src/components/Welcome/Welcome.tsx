@@ -19,11 +19,11 @@ const Welcome: FC = (): ReactElement => {
     return (
         <div className={classes.info}>
             <Typography variant={"h5"} component={"div"}>
-                Welcome to Twitter!
+                Chào mừng đến Twitter!
             </Typography>
             <Typography variant={"subtitle1"} component={"div"}>
-                This is the best place to see what’s happening in your world.
-                Find some people and topics to follow now.
+                Đây là nơi tốt nhất để xem chuyện gì đang diễn ra quanh bạn.
+                Hãy tìm vài người và chủ đề để theo dõi ngay.
             </Typography>
             <div className={classes.infoButtonContainer}>
                 <Button
@@ -32,7 +32,7 @@ const Welcome: FC = (): ReactElement => {
                     variant="contained"
                     size="small"
                 >
-                    Let's go
+                    Bắt đầu thôi
                 </Button>
             </div>
         </div>

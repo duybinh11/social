@@ -11,7 +11,7 @@ interface UnfollowTopicButtonProps {
 
 const UnfollowTopicButton: FC<UnfollowTopicButtonProps> = ({topicName, onClickFollowTopic}): ReactElement => {
     const classes = useUnfollowTopicButtonStyles();
-    const [btnText, setBtnText] = useState<string>("Following");
+    const [btnText, setBtnText] = useState<string>("Đang theo dõi");
     const [visibleUnfollowModal, setVisibleUnfollowModal] = useState<boolean>(false);
     const infoText = "Even if you unfollow this Topic, you could still see Tweets about it depending on which accounts you’re following.";
 
@@ -29,8 +29,8 @@ const UnfollowTopicButton: FC<UnfollowTopicButtonProps> = ({topicName, onClickFo
             <Button
                 className={classes.containedButton}
                 onClick={handleClickOpenUnfollowModal}
-                onMouseOver={() => setBtnText("Unfollow")}
-                onMouseLeave={() => setBtnText("Following")}
+                onMouseOver={() => setBtnText("Bỏ theo dõi")}
+                onMouseLeave={() => setBtnText("Đang theo dõi")}
                 color="primary"
                 variant="contained"
                 size="small"

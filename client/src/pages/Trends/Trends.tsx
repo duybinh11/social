@@ -30,7 +30,7 @@ const Trends: FC = (): ReactElement => {
     };
 
     return (
-        <PageWrapper title={"Trends"}>
+        <PageWrapper title={"Xu hướng"}>
             <InfiniteScrollWrapper dataLength={trends.length} pagesCount={pagesCount} loadItems={loadTrends}>
                 {isLoading && !trends.length ? (
                     <Spinner paddingTop={80}/>
@@ -45,4 +45,4 @@ const Trends: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Trends)("Trends");
+export default withDocumentTitle(Trends)("Xu hướng");

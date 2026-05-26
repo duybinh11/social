@@ -23,7 +23,7 @@ describe("DiscoverLists", () => {
     it("should render loading Spinner", () => {
         const wrapper = mountWithStore(<DiscoverLists/>, createMockRootState());
         expect(wrapper.find(Spinner).exists()).toBe(true);
-        expect(wrapper.text().includes("Show more")).toBe(true);
+        expect(wrapper.text().includes("Xem thêm")).toBe(true);
     });
 
     it("should render Lists", () => {

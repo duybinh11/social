@@ -18,7 +18,7 @@ describe("FollowListButton", () => {
         const wrapper = mountWithStore(<FollowListButton listId={1} isFollower/>, mockRootState);
         wrapper.find(Button).simulate("click");
         expect(wrapper.find(Button).prop("variant")).toBe("contained");
-        expect(wrapper.find(Button).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang theo dõi")).toBe(true);
         expect(mockDispatchFn).toHaveBeenNthCalledWith(1, {
             payload: 1,
             type: ListsActionType.UNFOLLOW_LIST
@@ -29,7 +29,7 @@ describe("FollowListButton", () => {
         const wrapper = mountWithStore(<FollowListButton listId={1} isFollower={false}/>, mockRootState);
         wrapper.find(Button).simulate("click");
         expect(wrapper.find(Button).prop("variant")).toBe("outlined");
-        expect(wrapper.find(Button).text().includes("Follow")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Theo dõi")).toBe(true);
         expect(mockDispatchFn).toHaveBeenNthCalledWith(1, {
             payload: 1,
             type: ListsActionType.FOLLOW_LIST
@@ -39,8 +39,8 @@ describe("FollowListButton", () => {
     it("should hover FollowListButton", () => {
         const wrapper = mountWithStore(<FollowListButton listId={1} isFollower/>, mockRootState);
         wrapper.find(Button).simulate("mouseover");
-        expect(wrapper.find(Button).text().includes("Unfollow")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Bỏ theo dõi")).toBe(true);
         wrapper.find(Button).simulate("mouseleave");
-        expect(wrapper.find(Button).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang theo dõi")).toBe(true);
     });
 });

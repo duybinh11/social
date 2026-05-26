@@ -60,11 +60,11 @@ const CreateAccountModal: FC<CustomizeModalProps> = (
                 ) : (
                     <>
                         <Typography variant={"h5"} component={"div"} className={classes.subtitle}>
-                            Create your account
+                            Tạo tài khoản của bạn
                         </Typography>
                         <div className={classes.form}>
                             <RegistrationInputField
-                                label="Name"
+                                label="Tên"
                                 variant="filled"
                                 value={registrationInfo.username}
                                 fullWidth
@@ -78,7 +78,7 @@ const CreateAccountModal: FC<CustomizeModalProps> = (
                                 disabled
                             />
                             <RegistrationInputField
-                                label="Birth date"
+                                label="Ngày sinh"
                                 variant="filled"
                                 value={registrationInfo.birthday}
                                 fullWidth
@@ -88,11 +88,11 @@ const CreateAccountModal: FC<CustomizeModalProps> = (
                         <Typography variant={"body1"} component={"div"} className={classes.text}>
                             {"By signing up, you agree to the "}
                             <MuiLink href={TWITTER_TOS_NEW} variant="body1" target="_blank" rel="noopener">
-                                Terms of Service
+                                Điều khoản dịch vụ
                             </MuiLink>
                             {" and "}
                             <MuiLink href={TWITTER_PRIVACY} variant="body1" target="_blank" rel="noopener">
-                                Privacy Policy
+                                Chính sách quyền riêng tư
                             </MuiLink>
                             {", including "}
                             <MuiLink href={TWITTER_COOKIES} variant="body1" target="_blank" rel="noopener">
@@ -111,7 +111,7 @@ const CreateAccountModal: FC<CustomizeModalProps> = (
                             size="small"
                             fullWidth
                         >
-                            Sign up
+                            Đăng ký
                         </Button>
                     </>
                 )}

@@ -74,7 +74,7 @@ const CreateListsModal: FC<CreateListsModalProps> = ({visible, onClose}): ReactE
                         color="primary"
                         size="small"
                     >
-                        Next
+                        Tiếp
                     </Button>
                 </DialogTitle>
                 <DialogContent className={classes.content}>
@@ -91,7 +91,7 @@ const CreateListsModal: FC<CreateListsModalProps> = ({visible, onClose}): ReactE
                             defaultValue=""
                             render={({field: {onChange, value}}) => (
                                 <CreateListsModalInput
-                                    label={"Name"}
+                                    label={"Tên"}
                                     name={"name"}
                                     helperText={errors.name?.message}
                                     error={!!errors.name}

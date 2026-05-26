@@ -17,12 +17,12 @@ const ChangeGender: FC = (): ReactElement => {
     const dispatch = useDispatch();
     const gender = useSelector(selectUserProfileGender);
     const isLoading = useSelector(selectUserIsLoading);
-    const [selectedGender, setSelectedGender] = useState<string>("Female");
+    const [selectedGender, setSelectedGender] = useState<string>("Nữ");
     const [otherGender, setOtherGender] = useState<string>("");
 
     useEffect(() => {
         if (gender) {
-            if (gender === "Female" || gender === "Male") {
+            if (gender === "Nữ" || gender === "Nam") {
                 setSelectedGender(gender);
             } else {
                 setOtherGender(gender ?? "");
@@ -60,14 +60,14 @@ const ChangeGender: FC = (): ReactElement => {
             <div className={globalClasses.itemInfoWrapper}>
                 <div className={globalClasses.infoItemRadioCheckbox}>
                     <Typography variant={"body1"} component={"span"}>
-                        Female
+                        Nữ
                     </Typography>
                     <Radio
-                        checked={selectedGender === "Female"}
+                        checked={selectedGender === "Nữ"}
                         onChange={handleSelectedGender}
-                        value="Female"
+                        value="Nữ"
                         name="radio-buttons"
-                        inputProps={{"aria-label": "Female"}}
+                        inputProps={{"aria-label": "Nữ"}}
                         icon={<RadioButtonUnchecked color={"primary"}/>}
                         checkedIcon={<CheckCircle color={"primary"}/>}
                         size="small"
@@ -75,14 +75,14 @@ const ChangeGender: FC = (): ReactElement => {
                 </div>
                 <div className={globalClasses.infoItemRadioCheckbox}>
                     <Typography variant={"body1"} component={"span"}>
-                        Male
+                        Nam
                     </Typography>
                     <Radio
-                        checked={selectedGender === "Male"}
+                        checked={selectedGender === "Nam"}
                         onChange={handleSelectedGender}
-                        value="Male"
+                        value="Nam"
                         name="radio-buttons"
-                        inputProps={{"aria-label": "Male"}}
+                        inputProps={{"aria-label": "Nam"}}
                         icon={<RadioButtonUnchecked color={"primary"}/>}
                         checkedIcon={<CheckCircle color={"primary"}/>}
                         size="small"
@@ -107,7 +107,7 @@ const ChangeGender: FC = (): ReactElement => {
                     <div className={classes.textFieldWrapper}>
                         <ChangeInfoTextField
                             onChange={handleChangeGender}
-                            label="Gender"
+                            label="Giới tính"
                             type="text"
                             variant="filled"
                             value={otherGender}
@@ -126,11 +126,11 @@ const ChangeGender: FC = (): ReactElement => {
                     color="primary"
                     size="small"
                 >
-                    Save
+                    Lưu
                 </Button>
             </div>
         </>
     );
 };
 
-export default withDocumentTitle(ChangeGender)("Change gender");
+export default withDocumentTitle(ChangeGender)("Đổi giới tính");

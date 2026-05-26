@@ -43,8 +43,8 @@ import {UserApi} from "../userApi";
 
 describe("UserApi", () => {
     const mockAdapter = new MockAdapter(axios);
-    const mockUserErrorResponse = "User not found";
-    const mockTweetErrorResponse = "Tweet not found";
+    const mockUserErrorResponse = "Không tìm thấy người dùng";
+    const mockTweetErrorResponse = "Không tìm thấy tweet";
     const mockUserNotFound = "User (id:1) not found";
     const mockUserBlocked = "User (id:1) is blocked";
     const mockPageable = {userId: 1, page: 1};
@@ -90,7 +90,7 @@ describe("UserApi", () => {
         });
 
         it("[404] should return Incorrect username length", () => {
-            testApiCall(mockAdapter, "onPut", API_USER, 404, "Incorrect username length", UserApi.updateUserProfile, mockUserRequest);
+            testApiCall(mockAdapter, "onPut", API_USER, 404, "Độ dài tên người dùng không hợp lệ", UserApi.updateUserProfile, mockUserRequest);
         });
     });
 
@@ -244,7 +244,7 @@ describe("UserApi", () => {
         });
 
         it("[404] should user not found", () => {
-            testApiCall(mockAdapter, "onGet", `${API_USER_NOTIFICATIONS}/1`, 404, "Notification not found", UserApi.getUserNotificationById, 1);
+            testApiCall(mockAdapter, "onGet", `${API_USER_NOTIFICATIONS}/1`, 404, "Không tìm thấy thông báo", UserApi.getUserNotificationById, 1);
         });
     });
 

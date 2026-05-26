@@ -18,7 +18,7 @@ describe("ScheduleTitle", () => {
                 onSubmitClearScheduleDate={jest.fn()}
             />, mockStore);
         expect(wrapper.find(Button).at(0).text().includes("Clear")).toBe(true);
-        expect(wrapper.find(Button).at(1).text().includes("Update")).toBe(true);
+        expect(wrapper.find(Button).at(1).text().includes("Cập nhật")).toBe(true);
     });
 
     it("should render Confirm button", () => {
@@ -30,6 +30,6 @@ describe("ScheduleTitle", () => {
                 onSubmitScheduleDate={jest.fn()}
                 onSubmitClearScheduleDate={jest.fn()}
             />, mockStore);
-        expect(wrapper.find(Button).at(0).text().includes("Confirm")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Xác nhận")).toBe(true);
     });
 });

@@ -59,7 +59,7 @@ public class UserSettingsControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Incorrect username length")));
+                .andExpect(jsonPath("$", is("Độ dài tên người dùng không hợp lệ")));
     }
 
     @Test
@@ -73,7 +73,7 @@ public class UserSettingsControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Incorrect username length")));
+                .andExpect(jsonPath("$", is("Độ dài tên người dùng không hợp lệ")));
     }
 
     @Test
@@ -131,7 +131,7 @@ public class UserSettingsControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isForbidden())
-                .andExpect(jsonPath("$", is("Email has already been taken.")));
+                .andExpect(jsonPath("$", is("Email đã được sử dụng.")));
     }
 
     @Test
@@ -162,7 +162,7 @@ public class UserSettingsControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Not valid phone number")));
+                .andExpect(jsonPath("$", is("Số điện thoại không hợp lệ")));
     }
 
     @Test
@@ -177,7 +177,7 @@ public class UserSettingsControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Not valid phone number")));
+                .andExpect(jsonPath("$", is("Số điện thoại không hợp lệ")));
     }
 
     @Test
@@ -199,13 +199,13 @@ public class UserSettingsControllerTest {
     @DisplayName("[200] PUT /api/v1/settings/update/gender - Update gender")
     public void updateGender() throws Exception {
         SettingsRequest request = new SettingsRequest();
-        request.setGender("Male");
+        request.setGender("Nam");
 
         mockMvc.perform(put(URL_USER_SETTINGS_UPDATE + "/gender")
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", is("Male")));
+                .andExpect(jsonPath("$", is("Nam")));
     }
 
     @Test
@@ -219,7 +219,7 @@ public class UserSettingsControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Incorrect gender length")));
+                .andExpect(jsonPath("$", is("Độ dài giới tính không hợp lệ")));
     }
 
     @Test
@@ -233,7 +233,7 @@ public class UserSettingsControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Incorrect gender length")));
+                .andExpect(jsonPath("$", is("Độ dài giới tính không hợp lệ")));
     }
 
     @Test
@@ -241,13 +241,13 @@ public class UserSettingsControllerTest {
     @DisplayName("[200] PUT /api/v1/settings/update/language - Update language")
     public void updateLanguage() throws Exception {
         SettingsRequest request = new SettingsRequest();
-        request.setLanguage("English");
+        request.setLanguage("Tiếng Anh");
 
         mockMvc.perform(put(URL_USER_SETTINGS_UPDATE + "/language")
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", is("English")));
+                .andExpect(jsonPath("$", is("Tiếng Anh")));
     }
 
     @Test

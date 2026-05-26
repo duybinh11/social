@@ -15,8 +15,8 @@ describe("AddTweetModal", () => {
 
         expect(mockOnClose).toHaveBeenCalled();
         expect(wrapper.find(Dialog).exists()).toBeTruthy();
-        expect(wrapper.find(AddTweetForm).prop("title")).toBe("What's happening?");
-        expect(wrapper.find(AddTweetForm).prop("buttonName")).toBe("Tweet");
+        expect(wrapper.find(AddTweetForm).prop("title")).toBe("Chuyện gì đang xảy ra?");
+        expect(wrapper.find(AddTweetForm).prop("buttonName")).toBe("Đăng");
     });
 
     it("should render empty Add Tweet Modal correctly", () => {

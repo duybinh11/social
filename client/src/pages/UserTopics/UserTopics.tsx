@@ -26,7 +26,7 @@ const UserTopics = (): ReactElement => {
     }, []);
 
     return (
-        <PageWrapper title={"Topics"}>
+        <PageWrapper title={"Chủ đề"}>
             <div className={globalClasses.contentWrapper}>
                 {isFollowedTopicsLoading ? (
                     <Spinner/>

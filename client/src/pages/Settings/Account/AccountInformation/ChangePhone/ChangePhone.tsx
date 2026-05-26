@@ -68,4 +68,4 @@ const ChangePhone: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(ChangePhone)("Change phone");
+export default withDocumentTitle(ChangePhone)("Đổi số điện thoại");

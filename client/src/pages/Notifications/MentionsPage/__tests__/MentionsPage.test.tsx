@@ -26,7 +26,7 @@ describe("MentionsPage", () => {
     it("should render empty Mentions", () => {
         const mockTweetStore = {...mockStore, tweets: {...mockStore.lists, items: []}};
         const wrapper = mountWithStore(<MentionsPage/>, mockTweetStore);
-        expect(wrapper.text().includes("Nothing to see here — yet")).toBe(true);
+        expect(wrapper.text().includes("Chưa có gì để xem")).toBe(true);
         expect(wrapper.text().includes("When someone mentions you, you’ll find it here.")).toBe(true);
     });
 

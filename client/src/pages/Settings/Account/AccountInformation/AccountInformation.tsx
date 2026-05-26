@@ -53,7 +53,7 @@ const AccountInformation: FC = (): ReactElement => {
                     <ListItem>
                         <div>
                             <Typography variant={"body1"} component={"div"}>
-                                Username
+                                Tên người dùng
                             </Typography>
                             <Typography variant={"subtitle2"} component={"div"}>
                                 @{username}
@@ -68,7 +68,7 @@ const AccountInformation: FC = (): ReactElement => {
                     <ListItem>
                         <div>
                             <Typography variant={"body1"} component={"div"}>
-                                Phone
+                                Điện thoại
                             </Typography>
                             <Typography variant={"subtitle2"} component={"div"}>
                                 {`${getPhoneCode(countryCode)}${phone}`}
@@ -96,7 +96,7 @@ const AccountInformation: FC = (): ReactElement => {
                 </Link>
                 <div className={globalClasses.itemInfoWrapper}>
                     <Typography variant={"body1"} component={"div"}>
-                        Verified
+                        Đã xác minh
                     </Typography>
                     <Typography variant={"subtitle2"} component={"div"}>
                         {"No. "}
@@ -110,10 +110,10 @@ const AccountInformation: FC = (): ReactElement => {
                     <ListItem>
                         <div>
                             <Typography variant={"body1"} component={"div"}>
-                                Protected Tweets
+                                Tweet được bảo vệ
                             </Typography>
                             <Typography variant={"subtitle2"} component={"div"}>
-                                {isPrivateProfile ? "Yes" : "No"}
+                                {isPrivateProfile ? "Có" : "Không"}
                             </Typography>
                         </div>
                         <div className={globalClasses.arrowIcon}>
@@ -123,7 +123,7 @@ const AccountInformation: FC = (): ReactElement => {
                 </Link>
                 <div className={globalClasses.itemInfoWrapper}>
                     <Typography variant={"body1"} component={"div"}>
-                        Account creation
+                        Tạo tài khoản
                     </Typography>
                     <Typography variant={"subtitle2"} component={"div"}>
                         {formatScheduleDate(new Date(registrationDate!))}
@@ -134,7 +134,7 @@ const AccountInformation: FC = (): ReactElement => {
                     <ListItem>
                         <div>
                             <Typography variant={"body1"} component={"div"}>
-                                Country
+                                Quốc gia
                             </Typography>
                             <Typography variant={"subtitle2"} component={"div"}>
                                 {getCountry(countryCode)}
@@ -149,7 +149,7 @@ const AccountInformation: FC = (): ReactElement => {
                     <ListItem>
                         <div>
                             <Typography variant={"body1"} component={"div"}>
-                                Languages
+                                Ngôn ngữ
                             </Typography>
                             <Typography variant={"subtitle2"} component={"div"}>
                                 {language}
@@ -164,7 +164,7 @@ const AccountInformation: FC = (): ReactElement => {
                     <ListItem>
                         <div>
                             <Typography variant={"body1"} component={"div"}>
-                                Gender
+                                Giới tính
                             </Typography>
                             <Typography variant={"subtitle2"} component={"div"}>
                                 {gender}
@@ -177,7 +177,7 @@ const AccountInformation: FC = (): ReactElement => {
                 </Link>
                 <div className={globalClasses.itemInfoWrapper}>
                     <Typography variant={"body1"} component={"div"}>
-                        Birth date
+                        Ngày sinh
                     </Typography>
                     <Typography variant={"subtitle2"} component={"div"}>
                         {"Add your date of birth to your "}
@@ -191,7 +191,7 @@ const AccountInformation: FC = (): ReactElement => {
                     <ListItem>
                         <div>
                             <Typography variant={"body1"} component={"div"}>
-                                Age
+                                Tuổi
                             </Typography>
                             <Typography variant={"subtitle2"} component={"div"}>
                                 13-64
@@ -207,4 +207,4 @@ const AccountInformation: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(AccountInformation)("Account information");
+export default withDocumentTitle(AccountInformation)("Thông tin tài khoản");

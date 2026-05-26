@@ -12,7 +12,7 @@ describe("YourTweets", () => {
         const wrapper = mountWithStore(<YourTweets/>, createMockRootState());
         expect(wrapper.text().includes("Manage the information associated with your Tweets.")).toBe(true);
         expect(wrapper.text().includes("Mark media you Tweet as having material that may be sensitive")).toBe(true);
-        expect(wrapper.text().includes("Add location information to your Tweets")).toBe(true);
+        expect(wrapper.text().includes("Thêm thông tin vị trí vào tweet của bạn")).toBe(true);
         expect(wrapper.find(MuiLink).at(0).prop("href")).toBe(MEDIA_POLICY);
     });
 

@@ -109,17 +109,17 @@ describe("UserPage", () => {
             type: UserTweetsActionType.FETCH_TWEETS
         });
         expect(wrapper.find(Tab).at(0).prop("selected")).toBe(true);
-        expect(wrapper.find(Tab).at(0).text().includes("Tweets")).toBe(true);
+        expect(wrapper.find(Tab).at(0).text().includes("Đăng")).toBe(true);
         expect(wrapper.find(Tab).at(1).prop("selected")).toBe(false);
         expect(wrapper.find(Tab).at(1).text().includes("Tweets & replies")).toBe(true);
         expect(wrapper.find(Tab).at(2).prop("selected")).toBe(false);
-        expect(wrapper.find(Tab).at(2).text().includes("Media")).toBe(true);
+        expect(wrapper.find(Tab).at(2).text().includes("Phương tiện")).toBe(true);
         expect(wrapper.find(Tab).at(3).prop("selected")).toBe(false);
-        expect(wrapper.find(Tab).at(3).text().includes("Likes")).toBe(true);
+        expect(wrapper.find(Tab).at(3).text().includes("Lượt thích")).toBe(true);
     });
 
     it("should click tweet Tab and fetch user tweets", () => {
-        testClickTab(0, `${mockUser.tweetCount} Tweets`, "Tweets", UserTweetsActionType.FETCH_TWEETS);
+        testClickTab(0, `${mockUser.tweetCount} Tweets`, "Đăng", UserTweetsActionType.FETCH_TWEETS);
     });
 
     it("should click Tweets & replies Tab and fetch user tweets", () => {
@@ -127,11 +127,11 @@ describe("UserPage", () => {
     });
 
     it("should click Media Tab and fetch user tweets", () => {
-        testClickTab(2, `${mockUser.mediaTweetCount} Photos & videos`, "Media", UserTweetsActionType.FETCH_MEDIA_TWEETS);
+        testClickTab(2, `${mockUser.mediaTweetCount} Photos & videos`, "Phương tiện", UserTweetsActionType.FETCH_MEDIA_TWEETS);
     });
 
     it("should click Likes Tab and fetch user tweets", () => {
-        testClickTab(3, `${mockUser.likeCount} Likes`, "Likes", UserTweetsActionType.FETCH_LIKED_TWEETS);
+        testClickTab(3, `${mockUser.likeCount} Likes`, "Lượt thích", UserTweetsActionType.FETCH_LIKED_TWEETS);
     });
 
     it("should show tweets count", () => {
@@ -207,7 +207,7 @@ describe("UserPage", () => {
             }
         });
 
-        expect(wrapper.find(Button).at(0).text()).toEqual("Follow");
+        expect(wrapper.find(Button).at(0).text()).toEqual("Theo dõi");
 
         wrapper.find(Button).at(0).simulate("click");
 
@@ -223,7 +223,7 @@ describe("UserPage", () => {
             }
         });
 
-        expect(wrapper.find(Button).at(0).text()).toEqual("Follow");
+        expect(wrapper.find(Button).at(0).text()).toEqual("Theo dõi");
 
         wrapper.find(Button).at(0).simulate("click");
 
@@ -233,13 +233,13 @@ describe("UserPage", () => {
     it("should click unfollow to user profile", () => {
         const wrapper = mountWithStore(<UserPage/>, mockUserProfileState);
 
-        expect(wrapper.find(Button).at(0).text()).toEqual("Following");
+        expect(wrapper.find(Button).at(0).text()).toEqual("Đang theo dõi");
 
         wrapper.find(Button).at(0).simulate("mouseover");
-        expect(wrapper.find(Button).text().includes("Unfollow")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Bỏ theo dõi")).toBe(true);
 
         wrapper.find(Button).at(0).simulate("mouseleave");
-        expect(wrapper.find(Button).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang theo dõi")).toBe(true);
 
         wrapper.find(Button).at(0).simulate("click");
 
@@ -255,13 +255,13 @@ describe("UserPage", () => {
             }
         });
 
-        expect(wrapper.find(Button).at(0).text()).toEqual("Pending");
+        expect(wrapper.find(Button).at(0).text()).toEqual("Đang chờ");
 
         wrapper.find(Button).at(0).simulate("mouseover");
-        expect(wrapper.find(Button).at(0).text().includes("Cancel")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Hủy")).toBe(true);
 
         wrapper.find(Button).at(0).simulate("mouseleave");
-        expect(wrapper.find(Button).at(0).text().includes("Pending")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Đang chờ")).toBe(true);
 
         wrapper.find(Button).at(0).simulate("click");
 
@@ -354,10 +354,10 @@ describe("UserPage", () => {
         expect(wrapper.find(BlockUserModal).prop("visible")).toBe(false);
 
         wrapper.find(Button).at(0).simulate("mouseover");
-        expect(wrapper.find(Button).text().includes("Unblock")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Bỏ chặn")).toBe(true);
 
         wrapper.find(Button).at(0).simulate("mouseleave");
-        expect(wrapper.find(Button).text().includes("Block")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Chặn")).toBe(true);
 
         wrapper.find(Button).at(0).simulate("click");
 

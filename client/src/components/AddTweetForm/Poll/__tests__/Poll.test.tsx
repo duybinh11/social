@@ -8,7 +8,7 @@ import {FilledSelect} from "../../../FilledSelect/FilledSelect";
 import HoverAction from "../../../HoverAction/HoverAction";
 import {LoadingStatus} from "../../../../store/types/common";
 
-describe("Poll", () => {
+describe("Bình chọn", () => {
 
     it("should render correctly and click Add Poll Choice Button", () => {
         const {wrapper} = createPollWrapper();
@@ -64,7 +64,7 @@ describe("Poll", () => {
         wrapper.update();
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
         expect(wrapper.find(HoverAction).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Add");
+        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Thêm");
         wrapper.find(IconButton).simulate("mouseleave");
 
         expect(wrapper.find(HoverAction).prop("visible")).toBe(false);

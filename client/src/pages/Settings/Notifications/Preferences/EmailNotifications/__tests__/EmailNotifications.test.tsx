@@ -9,7 +9,7 @@ describe("EmailNotifications", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<EmailNotifications/>, createMockRootState());
 
-        expect(wrapper.text().includes("Email notifications")).toBe(true);
+        expect(wrapper.text().includes("Thông báo email")).toBe(true);
         expect(wrapper.text().includes("Related to you and your Tweets")).toBe(true);
         expect(wrapper.text().includes("New notifications")).toBe(true);
         expect(wrapper.text().includes("Direct messages")).toBe(true);

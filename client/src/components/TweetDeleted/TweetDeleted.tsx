@@ -11,7 +11,7 @@ const TweetDeleted = memo((): ReactElement => {
         <div className={classes.container}>
             This Tweet was deleted by the Tweet author.{" "}
             <MuiLink href={TWITTER_NOTICES} target="_blank" rel="noopener">
-                Learn more
+                Tìm hiểu thêm
             </MuiLink>
         </div>
     );

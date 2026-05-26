@@ -30,7 +30,7 @@ const TweetComponentActionsModal: FC<TweetComponentActionsModalProps> = (
             <DialogContent style={{padding: 0}}>
                 <div className={classes.modalWrapper}>
                     <Typography variant={"h5"}>
-                        {(modalTitle === "Delete") ? (
+                        {(modalTitle === "Xóa") ? (
                             "Delete Tweet?"
                         ) : (
                             isTweetPinned ? (
@@ -41,7 +41,7 @@ const TweetComponentActionsModal: FC<TweetComponentActionsModalProps> = (
                         )}
                     </Typography>
                     <Typography variant={"subtitle1"}>
-                        {(modalTitle === "Delete") ? (
+                        {(modalTitle === "Xóa") ? (
                             "This can’t be undone and it will be removed from your profile, " +
                             "the timeline of any accounts that follow you, and from Twitter search results."
                         ) : (
@@ -59,10 +59,10 @@ const TweetComponentActionsModal: FC<TweetComponentActionsModalProps> = (
                             variant="contained"
                             size="large"
                         >
-                            Cancel
+                            Hủy
                         </Button>
                         <Button
-                            className={(modalTitle === "Delete") ? (
+                            className={(modalTitle === "Xóa") ? (
                                 classes.modalDeleteButton
                             ) : (
                                 classes.modalPrimaryButton
@@ -71,8 +71,8 @@ const TweetComponentActionsModal: FC<TweetComponentActionsModalProps> = (
                             variant="contained"
                             size="large"
                         >
-                            {(modalTitle === "Delete") ? (
-                                "Delete"
+                            {(modalTitle === "Xóa") ? (
+                                "Xóa"
                             ) : (
                                 isTweetPinned ? ("Unpin") : ("Pin")
                             )}

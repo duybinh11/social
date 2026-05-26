@@ -53,7 +53,7 @@ const ResetPasswordOption: FC = (): ReactElement => {
                     color="primary"
                     size="small"
                 >
-                    Next
+                    Tiếp
                 </Button>
             </form>
             <MuiLink href={REGAIN_ACCESS} variant="subtitle2" target="_blank" rel="noopener">

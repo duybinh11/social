@@ -57,7 +57,7 @@ public class ChatControllerTest {
     public void getChatById_ShouldChatNotFound() throws Exception {
         mockMvc.perform(get(URL_CHAT_BASIC + "/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Chat not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy cuộc trò chuyện")));
     }
 
     @Test
@@ -94,7 +94,7 @@ public class ChatControllerTest {
     public void createChat_ShouldParticipantNotFound() throws Exception {
         mockMvc.perform(get(URL_CHAT_BASIC + "/create/111"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Participant not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người tham gia")));
     }
 
     @Test
@@ -103,7 +103,7 @@ public class ChatControllerTest {
     public void createChat_BadRequest() throws Exception {
         mockMvc.perform(get(URL_CHAT_BASIC + "/create/4"))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Participant is blocked")));
+                .andExpect(jsonPath("$", is("Người tham gia đã bị chặn")));
     }
 
     @Test
@@ -161,7 +161,7 @@ public class ChatControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Chat not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy cuộc trò chuyện")));
     }
 
     @Test
@@ -176,7 +176,7 @@ public class ChatControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Chat participant not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người tham gia trò chuyện")));
     }
 
     @Test
@@ -191,7 +191,7 @@ public class ChatControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Participant is blocked")));
+                .andExpect(jsonPath("$", is("Người tham gia đã bị chặn")));
     }
 
     @Test
@@ -257,7 +257,7 @@ public class ChatControllerTest {
     public void getParticipant_ChatNotFound() throws Exception {
         mockMvc.perform(get(URL_CHAT_BASIC + "/participant/4/11"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Chat not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy cuộc trò chuyện")));
     }
 
     @Test
@@ -266,7 +266,7 @@ public class ChatControllerTest {
     public void getParticipant_ParticipantNotFound() throws Exception {
         mockMvc.perform(get(URL_CHAT_BASIC + "/participant/5/8"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Participant not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người tham gia")));
     }
 
     @Test
@@ -293,7 +293,7 @@ public class ChatControllerTest {
     public void leaveFromConversation_ParticipantNotFound() throws Exception {
         mockMvc.perform(get(URL_CHAT_BASIC + "/leave/10/10"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Participant not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người tham gia")));
     }
 
     @Test
@@ -302,6 +302,6 @@ public class ChatControllerTest {
     public void leaveFromConversation_ChatNotFound() throws Exception {
         mockMvc.perform(get(URL_CHAT_BASIC + "/leave/2/9"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Chat not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy cuộc trò chuyện")));
     }
 }

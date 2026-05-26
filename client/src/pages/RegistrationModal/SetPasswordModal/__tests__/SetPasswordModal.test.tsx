@@ -30,7 +30,7 @@ describe("SetPasswordModal", () => {
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
         expect(wrapper.text().includes("You'll need a password")).toBe(true);
         expect(wrapper.text().includes("Make sure it’s 8 characters or more.")).toBe(true);
-        expect(wrapper.find(Button).text().includes("Next")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Tiếp")).toBe(true);
         
         wrapper.find(RegistrationInputField).find("input").simulate("change", {target: {value: "test_password"}});
         wrapper.find(Button).at(0).simulate("submit");
@@ -46,7 +46,7 @@ describe("SetPasswordModal", () => {
     });
 
     it("should render password error", (done) => {
-        const mockText = "Your password needs to be at least 8 characters. Please enter a longer one.";
+        const mockText = "Mật khẩu cần có ít nhất 8 ký tự. Vui lòng nhập dài hơn.";
         const wrapper = mountWithStore(
             <SetPasswordModal
                 email={"test@test.test"}

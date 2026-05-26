@@ -35,7 +35,7 @@ describe("ProfileDescriptionModal", () => {
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
         expect(wrapper.text().includes("Describe yourself")).toBe(true);
         expect(wrapper.text().includes("What makes you special? Don't think too hard, just have fun with it.")).toBe(true);
-        expect(wrapper.find(Button).text().includes("Skip for now")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Bỏ qua")).toBe(true);
     });
 
     it("should change input and submit", () => {
@@ -57,6 +57,6 @@ describe("ProfileDescriptionModal", () => {
         expect(mockOnChangeText).toHaveBeenCalled();
         expect(mockOnOpenProfileUpdatedModal).toHaveBeenCalled();
         expect(wrapper.find(ProfileDescriptionInput).prop("value")).toBe(mockText);
-        expect(wrapper.find(Button).text().includes("Next")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Tiếp")).toBe(true);
     });
 });

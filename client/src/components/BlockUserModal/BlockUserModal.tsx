@@ -40,7 +40,7 @@ const BlockUserModal: FC<BlockUserModalProps> = (
         >
             <DialogContent>
                 <Typography variant={"h5"} component={"div"}>
-                    {isUserBlocked ? "Unblock" : "Block"} @{username}
+                    {isUserBlocked ? "Bỏ chặn" : "Chặn"} @{username}
                 </Typography>
                 <Typography variant={"subtitle1"} component={"div"} className={classes.text}>
                     {isUserBlocked ? (
@@ -62,7 +62,7 @@ const BlockUserModal: FC<BlockUserModalProps> = (
                     size="large"
                     fullWidth
                 >
-                    {isUserBlocked ? "Unblock" : "Block"}
+                    {isUserBlocked ? "Bỏ chặn" : "Chặn"}
                 </Button>
                 <Button
                     onClick={onClose}
@@ -71,7 +71,7 @@ const BlockUserModal: FC<BlockUserModalProps> = (
                     size="large"
                     fullWidth
                 >
-                    Cancel
+                    Hủy
                 </Button>
             </DialogContent>
         </Dialog>

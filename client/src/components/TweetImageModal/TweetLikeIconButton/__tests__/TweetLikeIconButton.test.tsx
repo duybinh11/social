@@ -35,7 +35,7 @@ describe("TweetLikeIconButton", () => {
             }
         }
         const wrapper = mountWithStore(<TweetLikeIconButton/>, mockState);
-        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Like");
+        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Thích");
         expect(wrapper.find("#likeOutlinedIcon").exists()).toBeTruthy();
     });
 });

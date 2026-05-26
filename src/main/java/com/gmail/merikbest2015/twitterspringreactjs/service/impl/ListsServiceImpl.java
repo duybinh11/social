@@ -57,14 +57,14 @@ public class ListsServiceImpl implements ListsService {
     public BaseListProjection getListById(Long listId) {
         Long userId = authenticationService.getAuthenticatedUserId();
         return listsRepository.getListById(listId, userId)
-                .orElseThrow(() -> new ApiRequestException("List not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy danh sách", HttpStatus.NOT_FOUND));
     }
 
     @Override
     @Transactional
     public ListUserProjection createTweetList(Lists lists) {
         if (lists.getName().length() == 0 || lists.getName().length() > 25) {
-            throw new ApiRequestException("Incorrect list name length", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Độ dài tên danh sách không hợp lệ", HttpStatus.BAD_REQUEST);
         }
         User user = authenticationService.getAuthenticatedUser();
         lists.setListOwner(user);
@@ -89,14 +89,14 @@ public class ListsServiceImpl implements ListsService {
     @Transactional
     public BaseListProjection editTweetList(Lists listInfo) {
         if (listInfo.getName().length() == 0 || listInfo.getName().length() > 25) {
-            throw new ApiRequestException("Incorrect list name length", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Độ dài tên danh sách không hợp lệ", HttpStatus.BAD_REQUEST);
         }
         Lists listFromDb = listsRepository.findById(listInfo.getId())
-                .orElseThrow(() -> new ApiRequestException("List not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy danh sách", HttpStatus.NOT_FOUND));
         Long userId = authenticationService.getAuthenticatedUserId();
 
         if (!listFromDb.getListOwner().getId().equals(userId)) {
-            throw new ApiRequestException("List owner not found", HttpStatus.NOT_FOUND);
+            throw new ApiRequestException("Không tìm thấy chủ danh sách", HttpStatus.NOT_FOUND);
         }
         listFromDb.setName(listInfo.getName());
         listFromDb.setDescription(listInfo.getDescription());
@@ -110,10 +110,10 @@ public class ListsServiceImpl implements ListsService {
     public String deleteList(Long listId) {
         User user = authenticationService.getAuthenticatedUser();
         Lists list = listsRepository.findById(listId)
-                .orElseThrow(() -> new ApiRequestException("List not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy danh sách", HttpStatus.NOT_FOUND));
 
         if (!list.getListOwner().getId().equals(user.getId())) {
-            throw new ApiRequestException("List owner not found", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Không tìm thấy chủ danh sách", HttpStatus.BAD_REQUEST);
         }
         user.getLists().remove(list);
         list.getTweets().removeAll(list.getTweets());
@@ -133,7 +133,7 @@ public class ListsServiceImpl implements ListsService {
     public ListUserProjection followList(Long listId) {
         User user = authenticationService.getAuthenticatedUser();
         Lists list = listsRepository.findByIdAndIsPrivateFalse(listId)
-                .orElseThrow(() -> new ApiRequestException("List not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy danh sách", HttpStatus.NOT_FOUND));
         // TODO if user blocked by other user, can the user follow list???
         Optional<User> listFollower = list.getFollowers().stream()
                 .filter(follower -> follower.getId().equals(user.getId()))
@@ -170,7 +170,7 @@ public class ListsServiceImpl implements ListsService {
             }
             return listsRepository.getUserPinnedListById(list.get().getId());
         } else {
-            throw new ApiRequestException("List not found", HttpStatus.NOT_FOUND);
+            throw new ApiRequestException("Không tìm thấy danh sách", HttpStatus.NOT_FOUND);
         }
     }
 
@@ -192,7 +192,7 @@ public class ListsServiceImpl implements ListsService {
         Long authUserId = authenticationService.getAuthenticatedUserId();
         checkUserIsBlocked(authUserId, listsRequest.getUserId());
         User user = userRepository.getValidUser(listsRequest.getUserId(), authUserId)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         checkUserIsBlocked(listsRequest.getUserId(), authUserId);
         listsRequest.getLists().forEach(listRequest -> {
             checkIsListExist(listRequest.getListId(), authUserId);
@@ -219,10 +219,10 @@ public class ListsServiceImpl implements ListsService {
         Long authUserId = authenticationService.getAuthenticatedUserId();
         checkUserIsBlocked(authUserId, userId);
         User user = userRepository.getValidUser(userId, authUserId)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         checkUserIsBlocked(user.getId(), authUserId);
         Lists list = listsRepository.findById(listId)
-                .orElseThrow(() -> new ApiRequestException("List not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy danh sách", HttpStatus.NOT_FOUND));
         Optional<User> listMember = list.getMembers().stream()
                 .filter(member -> member.getId().equals(user.getId()))
                 .findFirst();
@@ -270,7 +270,7 @@ public class ListsServiceImpl implements ListsService {
     public BaseListProjection getListDetails(Long listId) {
         Long authUserId = authenticationService.getAuthenticatedUserId();
         return listsRepository.getListDetails(listId, authUserId)
-                .orElseThrow(() -> new ApiRequestException("List not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy danh sách", HttpStatus.NOT_FOUND));
     }
 
     @Override
@@ -338,7 +338,7 @@ public class ListsServiceImpl implements ListsService {
         boolean isPrivate = listsRepository.isListPrivate(listId, authUserId);
 
         if (isPrivate && !isMyProfileFollowList(listId)) {
-            throw new ApiRequestException("List not found", HttpStatus.NOT_FOUND);
+            throw new ApiRequestException("Không tìm thấy danh sách", HttpStatus.NOT_FOUND);
         }
     }
 
@@ -346,7 +346,7 @@ public class ListsServiceImpl implements ListsService {
         boolean isListExist = listsRepository.isListExist(listId, listOwnerId);
 
         if (!isListExist) {
-            throw new ApiRequestException("List not found", HttpStatus.NOT_FOUND);
+            throw new ApiRequestException("Không tìm thấy danh sách", HttpStatus.NOT_FOUND);
         }
     }
 }

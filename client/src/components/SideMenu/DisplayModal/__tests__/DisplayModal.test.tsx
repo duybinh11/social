@@ -18,11 +18,11 @@ describe("DisplayModal", () => {
     it("should render correctly", () => {
         const {wrapper} = createDisplayModalWrapper();
 
-        expect(wrapper.text().includes("Customize your view")).toBe(true);
+        expect(wrapper.text().includes("Tùy chỉnh giao diện")).toBe(true);
         expect(wrapper.text().includes("Manage your font size, color, and background.")).toBe(true);
-        expect(wrapper.text().includes("Font size")).toBe(true);
-        expect(wrapper.text().includes("Color")).toBe(true);
-        expect(wrapper.text().includes("Background")).toBe(true);
+        expect(wrapper.text().includes("Cỡ chữ")).toBe(true);
+        expect(wrapper.text().includes("Màu")).toBe(true);
+        expect(wrapper.text().includes("Nền")).toBe(true);
         expect(wrapper.find("#blue").find("#checkIcon").exists()).toBeTruthy();
         expect(wrapper.find(Radio).at(0).prop("checked")).toBe(true);
         expect(wrapper.find(Radio).at(1).prop("checked")).toBe(false);

@@ -18,7 +18,7 @@ const DataSharing: FC = (): ReactElement => {
             <div className={globalClasses.itemInfoWrapper}>
                 <div className={globalClasses.infoItemCheckbox}>
                     <Typography variant={"body1"} component={"span"}>
-                        Allow additional information sharing with business partners
+                        Cho phép chia sẻ thêm thông tin với đối tác kinh doanh
                     </Typography>
                     <Checkbox/>
                 </div>
@@ -28,7 +28,7 @@ const DataSharing: FC = (): ReactElement => {
                         support running Twitter’s business, including making Twitter’s marketing activities on other sites
                         and apps more relevant for you. `}
                     <MuiLink href={DATA_THROUGH_PARTNERSHIPS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -36,4 +36,4 @@ const DataSharing: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(DataSharing)("Data sharing with business partners");
+export default withDocumentTitle(DataSharing)("Chia sẻ dữ liệu với đối tác kinh doanh");

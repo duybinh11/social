@@ -35,27 +35,27 @@ describe("AddTweetForm", () => {
     });
 
     it("should render correctly", () => {
-        const wrapper = mountWithStore(<AddTweetForm title={"What's happening?"} buttonName={"Tweet"}/>, mockRootState);
+        const wrapper = mountWithStore(<AddTweetForm title={"Chuyện gì đang xảy ra?"} buttonName={"Đăng"}/>, mockRootState);
 
         expect(wrapper.find(Avatar).prop("src")).toBe(mockUser.avatar.src);
         expect(wrapper.find(Link).prop("to")).toBe(`${PROFILE}/${mockUser.id}`);
-        expect(wrapper.find(TextareaAutosize).prop("placeholder")).toBe("What's happening?");
-        expect(wrapper.find(Button).at(1).text()).toEqual("Tweet");
+        expect(wrapper.find(TextareaAutosize).prop("placeholder")).toBe("Chuyện gì đang xảy ra?");
+        expect(wrapper.find(Button).at(1).text()).toEqual("Đăng");
     });
 
     it("should render Unsent Tweet correctly and update", (done) => {
         const wrapper = mountWithStore(
             <AddTweetForm
                 unsentTweet={mockUnsentTweet}
-                title={"What's happening?"}
-                buttonName={"Tweet"}
+                title={"Chuyện gì đang xảy ra?"}
+                buttonName={"Đăng"}
             />, mockRootState);
 
         expect(wrapper.find(TextareaAutosize).prop("value")).toBe(mockFullTweet.text);
         expect(wrapper.find("#tweetScheduleDate").text()).toBe("Will send on Sat, Oct 15, 2022 at 09:20 PM");
         expect(wrapper.find("#textCount").text()).toBe("269");
         expect(wrapper.find(IconButton).at(3).prop("disabled")).toBe(true);
-        expect(wrapper.find(HoverAction).at(3).prop("actionText")).toBe("Poll");
+        expect(wrapper.find(HoverAction).at(3).prop("actionText")).toBe("Bình chọn");
 
         mock.onPost(API_USER_UPLOAD_IMAGE).reply(200, mockFullTweet.images[0]);
 
@@ -76,7 +76,7 @@ describe("AddTweetForm", () => {
     });
 
     it("should add Tweet", (done) => {
-        const wrapper = mountWithStore(<AddTweetForm title={"What's happening?"} buttonName={"Tweet"}/>, mockRootState);
+        const wrapper = mountWithStore(<AddTweetForm title={"Chuyện gì đang xảy ra?"} buttonName={"Đăng"}/>, mockRootState);
 
         expect(wrapper.find(TextareaAutosize).prop("value")).toBe("");
         expect(wrapper.find(Popover).at(1).prop("open")).toBe(false);
@@ -110,7 +110,7 @@ describe("AddTweetForm", () => {
     });
 
     it("should add Scheduled Tweet", (done) => {
-        const wrapper = mountWithStore(<AddTweetForm title={"What's happening?"} buttonName={"Tweet"}
+        const wrapper = mountWithStore(<AddTweetForm title={"Chuyện gì đang xảy ra?"} buttonName={"Đăng"}
                                                      onCloseModal={jest.fn()}/>, mockRootState);
 
         expect(wrapper.find(TextareaAutosize).prop("value")).toBe("");
@@ -135,7 +135,7 @@ describe("AddTweetForm", () => {
     });
 
     it("should add Tweet with Poll", (done) => {
-        const wrapper = mountWithStore(<AddTweetForm title={"What's happening?"} buttonName={"Tweet"}/>, mockRootState);
+        const wrapper = mountWithStore(<AddTweetForm title={"Chuyện gì đang xảy ra?"} buttonName={"Đăng"}/>, mockRootState);
 
         expect(wrapper.find(TextareaAutosize).prop("value")).toBe("");
         expect(wrapper.find(Poll).prop("visiblePoll")).toBe(false);
@@ -175,8 +175,8 @@ describe("AddTweetForm", () => {
             <AddTweetForm
                 unsentTweet={mockUnsentTweet}
                 quoteTweet={mockQuoteTweet}
-                title={"What's happening?"}
-                buttonName={"Tweet"}
+                title={"Chuyện gì đang xảy ra?"}
+                buttonName={"Đăng"}
                 onCloseModal={jest.fn()}
             />, mockRootState);
 
@@ -211,8 +211,8 @@ describe("AddTweetForm", () => {
         const wrapper = mountWithStore(
             <AddTweetForm
                 unsentTweet={mockUnsentTweet}
-                title={"What's happening?"}
-                buttonName={"Reply"}
+                title={"Chuyện gì đang xảy ra?"}
+                buttonName={"Trả lời"}
                 addressedUsername={mockMyProfile.username}
                 addressedId={mockMyProfile.id}
                 tweetId={13}
@@ -220,7 +220,7 @@ describe("AddTweetForm", () => {
             />, mockRootState);
 
         expect(wrapper.find(TextareaAutosize).prop("value")).toBe("");
-        expect(wrapper.find(Button).at(1).text()).toBe("Reply");
+        expect(wrapper.find(Button).at(1).text()).toBe("Trả lời");
 
         wrapper.find(TextareaAutosize).find("textarea").at(0).simulate("change", {target: {value: mockTestMessage}});
         mock.onPost(API_USER_UPLOAD_IMAGE).reply(200, mockFullTweet.images[0]);
@@ -247,7 +247,7 @@ describe("AddTweetForm", () => {
     });
 
     it("should open Schedule Modal and close", () => {
-        const wrapper = mountWithStore(<AddTweetForm title={"What's happening?"} buttonName={"Tweet"}/>, mockRootState);
+        const wrapper = mountWithStore(<AddTweetForm title={"Chuyện gì đang xảy ra?"} buttonName={"Đăng"}/>, mockRootState);
 
         expect(wrapper.find(ScheduleModal).prop("visible")).toBe(false);
 
@@ -259,7 +259,7 @@ describe("AddTweetForm", () => {
     });
 
     it("should open Unsent Tweets Modal and close", () => {
-        const wrapper = mountWithStore(<AddTweetForm title={"What's happening?"} buttonName={"Tweet"}/>, mockRootState);
+        const wrapper = mountWithStore(<AddTweetForm title={"Chuyện gì đang xảy ra?"} buttonName={"Đăng"}/>, mockRootState);
 
         expect(wrapper.find(ScheduleModal).prop("visible")).toBe(false);
         expect(wrapper.find(UnsentTweetsModal).prop("visible")).toBe(false);
@@ -278,8 +278,8 @@ describe("AddTweetForm", () => {
         const wrapper = mountWithStore(
             <AddTweetForm
                 unsentTweet={mockUnsentTweet}
-                title={"What's happening?"}
-                buttonName={"Tweet"}
+                title={"Chuyện gì đang xảy ra?"}
+                buttonName={"Đăng"}
             />, mockRootState);
 
         expect(wrapper.find(ScheduleModal).prop("visible")).toBe(false);
@@ -297,8 +297,8 @@ describe("AddTweetForm", () => {
         const wrapper = mountWithStore(
             <AddTweetForm
                 unsentTweet={mockFullTweet}
-                title={"What's happening?"}
-                buttonName={"Tweet"}
+                title={"Chuyện gì đang xảy ra?"}
+                buttonName={"Đăng"}
             />, mockRootState);
 
         wrapper.find(IconButton).at(0).simulate("mouseenter");
@@ -309,13 +309,13 @@ describe("AddTweetForm", () => {
         expect(wrapper.find("img").at(1).prop("src")).toBe(mockFullTweet.images[0].src);
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
         expect(wrapper.find(HoverAction).at(0).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).at(0).prop("actionText")).toBe("Remove");
+        expect(wrapper.find(HoverAction).at(0).prop("actionText")).toBe("Xóa");
 
         wrapper.find(IconButton).at(0).simulate("click");
     });
 
     it("should click open and close Popup", () => {
-        const wrapper = mountWithStore(<AddTweetForm title={"What's happening?"} buttonName={"Tweet"}/>, mockRootState);
+        const wrapper = mountWithStore(<AddTweetForm title={"Chuyện gì đang xảy ra?"} buttonName={"Đăng"}/>, mockRootState);
 
         wrapper.find(EmojiIconButton).find(IconButton).simulate("click");
 
@@ -327,8 +327,8 @@ describe("AddTweetForm", () => {
     it("should click Link and render user profile", () => {
         const history = createMemoryHistory();
         const pushSpy = jest.spyOn(history, "push");
-        const wrapper = mountWithStore(<AddTweetForm title={"What's happening?"}
-                                                     buttonName={"Tweet"}/>, mockRootState, history);
+        const wrapper = mountWithStore(<AddTweetForm title={"Chuyện gì đang xảy ra?"}
+                                                     buttonName={"Đăng"}/>, mockRootState, history);
 
         wrapper.find(Link).simulate("click", {button: 0});
 
@@ -337,7 +337,7 @@ describe("AddTweetForm", () => {
     });
 
     it("should hover Media icon and render Hover Action", () => {
-        testHoverIcon(0, "Media");
+        testHoverIcon(0, "Phương tiện");
     });
 
     it("should hover GIF icon and render Hover Action", () => {
@@ -345,7 +345,7 @@ describe("AddTweetForm", () => {
     });
 
     it("should hover Poll icon and render Hover Action", () => {
-        testHoverIcon(2, "Poll");
+        testHoverIcon(2, "Bình chọn");
     });
 
     it("should hover Emoji icon and render Hover Action", () => {
@@ -358,7 +358,7 @@ describe("AddTweetForm", () => {
 
     const testHoverIcon = (itemIndex: number, actionText: string): void => {
         jest.useFakeTimers();
-        const wrapper = mountWithStore(<AddTweetForm title={"What's happening?"} buttonName={"Tweet"}/>, mockRootState);
+        const wrapper = mountWithStore(<AddTweetForm title={"Chuyện gì đang xảy ra?"} buttonName={"Đăng"}/>, mockRootState);
         wrapper.find(IconButton).at(itemIndex).simulate("mouseenter");
         jest.runAllTimers();
         wrapper.update();

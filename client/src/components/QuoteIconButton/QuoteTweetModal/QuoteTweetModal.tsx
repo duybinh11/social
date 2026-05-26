@@ -30,8 +30,8 @@ const QuoteTweetModal: FC<QuoteTweetModalProps> = ({quoteTweet, visible, onClose
                 <AddTweetForm
                     quoteTweet={quoteTweet}
                     minRows={1}
-                    title={"Add a comment"}
-                    buttonName={"Tweet"}
+                    title={"Thêm bình luận"}
+                    buttonName={"Đăng"}
                     onCloseModal={onClose}
                 />
             </DialogContent>

@@ -32,7 +32,7 @@ const FollowButton: FC<FollowButtonProps> = ({user}): ReactElement => {
             variant="outlined"
             size="small"
         >
-            Follow
+            Theo dõi
         </Button>
     );
 };

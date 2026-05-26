@@ -9,7 +9,7 @@ Object.defineProperty(window.navigator, "userAgent", {
     value : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/600.1.2 (KHTML, like Gecko) Version/13.0.0 Safari/600.1.2"
 });
 
-describe("Sessions", () => {
+describe("Phiên", () => {
     
     it("should render correctly", () => {
         const wrapper = mountWithStore(<Sessions/>, createMockRootState());

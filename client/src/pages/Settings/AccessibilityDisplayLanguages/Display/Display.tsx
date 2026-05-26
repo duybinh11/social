@@ -68,8 +68,7 @@ const Display: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}): 
         <>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"subtitle2"} component={"div"}>
-                    Manage your font size, color, and background. These settings affect all the Twitter accounts on this
-                    browser.
+                    Quản lý cỡ chữ, màu sắc và nền. Cài đặt này áp dụng cho mọi tài khoản Twitter trên trình duyệt này.
                 </Typography>
             </div>
             <div className={globalClasses.itemInfoWrapper}>
@@ -104,7 +103,7 @@ const Display: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}): 
             <Divider/>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h5"} component={"div"}>
-                    Font size
+                    Cỡ chữ
                 </Typography>
                 <div className={classes.stepperWrapper}>
                     <Typography variant={"body1"} id={"xs"} component={"span"} className={classes.tweetText}>
@@ -125,7 +124,7 @@ const Display: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}): 
             <Divider/>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h5"} component={"div"}>
-                    Color
+                    Màu
                 </Typography>
             </div>
             <div className={classes.colorWrapper}>
@@ -139,7 +138,7 @@ const Display: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}): 
             <Divider/>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h5"} component={"div"}>
-                    Background
+                    Nền
                 </Typography>
             </div>
             <div className={classes.backgroundContainer}>
@@ -153,14 +152,14 @@ const Display: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}): 
                                 onChange={handleChangeBackgroundColor}
                                 value={BackgroundTheme.DEFAULT}
                                 name="radio-buttons"
-                                inputProps={{"aria-label": "Default"}}
+                                inputProps={{"aria-label": "Mặc định"}}
                                 icon={<RadioButtonUnchecked color={"primary"}/>}
                                 checkedIcon={<CheckCircle color={"primary"}/>}
                                 size="small"
                             />
                         </div>
                         <Typography variant={"h6"} component={"span"}>
-                            Default
+                            Mặc định
                         </Typography>
                     </div>
                 </div>
@@ -174,14 +173,14 @@ const Display: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}): 
                                 onChange={handleChangeBackgroundColor}
                                 value={BackgroundTheme.DIM}
                                 name="radio-buttons"
-                                inputProps={{"aria-label": "Dim"}}
+                                inputProps={{"aria-label": "Tối"}}
                                 icon={<RadioButtonUnchecked color={"primary"}/>}
                                 checkedIcon={<CheckCircle color={"primary"}/>}
                                 size="small"
                             />
                         </div>
                         <Typography variant={"h6"} component={"span"}>
-                            Dim
+                            Tối
                         </Typography>
                     </div>
                 </div>
@@ -195,14 +194,14 @@ const Display: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}): 
                                 onChange={handleChangeBackgroundColor}
                                 value={BackgroundTheme.LIGHTS_OUT}
                                 name="radio-buttons"
-                                inputProps={{"aria-label": "Lights-out"}}
+                                inputProps={{"aria-label": "Tắt đèn"}}
                                 icon={<RadioButtonUnchecked color={"primary"}/>}
                                 checkedIcon={<CheckCircle color={"primary"}/>}
                                 size="small"
                             />
                         </div>
                         <Typography variant={"h6"} component={"span"}>
-                            Lights out
+                            Tắt đèn
                         </Typography>
                     </div>
                 </div>
@@ -211,4 +210,4 @@ const Display: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}): 
     );
 };
 
-export default withDocumentTitle(Display)("Display");
+export default withDocumentTitle(Display)("Hiển thị");

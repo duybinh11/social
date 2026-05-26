@@ -10,7 +10,7 @@ describe("OffTwitterActivity", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<OffTwitterActivity/>, createMockRootState());
         expect(wrapper.text().includes("Manage how Twitter uses your online activity outside of Twitter")).toBe(true);
-        expect(wrapper.text().includes("Allow use of where you see Twitter content across the Web")).toBe(true);
+        expect(wrapper.text().includes("Cho phép sử dụng nơi bạn xem nội dung Twitter trên web")).toBe(true);
         expect(wrapper.text().includes("Personalize based on your inferred identity")).toBe(true);
         expect(wrapper.find(MuiLink).at(0).prop("href")).toBe(TAILORED_SUGGESTIONS);
         expect(wrapper.find(MuiLink).at(1).prop("href")).toBe(ACROSS_YOUR_DEVICES);

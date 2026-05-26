@@ -4,16 +4,16 @@ import Account from "../Account";
 import {createMockRootState, mountWithStore, testClickOnLink} from "../../../../util/testHelper";
 import {SETTINGS_DEACTIVATE, SETTINGS_INFO, SETTINGS_PASSWORD, SETTINGS_TEAMS} from "../../../../util/pathConstants";
 
-describe("Account", () => {
+describe("Tài khoản", () => {
 
     it("should render correctly", () => {
         const wrapper = mountWithStore(<Account/>, createMockRootState());
 
-        expect(wrapper.text().includes("Account information")).toBe(true);
-        expect(wrapper.text().includes("Change your password")).toBe(true);
-        expect(wrapper.text().includes("Download an archive of your data")).toBe(true);
-        expect(wrapper.text().includes("TweetDeck Teams")).toBe(true);
-        expect(wrapper.text().includes("Deactivate your account")).toBe(true);
+        expect(wrapper.text().includes("Thông tin tài khoản")).toBe(true);
+        expect(wrapper.text().includes("Đổi mật khẩu")).toBe(true);
+        expect(wrapper.text().includes("Tải bản lưu dữ liệu của bạn")).toBe(true);
+        expect(wrapper.text().includes("Nhóm TweetDeck")).toBe(true);
+        expect(wrapper.text().includes("Vô hiệu hóa tài khoản")).toBe(true);
     });
     
     it("should link to Account information", () => {

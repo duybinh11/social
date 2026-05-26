@@ -50,7 +50,7 @@ const UnfollowModal: FC<UnfollowModalProps> = (
                             variant="contained"
                             size="large"
                         >
-                            Cancel
+                            Hủy
                         </Button>
                         <Button
                             onClick={handleUnfollow}
@@ -58,7 +58,7 @@ const UnfollowModal: FC<UnfollowModalProps> = (
                             color="primary"
                             size="large"
                         >
-                            Unfollow
+                            Bỏ theo dõi
                         </Button>
                     </div>
                 </div>

@@ -47,7 +47,7 @@ const Suggested = (): ReactElement => {
         <>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h5"} component={"div"}>
-                    Categories
+                    Danh mục
                 </Typography>
             </div>
             <div className={globalClasses.itemInfoWrapper}>
@@ -63,7 +63,7 @@ const Suggested = (): ReactElement => {
                         <SuggestedButton text={"Entertainment"}/>
                         <SuggestedButton text={"Music"}/>
                         <SuggestedButton text={"Gaming"}/>
-                        <SuggestedButton text={"Careers"}/>
+                        <SuggestedButton text={"Tuyển dụng"}/>
                         <SuggestedButton text={"Sports"}/>
                     </>
                 )}
@@ -75,7 +75,7 @@ const Suggested = (): ReactElement => {
                     component={"div"}
                     onClick={onClickShowMoreCategories}
                 >
-                    Show more
+                    Xem thêm
                 </Typography>
             )}
             <Divider/>
@@ -127,7 +127,7 @@ const Suggested = (): ReactElement => {
                 )}
             </div>
             <Typography variant={"body1"} component={"div"} className={topicClasses.moreTopics}>
-                View all
+                Xem tất cả
             </Typography>
             <Divider/>
             <div className={globalClasses.itemInfoWrapper}>

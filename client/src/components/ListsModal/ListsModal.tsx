@@ -70,7 +70,7 @@ const ListsModal: FC<ListsModalProps> = ({userId, visible, onClose}): ReactEleme
                     <CloseButton onClose={onClose}/>
                     Pick a List
                     <Button type="submit" variant="contained" color="primary" size="small">
-                        Save
+                        Lưu
                     </Button>
                 </DialogTitle>
                 <DialogContent className={classes.content}>

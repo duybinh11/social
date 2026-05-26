@@ -38,7 +38,7 @@ const QuoteTweets: FC = (): ReactElement => {
             <Paper className={globalClasses.pageContainer} variant="outlined">
                 <PageHeaderWrapper backButton>
                     <Typography variant={"h5"} component={"div"}>
-                        Quote Tweets
+                        Tweet trích dẫn
                     </Typography>
                 </PageHeaderWrapper>
                 <div className={globalClasses.contentWrapper}>
@@ -50,4 +50,4 @@ const QuoteTweets: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(QuoteTweets)("Quote Tweets");
+export default withDocumentTitle(QuoteTweets)("Tweet trích dẫn");

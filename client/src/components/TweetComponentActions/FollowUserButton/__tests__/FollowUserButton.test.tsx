@@ -12,11 +12,11 @@ describe("FollowUserButton", () => {
     });
 
     it("should click follow", () => {
-        testClickButton(false, "#followIcon", "Follow", UserActionsType.FOLLOW_USER);
+        testClickButton(false, "#followIcon", "Theo dõi", UserActionsType.FOLLOW_USER);
     });
 
     it("should click unfollow", () => {
-        testClickButton(true, "#unfollowIcon", "Unfollow", UserActionsType.UNFOLLOW_USER);
+        testClickButton(true, "#unfollowIcon", "Bỏ theo dõi", UserActionsType.UNFOLLOW_USER);
     });
 
     const testClickButton = (isFollower: boolean, iconId: string, text: string, actionType: UserActionsType): void => {

@@ -77,6 +77,6 @@ describe("TopTweetActions", () => {
         wrapper.update();
 
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
-        expect(wrapper.find(HoverAction).at(0).prop("actionText")).toBe("Top Tweets");
+        expect(wrapper.find(HoverAction).at(0).prop("actionText")).toBe("Tweet hàng đầu");
     });
 });

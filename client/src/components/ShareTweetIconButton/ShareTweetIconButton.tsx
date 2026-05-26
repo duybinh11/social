@@ -64,7 +64,7 @@ const ShareTweetIconButton: FC<ShareTweetProps> = memo(({tweetId, isFullTweet}):
         <ClickAwayListener onClickAway={handleClickAway}>
             <div className={classes.root}>
                 <ActionIconButton
-                    actionText={"Share"}
+                    actionText={"Chia sẻ"}
                     onClick={handleClick}
                     size={isFullTweet ? "medium" : "small"}
                     icon={ShareIcon}

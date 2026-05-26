@@ -41,7 +41,7 @@ const TweetReplyIconButton = memo((): ReactElement => {
     return (
         <div className={classes.tweetIcon}>
             <ActionIconButton
-                actionText={"Reply"}
+                actionText={"Trả lời"}
                 icon={ReplyIcon}
                 onClick={onOpenReplyModalWindow}
                 disabled={isUserCanReply}

@@ -36,7 +36,7 @@ const UserUnmuteMessage = memo((): ReactElement => {
                             variant={"subtitle1"}
                             component={"span"}
                         >
-                            Unmute
+                            Bật tiếng
                         </Typography>
                     </Typography>
                 )

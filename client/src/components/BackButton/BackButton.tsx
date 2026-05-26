@@ -15,7 +15,7 @@ const BackButton = (): ReactElement => {
 
     return (
         <div className={classes.container}>
-            <ActionIconButton actionText={"Back"} onClick={handleClickButton} icon={ArrowIcon}/>
+            <ActionIconButton actionText={"Quay lại"} onClick={handleClickButton} icon={ArrowIcon}/>
         </div>
     );
 };

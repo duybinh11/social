@@ -13,12 +13,12 @@ const UserPrivateProfileMessage = memo((): ReactElement => {
     return (
         <div className={classes.privateProfileInfo}>
             <Typography variant={"h4"} component={"div"}>
-                These Tweets are protected
+                Các tweet này được bảo vệ
             </Typography>
             <Typography variant={"subtitle1"} component={"div"}>
                 {`Only approved followers can see @${username}’s Tweets. To request access, click Follow. `}
                 <MuiLink href={PUBLIC_AND_PROTECTED_TWEETS} variant="subtitle1" target="_blank" rel="noopener">
-                    Learn more
+                    Tìm hiểu thêm
                 </MuiLink>
             </Typography>
         </div>

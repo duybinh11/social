@@ -40,7 +40,7 @@ const DeleteListModal = (): ReactElement => {
                 variant={"body1"}
                 component={"div"}
             >
-                Delete List
+                Xóa danh sách
             </Typography>
             <Dialog
                 open={visibleDeleteListModal}
@@ -62,7 +62,7 @@ const DeleteListModal = (): ReactElement => {
                                 variant="contained"
                                 size="large"
                             >
-                                Cancel
+                                Hủy
                             </Button>
                             <Button
                                 className={classes.modalDeleteButton}
@@ -70,7 +70,7 @@ const DeleteListModal = (): ReactElement => {
                                 variant="contained"
                                 size="large"
                             >
-                                Delete
+                                Xóa
                             </Button>
                         </div>
                     </div>

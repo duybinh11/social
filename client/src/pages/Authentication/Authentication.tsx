@@ -76,10 +76,10 @@ const Authentication: FC = (): ReactElement => {
                 <div className={classes.rightSideWrapper}>
                     <TwitterIcon color="primary" className={classes.rightSideTwitterIcon}/>
                     <Typography className={classes.rightSideTittle} variant="h4">
-                        See what's happening in the world right now
+                        Xem chuyện gì đang xảy ra trên thế giới
                     </Typography>
                     <Typography>
-                        <b>Join Twitter today!</b>
+                        <b>Tham gia Twitter ngay hôm nay!</b>
                     </Typography>
                     <br/>
                     <Button
@@ -90,7 +90,7 @@ const Authentication: FC = (): ReactElement => {
                         size="large"
                         fullWidth
                     >
-                        Sign up
+                        Đăng ký
                     </Button>
                     <Button
                         className={classes.signinButton}
@@ -100,7 +100,7 @@ const Authentication: FC = (): ReactElement => {
                         size="large"
                         fullWidth
                     >
-                        Log in
+                        Đăng nhập
                     </Button>
                     <RegistrationModal
                         open={visibleRegistrationModal}

@@ -97,7 +97,7 @@ public class TopicServiceImpl implements TopicService {
         boolean isTopicExist = topicRepository.isTopicExist(topicId);
 
         if (!isTopicExist) {
-            throw new ApiRequestException("Topic not found", HttpStatus.NOT_FOUND);
+            throw new ApiRequestException("Không tìm thấy chủ đề", HttpStatus.NOT_FOUND);
         }
     }
 

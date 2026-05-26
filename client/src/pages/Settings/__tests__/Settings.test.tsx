@@ -122,58 +122,58 @@ import ContentPreferences from "../Notifications/ContentPreferences/ContentPrefe
 import PersonalizationAndData from "../Notifications/PersonalizationAndData/PersonalizationAndData";
 import {LoadingStatus} from "../../../store/types/common";
 
-describe("Settings", () => {
+describe("Cài đặt", () => {
 
     it("should navigate to Your account", () => {
-        testNavigation(SETTINGS, "Your account", 0);
+        testNavigation(SETTINGS, "Tài khoản của bạn", 0);
     });
 
     it("should navigate to Security and account access", () => {
-        testNavigation(SETTINGS_SECURITY_AND_ACCOUNT_ACCESS, "Security and account access", 1);
+        testNavigation(SETTINGS_SECURITY_AND_ACCOUNT_ACCESS, "Bảo mật và quyền truy cập tài khoản", 1);
     });
 
     it("should navigate to Privacy and safety", () => {
-        testNavigation(SETTINGS_PRIVACY_AND_SAFETY, "Privacy and safety", 2);
+        testNavigation(SETTINGS_PRIVACY_AND_SAFETY, "Quyền riêng tư và an toàn", 2);
     });
 
     it("should navigate to Notifications", () => {
-        testNavigation(SETTINGS_NOTIFICATION, "Notifications", 3);
+        testNavigation(SETTINGS_NOTIFICATION, "Thông báo", 3);
     });
 
     it("should navigate to Accessibility, display, and languages", () => {
-        testNavigation(SETTINGS_ACCESSIBILITY_DISPLAY_AND_LANGUAGES, "Accessibility, display, and languages", 4);
+        testNavigation(SETTINGS_ACCESSIBILITY_DISPLAY_AND_LANGUAGES, "Trợ năng, hiển thị và ngôn ngữ", 4);
     });
 
     it("should navigate to Additional resources", () => {
-        testNavigation(SETTINGS_ABOUT, "Additional resources", 5);
+        testNavigation(SETTINGS_ABOUT, "Tài nguyên bổ sung", 5);
     });
 
     it("should navigate back to Your account", () => {
-        testNavigation(SETTINGS_INFO, "Your account", 0);
+        testNavigation(SETTINGS_INFO, "Tài khoản của bạn", 0);
     });
 
     it("should click and navigate to Your account", () => {
-        testClickNavigation("Your account", 0);
+        testClickNavigation("Tài khoản của bạn", 0);
     });
 
     it("should click and navigate to Security and account access", () => {
-        testClickNavigation("Security and account access", 1);
+        testClickNavigation("Bảo mật và quyền truy cập tài khoản", 1);
     });
 
     it("should click and navigate to Privacy and safety", () => {
-        testClickNavigation("Privacy and safety", 2);
+        testClickNavigation("Quyền riêng tư và an toàn", 2);
     });
 
     it("should click and navigate to Notifications", () => {
-        testClickNavigation("Notifications", 3);
+        testClickNavigation("Thông báo", 3);
     });
 
     it("should click and navigate to Accessibility, display, and languages", () => {
-        testClickNavigation("Accessibility, display, and languages", 4);
+        testClickNavigation("Trợ năng, hiển thị và ngôn ngữ", 4);
     });
     
     it("should click and navigate to Additional resources", () => {
-        testClickNavigation("Additional resources", 5);
+        testClickNavigation("Tài nguyên bổ sung", 5);
     });
 
     it("should route correctly", () => {

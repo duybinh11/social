@@ -11,7 +11,7 @@ describe("DataSharing", () => {
         const wrapper = mountWithStore(<DataSharing/>, createMockRootState());
         
         expect(wrapper.text().includes("Allow sharing of additional information with Twitter’s business partners.")).toBe(true);
-        expect(wrapper.text().includes("Allow additional information sharing with business partners")).toBe(true);
+        expect(wrapper.text().includes("Cho phép chia sẻ thêm thông tin với đối tác kinh doanh")).toBe(true);
         expect(wrapper.find(MuiLink).prop("href")).toBe(DATA_THROUGH_PARTNERSHIPS);
     });
 });

@@ -12,7 +12,7 @@ const TwoFactorAuthentication: FC = (): ReactElement => {
         <>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h5"} component={"div"}>
-                    Two-factor authentication
+                    Xác thực hai yếu tố
                 </Typography>
             </div>
             <div className={globalClasses.itemInfoWrapper}>
@@ -30,7 +30,7 @@ const TwoFactorAuthentication: FC = (): ReactElement => {
             <div className={globalClasses.itemInfoWrapper}>
                 <div className={globalClasses.infoItemCheckbox}>
                     <Typography variant={"body1"} component={"span"}>
-                        Authentication app
+                        Ứng dụng xác thực
                     </Typography>
                     <Checkbox/>
                 </div>
@@ -50,7 +50,7 @@ const TwoFactorAuthentication: FC = (): ReactElement => {
                     {`Use a security key that inserts into your computer or syncs to your mobile device when you 
                     log in to Twitter. You’ll need to use a supported mobile device or web browser. `}
                     <MuiLink href={TWO_FACTOR_AUTHENTICATION} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -58,4 +58,4 @@ const TwoFactorAuthentication: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(TwoFactorAuthentication)("Two-factor authentication");
+export default withDocumentTitle(TwoFactorAuthentication)("Xác thực hai yếu tố");

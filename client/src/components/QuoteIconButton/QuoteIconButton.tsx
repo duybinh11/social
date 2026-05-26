@@ -68,7 +68,7 @@ const QuoteIconButton: FC<QuoteTweetProps> = memo((
         <ClickAwayListener onClickAway={handleClickAway}>
             <div className={classes.footerIcon}>
                 <ActionIconButton
-                    actionText={isTweetRetweeted ? "Undo Retweet" : "Retweet"}
+                    actionText={isTweetRetweeted ? "Hoàn tác đăng lại" : "Đăng lại"}
                     icon={isTweetRetweeted ? RetweetIcon : RetweetOutlinedIcon}
                     onClick={handleClick}
                 />
@@ -79,13 +79,13 @@ const QuoteIconButton: FC<QuoteTweetProps> = memo((
                             <ListItem id={"clickRetweet"} onClick={onClickRetweet}>
                                 <>{RetweetOutlinedIcon}</>
                                 <Typography variant={"body1"} component={"span"}>
-                                    {isTweetRetweeted ? ("Undo Retweet") : ("Retweet")}
+                                    {isTweetRetweeted ? ("Hoàn tác đăng lại") : ("Đăng lại")}
                                 </Typography>
                             </ListItem>
                             <ListItem id={"clickOpenAddTweet"} onClick={handleClickOpenAddTweet}>
                                 <>{QuoteTweetIcon}</>
                                 <Typography variant={"body1"} component={"span"}>
-                                    Quote Tweet
+                                    Tweet trích dẫn
                                 </Typography>
                             </ListItem>
                         </List>

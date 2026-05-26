@@ -20,8 +20,8 @@ describe("AudienceAndTagging", () => {
 
         expect(wrapper.text().includes("Manage what information you allow other people on Twitter to see.")).toBe(true);
         expect(wrapper.text().includes("Protect your Tweets")).toBe(true);
-        expect(wrapper.text().includes("Photo tagging")).toBe(true);
-        expect(wrapper.text().includes("Anyone can tag you")).toBe(true);
+        expect(wrapper.text().includes("Gắn thẻ ảnh")).toBe(true);
+        expect(wrapper.text().includes("Mọi người có thể gắn thẻ bạn")).toBe(true);
         expect(wrapper.find(Checkbox).prop("checked")).toBe(false);
     });
 

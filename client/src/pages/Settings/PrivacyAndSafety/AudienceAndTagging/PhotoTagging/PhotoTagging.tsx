@@ -19,7 +19,7 @@ const PhotoTagging: FC = (): ReactElement => {
         <>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h6"} component={"div"} className={classes.title}>
-                    Photo tagging
+                    Gắn thẻ ảnh
                     <span className={classes.switch}>
                         <Switch defaultChecked/>
                     </span>
@@ -32,7 +32,7 @@ const PhotoTagging: FC = (): ReactElement => {
             <div className={globalClasses.itemInfoWrapper}>
                 <div className={globalClasses.infoItemRadioCheckbox}>
                     <Typography variant={"body1"} component={"span"}>
-                        Anyone can tag you
+                        Mọi người có thể gắn thẻ bạn
                     </Typography>
                     <Radio
                         checked={selectedValue === "Anyone"}
@@ -65,4 +65,4 @@ const PhotoTagging: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(PhotoTagging)("Photo tagging");
+export default withDocumentTitle(PhotoTagging)("Gắn thẻ ảnh");

@@ -9,14 +9,14 @@ import javax.validation.constraints.Size;
 @Data
 public class PasswordResetRequest {
 
-    @Email(regexp = ".+@.+\\..+", message = "Please enter a valid email address.")
+    @Email(regexp = ".+@.+\\..+", message = "Vui lòng nhập địa chỉ email hợp lệ.")
     private String email;
 
-    @NotBlank(message = "Password cannot be empty.")
-    @Size(min = 8, message = "Your password needs to be at least 8 characters. Please enter a longer one.")
+    @NotBlank(message = "Mật khẩu không được để trống.")
+    @Size(min = 8, message = "Mật khẩu cần có ít nhất 8 ký tự. Vui lòng nhập dài hơn.")
     private String password;
 
-    @NotBlank(message = "Password cannot be empty.")
-    @Size(min = 8, message = "Your password needs to be at least 8 characters. Please enter a longer one.")
+    @NotBlank(message = "Mật khẩu không được để trống.")
+    @Size(min = 8, message = "Mật khẩu cần có ít nhất 8 ký tự. Vui lòng nhập dài hơn.")
     private String password2;
 }

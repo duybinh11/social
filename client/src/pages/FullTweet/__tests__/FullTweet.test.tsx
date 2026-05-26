@@ -86,7 +86,7 @@ describe("FullTweet", () => {
         expect(wrapper.find(AddTweetForm).prop("tweetId")).toBe(9);
         expect(wrapper.find(AddTweetForm).prop("addressedUsername")).toBe("JavaCat");
         expect(wrapper.find(AddTweetForm).prop("addressedId")).toBe(4);
-        expect(wrapper.find(AddTweetForm).prop("title")).toBe("Tweet your reply");
+        expect(wrapper.find(AddTweetForm).prop("title")).toBe("Đăng trả lời");
         expect(mockDispatchFn).nthCalledWith(2, {payload: 9, type: TweetActionType.FETCH_REPLIES});
     });
 
@@ -103,7 +103,7 @@ describe("FullTweet", () => {
         });
 
         expect(wrapper.text().includes("Hmm...this page doesn’t exist.")).toBe(true);
-        expect(wrapper.text().includes("Try searching for something else.")).toBe(true);
+        expect(wrapper.text().includes("Hãy thử tìm nội dung khác.")).toBe(true);
     });
 
     it("should click retweet on FullTweet", () => {
@@ -176,7 +176,7 @@ describe("FullTweet", () => {
 
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
         expect(wrapper.find(HoverAction).at(2).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).at(2).prop("actionText")).toBe("Reply");
+        expect(wrapper.find(HoverAction).at(2).prop("actionText")).toBe("Trả lời");
     });
 
     it("should hover retweet icon and render Hover Action", () => {
@@ -188,7 +188,7 @@ describe("FullTweet", () => {
 
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
         expect(wrapper.find(HoverAction).at(3).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).at(3).prop("actionText")).toBe("Undo Retweet");
+        expect(wrapper.find(HoverAction).at(3).prop("actionText")).toBe("Hoàn tác đăng lại");
     });
 
     it("should hover like icon and render Hover Action", () => {
@@ -230,7 +230,7 @@ describe("FullTweet", () => {
         expect(wrapper.find(TweetActionResult).at(0).prop("text")).toBe("You Retweeted");
         expect(wrapper.find(TweetActionResult).at(1).exists()).toBeTruthy();
         expect(wrapper.find(TweetActionResult).at(1).prop("action")).toBe(TweetActionResults.PIN);
-        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Pinned Tweet");
+        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Tweet đã ghim");
         expect(wrapper.find(SmallLinkPreview).at(0).exists()).toBeTruthy();
     });
 

@@ -12,7 +12,7 @@ const ChatUserBlocked = (): ReactElement => {
             You can no longer send messages to this person.
             {" "}
             <MuiLink href={DIRECT_MESSAGES} variant="subtitle2" target="_blank" rel="noopener">
-                Learn more
+                Tìm hiểu thêm
             </MuiLink>
         </Typography>
     );

@@ -37,8 +37,8 @@ const AddTweetModal: FC<AddTweetModalProps> = ({title, visible, onClose}): React
                 <AddTweetForm
                     maxRows={6}
                     minRows={6}
-                    title={"What's happening?"}
-                    buttonName={"Tweet"}/>
+                    title={"Chuyện gì đang xảy ra?"}
+                    buttonName={"Đăng"}/>
             </DialogContent>
         </Dialog>
     );

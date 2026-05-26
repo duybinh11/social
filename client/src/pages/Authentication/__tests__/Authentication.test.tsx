@@ -18,8 +18,8 @@ describe("Authentication", () => {
 
     it("should render correctly", () => {
         const wrapper = mountWithStore(<Authentication/>);
-        expect(wrapper.find(Button).at(0).text()).toEqual("Sign up");
-        expect(wrapper.find(Button).at(1).text()).toEqual("Log in");
+        expect(wrapper.find(Button).at(0).text()).toEqual("Đăng ký");
+        expect(wrapper.find(Button).at(1).text()).toEqual("Đăng nhập");
     });
 
     it("should render RegistrationModal on click Sign Up button", () => {
@@ -27,7 +27,7 @@ describe("Authentication", () => {
         wrapper.find(Button).at(0).simulate("click");
         const registrationModal = wrapper.find(RegistrationModal);
         expect(registrationModal.exists()).toBe(true);
-        expect(registrationModal.text().includes("Create your account")).toBe(true);
+        expect(registrationModal.text().includes("Tạo tài khoản của bạn")).toBe(true);
     });
 
     it("should route to Login page on click Log In button", () => {

@@ -15,7 +15,7 @@ const PopperFooterFollowing = memo((): ReactElement => {
     return (
         <Link to={`${USER}/${userId}/following`} className={classes.followLink}>
             <Typography variant={"h6"} component={"span"}>{followersSize}</Typography>
-            <Typography variant={"subtitle1"} component={"span"}>Following</Typography>
+            <Typography variant={"subtitle1"} component={"span"}>Đang theo dõi</Typography>
         </Link>
     );
 });

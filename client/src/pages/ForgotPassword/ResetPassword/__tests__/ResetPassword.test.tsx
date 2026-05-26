@@ -32,7 +32,7 @@ describe("ResetPassword", () => {
         expect(wrapper.text().includes("Enter your new password")).toBe(true);
         expect(wrapper.text().includes("Enter your password one more time")).toBe(true);
         expect(wrapper.text().includes("Resetting your password will log you out of all your active Twitter sessions.")).toBe(true);
-        expect(wrapper.find(Button).at(0).text()).toEqual("Reset password");
+        expect(wrapper.find(Button).at(0).text()).toEqual("Đặt lại mật khẩu");
     });
 
     it("should render password errors", (done) => {
@@ -47,7 +47,7 @@ describe("ResetPassword", () => {
             wrapper.update();
             done();
             expect(wrapper.text().includes("Too short")).toBe(true);
-            expect(wrapper.text().includes("Passwords do not match.")).toBe(true);
+            expect(wrapper.text().includes("Mật khẩu không khớp.")).toBe(true);
         });
     });
 

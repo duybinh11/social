@@ -74,7 +74,7 @@ describe("UserPageActions", () => {
         jest.runAllTimers();
         wrapper.update();
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
-        expect(wrapper.find(HoverAction).prop("actionText")).toBe("More");
+        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Thêm");
     });
 
     it("should redirect to Topics page", () => {

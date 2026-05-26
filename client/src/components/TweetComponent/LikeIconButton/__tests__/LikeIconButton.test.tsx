@@ -23,7 +23,7 @@ describe("LikeIconButton", () => {
                 isTweetLiked={false}
                 likedTweetsCount={1}
             />, mockRootState);
-        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Like");
+        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Thích");
         expect(wrapper.find(ActionIconButton).prop("icon")).toBe(LikeOutlinedIcon);
         expect(wrapper.find("#likedTweetsCount").exists()).toBeTruthy();
         wrapper.find(ActionIconButton).find(IconButton).simulate("click");

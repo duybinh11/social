@@ -124,7 +124,7 @@ const SendDirectTweetModal: FC<SendDirectTweetModalProps> = (
             <DialogContent id="scrollableDiv" className={classes.content}>
                 <MessagesModalInput
                     fullWidth
-                    placeholder="Search people"
+                    placeholder="Tìm người"
                     variant="outlined"
                     onChange={(event) => onSearch(event.target.value)}
                     value={searchText}

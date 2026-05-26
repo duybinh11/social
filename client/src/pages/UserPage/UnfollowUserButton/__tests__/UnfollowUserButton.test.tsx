@@ -33,9 +33,9 @@ describe("UnfollowUserButton", () => {
     it("should hover UnfollowUserButton", () => {
         const wrapper = mountWithStore(<UnfollowUserButton/>, mockRootState);
         wrapper.find(Button).simulate("mouseover");
-        expect(wrapper.find(Button).text().includes("Unfollow")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Bỏ theo dõi")).toBe(true);
         wrapper.find(Button).simulate("mouseleave");
-        expect(wrapper.find(Button).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang theo dõi")).toBe(true);
     });
 });
 

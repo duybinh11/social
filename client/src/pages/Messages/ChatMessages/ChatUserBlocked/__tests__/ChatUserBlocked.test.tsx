@@ -7,6 +7,6 @@ describe("ChatUserBlocked", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<ChatUserBlocked/>);
         expect(wrapper.text().includes("You can no longer send messages to this person.")).toBe(true);
-        expect(wrapper.text().includes("Learn more")).toBe(true);
+        expect(wrapper.text().includes("Tìm hiểu thêm")).toBe(true);
     });
 });

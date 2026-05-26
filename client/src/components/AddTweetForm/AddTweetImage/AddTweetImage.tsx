@@ -25,7 +25,7 @@ const AddTweetImage: FC<AddTweetImageProps> = memo(({images, removeImage}): Reac
             <img src={images[0].src} alt={images[0].src}/>
             <div className={classes.imageRemove}>
                 <ActionIconButton
-                    actionText={"Remove"}
+                    actionText={"Xóa"}
                     icon={CloseIcon}
                     onClick={removeImage}
                     size={"medium"}

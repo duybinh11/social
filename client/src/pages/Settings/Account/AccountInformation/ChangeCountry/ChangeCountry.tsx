@@ -40,7 +40,7 @@ const ChangeCountry: FC = (): ReactElement => {
             <div className={classnames(classes.selectWrapper, globalClasses.itemInfoWrapper)}>
                 <FormControl variant="filled">
                     <InputLabel htmlFor="select-country">
-                        Country
+                        Quốc gia
                     </InputLabel>
                     <FilledSelect
                         variant="filled"
@@ -49,7 +49,7 @@ const ChangeCountry: FC = (): ReactElement => {
                         native
                         value={country}
                         onChange={onChangeCountry}
-                        label="Country"
+                        label="Quốc gia"
                         fullWidth
                     >
                         <option aria-label="None"/>
@@ -60,7 +60,7 @@ const ChangeCountry: FC = (): ReactElement => {
                     {"This is the primary country associated with your account. Your country helps us to customize " +
                     "your Twitter experience. "}
                     <MuiLink href={HOW_TO_CHANGE_COUNTRY_SETTINGS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -68,7 +68,7 @@ const ChangeCountry: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(ChangeCountry)("Change country");
+export default withDocumentTitle(ChangeCountry)("Đổi quốc gia");
 
 const countries = (): JSX.Element => {
     return (

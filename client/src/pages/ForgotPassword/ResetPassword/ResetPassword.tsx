@@ -21,7 +21,7 @@ interface ResetPasswordFormProps {
 
 const ResetPasswordFormSchema = yup.object().shape({
     password: yup.string().min(6, "Too short").required(),
-    password2: yup.string().oneOf([yup.ref("password")], "Passwords do not match."),
+    password2: yup.string().oneOf([yup.ref("password")], "Mật khẩu không khớp."),
 });
 
 const ResetPassword: FC = (): ReactElement => {
@@ -61,7 +61,7 @@ const ResetPassword: FC = (): ReactElement => {
             <Typography variant={"body1"} component={"div"} className={classes.resetPasswordText}>
                 Strong passwords include numbers, letters, and punctuation marks.
                 <a href={ACCOUNT_SECURITY_TIPS} target={"_blank"}>
-                    Learn more
+                    Tìm hiểu thêm
                 </a>
             </Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -137,7 +137,7 @@ const ResetPassword: FC = (): ReactElement => {
                     color="primary"
                     size="small"
                 >
-                    Reset password
+                    Đặt lại mật khẩu
                 </Button>
             </form>
         </>

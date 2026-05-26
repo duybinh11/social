@@ -48,7 +48,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public User getAuthenticatedUser() {
         Principal principal = SecurityContextHolder.getContext().getAuthentication();
         return userRepository.findByEmail(principal.getName())
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
     }
 
     @Override
@@ -56,14 +56,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
             AuthUserProjection user = userRepository.findAuthUserByEmail(email)
-                    .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                    .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
             String token = jwtProvider.createToken(email, "USER");
             Map<String, Object> response = new HashMap<>();
             response.put("user", user);
             response.put("token", token);
             return response;
         } catch (AuthenticationException e) {
-            throw new ApiRequestException("Incorrect password or email", HttpStatus.FORBIDDEN);
+            throw new ApiRequestException("Mật khẩu hoặc email không đúng", HttpStatus.FORBIDDEN);
         }
     }
 
@@ -82,8 +82,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             user.setMediaTweetCount(0L);
             user.setLikeCount(0L);
             user.setNotificationsCount(0L);
+            user.setLanguage("Tiếng Việt");
             userRepository.save(user);
-            return "User data checked.";
+            return "Đã kiểm tra dữ liệu người dùng.";
         }
 
         if (!existingUser.get().isActive()) {
@@ -93,19 +94,19 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             existingUser.get().setRegistrationDate(LocalDateTime.now().withNano(0));
             existingUser.get().setRole("USER");
             userRepository.save(existingUser.get());
-            return "User data checked.";
+            return "Đã kiểm tra dữ liệu người dùng.";
         }
-        throw new ApiRequestException("Email has already been taken.", HttpStatus.FORBIDDEN);
+        throw new ApiRequestException("Email đã được sử dụng.", HttpStatus.FORBIDDEN);
     }
 
     @Override
     @Transactional
     public String sendRegistrationCode(String email) {
         UserCommonProjection user = userRepository.findCommonUserByEmail(email)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         userRepository.updateActivationCode(UUID.randomUUID().toString().substring(0, 7), user.getId());
 
-        String subject = "Registration code";
+        String subject = "Mã đăng ký";
         String template = "registration-template";
         Map<String, Object> attributes = new HashMap<>();
         attributes.put("fullName", user.getFullName());
@@ -120,7 +121,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Transactional
     public String activateUser(String code) {
         UserCommonProjection user = userRepository.findCommonUserByActivationCode(code)
-                .orElseThrow(() -> new ApiRequestException("Activation code not found.", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy mã kích hoạt.", HttpStatus.NOT_FOUND));
         userRepository.updateActivationCode(null, user.getId());
         return "User successfully activated.";
     }
@@ -129,10 +130,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Transactional
     public Map<String, Object> endRegistration(String email, String password) {
         if (password.length() < 8) {
-            throw new ApiRequestException("Your password needs to be at least 8 characters", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Mật khẩu cần có ít nhất 8 ký tự", HttpStatus.BAD_REQUEST);
         }
         AuthUserProjection user = userRepository.findAuthUserByEmail(email)
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         userRepository.updatePassword(passwordEncoder.encode(password), user.getId());
         userRepository.updateActiveUserProfile(user.getId());
         String token = jwtProvider.createToken(email, "USER");
@@ -146,7 +147,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public Map<String, Object> getUserByToken() {
         Principal principal = SecurityContextHolder.getContext().getAuthentication();
         AuthUserProjection user = userRepository.findAuthUserByEmail(principal.getName())
-                .orElseThrow(() -> new ApiRequestException("User not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         String token = jwtProvider.createToken(user.getEmail(), "USER");
         Map<String, Object> response = new HashMap<>();
         response.put("user", user);
@@ -157,21 +158,21 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public String findEmail(String email) {
         userRepository.findCommonUserByEmail(email)
-                .orElseThrow(() -> new ApiRequestException("Email not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy email", HttpStatus.NOT_FOUND));
         return "Reset password code is send to your E-mail";
     }
 
     @Override
     public AuthUserProjection findByPasswordResetCode(String code) {
         return userRepository.findByPasswordResetCode(code)
-                .orElseThrow(() -> new ApiRequestException("Password reset code is invalid!", HttpStatus.BAD_REQUEST));
+                .orElseThrow(() -> new ApiRequestException("Mã đặt lại mật khẩu không hợp lệ!", HttpStatus.BAD_REQUEST));
     }
 
     @Override
     @Transactional
     public String sendPasswordResetCode(String email) {
         UserCommonProjection user = userRepository.findCommonUserByEmail(email)
-                .orElseThrow(() -> new ApiRequestException("Email not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy email", HttpStatus.NOT_FOUND));
         userRepository.updatePasswordResetCode(UUID.randomUUID().toString().substring(0, 7), user.getId());
 
         String subject = "Password reset";
@@ -188,7 +189,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public String passwordReset(String email, String password, String password2) {
         checkMatchPasswords(password, password2);
         UserCommonProjection user = userRepository.findCommonUserByEmail(email)
-                .orElseThrow(() -> new InputFieldException(HttpStatus.NOT_FOUND, Map.of("email", "Email not found")));
+                .orElseThrow(() -> new InputFieldException(HttpStatus.NOT_FOUND, Map.of("email", "Không tìm thấy email")));
         userRepository.updatePassword(passwordEncoder.encode(password), user.getId());
         userRepository.updatePasswordResetCode(null, user.getId());
         return "Password successfully changed!";
@@ -201,7 +202,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         String userPassword = userRepository.getUserPasswordById(userId);
 
         if (!passwordEncoder.matches(currentPassword, userPassword)) {
-            processPasswordException("currentPassword", "The password you entered was incorrect.", HttpStatus.NOT_FOUND);
+            processPasswordException("currentPassword", "Mật khẩu bạn nhập không đúng.", HttpStatus.NOT_FOUND);
         }
         checkMatchPasswords(password, password2);
         userRepository.updatePassword(passwordEncoder.encode(password), userId);
@@ -210,7 +211,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private void checkMatchPasswords(String password, String password2) {
         if (password != null && !password.equals(password2)) {
-            processPasswordException("password", "Passwords do not match.", HttpStatus.BAD_REQUEST);
+            processPasswordException("password", "Mật khẩu không khớp.", HttpStatus.BAD_REQUEST);
         }
     }
 

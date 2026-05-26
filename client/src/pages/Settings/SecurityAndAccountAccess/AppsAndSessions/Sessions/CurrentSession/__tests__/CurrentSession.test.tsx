@@ -19,7 +19,7 @@ describe("CurrentSession", () => {
         expect(wrapper.text().includes("Mozilla")).toBe(true);
         expect(wrapper.text().includes("USA")).toBe(true);
         expect(wrapper.text().includes("Date and time")).toBe(true);
-        expect(wrapper.text().includes("Active now")).toBe(true);
-        expect(wrapper.text().includes("Location")).toBe(true);
+        expect(wrapper.text().includes("Đang hoạt động")).toBe(true);
+        expect(wrapper.text().includes("Vị trí")).toBe(true);
     });
 });

@@ -41,13 +41,13 @@ const CurrentSession: FC = (): ReactElement => {
             </div>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"subtitle2"} component={"div"}>
-                    Active now
+                    Đang hoạt động
                 </Typography>
             </div>
             <Divider/>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h6"} component={"div"}>
-                    Location
+                    Vị trí
                 </Typography>
             </div>
             <div className={globalClasses.itemInfoWrapper}>
@@ -59,4 +59,4 @@ const CurrentSession: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(CurrentSession)("Current session");
+export default withDocumentTitle(CurrentSession)("Phiên hiện tại");

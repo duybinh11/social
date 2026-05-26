@@ -11,7 +11,7 @@ describe("TweetDeckTeams", () => {
         
         expect(wrapper.text().includes("Invite anyone to Tweet from this account using the Teams feature in TweetDeck.")).toBe(true);
         expect(wrapper.text().includes("Turn on TweetDeck Teams")).toBe(true);
-        expect(wrapper.text().includes("Allow anyone to add you to their team")).toBe(true);
+        expect(wrapper.text().includes("Cho phép mọi người thêm bạn vào nhóm")).toBe(true);
         expect(wrapper.find(Radio).at(0).prop("checked")).toBe(true);
         expect(wrapper.text().includes("Only allow people you follow to add you to their team")).toBe(true);
         expect(wrapper.find(Radio).at(1).prop("checked")).toBe(false);

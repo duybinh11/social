@@ -13,11 +13,11 @@ describe("MuteUserButton", () => {
     });
 
     it("should click mute", () => {
-        testClickButton(false, "#muteIcon", "Mute", "muted");
+        testClickButton(false, "#muteIcon", "Tắt tiếng", "muted");
     });
 
     it("should click unmute", () => {
-        testClickButton(true, "#unmuteIcon", "Unmute", "unmuted");
+        testClickButton(true, "#unmuteIcon", "Bật tiếng", "unmuted");
     });
 
     const testClickButton = (isUserMuted: boolean, iconId: string, text: string, snackbarText: string): void => {

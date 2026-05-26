@@ -44,9 +44,9 @@ const PinTweetButton: FC<PinTweetButtonProps> = memo(({tweetId, onCloseActionsDr
                 <>{PinIcon}</>
                 <Typography variant={"body1"} component={"span"}>
                     {(isTweetPinned) ? (
-                        "Unpin from profile"
+                        "Bỏ ghim khỏi hồ sơ"
                     ) : (
-                        "Pin to your profile"
+                        "Ghim lên hồ sơ"
                     )}
                 </Typography>
             </ListItem>

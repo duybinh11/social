@@ -30,7 +30,7 @@ const ListsItem: FC<ListsItemProps> = memo(({list, listIndex, isMyList}): ReactE
     const onClickPinList = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
         event.preventDefault();
         event.stopPropagation();
-        // TODO fix "List not found" error
+        // TODO fix "Không tìm thấy danh sách" error
         if (list?.pinnedDate) {
             dispatch(unpinList(list!.id));
         } else {

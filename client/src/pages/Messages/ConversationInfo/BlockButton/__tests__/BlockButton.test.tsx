@@ -8,10 +8,10 @@ import BlockButton from "../BlockButton";
 describe("BlockButton", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<BlockButton onBlockUser={jest.fn()}/>, createMockRootState(LoadingStatus.LOADED));
-        expect(wrapper.find(Button).text().includes("Blocked")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đã chặn")).toBe(true);
         wrapper.find(Button).simulate("mouseover");
-        expect(wrapper.find(Button).text().includes("Unblock")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Bỏ chặn")).toBe(true);
         wrapper.find(Button).simulate("mouseleave");
-        expect(wrapper.find(Button).text().includes("Blocked")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đã chặn")).toBe(true);
     });
 });

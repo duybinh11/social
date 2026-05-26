@@ -88,7 +88,7 @@ const Home: FC = (): ReactElement => {
             <Paper className={globalClasses.pageContainer} variant="outlined">
                 <Paper className={classnames(globalClasses.pageHeader, classes.header)} variant="outlined">
                     <Typography variant="h5">
-                        Home
+                        Trang chủ
                     </Typography>
                     <TopTweetActions
                         switchTweets={switchTweets}
@@ -97,7 +97,7 @@ const Home: FC = (): ReactElement => {
                     />
                 </Paper>
                 <div className={classes.addForm}>
-                    <AddTweetForm title={"What's happening?"} buttonName={"Tweet"}/>
+                    <AddTweetForm title={"Chuyện gì đang xảy ra?"} buttonName={"Đăng"}/>
                 </div>
                 <Divider/>
                 {!isProfileStarted ? (
@@ -113,4 +113,4 @@ const Home: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Home)("Home");
+export default withDocumentTitle(Home)("Trang chủ");

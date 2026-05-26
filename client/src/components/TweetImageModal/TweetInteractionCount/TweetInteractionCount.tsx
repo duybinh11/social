@@ -59,7 +59,7 @@ const TweetInteractionCount = memo((): ReactElement => {
                                     {likedTweetsCount}
                                 </Typography>
                                 <Typography variant={"subtitle1"} component={"span"}>
-                                    Likes
+                                    Lượt thích
                                 </Typography>
                             </span>
                         </a>

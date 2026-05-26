@@ -32,7 +32,7 @@ public class UserSettingsServiceImpl implements UserSettingsService {
     @Transactional
     public String updateUsername(String username) {
         if (username.length() == 0 || username.length() > 50) {
-            throw new ApiRequestException("Incorrect username length", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Độ dài tên người dùng không hợp lệ", HttpStatus.BAD_REQUEST);
         }
         Long userId = authenticationService.getAuthenticatedUserId();
         userRepository.updateUsername(username, userId);
@@ -54,7 +54,7 @@ public class UserSettingsServiceImpl implements UserSettingsService {
             response.put("token", token);
             return response;
         }
-        throw new ApiRequestException("Email has already been taken.", HttpStatus.FORBIDDEN);
+        throw new ApiRequestException("Email đã được sử dụng.", HttpStatus.FORBIDDEN);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class UserSettingsServiceImpl implements UserSettingsService {
         int phoneLength = String.valueOf(phone).length();
 
         if (phoneLength < 6 || phoneLength > 10) {
-            throw new ApiRequestException("Not valid phone number", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Số điện thoại không hợp lệ", HttpStatus.BAD_REQUEST);
         }
         Long userId = authenticationService.getAuthenticatedUserId();
         userRepository.updatePhone(countryCode, phone, userId);
@@ -82,7 +82,7 @@ public class UserSettingsServiceImpl implements UserSettingsService {
     @Transactional
     public String updateGender(String gender) {
         if (gender.length() == 0 || gender.length() > 30) {
-            throw new ApiRequestException("Incorrect gender length", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Độ dài giới tính không hợp lệ", HttpStatus.BAD_REQUEST);
         }
         Long userId = authenticationService.getAuthenticatedUserId();
         userRepository.updateGender(gender, userId);

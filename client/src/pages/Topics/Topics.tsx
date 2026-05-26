@@ -38,7 +38,7 @@ const Topics = (): ReactElement => {
     };
 
     return (
-        <PageWrapper title={"Topics"}>
+        <PageWrapper title={"Chủ đề"}>
             <div className={classes.tabs}>
                 <Tabs value={activeTab} indicatorColor="primary" textColor="primary" onChange={handleTabChange}>
                     <Tab label="Followed"/>

@@ -44,7 +44,7 @@ const BlockUserButton: FC<BlockUserButtonProps> = memo((
             <ListItem id={"onOpenBlockUserModal"} onClick={onOpenBlockUserModal}>
                 <>{isUserBlocked ? UnblockIcon : BlockIcon}</>
                 <Typography variant={"body1"} component={"span"}>
-                    {isUserBlocked ? "Unblock" : "Block"} @{username}
+                    {isUserBlocked ? "Bỏ chặn" : "Chặn"} @{username}
                 </Typography>
             </ListItem>
             <BlockUserModal

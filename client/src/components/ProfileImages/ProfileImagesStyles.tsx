@@ -6,13 +6,12 @@ interface ProfileImagesStylesProps {
 
 export const useProfileImagesStyles = makeStyles<Theme, ProfileImagesStylesProps>((theme) => ({
     container: {
-        paddingTop: 23,
-        paddingLeft: 12,
+        paddingTop: 12,
     },
     imageList: {
         overflow: "hidden",
         borderRadius: 16,
-        width: 350,
+        width: "100%",
     },
     img: {
         objectFit: 'cover',

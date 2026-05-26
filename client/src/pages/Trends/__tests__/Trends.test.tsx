@@ -10,7 +10,7 @@ import {LoadingStatus} from "../../../store/types/common";
 
 window.scrollTo = jest.fn();
 
-describe("Trends", () => {
+describe("Xu hướng", () => {
     const mockRootState = createMockRootState(LoadingStatus.LOADED);
     let mockDispatchFn: jest.Mock;
 

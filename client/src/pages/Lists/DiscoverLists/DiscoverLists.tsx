@@ -32,7 +32,7 @@ const DiscoverLists = (): ReactElement => {
             )}
             <Link to={SUGGESTED} className={globalClasses.link}>
                 <Typography variant={"body1"} component={"div"} className={classes.showMore}>
-                    Show more
+                    Xem thêm
                 </Typography>
             </Link>
         </Paper>

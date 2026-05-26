@@ -7,6 +7,6 @@ import MessagesHeader from "../MessagesHeader";
 describe("MessagesHeader", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<MessagesHeader/>, createMockRootState(LoadingStatus.LOADED));
-        expect(wrapper.text().includes("Messages")).toBe(true);
+        expect(wrapper.text().includes("Tin nhắn")).toBe(true);
     });
 });

@@ -19,7 +19,7 @@ const BlockUserButton = memo((): ReactElement => {
     const userProfileId = useSelector(selectUserProfileId);
     const username = useSelector(selectUserProfileUsername);
     const isUserBlocked = useSelector(selectUserProfileIsUserBlocked);
-    const [btnText, setBtnText] = useState<string>("Blocked");
+    const [btnText, setBtnText] = useState<string>("Đã chặn");
     const [visibleBlockUserModal, setVisibleBlockUserModal] = useState<boolean>(false);
 
     const onOpenBlockUserModal = (): void => {
@@ -33,7 +33,7 @@ const BlockUserButton = memo((): ReactElement => {
     const onBlockUser = (): void => {
         dispatch(processUserToBlocklist({userId: userProfileId!}));
         setVisibleBlockUserModal(false);
-        setBtnText(isUserBlocked ? "Following" : "Blocked");
+        setBtnText(isUserBlocked ? "Đang theo dõi" : "Đã chặn");
         dispatch(setOpenSnackBar(`@${username} has been ${isUserBlocked ? "unblocked" : "blocked"}.`));
     };
 
@@ -42,8 +42,8 @@ const BlockUserButton = memo((): ReactElement => {
             <Button
                 className={classnames(classes.primaryButton, classes.blockButton)}
                 onClick={onOpenBlockUserModal}
-                onMouseOver={() => setBtnText("Unblock")}
-                onMouseLeave={() => setBtnText("Blocked")}
+                onMouseOver={() => setBtnText("Bỏ chặn")}
+                onMouseLeave={() => setBtnText("Đã chặn")}
                 color="primary"
                 variant="contained"
                 size="large"

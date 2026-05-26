@@ -25,7 +25,7 @@ const ResetPasswordSuccess: FC = (): ReactElement => {
             </div>
             <div className={classes.infoWrapper}>
                 <MuiLink href={HOW_TO_UPDATE_YOUR_ACCOUNT_PHONE_NUMBER} variant="body1" target="_blank" rel="noopener">
-                    Add a phone number to your account
+                    Thêm số điện thoại vào tài khoản
                 </MuiLink>
                 <Typography variant={"body1"} component={"div"}>
                     This makes it easy to get back into your account if you're ever locked out.

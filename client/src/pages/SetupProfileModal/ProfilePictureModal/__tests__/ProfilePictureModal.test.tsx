@@ -41,7 +41,7 @@ describe("ProfilePictureModal", () => {
         expect(wrapper.text().includes("Pick a profile picture")).toBe(true);
         expect(wrapper.text().includes("Have a favorite selfie? Upload it now.")).toBe(true);
         expect(wrapper.find(Avatar).prop("src")).toEqual(DEFAULT_PROFILE_IMG);
-        expect(wrapper.find(Button).text().includes("Skip for now")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Bỏ qua")).toBe(true);
     });
 
     it("should render correctly with avatar", () => {
@@ -60,6 +60,6 @@ describe("ProfilePictureModal", () => {
         expect(mockOnOpenProfileHeaderModal).toHaveBeenCalled();
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
         expect(wrapper.find(Avatar).prop("src")).toEqual(mockImage.src);
-        expect(wrapper.find(Button).text().includes("Next")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Tiếp")).toBe(true);
     });
 });

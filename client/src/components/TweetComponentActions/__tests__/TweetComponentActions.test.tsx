@@ -50,8 +50,8 @@ describe("TweetComponentActions", () => {
         expect(wrapper.find(List).exists()).toBeFalsy();
         wrapper.find(IconButton).simulate("click");
         expect(wrapper.find(List).exists()).toBeTruthy();
-        expect(wrapper.text().includes("Delete")).toBe(true);
-        expect(wrapper.text().includes("Pin to your profile")).toBe(true);
+        expect(wrapper.text().includes("Xóa")).toBe(true);
+        expect(wrapper.text().includes("Ghim lên hồ sơ")).toBe(true);
         expect(wrapper.text().includes(`Add/remove @${mockMyTweetAdditionalInfo.user.username} from Lists`)).toBe(true);
         expect(wrapper.text().includes("Change who can reply")).toBe(true);
         expect(wrapper.text().includes("Embed Tweet")).toBe(true);
@@ -61,11 +61,11 @@ describe("TweetComponentActions", () => {
     it("should render unpin tweet action", () => {
         const {wrapper} = createTweetComponentActionsWrapper(mockMyTweetState);
         wrapper.find(ActionIconButton).at(0).find(IconButton).simulate("click");
-        expect(wrapper.text().includes("Pin to your profile")).toBe(true);
+        expect(wrapper.text().includes("Ghim lên hồ sơ")).toBe(true);
     });
 
     it("should click open and close Delete Tweet Component Actions Modal", () => {
-        testTweetComponentActionsModal("#delete", 0, "Delete");
+        testTweetComponentActionsModal("#delete", 0, "Xóa");
     });
 
     it("should click open and close Pin Tweet Component Actions Modal", () => {
@@ -109,7 +109,7 @@ describe("TweetComponentActions", () => {
     });
 
     it("should click follow user", () => {
-        testClickFollow("#handleFollow", "Follow", UserActionsType.FOLLOW_USER);
+        testClickFollow("#handleFollow", "Theo dõi", UserActionsType.FOLLOW_USER);
     });
 
     it("should click unfollow user", () => {
@@ -123,7 +123,7 @@ describe("TweetComponentActions", () => {
                 }
             }
         };
-        testClickFollow("#handleFollow", "Unfollow", UserActionsType.UNFOLLOW_USER, mockUserTweetState);
+        testClickFollow("#handleFollow", "Bỏ theo dõi", UserActionsType.UNFOLLOW_USER, mockUserTweetState);
     });
 
     it("should click open and close List Modal", () => {
@@ -138,7 +138,7 @@ describe("TweetComponentActions", () => {
     });
 
     it("should click Mute user", () => {
-        testClickMuteUser("#muteIcon", "Mute", "muted");
+        testClickMuteUser("#muteIcon", "Tắt tiếng", "muted");
     });
 
     it("should click Unmute user", () => {
@@ -152,11 +152,11 @@ describe("TweetComponentActions", () => {
                 }
             }
         };
-        testClickMuteUser("#unmuteIcon", "Unmute", "unmuted", mockUserTweetState);
+        testClickMuteUser("#unmuteIcon", "Bật tiếng", "unmuted", mockUserTweetState);
     });
 
     it("should click Block user", () => {
-        testClickBlockUser("#blockIcon", "Block", "blocked");
+        testClickBlockUser("#blockIcon", "Chặn", "blocked");
     });
 
     it("should click Unblock user", () => {
@@ -170,7 +170,7 @@ describe("TweetComponentActions", () => {
                 }
             }
         };
-        testClickBlockUser("#unblockIcon", "Unblock", "unblocked", mockUserTweetState);
+        testClickBlockUser("#unblockIcon", "Bỏ chặn", "unblocked", mockUserTweetState);
     });
 
     it("should click open and close BlockUserModal", () => {

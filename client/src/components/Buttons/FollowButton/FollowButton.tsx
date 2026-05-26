@@ -33,7 +33,7 @@ const FollowButton: FC<FollowButtonProps> = ({userId, isPrivateProfile, size}): 
             variant="outlined"
             size={size}
         >
-            Follow
+            Theo dõi
         </Button>
     );
 };

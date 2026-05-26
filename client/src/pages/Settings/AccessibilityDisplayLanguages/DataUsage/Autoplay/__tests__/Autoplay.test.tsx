@@ -5,13 +5,13 @@ import Autoplay from "../Autoplay";
 import {createMockRootState, mountWithStore} from "../../../../../../util/testHelper";
 import {LoadingStatus} from "../../../../../../store/types/common";
 
-describe("Autoplay", () => {
+describe("Tự động phát", () => {
     const mockStore = createMockRootState(LoadingStatus.LOADED);
 
     it("should render correctly and toggle radio button", () => {
         const wrapper = mountWithStore(<Autoplay/>, mockStore);
 
-        expect(wrapper.text().includes("Autoplay")).toBe(true);
+        expect(wrapper.text().includes("Tự động phát")).toBe(true);
         expect(wrapper.text().includes("On cellular or Wi-Fi")).toBe(true);
         expect(wrapper.text().includes("Never")).toBe(true);
         expect(wrapper.find(Radio).at(0).prop("checked")).toBe(false);

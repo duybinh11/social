@@ -31,7 +31,7 @@ const AccessibilityDisplayLanguages: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Accessibility
+                                    Trợ năng
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Manage aspects of your Twitter experience such as limiting color contrast and
@@ -50,7 +50,7 @@ const AccessibilityDisplayLanguages: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Display
+                                    Hiển thị
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Manage your font size, color, and background. These settings affect all the
@@ -69,10 +69,10 @@ const AccessibilityDisplayLanguages: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Languages
+                                    Ngôn ngữ
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
-                                    Manage which languages are used to personalize your Twitter experience.
+                                    Quản lý ngôn ngữ dùng để cá nhân hóa trải nghiệm Twitter của bạn.
                                 </Typography>
                             </div>
                             <div className={globalClasses.arrowIcon}>
@@ -87,7 +87,7 @@ const AccessibilityDisplayLanguages: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Data usage
+                                    Sử dụng dữ liệu
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Limit how Twitter uses some of your network data. These settings affect all the
@@ -105,4 +105,4 @@ const AccessibilityDisplayLanguages: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(AccessibilityDisplayLanguages)("Accessibility, display and languages");
+export default withDocumentTitle(AccessibilityDisplayLanguages)("Trợ năng, hiển thị và ngôn ngữ");

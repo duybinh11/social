@@ -58,7 +58,7 @@ const Accessibility: FC = (): ReactElement => {
                 <div className={classnames(classes.accessibilityLink, globalClasses.contentLink)}>
                     <div className={classes.accessibilityInfo}>
                         <Typography variant={"body1"} component={"div"}>
-                            Autoplay
+                            Tự động phát
                         </Typography>
                         <Typography variant={"subtitle2"} component={"div"}>
                             Never
@@ -71,4 +71,4 @@ const Accessibility: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Accessibility)("Accessibility");
+export default withDocumentTitle(Accessibility)("Trợ năng");

@@ -121,7 +121,7 @@ public class TopicControllerTest {
     public void processNotInterestedTopic_NotFound() throws Exception {
         mockMvc.perform(get(URL_TOPICS_BASIC + "/not_interested/1"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Topic not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy chủ đề")));
     }
 
     @Test
@@ -148,6 +148,6 @@ public class TopicControllerTest {
     public void processFollowTopic_NotFound() throws Exception {
         mockMvc.perform(get(URL_TOPICS_BASIC + "/follow/1"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Topic not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy chủ đề")));
     }
 }

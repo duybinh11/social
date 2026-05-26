@@ -32,7 +32,7 @@ describe("BlockedAccountItem", () => {
         expect(wrapper.text().includes(mockBlockedUser.fullName)).toBe(true);
         expect(wrapper.text().includes(mockBlockedUser.username)).toBe(true);
         expect(wrapper.text().includes(mockBlockedUser.about)).toBe(true);
-        expect(wrapper.find(Button).text()).toEqual("Blocked");
+        expect(wrapper.find(Button).text()).toEqual("Đã chặn");
     });
 
     it("should render unblocked user", () => {
@@ -42,7 +42,7 @@ describe("BlockedAccountItem", () => {
         expect(wrapper.text().includes(mockBlockedUser.fullName)).toBe(true);
         expect(wrapper.text().includes(mockBlockedUser.username)).toBe(true);
         expect(wrapper.text().includes(mockBlockedUser.about)).toBe(true);
-        expect(wrapper.find(Button).text()).toEqual("Block");
+        expect(wrapper.find(Button).text()).toEqual("Chặn");
     });
 
     it("should click unblock user", () => {
@@ -63,7 +63,7 @@ describe("BlockedAccountItem", () => {
     it("should click block user", () => {
         const wrapper = mountWithStore(<BlockedAccountItem blockedUser={mockUnblockedUser}/>, mockStore);
 
-        expect(wrapper.find(Button).text()).toEqual("Block");
+        expect(wrapper.find(Button).text()).toEqual("Chặn");
 
         wrapper.find(Button).simulate("click");
 

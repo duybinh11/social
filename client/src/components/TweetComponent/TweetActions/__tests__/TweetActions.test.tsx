@@ -18,7 +18,7 @@ describe("TweetActions", () => {
                 activeTab={0}
             />, mockState);
         expect(wrapper.find(TweetActionResult).at(0).prop("text")).toBe("Random Retweeted");
-        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Pinned Tweet");
+        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Tweet đã ghim");
     });
 
     it("should render my profile retweeted", () => {
@@ -29,6 +29,6 @@ describe("TweetActions", () => {
                 activeTab={0}
             />, mockRootState);
         expect(wrapper.find(TweetActionResult).at(0).prop("text")).toBe("You Retweeted");
-        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Pinned Tweet");
+        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Tweet đã ghim");
     });
 });

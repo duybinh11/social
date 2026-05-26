@@ -51,7 +51,7 @@ const FollowerRequestsModal: FC<FollowerRequestsModalProps> = ({visible, onClose
         <Dialog open={visible} onClose={onClose} className={classes.dialog}>
             <DialogTitle>
                 <CloseButton onClose={onClose}/>
-                Follower requests
+                Yêu cầu theo dõi
             </DialogTitle>
             <DialogContent id="scrollableDiv" className={classes.content}>
                 <InfiniteScrollWrapper

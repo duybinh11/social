@@ -15,7 +15,7 @@ const SnoozeNotifications: FC<SnoozeNotificationsProps> = memo(({fullName}): Rea
     return (
         <div className={globalClasses.itemInfoWrapper}>
             <Typography variant={"h5"} component={"div"}>
-                Notifications
+                Thông báo
             </Typography>
             <div className={classes.switchWrapper}>
                 <Typography variant={"body1"} component={"span"}>

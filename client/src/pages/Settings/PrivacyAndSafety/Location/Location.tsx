@@ -30,14 +30,14 @@ const Location: FC = (): ReactElement => {
                         Twitter may further personalize ads from Twitter advertisers, on and off Twitter, by combining your
                         Twitter activity with other online activity and information from our partners. `}
                     <MuiLink href={EMAIL_AND_PHONE_DISCOVERABILITY_SETTINGS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
             <Link to={SETTINGS_PRIVACY_AND_SAFETY_LOCATIONS} className={globalClasses.linkWrapper}>
                 <div className={globalClasses.contentLink}>
                     <Typography variant={"body1"} component={"span"}>
-                        See places you’ve been
+                        Xem các địa điểm bạn đã đến
                     </Typography>
                     {ArrowRightIcon}
                 </div>
@@ -45,7 +45,7 @@ const Location: FC = (): ReactElement => {
             <Link to={SETTINGS_PRIVACY_AND_SAFETY_LOCATION} className={globalClasses.linkWrapper}>
                 <div className={globalClasses.contentLink}>
                     <Typography variant={"body1"} component={"span"}>
-                        Add location information to your Tweets
+                        Thêm thông tin vị trí vào tweet của bạn
                     </Typography>
                     {ArrowRightIcon}
                 </div>
@@ -60,4 +60,4 @@ const Location: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Location)("Location information");
+export default withDocumentTitle(Location)("Thông tin vị trí");

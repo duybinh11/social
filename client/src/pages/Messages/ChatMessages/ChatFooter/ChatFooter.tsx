@@ -54,7 +54,7 @@ const ChatFooter: FC<ChatFooterProps> = ({chatId}): ReactElement => {
     return (
         <Paper className={classes.chatFooter}>
             <ActionIcon
-                actionText={"Media"}
+                actionText={"Phương tiện"}
                 className={"chatIcon"}
                 icon={MediaIcon}
                 positionTop
@@ -83,7 +83,7 @@ const ChatFooter: FC<ChatFooterProps> = ({chatId}): ReactElement => {
             <div style={{marginLeft: 8}}>
                 <ActionIcon
                     onClick={onSendMessage}
-                    actionText={"Send"}
+                    actionText={"Gửi"}
                     className={"chatIcon"}
                     icon={SendMessageIcon}
                     disabled={message.length === 0}

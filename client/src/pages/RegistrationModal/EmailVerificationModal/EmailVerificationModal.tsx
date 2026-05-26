@@ -40,14 +40,14 @@ const EmailVerificationModal: FC<CustomizeModalProps> = ({email, open, onClose, 
                     <TwitterIcon/>
                 </div>
                 <Typography variant={"h3"} component={"div"}>
-                    We sent you a code
+                    Chúng tôi đã gửi mã cho bạn
                 </Typography>
                 <Typography variant={"subtitle1"} component={"div"}>
                     {`Enter it below to verify ${email}.`}
                 </Typography>
                 <div style={{marginTop: 10}}>
                     <RegistrationInputField
-                        label="Verification code"
+                        label="Mã xác minh"
                         variant="filled"
                         helperText={error}
                         error={error !== ""}
@@ -68,7 +68,7 @@ const EmailVerificationModal: FC<CustomizeModalProps> = ({email, open, onClose, 
                         size="small"
                         fullWidth
                     >
-                        Next
+                        Tiếp
                     </Button>
                 </div>
             </DialogContent>

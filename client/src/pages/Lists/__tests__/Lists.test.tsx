@@ -18,7 +18,7 @@ import {LoadingStatus} from "../../../store/types/common";
 
 window.scrollTo = jest.fn();
 
-describe("Lists", () => {
+describe("Danh sách", () => {
     const mockStore = createMockRootState(LoadingStatus.LOADED);
     const mockListsStore = {
         ...mockStore,
@@ -48,7 +48,7 @@ describe("Lists", () => {
         expect(wrapper.find(Spinner).at(2).exists()).toBe(true);
         expect(wrapper.text().includes("Pinned Lists")).toBe(true);
         expect(wrapper.text().includes("Discover new Lists")).toBe(true);
-        expect(wrapper.text().includes("Show more")).toBe(true);
+        expect(wrapper.text().includes("Xem thêm")).toBe(true);
         expect(wrapper.text().includes("Your Lists")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {type: ListsActionType.FETCH_LISTS});
         expect(mockDispatchFn).nthCalledWith(2, {type: ListsActionType.FETCH_USER_LISTS});
@@ -58,7 +58,7 @@ describe("Lists", () => {
     it("should render Lists", () => {
         const wrapper = mountWithStore(<Lists/>, mockListsStore);
 
-        expect(wrapper.text().includes("Lists")).toBe(true);
+        expect(wrapper.text().includes("Danh sách")).toBe(true);
         expect(wrapper.text().includes(`${mockUser.username}`)).toBe(true);
         expect(wrapper.find(PinnedListsItem).length).toEqual(1);
         expect(wrapper.find("#list").find(ListsItem).length).toEqual(3);
@@ -129,7 +129,7 @@ describe("Lists", () => {
 
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
         expect(wrapper.find(HoverAction).at(2).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).at(2).prop("actionText")).toBe("More");
+        expect(wrapper.find(HoverAction).at(2).prop("actionText")).toBe("Thêm");
     });
 
     it("should reset Lists State", () => {

@@ -20,9 +20,9 @@ describe("CustomizeModal", () => {
         wrapper.find(Button).at(0).simulate("click");
         
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
-        expect(wrapper.text().includes("Customize your experience")).toBe(true);
+        expect(wrapper.text().includes("Tùy chỉnh trải nghiệm")).toBe(true);
         expect(wrapper.text().includes("Track where you see Twitter content across the web")).toBe(true);
-        expect(wrapper.find(Button).text().includes("Next")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Tiếp")).toBe(true);
         expect(mockOnOpenCreateAccount).toHaveBeenCalled();
         expect(mockOnOpenCreateAccount).toHaveBeenCalledWith(true);
     });

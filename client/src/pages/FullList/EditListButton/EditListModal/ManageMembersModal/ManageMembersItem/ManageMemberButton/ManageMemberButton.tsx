@@ -36,7 +36,7 @@ const ManageMemberButton: FC<ManageMemberButtonProps> = memo((
             color="primary"
             size="small"
         >
-            {isMemberInList ? "Remove" : "Add"}
+            {isMemberInList ? "Xóa" : "Thêm"}
         </Button>
     );
 });

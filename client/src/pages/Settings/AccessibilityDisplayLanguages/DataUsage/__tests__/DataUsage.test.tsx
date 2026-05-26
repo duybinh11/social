@@ -10,7 +10,7 @@ describe("DataUsage", () => {
 
         expect(wrapper.text().includes("Data saver")).toBe(true);
         expect(wrapper.text().includes("If selected, Twitter will use less network data.")).toBe(true);
-        expect(wrapper.text().includes("Autoplay")).toBe(true);
+        expect(wrapper.text().includes("Tự động phát")).toBe(true);
         expect(wrapper.text().includes("Never")).toBe(true);
     });
 

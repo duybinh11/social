@@ -16,7 +16,7 @@ const MessageSettings = memo((): ReactElement => {
             <Paper className={classnames(globalClasses.pageHeader, classes.chatHeader)} variant="outlined">
                 <BackButton/>
                 <Typography variant="h5">
-                    Direct Messages
+                    Tin nhắn trực tiếp
                 </Typography>
             </Paper>
             <div className={globalClasses.contentWrapper}>

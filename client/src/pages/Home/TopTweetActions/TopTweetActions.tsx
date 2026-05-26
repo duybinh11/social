@@ -38,7 +38,7 @@ const TopTweetActions: FC<TopTweetActionsProps> = (
             <div>
                 <div className={classes.headerIcon}>
                     <ActionIconButton
-                        actionText={"Top Tweets"}
+                        actionText={"Tweet hàng đầu"}
                         icon={TopTweets}
                         onClick={handleClickTopTweetActions}
                     />

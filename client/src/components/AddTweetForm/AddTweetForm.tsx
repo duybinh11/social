@@ -260,10 +260,10 @@ const AddTweetForm: FC<AddTweetFormProps> = (
                 <div className={classes.footerWrapper}>
                     <UploadImages onChangeImages={setImages}/>
                     <ActionIconButton actionText={"GIF"} icon={GifIcon} size={"medium"}/>
-                    {(buttonName !== "Reply") && (
+                    {(buttonName !== "Trả lời") && (
                         <div className={classes.quoteImage}>
                             <ActionIconButton
-                                actionText={"Poll"}
+                                actionText={"Bình chọn"}
                                 icon={PullIcon}
                                 onClick={onOpenPoll}
                                 disabled={!!quoteTweet || selectedScheduleDate !== null}
@@ -272,7 +272,7 @@ const AddTweetForm: FC<AddTweetFormProps> = (
                         </div>
                     )}
                     <EmojiIconButton addEmoji={addEmoji}/>
-                    {(buttonName !== "Reply") && (
+                    {(buttonName !== "Trả lời") && (
                         <ScheduleIconButton
                             disabled={!!quoteTweet}
                             selectedScheduleDate={selectedScheduleDate}
@@ -304,7 +304,7 @@ const AddTweetForm: FC<AddTweetFormProps> = (
                         </>
                     )}
                     <Button
-                        onClick={(buttonName === "Reply") ? handleClickReplyTweet :
+                        onClick={(buttonName === "Trả lời") ? handleClickReplyTweet :
                             (quoteTweet !== undefined ? handleClickQuoteTweet : handleClickAddTweet)}
                         disabled={
                             visiblePoll ? (

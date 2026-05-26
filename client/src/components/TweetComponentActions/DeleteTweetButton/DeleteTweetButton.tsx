@@ -48,11 +48,11 @@ const DeleteTweetButton: FC<DeleteTweetButtonProps> = memo((
             <ListItem id={"delete"} onClick={onOpenTweetComponentActionsModal}>
                 <>{DeleteIcon}</>
                 <Typography variant={"body1"} component={"span"}>
-                    Delete
+                    Xóa
                 </Typography>
             </ListItem>
             <TweetComponentActionsModal
-                modalTitle={"Delete"}
+                modalTitle={"Xóa"}
                 visibleTweetComponentActionsModal={visibleDeleteTweetModal}
                 onCloseTweetComponentActionsModal={onCloseTweetComponentActionsModal}
                 onClick={onDeleteUserTweet}

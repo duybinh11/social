@@ -27,7 +27,7 @@ interface EmailFormProps {
 }
 
 const SetEmailFormSchema = yup.object().shape({
-    email: yup.string().email("Invalid mail").required("Please enter a valid email address."),
+    email: yup.string().email("Invalid mail").required("Vui lòng nhập địa chỉ email hợp lệ."),
 });
 
 const ChangeEmailModal: FC<ChangeEmailModalProps> = ({visible, onClose}): ReactElement | null => {
@@ -57,7 +57,7 @@ const ChangeEmailModal: FC<ChangeEmailModalProps> = ({visible, onClose}): ReactE
                 </div>
                 <div>
                     <Typography variant={"h3"} component={"div"}>
-                        Change email
+                        Đổi email
                     </Typography>
                     <Typography variant={"subtitle1"} component={"div"}>
                         {`Your current email is ${myProfileEmail}. What would you like to update it to? Your email
@@ -79,7 +79,7 @@ const ChangeEmailModal: FC<ChangeEmailModalProps> = ({visible, onClose}): ReactE
                                 onChange={onChange}
                                 value={value}
                                 disabled={isLoading}
-                                helperText={errors.email?.message || isError && "Please enter a valid email address."}
+                                helperText={errors.email?.message || isError && "Vui lòng nhập địa chỉ email hợp lệ."}
                                 error={!!errors.email || isError}
                                 fullWidth
                             />
@@ -89,7 +89,7 @@ const ChangeEmailModal: FC<ChangeEmailModalProps> = ({visible, onClose}): ReactE
                         <Typography variant={"body1"} component={"span"}>
                             {"Let people who have your email address find and connect with you on Twitter. "}
                             <MuiLink href={EMAIL_AND_PHONE_DISCOVERABILITY_SETTINGS} variant="body1" target="_blank" rel="noopener">
-                                Learn more
+                                Tìm hiểu thêm
                             </MuiLink>
                         </Typography>
                         <span><Checkbox/></span>
@@ -102,7 +102,7 @@ const ChangeEmailModal: FC<ChangeEmailModalProps> = ({visible, onClose}): ReactE
                             size="small"
                             fullWidth
                         >
-                            {(!getValues("email") || errors.email) ? "Cancel" : "Next"}
+                            {(!getValues("email") || errors.email) ? "Hủy" : "Tiếp"}
                         </Button>
                     </div>
                 </form>

@@ -8,6 +8,6 @@ describe("StartConversation", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<StartConversation/>, createMockRootState(LoadingStatus.LOADED));
         expect(wrapper.text().includes("Send a message, get a message")).toBe(true);
-        expect(wrapper.text().includes("Start a conversation")).toBe(true);
+        expect(wrapper.text().includes("Bắt đầu trò chuyện")).toBe(true);
     });
 });

@@ -27,7 +27,7 @@ const SecurityAndAccountAccess: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Security
+                                    Bảo mật
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Manage your account’s security.
@@ -45,7 +45,7 @@ const SecurityAndAccountAccess: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Apps and sessions
+                                    Ứng dụng và phiên
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     See information about when you logged into your account and the apps you
@@ -79,4 +79,4 @@ const SecurityAndAccountAccess: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(SecurityAndAccountAccess)("Security and account access");
+export default withDocumentTitle(SecurityAndAccountAccess)("Bảo mật và quyền truy cập tài khoản");

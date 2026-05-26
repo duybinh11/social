@@ -30,6 +30,6 @@ describe("BackButton", () => {
 
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
         expect(wrapper.find(HoverAction).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Back");
+        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Quay lại");
     });
 });

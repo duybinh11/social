@@ -66,7 +66,7 @@ const Sessions: FC = (): ReactElement => {
                                 {OSName}
                             </Typography>
                             <Typography variant={"subtitle2"} component={"div"}>
-                                {countryName} · <Typography component={"span"} className={classes.active}>Active now</Typography>
+                                {countryName} · <Typography component={"span"} className={classes.active}>Đang hoạt động</Typography>
                             </Typography>
                         </div>
                     </div>
@@ -90,7 +90,7 @@ const Sessions: FC = (): ReactElement => {
                 <Typography variant={"subtitle2"} component={"div"}>
                     {`Logging out will end 1 of your other active Twitter sessions. It won’t affect your current active session. `}
                     <MuiLink href={ACCESS_TO_THIRD_PARTY_APPS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -103,4 +103,4 @@ const Sessions: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Sessions)("Sessions");
+export default withDocumentTitle(Sessions)("Phiên");

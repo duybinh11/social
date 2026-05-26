@@ -84,7 +84,7 @@ public class UserControllerTest {
     public void getUserById_ShouldUserNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("User not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người dùng")));
     }
 
     @Test
@@ -370,7 +370,7 @@ public class UserControllerTest {
     public void getUserNotificationById_ShouldNotificationNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/notifications/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Notification not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy thông báo")));
     }
 
     @Test
@@ -379,7 +379,7 @@ public class UserControllerTest {
     public void getUserNotificationById_ShouldOtherUserNotificationNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/notifications/39"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Notification not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy thông báo")));
     }
 
     @Test
@@ -474,7 +474,7 @@ public class UserControllerTest {
     public void processUserBookmarks_ShouldTweetNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/bookmarks/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Tweet not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
     }
 
     @Test
@@ -535,7 +535,7 @@ public class UserControllerTest {
                         .content(mapper.writeValueAsString(userRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Incorrect username length")));
+                .andExpect(jsonPath("$", is("Độ dài tên người dùng không hợp lệ")));
     }
 
     @Test
@@ -549,7 +549,7 @@ public class UserControllerTest {
                         .content(mapper.writeValueAsString(userRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Incorrect username length")));
+                .andExpect(jsonPath("$", is("Độ dài tên người dùng không hợp lệ")));
     }
 
     @Test
@@ -698,7 +698,7 @@ public class UserControllerTest {
     public void processFollow_ShouldUserNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/follow/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("User not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người dùng")));
     }
 
     @Test
@@ -814,7 +814,7 @@ public class UserControllerTest {
     public void processFollowRequestToPrivateProfile_ShouldUserNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/follow/private/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("User not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người dùng")));
     }
 
     @Test
@@ -832,7 +832,7 @@ public class UserControllerTest {
     public void acceptFollowRequest_ShouldUserNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/follow/accept/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("User not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người dùng")));
     }
 
     @Test
@@ -850,7 +850,7 @@ public class UserControllerTest {
     public void declineFollowRequest_ShouldUserNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/follow/decline/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("User not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người dùng")));
     }
 
     @Test
@@ -877,7 +877,7 @@ public class UserControllerTest {
     public void processSubscribeToNotifications_ShouldUserNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/subscribe/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("User not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người dùng")));
     }
 
     @Test
@@ -904,7 +904,7 @@ public class UserControllerTest {
     public void processPinTweet_ShouldTweetNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/pin/tweet/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Tweet not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
     }
 
     @Test
@@ -947,7 +947,7 @@ public class UserControllerTest {
     public void processBlockList_ShouldUserNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/blocked/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("User not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người dùng")));
     }
 
     @Test
@@ -990,7 +990,7 @@ public class UserControllerTest {
     public void addToMutedList_ShouldUserNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/muted/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("User not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người dùng")));
     }
 
     @Test
@@ -1020,6 +1020,6 @@ public class UserControllerTest {
     public void getUserDetails_ShouldUserNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/details/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("User not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người dùng")));
     }
 }

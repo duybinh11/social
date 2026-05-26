@@ -71,7 +71,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(authenticationRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isForbidden())
-                .andExpect(jsonPath("$", is("Incorrect password or email")));
+                .andExpect(jsonPath("$", is("Mật khẩu hoặc email không đúng")));
     }
 
     @Test
@@ -84,7 +84,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(authenticationRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.email", is("Please enter a valid email address.")));
+                .andExpect(jsonPath("$.email", is("Vui lòng nhập địa chỉ email hợp lệ.")));
     }
     
     @Test
@@ -96,7 +96,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(authenticationRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.password", is("Password cannot be empty.")));
+                .andExpect(jsonPath("$.password", is("Mật khẩu không được để trống.")));
     }
 
     @Test
@@ -108,7 +108,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(authenticationRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.password", is("Your password needs to be at least 8 characters. Please enter a longer one.")));
+                .andExpect(jsonPath("$.password", is("Mật khẩu cần có ít nhất 8 ký tự. Vui lòng nhập dài hơn.")));
     }
 
     @Test
@@ -118,7 +118,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(registrationRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", is("User data checked.")));
+                .andExpect(jsonPath("$", is("Đã kiểm tra dữ liệu người dùng.")));
     }
 
     @Test
@@ -130,7 +130,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(registrationRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isForbidden())
-                .andExpect(jsonPath("$", is("Email has already been taken.")));
+                .andExpect(jsonPath("$", is("Email đã được sử dụng.")));
     }
 
     @Test
@@ -142,7 +142,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(registrationRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.email", is("Please enter a valid email address.")));
+                .andExpect(jsonPath("$.email", is("Vui lòng nhập địa chỉ email hợp lệ.")));
     }
 
     @Test
@@ -166,7 +166,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(registrationRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.username", is("Please enter a valid name.")));
+                .andExpect(jsonPath("$.username", is("Vui lòng nhập tên hợp lệ.")));
     }
 
     @Test
@@ -192,7 +192,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.email", is("Please enter a valid email address.")));
+                .andExpect(jsonPath("$.email", is("Vui lòng nhập địa chỉ email hợp lệ.")));
     }
 
     @Test
@@ -205,7 +205,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("User not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người dùng")));
     }
 
     @Test
@@ -221,7 +221,7 @@ public class AuthenticationControllerTest {
     public void checkRegistrationCode_NotFound() throws Exception {
         mockMvc.perform(get(URL_AUTH_REGISTRATION + "/activate/test"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Activation code not found.")));
+                .andExpect(jsonPath("$", is("Không tìm thấy mã kích hoạt.")));
     }
 
     @Test
@@ -258,7 +258,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(authenticationRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.email", is("Please enter a valid email address.")));
+                .andExpect(jsonPath("$.email", is("Vui lòng nhập địa chỉ email hợp lệ.")));
     }
 
     @Test
@@ -270,7 +270,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(authenticationRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.password", is("Your password needs to be at least 8 characters. Please enter a longer one.")));
+                .andExpect(jsonPath("$.password", is("Mật khẩu cần có ít nhất 8 ký tự. Vui lòng nhập dài hơn.")));
     }
 
     @Test
@@ -283,7 +283,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(authenticationRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("User not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người dùng")));
     }
 
     @Test
@@ -341,7 +341,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.email", is("Please enter a valid email address.")));
+                .andExpect(jsonPath("$.email", is("Vui lòng nhập địa chỉ email hợp lệ.")));
     }
 
     @Test
@@ -354,7 +354,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Email not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy email")));
     }
 
     @Test
@@ -380,7 +380,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.email", is("Please enter a valid email address.")));
+                .andExpect(jsonPath("$.email", is("Vui lòng nhập địa chỉ email hợp lệ.")));
     }
 
     @Test
@@ -393,7 +393,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Email not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy email")));
     }
 
     @Test
@@ -422,7 +422,7 @@ public class AuthenticationControllerTest {
     public void getUserByResetCode_BadRequest() throws Exception {
         mockMvc.perform(get(URL_AUTH_RESET + "/test123"))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Password reset code is invalid!")));
+                .andExpect(jsonPath("$", is("Mã đặt lại mật khẩu không hợp lệ!")));
     }
 
     @Test
@@ -452,7 +452,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.email", is("Email not found")));
+                .andExpect(jsonPath("$.email", is("Không tìm thấy email")));
     }
 
     @Test
@@ -467,7 +467,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.email", is("Please enter a valid email address.")));
+                .andExpect(jsonPath("$.email", is("Vui lòng nhập địa chỉ email hợp lệ.")));
     }
 
     @Test
@@ -481,7 +481,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.password", is("Password cannot be empty.")));
+                .andExpect(jsonPath("$.password", is("Mật khẩu không được để trống.")));
     }
 
     @Test
@@ -495,7 +495,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.password2", is("Password cannot be empty.")));
+                .andExpect(jsonPath("$.password2", is("Mật khẩu không được để trống.")));
     }
 
     @Test
@@ -510,7 +510,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.password", is("Your password needs to be at least 8 characters. Please enter a longer one.")));
+                .andExpect(jsonPath("$.password", is("Mật khẩu cần có ít nhất 8 ký tự. Vui lòng nhập dài hơn.")));
     }
 
     @Test
@@ -525,7 +525,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.password2", is("Your password needs to be at least 8 characters. Please enter a longer one.")));
+                .andExpect(jsonPath("$.password2", is("Mật khẩu cần có ít nhất 8 ký tự. Vui lòng nhập dài hơn.")));
     }
 
     @Test
@@ -540,7 +540,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.password", is("Passwords do not match.")));
+                .andExpect(jsonPath("$.password", is("Mật khẩu không khớp.")));
     }
 
     @Test
@@ -572,7 +572,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.currentPassword", is("Current password cannot be empty.")));
+                .andExpect(jsonPath("$.currentPassword", is("Mật khẩu hiện tại không được để trống.")));
     }
 
     @Test
@@ -588,7 +588,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.password", is("Password cannot be empty.")));
+                .andExpect(jsonPath("$.password", is("Mật khẩu không được để trống.")));
     }
 
     @Test
@@ -604,7 +604,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.password2", is("Password confirmation cannot be empty.")));
+                .andExpect(jsonPath("$.password2", is("Xác nhận mật khẩu không được để trống.")));
     }
 
     @Test
@@ -620,7 +620,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.password", is("Your password needs to be at least 8 characters. Please enter a longer one.")));
+                .andExpect(jsonPath("$.password", is("Mật khẩu cần có ít nhất 8 ký tự. Vui lòng nhập dài hơn.")));
     }
 
     @Test
@@ -636,7 +636,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.password2", is("Your password needs to be at least 8 characters. Please enter a longer one.")));
+                .andExpect(jsonPath("$.password2", is("Mật khẩu cần có ít nhất 8 ký tự. Vui lòng nhập dài hơn.")));
     }
 
     @Test
@@ -652,7 +652,7 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.currentPassword", is("The password you entered was incorrect.")));
+                .andExpect(jsonPath("$.currentPassword", is("Mật khẩu bạn nhập không đúng.")));
     }
 
     @Test
@@ -668,6 +668,6 @@ public class AuthenticationControllerTest {
                         .content(mapper.writeValueAsString(passwordResetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.password", is("Passwords do not match.")));
+                .andExpect(jsonPath("$.password", is("Mật khẩu không khớp.")));
     }
 }

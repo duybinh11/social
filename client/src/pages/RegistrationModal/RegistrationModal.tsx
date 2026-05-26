@@ -26,7 +26,7 @@ interface RegistrationFormProps {
 
 const RegistrationFormSchema = yup.object().shape({
     username: yup.string().min(1, "What is your name?").required(),
-    email: yup.string().email("Invalid mail").required("Please enter a valid email address."),
+    email: yup.string().email("Invalid mail").required("Vui lòng nhập địa chỉ email hợp lệ."),
 });
 
 const RegistrationModal: FC<RegistrationModalProps> = (
@@ -112,7 +112,7 @@ const RegistrationModal: FC<RegistrationModalProps> = (
                 </div>
                 <div>
                     <Typography variant={"h3"} component={"div"} className={classes.title}>
-                        Create your account
+                        Tạo tài khoản của bạn
                     </Typography>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <FormControl className={classes.inputWrapper} variant="outlined">
@@ -125,7 +125,7 @@ const RegistrationModal: FC<RegistrationModalProps> = (
                                         name="username"
                                         helperText={errors.username?.message}
                                         error={!!errors.username}
-                                        label={"Name"}
+                                        label={"Tên"}
                                         maxTextLength={50}
                                         onChange={onChange}
                                         value={value}
@@ -150,7 +150,7 @@ const RegistrationModal: FC<RegistrationModalProps> = (
                             />
                         </FormControl>
                         <MuiLink className={classes.phoneLink} href="#" variant="body1">
-                            Use phone instead
+                            Dùng số điện thoại
                         </MuiLink>
                         <div className={classes.footer}>
                             <Typography variant={"h6"} component={"div"}>
@@ -162,7 +162,7 @@ const RegistrationModal: FC<RegistrationModalProps> = (
                             </Typography>
                             <FormControl variant="filled" className={classes.formControl}>
                                 <InputLabel htmlFor="select-month">
-                                    Month
+                                    Tháng
                                 </InputLabel>
                                 <FilledSelect
                                     variant="filled"
@@ -172,26 +172,26 @@ const RegistrationModal: FC<RegistrationModalProps> = (
                                     native
                                     value={month}
                                     onChange={changeMonth}
-                                    label="Month"
+                                    label="Tháng"
                                 >
                                     <option aria-label="None"/>
-                                    <option value={"Jan"}>January</option>
-                                    <option value={"Feb"}>February</option>
-                                    <option value={"Mar"}>March</option>
-                                    <option value={"Apr"}>April</option>
-                                    <option value={"May"}>May</option>
-                                    <option value={"Jun"}>June</option>
-                                    <option value={"Jul"}>July</option>
-                                    <option value={"Aug"}>August</option>
-                                    <option value={"Sep"}>September</option>
-                                    <option value={"Oct"}>October</option>
-                                    <option value={"Nov"}>November</option>
-                                    <option value={"Dec"}>December</option>
+                                    <option value={"Jan"}>Tháng 1</option>
+                                    <option value={"Feb"}>Tháng 2</option>
+                                    <option value={"Mar"}>Tháng 3</option>
+                                    <option value={"Apr"}>Tháng 4</option>
+                                    <option value={"Tháng 5"}>Tháng 5</option>
+                                    <option value={"Jun"}>Tháng 6</option>
+                                    <option value={"Jul"}>Tháng 7</option>
+                                    <option value={"Aug"}>Tháng 8</option>
+                                    <option value={"Sep"}>Tháng 9</option>
+                                    <option value={"Oct"}>Tháng 10</option>
+                                    <option value={"Nov"}>Tháng 11</option>
+                                    <option value={"Dec"}>Tháng 12</option>
                                 </FilledSelect>
                             </FormControl>
                             <FormControl style={{margin: "16px 0"}} variant="filled" className={classes.formControl}>
                                 <InputLabel htmlFor="select-day">
-                                    Day
+                                    Ngày
                                 </InputLabel>
                                 <FilledSelect
                                     variant="filled"
@@ -201,7 +201,7 @@ const RegistrationModal: FC<RegistrationModalProps> = (
                                     native
                                     value={day}
                                     onChange={changeDay}
-                                    label="Day"
+                                    label="Ngày"
                                 >
                                     <option aria-label="None"/>
                                     {showDays()}
@@ -209,7 +209,7 @@ const RegistrationModal: FC<RegistrationModalProps> = (
                             </FormControl>
                             <FormControl style={{margin: "16px 0"}} variant="filled" className={classes.formControl}>
                                 <InputLabel htmlFor="select-year">
-                                    Year
+                                    Năm
                                 </InputLabel>
                                 <FilledSelect
                                     variant="filled"
@@ -219,7 +219,7 @@ const RegistrationModal: FC<RegistrationModalProps> = (
                                     native
                                     value={year}
                                     onChange={changeYear}
-                                    label="Year"
+                                    label="Năm"
                                 >
                                     <option aria-label="None"/>
                                     {showYears()}
@@ -234,7 +234,7 @@ const RegistrationModal: FC<RegistrationModalProps> = (
                                 size="small"
                                 fullWidth
                             >
-                                Next
+                                Tiếp
                             </Button>
                         </div>
                     </form>

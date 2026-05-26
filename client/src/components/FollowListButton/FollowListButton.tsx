@@ -13,7 +13,7 @@ interface FollowListButtonProps {
 const FollowListButton: FC<FollowListButtonProps> = ({listId, isFollower}): ReactElement => {
     const classes = useFollowListButtonStyles();
     const dispatch = useDispatch();
-    const [btnText, setBtnText] = useState<string>("Following");
+    const [btnText, setBtnText] = useState<string>("Đang theo dõi");
 
     const onClickFollow = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
         event.preventDefault();
@@ -29,14 +29,14 @@ const FollowListButton: FC<FollowListButtonProps> = ({listId, isFollower}): Reac
     return (
         <Button
             className={classes[isFollower ? "listPrimaryButton" : "listOutlinedButton"]}
-            onMouseOver={() => setBtnText("Unfollow")}
-            onMouseLeave={() => setBtnText("Following")}
+            onMouseOver={() => setBtnText("Bỏ theo dõi")}
+            onMouseLeave={() => setBtnText("Đang theo dõi")}
             onClick={(event) => onClickFollow(event)}
             variant={isFollower ? "contained" : "outlined"}
             color="primary"
             size="small"
         >
-            {isFollower ? btnText : "Follow"}
+            {isFollower ? btnText : "Theo dõi"}
         </Button>
     );
 };

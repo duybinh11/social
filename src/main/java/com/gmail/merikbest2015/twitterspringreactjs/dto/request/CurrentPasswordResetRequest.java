@@ -8,14 +8,14 @@ import lombok.Data;
 @Data
 public class CurrentPasswordResetRequest {
     
-    @NotBlank(message = "Current password cannot be empty.")
+    @NotBlank(message = "Mật khẩu hiện tại không được để trống.")
     private String currentPassword;
     
-    @NotBlank(message = "Password cannot be empty.")
-    @Size(min = 8, message = "Your password needs to be at least 8 characters. Please enter a longer one.")
+    @NotBlank(message = "Mật khẩu không được để trống.")
+    @Size(min = 8, message = "Mật khẩu cần có ít nhất 8 ký tự. Vui lòng nhập dài hơn.")
     private String password;
     
-    @NotBlank(message = "Password confirmation cannot be empty.")
-    @Size(min = 8, message = "Your password needs to be at least 8 characters. Please enter a longer one.")
+    @NotBlank(message = "Xác nhận mật khẩu không được để trống.")
+    @Size(min = 8, message = "Mật khẩu cần có ít nhất 8 ký tự. Vui lòng nhập dài hơn.")
     private String password2;
 }

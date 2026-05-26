@@ -16,7 +16,7 @@ const UnfollowUserButton = memo((): ReactElement => {
     const userProfileId = useSelector(selectUserProfileId);
     const isPrivateProfile = useSelector(selectUserProfileIsPrivateProfile);
     const isFollower = useSelector(selectUserProfileIsFollower);
-    const [btnText, setBtnText] = useState<string>("Following");
+    const [btnText, setBtnText] = useState<string>("Đang theo dõi");
 
     const handleFollow = (): void => {
         if (isPrivateProfile && !isFollower) {
@@ -30,8 +30,8 @@ const UnfollowUserButton = memo((): ReactElement => {
         <Button
             className={classes.primaryButton}
             onClick={handleFollow}
-            onMouseOver={() => setBtnText("Unfollow")}
-            onMouseLeave={() => setBtnText("Following")}
+            onMouseOver={() => setBtnText("Bỏ theo dõi")}
+            onMouseLeave={() => setBtnText("Đang theo dõi")}
             color="primary"
             variant="contained"
             size="large"

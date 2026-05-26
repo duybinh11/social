@@ -25,7 +25,7 @@ const ContentYouSee: FC = (): ReactElement => {
             </div>
             <div className={globalClasses.contentLink}>
                 <Typography variant={"body1"} component={"span"}>
-                    Topics
+                    Chủ đề
                 </Typography>
                 {ArrowRightIcon}
             </div>
@@ -51,4 +51,4 @@ const ContentYouSee: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(ContentYouSee)("Content you see");
+export default withDocumentTitle(ContentYouSee)("Nội dung bạn thấy");

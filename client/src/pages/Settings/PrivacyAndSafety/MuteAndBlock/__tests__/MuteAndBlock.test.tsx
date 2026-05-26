@@ -21,10 +21,10 @@ describe("MuteAndBlock", () => {
         const wrapper = mountWithStore(<MuteAndBlock/>, createMockRootState());
 
         expect(wrapper.text().includes("Manage the accounts, words, and notifications that you’ve muted or blocked.")).toBe(true);
-        expect(wrapper.text().includes("Blocked accounts")).toBe(true);
-        expect(wrapper.text().includes("Muted accounts")).toBe(true);
-        expect(wrapper.text().includes("Muted words")).toBe(true);
-        expect(wrapper.text().includes("Muted notifications")).toBe(true);
+        expect(wrapper.text().includes("Tài khoản đã chặn")).toBe(true);
+        expect(wrapper.text().includes("Tài khoản đã tắt tiếng")).toBe(true);
+        expect(wrapper.text().includes("Từ đã tắt tiếng")).toBe(true);
+        expect(wrapper.text().includes("Thông báo đã tắt tiếng")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {payload: [], type: UsersActionsType.SET_USERS});
     });
 

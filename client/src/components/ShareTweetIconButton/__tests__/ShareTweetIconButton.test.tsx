@@ -99,7 +99,7 @@ describe("ShareTweetIconButton", () => {
         jest.runAllTimers();
         wrapper.update();
         expect(wrapper.find(HoverAction).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Share");
+        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Chia sẻ");
 
         wrapper.find(IconButton).simulate("mouseleave");
         expect(wrapper.find(HoverAction).prop("visible")).toBe(false);

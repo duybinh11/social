@@ -12,7 +12,7 @@ describe("AdsPreferences", () => {
         expect(wrapper.text().includes("Control your discoverability settings and manage contacts you’ve imported.")).toBe(true);
         expect(wrapper.text().includes("Personalized ads")).toBe(true);
         expect(wrapper.text().includes("Interests")).toBe(true);
-        expect(wrapper.text().includes("Your advertiser list")).toBe(true);
+        expect(wrapper.text().includes("Danh sách nhà quảng cáo của bạn")).toBe(true);
     });
 
     it("should navigate to Your advertiser list", () => {

@@ -14,7 +14,7 @@ const UserNotFound: FC = (): ReactElement => {
         <Paper className={classnames(globalClasses.pageContainer, classes.container)} variant="outlined">
             <PageHeaderWrapper backButton>
                 <Typography variant={"h5"} component={"span"}>
-                    Profile
+                    Hồ sơ
                 </Typography>
             </PageHeaderWrapper>
             <div className={classes.wallpaper}/>

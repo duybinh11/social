@@ -36,21 +36,21 @@ describe("SideMenu", () => {
         const {wrapper} = createSideMenuWrapper();
 
         expect(wrapper.find("#homeIcon").exists()).toBeTruthy();
-        expect(wrapper.text().includes("Home")).toBe(true);
+        expect(wrapper.text().includes("Trang chủ")).toBe(true);
         expect(wrapper.find("#exploreIcon").exists()).toBeTruthy();
-        expect(wrapper.text().includes("Explore")).toBe(true);
+        expect(wrapper.text().includes("Khám phá")).toBe(true);
         expect(wrapper.find("#notificationsIcon").exists()).toBeTruthy();
-        expect(wrapper.text().includes("Notifications")).toBe(true);
+        expect(wrapper.text().includes("Thông báo")).toBe(true);
         expect(wrapper.find("#messagesIcon").exists()).toBeTruthy();
-        expect(wrapper.text().includes("Messages")).toBe(true);
+        expect(wrapper.text().includes("Tin nhắn")).toBe(true);
         expect(wrapper.find("#bookmarksIcon").exists()).toBeTruthy();
-        expect(wrapper.text().includes("Bookmarks")).toBe(true);
+        expect(wrapper.text().includes("Dấu trang")).toBe(true);
         expect(wrapper.find("#listsIcon").exists()).toBeTruthy();
-        expect(wrapper.text().includes("Lists")).toBe(true);
+        expect(wrapper.text().includes("Danh sách")).toBe(true);
         expect(wrapper.find("#profileIcon").exists()).toBeTruthy();
-        expect(wrapper.text().includes("Profile")).toBe(true);
-        expect(wrapper.text().includes("More")).toBe(true);
-        expect(wrapper.find(Button).text().includes("Tweet")).toBe(true);
+        expect(wrapper.text().includes("Hồ sơ")).toBe(true);
+        expect(wrapper.text().includes("Thêm")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đăng")).toBe(true);
     });
 
     it("should render Notifications Count", () => {
@@ -76,13 +76,13 @@ describe("SideMenu", () => {
         wrapper.find("#openPopup").simulate("click");
 
         expect(wrapper.find(Popover).at(0).prop("open")).toBe(true);
-        expect(wrapper.find(Popover).at(0).text().includes("Newsletters")).toBe(true);
-        expect(wrapper.find(Popover).at(0).text().includes("Twitter Ads")).toBe(true);
-        expect(wrapper.find(Popover).at(0).text().includes("Analytics")).toBe(true);
-        expect(wrapper.find(Popover).at(0).text().includes("Settings and privacy")).toBe(true);
-        expect(wrapper.find(Popover).at(0).text().includes("Help Center")).toBe(true);
-        expect(wrapper.find(Popover).at(0).text().includes("Display")).toBe(true);
-        expect(wrapper.find(Popover).at(0).text().includes("Keyboard shortcuts")).toBe(true);
+        expect(wrapper.find(Popover).at(0).text().includes("Bản tin")).toBe(true);
+        expect(wrapper.find(Popover).at(0).text().includes("Quảng cáo Twitter")).toBe(true);
+        expect(wrapper.find(Popover).at(0).text().includes("Phân tích")).toBe(true);
+        expect(wrapper.find(Popover).at(0).text().includes("Cài đặt và quyền riêng tư")).toBe(true);
+        expect(wrapper.find(Popover).at(0).text().includes("Trung tâm trợ giúp")).toBe(true);
+        expect(wrapper.find(Popover).at(0).text().includes("Hiển thị")).toBe(true);
+        expect(wrapper.find(Popover).at(0).text().includes("Phím tắt")).toBe(true);
     });
 
     it("should click close Popup", () => {

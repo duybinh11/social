@@ -38,7 +38,7 @@ describe("UserSettingsApi", () => {
         });
 
         it("[400] should return Incorrect username length error", () => {
-            testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_USERNAME, 400, "Incorrect username length", UserSettingsApi.updateUsername, mockRequest);
+            testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_USERNAME, 400, "Độ dài tên người dùng không hợp lệ", UserSettingsApi.updateUsername, mockRequest);
         });
     });
 
@@ -50,7 +50,7 @@ describe("UserSettingsApi", () => {
         });
 
         it("[403] should return Email has already been taken error", () => {
-            testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_EMAIL, 403, "Email has already been taken.", UserSettingsApi.updateEmail, mockRequest);
+            testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_EMAIL, 403, "Email đã được sử dụng.", UserSettingsApi.updateEmail, mockRequest);
         });
     });
 
@@ -62,7 +62,7 @@ describe("UserSettingsApi", () => {
         });
 
         it("[400] should return Not valid phone number error", () => {
-            testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_PHONE, 400, "Not valid phone number", UserSettingsApi.updatePhone, mockRequest);
+            testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_PHONE, 400, "Số điện thoại không hợp lệ", UserSettingsApi.updatePhone, mockRequest);
         });
     });
 
@@ -78,7 +78,7 @@ describe("UserSettingsApi", () => {
         });
 
         it("[400] should return Incorrect gender length error", () => {
-            testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_GENDER, 400, "Incorrect gender length", UserSettingsApi.updateGender, mockRequest);
+            testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_GENDER, 400, "Độ dài giới tính không hợp lệ", UserSettingsApi.updateGender, mockRequest);
         });
     });
 

@@ -18,14 +18,14 @@ describe("ChangeLanguage", () => {
     it("should render correctly and change language", () => {
         const wrapper = mountWithStore(<ChangeLanguage/>, mockStore);
 
-        expect(wrapper.text().includes("Display Language")).toBe(true);
+        expect(wrapper.text().includes("Ngôn ngữ hiển thị")).toBe(true);
         expect(wrapper.find(FilledSelect).prop("value")).toBe(mockStore.user.data?.language);
 
-        wrapper.find(FilledSelect).find("select").simulate("change", {target: {value: "English"}});
+        wrapper.find(FilledSelect).find("select").simulate("change", {target: {value: "Tiếng Anh"}});
         wrapper.find(Button).simulate("click");
         
-        expect(wrapper.find(FilledSelect).prop("value")).toBe("English");
-        expect(mockDispatchFn).nthCalledWith(1, {payload: {language: "English"}, type: UserActionsType.UPDATE_LANGUAGE});
+        expect(wrapper.find(FilledSelect).prop("value")).toBe("Tiếng Anh");
+        expect(mockDispatchFn).nthCalledWith(1, {payload: {language: "Tiếng Anh"}, type: UserActionsType.UPDATE_LANGUAGE});
     });
 
     it("should reset ChangeLanguage", () => {

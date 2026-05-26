@@ -58,7 +58,7 @@ const LogoutModal = (): ReactElement => {
                                 variant="contained"
                                 size="large"
                             >
-                                Cancel
+                                Hủy
                             </Button>
                             <Button
                                 onClick={handleSignOut}
@@ -66,7 +66,7 @@ const LogoutModal = (): ReactElement => {
                                 color="primary"
                                 size="large"
                             >
-                                Log out
+                                Đăng xuất
                             </Button>
                         </div>
                     </div>

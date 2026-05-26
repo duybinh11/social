@@ -45,7 +45,7 @@ const DirectMessages: FC = memo((): ReactElement => {
             <div className={globalClasses.itemInfoWrapper}>
                 <div className={globalClasses.infoItemCheckbox}>
                     <Typography variant={"body1"} component={"span"}>
-                        Allow message requests from everyone
+                        Cho phép yêu cầu tin nhắn từ mọi người
                     </Typography>
                     <Checkbox checked={checked} onChange={handleChange}/>
                 </div>
@@ -53,7 +53,7 @@ const DirectMessages: FC = memo((): ReactElement => {
                     {`Let people who you don’t follow send you message requests and add you to group conversations. To
                         reply to their messages, you need to accept the request. `}
                     <MuiLink href={DIRECT_MESSAGES_RECEIVE} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -69,7 +69,7 @@ const DirectMessages: FC = memo((): ReactElement => {
                     be sent to a separate inbox at the bottom of your message requests. You can still access them if you
                     want. `}
                     <MuiLink href={DIRECT_MESSAGES} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -84,7 +84,7 @@ const DirectMessages: FC = memo((): ReactElement => {
                     {`Let people you’re messaging with know when you’ve seen their messages. Read receipts are not shown
                         on message requests. `}
                     <MuiLink href={DIRECT_MESSAGES_RECEIPTS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -92,4 +92,4 @@ const DirectMessages: FC = memo((): ReactElement => {
     );
 });
 
-export default withDocumentTitle(DirectMessages)("Direct Messages");
+export default withDocumentTitle(DirectMessages)("Tin nhắn trực tiếp");

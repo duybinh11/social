@@ -29,14 +29,14 @@ const Filters: FC = (): ReactElement => {
                     {"Choose to filter out content such as duplicate or automated Tweets. This doesn’t apply to " +
                     "notifications from accounts you follow or have interacted with recently. "}
                     <MuiLink href={UNDERSTANDING_THE_NOTIFICATIONS_TIMELINE} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
             <Link to={SETTINGS_PRIVACY_AND_SAFETY_ADVANCED_FILTERS} className={globalClasses.linkWrapper}>
                 <div className={globalClasses.contentLink}>
                     <Typography variant={"body1"} component={"span"}>
-                        Muted notifications
+                        Thông báo đã tắt tiếng
                     </Typography>
                     {ArrowRightIcon}
                 </div>
@@ -45,4 +45,4 @@ const Filters: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Filters)("Filters");
+export default withDocumentTitle(Filters)("Bộ lọc");

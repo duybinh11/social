@@ -29,12 +29,12 @@ const Connect: FC = (): ReactElement => {
     };
 
     return (
-        <PageWrapper title={"Connect"}>
+        <PageWrapper title={"Kết nối"}>
             <InfiniteScrollWrapper dataLength={users.length} pagesCount={pagesCount} loadItems={loadUsers}>
-                <ConnectToUsers title={"Suggested for you"} isUsersLoading={isUsersLoading} users={users}/>
+                <ConnectToUsers title={"Gợi ý cho bạn"} isUsersLoading={isUsersLoading} users={users}/>
             </InfiniteScrollWrapper>
         </PageWrapper>
     );
 };
 
-export default withDocumentTitle(Connect)("Connect");
+export default withDocumentTitle(Connect)("Kết nối");

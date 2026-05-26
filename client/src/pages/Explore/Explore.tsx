@@ -166,11 +166,11 @@ const Explore: FC = (): ReactElement => {
                     </form>
                     <div className={classes.tabs}>
                         <Tabs value={activeTab} indicatorColor="primary" textColor="primary" onChange={handleChangeTab}>
-                            <Tab onClick={() => handleShowItems(showTopTweets)} label="Top"/>
-                            <Tab onClick={() => handleShowItems(showTopTweets)} label="Latest"/>
-                            <Tab onClick={() => handleShowItems(showUsers)} label="People"/>
-                            <Tab onClick={() => handleShowItems(showMediaTweets)} label="Photos"/>
-                            <Tab onClick={() => handleShowItems(showTweetsWithVideos)} label="Videos"/>
+                            <Tab onClick={() => handleShowItems(showTopTweets)} label="Hàng đầu"/>
+                            <Tab onClick={() => handleShowItems(showTopTweets)} label="Mới nhất"/>
+                            <Tab onClick={() => handleShowItems(showUsers)} label="Mọi người"/>
+                            <Tab onClick={() => handleShowItems(showMediaTweets)} label="Ảnh"/>
+                            <Tab onClick={() => handleShowItems(showTweetsWithVideos)} label="Video"/>
                         </Tabs>
                     </div>
                 </div>
@@ -194,4 +194,4 @@ const Explore: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Explore)("Explore");
+export default withDocumentTitle(Explore)("Khám phá");

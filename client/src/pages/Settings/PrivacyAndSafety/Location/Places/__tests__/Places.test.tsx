@@ -10,6 +10,6 @@ describe("Places", () => {
 
         expect(wrapper.text().includes("These are the places Twitter uses to show you more relevant content.")).toBe(true);
         expect(wrapper.text().includes("Unknown")).toBe(true);
-        expect(wrapper.text().includes("Remove")).toBe(true);
+        expect(wrapper.text().includes("Xóa")).toBe(true);
     });
 });

@@ -10,10 +10,10 @@ describe("BlockUserModal", () => {
     it("should render Block user", () => {
         const wrapper = initializeWrapper(true, false);
         
-        expect(wrapper.text().includes("Block")).toBe(true);
+        expect(wrapper.text().includes("Chặn")).toBe(true);
         expect(wrapper.text().includes("They will not be able to follow you or view your Tweets, and you will not see Tweets or notifications from @John Doe.")).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Block")).toBe(true);
-        expect(wrapper.find(Button).at(1).text().includes("Cancel")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Chặn")).toBe(true);
+        expect(wrapper.find(Button).at(1).text().includes("Hủy")).toBe(true);
     });
 
     it("should render Unblock user", () => {
@@ -21,10 +21,10 @@ describe("BlockUserModal", () => {
 
         wrapper.find(Dialog).simulate("click");
 
-        expect(wrapper.text().includes("Unblock")).toBe(true);
+        expect(wrapper.text().includes("Bỏ chặn")).toBe(true);
         expect(wrapper.text().includes("They will be able to follow you and view your Tweets.")).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Unblock")).toBe(true);
-        expect(wrapper.find(Button).at(1).text().includes("Cancel")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Bỏ chặn")).toBe(true);
+        expect(wrapper.find(Button).at(1).text().includes("Hủy")).toBe(true);
     });
     
     it("should render empty BlockUserModal correctly", () => {

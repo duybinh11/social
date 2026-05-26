@@ -50,7 +50,7 @@ describe("tweet selectors:", () => {
             likedUsers: mockUsers,
             retweetedUsers: mockUsers,
             replies: mockTweets,
-            errorMessage: "Tweet not found",
+            errorMessage: "Không tìm thấy tweet",
         }
     };
 
@@ -86,7 +86,7 @@ describe("tweet selectors:", () => {
 
     describe("selectErrorMessage", () => {
         it("should return correct result", () => {
-            expect(selectErrorMessage(mockTweetState)).toBe("Tweet not found");
+            expect(selectErrorMessage(mockTweetState)).toBe("Không tìm thấy tweet");
         });
     });
 

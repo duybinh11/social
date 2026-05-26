@@ -55,7 +55,7 @@ const ProfilePictureModal: FC<ProfilePictureModalProps> = (
                     size="medium"
                     fullWidth
                 >
-                    {avatar?.src ? "Next" : "Skip for now"}
+                    {avatar?.src ? "Tiếp" : "Bỏ qua"}
                 </Button>
             </DialogContent>
         </Dialog>

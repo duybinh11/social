@@ -21,7 +21,7 @@ const ShareActionsModal = (): ReactElement => {
         <>
             <ClickAwayListener onClickAway={handleClickAway}>
                 <div className={classes.root}>
-                    <ActionIconButton onClick={handleClick} actionText={"Share"} icon={ShareIcon}/>
+                    <ActionIconButton onClick={handleClick} actionText={"Chia sẻ"} icon={ShareIcon}/>
                     {open && (
                         <div className={classes.dropdown}>
                             <List>

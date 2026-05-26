@@ -9,15 +9,15 @@ describe("ChangeReplyWindow", () => {
     const mockRootState = createMockRootState(LoadingStatus.LOADED);
 
     it("should render correctly with EVERYONE reply", () => {
-        testReply(ReplyType.EVERYONE, 0, "Everyone");
+        testReply(ReplyType.EVERYONE, 0, "Mọi người");
     });
 
     it("should render correctly with FOLLOW reply", () => {
-        testReply(ReplyType.FOLLOW, 1, "People you follow");
+        testReply(ReplyType.FOLLOW, 1, "Người bạn theo dõi");
     });
 
     it("should render correctly with MENTION reply", () => {
-        testReply(ReplyType.MENTION, 2, "Only people you mention");
+        testReply(ReplyType.MENTION, 2, "Chỉ người bạn đề cập");
     });
     
     const testReply = (reply: ReplyType, itemIndex: number, text: string): void => {

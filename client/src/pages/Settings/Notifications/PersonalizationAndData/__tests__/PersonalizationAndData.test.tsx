@@ -10,7 +10,7 @@ describe("PersonalizationAndData", () => {
         const wrapper = mountWithStore(<PersonalizationAndData/>, createMockRootState());
 
         expect(wrapper.text().includes("Control how Twitter personalizes content and collects and shares certain data.")).toBe(true);
-        expect(wrapper.text().includes("Personalization and data")).toBe(true);
+        expect(wrapper.text().includes("Cá nhân hóa và dữ liệu")).toBe(true);
         expect(wrapper.text().includes("Personalization")).toBe(true);
         expect(wrapper.text().includes("Personalize based on your inferred identity")).toBe(true);
         expect(wrapper.text().includes("Personalize based on the places you’ve been")).toBe(true);

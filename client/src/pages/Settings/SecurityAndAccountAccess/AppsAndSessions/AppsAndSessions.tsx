@@ -31,7 +31,7 @@ const AppsAndSessions: FC = (): ReactElement => {
                     <Link to={SETTINGS_SECURITY_CONNECTED_APPS}>
                         <ListItem>
                             <Typography variant={"body1"} component={"span"}>
-                                Connected apps
+                                Ứng dụng đã kết nối
                             </Typography>
                             {ArrowRightIcon}
                         </ListItem>
@@ -39,7 +39,7 @@ const AppsAndSessions: FC = (): ReactElement => {
                     <Link to={SETTINGS_SECURITY_SESSIONS}>
                         <ListItem>
                             <Typography variant={"body1"} component={"span"}>
-                                Sessions
+                                Phiên
                             </Typography>
                             {ArrowRightIcon}
                         </ListItem>
@@ -47,7 +47,7 @@ const AppsAndSessions: FC = (): ReactElement => {
                     <Link to={SETTINGS_SECURITY_LOGIN_HISTORY}>
                         <ListItem>
                             <Typography variant={"body1"} component={"span"}>
-                                Account access history
+                                Lịch sử truy cập tài khoản
                             </Typography>
                             {ArrowRightIcon}
                         </ListItem>
@@ -55,7 +55,7 @@ const AppsAndSessions: FC = (): ReactElement => {
                     <Link to={SETTINGS_SECURITY_DEVICES}>
                         <ListItem>
                             <Typography variant={"body1"} component={"span"}>
-                                Logged-in devices and apps
+                                Thiết bị và ứng dụng đã đăng nhập
                             </Typography>
                             {ArrowRightIcon}
                         </ListItem>
@@ -66,4 +66,4 @@ const AppsAndSessions: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(AppsAndSessions)("Apps and sessions");
+export default withDocumentTitle(AppsAndSessions)("Ứng dụng và phiên");

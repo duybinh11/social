@@ -195,7 +195,7 @@ public class ListsControllerTest {
     public void getPrivateListById_NotFound() throws Exception {
         mockMvc.perform(get(URL_LISTS_BASIC + "/8"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test
@@ -204,7 +204,7 @@ public class ListsControllerTest {
     public void getListById_NotFound() throws Exception {
         mockMvc.perform(get(URL_LISTS_BASIC + "/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test
@@ -243,7 +243,7 @@ public class ListsControllerTest {
                         .content(mapper.writeValueAsString(listsRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Incorrect list name length")));
+                .andExpect(jsonPath("$", is("Độ dài tên danh sách không hợp lệ")));
     }
 
     @Test
@@ -259,7 +259,7 @@ public class ListsControllerTest {
                         .content(mapper.writeValueAsString(listsRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Incorrect list name length")));
+                .andExpect(jsonPath("$", is("Độ dài tên danh sách không hợp lệ")));
     }
 
     @Test
@@ -301,7 +301,7 @@ public class ListsControllerTest {
                         .content(mapper.writeValueAsString(listsRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Incorrect list name length")));
+                .andExpect(jsonPath("$", is("Độ dài tên danh sách không hợp lệ")));
     }
 
     @Test
@@ -317,7 +317,7 @@ public class ListsControllerTest {
                         .content(mapper.writeValueAsString(listsRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Incorrect list name length")));
+                .andExpect(jsonPath("$", is("Độ dài tên danh sách không hợp lệ")));
     }
 
     @Test
@@ -336,7 +336,7 @@ public class ListsControllerTest {
                         .content(mapper.writeValueAsString(listsRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test
@@ -355,7 +355,7 @@ public class ListsControllerTest {
                         .content(mapper.writeValueAsString(listsRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List owner not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy chủ danh sách")));
     }
 
     @Test
@@ -373,7 +373,7 @@ public class ListsControllerTest {
     public void deleteList_ShouldNotFound() throws Exception {
         mockMvc.perform(delete(URL_LISTS_BASIC + "/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test
@@ -382,7 +382,7 @@ public class ListsControllerTest {
     public void deleteAnotherUserList_ShouldNotFound() throws Exception {
         mockMvc.perform(delete(URL_LISTS_BASIC + "/5"))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("List owner not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy chủ danh sách")));
     }
 
     @Test
@@ -407,7 +407,7 @@ public class ListsControllerTest {
     public void followList_ShouldListNotFound() throws Exception {
         mockMvc.perform(get(URL_LISTS_BASIC + "/follow/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test
@@ -416,7 +416,7 @@ public class ListsControllerTest {
     public void followList_ShouldFollowToPrivateListNotFound() throws Exception {
         mockMvc.perform(get(URL_LISTS_BASIC + "/follow/8"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test
@@ -455,7 +455,7 @@ public class ListsControllerTest {
     public void pinList_ShouldPinnedListNotFound() throws Exception {
         mockMvc.perform(get(URL_LISTS_BASIC + "/pin/8"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test
@@ -523,7 +523,7 @@ public class ListsControllerTest {
                         .content(mapper.writeValueAsString(userToListsRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("User not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người dùng")));
     }
 
     @Test
@@ -563,7 +563,7 @@ public class ListsControllerTest {
     public void addUserToList_ShouldUserHavePrivateProfile() throws Exception {
         mockMvc.perform(get(URL_LISTS_BASIC + "/add/user/3/6"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("User not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy người dùng")));
     }
 
     @Test
@@ -581,7 +581,7 @@ public class ListsControllerTest {
     public void addUserToList_ShouldListNotFound() throws Exception {
         mockMvc.perform(get(URL_LISTS_BASIC + "/add/user/7/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test
@@ -661,7 +661,7 @@ public class ListsControllerTest {
     public void getListDetailsByUserPrivateList() throws Exception {
         mockMvc.perform(get(URL_LISTS_BASIC + "/5/details"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test
@@ -685,7 +685,7 @@ public class ListsControllerTest {
     public void getListFollowers_ShouldListNotFound() throws Exception {
         mockMvc.perform(get(URL_LISTS_BASIC + "/99/2/followers"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test
@@ -694,7 +694,7 @@ public class ListsControllerTest {
     public void getListFollowers_ByPrivateListShouldListNotFound() throws Exception {
         mockMvc.perform(get(URL_LISTS_BASIC + "/5/1/followers"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test
@@ -743,7 +743,7 @@ public class ListsControllerTest {
     public void getListMembers_ShouldListNotFound() throws Exception {
         mockMvc.perform(get(URL_LISTS_BASIC + "/99/2/members"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test
@@ -752,7 +752,7 @@ public class ListsControllerTest {
     public void getListMembers_ByPrivateListShouldListNotFound() throws Exception {
         mockMvc.perform(get(URL_LISTS_BASIC + "/5/1/members"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("List not found")));
+                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test

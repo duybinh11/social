@@ -13,7 +13,7 @@ const CloseButton: FC<CloseButtonProps> = ({onClose}): ReactElement => {
 
     return (
         <div className={classes.close}>
-            <ActionIconButton actionText={"Close"} onClick={onClose} icon={CloseIcon}/>
+            <ActionIconButton actionText={"Đóng"} onClick={onClose} icon={CloseIcon}/>
         </div>
     );
 };

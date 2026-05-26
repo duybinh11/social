@@ -62,7 +62,7 @@ const PrivacyAndSafety: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Audience and tagging
+                                    Đối tượng và gắn thẻ
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Manage what information you allow other people on Twitter to see.
@@ -80,7 +80,7 @@ const PrivacyAndSafety: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Your Tweets
+                                    Tweet của bạn
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Manage the information associated with your Tweets.
@@ -98,7 +98,7 @@ const PrivacyAndSafety: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Content you see
+                                    Nội dung bạn thấy
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Decide what you see on Twitter based on your preferences like Topics and
@@ -117,7 +117,7 @@ const PrivacyAndSafety: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Mute and block
+                                    Tắt tiếng và chặn
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Manage the accounts, words, and notifications that you’ve muted or blocked.
@@ -135,7 +135,7 @@ const PrivacyAndSafety: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Direct Messages
+                                    Tin nhắn trực tiếp
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Manage who can message you directly.
@@ -171,7 +171,7 @@ const PrivacyAndSafety: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Discoverability and contacts
+                                    Khả năng tìm thấy và danh bạ
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Control your discoverability settings and manage contacts you’ve imported.
@@ -195,7 +195,7 @@ const PrivacyAndSafety: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Ads preferences
+                                    Tùy chọn quảng cáo
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Manage your ads experience on Twitter.
@@ -213,7 +213,7 @@ const PrivacyAndSafety: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Off-Twitter activity
+                                    Hoạt động ngoài Twitter
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Manage how Twitter uses your online activity outside of Twitter, such as the
@@ -232,7 +232,7 @@ const PrivacyAndSafety: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Data sharing with business partners
+                                    Chia sẻ dữ liệu với đối tác kinh doanh
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Allow sharing of additional information with Twitter’s business partners.
@@ -250,7 +250,7 @@ const PrivacyAndSafety: FC = (): ReactElement => {
                             </div>
                             <div>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Location information
+                                    Thông tin vị trí
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
                                     Manage the location information Twitter uses to personalize your experience.
@@ -309,4 +309,4 @@ const PrivacyAndSafety: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(PrivacyAndSafety)("Privacy and safety");
+export default withDocumentTitle(PrivacyAndSafety)("Quyền riêng tư và an toàn");

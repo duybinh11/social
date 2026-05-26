@@ -9,7 +9,7 @@ describe("UnsentTweetsTab", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(
             <UnsentTweetsTab activeTab={0} handleChangeTab={jest.fn()}/>, createMockRootState(LoadingStatus.LOADED));
-        expect(wrapper.find(Tab).at(0).prop("label")).toBe("Scheduled");
-        expect(wrapper.find(Tab).at(1).prop("label")).toBe("Drafts");
+        expect(wrapper.find(Tab).at(0).prop("label")).toBe("Đã lên lịch");
+        expect(wrapper.find(Tab).at(1).prop("label")).toBe("Bản nháp");
     });
 });

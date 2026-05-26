@@ -44,7 +44,7 @@ describe("ExploreModal", () => {
             />, mockStore);
 
         expect(wrapper.text().includes("Explore settings")).toBe(true);
-        expect(wrapper.text().includes("Location")).toBe(true);
+        expect(wrapper.text().includes("Vị trí")).toBe(true);
         expect(wrapper.text().includes("Show content in this location")).toBe(true);
         expect(wrapper.text().includes("When this is on, you’ll see what’s happening around you right now.")).toBe(true);
         expect(wrapper.text().includes("Personalization")).toBe(true);

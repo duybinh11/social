@@ -48,7 +48,7 @@ describe("userDetail selectors:", () => {
 
     describe("selectUserDetailAbout", () => {
         it("should return UserDetailAbout string", () => {
-            expect(selectUserDetailAbout(createMockRootState())).toBe("About");
+            expect(selectUserDetailAbout(createMockRootState())).toBe("Giới thiệu");
         });
     });
 

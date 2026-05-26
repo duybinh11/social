@@ -20,7 +20,7 @@ describe("RecommendationsModal", () => {
 
         expect(wrapper.text().includes("Which languages do you speak?")).toBe(true);
         expect(wrapper.text().includes("You’ll be able to see Tweets, people, and trends in any languages you choose.")).toBe(true);
-        expect(wrapper.text().includes("English")).toBe(true);
+        expect(wrapper.text().includes("Tiếng Anh")).toBe(true);
         expect(wrapper.text().includes("Russian - русский")).toBe(true);
         expect(wrapper.text().includes("Chinese - 中文")).toBe(true);
 

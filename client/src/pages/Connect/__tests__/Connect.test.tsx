@@ -9,7 +9,7 @@ import {LoadingStatus} from "../../../store/types/common";
 
 window.scrollTo = jest.fn();
 
-describe("Connect", () => {
+describe("Kết nối", () => {
     let mockDispatchFn: jest.Mock;
 
     beforeEach(() => mockDispatchFn = mockDispatch());
@@ -22,7 +22,7 @@ describe("Connect", () => {
 
     it("should render list of UsersItem", () => {
         const wrapper = mountWithStore(<Connect/>, createMockRootState(LoadingStatus.SUCCESS));
-        expect(wrapper.text().includes("Suggested for you")).toBe(true);
+        expect(wrapper.text().includes("Gợi ý cho bạn")).toBe(true);
         expect(wrapper.find(UsersItem).length).toEqual(2);
         expect(mockDispatchFn).toHaveBeenCalledWith({payload: 0, type: UsersActionsType.FETCH_USERS});
     });

@@ -20,12 +20,12 @@ const Autoplay: FC = (): ReactElement => {
         <>
             <div className={classes.infoItemWrapper}>
                 <Typography variant={"h6"} component={"div"}>
-                    Autoplay
+                    Tự động phát
                 </Typography>
                 <Typography variant={"subtitle2"} component={"div"}>
                     {"Select whether videos and GIFs should play automatically on this device. "}
                     <MuiLink href={PUBLIC_AND_PROTECTED_TWEETS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
                 <div className={globalClasses.infoItemRadioCheckbox}>
@@ -63,4 +63,4 @@ const Autoplay: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Autoplay)("Autoplay");
+export default withDocumentTitle(Autoplay)("Tự động phát");

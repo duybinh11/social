@@ -8,6 +8,6 @@ describe("TweetDeleted", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<TweetDeleted/>, createMockRootState(LoadingStatus.SUCCESS));
         expect(wrapper.text().includes("This Tweet was deleted by the Tweet author.")).toBe(true);
-        expect(wrapper.text().includes("Learn more")).toBe(true);
+        expect(wrapper.text().includes("Tìm hiểu thêm")).toBe(true);
     });
 });

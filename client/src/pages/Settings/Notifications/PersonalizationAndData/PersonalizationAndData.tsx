@@ -30,7 +30,7 @@ const PersonalizationAndData = (): ReactElement => {
             <Divider/>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"body1"} component={"div"}>
-                    Personalization and data
+                    Cá nhân hóa và dữ liệu
                     <span className={classes.switch}>
                         <Switch defaultChecked/>
                     </span>
@@ -57,7 +57,7 @@ const PersonalizationAndData = (): ReactElement => {
                     Twitter may further personalize ads from Twitter advertisers, on and off Twitter, by combining your 
                     Twitter activity with other online activity and information from our partners. `}
                     <MuiLink href={PRIVACY_CONTROLS_FOR_TAILORED_ADS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -74,7 +74,7 @@ const PersonalizationAndData = (): ReactElement => {
                     on other inferences about your identity, like devices and browsers you haven’t used to log in to 
                     Twitter or email addresses and phone numbers similar to those linked to your Twitter account. `}
                     <MuiLink href={ACROSS_YOUR_DEVICES} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -100,7 +100,7 @@ const PersonalizationAndData = (): ReactElement => {
             <div className={globalClasses.itemInfoWrapper}>
                 <div className={globalClasses.infoItemCheckbox}>
                     <Typography variant={"body1"} component={"span"}>
-                        Allow use of where you see Twitter content across the web
+                        Cho phép sử dụng nơi bạn xem nội dung Twitter trên web
                     </Typography>
                     <Checkbox checked={checked4} onChange={() => setChecked4(prevState => !prevState)}/>
                 </div>
@@ -110,14 +110,14 @@ const PersonalizationAndData = (): ReactElement => {
                     personalizing your experience. This web browsing history will never be stored with your name, email, 
                     or phone number. `}
                     <MuiLink href={TAILORED_SUGGESTIONS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
             <div className={globalClasses.itemInfoWrapper}>
                 <div className={globalClasses.infoItemCheckbox}>
                     <Typography variant={"body1"} component={"span"}>
-                        Allow additional information sharing with business partners
+                        Cho phép chia sẻ thêm thông tin với đối tác kinh doanh
                     </Typography>
                     <Checkbox checked={checked5} onChange={() => setChecked5(prevState => !prevState)}/>
                 </div>
@@ -127,7 +127,7 @@ const PersonalizationAndData = (): ReactElement => {
                     support running Twitter’s business, including making Twitter’s marketing activities on other sites 
                     and apps more relevant for you. `}
                     <MuiLink href={DATA_THROUGH_PARTNERSHIPS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -141,4 +141,4 @@ const PersonalizationAndData = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(PersonalizationAndData)("Personalization and data");
+export default withDocumentTitle(PersonalizationAndData)("Cá nhân hóa và dữ liệu");

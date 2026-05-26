@@ -81,7 +81,7 @@ const MessagesModal: FC<MessagesModalProps> = ({visible, onClose}): ReactElement
         <Dialog open={visible} onClose={onClose}>
             <DialogTitle className={classes.header}>
                 <CloseButton onClose={onClose}/>
-                New message
+                Tin nhắn mới
                 <Button
                     onClick={handleClickAddUserToChat}
                     className={classes.button}
@@ -91,7 +91,7 @@ const MessagesModal: FC<MessagesModalProps> = ({visible, onClose}): ReactElement
                     size="small"
                     disabled={!selectedIndex}
                 >
-                    Next
+                    Tiếp
                 </Button>
             </DialogTitle>
             <DialogContent id="scrollableDiv" className={classes.content}>

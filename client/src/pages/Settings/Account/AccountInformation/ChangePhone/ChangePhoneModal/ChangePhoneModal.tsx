@@ -79,7 +79,7 @@ const ChangePhoneModal: FC<ChangePhoneModalProps> = ({visible, onClose}): ReactE
                 </div>
                 <div>
                     <Typography variant={"h3"} component={"div"}>
-                        Change phone
+                        Đổi số điện thoại
                     </Typography>
                     <Typography variant={"subtitle1"} component={"div"}>
                         {`Your current phone number is ${phoneCode !== "" ? phoneCode : "none"}${myProfilePhone}. What would you like to update it to?`}
@@ -130,7 +130,7 @@ const ChangePhoneModal: FC<ChangePhoneModalProps> = ({visible, onClose}): ReactE
                         <Typography variant={"body1"} component={"span"}>
                             {"Let people who have your phone number find and connect with you on Twitter. "}
                             <MuiLink href={EMAIL_AND_PHONE_DISCOVERABILITY_SETTINGS} variant="body1" target="_blank" rel="noopener">
-                                Learn more
+                                Tìm hiểu thêm
                             </MuiLink>
                         </Typography>
                         <span><Checkbox/></span>
@@ -143,7 +143,7 @@ const ChangePhoneModal: FC<ChangePhoneModalProps> = ({visible, onClose}): ReactE
                             size="small"
                             fullWidth
                         >
-                            {(!getValues("phone") || errors.phone) ? "Cancel" : "Next"}
+                            {(!getValues("phone") || errors.phone) ? "Hủy" : "Tiếp"}
                         </Button>
                     </div>
                 </form>

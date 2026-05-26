@@ -18,7 +18,7 @@ const MutedWords: FC = (): ReactElement => {
                     {`When you mute words, you won’t get any new notifications for Tweets that include them or see Tweets
                         with those words in your timeline. `}
                     <MuiLink href={ADVANCED_TWITTER_MUTE_OPTIONS} component="div" variant="subtitle1" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -26,4 +26,4 @@ const MutedWords: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(MutedWords)("Muted words");
+export default withDocumentTitle(MutedWords)("Từ đã tắt tiếng");

@@ -47,7 +47,7 @@ describe("ListsMemberships", () => {
             },
         });
         
-        expect(wrapper.text().includes("Lists")).toBe(true);
+        expect(wrapper.text().includes("Danh sách")).toBe(true);
         expect(wrapper.text().includes(`@${mockUserProfile.username} hasn’t created any Lists`)).toBe(true);
         expect(wrapper.text().includes("When they do, they’ll show up here.")).toBe(true);
     });

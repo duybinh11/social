@@ -47,7 +47,7 @@ const UploadImages: FC<UploadImageProps> = memo(({onChangeImages}): ReactElement
     return (
         <>
             <ActionIconButton
-                actionText={"Media"}
+                actionText={"Phương tiện"}
                 icon={MediaIcon}
                 onClick={handleClickImage}
                 size={"medium"}

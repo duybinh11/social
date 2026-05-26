@@ -29,8 +29,8 @@ import {ListsApi} from "../listsApi";
 
 describe("ListsApi", () => {
     const mockAdapter = new MockAdapter(axios);
-    const mockListNotFound = "List not found";
-    const mockListError = "Incorrect list name length";
+    const mockListNotFound = "Không tìm thấy danh sách";
+    const mockListError = "Độ dài tên danh sách không hợp lệ";
     const mockUserBLocked = "User with ID:1 is blocked";
 
     beforeEach(() => mockAdapter.reset());

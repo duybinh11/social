@@ -4,7 +4,7 @@ import {createMockRootState, mountWithStore, testClickOnLink} from "../../../../
 import Accessibility from "../Accessibility";
 import {SETTINGS_ACCESSIBILITY_DISPLAY_AND_LANGUAGES_AUTOPLAY} from "../../../../../util/pathConstants";
 
-describe("Accessibility", () => {
+describe("Trợ năng", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<Accessibility/>, createMockRootState());
 
@@ -13,7 +13,7 @@ describe("Accessibility", () => {
         expect(wrapper.text().includes("Improves legibility by increasing the contrast between text and background colors.")).toBe(true);
         expect(wrapper.text().includes("Motion")).toBe(true);
         expect(wrapper.text().includes("Reduce motion")).toBe(true);
-        expect(wrapper.text().includes("Autoplay")).toBe(true);
+        expect(wrapper.text().includes("Tự động phát")).toBe(true);
     });
 
     it("should link to Autoplay", () => {

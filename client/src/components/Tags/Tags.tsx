@@ -19,7 +19,7 @@ const Tags = (): ReactElement => {
         <Paper className={classes.container}>
             <Paper className={classes.header} variant="outlined">
                 <Typography variant={"h5"} component={"div"}>
-                    Trends for you
+                    Xu hướng dành cho bạn
                 </Typography>
                 <SettingsModal/>
             </Paper>
@@ -31,7 +31,7 @@ const Tags = (): ReactElement => {
                     <Link to={HOME_TRENDS}>
                         <ListItem className={classes.footer}>
                             <Typography variant={"body1"} component={"span"}>
-                                Show more
+                                Xem thêm
                             </Typography>
                         </ListItem>
                     </Link>

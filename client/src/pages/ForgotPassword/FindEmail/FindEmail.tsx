@@ -61,7 +61,7 @@ const FindEmail: FC = (): ReactElement => {
                     color="primary"
                     size="small"
                 >
-                    Search
+                    Tìm kiếm
                 </Button>
             </form>
         </>

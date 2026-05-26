@@ -26,8 +26,8 @@ describe("PendingButton", () => {
     it("should hover PendingButton", () => {
         const wrapper = mountWithStore(<PendingButton userId={1} size={"medium"}/>, mockState);
         wrapper.find(Button).simulate("mouseover");
-        expect(wrapper.find(Button).text().includes("Cancel")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Hủy")).toBe(true);
         wrapper.find(Button).simulate("mouseleave");
-        expect(wrapper.find(Button).text().includes("Pending")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang chờ")).toBe(true);
     });
 });

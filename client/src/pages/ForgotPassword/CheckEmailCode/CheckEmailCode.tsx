@@ -35,7 +35,7 @@ const CheckEmailCode: FC = (): ReactElement => {
     return (
         <>
             <Typography variant={"h3"} component={"div"}>
-                Check your email
+                Kiểm tra email của bạn
             </Typography>
             <Typography variant={"body1"} component={"div"} className={classes.text}>
                 You'll receive a code to verify here so you can reset your account password.
@@ -60,7 +60,7 @@ const CheckEmailCode: FC = (): ReactElement => {
                     color="primary"
                     size="small"
                 >
-                    Verify
+                    Xác minh
                 </Button>
             </form>
             <div>

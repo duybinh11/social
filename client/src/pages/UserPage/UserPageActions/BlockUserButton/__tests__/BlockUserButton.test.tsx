@@ -30,7 +30,7 @@ describe("BlockUserButton", () => {
         const wrapper = mountWithStore(<BlockUserButton/>, mockRootState);
         wrapper.find("#openBlockUserModal").at(0).simulate("click");
         wrapper.find(BlockUserModal).find(Button).at(0).simulate("click");
-        expect(wrapper.text().includes("Block")).toBe(true);
+        expect(wrapper.text().includes("Chặn")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: {userId: 2},
             type: UserActionsType.PROCESS_USER_TO_BLOCKLIST
@@ -51,7 +51,7 @@ describe("BlockUserButton", () => {
         });
         wrapper.find("#openBlockUserModal").at(0).simulate("click");
         wrapper.find(BlockUserModal).find(Button).at(0).simulate("click");
-        expect(wrapper.text().includes("Unblock")).toBe(true);
+        expect(wrapper.text().includes("Bỏ chặn")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: {userId: 1},
             type: UserActionsType.PROCESS_USER_TO_BLOCKLIST

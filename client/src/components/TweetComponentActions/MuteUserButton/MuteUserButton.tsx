@@ -32,7 +32,7 @@ const MuteUserButton: FC<MuteUserButtonProps> = memo((
         <ListItem id={"onMuteUser"} onClick={onMuteUser}>
             <>{isUserMuted ? UnmuteIcon : MuteIcon}</>
             <Typography variant={"body1"} component={"span"}>
-                {isUserMuted ? "Unmute" : "Mute"} @{username}
+                {isUserMuted ? "Bật tiếng" : "Tắt tiếng"} @{username}
             </Typography>
         </ListItem>
     );

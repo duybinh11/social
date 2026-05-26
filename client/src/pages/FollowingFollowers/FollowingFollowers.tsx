@@ -92,8 +92,8 @@ const FollowingFollowers: FC = (): ReactElement => {
             <div className={globalClasses.contentWrapper}>
                 <div className={classes.tabs}>
                     <Tabs value={activeTab} indicatorColor="primary" textColor="primary" onChange={handleChangeTab}>
-                        <Tab className={classes.tab} label="Following"/>
-                        <Tab className={classes.tab} label="Followers"/>
+                        <Tab className={classes.tab} label="Đang theo dõi"/>
+                        <Tab className={classes.tab} label="Người theo dõi"/>
                     </Tabs>
                 </div>
                 {(isUsersLoading && !users.length) ? (

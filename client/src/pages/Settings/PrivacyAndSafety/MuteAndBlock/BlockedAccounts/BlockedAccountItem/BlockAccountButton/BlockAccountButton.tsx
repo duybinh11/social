@@ -25,7 +25,7 @@ const BlockAccountButton: FC<BlockAccountButtonProps> = memo(({userId, username,
     return (
         <div className={classes.blockButton}>
             <Button onClick={unblockUser} color="primary" variant="contained" size="medium">
-                {isUserBlocked ? "Blocked" : "Block"}
+                {isUserBlocked ? "Đã chặn" : "Chặn"}
             </Button>
         </div>
     );

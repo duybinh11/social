@@ -34,7 +34,7 @@ const FollowUserButton: FC<FollowUserButtonProps> = memo((
         <ListItem id={"handleFollow"} onClick={handleFollow}>
             <>{isFollower ? UnfollowIcon : FollowIcon}</>
             <Typography variant={"body1"} component={"span"}>
-                {isFollower ? "Unfollow" : "Follow"} @{username}
+                {isFollower ? "Bỏ theo dõi" : "Theo dõi"} @{username}
             </Typography>
         </ListItem>
     );

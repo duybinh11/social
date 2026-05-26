@@ -33,7 +33,7 @@ const MuteAndBlock: FC = (): ReactElement => {
                 <Link to={SETTINGS_PRIVACY_AND_SAFETY_BLOCKED} className={globalClasses.linkWrapper}>
                     <div className={globalClasses.contentLink}>
                         <Typography variant={"body1"} component={"span"}>
-                            Blocked accounts
+                            Tài khoản đã chặn
                         </Typography>
                         {ArrowRightIcon}
                     </div>
@@ -41,7 +41,7 @@ const MuteAndBlock: FC = (): ReactElement => {
                 <Link to={SETTINGS_PRIVACY_AND_SAFETY_MUTED} className={globalClasses.linkWrapper}>
                     <div className={globalClasses.contentLink}>
                         <Typography variant={"body1"} component={"span"}>
-                            Muted accounts
+                            Tài khoản đã tắt tiếng
                         </Typography>
                         {ArrowRightIcon}
                     </div>
@@ -49,7 +49,7 @@ const MuteAndBlock: FC = (): ReactElement => {
                 <Link to={SETTINGS_PRIVACY_AND_SAFETY_MUTED_KEYWORDS} className={globalClasses.linkWrapper}>
                     <div className={globalClasses.contentLink}>
                         <Typography variant={"body1"} component={"span"}>
-                            Muted words
+                            Từ đã tắt tiếng
                         </Typography>
                         {ArrowRightIcon}
                     </div>
@@ -57,7 +57,7 @@ const MuteAndBlock: FC = (): ReactElement => {
                 <Link to={SETTINGS_PRIVACY_AND_SAFETY_ADVANCED_FILTERS} className={globalClasses.linkWrapper}>
                     <div className={globalClasses.contentLink}>
                         <Typography variant={"body1"} component={"span"}>
-                            Muted notifications
+                            Thông báo đã tắt tiếng
                         </Typography>
                         {ArrowRightIcon}
                     </div>
@@ -67,4 +67,4 @@ const MuteAndBlock: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(MuteAndBlock)("Mute and block");
+export default withDocumentTitle(MuteAndBlock)("Tắt tiếng và chặn");

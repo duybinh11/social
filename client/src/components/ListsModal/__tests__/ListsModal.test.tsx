@@ -28,7 +28,7 @@ describe("ListsModal", () => {
 
         expect(wrapper.text().includes("Pick a List")).toBe(true);
         expect(wrapper.text().includes("Create a new List")).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Save")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Lưu")).toBe(true);
         expect(wrapper.find(Spinner).exists()).toBe(true);
     });
 

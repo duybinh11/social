@@ -6,6 +6,6 @@ import lombok.Data;
 
 @Data
 public class ProcessEmailRequest {
-    @Email(regexp = ".+@.+\\..+", message = "Please enter a valid email address.")
+    @Email(regexp = ".+@.+\\..+", message = "Vui lòng nhập địa chỉ email hợp lệ.")
     private String email;
 }

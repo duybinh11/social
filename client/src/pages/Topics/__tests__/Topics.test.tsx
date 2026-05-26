@@ -7,7 +7,7 @@ import {createMockRootState, mountWithStore} from "../../../util/testHelper";
 import {TOPICS_FOLLOWED, TOPICS_NOT_INTERESTED, TOPICS_SUGGESTED} from "../../../util/pathConstants";
 import Topics from "../Topics";
 
-describe("Topics", () => {
+describe("Chủ đề", () => {
 
     it("should render Not Interested tab", () => {
         testTab("not_interested", 2, "Not Interested");

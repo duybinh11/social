@@ -29,7 +29,7 @@ const LikesCount = memo((): ReactElement => {
                             {likedTweetsCount}
                         </Typography>
                         <Typography variant={"subtitle1"} component={"span"}>
-                            Likes
+                            Lượt thích
                         </Typography>
                     </div>
                 </a>

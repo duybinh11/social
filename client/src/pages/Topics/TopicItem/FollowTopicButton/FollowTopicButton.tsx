@@ -18,7 +18,7 @@ const FollowTopicButton: FC<FollowTopicButtonProps> = ({onClickButton}): ReactEl
             variant="outlined"
             size="small"
         >
-            Follow
+            Theo dõi
         </Button>
     );
 };

@@ -28,7 +28,7 @@ describe("UsersItem", () => {
         expect(wrapper.text().includes(mockUser.fullName)).toBe(true);
         expect(wrapper.text().includes(`@${mockUser.username}`)).toBe(true);
         expect(wrapper.text().includes(mockUser.about)).toBe(true);
-        expect(wrapper.find(Button).text().includes("Follow")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Theo dõi")).toBe(true);
     });
 
     it("should render default profile image", () => {
@@ -58,7 +58,7 @@ describe("UsersItem", () => {
 
     it("should click handle follow", () => {
         const wrapper = mountWithStore(<UsersItem user={mockUser} size={UserItemSize.SMALL}/>, mockRootState);
-        expect(wrapper.find(Button).text().includes("Follow")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Theo dõi")).toBe(true);
         wrapper.find(Button).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {payload: {userId: 4}, type: UserActionsType.FOLLOW_USER});
     });
@@ -66,7 +66,7 @@ describe("UsersItem", () => {
     it("should click handle follow to private profile", () => {
         const mockUserItem = {...mockUser, isPrivateProfile: true} as unknown as UserResponse;
         const wrapper = mountWithStore(<UsersItem user={mockUserItem} size={UserItemSize.LARGE}/>, mockRootState);
-        expect(wrapper.find(Button).text().includes("Follow")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Theo dõi")).toBe(true);
         wrapper.find(Button).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {payload: 4, type: UserActionsType.PROCESS_FOLLOW_REQUEST});
     });
@@ -75,7 +75,7 @@ describe("UsersItem", () => {
         const mockUserItem = {...mockUser, isFollower: true} as unknown as UserResponse;
         const wrapper = mountWithStore(<UsersItem user={mockUserItem} size={UserItemSize.LARGE}/>, mockRootState);
         expect(wrapper.find(UnfollowModal).at(0).prop("visible")).toBe(false);
-        expect(wrapper.find(Button).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang theo dõi")).toBe(true);
         wrapper.find(Button).simulate("click");
         expect(wrapper.find(UnfollowModal).at(0).prop("visible")).toBe(true);
         wrapper.find(UnfollowModal).at(0).find(Button).at(1).simulate("click");
@@ -86,7 +86,7 @@ describe("UsersItem", () => {
         const mockUserItem = {...mockUser, isFollower: true, isPrivateProfile: true} as unknown as UserResponse;
         const wrapper = mountWithStore(<UsersItem user={mockUserItem} size={UserItemSize.LARGE}/>, mockRootState);
         expect(wrapper.find(UnfollowModal).at(0).prop("visible")).toBe(false);
-        expect(wrapper.find(Button).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang theo dõi")).toBe(true);
         wrapper.find(Button).simulate("click");
         expect(wrapper.find(UnfollowModal).at(0).prop("visible")).toBe(true);
         wrapper.find(UnfollowModal).at(0).find(Button).at(1).simulate("click");
@@ -133,7 +133,7 @@ describe("UsersItem", () => {
     it("should click cancel follow", () => {
         const mockUserItem = {...mockUser, isWaitingForApprove: true} as unknown as UserResponse;
         const wrapper = mountWithStore(<UsersItem user={mockUserItem} size={UserItemSize.LARGE}/>, mockRootState);
-        expect(wrapper.find(Button).text().includes("Pending")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đang chờ")).toBe(true);
         wrapper.find(Button).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {payload: 4, type: UserActionsType.PROCESS_FOLLOW_REQUEST});
     });
@@ -153,19 +153,19 @@ describe("UsersItem", () => {
     it("should mouse over and leave Following button", () => {
         const mockUserItem = {...mockUser, isFollower: true} as unknown as UserResponse;
         const wrapper = mountWithStore(<UsersItem user={mockUserItem} size={UserItemSize.LARGE}/>, mockRootState);
-        testSimulateHoverButton(wrapper, "Following", "Unfollow");
+        testSimulateHoverButton(wrapper, "Đang theo dõi", "Bỏ theo dõi");
     });
 
     it("should mouse over and leave Pending button", () => {
         const mockUserItem = {...mockUser, isWaitingForApprove: true} as unknown as UserResponse;
         const wrapper = mountWithStore(<UsersItem user={mockUserItem} size={UserItemSize.LARGE}/>, mockRootState);
-        testSimulateHoverButton(wrapper, "Pending", "Cancel");
+        testSimulateHoverButton(wrapper, "Đang chờ", "Hủy");
     });
 
     it("should mouse over and leave Blocked button", () => {
         const mockUserItem = {...mockUser, isUserBlocked: true} as unknown as UserResponse;
         const wrapper = mountWithStore(<UsersItem user={mockUserItem} size={UserItemSize.LARGE}/>, mockRootState);
-        testSimulateHoverButton(wrapper, "Blocked", "Unblock");
+        testSimulateHoverButton(wrapper, "Đã chặn", "Bỏ chặn");
     });
     
     const testSimulateHoverButton = (wrapper: any, mouseleaveText: string, mouseOverText: string): void => {

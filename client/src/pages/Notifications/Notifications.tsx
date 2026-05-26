@@ -33,14 +33,14 @@ const Notifications: FC = (): ReactElement => {
             <Paper className={classnames(globalClasses.pageHeader, classes.header)}>
                 <div className={globalClasses.pageHeaderTitleWrapper}>
                     <Typography variant="h5">
-                        Notifications
+                        Thông báo
                     </Typography>
                 </div>
             </Paper>
             <div className={globalClasses.contentWrapper}>
                 <div className={classes.tabs}>
                     <Tabs value={activeTab} indicatorColor="primary" textColor="primary" onChange={handleChangeTab}>
-                        <Tab className={classes.tab} label="All"/>
+                        <Tab className={classes.tab} label="Tất cả"/>
                         <Tab className={classes.tab} label="Mentions"/>
                     </Tabs>
                 </div>
@@ -51,4 +51,4 @@ const Notifications: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Notifications)("Notifications");
+export default withDocumentTitle(Notifications)("Thông báo");

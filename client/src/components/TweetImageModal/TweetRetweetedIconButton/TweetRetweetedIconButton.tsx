@@ -21,7 +21,7 @@ const TweetRetweetedIconButton = memo((): ReactElement => {
     return (
         <div className={classes.retweetIcon}>
             <ActionIconButton
-                actionText={isTweetRetweeted ? "Undo Retweet" : "Retweet"}
+                actionText={isTweetRetweeted ? "Hoàn tác đăng lại" : "Đăng lại"}
                 icon={isTweetRetweeted ? RetweetIcon : RetweetOutlinedIcon}
                 onClick={handleRetweet}
             />

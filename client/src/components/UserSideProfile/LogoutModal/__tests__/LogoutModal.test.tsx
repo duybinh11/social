@@ -22,8 +22,8 @@ describe("LogoutModal", () => {
         wrapper.find("#onOpenLogoutModal").at(0).simulate("click");
         expect(wrapper.text().includes("Log out of Twitter?")).toBe(true);
         expect(wrapper.text().includes("You can always log back in at any time.")).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Cancel")).toBe(true);
-        expect(wrapper.find(Button).at(1).text().includes("Log out")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Hủy")).toBe(true);
+        expect(wrapper.find(Button).at(1).text().includes("Đăng xuất")).toBe(true);
     });
 
     it("should click Sign Out", () => {

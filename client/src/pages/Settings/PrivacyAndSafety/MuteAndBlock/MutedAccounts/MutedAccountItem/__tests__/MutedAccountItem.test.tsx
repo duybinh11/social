@@ -86,7 +86,7 @@ describe("MutedAccountItem", () => {
         wrapper.update();
 
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
-        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Unmute");
+        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Bật tiếng");
     });
 
     it("should hover Mute icon and render Mute Hover Action", () => {
@@ -97,7 +97,7 @@ describe("MutedAccountItem", () => {
         wrapper.update();
 
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
-        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Mute");
+        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Tắt tiếng");
     });
 
     it("should click on avatar and link to User profile", () => {

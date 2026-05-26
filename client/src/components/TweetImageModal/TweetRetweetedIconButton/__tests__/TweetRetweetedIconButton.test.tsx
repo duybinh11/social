@@ -20,7 +20,7 @@ describe("TweetRetweetedIconButton", () => {
 
     it("should render Undo Retweet", () => {
         const wrapper = mountWithStore(<TweetRetweetedIconButton/>, mockRootState);
-        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Undo Retweet");
+        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Hoàn tác đăng lại");
         expect(wrapper.find("#retweetIcon").exists()).toBeTruthy();
         wrapper.find(IconButton).at(0).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {payload: {tweetId: 2}, type: TweetsActionType.RETWEET});
@@ -35,7 +35,7 @@ describe("TweetRetweetedIconButton", () => {
             }
         }
         const wrapper = mountWithStore(<TweetRetweetedIconButton/>, mockState);
-        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Retweet");
+        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Đăng lại");
         expect(wrapper.find("#retweetOutlinedIcon").exists()).toBeTruthy();
     });
 });

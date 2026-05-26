@@ -54,7 +54,7 @@ describe("ChangeYourPassword", () => {
     
     it("should return current password error message", (done) => {
         const mockAdapter = new MockAdapter(axios);
-        const mockErrorMessage = "The password you entered was incorrect.";
+        const mockErrorMessage = "Mật khẩu bạn nhập không đúng.";
         const wrapper = mountWithStore(<ChangeYourPassword/>, mockStore);
 
         submitChangePasswordForm(wrapper);
@@ -71,7 +71,7 @@ describe("ChangeYourPassword", () => {
 
     it("should return password do not match error message", (done) => {
         const mockAdapter = new MockAdapter(axios);
-        const mockErrorMessage = "Passwords do not match.";
+        const mockErrorMessage = "Mật khẩu không khớp.";
         const wrapper = mountWithStore(<ChangeYourPassword/>, mockStore);
 
         submitChangePasswordForm(wrapper);
@@ -88,7 +88,7 @@ describe("ChangeYourPassword", () => {
 
     it("should return password2 is empty error message", (done) => {
         const mockAdapter = new MockAdapter(axios);
-        const mockErrorMessage = "Password confirmation cannot be empty.";
+        const mockErrorMessage = "Xác nhận mật khẩu không được để trống.";
         const wrapper = mountWithStore(<ChangeYourPassword/>, mockStore);
 
         submitChangePasswordForm(wrapper);

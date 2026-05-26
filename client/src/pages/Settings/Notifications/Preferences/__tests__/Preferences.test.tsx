@@ -7,14 +7,14 @@ import {
     SETTINGS_NOTIFICATION_PUSH_NOTIFICATIONS
 } from "../../../../../util/pathConstants";
 
-describe("Preferences", () => {
+describe("Tùy chọn", () => {
 
     it("should render correctly", () => {
         const wrapper = mountWithStore(<Preferences/>, createMockRootState());
 
         expect(wrapper.text().includes("Select your preferences by notification type.")).toBe(true);
-        expect(wrapper.text().includes("Push notifications")).toBe(true);
-        expect(wrapper.text().includes("Email notifications")).toBe(true);
+        expect(wrapper.text().includes("Thông báo đẩy")).toBe(true);
+        expect(wrapper.text().includes("Thông báo email")).toBe(true);
     });
 
     it("should link to Push notifications", () => {

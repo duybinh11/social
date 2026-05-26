@@ -35,7 +35,7 @@ const DataUsage: FC = (): ReactElement => {
                 <div className={globalClasses.contentLink}>
                     <div className={classes.accessibilityInfo}>
                         <Typography variant={"body1"} component={"div"}>
-                            Autoplay
+                            Tự động phát
                         </Typography>
                         <Typography variant={"subtitle2"} component={"div"}>
                             Never
@@ -48,4 +48,4 @@ const DataUsage: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(DataUsage)("Data usage");
+export default withDocumentTitle(DataUsage)("Sử dụng dữ liệu");

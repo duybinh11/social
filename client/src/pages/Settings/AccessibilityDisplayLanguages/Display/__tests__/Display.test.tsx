@@ -6,7 +6,7 @@ import {createMockRootState, mockDispatch, mountWithStore} from "../../../../../
 import {UserActionsType} from "../../../../../store/ducks/user/contracts/actionTypes";
 import {BackgroundTheme, ColorScheme} from "../../../../../store/types/common";
 
-describe("Display", () => {
+describe("Hiển thị", () => {
     let mockDispatchFn: jest.Mock;
 
     beforeEach(() => {
@@ -22,9 +22,9 @@ describe("Display", () => {
 
         expect(wrapper.text().includes("Twitter")).toBe(true);
         expect(wrapper.text().includes("@Twitter · 31m")).toBe(true);
-        expect(wrapper.text().includes("Font size")).toBe(true);
-        expect(wrapper.text().includes("Color")).toBe(true);
-        expect(wrapper.text().includes("Background")).toBe(true);
+        expect(wrapper.text().includes("Cỡ chữ")).toBe(true);
+        expect(wrapper.text().includes("Màu")).toBe(true);
+        expect(wrapper.text().includes("Nền")).toBe(true);
         expect(wrapper.find(Radio).at(0).prop("checked")).toBe(true);
         expect(wrapper.find("#blue").find("span").exists()).toBe(true);
     });

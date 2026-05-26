@@ -42,9 +42,9 @@ const Reply: FC<ReplyProps> = memo(({replyType, setReplyType, isUnsentTweet}): R
                         {replyType === ReplyType.MENTION && MentionReplyIcon}
                     </span>
                     <span>
-                        {replyType === ReplyType.EVERYONE && "Everyone can reply"}
-                        {replyType === ReplyType.FOLLOW && "People you follow"}
-                        {replyType === ReplyType.MENTION && "Only people you mention"}
+                        {replyType === ReplyType.EVERYONE && "Mọi người có thể trả lời"}
+                        {replyType === ReplyType.FOLLOW && "Người bạn theo dõi"}
+                        {replyType === ReplyType.MENTION && "Chỉ người bạn đề cập"}
                     </span>
                 </Button>
                 <Divider/>

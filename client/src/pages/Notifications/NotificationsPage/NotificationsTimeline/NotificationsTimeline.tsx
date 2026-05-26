@@ -38,7 +38,7 @@ const NotificationsTimeline: FC = (): ReactElement => {
             <Paper className={globalClasses.pageContainer} variant="outlined">
                 <PageHeaderWrapper backButton>
                     <Typography variant={"h5"} component="div">
-                        Tweets
+                        Đăng
                     </Typography>
                 </PageHeaderWrapper>
                 <div className={globalClasses.contentWrapper}>
@@ -56,4 +56,4 @@ const NotificationsTimeline: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(NotificationsTimeline)("Notifications");
+export default withDocumentTitle(NotificationsTimeline)("Thông báo");

@@ -25,7 +25,7 @@ const EditListButton = (): ReactElement => {
                 color="primary"
                 size="small"
             >
-                Edit List
+                Sửa danh sách
             </Button>
             <EditListModal visible={visibleEditListModal} onClose={onCloseCreateListModal}/>
         </>

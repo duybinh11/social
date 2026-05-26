@@ -53,7 +53,7 @@ describe("TopicApi", () => {
         });
 
         it("[404] should topic not found", () => {
-            testApiCall(mockAdapter, "onGet", `${API_TOPICS_NOT_INTERESTED}/1`, 404, "Topic not found", TopicApi.processNotInterestedTopic, 1);
+            testApiCall(mockAdapter, "onGet", `${API_TOPICS_NOT_INTERESTED}/1`, 404, "Không tìm thấy chủ đề", TopicApi.processNotInterestedTopic, 1);
         });
     });
 
@@ -63,7 +63,7 @@ describe("TopicApi", () => {
         });
 
         it("[404] should topic not found", () => {
-            testApiCall(mockAdapter, "onGet", `${API_TOPICS_FOLLOW}/1`, 404, "Topic not found", TopicApi.processFollowTopic, 1);
+            testApiCall(mockAdapter, "onGet", `${API_TOPICS_FOLLOW}/1`, 404, "Không tìm thấy chủ đề", TopicApi.processFollowTopic, 1);
         });
     });
 });

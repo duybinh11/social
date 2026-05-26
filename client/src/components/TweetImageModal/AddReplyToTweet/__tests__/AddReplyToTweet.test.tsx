@@ -10,6 +10,6 @@ describe("AddReplyToTweet", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<AddReplyToTweet/>, createMockRootState(LoadingStatus.SUCCESS));
         expect(wrapper.text().includes(`Replying to @${mockFullTweet.user.username}`)).toBe(true);
-        expect(wrapper.find(AddTweetForm).prop("title")).toBe("Tweet your reply");
+        expect(wrapper.find(AddTweetForm).prop("title")).toBe("Đăng trả lời");
     });
 });

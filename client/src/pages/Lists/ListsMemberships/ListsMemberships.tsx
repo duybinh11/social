@@ -81,4 +81,4 @@ const ListsMemberships: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(ListsMemberships)("Lists");
+export default withDocumentTitle(ListsMemberships)("Danh sách");

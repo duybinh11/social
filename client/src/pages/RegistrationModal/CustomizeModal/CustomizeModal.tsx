@@ -30,7 +30,7 @@ const CustomizeModal: FC<CustomizeModalProps> = ({open, onClose, onOpenCreateAcc
                     <TwitterIcon/>
                 </div>
                 <Typography variant={"h3"} component={"div"} className={classes.title}>
-                    Customize your experience
+                    Tùy chỉnh trải nghiệm
                 </Typography>
                 <Typography component={"div"} className={classes.subtitle}>
                     Track where you see Twitter content across the web
@@ -43,7 +43,7 @@ const CustomizeModal: FC<CustomizeModalProps> = ({open, onClose, onOpenCreateAcc
                 <Typography variant={"body1"} component={"div"}>
                     {"For more details about these settings, visit the "}
                     <MuiLink href={NEW_ACCOUNT_SETTINGS} variant="body1" target="_blank" rel="noopener">
-                        Help Center
+                        Trung tâm trợ giúp
                     </MuiLink>.
                 </Typography>
                 <div className={classes.buttonWrapper}>
@@ -54,7 +54,7 @@ const CustomizeModal: FC<CustomizeModalProps> = ({open, onClose, onOpenCreateAcc
                         size="small"
                         fullWidth
                     >
-                        Next
+                        Tiếp
                     </Button>
                 </div>
             </DialogContent>

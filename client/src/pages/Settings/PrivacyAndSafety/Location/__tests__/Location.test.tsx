@@ -9,14 +9,14 @@ import {
     SETTINGS_PRIVACY_AND_SAFETY_LOCATIONS
 } from "../../../../../util/pathConstants";
 
-describe("Location", () => {
+describe("Vị trí", () => {
 
     it("should render correctly", () => {
         const wrapper = mountWithStore(<Location/>, createMockRootState());
 
         expect(wrapper.text().includes("Manage the location information Twitter uses to personalize your experience.")).toBe(true);
         expect(wrapper.text().includes("Personalize based on places you’ve been")).toBe(true);
-        expect(wrapper.text().includes("See places you’ve been")).toBe(true);
+        expect(wrapper.text().includes("Xem các địa điểm bạn đã đến")).toBe(true);
         expect(wrapper.text().includes("Explore settings")).toBe(true);
         expect(wrapper.find(MuiLink).at(0).prop("href")).toBe(EMAIL_AND_PHONE_DISCOVERABILITY_SETTINGS);
     });

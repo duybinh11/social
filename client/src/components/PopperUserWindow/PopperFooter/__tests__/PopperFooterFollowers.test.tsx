@@ -14,6 +14,6 @@ describe("PopperFooterFollowers", () => {
             userDetail: {...mockState.userDetail, item: {...mockUserDetailResponse}}
         });
         expect(wrapper.text().includes("4")).toBe(true);
-        expect(wrapper.text().includes("Followers")).toBe(true);
+        expect(wrapper.text().includes("Người theo dõi")).toBe(true);
     });
 });

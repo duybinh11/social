@@ -25,8 +25,8 @@ describe("DeleteListModal", () => {
         expect(wrapper.find(Dialog).exists()).toBeTruthy();
         expect(wrapper.text().includes("Delete List?")).toBe(true);
         expect(wrapper.text().includes("This can’t be undone and you’ll lose your List.")).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Cancel")).toBe(true);
-        expect(wrapper.find(Button).at(1).text().includes("Delete")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Hủy")).toBe(true);
+        expect(wrapper.find(Button).at(1).text().includes("Xóa")).toBe(true);
     });
 
     it("should click close Delete List Modal window", () => {

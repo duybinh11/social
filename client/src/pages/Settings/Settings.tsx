@@ -162,7 +162,7 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                 <Paper className={classes.container} variant="outlined">
                     <Paper className={classnames(globalClasses.pageHeader, classes.leftSideHeader)} variant="outlined">
                         <Typography variant="h5" className={globalClasses.pageHeaderTitleWrapper}>
-                            Settings
+                            Cài đặt
                         </Typography>
                     </Paper>
                     <div className={classnames(classes.listWrapper, globalClasses.contentWrapper, globalClasses.svg)}>
@@ -173,7 +173,7 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                     onClick={() => handleListItemClick(1)}
                                 >
                                     <Typography variant={"body1"} component={"span"}>
-                                        Your account
+                                        Tài khoản của bạn
                                     </Typography>
                                     {ArrowRightIcon}
                                 </ListItem>
@@ -184,7 +184,7 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                     onClick={() => handleListItemClick(2)}
                                 >
                                     <Typography variant={"body1"} component={"span"}>
-                                        Security and account access
+                                        Bảo mật và quyền truy cập tài khoản
                                     </Typography>
                                     {ArrowRightIcon}
                                 </ListItem>
@@ -195,7 +195,7 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                     onClick={() => handleListItemClick(3)}
                                 >
                                     <Typography variant={"body1"} component={"span"}>
-                                        Privacy and safety
+                                        Quyền riêng tư và an toàn
                                     </Typography>
                                     {ArrowRightIcon}
                                 </ListItem>
@@ -206,7 +206,7 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                     onClick={() => handleListItemClick(4)}
                                 >
                                     <Typography variant={"body1"} component={"span"}>
-                                        Notifications
+                                        Thông báo
                                     </Typography>
                                     {ArrowRightIcon}
                                 </ListItem>
@@ -217,7 +217,7 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                     onClick={() => handleListItemClick(5)}
                                 >
                                     <Typography variant={"body1"} component={"span"}>
-                                        Accessibility, display, and languages
+                                        Trợ năng, hiển thị và ngôn ngữ
                                     </Typography>
                                     {ArrowRightIcon}
                                 </ListItem>
@@ -228,7 +228,7 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                     onClick={() => handleListItemClick(6)}
                                 >
                                     <Typography variant={"body1"} component={"span"}>
-                                        Additional resources
+                                        Tài nguyên bổ sung
                                     </Typography>
                                     {ArrowRightIcon}
                                 </ListItem>
@@ -241,197 +241,197 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                 <Paper className={classnames(globalClasses.pageHeader, classes.rightSideHeader)} variant="outlined">
                     <Route exact path={SETTINGS}>
                         <Typography variant="h5">
-                            Your Account
+                            Tài khoản của bạn
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_INFO}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Account information
+                            Thông tin tài khoản
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_INFO_USERNAME}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Change username
+                            Đổi tên người dùng
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_INFO_PHONE}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Change phone
+                            Đổi số điện thoại
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_INFO_EMAIL}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Change email
+                            Đổi email
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_INFO_COUNTRY}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Change country
+                            Đổi quốc gia
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_INFO_LANGUAGES}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Change display language
+                            Đổi ngôn ngữ hiển thị
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_INFO_GENDER}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Gender
+                            Giới tính
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_INFO_AGE}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Age
+                            Tuổi
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PASSWORD}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Change your password
+                            Đổi mật khẩu
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_TEAMS}>
                         <BackButton/>
                         <Typography variant="h5">
-                            TweetDeck Teams
+                            Nhóm TweetDeck
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_DEACTIVATE}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Deactivate account
+                            Vô hiệu hóa tài khoản
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_SECURITY_AND_ACCOUNT_ACCESS}>
                         <Typography variant="h5">
-                            Security and account access
+                            Bảo mật và quyền truy cập tài khoản
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_SECURITY}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Security
+                            Bảo mật
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_SECURITY_LOGIN_VERIFICATION}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Two-factor authentication
+                            Xác thực hai yếu tố
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_SECURITY_APPS_AND_SESSIONS}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Apps and sessions
+                            Ứng dụng và phiên
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_SECURITY_CONNECTED_APPS}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Connected apps
+                            Ứng dụng đã kết nối
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_SECURITY_SESSIONS}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Sessions
+                            Phiên
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_SECURITY_SESSIONS_CURRENT}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Current session
+                            Phiên hiện tại
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_SECURITY_LOGIN_HISTORY}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Account access history
+                            Lịch sử truy cập tài khoản
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_SECURITY_DEVICES}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Logged-in devices and apps
+                            Thiết bị và ứng dụng đã đăng nhập
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY}>
                         <Typography variant="h5">
-                            Privacy and safety
+                            Quyền riêng tư và an toàn
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_AUDIENCE}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Audience and tagging
+                            Đối tượng và gắn thẻ
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_TAGGING}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Photo tagging
+                            Gắn thẻ ảnh
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_YOUR_TWEETS}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Your Tweets
+                            Tweet của bạn
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_LOCATION}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Add location information to your Tweets
+                            Thêm thông tin vị trí vào tweet của bạn
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_CONTENT_YOU_SEE}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Content you see
+                            Nội dung bạn thấy
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_MUTE_AND_BLOCK}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Mute and block
+                            Tắt tiếng và chặn
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_BLOCKED}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Blocked accounts
+                            Tài khoản đã chặn
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_MUTED}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Muted accounts
+                            Tài khoản đã tắt tiếng
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_MUTED_KEYWORDS}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Muted words
+                            Từ đã tắt tiếng
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_ADVANCED_FILTERS}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Muted notifications
+                            Thông báo đã tắt tiếng
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_DIRECT_MESSAGES}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Direct Messages
+                            Tin nhắn trực tiếp
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_SPACES}>
@@ -443,129 +443,129 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_CONTACTS}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Discoverability and contacts
+                            Khả năng tìm thấy và danh bạ
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_CONTACTS_DASHBOARD}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Manage contacts
+                            Quản lý danh bạ
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_ADS_PREFERENCES}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Ads preferences
+                            Tùy chọn quảng cáo
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_AUDIENCES}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Your advertiser list
+                            Danh sách nhà quảng cáo của bạn
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_OFF_TWITTER_ACTIVITY}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Off-Twitter activity
+                            Hoạt động ngoài Twitter
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_DATA_SHARING_WITH_BUSINESS_PARTNERS}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Data sharing with business partners
+                            Chia sẻ dữ liệu với đối tác kinh doanh
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_LOCATION_INFORMATION}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Location information
+                            Thông tin vị trí
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PRIVACY_AND_SAFETY_LOCATIONS}>
                         <BackButton/>
                         <Typography variant="h5">
-                            See places you’ve been
+                            Xem các địa điểm bạn đã đến
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_NOTIFICATION}>
                         <Typography variant="h5">
-                            Notifications
+                            Thông báo
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_NOTIFICATION_FILTERS}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Filters
+                            Bộ lọc
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_NOTIFICATION_PREFERENCES}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Preferences
+                            Tùy chọn
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_NOTIFICATION_PUSH_NOTIFICATIONS}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Push notifications
+                            Thông báo đẩy
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_NOTIFICATION_EMAIL_NOTIFICATIONS}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Email notifications
+                            Thông báo email
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_ACCESSIBILITY_DISPLAY_AND_LANGUAGES}>
                         <Typography variant="h5">
-                            Accessibility, display and languages
+                            Trợ năng, hiển thị và ngôn ngữ
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_ACCESSIBILITY_DISPLAY_AND_LANGUAGES_ACCESSIBILITY}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Accessibility
+                            Trợ năng
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_ACCESSIBILITY_DISPLAY_AND_LANGUAGES_DISPLAY}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Display
+                            Hiển thị
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_ACCESSIBILITY_DISPLAY_AND_LANGUAGES_LANGUAGES}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Languages
+                            Ngôn ngữ
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_ACCESSIBILITY_DISPLAY_AND_LANGUAGES_DATA}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Data usage
+                            Sử dụng dữ liệu
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_ACCESSIBILITY_DISPLAY_AND_LANGUAGES_AUTOPLAY}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Autoplay
+                            Tự động phát
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_PERSONALIZATION}>
                         <BackButton/>
                         <Typography variant="h5">
-                            Personalization and data
+                            Cá nhân hóa và dữ liệu
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_ABOUT}>
                         <Typography variant="h5">
-                            Additional resources
+                            Tài nguyên bổ sung
                         </Typography>
                     </Route>
                     <Route exact path={SETTINGS_CONTENT_PREFERENCES}>
                         <Typography variant="h5">
-                            Content preferences
+                            Tùy chọn nội dung
                         </Typography>
                     </Route>
                 </Paper>
@@ -638,4 +638,4 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
     );
 };
 
-export default withDocumentTitle(Settings)("Settings");
+export default withDocumentTitle(Settings)("Cài đặt");

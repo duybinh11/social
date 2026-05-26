@@ -23,17 +23,17 @@ describe("PrivacyAndSafety", () => {
 
         expect(wrapper.text().includes("Manage what information you see and share on Twitter.")).toBe(true);
         expect(wrapper.text().includes("Your Twitter activity")).toBe(true);
-        expect(wrapper.text().includes("Audience and tagging")).toBe(true);
-        expect(wrapper.text().includes("Your Tweets")).toBe(true);
-        expect(wrapper.text().includes("Content you see")).toBe(true);
-        expect(wrapper.text().includes("Mute and block")).toBe(true);
-        expect(wrapper.text().includes("Direct Messages")).toBe(true);
+        expect(wrapper.text().includes("Đối tượng và gắn thẻ")).toBe(true);
+        expect(wrapper.text().includes("Tweet của bạn")).toBe(true);
+        expect(wrapper.text().includes("Nội dung bạn thấy")).toBe(true);
+        expect(wrapper.text().includes("Tắt tiếng và chặn")).toBe(true);
+        expect(wrapper.text().includes("Tin nhắn trực tiếp")).toBe(true);
         expect(wrapper.text().includes("Spaces")).toBe(true);
-        expect(wrapper.text().includes("Discoverability and contacts")).toBe(true);
-        expect(wrapper.text().includes("Ads preferences")).toBe(true);
-        expect(wrapper.text().includes("Off-Twitter activity")).toBe(true);
-        expect(wrapper.text().includes("Data sharing with business partners")).toBe(true);
-        expect(wrapper.text().includes("Location information")).toBe(true);
+        expect(wrapper.text().includes("Khả năng tìm thấy và danh bạ")).toBe(true);
+        expect(wrapper.text().includes("Tùy chọn quảng cáo")).toBe(true);
+        expect(wrapper.text().includes("Hoạt động ngoài Twitter")).toBe(true);
+        expect(wrapper.text().includes("Chia sẻ dữ liệu với đối tác kinh doanh")).toBe(true);
+        expect(wrapper.text().includes("Thông tin vị trí")).toBe(true);
         expect(wrapper.text().includes("Privacy center")).toBe(true);
         expect(wrapper.text().includes("Privacy policy")).toBe(true);
         expect(wrapper.text().includes("Contact us")).toBe(true);

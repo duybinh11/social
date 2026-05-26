@@ -16,11 +16,11 @@ const AccountAccessHistory: FC = (): ReactElement => {
                 <Typography variant={"subtitle2"} component={"div"}>
                     {"If you see any suspicious activity from an app, go to "}
                     <MuiLink variant="subtitle2" to={SETTINGS_SECURITY_CONNECTED_APPS} component={Link}>
-                        Connected apps
+                        Ứng dụng đã kết nối
                     </MuiLink>
                     {" to revoke its access. In some cases the IP location may differ from your physical location. "}
                     <MuiLink href={ACCESSING_YOUR_TWITTER_DATA} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -28,4 +28,4 @@ const AccountAccessHistory: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(AccountAccessHistory)("Account access history");
+export default withDocumentTitle(AccountAccessHistory)("Lịch sử truy cập tài khoản");

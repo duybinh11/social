@@ -42,7 +42,7 @@ describe("NotificationsPage", () => {
 
     it("should render empty All Notifications", () => {
         const wrapper = mountWithStore(<NotificationsPage/>, mockStore);
-        expect(wrapper.text().includes("Nothing to see here — yet")).toBe(true);
+        expect(wrapper.text().includes("Chưa có gì để xem")).toBe(true);
         expect(wrapper.text().includes("From like to Retweets and whole lot more, this is where all the actions happens.")).toBe(true);
     });
 

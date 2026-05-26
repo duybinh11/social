@@ -51,18 +51,17 @@ const Login: FC = (): ReactElement => {
                 <TwitterIcon/>
             </div>
             <Typography variant={"h4"} component={"div"}>
-                Log in to Twitter
+                Đăng nhập Twitter
             </Typography>
             {(errorStatus) && (
                 <Typography variant={"body1"} component={"div"} className={classes.error}>
-                    The username and password you entered did not match our records.
-                    Please double-check and try again.
+                    Tên đăng nhập hoặc mật khẩu không đúng. Vui lòng kiểm tra lại.
                 </Typography>
             )}
             <form onSubmit={onSubmit}>
                 <div className={classes.input}>
                     <LoginTextField
-                        label="Phone, email or username"
+                        label="Số điện thoại, email hoặc tên người dùng"
                         type="email"
                         variant="filled"
                         onChange={handleChangeEmail}
@@ -71,7 +70,7 @@ const Login: FC = (): ReactElement => {
                 </div>
                 <div className={classes.input}>
                     <LoginTextField
-                        label="Password"
+                        label="Mật khẩu"
                         type="password"
                         variant="filled"
                         onChange={handleChangePassword}
@@ -86,19 +85,19 @@ const Login: FC = (): ReactElement => {
                     disabled={!(email && password)}
                     fullWidth
                 >
-                    Login
+                    Đăng nhập
                 </Button>
             </form>
             <div className={classes.footer}>
                 <Typography variant={"body1"} component={"span"}>
                     <Link to={ACCOUNT_FORGOT}>
-                        Forgot password?
+                        Quên mật khẩu?
                     </Link>
                 </Typography>
                 {" · "}
                 <Typography variant={"body1"} component={"span"}>
                     <Link to={ACCOUNT_SIGNIN}>
-                        Sign up for Twitter
+                        Đăng ký Twitter
                     </Link>
                 </Typography>
             </div>

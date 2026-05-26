@@ -9,7 +9,7 @@ const ReplyIconButton = memo((): ReactElement => {
 
     return (
         <div className={classes.infoIcon}>
-            <ActionIconButton actionText={"Reply"} icon={ReplyIcon}/>
+            <ActionIconButton actionText={"Trả lời"} icon={ReplyIcon}/>
         </div>
     );
 });

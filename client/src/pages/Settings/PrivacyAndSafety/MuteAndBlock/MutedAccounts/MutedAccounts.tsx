@@ -49,7 +49,7 @@ const MutedAccounts: FC = (): ReactElement => {
                 <Typography variant={"subtitle2"} component={"div"}>
                     {`Here’s everyone you muted. You can add or remove them from this list. `}
                     <MuiLink href={TWITTER_MUTE} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -65,7 +65,7 @@ const MutedAccounts: FC = (): ReactElement => {
                         <Typography variant={"subtitle1"} component={"div"}>
                             {`When you mute accounts, you won’t see their Tweets in your timeline. `}
                             <MuiLink href={TWITTER_MUTE} variant="subtitle2" target="_blank" rel="noopener">
-                                Learn more
+                                Tìm hiểu thêm
                             </MuiLink>
                         </Typography>
                     </div>
@@ -82,4 +82,4 @@ const MutedAccounts: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(MutedAccounts)("Muted accounts");
+export default withDocumentTitle(MutedAccounts)("Tài khoản đã tắt tiếng");

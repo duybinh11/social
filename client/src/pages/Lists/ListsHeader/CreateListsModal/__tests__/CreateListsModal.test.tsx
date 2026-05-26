@@ -27,7 +27,7 @@ describe("CreateListsModal", () => {
 
         expect(wrapper.find(Dialog).exists()).toBeTruthy();
         expect(wrapper.text().includes("Create a new List")).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Next")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Tiếp")).toBe(true);
         expect(wrapper.text().includes("Make private")).toBe(true);
         expect(wrapper.text().includes("When you make a List private, only you can see it.")).toBe(true);
     });

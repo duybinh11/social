@@ -34,7 +34,7 @@ describe("ChatMessages", () => {
 
         expect(wrapper.text().includes("You don’t have a message selected")).toBe(true);
         expect(wrapper.text().includes("Choose one from your existing messages, or start a new one.")).toBe(true);
-        expect(wrapper.find(Button).text().includes("New message")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Tin nhắn mới")).toBe(true);
     });
 
     it("should render loading Spinner", () => {

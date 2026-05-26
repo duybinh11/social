@@ -53,7 +53,7 @@ const AudienceAndTagging: FC = (): ReactElement => {
                 <Typography variant={"subtitle2"} component={"div"}>
                     {`When selected, your Tweets and other account information are only visible to people who follow you. `}
                     <MuiLink href={PUBLIC_AND_PROTECTED_TWEETS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -61,10 +61,10 @@ const AudienceAndTagging: FC = (): ReactElement => {
                 <div className={classnames(globalClasses.contentLink, classes.photoTaggingLink)}>
                     <div className={classes.photoTagInfo}>
                         <Typography variant={"body1"} component={"div"}>
-                            Photo tagging
+                            Gắn thẻ ảnh
                         </Typography>
                         <Typography variant={"subtitle2"} component={"div"}>
-                            Anyone can tag you
+                            Mọi người có thể gắn thẻ bạn
                         </Typography>
                     </div>
                     {ArrowRightIcon}
@@ -74,4 +74,4 @@ const AudienceAndTagging: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(AudienceAndTagging)("Audience and tagging");
+export default withDocumentTitle(AudienceAndTagging)("Đối tượng và gắn thẻ");

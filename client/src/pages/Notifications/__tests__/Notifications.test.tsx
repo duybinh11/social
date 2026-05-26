@@ -10,7 +10,7 @@ import {LoadingStatus} from "../../../store/types/common";
 
 window.scrollTo = jest.fn();
 
-describe("Notifications", () => {
+describe("Thông báo", () => {
     const mockStore = createMockRootState(LoadingStatus.LOADED);
 
     beforeEach(() => {
@@ -24,8 +24,8 @@ describe("Notifications", () => {
 
     it("should render correctly", () => {
         const wrapper = mountWithStore(<Notifications/>, mockStore);
-        expect(wrapper.text().includes("Notifications")).toBe(true);
-        expect(wrapper.find(Tab).at(0).text().includes("All")).toBe(true);
+        expect(wrapper.text().includes("Thông báo")).toBe(true);
+        expect(wrapper.find(Tab).at(0).text().includes("Tất cả")).toBe(true);
         expect(wrapper.find(Tab).at(0).prop("selected")).toBe(true);
         expect(wrapper.find(Tab).at(1).text().includes("Mentions")).toBe(true);
         expect(wrapper.find(Tab).at(1).prop("selected")).toBe(false);
@@ -38,7 +38,7 @@ describe("Notifications", () => {
         wrapper.find(Tab).at(0).simulate("click");
         expect(pushSpy).toHaveBeenCalled();
         expect(pushSpy).toHaveBeenCalledWith(NOTIFICATIONS);
-        expect(wrapper.find(Tab).at(0).text().includes("All")).toBe(true);
+        expect(wrapper.find(Tab).at(0).text().includes("Tất cả")).toBe(true);
         expect(wrapper.find(Tab).at(0).prop("selected")).toBe(true);
     });
 

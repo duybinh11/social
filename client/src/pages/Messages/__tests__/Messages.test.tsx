@@ -28,7 +28,7 @@ import EmptyChatMessages from "../ChatMessages/EmptyChatMessages/EmptyChatMesseg
 
 window.scrollTo = jest.fn();
 
-describe("Messages", () => {
+describe("Tin nhắn", () => {
     const mockStore = createMockRootState(LoadingStatus.LOADED);
     const mockChatsStore = {...mockStore, chats: {...mockStore.chats, items: mockChats}};
     let mockDispatchFn: jest.Mock;
@@ -40,7 +40,7 @@ describe("Messages", () => {
     it("should render loading Spinner", () => {
         const wrapper = mountWithStore(<Messages/>, createMockRootState());
 
-        expect(wrapper.text().includes("Messages")).toBe(true);
+        expect(wrapper.text().includes("Tin nhắn")).toBe(true);
         expect(wrapper.find(Spinner).exists()).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {type: ChatsActionsType.FETCH_CHATS});
     });
@@ -50,7 +50,7 @@ describe("Messages", () => {
 
         expect(wrapper.text().includes("Send a message, get a message")).toBe(true);
         expect(wrapper.text().includes("Direct Messages are private conversations between you and other people on Twitter.")).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Start a conversation")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Bắt đầu trò chuyện")).toBe(true);
     });
 
     it("should search people", () => {
@@ -152,7 +152,7 @@ describe("Messages", () => {
 
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
         expect(wrapper.find(HoverAction).at(0).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).at(0).prop("actionText")).toBe("Settings");
+        expect(wrapper.find(HoverAction).at(0).prop("actionText")).toBe("Cài đặt");
     });
 
     it("should hover New Message icon and render Hover Action", () => {
@@ -167,7 +167,7 @@ describe("Messages", () => {
 
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
         expect(wrapper.find(HoverAction).at(1).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).at(1).prop("actionText")).toBe("New message");
+        expect(wrapper.find(HoverAction).at(1).prop("actionText")).toBe("Tin nhắn mới");
     });
 
     it("should hover Details icon and render Hover Action", () => {
@@ -175,7 +175,7 @@ describe("Messages", () => {
     });
 
     it("should hover Media icon and render Hover Action", () => {
-        processHoverAction(1, "Media");
+        processHoverAction(1, "Phương tiện");
     });
 
     it("should hover Gif icon and render Hover Action", () => {
@@ -187,7 +187,7 @@ describe("Messages", () => {
     });
 
     it("should hover Send icon and render Hover Action", () => {
-        processHoverAction(4, "Send");
+        processHoverAction(4, "Gửi");
     });
 
     it("should reset Messages State", () => {

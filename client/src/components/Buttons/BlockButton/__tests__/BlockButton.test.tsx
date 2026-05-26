@@ -50,9 +50,9 @@ describe("BlockButton", () => {
                 isUserBlocked
             />, mockState);
         wrapper.find(Button).simulate("mouseover");
-        expect(wrapper.find(Button).text().includes("Unblock")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Bỏ chặn")).toBe(true);
         wrapper.find(Button).simulate("mouseleave");
-        expect(wrapper.find(Button).text().includes("Blocked")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đã chặn")).toBe(true);
     });
 
     const testClickButton = (isUserBlocked: boolean, message: string): void => {
@@ -65,7 +65,7 @@ describe("BlockButton", () => {
                 isUserBlocked={isUserBlocked}
             />, mockState);
         wrapper.find(Button).simulate("click");
-        expect(wrapper.find(Button).text().includes("Blocked")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đã chặn")).toBe(true);
         expect(mockDispatchFn).toHaveBeenNthCalledWith(1, {
             payload: {userId: 11},
             type: UserActionsType.PROCESS_USER_TO_BLOCKLIST

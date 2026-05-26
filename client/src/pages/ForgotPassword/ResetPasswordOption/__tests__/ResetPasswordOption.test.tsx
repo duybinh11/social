@@ -26,7 +26,7 @@ describe("ResetPasswordOption", () => {
         expect(wrapper.text().includes("How do you want to reset your password?")).toBe(true);
         expect(wrapper.text().includes("You can use the information associated with your account.")).toBe(true);
         expect(wrapper.text().includes(`Send an email to ${mockUser?.email}`)).toBe(true);
-        expect(wrapper.find(Button).at(0).text()).toEqual("Next");
+        expect(wrapper.find(Button).at(0).text()).toEqual("Tiếp");
     });
 
     it("should redirect to CheckEmailCode on submit", (done) => {

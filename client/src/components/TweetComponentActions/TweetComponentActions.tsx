@@ -116,7 +116,7 @@ const TweetComponentActions: FC<TweetComponentActionsProps> = memo(({tweetId, is
         <div ref={ref}>
             <ClickAwayListener onClickAway={handleClickAwayActionsDropdown}>
                 <div className={classes.root}>
-                    <ActionIconButton actionText={"More"} onClick={handleClickActionsDropdown} icon={EditIcon}/>
+                    <ActionIconButton actionText={"Thêm"} onClick={handleClickActionsDropdown} icon={EditIcon}/>
                     {openActionsDropdown && (
                         <div className={classnames(classes.dropdown, globalClasses.svg)}>
                             {isTweetAdditionalInfoLoading ? (

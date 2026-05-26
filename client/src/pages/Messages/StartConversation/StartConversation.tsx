@@ -25,7 +25,7 @@ const StartConversation = memo((): ReactElement => {
                 color="primary"
                 size="large"
             >
-                Start a conversation
+                Bắt đầu trò chuyện
             </Button>
             <MessagesModal visible={visibleModalWindow} onClose={onCloseModalWindow}/>
         </>

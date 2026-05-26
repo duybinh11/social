@@ -13,7 +13,7 @@ const BookmarksHeader = memo((): ReactElement => {
     return (
         <PageHeaderWrapper>
             <div className={globalClasses.pageHeaderTitleWrapper}>
-                <PageHeaderTitle title={"Bookmarks"} subtitle={`@${username}`}/>
+                <PageHeaderTitle title={"Dấu trang"} subtitle={`@${username}`}/>
             </div>
         </PageHeaderWrapper>
     );

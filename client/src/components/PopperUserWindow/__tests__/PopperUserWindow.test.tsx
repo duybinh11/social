@@ -27,7 +27,7 @@ describe("PopperUserWindow", () => {
 
         expect(wrapper.find(Link).at(0).prop("to")).toBe(`${PROFILE}/${mockUserDetailResponse.id}`);
         expect(wrapper.find(Avatar).prop("src")).toBe(mockUserDetailResponse.avatar.src);
-        expect(wrapper.find(Button).at(0).text().includes("Following")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Đang theo dõi")).toBe(true);
         expect(wrapper.find(Link).at(1).prop("to")).toBe(`${PROFILE}/${mockUserDetailResponse.id}`);
         expect(wrapper.text().includes(mockUserDetailResponse.fullName)).toBe(true);
         expect(wrapper.text().includes(mockUserDetailResponse.username)).toBe(true);
@@ -64,7 +64,7 @@ describe("PopperUserWindow", () => {
             userDetail: {...mockState.userDetail, item: {...mockUserDetailResponse, isFollower: false}}
         });
 
-        expect(wrapper.find(Button).at(0).text().includes("Follow")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Theo dõi")).toBe(true);
         wrapper.find(Button).at(0).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {payload: {userId: 1}, type: UserActionsType.FOLLOW_USER});
     });
@@ -91,7 +91,7 @@ describe("PopperUserWindow", () => {
             }
         });
 
-        expect(wrapper.find(Button).at(0).text().includes("Pending")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Đang chờ")).toBe(true);
         wrapper.find(Button).at(0).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {payload: 1, type: UserActionsType.PROCESS_FOLLOW_REQUEST});
     });
@@ -105,7 +105,7 @@ describe("PopperUserWindow", () => {
             }
         });
 
-        expect(wrapper.find(Button).at(0).text().includes("Blocked")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Đã chặn")).toBe(true);
 
         wrapper.find(Button).at(0).simulate("click");
 
@@ -134,7 +134,7 @@ describe("PopperUserWindow", () => {
                 item: {...mockUserDetailResponse, isFollower: false, isUserBlocked: true}
             }
         });
-        testSimulateHoverButton(wrapper, "Blocked", "Unblock");
+        testSimulateHoverButton(wrapper, "Đã chặn", "Bỏ chặn");
     });
 
     it("should mouse over and leave Pending button", () => {
@@ -145,12 +145,12 @@ describe("PopperUserWindow", () => {
                 item: {...mockUserDetailResponse, isFollower: false, isWaitingForApprove: true}
             }
         });
-        testSimulateHoverButton(wrapper, "Pending", "Cancel");
+        testSimulateHoverButton(wrapper, "Đang chờ", "Hủy");
     });
 
     it("should mouse over and leave Following button", () => {
         const wrapper = mountWrapper(mockRootState);
-        testSimulateHoverButton(wrapper, "Following", "Unfollow");
+        testSimulateHoverButton(wrapper, "Đang theo dõi", "Bỏ theo dõi");
     });
     
     const testSimulateHoverButton = (wrapper: any, mouseleaveText: string, mouseOverText: string): void => {

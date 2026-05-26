@@ -11,7 +11,7 @@ describe("LoggedDevices", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<LoggedDevices/>, createMockRootState());
         expect(wrapper.text().includes("These are browsers, devices, and information Twitter uses to personalize your experience.")).toBe(true);
-        expect(wrapper.text().includes("Browsers")).toBe(true);
+        expect(wrapper.text().includes("Trình duyệt")).toBe(true);
         expect(wrapper.text().includes("Mobile Devices")).toBe(true);
         expect(wrapper.text().includes("Email addresses")).toBe(true);
         expect(wrapper.find(MuiLink).at(0).prop("href")).toBe(ACROSS_YOUR_DEVICES);

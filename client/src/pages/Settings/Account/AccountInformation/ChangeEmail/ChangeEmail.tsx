@@ -62,4 +62,4 @@ const ChangeEmail: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(ChangeEmail)("Change email");
+export default withDocumentTitle(ChangeEmail)("Đổi email");

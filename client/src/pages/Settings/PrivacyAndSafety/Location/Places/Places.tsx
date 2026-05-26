@@ -44,11 +44,11 @@ const Places: FC = (): ReactElement => {
             <Divider/>
             <div className={classes.deleteUser}>
                 <Typography variant={"body1"} component={"span"}>
-                    Remove
+                    Xóa
                 </Typography>
             </div>
         </>
     );
 };
 
-export default withDocumentTitle(Places)("See places you’ve been");
+export default withDocumentTitle(Places)("Xem các địa điểm bạn đã đến");

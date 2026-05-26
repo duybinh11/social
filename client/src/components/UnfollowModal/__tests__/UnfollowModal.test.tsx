@@ -23,8 +23,8 @@ describe("UnfollowModal", () => {
         
         expect(wrapper.text().includes(`Unfollow ${mockUserFullName}`)).toBe(true);
         expect(wrapper.text().includes("Their Tweets will no longer show up in your home timeline.")).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Cancel")).toBe(true);
-        expect(wrapper.find(Button).at(1).text().includes("Unfollow")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Hủy")).toBe(true);
+        expect(wrapper.find(Button).at(1).text().includes("Bỏ theo dõi")).toBe(true);
     });
 
     it("should render empty UnfollowModal", () => {

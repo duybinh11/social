@@ -19,8 +19,8 @@ interface ChangeYourPasswordFormProps {
 }
 
 const ChangeYourPasswordFormSchema = yup.object().shape({
-    password: yup.string().min(8, "Your password needs to be at least 8 characters. Please enter a longer one.").required(),
-    password2: yup.string().oneOf([yup.ref("password")], "Passwords do not match."),
+    password: yup.string().min(8, "Mật khẩu cần có ít nhất 8 ký tự. Vui lòng nhập dài hơn.").required(),
+    password2: yup.string().oneOf([yup.ref("password")], "Mật khẩu không khớp."),
 });
 
 const ChangeYourPassword = (): ReactElement => {
@@ -73,7 +73,7 @@ const ChangeYourPassword = (): ReactElement => {
                                 id="currentPassword"
                                 name="currentPassword"
                                 type="password"
-                                label="Current password"
+                                label="Mật khẩu hiện tại"
                                 value={value}
                                 onChange={onChange}
                                 error={!!errors.currentPassword}
@@ -84,7 +84,7 @@ const ChangeYourPassword = (): ReactElement => {
                         )}
                     />
                     <MuiLink href="#" variant="body1">
-                        Forgot password?
+                        Quên mật khẩu?
                     </MuiLink>
                 </div>
                 <Divider/>
@@ -98,7 +98,7 @@ const ChangeYourPassword = (): ReactElement => {
                                 id="password"
                                 name="password"
                                 type="password"
-                                label="New password"
+                                label="Mật khẩu mới"
                                 value={value}
                                 onChange={onChange}
                                 error={!!errors.password}
@@ -119,7 +119,7 @@ const ChangeYourPassword = (): ReactElement => {
                                 id="password2"
                                 name="password2"
                                 type="password"
-                                label="Confirm password"
+                                label="Xác nhận mật khẩu"
                                 value={value}
                                 onChange={onChange}
                                 error={!!errors.password2}
@@ -138,7 +138,7 @@ const ChangeYourPassword = (): ReactElement => {
                         color="primary"
                         size="small"
                     >
-                        Save
+                        Lưu
                     </Button>
                 </div>
             </form>

@@ -61,8 +61,8 @@ const TweeterInput: FC<TweeterInputProps> = (
                 onFocus={onFocus}
                 onBlur={onBlur}
                 fullWidth
-                multiline={label === "Bio"}
-                rows={label === "Bio" ? 3 : 1}
+                multiline={label === "Tiểu sử"}
+                rows={label === "Tiểu sử" ? 3 : 1}
             />
         </div>
     );

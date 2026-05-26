@@ -25,7 +25,7 @@ const FollowListButton = memo((): ReactElement => {
             color="primary"
             size="small"
         >
-            Follow
+            Theo dõi
         </Button>
     );
 });

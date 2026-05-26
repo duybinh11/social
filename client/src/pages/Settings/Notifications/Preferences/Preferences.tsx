@@ -17,14 +17,14 @@ const Preferences: FC = (): ReactElement => {
                 <Typography variant={"subtitle2"} component={"div"}>
                     {`Select your preferences by notification type. `}
                     <MuiLink href={NOTIFICATIONS_ON_MOBILE_DEVICES} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
             <Link to={SETTINGS_NOTIFICATION_PUSH_NOTIFICATIONS} className={globalClasses.linkWrapper}>
                 <div className={globalClasses.contentLink}>
                     <Typography variant={"body1"} component={"span"}>
-                        Push notifications
+                        Thông báo đẩy
                     </Typography>
                     {ArrowRightIcon}
                 </div>
@@ -32,7 +32,7 @@ const Preferences: FC = (): ReactElement => {
             <Link to={SETTINGS_NOTIFICATION_EMAIL_NOTIFICATIONS} className={globalClasses.linkWrapper}>
                 <div className={globalClasses.contentLink}>
                     <Typography variant={"body1"} component={"span"}>
-                        Email notifications
+                        Thông báo email
                     </Typography>
                     {ArrowRightIcon}
                 </div>
@@ -41,4 +41,4 @@ const Preferences: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(Preferences)("Preferences");
+export default withDocumentTitle(Preferences)("Tùy chọn");

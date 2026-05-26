@@ -6,7 +6,7 @@ import ChangeReplyWindow from "../../../ChangeReplyWindow/ChangeReplyWindow";
 import Reply from "../Reply";
 import {LoadingStatus, ReplyType} from "../../../../store/types/common";
 
-describe("Reply", () => {
+describe("Trả lời", () => {
     const mockRootState = createMockRootState(LoadingStatus.LOADED);
 
     it("should click change reply type", () => {
@@ -26,7 +26,7 @@ describe("Reply", () => {
         
         wrapper.find(ChangeReplyWindow).find(ListItem).at(1).simulate("click");
         
-        expect(wrapper.find(ChangeReplyWindow).find(ListItem).at(1).text()).toEqual("People you follow");
+        expect(wrapper.find(ChangeReplyWindow).find(ListItem).at(1).text()).toEqual("Người bạn theo dõi");
         expect(mockSetReplyType).toHaveBeenCalled();
         expect(mockSetReplyType).toHaveBeenCalledWith(ReplyType.FOLLOW);
         // @ts-ignore
@@ -34,15 +34,15 @@ describe("Reply", () => {
     });
 
     it("should render Everyone reply", () => {
-        testReply(ReplyType.EVERYONE, "#everyoneReplyIcon", "Everyone can reply");
+        testReply(ReplyType.EVERYONE, "#everyoneReplyIcon", "Mọi người có thể trả lời");
     });
 
     it("should render People you follow reply", () => {
-        testReply(ReplyType.FOLLOW, "#followReplyIcon", "People you follow");
+        testReply(ReplyType.FOLLOW, "#followReplyIcon", "Người bạn theo dõi");
     });
 
     it("should render Only people you mention reply", () => {
-        testReply(ReplyType.MENTION, "#mentionReplyIcon", "Only people you mention");
+        testReply(ReplyType.MENTION, "#mentionReplyIcon", "Chỉ người bạn đề cập");
     });
     
     const testReply = (replyType: ReplyType, replyIconId: string, buttonText: string): void => {

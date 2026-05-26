@@ -37,11 +37,11 @@ describe("CreateAccountModal", () => {
 
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
         expect(wrapper.text().includes("Step 3 of 5")).toBe(true);
-        expect(wrapper.text().includes("Create your account")).toBe(true);
+        expect(wrapper.text().includes("Tạo tài khoản của bạn")).toBe(true);
         expect(wrapper.find(RegistrationInputField).at(0).prop("value")).toBe("test_username");
         expect(wrapper.find(RegistrationInputField).at(1).prop("value")).toBe("test@test.test");
         expect(wrapper.find(RegistrationInputField).at(2).prop("value")).toBe("Feb 31, 1901");
-        expect(wrapper.find(Button).text().includes("Sign up")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Đăng ký")).toBe(true);
     });
 
     it("should click on submit CreateAccountModal", (done) => {

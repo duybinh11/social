@@ -24,7 +24,7 @@ const RetweetIconButton = memo((): ReactElement => {
     return (
         <div className={classnames(globalClasses.svgLarge, classes.retweetIcon)}>
             <ActionIconButton
-                actionText={isTweetRetweeted ? "Undo Retweet" : "Retweet"}
+                actionText={isTweetRetweeted ? "Hoàn tác đăng lại" : "Đăng lại"}
                 onClick={handleRetweet}
                 icon={isTweetRetweeted ? RetweetIcon : RetweetOutlinedIcon}
             />

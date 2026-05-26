@@ -18,16 +18,16 @@ describe("ContentPreferences", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<ContentPreferences/>, mockStore);
         
-        expect(wrapper.text().includes("Explore")).toBe(true);
+        expect(wrapper.text().includes("Khám phá")).toBe(true);
         expect(wrapper.text().includes("Search settings")).toBe(true);
         expect(wrapper.text().includes("Explore settings")).toBe(true);
-        expect(wrapper.text().includes("Languages")).toBe(true);
+        expect(wrapper.text().includes("Ngôn ngữ")).toBe(true);
         expect(wrapper.text().includes("Recommendations")).toBe(true);
         expect(wrapper.text().includes("Safety")).toBe(true);
-        expect(wrapper.text().includes("Muted")).toBe(true);
-        expect(wrapper.text().includes("Blocked accounts")).toBe(true);
-        expect(wrapper.text().includes("Personalization and data")).toBe(true);
-        expect(wrapper.text().includes("Allow some")).toBe(true);
+        expect(wrapper.text().includes("Đã tắt tiếng")).toBe(true);
+        expect(wrapper.text().includes("Tài khoản đã chặn")).toBe(true);
+        expect(wrapper.text().includes("Cá nhân hóa và dữ liệu")).toBe(true);
+        expect(wrapper.text().includes("Cho phép một số")).toBe(true);
     });
 
     it("should open Search settings modal", () => {

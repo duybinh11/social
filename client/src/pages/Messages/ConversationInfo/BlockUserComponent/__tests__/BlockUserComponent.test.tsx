@@ -8,11 +8,11 @@ describe("BlockUserComponent", () => {
     const mockRootState = createMockRootState(LoadingStatus.LOADED);
 
     it("should render Unblock user", () => {
-        testBlockUserComponent(true, "Unblock");
+        testBlockUserComponent(true, "Bỏ chặn");
     });
 
     it("should render Block user", () => {
-        testBlockUserComponent(false, "Block");
+        testBlockUserComponent(false, "Chặn");
     });
 
     const testBlockUserComponent = (isUserBlocked: boolean, mockText: string): void => {

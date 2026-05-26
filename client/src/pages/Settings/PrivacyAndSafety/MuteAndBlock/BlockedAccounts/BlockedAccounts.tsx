@@ -54,7 +54,7 @@ const BlockedAccounts: FC = (): ReactElement => {
         >
             <div className={globalClasses.tabs}>
                 <Tabs value={activeTab} indicatorColor="primary" textColor="primary" onChange={handleChangeTab}>
-                    <Tab className={globalClasses.tab} label="All"/>
+                    <Tab className={globalClasses.tab} label="Tất cả"/>
                     <Tab className={globalClasses.tab} label="Imported"/>
                 </Tabs>
             </div>
@@ -63,7 +63,7 @@ const BlockedAccounts: FC = (): ReactElement => {
                     {`When you block someone, that person won’t be able to follow or message you, and you won’t see
                         notifications from them. `}
                     <MuiLink href={BLOCKING_AND_UNBLOCKING_ACCOUNTS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -88,7 +88,7 @@ const BlockedAccounts: FC = (): ReactElement => {
                                     <MuiLink href={BLOCKING_AND_UNBLOCKING_ACCOUNTS} variant="subtitle1" target="_blank" 
                                              rel="noopener"
                                     >
-                                        Learn more
+                                        Tìm hiểu thêm
                                     </MuiLink>
                                 </>
                             ) : (
@@ -97,7 +97,7 @@ const BlockedAccounts: FC = (): ReactElement => {
                                     <MuiLink href={ADVANCED_TWITTER_BLOCK_OPTIONS} variant="subtitle1" target="_blank"
                                         rel="noopener"
                                     >
-                                        Learn more
+                                        Tìm hiểu thêm
                                     </MuiLink>
                                 </>
                             )}
@@ -116,4 +116,4 @@ const BlockedAccounts: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(BlockedAccounts)("Blocked accounts");
+export default withDocumentTitle(BlockedAccounts)("Tài khoản đã chặn");

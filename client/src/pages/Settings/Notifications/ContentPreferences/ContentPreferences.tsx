@@ -41,7 +41,7 @@ const ContentPreferences = (): ReactElement => {
         <>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h5"} component={"div"}>
-                    Explore
+                    Khám phá
                 </Typography>
             </div>
             <div 
@@ -67,7 +67,7 @@ const ContentPreferences = (): ReactElement => {
             <Divider/>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h5"} component={"div"}>
-                    Languages
+                    Ngôn ngữ
                 </Typography>
             </div>
             <div
@@ -94,7 +94,7 @@ const ContentPreferences = (): ReactElement => {
             <Link to={SETTINGS_PRIVACY_AND_SAFETY_MUTED} className={globalClasses.linkWrapper}>
                 <div className={globalClasses.contentLink}>
                     <Typography variant={"body1"} component={"span"}>
-                        Muted
+                        Đã tắt tiếng
                     </Typography>
                     {ArrowRightIcon}
                 </div>
@@ -102,7 +102,7 @@ const ContentPreferences = (): ReactElement => {
             <Link to={SETTINGS_PRIVACY_AND_SAFETY_BLOCKED} className={globalClasses.linkWrapper}>
                 <div className={globalClasses.contentLink}>
                     <Typography variant={"body1"} component={"span"}>
-                        Blocked accounts
+                        Tài khoản đã chặn
                     </Typography>
                     {ArrowRightIcon}
                 </div>
@@ -110,17 +110,17 @@ const ContentPreferences = (): ReactElement => {
             <Divider/>
             <div className={globalClasses.itemInfoWrapper}>
                 <Typography variant={"h5"} component={"div"}>
-                    Personalization and data
+                    Cá nhân hóa và dữ liệu
                 </Typography>
             </div>
             <Link to={SETTINGS_PERSONALIZATION} className={globalClasses.linkWrapper}>
                 <div className={classnames(classes.personalizationLink, globalClasses.contentLink)}>
                     <div className={classes.personalizationInfo}>
                         <Typography variant={"body1"} component={"div"}>
-                            Personalization and data
+                            Cá nhân hóa và dữ liệu
                         </Typography>
                         <Typography variant={"subtitle2"} component={"div"}>
-                            Allow some
+                            Cho phép một số
                         </Typography>
                     </div>
                     {ArrowRightIcon}
@@ -139,4 +139,4 @@ const ContentPreferences = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(ContentPreferences)("Content preferences");
+export default withDocumentTitle(ContentPreferences)("Tùy chọn nội dung");

@@ -7,10 +7,10 @@ import {LoadingStatus} from "../../../../store/types/common";
 
 describe("TweetComponentActionsModal", () => {
     it("should render Delete Tweet Action Modal", () => {
-        const wrapper = createTweetComponentActionsModalWrapper("Delete", true);
+        const wrapper = createTweetComponentActionsModalWrapper("Xóa", true);
         expect(wrapper.text().includes("Delete Tweet?")).toBe(true);
         expect(wrapper.text().includes("This can’t be undone and it will be removed from your profile")).toBe(true);
-        expect(wrapper.find(Button).at(1).text().includes("Delete")).toBe(true);
+        expect(wrapper.find(Button).at(1).text().includes("Xóa")).toBe(true);
     });
 
     it("should render Unpin Tweet Action Modal", () => {

@@ -24,10 +24,10 @@ describe("Users", () => {
 
     it("should render correctly", () => {
         const wrapper = mountWithStore(<Users/>, mockRootState);
-        expect(wrapper.text().includes("Who to follow")).toBe(true);
+        expect(wrapper.text().includes("Nên theo dõi")).toBe(true);
         expect(wrapper.find(Spinner).exists()).toBe(false);
         expect(wrapper.find(UsersItem).length).toEqual(2);
-        expect(wrapper.text().includes("Show more")).toBe(true);
+        expect(wrapper.text().includes("Xem thêm")).toBe(true);
     });
 
     it("should click connect", () => {

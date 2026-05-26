@@ -17,6 +17,6 @@ describe("TweetActions", () => {
     it("should render Pinned TweetActionResult", () => {
         const mockStore = {...mockRootStore, tweet: {...mockRootStore.tweet, tweet: {...mockFullTweet, id: 102}}}
         const wrapper = mountWithStore(<TweetActions/>, mockStore);
-        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Pinned Tweet");
+        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Tweet đã ghim");
     });
 });

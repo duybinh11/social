@@ -53,7 +53,7 @@ const VoteComponent: FC<VoteComponentProps> = memo(({tweetId, poll}): ReactEleme
                         }
                     )}
                     <Typography variant={"subtitle2"} component={"div"} className={classes.voteInfo}>
-                        {userVoteSum} votes · {isPollEnded ? ("Final results") : (`${voteFormatDate(poll!)} left`)}
+                        {userVoteSum} votes · {isPollEnded ? ("Kết quả cuối") : (`${voteFormatDate(poll!)} left`)}
                     </Typography>
                 </>
             ) : (

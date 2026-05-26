@@ -25,16 +25,16 @@ const SettingsModal = (): ReactElement => {
 
     return (
         <>
-            <ActionIconButton actionText={"Settings"} onClick={onOpenSettingsModal} icon={SettingsIcon}/>
+            <ActionIconButton actionText={"Cài đặt"} onClick={onOpenSettingsModal} icon={SettingsIcon}/>
             <Dialog className={classes.dialog} open={visibleSettingsModal} onClose={onCloseSettingsModal}>
                 <DialogTitle>
                     <CloseButton onClose={onCloseSettingsModal}/>
-                    Trends
+                    Xu hướng
                 </DialogTitle>
                 <DialogContent className={classes.content}>
                     <div className={globalClasses.itemInfoWrapper}>
                         <Typography variant={"h5"} component={"div"}>
-                            Location
+                            Vị trí
                         </Typography>
                     </div>
                     <div className={globalClasses.itemInfoWrapper}>

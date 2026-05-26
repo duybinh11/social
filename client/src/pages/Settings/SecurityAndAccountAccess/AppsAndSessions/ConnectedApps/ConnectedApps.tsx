@@ -15,7 +15,7 @@ const ConnectedApps: FC = (): ReactElement => {
                     {`These are the apps which you connected to your account. You can see the information these apps 
                     have access to and revoke access. `}
                     <MuiLink href={ACCESS_TO_THIRD_PARTY_APPS} variant="subtitle2" target="_blank" rel="noopener">
-                        Learn more
+                        Tìm hiểu thêm
                     </MuiLink>
                 </Typography>
             </div>
@@ -32,4 +32,4 @@ const ConnectedApps: FC = (): ReactElement => {
     );
 };
 
-export default withDocumentTitle(ConnectedApps)("Connected apps");
+export default withDocumentTitle(ConnectedApps)("Ứng dụng đã kết nối");

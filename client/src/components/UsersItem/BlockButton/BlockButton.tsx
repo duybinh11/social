@@ -17,7 +17,7 @@ const BlockButton: FC<BlockButtonProps> = ({user}): ReactElement => {
     const classes = useBlockButtonStyles();
     const dispatch = useDispatch();
     const [visibleBlockUserModal, setVisibleBlockUserModal] = useState<boolean>(false);
-    const [btnText, setBtnText] = useState<string>("Blocked");
+    const [btnText, setBtnText] = useState<string>("Đã chặn");
 
     const onOpenBlockUserModal = (event: React.MouseEvent<HTMLButtonElement>): void => {
         event.preventDefault();
@@ -39,8 +39,8 @@ const BlockButton: FC<BlockButtonProps> = ({user}): ReactElement => {
             <Button
                 className={classNames(classes.containedButton, classes.blockButton)}
                 onClick={onOpenBlockUserModal}
-                onMouseOver={() => setBtnText("Unblock")}
-                onMouseLeave={() => setBtnText("Blocked")}
+                onMouseOver={() => setBtnText("Bỏ chặn")}
+                onMouseLeave={() => setBtnText("Đã chặn")}
                 color="primary"
                 variant="contained"
                 size="small"

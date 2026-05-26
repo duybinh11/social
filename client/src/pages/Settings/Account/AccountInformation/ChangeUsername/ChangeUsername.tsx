@@ -41,7 +41,7 @@ const ChangeUsername: FC = (): ReactElement => {
             <div>
                 <div className={globalClasses.itemInfoWrapper}>
                     <ChangeInfoTextField
-                        label="Username"
+                        label="Tên người dùng"
                         variant="filled"
                         onChange={handleChangeUsername}
                         value={username}
@@ -74,11 +74,11 @@ const ChangeUsername: FC = (): ReactElement => {
                     size="small"
                     disabled={!username || isLoading}
                 >
-                    Save
+                    Lưu
                 </Button>
             </div>
         </>
     );
 };
 
-export default withDocumentTitle(ChangeUsername)("Change username");
+export default withDocumentTitle(ChangeUsername)("Đổi tên người dùng");
