@@ -18,6 +18,7 @@ import {
     SetGenderActionInterface,
     SetLanguageActionInterface,
     SetNewNotificationActionInterface,
+    SetNotificationsCountActionInterface,
     SetPhoneActionInterface,
     SetPinTweetIdActionInterface,
     SetPrivateProfileActionInterface,
@@ -135,9 +136,8 @@ export const processUserToMuteList = (payload: UserActionRequest): ProcessUserTo
     payload,
 });
 
-export const startUseTwitter = (payload: number): StartUseTwitterActionInterface => ({
+export const startUseTwitter = (): StartUseTwitterActionInterface => ({
     type: UserActionsType.START_USE_TWITTER,
-    payload,
 });
 
 export const fetchReadMessages = (payload: number): FetchReadMessagesActionInterface => ({
@@ -152,6 +152,11 @@ export const setUnreadMessage = (payload: ChatMessageResponse): SetUnreadMessage
 
 export const setNewNotification = (): SetNewNotificationActionInterface => ({
     type: UserActionsType.SET_NEW_NOTIFICATION,
+});
+
+export const setNotificationsCount = (payload: number): SetNotificationsCountActionInterface => ({
+    type: UserActionsType.SET_NOTIFICATIONS_COUNT,
+    payload,
 });
 
 export const updateUsername = (payload: Settings): UpdateUsernameActionInterface => ({

@@ -1,7 +1,6 @@
 import {testAction} from "../../../../util/testHelper";
 import {
     fetchFetchTweetAuthorsNotifications,
-    fetchMentions,
     fetchNotificationInfo,
     fetchNotifications,
     fetchNotificationsFromTweetAuthors,
@@ -45,11 +44,6 @@ describe("notifications actions", () => {
 
     testAction(fetchNotificationsFromTweetAuthors, fetchNotificationsFromTweetAuthors(1), {
         type: NotificationsActionsType.FETCH_NOTIFICATIONS_FROM_TWEET_AUTHORS,
-        payload: 1
-    });
-
-    testAction(fetchMentions, fetchMentions(1), {
-        type: NotificationsActionsType.FETCH_MENTIONS,
         payload: 1
     });
 

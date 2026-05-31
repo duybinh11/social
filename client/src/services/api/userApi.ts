@@ -125,8 +125,8 @@ export const UserApi = {
     async addTweetToBookmarks(tweetId: number): Promise<AxiosResponse<boolean>> {
         return await axios.get<boolean>(`${API_USER_BOOKMARKS}/${tweetId}`);
     },
-    async startUseTwitter(userId: number): Promise<AxiosResponse<boolean>> {
-        return await axios.get<boolean>(API_USER_START(userId));
+    async startUseTwitter(): Promise<AxiosResponse<boolean>> {
+        return await axios.get<boolean>(API_USER_START);
     },
     async pinTweet(tweetId: number): Promise<AxiosResponse<number>> {
         return await axios.get<number>(`${API_USER_PIN_TWEET}/${tweetId}`);

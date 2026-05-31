@@ -5,7 +5,7 @@ import {IconButton, Link as MuiLink} from '@material-ui/core';
 import routeData from "react-router";
 
 import {createMockRootState, mockDispatch, mountWithStore} from "../../../util/testHelper";
-import {mockFullTweet, mockMyTweetAdditionalInfo, mockUser, mockUserProfile} from "../../../util/mockData/mockData";
+import {mockFullTweet, mockUser, mockUserProfile} from "../../../util/mockData/mockData";
 import TweetActionResult, {TweetActionResults} from "../../TweetActionResult/TweetActionResult";
 import {HOME_TWEET, MODAL, PROFILE} from "../../../util/pathConstants";
 import TweetComponent from "../TweetComponent";
@@ -15,8 +15,6 @@ import Quote from "../../Quote/Quote";
 import YouTubeVideo from "../../YouTubeVideo/YouTubeVideo";
 import SmallLinkPreview from "../../SmallLinkPreview/SmallLinkPreview";
 import LargeLinkPreview from "../../LargeLinkPreview/LargeLinkPreview";
-import TweetAnalyticsModal from "../../TweetAnalyticsModal/TweetAnalyticsModal";
-import TweetComponentActions from "../../TweetComponentActions/TweetComponentActions";
 import CloseButton from "../../CloseButton/CloseButton";
 import ReplyModal from "../../ReplyModal/ReplyModal";
 import {TweetsActionType} from "../../../store/ducks/tweets/contracts/actionTypes";
@@ -233,37 +231,11 @@ describe("TweetComponent", () => {
         expect(wrapper.find("#likeOutlinedIcon").exists()).toBeTruthy();
     });
 
-    it("should render analytics IconButton", () => {
-        const mockTweet = {...mockFullTweet, user: {...mockFullTweet.user, id: 2}};
-        const {wrapper} = createTweetComponentWrapper(mockRootState, mockTweet);
-        expect(wrapper.find("#analytics").exists()).toBeTruthy();
-    });
-
-    it("should render empty analytics IconButton", () => {
-        const {wrapper} = createTweetComponentWrapper();
-        expect(wrapper.find("#analytics").exists()).toBeFalsy();
-    });
-
     it("should click User profile", () => {
         const {wrapper, pushSpy} = createTweetComponentWrapper();
         wrapper.find(Link).at(0).simulate("click", {button: 0});
         expect(pushSpy).toHaveBeenCalled();
         expect(pushSpy).toHaveBeenCalledWith(`${PROFILE}/${mockFullTweet.user.id}`);
-    });
-
-    it("should open and close TweetAnalyticsModal", () => {
-        const {wrapper} = createTweetComponentWrapper(
-            {
-                ...mockRootState, tweetAdditionalInfo:
-                    {...mockRootState.tweetAdditionalInfo, tweetAdditionalInfo: mockMyTweetAdditionalInfo}
-            },
-            {...mockFullTweet, user: {...mockFullTweet.user, id: 2}});
-        expect(wrapper.find(TweetAnalyticsModal).prop("visible")).toBe(false);
-        wrapper.find(TweetComponentActions).find(IconButton).at(0).simulate("click");
-        wrapper.find(TweetComponentActions).find("#tweetAnalytics").at(0).simulate("click");
-        expect(wrapper.find(TweetAnalyticsModal).at(0).prop("visible")).toBe(true);
-        wrapper.find(TweetAnalyticsModal).find(CloseButton).find(IconButton).simulate("click");
-        expect(wrapper.find(TweetAnalyticsModal).at(0).prop("visible")).toBe(false);
     });
 
     it("should open and close ReplyModal", () => {
@@ -314,11 +286,6 @@ describe("TweetComponent", () => {
 
     it("should hover and leave unlike IconButton", () => {
         testHoverIconButton(3, "Unlike");
-    });
-
-    it("should hover and leave analytics IconButton", () => {
-        const mockTweet = {...mockFullTweet, user: {...mockFullTweet.user, id: 2}};
-        testHoverIconButton(5, "Phân tích", mockTweet);
     });
 
     it("should change tweet styles", () => {

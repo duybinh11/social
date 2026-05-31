@@ -20,6 +20,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -166,10 +167,16 @@ public class TweetController {
             @PathVariable Long tweetId,
             @RequestBody TweetRequest tweetRequest
     ) {
-        NotificationReplyResponse notification = tweetMapper.replyTweet(tweetId, tweetRequest);
+        Map<String, Object> replyResult = tweetMapper.replyTweet(tweetId, tweetRequest);
+        NotificationReplyResponse notification = (NotificationReplyResponse) replyResult.get("replyResponse");
+        NotificationResponse notificationResponse = (NotificationResponse) replyResult.get("notification");
+        Long notifiedUserId = (Long) replyResult.get("notifiedUserId");
         messagingTemplate.convertAndSend("/topic/feed", notification);
         messagingTemplate.convertAndSend("/topic/tweet/" + notification.getTweetId(), notification);
         messagingTemplate.convertAndSend("/topic/user/update/tweet/" + userId, notification);
+        if (notificationResponse.getId() != null) {
+            messagingTemplate.convertAndSend("/topic/notifications/" + notifiedUserId, notificationResponse);
+        }
         return ResponseEntity.ok(notification);
     }
 

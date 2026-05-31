@@ -84,7 +84,11 @@ const NotificationItem: FC<NotificationItemProps> = memo(({notification}): React
                                         {(notification.notificationType === NotificationType.LIKE) ? (
                                             "liked"
                                         ) : (
-                                            "Retweeted"
+                                            (notification.notificationType === NotificationType.REPLY) ? (
+                                                "replied to"
+                                            ) : (
+                                                "Retweeted"
+                                            )
                                         )} your Tweet
                                     </>
                                 )

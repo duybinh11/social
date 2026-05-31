@@ -11,6 +11,7 @@ import com.gmail.merikbest2015.twitterspringreactjs.dto.response.tweet.TweetAddi
 import com.gmail.merikbest2015.twitterspringreactjs.dto.response.tweet.TweetResponse;
 import com.gmail.merikbest2015.twitterspringreactjs.enums.NotificationType;
 import com.gmail.merikbest2015.twitterspringreactjs.enums.ReplyType;
+import com.gmail.merikbest2015.twitterspringreactjs.model.Notification;
 import com.gmail.merikbest2015.twitterspringreactjs.model.Tweet;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.TweetAdditionalInfoProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.TweetProjection;
@@ -128,14 +129,20 @@ public class TweetMapper {
         return basicMapper.getHeaderResponse(tweets, TweetResponse.class);
     }
 
-    public NotificationReplyResponse replyTweet(Long tweetId, TweetRequest tweetRequest) {
-        TweetProjection tweet = tweetService.replyTweet(tweetId, basicMapper.convertToEntity(tweetRequest, Tweet.class));
+    public Map<String, Object> replyTweet(Long tweetId, TweetRequest tweetRequest) {
+        Map<String, Object> result = tweetService.replyTweet(tweetId, basicMapper.convertToEntity(tweetRequest, Tweet.class));
+        TweetProjection tweet = (TweetProjection) result.get("tweet");
+        Notification notification = (Notification) result.get("notification");
         TweetResponse replyTweet = basicMapper.convertToResponse(tweet, TweetResponse.class);
         NotificationReplyResponse notificationReplyResponse = new NotificationReplyResponse();
         notificationReplyResponse.setTweetId(tweetId);
         notificationReplyResponse.setNotificationType(NotificationType.REPLY);
         notificationReplyResponse.setTweet(replyTweet);
-        return notificationReplyResponse;
+        return Map.of(
+                "replyResponse", notificationReplyResponse,
+                "notification", basicMapper.convertToResponse(notification, NotificationResponse.class),
+                "notifiedUserId", result.get("notifiedUserId")
+        );
     }
 
     public TweetResponse quoteTweet(Long tweetId, TweetRequest tweetRequest) {

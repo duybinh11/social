@@ -50,6 +50,7 @@ export enum UserActionsType {
     FETCH_READ_MESSAGES = 'user/FETCH_READ_MESSAGES',
     SET_UNREAD_MESSAGE = 'user/SET_UNREAD_MESSAGE',
     SET_NEW_NOTIFICATION = 'user/SET_NEW_NOTIFICATION',
+    SET_NOTIFICATIONS_COUNT = 'user/SET_NOTIFICATIONS_COUNT',
 }
 
 export interface SignOutActionInterface extends Action<UserActionsType> {
@@ -191,7 +192,6 @@ export interface UpdateBackgroundColorActionInterface extends Action<UserActions
 
 export interface StartUseTwitterActionInterface extends Action<UserActionsType> {
     type: UserActionsType.START_USE_TWITTER;
-    payload: number;
 }
 
 export interface FetchReadMessagesActionInterface extends Action<UserActionsType> {
@@ -206,6 +206,11 @@ export interface SetUnreadMessageActionInterface extends Action<UserActionsType>
 
 export interface SetNewNotificationActionInterface extends Action<UserActionsType> {
     type: UserActionsType.SET_NEW_NOTIFICATION;
+}
+
+export interface SetNotificationsCountActionInterface extends Action<UserActionsType> {
+    type: UserActionsType.SET_NOTIFICATIONS_COUNT;
+    payload: number;
 }
 
 export interface SetUsernameActionInterface extends Action<UserActionsType> {
@@ -263,6 +268,7 @@ export type UserActions =
     | SetUserLoadingStateActionInterface
     | SetUnreadMessageActionInterface
     | SetNewNotificationActionInterface
+    | SetNotificationsCountActionInterface
     | SignOutActionInterface
     | SetUsernameActionInterface
     | SetEmailActionInterface

@@ -22,7 +22,6 @@ import {
     selectTweetImages
 } from "../../store/ducks/tweet/selectors";
 import {WS_URL} from "../../util/endpoints";
-import ShareTweetIconButton from "../ShareTweetIconButton/ShareTweetIconButton";
 import Spinner from "../Spinner/Spinner";
 import TweetHeader from "./TweetHeader/TweetHeader";
 import TweetText from "./TweetText/TweetText";
@@ -35,7 +34,6 @@ import AddReplyToTweet from "./AddReplyToTweet/AddReplyToTweet";
 import ImageFooterReplyIconButton from "./ImageFooterReplyIconButton/ImageFooterReplyIconButton";
 import ImageFooterRetweetButton from "./ImageFooterRetweetButton/ImageFooterRetweetButton";
 import ImageFooterLikeButton from "./ImageFooterLikeButton/ImageFooterLikeButton";
-import ImageFooterShareButton from "./ImageFooterShareButton/ImageFooterShareButton";
 import ImageCloseButton from "./ImageCloseButton/ImageCloseButton";
 
 let stompClient: CompatClient | null = null;
@@ -118,7 +116,6 @@ const TweetImageModal = (): ReactElement | null => {
                             <TweetReplyIconButton/>
                             <TweetRetweetedIconButton/>
                             <TweetLikeIconButton/>
-                            <ShareTweetIconButton tweetId={tweetId} isFullTweet={false}/>
                         </div>
                         <Divider/>
                         <AddReplyToTweet/>
@@ -137,7 +134,6 @@ const TweetImageModal = (): ReactElement | null => {
                         <ImageFooterReplyIconButton/>
                         <ImageFooterRetweetButton/>
                         <ImageFooterLikeButton/>
-                        <ImageFooterShareButton/>
                     </div>
                 </div>
                 <ImageCloseButton onCloseModalWindow={onCloseModalWindow}/>

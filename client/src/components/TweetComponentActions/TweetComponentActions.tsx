@@ -9,7 +9,6 @@ import {selectUserDataId} from "../../store/ducks/user/selectors";
 import {useGlobalStyles} from "../../util/globalClasses";
 import ChangeReplyWindow from "../ChangeReplyWindow/ChangeReplyWindow";
 import ActionIconButton from "../ActionIconButton/ActionIconButton";
-import TweetActivityButton from "./TweetActivityButton/TweetActivityButton";
 import BlockUserButton from "./BlockUserButton/BlockUserButton";
 import MuteUserButton from "./MuteUserButton/MuteUserButton";
 import AddToListButton from "./AddToListButton/AddToListButton";
@@ -22,8 +21,6 @@ import {
     selectIsTweetAdditionalInfoLoading,
     selectTweetInfoAddressedTweetId,
     selectTweetInfoReplyType,
-    selectTweetInfoText,
-    selectTweetInfoUserFullName,
     selectTweetInfoUserId,
     selectTweetInfoUserIsFollower,
     selectTweetInfoUserIsMyProfileBlocked,
@@ -40,7 +37,6 @@ import {useParams} from "react-router-dom";
 interface TweetComponentActionsProps {
     tweetId: number;
     isFullTweet?: boolean;
-    onOpenTweetAnalytics?: () => void;
 }
 const TweetComponentActions: FC<TweetComponentActionsProps> = memo(({tweetId, isFullTweet}): ReactElement => {
     const globalClasses = useGlobalStyles();
@@ -49,11 +45,9 @@ const TweetComponentActions: FC<TweetComponentActionsProps> = memo(({tweetId, is
     const params = useParams<{ userId: string }>();
     const myProfileId = useSelector(selectUserDataId);
     const isTweetAdditionalInfoLoading = useSelector(selectIsTweetAdditionalInfoLoading);
-    const tweetText = useSelector(selectTweetInfoText);
     const tweetReplyType = useSelector(selectTweetInfoReplyType);
     const addressedTweetId = useSelector(selectTweetInfoAddressedTweetId);
     const tweetUserId = useSelector(selectTweetInfoUserId);
-    const tweetUserFullName = useSelector(selectTweetInfoUserFullName);
     const tweetUserUsername = useSelector(selectTweetInfoUserUsername);
     const tweetUserIsFollower = useSelector(selectTweetInfoUserIsFollower);
     const tweetUserIsUserMuted = useSelector(selectTweetInfoUserIsUserMuted);
@@ -142,11 +136,6 @@ const TweetComponentActions: FC<TweetComponentActionsProps> = memo(({tweetId, is
                                                     Embed Tweet
                                                 </Typography>
                                             </ListItem>
-                                            <TweetActivityButton
-                                                fullName={tweetUserFullName!}
-                                                username={tweetUserUsername!}
-                                                text={tweetText!}
-                                            />
                                         </>
                                     ) : (
                                         <>

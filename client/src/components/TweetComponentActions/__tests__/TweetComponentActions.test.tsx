@@ -55,7 +55,6 @@ describe("TweetComponentActions", () => {
         expect(wrapper.text().includes(`Add/remove @${mockMyTweetAdditionalInfo.user.username} from Lists`)).toBe(true);
         expect(wrapper.text().includes("Change who can reply")).toBe(true);
         expect(wrapper.text().includes("Embed Tweet")).toBe(true);
-        expect(wrapper.text().includes("View Tweet activity")).toBe(true);
     });
 
     it("should render unpin tweet action", () => {
@@ -222,7 +221,6 @@ describe("TweetComponentActions", () => {
             <TweetComponentActions
                 tweetId={tweetId}
                 isFullTweet
-                onOpenTweetAnalytics={jest.fn()}
             />, mockMyTweetState);
         wrapper.find(IconButton).simulate("click");
         wrapper.find("#pin").at(0).simulate("click");
@@ -292,7 +290,6 @@ describe("TweetComponentActions", () => {
             <TweetComponentActions
                 tweetId={mockFullTweet.id}
                 isFullTweet
-                onOpenTweetAnalytics={jest.fn()}
             />, mockState);
 
         return {wrapper};

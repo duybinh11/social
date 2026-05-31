@@ -51,7 +51,7 @@ public interface TweetService {
 
     Map<String, Object> retweet(Long tweetId);
 
-    TweetProjection replyTweet(Long tweetId, Tweet reply);
+    Map<String, Object> replyTweet(Long tweetId, Tweet reply);
 
     TweetProjection quoteTweet(Long tweetId, Tweet quote);
 

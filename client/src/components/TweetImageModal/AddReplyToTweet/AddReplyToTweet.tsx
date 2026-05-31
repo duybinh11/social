@@ -25,6 +25,7 @@ const AddReplyToTweet = (): ReactElement => {
             <AddTweetForm
                 tweetId={tweetId}
                 addressedUsername={username}
+                addressedId={tweetUserId}
                 maxRows={15}
                 title={"Đăng trả lời"}
                 buttonName={"Trả lời"}

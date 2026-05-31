@@ -2,7 +2,6 @@ import {call, put, takeLatest} from 'redux-saga/effects';
 import {AxiosResponse} from "axios";
 
 import {
-    FetchMentionsActionInterface,
     FetchNotificationInfoActionInterface,
     FetchNotificationsActionInterface,
     FetchNotificationsFromTweetAuthorsActionInterface,
@@ -16,7 +15,8 @@ import {
     setTweetAuthorsNotifications
 } from "./actionCreators";
 import {UserApi} from "../../../services/api/userApi";
-import {setPageableTweets, setTweetsLoadingState} from "../tweets/actionCreators";
+import {setNotificationsCount} from "../user/actionCreators";
+import {setPageableTweets} from "../tweets/actionCreators";
 import {NotificationInfoResponse, NotificationResponse, NotificationUserResponse} from "../../types/notification";
 import {TweetResponse} from "../../types/tweet";
 import {LoadingStatus} from "../../types/common";
@@ -29,6 +29,9 @@ export function* fetchNotificationsRequest({payload}: FetchNotificationsActionIn
             items: response.data,
             pagesCount: parseInt(response.headers["page-total-count"])
         }));
+        if (payload === 0) {
+            yield put(setNotificationsCount(0));
+        }
     } catch (error) {
         yield put(setNotificationsLoadingState(LoadingStatus.ERROR));
     }
@@ -57,19 +60,6 @@ export function* fetchNotificationsFromTweetAuthorsRequest({payload}: FetchNotif
     }
 }
 
-export function* fetchMentionsRequest({payload}: FetchMentionsActionInterface) {
-    try {
-        yield put(setTweetsLoadingState(LoadingStatus.LOADING));
-        const response: AxiosResponse<TweetResponse[]> = yield call(UserApi.getUserMentions, payload);
-        yield put(setPageableTweets({
-            items: response.data,
-            pagesCount: parseInt(response.headers["page-total-count"])
-        }));
-    } catch (error) {
-        yield put(setTweetsLoadingState(LoadingStatus.ERROR));
-    }
-}
-
 export function* fetchNotificationInfoRequest({payload}: FetchNotificationInfoActionInterface) {
     try {
         const response: AxiosResponse<NotificationInfoResponse> = yield call(UserApi.getUserNotificationById, payload);
@@ -83,6 +73,5 @@ export function* notificationsSaga() {
     yield takeLatest(NotificationsActionsType.FETCH_NOTIFICATIONS, fetchNotificationsRequest);
     yield takeLatest(NotificationsActionsType.FETCH_TWEET_AUTHORS_NOTIFICATIONS, fetchFetchTweetAuthorsNotificationsRequest);
     yield takeLatest(NotificationsActionsType.FETCH_NOTIFICATIONS_FROM_TWEET_AUTHORS, fetchNotificationsFromTweetAuthorsRequest);
-    yield takeLatest(NotificationsActionsType.FETCH_MENTIONS, fetchMentionsRequest);
     yield takeLatest(NotificationsActionsType.FETCH_NOTIFICATION_INFO, fetchNotificationInfoRequest);
 }

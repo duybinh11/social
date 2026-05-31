@@ -5,7 +5,6 @@ import {Paper} from "@material-ui/core";
 import {useTweetComponentStyles} from "./TweetComponentStyles";
 import {selectUserDataId} from "../../store/ducks/user/selectors";
 import TweetComponentActions from "../TweetComponentActions/TweetComponentActions";
-import ShareTweetIconButton from "../ShareTweetIconButton/ShareTweetIconButton";
 import VoteComponent from "../VoteComponent/VoteComponent";
 import QuoteIconButton from "../QuoteIconButton/QuoteIconButton";
 import Quote from "../Quote/Quote";
@@ -14,7 +13,6 @@ import {ReplyType} from "../../store/types/common";
 import TweetDeleted from "../TweetDeleted/TweetDeleted";
 import LikeIconButton from "./LikeIconButton/LikeIconButton";
 import ReplyIconButton from "./ReplyIconButton/ReplyIconButton";
-import AnalyticsIconButton from "./AnalyticsIconButton/AnalyticsIconButton";
 import TweetMedia from "./TweetMedia/TweetMedia";
 import TweetHeader from "./TweetHeader/TweetHeader";
 import TweetAvatar from "./TweetAvatar/TweetAvatar";
@@ -106,15 +104,6 @@ const TweetComponent: FC<TweetComponentProps> = memo(({tweet, activeTab, isTweet
                             isTweetLiked={tweet?.isTweetLiked}
                             likedTweetsCount={tweet?.likedTweetsCount}
                         />
-                        <ShareTweetIconButton tweetId={tweet!.id}/>
-                        {(myProfileId === tweet?.user.id) && (
-                            <AnalyticsIconButton
-                                tweetUserFullName={tweet?.user.fullName}
-                                tweetUserName={tweet?.user.username}
-                                tweetText={tweet?.text}
-                                isUserCanReply={isUserCanReply}
-                            />
-                        )}
                     </div>
                 </div>
             </div>

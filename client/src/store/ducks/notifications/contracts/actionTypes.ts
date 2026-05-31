@@ -14,7 +14,6 @@ export enum NotificationsActionsType {
     FETCH_NOTIFICATIONS = 'notification/FETCH_NOTIFICATIONS',
     FETCH_TWEET_AUTHORS_NOTIFICATIONS = 'notification/FETCH_TWEET_AUTHORS_NOTIFICATIONS',
     FETCH_NOTIFICATIONS_FROM_TWEET_AUTHORS = 'notification/FETCH_NOTIFICATIONS_FROM_TWEET_AUTHORS',
-    FETCH_MENTIONS = 'notification/FETCH_MENTIONS',
     SET_NOTIFICATION = 'notification/SET_NOTIFICATION',
     FETCH_NOTIFICATION_INFO = 'notification/FETCH_NOTIFICATION_INFO',
     SET_NOTIFICATION_INFO = 'notification/SET_NOTIFICATION_INFO',
@@ -48,11 +47,6 @@ export interface FetchTweetAuthorsNotificationsActionInterface extends Action<No
 
 export interface FetchNotificationsFromTweetAuthorsActionInterface extends Action<NotificationsActionsType> {
     type: NotificationsActionsType.FETCH_NOTIFICATIONS_FROM_TWEET_AUTHORS;
-    payload: number;
-}
-
-export interface FetchMentionsActionInterface extends Action<NotificationsActionsType> {
-    type: NotificationsActionsType.FETCH_MENTIONS;
     payload: number;
 }
 

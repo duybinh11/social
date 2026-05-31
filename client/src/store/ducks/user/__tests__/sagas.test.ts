@@ -177,10 +177,10 @@ describe("userSaga:", () => {
     });
 
     describe("startUseTwitterRequest:", () => {
-        const worker = startUseTwitterRequest(startUseTwitter(1));
+        const worker = startUseTwitterRequest(startUseTwitter());
 
         testLoadingStatus(worker, setUserLoadingStatus, LoadingStatus.LOADING);
-        testCall(worker, UserApi.startUseTwitter, 1);
+        testCall(worker, UserApi.startUseTwitter);
         testSetResponse(worker, {data: true}, setProfileStarted, true, "boolean");
         testLoadingStatus(worker, setUserLoadingStatus, LoadingStatus.ERROR);
     });

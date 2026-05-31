@@ -174,7 +174,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                         <div>
                             <Hidden smDown>
                                 <>
-                                    {(notificationsCount !== 0) && (
+                                    {((notificationsCount ?? 0) > 0) && (
                                         <span id={"notificationsCount"} className={classes.count}>
                                             {notificationsCount}
                                         </span>

@@ -107,6 +107,13 @@ export const userReducer = produce((draft: Draft<UserState>, action: UserActions
             }
             break;
 
+        case UserActionsType.SET_NOTIFICATIONS_COUNT:
+            if (draft.data) {
+                draft.data.notificationsCount = action.payload;
+                draft.status = LoadingStatus.LOADED;
+            }
+            break;
+
         case UserActionsType.SET_FOLLOWERS_SIZE:
             if (draft.data) {
                 draft.data.followersSize = draft.data.followersSize + 1;

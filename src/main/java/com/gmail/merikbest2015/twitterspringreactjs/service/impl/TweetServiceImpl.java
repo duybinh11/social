@@ -279,13 +279,19 @@ public class TweetServiceImpl implements TweetService {
 
     @Override
     @Transactional
-    public TweetProjection replyTweet(Long tweetId, Tweet reply) {
-        Tweet tweet = tweetRepository.findById(tweetId)
+    public Map<String, Object> replyTweet(Long tweetId, Tweet reply) {
+        Tweet parentTweet = tweetRepository.findById(tweetId)
                 .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
+        User replier = authenticationService.getAuthenticatedUser();
         reply.setAddressedTweetId(tweetId);
         Tweet replyTweet = createTweet(reply);
-        tweet.getReplies().add(replyTweet);
-        return getTweetById(replyTweet.getId());
+        parentTweet.getReplies().add(replyTweet);
+        Notification notification = replyNotificationHandler(replier, parentTweet, replyTweet);
+        return Map.of(
+                "tweet", getTweetById(replyTweet.getId()),
+                "notification", notification,
+                "notifiedUserId", parentTweet.getUser().getId()
+        );
     }
 
     @Override
@@ -363,6 +369,23 @@ public class TweetServiceImpl implements TweetService {
     public boolean isUserBookmarkedTweet(Long tweetId) {
         Long authUserId = authenticationService.getAuthenticatedUserId();
         return tweetRepository.isUserBookmarkedTweet(authUserId, tweetId);
+    }
+
+    private Notification replyNotificationHandler(User replier, Tweet parentTweet, Tweet replyTweet) {
+        Notification notification = new Notification();
+        notification.setNotificationType(NotificationType.REPLY);
+        notification.setNotifiedUser(parentTweet.getUser());
+        notification.setUser(replier);
+        notification.setTweet(replyTweet);
+
+        if (!parentTweet.getUser().getId().equals(replier.getId())) {
+            Notification newNotification = notificationRepository.save(notification);
+            parentTweet.getUser().setNotificationsCount(parentTweet.getUser().getNotificationsCount() + 1);
+            parentTweet.getUser().getNotifications().add(newNotification);
+            userRepository.save(parentTweet.getUser());
+            return newNotification;
+        }
+        return notification;
     }
 
     private Notification notificationHandler(User user, Tweet tweet, NotificationType notificationType) {

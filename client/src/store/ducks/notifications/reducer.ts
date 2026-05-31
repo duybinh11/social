@@ -29,7 +29,9 @@ export const notificationsReducer = produce((draft: Draft<NotificationsState>, a
             break;
 
         case NotificationsActionsType.SET_NOTIFICATION:
-            draft.notificationsList = [action.payload, ...draft.notificationsList];
+            if (!draft.notificationsList.some((notification) => notification.id === action.payload.id)) {
+                draft.notificationsList = [action.payload, ...draft.notificationsList];
+            }
             draft.loadingState = LoadingStatus.LOADED;
             break;
 

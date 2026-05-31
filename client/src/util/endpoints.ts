@@ -91,7 +91,7 @@ export const API_USER_NOTIFICATIONS_SUBSCRIBES = `${API_ENDPOINT}/user/notificat
 export const API_USER_NOTIFICATIONS_TIMELINE = `${API_ENDPOINT}/user/notifications/timeline`;
 export const API_USER_MENTIONS = `${API_ENDPOINT}/user/mentions`;
 export const API_USER_BOOKMARKS = `${API_ENDPOINT}/user/bookmarks`;
-export const API_USER_START = (userId: number) => `${API_ENDPOINT}/user/${userId}/start`;
+export const API_USER_START = `${API_ENDPOINT}/user/start`;
 export const API_USER_PIN_TWEET = `${API_ENDPOINT}/user/pin/tweet`;
 export const API_USER_BLOCKED = `${API_ENDPOINT}/user/blocked`;
 export const API_USER_MUTED = `${API_ENDPOINT}/user/muted`;

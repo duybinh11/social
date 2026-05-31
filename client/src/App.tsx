@@ -1,8 +1,6 @@
 import React, {FC, ReactElement, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Route, Switch, useHistory, useLocation} from 'react-router-dom';
-import {Stomp} from '@stomp/stompjs';
-import SockJS from "sockjs-client";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {MuiThemeProvider, Theme} from "@material-ui/core";
 import {createTheme} from "@material-ui/core/styles";
@@ -14,7 +12,7 @@ import Home from "./pages/Home/Home";
 import {Layout} from './pages/Layout';
 import UserPage from "./pages/UserPage/UserPage";
 import {selectIsAuth, selectUserDataId, selectUserStatus} from "./store/ducks/user/selectors";
-import {fetchUserData, setNewNotification, setUnreadMessage} from './store/ducks/user/actionCreators';
+import {fetchUserData} from './store/ducks/user/actionCreators';
 import Explore from './pages/Explore/Explore';
 import FollowingFollowers from "./pages/FollowingFollowers/FollowingFollowers";
 import TweetImageModal from "./components/TweetImageModal/TweetImageModal";
@@ -24,11 +22,7 @@ import Bookmarks from "./pages/Bookmarks/Bookmarks";
 import Notifications from "./pages/Notifications/Notifications";
 import NotificationInfo from "./pages/Notifications/NotificationsPage/NotificationInfo/NotificationInfo";
 import Messages from "./pages/Messages/Messages";
-import {setChatMessage} from "./store/ducks/chatMessages/actionCreators";
-import {WS_URL} from "./util/endpoints";
-import {setNotification, updateNotificationInfoTweet} from "./store/ducks/notifications/actionCreators";
-import {selectNotificationsList} from "./store/ducks/notifications/selectors";
-import {setScheduledTweets, setTweet, setUpdatedTweet} from "./store/ducks/tweets/actionCreators";
+import {useRealtimeWebSocket} from "./hook/useRealtimeWebSocket";
 import Lists from "./pages/Lists/Lists";
 import FullList from "./pages/FullList/FullList";
 import SuggestedLists from "./pages/SuggestedLists/SuggestedLists";
@@ -86,7 +80,6 @@ const App: FC = (): ReactElement => {
     const history = useHistory();
     const dispatch = useDispatch();
     const myProfileId = useSelector(selectUserDataId);
-    const notifications = useSelector(selectNotificationsList);
     const isAuth = useSelector(selectIsAuth);
     const loadingStatus = useSelector(selectUserStatus);
     const isReady = loadingStatus !== LoadingStatus.NEVER && loadingStatus !== LoadingStatus.LOADING;
@@ -95,6 +88,8 @@ const App: FC = (): ReactElement => {
 
     const location = useLocation<{ background: any }>();
     const background = location.state && location.state.background;
+
+    useRealtimeWebSocket(myProfileId);
 
     useEffect(() => {
         dispatch(fetchUserData());
@@ -108,23 +103,6 @@ const App: FC = (): ReactElement => {
     }, []);
 
     useEffect(() => {
-        let stompClient = Stomp.over(new SockJS(WS_URL));
-
-        stompClient.connect({}, () => {
-            stompClient?.subscribe("/topic/feed", (response) => {
-                dispatch(setUpdatedTweet(JSON.parse(response.body)));
-                dispatch(updateNotificationInfoTweet(JSON.parse(response.body)));
-            });
-
-            stompClient?.subscribe("/topic/feed/add", (response) => {
-                dispatch(setTweet(JSON.parse(response.body)));
-            });
-
-            stompClient?.subscribe("/topic/feed/schedule", (response) => {
-                dispatch(setScheduledTweets(JSON.parse(response.body)));
-            });
-        });
-
         const background = localStorage.getItem("background") ?? BackgroundTheme.LIGHTS_OUT;
         const color = localStorage.getItem("color") ?? ColorScheme.YELLOW;
         if (!localStorage.getItem("background")) {
@@ -138,32 +116,12 @@ const App: FC = (): ReactElement => {
     }, []);
 
     useEffect(() => {
-        let stompClient = Stomp.over(new SockJS(WS_URL));
-
         if (myProfileId) {
+            dispatch(fetchUserData());
             if (location.pathname !== HOME_CONNECT) {
                 dispatch(fetchRelevantUsers());
             }
             dispatch(fetchTags());
-
-            stompClient.connect({}, () => {
-                stompClient?.subscribe(`/topic/chat/${myProfileId}`, (response) => {
-                    dispatch(setChatMessage(JSON.parse(response.body)));
-
-                    if (myProfileId !== JSON.parse(response.body).author.id) {
-                        dispatch(setUnreadMessage(JSON.parse(response.body)));
-                    }
-                });
-
-                stompClient?.subscribe(`/topic/notifications/${myProfileId}`, (response) => {
-                    const isNotificationExist = notifications.find(notification => notification.id === JSON.parse(response.body).id);
-
-                    if (!isNotificationExist) {
-                        dispatch(setNotification(JSON.parse(response.body)));
-                        dispatch(setNewNotification());
-                    }
-                });
-            });
         }
     }, [myProfileId]);
 

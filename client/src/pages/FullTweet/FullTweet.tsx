@@ -28,7 +28,6 @@ import TweetComponent from "../../components/TweetComponent/TweetComponent";
 import {useFullTweetStyles} from "./FullTweetStyles";
 import {WS_URL} from "../../util/endpoints";
 import {textFormatter} from "../../util/textFormatter";
-import ShareTweetIconButton from "../../components/ShareTweetIconButton/ShareTweetIconButton";
 import TweetComponentActions from "../../components/TweetComponentActions/TweetComponentActions";
 import Spinner from "../../components/Spinner/Spinner";
 import {useGlobalStyles} from "../../util/globalClasses";
@@ -118,7 +117,6 @@ const FullTweet = (): ReactElement | null => {
                             <ReplyIconButton/>
                             <RetweetIconButton/>
                             <LikeIconButton/>
-                            <ShareTweetIconButton tweetId={tweetId!} isFullTweet/>
                         </div>
                         <Divider/>
                         <TweetReplyInfo/>

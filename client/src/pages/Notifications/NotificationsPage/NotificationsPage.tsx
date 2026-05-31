@@ -9,7 +9,6 @@ import {
     fetchNotifications,
     resetNotificationState
 } from "../../../store/ducks/notifications/actionCreators";
-import {fetchUserData} from "../../../store/ducks/user/actionCreators";
 import {
     selectIsNotificationsLoading,
     selectNotificationsList,
@@ -37,7 +36,6 @@ const NotificationsPage: FC = (): ReactElement => {
         window.scrollTo(0, 0);
         loadNotifications(0);
         dispatch(fetchFetchTweetAuthorsNotifications());
-        dispatch(fetchUserData());
 
         return () => {
             dispatch(resetNotificationState());

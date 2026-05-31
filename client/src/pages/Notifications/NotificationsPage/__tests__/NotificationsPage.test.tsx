@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 import {createMockRootState, mockDispatch, mountWithStore} from "../../../../util/testHelper";
 import Spinner from "../../../../components/Spinner/Spinner";
 import {NotificationsActionsType} from "../../../../store/ducks/notifications/contracts/actionTypes";
-import {UserActionsType} from "../../../../store/ducks/user/contracts/actionTypes";
 import {mockNotifications, mockTweetAuthors} from "../../../../util/mockData/mockData";
 import NotificationAuthorItem from "../NotificationAuthorItem/NotificationAuthorItem";
 import NotificationItem from "../NotificationItem/NotificationItem";
@@ -37,7 +36,6 @@ describe("NotificationsPage", () => {
         expect(wrapper.find(Spinner).exists()).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {payload: 0, type: NotificationsActionsType.FETCH_NOTIFICATIONS});
         expect(mockDispatchFn).nthCalledWith(2, {type: NotificationsActionsType.FETCH_TWEET_AUTHORS_NOTIFICATIONS});
-        expect(mockDispatchFn).nthCalledWith(3, {type: UserActionsType.FETCH_USER_DATA});
     });
 
     it("should render empty All Notifications", () => {
