@@ -18,7 +18,6 @@ import {blockedAndMutedUsersSaga} from "./ducks/blockedAndMutedUsers/sagas";
 import {listMembersSaga} from "./ducks/listMembers/sagas";
 import {userDetailSaga} from "./ducks/userDetail/sagas";
 import {listDetailSaga} from "./ducks/listDetail/sagas";
-import {unsentTweetsSaga} from "./ducks/unsentTweets/sagas";
 import {tweetAdditionalInfoSaga} from "./ducks/tweetAdditionalInfo/saga";
 import {chatSaga} from "./ducks/chat/sagas";
 export default function* rootSaga() {
@@ -41,7 +40,6 @@ export default function* rootSaga() {
         userDetailSaga(),
         tweetsSaga(),
         listDetailSaga(),
-        unsentTweetsSaga(),
         tweetAdditionalInfoSaga(),
         chatSaga()
     ])

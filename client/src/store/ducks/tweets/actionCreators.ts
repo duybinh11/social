@@ -13,10 +13,8 @@ import {
 import {
     AddPollActionInterface,
     AddQuoteTweetActionInterface,
-    AddScheduledTweetActionInterface,
     AddTweetActionInterface,
     ChangeReplyTypeActionInterface,
-    DeleteScheduledTweetsActionInterface,
     DeleteTweetActionInterface,
     FetchBookmarksActionInterface,
     FetchDeleteTweetActionInterface,
@@ -36,14 +34,12 @@ import {
     SetFollowToTweetsStateActionInterface,
     SetMutedToTweetsStateActionInterface,
     SetPageableTweetsActionInterface,
-    SetScheduledTweetsActionInterface,
     SetTweetActionInterface,
     SetTweetsActionInterface,
     SetTweetsLoadingStateInterface,
     SetUpdatedBookmarkedTweetActionInterface,
     SetUpdatedTweetActionInterface,
     TweetsActionType,
-    UpdateScheduledTweetActionInterface,
     VoteActionInterface,
 } from "./contracts/actionTypes";
 import {BlockedToTweetsPayload, FollowToTweetsPayload, MutedToTweetsPayload, TweetResponse} from "../../types/tweet";
@@ -67,11 +63,6 @@ export const setMutedToTweetsState = (payload: MutedToTweetsPayload): SetMutedTo
 
 export const setTweets = (payload: TweetsState["items"]): SetTweetsActionInterface => ({
     type: TweetsActionType.SET_TWEETS,
-    payload
-});
-
-export const setScheduledTweets = (payload: TweetsState["items"]): SetScheduledTweetsActionInterface => ({
-    type: TweetsActionType.SET_SCHEDULED_TWEETS,
     payload
 });
 
@@ -99,16 +90,6 @@ export const addPoll = (payload: AddTweet): AddPollActionInterface => ({
     payload
 });
 
-export const addScheduledTweet = (payload: AddTweet): AddScheduledTweetActionInterface => ({
-    type: TweetsActionType.ADD_SCHEDULED_TWEET,
-    payload
-});
-
-export const updateScheduledTweet = (payload: AddTweet): UpdateScheduledTweetActionInterface => ({
-    type: TweetsActionType.UPDATE_SCHEDULED_TWEET,
-    payload
-});
-
 export const addQuoteTweet = (payload: AddQuoteTweet): AddQuoteTweetActionInterface => ({
     type: TweetsActionType.ADD_QUOTE_TWEET,
     payload
@@ -131,11 +112,6 @@ export const setUpdatedTweet = (payload: NotificationResponse | NotificationRepl
 
 export const fetchDeleteTweet = (payload: number): FetchDeleteTweetActionInterface => ({
     type: TweetsActionType.FETCH_DELETE_TWEET,
-    payload
-});
-
-export const deleteScheduledTweets = (payload: { tweetsIds: number[] }): DeleteScheduledTweetsActionInterface => ({
-    type: TweetsActionType.DELETE_SCHEDULED_TWEETS,
     payload
 });
 

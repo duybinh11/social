@@ -8,7 +8,7 @@ import {WS_URL} from "../util/endpoints";
 import {setChatMessage} from "../store/ducks/chatMessages/actionCreators";
 import {setNotification, updateNotificationInfoTweet} from "../store/ducks/notifications/actionCreators";
 import {setNewNotification, setUnreadMessage} from "../store/ducks/user/actionCreators";
-import {setScheduledTweets, setTweet, setUpdatedTweet} from "../store/ducks/tweets/actionCreators";
+import {setTweet, setUpdatedTweet} from "../store/ducks/tweets/actionCreators";
 import {NotificationResponse} from "../store/types/notification";
 import {TweetResponse} from "../store/types/tweet";
 import {ChatMessageResponse} from "../store/types/chat";
@@ -36,10 +36,6 @@ export const useRealtimeWebSocket = (myProfileId?: number): void => {
 
                 client.subscribe("/topic/feed/add", (message) => {
                     dispatch(setTweet(parseBody<TweetResponse>(message)));
-                });
-
-                client.subscribe("/topic/feed/schedule", (message) => {
-                    dispatch(setScheduledTweets(parseBody<TweetResponse[]>(message)));
                 });
 
                 if (myProfileId) {

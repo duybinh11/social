@@ -1,7 +1,6 @@
 package com.gmail.merikbest2015.twitterspringreactjs.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gmail.merikbest2015.twitterspringreactjs.dto.request.TweetDeleteRequest;
 import com.gmail.merikbest2015.twitterspringreactjs.dto.request.TweetRequest;
 import com.gmail.merikbest2015.twitterspringreactjs.dto.request.VoteRequest;
 import com.gmail.merikbest2015.twitterspringreactjs.enums.ReplyType;
@@ -50,7 +49,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[0].id").value(48L))
                 .andExpect(jsonPath("$[0].text").value("hello world3"))
                 .andExpect(jsonPath("$[0].dateTime").value("2021-10-03T20:40:51"))
-                .andExpect(jsonPath("$[0].scheduledDate").isEmpty())
                 .andExpect(jsonPath("$[0].addressedUsername").isEmpty())
                 .andExpect(jsonPath("$[0].addressedId").isEmpty())
                 .andExpect(jsonPath("$[0].addressedTweetId").isEmpty())
@@ -83,7 +81,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.id").value(43L))
                 .andExpect(jsonPath("$.text").value(TWEET_TEXT))
                 .andExpect(jsonPath("$.dateTime").value(TWEET_DATETIME))
-                .andExpect(jsonPath("$.scheduledDate").isEmpty())
                 .andExpect(jsonPath("$.addressedUsername").isEmpty())
                 .andExpect(jsonPath("$.addressedId").isEmpty())
                 .andExpect(jsonPath("$.addressedTweetId").isEmpty())
@@ -170,7 +167,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[0].id").value(41L))
                 .andExpect(jsonPath("$[0].text").value("test reply"))
                 .andExpect(jsonPath("$[0].dateTime").value("2021-10-03T20:31:55"))
-                .andExpect(jsonPath("$[0].scheduledDate").isEmpty())
                 .andExpect(jsonPath("$[0].addressedUsername").value("MrCat"))
                 .andExpect(jsonPath("$[0].addressedId").value(2L))
                 .andExpect(jsonPath("$[0].addressedTweetId").value(40L))
@@ -204,7 +200,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[0].id").value(45L))
                 .andExpect(jsonPath("$[0].text").value("media tweet test"))
                 .andExpect(jsonPath("$[0].dateTime").value("2021-10-03T20:38:51"))
-                .andExpect(jsonPath("$[0].scheduledDate").isEmpty())
                 .andExpect(jsonPath("$[0].addressedUsername").isEmpty())
                 .andExpect(jsonPath("$[0].addressedId").isEmpty())
                 .andExpect(jsonPath("$[0].addressedTweetId").isEmpty())
@@ -276,7 +271,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[0].id").value(45L))
                 .andExpect(jsonPath("$[0].text").value("media tweet test"))
                 .andExpect(jsonPath("$[0].dateTime").value("2021-10-03T20:38:51"))
-                .andExpect(jsonPath("$[0].scheduledDate").isEmpty())
                 .andExpect(jsonPath("$[0].addressedUsername").isEmpty())
                 .andExpect(jsonPath("$[0].addressedId").isEmpty())
                 .andExpect(jsonPath("$[0].addressedTweetId").isEmpty())
@@ -310,7 +304,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[0].id").value(42L))
                 .andExpect(jsonPath("$[0].text").value(YOUTUBE_LINK))
                 .andExpect(jsonPath("$[0].dateTime").value("2021-10-03T20:33:36"))
-                .andExpect(jsonPath("$[0].scheduledDate").isEmpty())
                 .andExpect(jsonPath("$[0].addressedUsername").isEmpty())
                 .andExpect(jsonPath("$[0].addressedId").isEmpty())
                 .andExpect(jsonPath("$[0].addressedTweetId").isEmpty())
@@ -344,7 +337,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[6].id").value(42L))
                 .andExpect(jsonPath("$[6].text").value(YOUTUBE_LINK))
                 .andExpect(jsonPath("$[6].dateTime").value("2021-10-03T20:33:36"))
-                .andExpect(jsonPath("$[6].scheduledDate").isEmpty())
                 .andExpect(jsonPath("$[6].addressedUsername").isEmpty())
                 .andExpect(jsonPath("$[6].addressedId").isEmpty())
                 .andExpect(jsonPath("$[6].addressedTweetId").isEmpty())
@@ -366,40 +358,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[6].isUserFollowByOtherUser").value(false))
                 .andExpect(jsonPath("$[6].isTweetDeleted").value(false))
                 .andExpect(jsonPath("$[6].isTweetBookmarked").value(false));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[200] GET /api/v1/tweets/schedule - Get scheduled tweets")
-    public void getScheduledTweets() throws Exception {
-        mockMvc.perform(get(URL_TWEETS_BASIC + "/schedule"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[*]", hasSize(1)))
-                .andExpect(jsonPath("$[0].id").value(39L))
-                .andExpect(jsonPath("$[0].text").value("test tweet"))
-                .andExpect(jsonPath("$[0].dateTime").value("2021-10-03T20:29:03"))
-                .andExpect(jsonPath("$[0].scheduledDate").value("3021-10-03T20:33:36"))
-                .andExpect(jsonPath("$[0].addressedUsername").isEmpty())
-                .andExpect(jsonPath("$[0].addressedId").isEmpty())
-                .andExpect(jsonPath("$[0].addressedTweetId").isEmpty())
-                .andExpect(jsonPath("$[0].replyType").value(ReplyType.EVERYONE.toString()))
-                .andExpect(jsonPath("$[0].link").isEmpty())
-                .andExpect(jsonPath("$[0].linkTitle").isEmpty())
-                .andExpect(jsonPath("$[0].linkDescription").isEmpty())
-                .andExpect(jsonPath("$[0].linkCover").isEmpty())
-                .andExpect(jsonPath("$[0].linkCoverSize").isEmpty())
-                .andExpect(jsonPath("$[0].quoteTweet").isEmpty())
-                .andExpect(jsonPath("$[0].user.id").value(2L))
-                .andExpect(jsonPath("$[0].poll").isEmpty())
-                .andExpect(jsonPath("$[0].images").isEmpty())
-                .andExpect(jsonPath("$[0].retweetsCount").value(0L))
-                .andExpect(jsonPath("$[0].likedTweetsCount").value(0L))
-                .andExpect(jsonPath("$[0].repliesCount").value(0L))
-                .andExpect(jsonPath("$[0].isTweetLiked").value(false))
-                .andExpect(jsonPath("$[0].isTweetRetweeted").value(false))
-                .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(false))
-                .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(false));
     }
 
     @Test
@@ -447,7 +405,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.id").isNotEmpty())
                 .andExpect(jsonPath("$.text").value("test tweet #test123"))
                 .andExpect(jsonPath("$.dateTime").isNotEmpty())
-                .andExpect(jsonPath("$.scheduledDate").isEmpty())
                 .andExpect(jsonPath("$.addressedUsername").isEmpty())
                 .andExpect(jsonPath("$.addressedId").isEmpty())
                 .andExpect(jsonPath("$.addressedTweetId").isEmpty())
@@ -486,7 +443,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.id").isNotEmpty())
                 .andExpect(jsonPath("$.text").value(TWEET_TEXT))
                 .andExpect(jsonPath("$.dateTime").isNotEmpty())
-                .andExpect(jsonPath("$.scheduledDate").isEmpty())
                 .andExpect(jsonPath("$.addressedUsername").isEmpty())
                 .andExpect(jsonPath("$.addressedId").isEmpty())
                 .andExpect(jsonPath("$.addressedTweetId").isEmpty())
@@ -525,7 +481,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.id").isNotEmpty())
                 .andExpect(jsonPath("$.text").value(TEXT_WITH_YOUTUBE_LINK))
                 .andExpect(jsonPath("$.dateTime").isNotEmpty())
-                .andExpect(jsonPath("$.scheduledDate").isEmpty())
                 .andExpect(jsonPath("$.addressedUsername").isEmpty())
                 .andExpect(jsonPath("$.addressedId").isEmpty())
                 .andExpect(jsonPath("$.addressedTweetId").isEmpty())
@@ -569,7 +524,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.id").isNotEmpty())
                 .andExpect(jsonPath("$.text").value(TEST_TWEET_TEXT))
                 .andExpect(jsonPath("$.dateTime").isNotEmpty())
-                .andExpect(jsonPath("$.scheduledDate").isEmpty())
                 .andExpect(jsonPath("$.addressedUsername").isEmpty())
                 .andExpect(jsonPath("$.addressedId").isEmpty())
                 .andExpect(jsonPath("$.addressedTweetId").isEmpty())
@@ -679,148 +633,6 @@ public class TweetControllerTest {
 
     @Test
     @WithUserDetails(USER_EMAIL)
-    @DisplayName("[200] POST /api/v1/tweets/schedule - Create Scheduled Tweet")
-    public void createScheduledTweet() throws Exception {
-        TweetRequest tweetRequest = new TweetRequest();
-        tweetRequest.setText("test tweet");
-        tweetRequest.setReplyType(ReplyType.EVERYONE);
-        tweetRequest.setScheduledDate(LocalDateTime.parse(TWEET_SCHEDULED_DATETIME));
-
-        mockMvc.perform(post(URL_TWEETS_BASIC + "/schedule")
-                        .content(mapper.writeValueAsString(tweetRequest))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(100L))
-                .andExpect(jsonPath("$.text").value("test tweet"))
-                .andExpect(jsonPath("$.dateTime").isNotEmpty())
-                .andExpect(jsonPath("$.scheduledDate").value(TWEET_SCHEDULED_DATETIME))
-                .andExpect(jsonPath("$.addressedUsername").isEmpty())
-                .andExpect(jsonPath("$.addressedId").isEmpty())
-                .andExpect(jsonPath("$.addressedTweetId").isEmpty())
-                .andExpect(jsonPath("$.replyType").value(ReplyType.EVERYONE.toString()))
-                .andExpect(jsonPath("$.link").isEmpty())
-                .andExpect(jsonPath("$.linkTitle").isEmpty())
-                .andExpect(jsonPath("$.linkDescription").isEmpty())
-                .andExpect(jsonPath("$.linkCover").isEmpty())
-                .andExpect(jsonPath("$.linkCoverSize").isEmpty())
-                .andExpect(jsonPath("$.quoteTweet").isEmpty())
-                .andExpect(jsonPath("$.user.id").value(2L))
-                .andExpect(jsonPath("$.poll").isEmpty())
-                .andExpect(jsonPath("$.images").isEmpty())
-                .andExpect(jsonPath("$.retweetsCount").value(0L))
-                .andExpect(jsonPath("$.likedTweetsCount").value(0L))
-                .andExpect(jsonPath("$.repliesCount").value(0L))
-                .andExpect(jsonPath("$.isTweetLiked").value(false))
-                .andExpect(jsonPath("$.isTweetRetweeted").value(false))
-                .andExpect(jsonPath("$.isUserFollowByOtherUser").value(false))
-                .andExpect(jsonPath("$.isTweetDeleted").value(false))
-                .andExpect(jsonPath("$.isTweetBookmarked").value(false));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[200] PUT /api/v1/tweets/schedule - Update Scheduled Tweet")
-    public void updateScheduledTweet() throws Exception {
-        TweetRequest tweetRequest = new TweetRequest();
-        tweetRequest.setId(39L);
-        tweetRequest.setText("test tweet2");
-        tweetRequest.setReplyType(ReplyType.EVERYONE);
-
-        mockMvc.perform(put(URL_TWEETS_BASIC + "/schedule")
-                        .content(mapper.writeValueAsString(tweetRequest))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(39L))
-                .andExpect(jsonPath("$.text").value("test tweet2"))
-                .andExpect(jsonPath("$.dateTime").isNotEmpty())
-                .andExpect(jsonPath("$.scheduledDate").value(TWEET_SCHEDULED_DATETIME))
-                .andExpect(jsonPath("$.addressedUsername").isEmpty())
-                .andExpect(jsonPath("$.addressedId").isEmpty())
-                .andExpect(jsonPath("$.addressedTweetId").isEmpty())
-                .andExpect(jsonPath("$.replyType").value(ReplyType.EVERYONE.toString()))
-                .andExpect(jsonPath("$.link").isEmpty())
-                .andExpect(jsonPath("$.linkTitle").isEmpty())
-                .andExpect(jsonPath("$.linkDescription").isEmpty())
-                .andExpect(jsonPath("$.linkCover").isEmpty())
-                .andExpect(jsonPath("$.linkCoverSize").isEmpty())
-                .andExpect(jsonPath("$.quoteTweet").isEmpty())
-                .andExpect(jsonPath("$.user.id").value(2L))
-                .andExpect(jsonPath("$.poll").isEmpty())
-                .andExpect(jsonPath("$.images").isEmpty())
-                .andExpect(jsonPath("$.retweetsCount").value(0L))
-                .andExpect(jsonPath("$.likedTweetsCount").value(0L))
-                .andExpect(jsonPath("$.repliesCount").value(0L))
-                .andExpect(jsonPath("$.isTweetLiked").value(false))
-                .andExpect(jsonPath("$.isTweetRetweeted").value(false))
-                .andExpect(jsonPath("$.isUserFollowByOtherUser").value(false))
-                .andExpect(jsonPath("$.isTweetDeleted").value(false))
-                .andExpect(jsonPath("$.isTweetBookmarked").value(false));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[400] PUT /api/v1/tweets/schedule - Should tweet text length length is 0")
-    public void updateScheduledTweet_ShouldTweetTextLengthLengthIs0() throws Exception {
-        TweetRequest tweetRequest = new TweetRequest();
-        tweetRequest.setId(39L);
-        tweetRequest.setText("");
-        tweetRequest.setReplyType(ReplyType.EVERYONE);
-
-        mockMvc.perform(put(URL_TWEETS_BASIC + "/schedule")
-                        .content(mapper.writeValueAsString(tweetRequest))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Độ dài nội dung tweet không hợp lệ")));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[400] PUT /api/v1/tweets/schedule - Should tweet text length more than 280 symbols")
-    public void updateScheduledTweet_ShouldTweetTextLengthMoreThan280Symbols() throws Exception {
-        TweetRequest tweetRequest = new TweetRequest();
-        tweetRequest.setId(39L);
-        tweetRequest.setText(LINK_DESCRIPTION + LINK_DESCRIPTION);
-        tweetRequest.setReplyType(ReplyType.EVERYONE);
-
-        mockMvc.perform(put(URL_TWEETS_BASIC + "/schedule")
-                        .content(mapper.writeValueAsString(tweetRequest))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Độ dài nội dung tweet không hợp lệ")));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[404] PUT /api/v1/tweets/schedule - Should Tweet Not Found")
-    public void updateScheduledTweet_ShouldTweetNotFound() throws Exception {
-        TweetRequest tweetRequest = new TweetRequest();
-        tweetRequest.setId(99L);
-        tweetRequest.setText("test tweet99");
-        tweetRequest.setReplyType(ReplyType.EVERYONE);
-
-        mockMvc.perform(put(URL_TWEETS_BASIC + "/schedule")
-                        .content(mapper.writeValueAsString(tweetRequest))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[200] DELETE /api/v1/tweets/schedule - Delete scheduled Tweets")
-    public void deleteScheduledTweets() throws Exception {
-        TweetDeleteRequest tweetDeleteRequest = new TweetDeleteRequest();
-        tweetDeleteRequest.setTweetsIds(List.of(42L));
-
-        mockMvc.perform(delete(URL_TWEETS_BASIC + "/schedule")
-                        .content(mapper.writeValueAsString(tweetDeleteRequest))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", is("Scheduled tweets deleted.")));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
     @DisplayName("[200] DELETE /api/v1/tweets/40 - Delete Tweet")
     public void deleteTweet() throws Exception {
         mockMvc.perform(delete(URL_TWEETS_BASIC + "/40"))
@@ -847,7 +659,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[0].id").value(45L))
                 .andExpect(jsonPath("$[0].text").value("media tweet test"))
                 .andExpect(jsonPath("$[0].dateTime").value("2021-10-03T20:38:51"))
-                .andExpect(jsonPath("$[0].scheduledDate").isEmpty())
                 .andExpect(jsonPath("$[0].addressedUsername").isEmpty())
                 .andExpect(jsonPath("$[0].addressedId").isEmpty())
                 .andExpect(jsonPath("$[0].addressedTweetId").isEmpty())
@@ -987,7 +798,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.id").isNotEmpty())
                 .andExpect(jsonPath("$.text").value("test quote"))
                 .andExpect(jsonPath("$.dateTime").isNotEmpty())
-                .andExpect(jsonPath("$.scheduledDate").isEmpty())
                 .andExpect(jsonPath("$.addressedUsername").isEmpty())
                 .andExpect(jsonPath("$.addressedId").isEmpty())
                 .andExpect(jsonPath("$.addressedTweetId").isEmpty())
@@ -1039,7 +849,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.id").value(43L))
                 .andExpect(jsonPath("$.text").value(TWEET_TEXT))
                 .andExpect(jsonPath("$.dateTime").value(TWEET_DATETIME))
-                .andExpect(jsonPath("$.scheduledDate").isEmpty())
                 .andExpect(jsonPath("$.addressedUsername").isEmpty())
                 .andExpect(jsonPath("$.addressedId").isEmpty())
                 .andExpect(jsonPath("$.addressedTweetId").isEmpty())
@@ -1099,7 +908,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.id").value(40))
                 .andExpect(jsonPath("$.text").value("test tweet"))
                 .andExpect(jsonPath("$.dateTime").value("2021-10-03T20:29:03"))
-                .andExpect(jsonPath("$.scheduledDate").isEmpty())
                 .andExpect(jsonPath("$.addressedUsername").isEmpty())
                 .andExpect(jsonPath("$.addressedId").isEmpty())
                 .andExpect(jsonPath("$.addressedTweetId").isEmpty())

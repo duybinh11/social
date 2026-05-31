@@ -1,6 +1,5 @@
 package com.gmail.merikbest2015.twitterspringreactjs.mapper;
 
-import com.gmail.merikbest2015.twitterspringreactjs.dto.request.TweetDeleteRequest;
 import com.gmail.merikbest2015.twitterspringreactjs.dto.request.TweetRequest;
 import com.gmail.merikbest2015.twitterspringreactjs.dto.request.VoteRequest;
 import com.gmail.merikbest2015.twitterspringreactjs.dto.response.UserResponse;
@@ -52,11 +51,6 @@ public class TweetMapper {
         return basicMapper.getHeaderResponse(tweets, TweetResponse.class);
     }
 
-    public HeaderResponse<TweetResponse> getScheduledTweets(Pageable pageable) {
-        Page<TweetProjection> tweets = tweetService.getScheduledTweets(pageable);
-        return basicMapper.getHeaderResponse(tweets, TweetResponse.class);
-    }
-
     public TweetResponse getTweetById(Long tweetId) {
         TweetProjection tweet = tweetService.getTweetById(tweetId);
         return basicMapper.convertToResponse(tweet, TweetResponse.class);
@@ -95,15 +89,6 @@ public class TweetMapper {
     public TweetResponse createPoll(TweetRequest tweetRequest) {
         TweetProjection tweet = tweetService.createPoll(tweetRequest.getPollDateTime(), tweetRequest.getChoices(), basicMapper.convertToEntity(tweetRequest, Tweet.class));
         return basicMapper.convertToResponse(tweet, TweetResponse.class);
-    }
-
-    public TweetResponse updateScheduledTweet(TweetRequest tweetRequest) {
-        TweetProjection tweet = tweetService.updateScheduledTweet(basicMapper.convertToEntity(tweetRequest, Tweet.class));
-        return basicMapper.convertToResponse(tweet, TweetResponse.class);
-    }
-
-    public String deleteScheduledTweets(TweetDeleteRequest tweetRequest) {
-        return tweetService.deleteScheduledTweets(tweetRequest.getTweetsIds());
     }
 
     public String deleteTweet(Long tweetId) {

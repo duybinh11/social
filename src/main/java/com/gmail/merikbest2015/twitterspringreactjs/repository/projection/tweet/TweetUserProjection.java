@@ -12,7 +12,6 @@ public interface TweetUserProjection {
     Long getId();
     String getText();
     LocalDateTime getDateTime();
-    LocalDateTime getScheduledDate();
     String getAddressedUsername();
     Long getAddressedId();
     Long getAddressedTweetId();

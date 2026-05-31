@@ -3,7 +3,6 @@ import {QuoteTweetResponse} from "../../store/types/tweet";
 
 interface AddTweetFormStyles {
     quoteTweet?: QuoteTweetResponse;
-    isScheduled?: boolean;
 }
 
 export const useAddTweetFormStyles = makeStyles<Theme, AddTweetFormStyles>((theme) => ({
@@ -45,7 +44,7 @@ export const useAddTweetFormStyles = makeStyles<Theme, AddTweetFormStyles>((them
     quoteImage: {
         "& .MuiIconButton-root": {
             "& svg": {
-                color: props => props.quoteTweet || props.isScheduled ? theme.palette.primary.light : theme.palette.primary.main,
+                color: props => props.quoteTweet ? theme.palette.primary.light : theme.palette.primary.main,
             },
         },
     },

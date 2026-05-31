@@ -19,10 +19,6 @@ export const tweetsReducer = produce((draft: Draft<TweetsState>, action: TweetsA
             draft.loadingState = LoadingStatus.LOADED;
             break;
 
-        case TweetsActionType.SET_SCHEDULED_TWEETS:
-            draft.items = [...action.payload, ...draft.items];
-            break;
-
         case TweetsActionType.SET_PAGEABLE_TWEETS:
             draft.items = [...draft.items, ...action.payload.items];
             draft.pagesCount = action.payload.pagesCount;

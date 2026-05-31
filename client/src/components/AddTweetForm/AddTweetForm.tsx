@@ -10,9 +10,7 @@ import EmojiConvertor from 'emoji-js';
 import {
     addPoll,
     addQuoteTweet,
-    addScheduledTweet,
     addTweet,
-    updateScheduledTweet,
 } from "../../store/ducks/tweets/actionCreators";
 import UploadImages from '../UploadImages/UploadImages';
 import {uploadImage} from "../../util/uploadImage";
@@ -22,20 +20,16 @@ import {GifIcon, PullIcon} from "../../icons";
 import Poll, {PollInitialState, pollInitialState} from "./Poll/Poll";
 import Reply from "./Reply/Reply";
 import Quote from "../Quote/Quote";
-import {formatScheduleDate} from "../../util/formatDate";
-import {QuoteTweetResponse, TweetResponse} from "../../store/types/tweet";
+import {QuoteTweetResponse} from "../../store/types/tweet";
 import {Image, ReplyType} from "../../store/types/common";
 import ActionIconButton from "../ActionIconButton/ActionIconButton";
 import {setOpenSnackBar} from "../../store/ducks/actionSnackbar/actionCreators";
 import EmojiIconButton from "./EmojiIconButton/EmojiIconButton";
-import ScheduleIconButton from "./ScheduleIconButton/ScheduleIconButton";
 import ProfileAvatar from "./ProfileAvatar/ProfileAvatar";
-import ScheduleDateInfo from "./ScheduleDateInfo/ScheduleDateInfo";
 import AddTweetImage from "./AddTweetImage/AddTweetImage";
 import {useParams} from "react-router-dom";
 
 export interface AddTweetFormProps {
-    unsentTweet?: TweetResponse;
     quoteTweet?: QuoteTweetResponse;
     maxRows?: number;
     minRows?: number;
@@ -56,7 +50,6 @@ const MAX_LENGTH = 280;
 
 const AddTweetForm: FC<AddTweetFormProps> = (
     {
-        unsentTweet,
         quoteTweet,
         maxRows,
         minRows,
@@ -73,26 +66,11 @@ const AddTweetForm: FC<AddTweetFormProps> = (
     const [text, setText] = useState<string>("");
     const [images, setImages] = useState<ImageObj[]>([]);
     const [replyType, setReplyType] = useState<ReplyType>(ReplyType.EVERYONE);
-    const [selectedScheduleDate, setSelectedScheduleDate] = useState<Date | null>(null);
     const [visiblePoll, setVisiblePoll] = useState<boolean>(false);
     const [pollData, setPollData] = useState<PollInitialState>(pollInitialState);
-    const classes = useAddTweetFormStyles({quoteTweet: quoteTweet, isScheduled: selectedScheduleDate !== null});
+    const classes = useAddTweetFormStyles({quoteTweet: quoteTweet});
     const textLimitPercent = Math.round((text.length / 280) * 100);
     const textCount = MAX_LENGTH - text.length;
-
-    useEffect(() => {
-        if (unsentTweet) {
-            setText(unsentTweet.text);
-            setSelectedScheduleDate(new Date(unsentTweet.scheduledDate!));
-            if (unsentTweet.images?.length !== 0) {
-                const newImages = [...images];
-                const newImage = {...images[0]};
-                newImage.src = unsentTweet.images![0].src;
-                newImages[0] = newImage;
-                setImages(newImages);
-            }
-        }
-    }, [unsentTweet]);
 
     const handleChangeTextarea = (event: ChangeEvent<HTMLTextAreaElement>): void => {
         setText(event.target.value);
@@ -125,21 +103,6 @@ const AddTweetForm: FC<AddTweetFormProps> = (
                 choices: choices,
                 replyType: replyType
             }));
-        } else if (selectedScheduleDate !== null && unsentTweet === undefined) {
-            dispatch(addScheduledTweet({
-                text: textConverter(),
-                images: result,
-                replyType: replyType,
-                scheduledDate: selectedScheduleDate
-            }));
-        } else if (unsentTweet) {
-            dispatch(updateScheduledTweet({
-                id: unsentTweet?.id,
-                text: textConverter(),
-                images: result,
-                replyType: replyType,
-            }));
-            if (onCloseModal) onCloseModal();
         } else {
             dispatch(addTweet({
                 text: textConverter(),
@@ -147,15 +110,10 @@ const AddTweetForm: FC<AddTweetFormProps> = (
                 replyType: replyType
             }));
         }
-        dispatch(setOpenSnackBar(selectedScheduleDate ? (
-            `Your Tweet will be sent on ${formatScheduleDate(selectedScheduleDate)}`
-        ) : (
-            "Your tweet was sent."
-        )));
+        dispatch(setOpenSnackBar("Your tweet was sent."));
         setText('');
         setImages([]);
         setVisiblePoll(false);
-        setSelectedScheduleDate(null);
     };
 
     const handleClickQuoteTweet = async (): Promise<void> => {
@@ -227,21 +185,11 @@ const AddTweetForm: FC<AddTweetFormProps> = (
         setVisiblePoll(false);
     };
 
-    const handleScheduleDate = useCallback((date: Date): void => {
-        setSelectedScheduleDate(date);
-        onClosePoll();
-    }, []);
-
-    const clearScheduleDate = useCallback((): void => {
-        setSelectedScheduleDate(null);
-    }, []);
-
     return (
         <>
             <div className={classes.content}>
                 <ProfileAvatar/>
                 <div className={classes.textareaWrapper}>
-                    <ScheduleDateInfo selectedScheduleDate={selectedScheduleDate}/>
                     <TextareaAutosize
                         onChange={handleChangeTextarea}
                         className={classes.contentTextarea}
@@ -255,7 +203,7 @@ const AddTweetForm: FC<AddTweetFormProps> = (
             <AddTweetImage images={images} removeImage={removeImage}/>
             {quoteTweet && <Quote quoteTweet={quoteTweet}/>}
             <Poll pollData={pollData} setPollData={setPollData} visiblePoll={visiblePoll} onClose={onClosePoll}/>
-            <Reply replyType={replyType} setReplyType={setReplyType} isUnsentTweet={!!unsentTweet}/>
+            <Reply replyType={replyType} setReplyType={setReplyType}/>
             <div className={classes.footer}>
                 <div className={classes.footerWrapper}>
                     <UploadImages onChangeImages={setImages}/>
@@ -266,20 +214,12 @@ const AddTweetForm: FC<AddTweetFormProps> = (
                                 actionText={"Bình chọn"}
                                 icon={PullIcon}
                                 onClick={onOpenPoll}
-                                disabled={!!quoteTweet || selectedScheduleDate !== null}
+                                disabled={!!quoteTweet}
                                 size={"medium"}
                             />
                         </div>
                     )}
                     <EmojiIconButton addEmoji={addEmoji}/>
-                    {(buttonName !== "Trả lời") && (
-                        <ScheduleIconButton
-                            disabled={!!quoteTweet}
-                            selectedScheduleDate={selectedScheduleDate}
-                            handleScheduleDate={handleScheduleDate}
-                            clearScheduleDate={clearScheduleDate}
-                        />
-                    )}
                 </div>
                 <div className={classes.footerAddForm}>
                     {text && (

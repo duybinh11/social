@@ -28,7 +28,6 @@ import {
     API_TWEETS_REPLY,
     API_TWEETS_RETWEET,
     API_TWEETS_RETWEETED_USERS,
-    API_TWEETS_SCHEDULE,
     API_TWEETS_SEARCH,
     API_TWEETS_VIDEO,
     API_TWEETS_VOTE
@@ -46,9 +45,6 @@ export const TweetApi = {
     },
     async fetchFollowersTweets(pageNumber: number): Promise<AxiosResponse<TweetResponse[]>> {
         return await axios.get<TweetResponse[]>(API_TWEETS_FOLLOWER, {params: {page: pageNumber}});
-    },
-    async fetchScheduledTweets(pageNumber: number): Promise<AxiosResponse<TweetResponse[]>> {
-        return await axios.get<TweetResponse[]>(API_TWEETS_SCHEDULE, {params: {page: pageNumber}});
     },
     async fetchTweetData(tweetId: number): Promise<AxiosResponse<TweetResponse>> {
         return await axios.get<TweetResponse>(`${API_TWEETS}/${tweetId}`);
@@ -73,15 +69,6 @@ export const TweetApi = {
     },
     async createPoll(request: AddTweet): Promise<AxiosResponse<TweetResponse>> {
         return await axios.post<TweetResponse>(API_TWEETS_POOL, request);
-    },
-    async createScheduledTweet(request: AddTweet): Promise<AxiosResponse<TweetResponse>> {
-        return await axios.post<TweetResponse>(API_TWEETS_SCHEDULE, request);
-    },
-    async updateScheduledTweet(request: AddTweet): Promise<AxiosResponse<TweetResponse>> {
-        return await axios.put<TweetResponse>(API_TWEETS_SCHEDULE, request);
-    },
-    async deleteScheduledTweets(request: { tweetsIds: number[] }): Promise<AxiosResponse<string>> {
-        return await axios.delete<string>(API_TWEETS_SCHEDULE, {data: request});
     },
     async deleteTweet(tweetId: number): Promise<AxiosResponse<string>> {
         return await axios.delete<string>(`${API_TWEETS}/${tweetId}`);

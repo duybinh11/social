@@ -10,10 +10,9 @@ import {ReplyType} from '../../../store/types/common';
 interface ReplyProps {
     replyType: ReplyType;
     setReplyType: (value: ReplyType | ((prevVar: ReplyType) => ReplyType)) => void;
-    isUnsentTweet: boolean;
 }
 
-const Reply: FC<ReplyProps> = memo(({replyType, setReplyType, isUnsentTweet}): ReactElement => {
+const Reply: FC<ReplyProps> = memo(({replyType, setReplyType}): ReactElement => {
     const classes = useReplyStyles();
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const openPopover = Boolean(anchorEl);
@@ -35,7 +34,7 @@ const Reply: FC<ReplyProps> = memo(({replyType, setReplyType, isUnsentTweet}): R
     return (
         <>
             <div className={classes.reply}>
-                <Button onClick={handleOpenPopup} color="primary" disabled={isUnsentTweet} variant="text">
+                <Button onClick={handleOpenPopup} color="primary" variant="text">
                     <span>
                         {replyType === ReplyType.EVERYONE && EveryoneReplyIcon}
                         {replyType === ReplyType.FOLLOW && FollowReplyIcon}

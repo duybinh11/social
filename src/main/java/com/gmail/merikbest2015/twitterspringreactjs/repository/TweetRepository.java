@@ -6,12 +6,9 @@ import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.user.U
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,34 +31,17 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
 
     @Query("SELECT tweet FROM Tweet tweet " +
             "WHERE tweet.addressedUsername IS NULL " +
-            "AND tweet.scheduledDate IS NULL " +
             "AND tweet.deleted = false " +
             "ORDER BY tweet.dateTime DESC")
     Page<TweetProjection> findAllTweets(Pageable pageable);
 
-    @Query("SELECT tweet.id FROM Tweet tweet " +
-            "WHERE tweet.scheduledDate IS NOT NULL AND tweet.scheduledDate <= :scheduledDate")
-    List<Long> findDueScheduledTweetIds(@Param("scheduledDate") LocalDateTime scheduledDate);
-
-    @Modifying(clearAutomatically = true)
-    @Query("UPDATE Tweet tweet SET tweet.scheduledDate = null " +
-            "WHERE tweet.scheduledDate IS NOT NULL AND tweet.scheduledDate <= :scheduledDate")
-    int publishDueScheduledTweets(@Param("scheduledDate") LocalDateTime scheduledDate);
-
-    @Query("SELECT tweet FROM Tweet tweet " +
-            "WHERE tweet.user.id = :userId " +
-            "AND tweet.scheduledDate IS NOT NULL " +
-            "AND tweet.deleted = false " +
-            "ORDER BY tweet.scheduledDate DESC")
-    Page<TweetProjection> findAllScheduledTweetsByUserId(Long userId, Pageable pageable);
-
     @Query("SELECT t FROM Tweet t " +
             "LEFT JOIN t.user u " +
-            "WHERE t.scheduledDate IS NULL AND t.deleted = false " +
+            "WHERE t.deleted = false " +
             "AND (t.text LIKE CONCAT('%',:text,'%') " +
             "AND UPPER(u.fullName) LIKE UPPER(CONCAT('%',:text,'%')) " +
             "OR UPPER(u.username) LIKE UPPER(CONCAT('%',:text,'%'))) " +
-            "OR t.scheduledDate IS NULL AND t.deleted = false " +
+            "OR t.deleted = false " +
             "AND (t.text LIKE CONCAT('%',:text,'%') " +
             "OR UPPER(u.fullName) LIKE UPPER(CONCAT('%',:text,'%')) " +
             "OR UPPER(u.username) LIKE UPPER(CONCAT('%',:text,'%'))) " +
@@ -69,31 +49,28 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
     Page<TweetProjection> findAllByText(String text, Pageable pageable);
 
     @Query("SELECT tweet FROM Tweet tweet " +
-            "WHERE tweet.scheduledDate IS NULL " +
-            "AND tweet.deleted = false " +
+            "WHERE tweet.deleted = false " +
             "AND tweet.text LIKE CONCAT('%','youtu','%')")
     Page<TweetProjection> findAllTweetsWithVideo(Pageable pageable);
 
     @Query("SELECT tweet FROM Tweet tweet " +
-            "WHERE tweet.scheduledDate IS NULL " +
-            "AND tweet.images.size != 0 " +
+            "WHERE tweet.images.size != 0 " +
             "AND tweet.deleted = false " +
             "ORDER BY tweet.dateTime DESC")
     Page<TweetProjection> findAllTweetsWithImages(Pageable pageable);
 
     @Query("SELECT tweet FROM Tweet tweet " +
             "LEFT JOIN tweet.images image " +
-            "WHERE tweet.scheduledDate IS NULL AND tweet.deleted = false " +
+            "WHERE tweet.deleted = false " +
             "AND (tweet.user.id = :userId AND image.id IS NOT NULL) " +
-            "OR tweet.scheduledDate IS NULL AND tweet.deleted = false " +
+            "OR tweet.deleted = false " +
             "AND (tweet.user.id = :userId AND tweet.text LIKE CONCAT('%','youtu','%')) " +
             "ORDER BY tweet.dateTime DESC")
     Page<TweetProjection> findAllUserMediaTweets(Long userId, Pageable pageable);
 
     @Query("SELECT tweet.id AS tweetId, image.id AS imageId, image.src AS src FROM Tweet tweet " +
             "LEFT JOIN tweet.images image " +
-            "WHERE tweet.scheduledDate IS NULL " +
-            "AND tweet.user.id = :userId " +
+            "WHERE tweet.user.id = :userId " +
             "AND image.id IS NOT NULL " +
             "AND tweet.deleted = false " +
             "ORDER BY tweet.dateTime DESC")
@@ -105,7 +82,6 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
     @Query("SELECT t as tweet FROM Tweet t " +
             "WHERE t.user.id = :userId " +
             "AND t.addressedUsername IS NULL " +
-            "AND t.scheduledDate IS NULL " +
             "AND t.deleted = false " +
             "ORDER BY t.dateTime DESC")
     List<TweetsUserProjection> findTweetsByUserId(Long userId);
@@ -113,7 +89,6 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
     @Query("SELECT t as tweet FROM Tweet t " +
             "WHERE t.user.id = :userId " +
             "AND t.addressedUsername IS NOT NULL " +
-            "AND t.scheduledDate IS NULL " +
             "AND t.deleted = false " +
             "ORDER BY t.dateTime DESC")
     List<TweetsUserProjection> findRepliesByUserId(Long userId);

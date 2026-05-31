@@ -13,7 +13,6 @@ import {
     API_TWEETS_REPLIES,
     API_TWEETS_REPLY,
     API_TWEETS_RETWEET,
-    API_TWEETS_SCHEDULE,
     API_TWEETS_SEARCH,
     API_TWEETS_VIDEO,
     API_TWEETS_VOTE
@@ -55,12 +54,6 @@ describe("TweetApi", () => {
         });
     });
 
-    describe("should fetch TweetApi.fetchScheduledTweets", () => {
-        it("[200] should fetch scheduled tweets Success", () => {
-            testApiCall(mockAdapter, "onGet", API_TWEETS_SCHEDULE, 200, mockTweets, TweetApi.fetchScheduledTweets, 1);
-        });
-    });
-
     describe("should fetch TweetApi.fetchTweetData", () => {
         it("[200] should fetch tweet data Success", () => {
             testApiCall(mockAdapter, "onGet", `${API_TWEETS}/1`, 200, mockFullTweet, TweetApi.fetchTweetData, 1);
@@ -99,42 +92,6 @@ describe("TweetApi", () => {
 
         it("[400] should return Incorrect tweet text length", () => {
             testApiCall(mockAdapter, "onPost", API_TWEETS, 400, "Độ dài nội dung tweet không hợp lệ", TweetApi.createTweet, mockAddTweetRequest);
-        });
-    });
-
-    describe("should fetch TweetApi.createScheduledTweet", () => {
-        it("[200] should create scheduled tweet Success", () => {
-            testApiCall(mockAdapter, "onPost", API_TWEETS_SCHEDULE, 200, mockFullTweet, TweetApi.createScheduledTweet, mockAddTweetRequest);
-        });
-
-        it("[400] should return incorrect poll choices", () => {
-            testApiCall(mockAdapter, "onPost", API_TWEETS_SCHEDULE, 400, "Lựa chọn bình chọn không hợp lệ", TweetApi.createScheduledTweet, mockAddTweetRequest);
-        });
-    });
-
-    describe("should fetch TweetApi.updateScheduledTweet", () => {
-        it("[200] should update scheduled tweet Success", () => {
-            testApiCall(mockAdapter, "onPut", API_TWEETS_SCHEDULE, 200, mockFullTweet, TweetApi.updateScheduledTweet, mockAddTweetRequest);
-        });
-
-        it("[400] should return Incorrect tweet text length", () => {
-            testApiCall(mockAdapter, "onPut", API_TWEETS_SCHEDULE, 400, "Độ dài nội dung tweet không hợp lệ", TweetApi.updateScheduledTweet, mockAddTweetRequest);
-        });
-
-        it("[404] should return tweet Not Found", () => {
-            testApiCall(mockAdapter, "onPut", API_TWEETS_SCHEDULE, 404, tweetNotFoundError, TweetApi.updateScheduledTweet, mockAddTweetRequest);
-        });
-    });
-
-    describe("should fetch TweetApi.deleteScheduledTweets", () => {
-        const mockTweetsIds = {tweetsIds: [1, 2, 3]};
-
-        it("[200] should delete scheduled tweets Success", () => {
-            testApiCall(mockAdapter, "onDelete", API_TWEETS_SCHEDULE, 200, "Scheduled tweets deleted.", TweetApi.deleteScheduledTweets, mockTweetsIds);
-        });
-
-        it("[404] should return tweet Not Found", () => {
-            testApiCall(mockAdapter, "onDelete", API_TWEETS_SCHEDULE, 404, tweetNotFoundError, TweetApi.deleteScheduledTweets, mockTweetsIds);
         });
     });
 

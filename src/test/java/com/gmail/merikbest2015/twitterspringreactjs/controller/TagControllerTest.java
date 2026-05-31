@@ -61,7 +61,6 @@ public class TagControllerTest {
                 .andExpect(jsonPath("$[0].id").value(43L))
                 .andExpect(jsonPath("$[0].text").value(TWEET_TEXT))
                 .andExpect(jsonPath("$[0].dateTime").value(TWEET_DATETIME))
-                .andExpect(jsonPath("$[0].scheduledDate").isEmpty())
                 .andExpect(jsonPath("$[0].addressedUsername").isEmpty())
                 .andExpect(jsonPath("$[0].addressedId").isEmpty())
                 .andExpect(jsonPath("$[0].addressedTweetId").isEmpty())

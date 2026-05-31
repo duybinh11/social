@@ -27,18 +27,6 @@ describe("tweetsReducer:", () => {
         );
 
         testActionDispatch(
-            TweetsActionType.SET_SCHEDULED_TWEETS,
-            tweetsReducer(initialTweetsState, {
-                type: TweetsActionType.SET_SCHEDULED_TWEETS,
-                payload: [{id: 1}] as TweetResponse[]
-            }),
-            {
-                ...initialTweetsState,
-                items: [{id: 1}] as TweetResponse[],
-            }
-        );
-
-        testActionDispatch(
             TweetsActionType.SET_PAGEABLE_TWEETS,
             tweetsReducer(initialTweetsState, {
                 type: TweetsActionType.SET_PAGEABLE_TWEETS,

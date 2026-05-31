@@ -4,7 +4,6 @@ export interface TweetResponse {
     id: number;
     text: string;
     dateTime: string;
-    scheduledDate: string;
     addressedUsername: string;
     addressedId: number;
     addressedTweetId: number;

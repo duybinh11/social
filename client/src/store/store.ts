@@ -21,7 +21,6 @@ import {BlockedAndMutedUsersState} from "./ducks/blockedAndMutedUsers/contracts/
 import {ListMembersState} from "./ducks/listMembers/contracts/state";
 import {UserDetailState} from "./ducks/userDetail/contracts/state";
 import {ListDetailState} from "./ducks/listDetail/contracts/state";
-import {UnsentTweetsState} from "./ducks/unsentTweets/contracts/state";
 import {ActionSnackbarState} from "./ducks/actionSnackbar/contracts/state";
 import {TweetAdditionalInfoState} from "./ducks/tweetAdditionalInfo/contracts/state";
 import {ChatState} from "./ducks/chat/contracts/state";
@@ -44,7 +43,6 @@ export interface RootState {
     listMembers: ListMembersState;
     userDetail: UserDetailState;
     listDetail: ListDetailState;
-    unsentTweets: UnsentTweetsState;
     actionSnackbar: ActionSnackbarState;
     tweetAdditionalInfo: TweetAdditionalInfoState;
     chat: ChatState;

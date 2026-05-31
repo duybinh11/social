@@ -1,6 +1,5 @@
 package com.gmail.merikbest2015.twitterspringreactjs.controller;
 
-import com.gmail.merikbest2015.twitterspringreactjs.dto.request.TweetDeleteRequest;
 import com.gmail.merikbest2015.twitterspringreactjs.dto.request.TweetRequest;
 import com.gmail.merikbest2015.twitterspringreactjs.dto.request.VoteRequest;
 import com.gmail.merikbest2015.twitterspringreactjs.dto.response.UserResponse;
@@ -87,12 +86,6 @@ public class TweetController {
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
-    @GetMapping("/schedule")
-    public ResponseEntity<List<TweetResponse>> getScheduledTweets(@PageableDefault(size = 15) Pageable pageable) {
-        HeaderResponse<TweetResponse> response = tweetMapper.getScheduledTweets(pageable);
-        return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
-    }
-
     @PostMapping
     public ResponseEntity<TweetResponse> createTweet(@RequestBody TweetRequest tweetRequest) {
         TweetResponse tweet = tweetMapper.createTweet(tweetRequest);
@@ -107,21 +100,6 @@ public class TweetController {
         messagingTemplate.convertAndSend("/topic/feed/add", tweet);
         messagingTemplate.convertAndSend("/topic/user/add/tweet/" + tweet.getUser().getId(), tweet);
         return ResponseEntity.ok(tweet);
-    }
-
-    @PostMapping("/schedule")
-    public ResponseEntity<TweetResponse> createScheduledTweet(@RequestBody TweetRequest tweetRequest) {
-        return ResponseEntity.ok(tweetMapper.createTweet(tweetRequest));
-    }
-
-    @PutMapping("/schedule")
-    public ResponseEntity<TweetResponse> updateScheduledTweet(@RequestBody TweetRequest tweetRequest) {
-        return ResponseEntity.ok(tweetMapper.updateScheduledTweet(tweetRequest));
-    }
-
-    @DeleteMapping("/schedule")
-    public ResponseEntity<String> deleteScheduledTweets(@RequestBody TweetDeleteRequest tweetRequest) {
-        return ResponseEntity.ok(tweetMapper.deleteScheduledTweets(tweetRequest));
     }
 
     @DeleteMapping("/{tweetId}")

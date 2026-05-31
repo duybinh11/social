@@ -2,10 +2,8 @@ import {testAction} from "../../../../util/testHelper";
 import {
     addPoll,
     addQuoteTweet,
-    addScheduledTweet,
     addTweet,
     changeReplyType,
-    deleteScheduledTweets,
     deleteTweet,
     fetchDeleteTweet,
     fetchFollowersTweets,
@@ -24,13 +22,11 @@ import {
     setFollowToTweetsState,
     setMutedToTweetsState,
     setPageableTweets,
-    setScheduledTweets,
     setTweet,
     setTweets,
     setTweetsLoadingState,
     setUpdatedBookmarkedTweetTweetsState,
     setUpdatedTweet,
-    updateScheduledTweet,
     vote
 } from "../actionCreators";
 import {TweetsActionType} from "../contracts/actionTypes";
@@ -60,11 +56,6 @@ describe("tweets actions", () => {
         payload: [{id: 1}] as TweetResponse[]
     });
 
-    testAction(setScheduledTweets, setScheduledTweets([{id: 1}] as TweetResponse[]), {
-        type: TweetsActionType.SET_SCHEDULED_TWEETS,
-        payload: [{id: 1}] as TweetResponse[]
-    });
-
     testAction(setPageableTweets, setPageableTweets({items: [{id: 1}] as TweetResponse[], pagesCount: 1}), {
         type: TweetsActionType.SET_PAGEABLE_TWEETS,
         payload: {items: [{id: 1}] as TweetResponse[], pagesCount: 1}
@@ -86,16 +77,6 @@ describe("tweets actions", () => {
 
     testAction(addPoll, addPoll({id: 1, text: "test"} as AddTweet), {
         type: TweetsActionType.ADD_POLL,
-        payload: {id: 1, text: "test"} as AddTweet
-    });
-
-    testAction(addScheduledTweet, addScheduledTweet({id: 1, text: "test"} as AddTweet), {
-        type: TweetsActionType.ADD_SCHEDULED_TWEET,
-        payload: {id: 1, text: "test"} as AddTweet
-    });
-
-    testAction(updateScheduledTweet, updateScheduledTweet({id: 1, text: "test"} as AddTweet), {
-        type: TweetsActionType.UPDATE_SCHEDULED_TWEET,
         payload: {id: 1, text: "test"} as AddTweet
     });
 
@@ -122,11 +103,6 @@ describe("tweets actions", () => {
     testAction(fetchDeleteTweet, fetchDeleteTweet(1), {
         type: TweetsActionType.FETCH_DELETE_TWEET,
         payload: 1
-    });
-
-    testAction(deleteScheduledTweets, deleteScheduledTweets({tweetsIds: [1, 2]}), {
-        type: TweetsActionType.DELETE_SCHEDULED_TWEETS,
-        payload: {tweetsIds: [1, 2]}
     });
 
     testAction(deleteTweet, deleteTweet(1), {

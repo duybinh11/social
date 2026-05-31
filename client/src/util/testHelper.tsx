@@ -285,11 +285,6 @@ export const createMockRootState = (loadingStatus = LoadingStatus.LOADING): Root
             items: [],
             pagesCount: 1,
             loadingState: loadingStatus
-        },
-        unsentTweets: {
-            items: [],
-            pagesCount: 0,
-            loadingState: loadingStatus
         }
     } as RootState;
 };

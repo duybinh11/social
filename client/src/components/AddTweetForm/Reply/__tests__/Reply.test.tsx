@@ -15,7 +15,6 @@ describe("Trả lời", () => {
             <Reply
                 replyType={ReplyType.EVERYONE}
                 setReplyType={mockSetReplyType}
-                isUnsentTweet={false}
             />, mockRootState);
         
         expect(wrapper.find(Popover).prop("open")).toBe(false);
@@ -50,7 +49,6 @@ describe("Trả lời", () => {
             <Reply
                 replyType={replyType}
                 setReplyType={jest.fn()}
-                isUnsentTweet={false}
             />, mockRootState);
 
         expect(wrapper.find(replyIconId).exists()).toBeTruthy();

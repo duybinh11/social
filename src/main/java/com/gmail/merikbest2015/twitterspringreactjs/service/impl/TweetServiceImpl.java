@@ -127,12 +127,6 @@ public class TweetServiceImpl implements TweetService {
     }
 
     @Override
-    public Page<TweetProjection> getScheduledTweets(Pageable pageable) {
-        Long userId = authenticationService.getAuthenticatedUserId();
-        return tweetRepository.findAllScheduledTweetsByUserId(userId, pageable);
-    }
-
-    @Override
     @Transactional
     public TweetProjection createNewTweet(Tweet tweet) {
         Tweet createdTweet = createTweet(tweet);
@@ -165,26 +159,6 @@ public class TweetServiceImpl implements TweetService {
         createdTweet.setPoll(poll);
 //        tweetRepository.save(createdTweet);
         return getTweetById(createdTweet.getId());
-    }
-
-    @Override
-    @Transactional
-    public TweetProjection updateScheduledTweet(Tweet tweetInfo) {
-        if (tweetInfo.getText().length() == 0 || tweetInfo.getText().length() > 280) {
-            throw new ApiRequestException("Độ dài nội dung tweet không hợp lệ", HttpStatus.BAD_REQUEST);
-        }
-        Tweet tweet = tweetRepository.findById(tweetInfo.getId())
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
-        tweet.setText(tweetInfo.getText());
-        tweet.setImages(tweetInfo.getImages());
-        return getTweetById(tweet.getId());
-    }
-
-    @Override
-    @Transactional
-    public String deleteScheduledTweets(List<Long> tweetsIds) {
-        tweetsIds.forEach(this::deleteTweet);
-        return "Scheduled tweets deleted.";
     }
 
     @Override

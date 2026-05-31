@@ -3,10 +3,8 @@ import {call} from "redux-saga/effects";
 import {
     addPollRequest,
     addQuoteTweetRequest,
-    addScheduledTweetRequest,
     addTweetRequest,
     changeReplyTypeRequest,
-    deleteScheduledTweetsTweetRequest,
     fetchDeleteTweetRequest,
     fetchFollowersTweetsRequest,
     fetchMediaTweetsRequest,
@@ -20,16 +18,13 @@ import {
     likeTweetRequest,
     retweetRequest,
     tweetsSaga,
-    updateScheduledTweetRequest,
     voteRequest
 } from "../sagas";
 import {
     addPoll,
     addQuoteTweet,
-    addScheduledTweet,
     addTweet,
     changeReplyType,
-    deleteScheduledTweets,
     fetchDeleteTweet,
     fetchFollowersTweets,
     fetchMediaTweets,
@@ -45,7 +40,6 @@ import {
     setPageableTweets,
     setTweets,
     setTweetsLoadingState,
-    updateScheduledTweet,
     vote
 } from "../actionCreators";
 import {TweetApi} from "../../../../services/api/tweetApi";
@@ -172,18 +166,6 @@ describe("tweetsSaga:", () => {
         testLoadingStatus(worker, setTweetsLoadingState, LoadingStatus.ERROR);
     });
 
-    describe("addScheduledTweetRequest:", () => {
-        const worker = addScheduledTweetRequest(addScheduledTweet(mockAddTweet));
-        testCall(worker, TweetApi.createScheduledTweet, mockAddTweet);
-        testLoadingStatus(worker, setTweetsLoadingState, LoadingStatus.ERROR);
-    });
-
-    describe("updateScheduledTweetRequest:", () => {
-        const worker = updateScheduledTweetRequest(updateScheduledTweet(mockAddTweet));
-        testCall(worker, TweetApi.updateScheduledTweet, mockAddTweet);
-        testLoadingStatus(worker, setTweetsLoadingState, LoadingStatus.ERROR);
-    });
-
     describe("addQuoteTweetRequest:", () => {
         const mockAddQuoteTweet = {text: "test", tweetId: 1} as AddQuoteTweet;
         const worker = addQuoteTweetRequest(addQuoteTweet(mockAddQuoteTweet));
@@ -208,12 +190,6 @@ describe("tweetsSaga:", () => {
     describe("fetchDeleteTweetRequest:", () => {
         const worker = fetchDeleteTweetRequest(fetchDeleteTweet(1));
         testCall(worker, TweetApi.deleteTweet, 1);
-        testLoadingStatus(worker, setTweetsLoadingState, LoadingStatus.ERROR);
-    });
-
-    describe("deleteScheduledTweetsTweetRequest:", () => {
-        const worker = deleteScheduledTweetsTweetRequest(deleteScheduledTweets({tweetsIds: [1, 2, 3]}));
-        testCall(worker, TweetApi.deleteScheduledTweets, {tweetsIds: [1, 2, 3]});
         testLoadingStatus(worker, setTweetsLoadingState, LoadingStatus.ERROR);
     });
 
@@ -242,13 +218,10 @@ describe("tweetsSaga:", () => {
         {actionType: TweetsActionType.FETCH_FOLLOWERS_TWEETS, workSaga: fetchFollowersTweetsRequest},
         {actionType: TweetsActionType.ADD_TWEET, workSaga: addTweetRequest},
         {actionType: TweetsActionType.ADD_POLL, workSaga: addPollRequest},
-        {actionType: TweetsActionType.ADD_SCHEDULED_TWEET, workSaga: addScheduledTweetRequest},
-        {actionType: TweetsActionType.UPDATE_SCHEDULED_TWEET, workSaga: updateScheduledTweetRequest},
         {actionType: TweetsActionType.ADD_QUOTE_TWEET, workSaga: addQuoteTweetRequest},
         {actionType: TweetsActionType.VOTE, workSaga: voteRequest},
         {actionType: TweetsActionType.CHANGE_REPLY_TYPE, workSaga: changeReplyTypeRequest},
         {actionType: TweetsActionType.FETCH_DELETE_TWEET, workSaga: fetchDeleteTweetRequest},
-        {actionType: TweetsActionType.DELETE_SCHEDULED_TWEETS, workSaga: deleteScheduledTweetsTweetRequest},
         {actionType: TweetsActionType.LIKE_TWEET, workSaga: likeTweetRequest},
         {actionType: TweetsActionType.RETWEET, workSaga: retweetRequest},
         {actionType: TweetsActionType.FETCH_TWEETS_BY_TAG, workSaga: fetchTweetsByTagRequest},

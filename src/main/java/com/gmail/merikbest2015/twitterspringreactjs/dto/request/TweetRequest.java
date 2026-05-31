@@ -19,5 +19,4 @@ public class TweetRequest {
     private List<Image> images;
     private Long pollDateTime;
     private List<String> choices;
-    private LocalDateTime scheduledDate;
 }
