@@ -73,7 +73,6 @@ import {
     SEARCH,
     SETTINGS,
     SUGGESTED,
-    TOPICS,
     USER,
     USER_FOLLOWERS_YOU_FOLLOW
 } from "./util/pathConstants";
@@ -83,9 +82,6 @@ import ActionSnackbar from "./components/ActionSnackbar/ActionSnackbar";
 import FullTweet from "./pages/FullTweet/FullTweet";
 import Connect from "./pages/Connect/Connect";
 import Trends from './pages/Trends/Trends';
-import Topics from "./pages/Topics/Topics";
-import UserTopics from "./pages/UserTopics/UserTopics";
-
 const App: FC = (): ReactElement => {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -233,14 +229,12 @@ const App: FC = (): ReactElement => {
                                    changeColorScheme={changeColorScheme}/>
                                }/>
                         <Route path={BOOKMARKS} component={Bookmarks}/>
-                        <Route path={`${TOPICS}/:topics`} component={Topics}/>
                         <Route path={`${QUOTES}/:tweetId`} component={QuoteTweets}/>
                         <Route path={SUGGESTED} component={SuggestedLists}/>
                         <Route path={LISTS} component={Lists} exact/>
                         <Route path={`${LISTS_MEMBERSHIPS}/:id`} component={ListsMemberships} exact/>
                         <Route path={`${LISTS}/:listId`} component={FullList} exact/>
                         <Route path={`${PROFILE}/:userId`} component={UserPage} exact/>
-                        <Route path={`${PROFILE}/:userId${TOPICS}`} component={UserTopics} exact/>
                         <Route path={`${USER_FOLLOWERS_YOU_FOLLOW}/:id`} component={FollowersYouKnow} exact/>
                         <Route path={`${USER}/:id/:follow`} component={FollowingFollowers} exact/>
                     </Switch>

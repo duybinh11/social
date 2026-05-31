@@ -76,9 +76,6 @@ describe("SideMenu", () => {
         wrapper.find("#openPopup").simulate("click");
 
         expect(wrapper.find(Popover).at(0).prop("open")).toBe(true);
-        expect(wrapper.find(Popover).at(0).text().includes("Bản tin")).toBe(true);
-        expect(wrapper.find(Popover).at(0).text().includes("Quảng cáo Twitter")).toBe(true);
-        expect(wrapper.find(Popover).at(0).text().includes("Phân tích")).toBe(true);
         expect(wrapper.find(Popover).at(0).text().includes("Cài đặt và quyền riêng tư")).toBe(true);
         expect(wrapper.find(Popover).at(0).text().includes("Trung tâm trợ giúp")).toBe(true);
         expect(wrapper.find(Popover).at(0).text().includes("Hiển thị")).toBe(true);

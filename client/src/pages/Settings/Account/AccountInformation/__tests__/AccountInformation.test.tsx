@@ -11,8 +11,7 @@ import {
     SETTINGS_INFO_EMAIL,
     SETTINGS_INFO_GENDER,
     SETTINGS_INFO_PHONE,
-    SETTINGS_INFO_USERNAME,
-    SETTINGS_PRIVACY_AND_SAFETY_AUDIENCE
+    SETTINGS_INFO_USERNAME
 } from "../../../../../util/pathConstants";
 import {AuthUserResponse} from "../../../../../store/types/user";
 import {UserActionsType} from "../../../../../store/ducks/user/contracts/actionTypes";
@@ -36,8 +35,6 @@ describe("AccountInformation", () => {
         expect(wrapper.text().includes(`${getPhoneCode(mockUser.countryCode)}${mockUser.phone}`)).toBe(true);
         expect(wrapper.text().includes("Email")).toBe(true);
         expect(wrapper.text().includes(mockUser.email)).toBe(true);
-        expect(wrapper.text().includes("Tweet được bảo vệ")).toBe(true);
-        expect(wrapper.text().includes("Không")).toBe(true);
         expect(wrapper.text().includes("Tạo tài khoản")).toBe(true);
         expect(wrapper.text().includes(formatScheduleDate(new Date(mockUser.registrationDate)))).toBe(true);
         expect(wrapper.text().includes("Quốc gia")).toBe(true);
@@ -61,23 +58,19 @@ describe("AccountInformation", () => {
         testClickOnLink(<AccountInformation/>, SETTINGS_INFO_EMAIL, 2);
     });
 
-    it("should link to Protected Tweets", () => {
-        testClickOnLink(<AccountInformation/>, SETTINGS_PRIVACY_AND_SAFETY_AUDIENCE, 3);
-    });
-
     it("should link to Country", () => {
-        testClickOnLink(<AccountInformation/>, SETTINGS_INFO_COUNTRY, 4);
+        testClickOnLink(<AccountInformation/>, SETTINGS_INFO_COUNTRY, 3);
     });
 
     it("should link to Languages", () => {
-        testClickOnLink(<AccountInformation/>, SETTINGS_ACCESSIBILITY_DISPLAY_AND_LANGUAGES_LANGUAGES, 5);
+        testClickOnLink(<AccountInformation/>, SETTINGS_ACCESSIBILITY_DISPLAY_AND_LANGUAGES_LANGUAGES, 4);
     });
 
     it("should link to Gender", () => {
-        testClickOnLink(<AccountInformation/>, SETTINGS_INFO_GENDER, 6);
+        testClickOnLink(<AccountInformation/>, SETTINGS_INFO_GENDER, 5);
     });
 
     it("should link to Age", () => {
-        testClickOnLink(<AccountInformation/>, SETTINGS_INFO_AGE, 7);
+        testClickOnLink(<AccountInformation/>, SETTINGS_INFO_AGE, 6);
     });
 });

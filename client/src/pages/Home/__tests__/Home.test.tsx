@@ -85,8 +85,8 @@ describe("Trang chủ", () => {
 
         expect(wrapper.find(Welcome).exists()).toBe(true);
         expect(wrapper.find(Welcome).text().includes("Chào mừng đến Twitter!")).toBe(true);
-        expect(wrapper.find(Welcome).text().includes("This is the best place to see what’s happening in your world.")).toBe(true);
-        expect(wrapper.find(Welcome).text().includes("Find some people and topics to follow now.")).toBe(true);
+        expect(wrapper.find(Welcome).text().includes("Đây là nơi tốt nhất để xem chuyện gì đang diễn ra quanh bạn.")).toBe(true);
+        expect(wrapper.find(Welcome).text().includes("Hãy tìm vài người và chủ đề để theo dõi ngay.")).toBe(true);
         expect(wrapper.find(Welcome).find(Button).text().includes("Bắt đầu thôi")).toBe(true);
     });
 });

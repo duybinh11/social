@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 
 import {ArrowRightIcon} from "../../../../icons";
 import {
-    selectUserDataIsPrivateProfile,
     selectUserProfileCountryCode,
     selectUserProfileEmail,
     selectUserProfileGender,
@@ -26,8 +25,7 @@ import {
     SETTINGS_INFO_EMAIL,
     SETTINGS_INFO_GENDER,
     SETTINGS_INFO_PHONE,
-    SETTINGS_INFO_USERNAME,
-    SETTINGS_PRIVACY_AND_SAFETY_AUDIENCE
+    SETTINGS_INFO_USERNAME
 } from "../../../../util/pathConstants";
 
 const AccountInformation: FC = (): ReactElement => {
@@ -37,10 +35,12 @@ const AccountInformation: FC = (): ReactElement => {
     const countryCode = useSelector(selectUserProfileCountryCode);
     const phone = useSelector(selectUserProfilePhone);
     const email = useSelector(selectUserProfileEmail);
-    const isPrivateProfile = useSelector(selectUserDataIsPrivateProfile);
     const registrationDate = useSelector(selectUserProfileRegistrationDate);
     const language = useSelector(selectUserProfileLanguage);
     const gender = useSelector(selectUserProfileGender);
+    const formattedRegistrationDate = registrationDate
+        ? formatScheduleDate(new Date(registrationDate))
+        : "";
 
     useEffect(() => {
         dispatch(fetchUserData());
@@ -96,37 +96,10 @@ const AccountInformation: FC = (): ReactElement => {
                 </Link>
                 <div className={globalClasses.itemInfoWrapper}>
                     <Typography variant={"body1"} component={"div"}>
-                        Đã xác minh
-                    </Typography>
-                    <Typography variant={"subtitle2"} component={"div"}>
-                        {"No. "}
-                        <MuiLink variant="subtitle2">
-                            Request Verification
-                        </MuiLink>
-                    </Typography>
-                </div>
-                <Divider/>
-                <Link to={SETTINGS_PRIVACY_AND_SAFETY_AUDIENCE}>
-                    <ListItem>
-                        <div>
-                            <Typography variant={"body1"} component={"div"}>
-                                Tweet được bảo vệ
-                            </Typography>
-                            <Typography variant={"subtitle2"} component={"div"}>
-                                {isPrivateProfile ? "Có" : "Không"}
-                            </Typography>
-                        </div>
-                        <div className={globalClasses.arrowIcon}>
-                            {ArrowRightIcon}
-                        </div>
-                    </ListItem>
-                </Link>
-                <div className={globalClasses.itemInfoWrapper}>
-                    <Typography variant={"body1"} component={"div"}>
                         Tạo tài khoản
                     </Typography>
                     <Typography variant={"subtitle2"} component={"div"}>
-                        {formatScheduleDate(new Date(registrationDate!))}
+                        {formattedRegistrationDate || "Chưa có thông tin"}
                     </Typography>
                 </div>
                 <Divider/>

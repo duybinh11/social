@@ -1,4 +1,5 @@
 import format from "date-fns/format";
+import isValid from "date-fns/isValid";
 import isYesterday from "date-fns/isYesterday";
 import isMonday from "date-fns/isMonday";
 import isTuesday from "date-fns/isTuesday";
@@ -19,6 +20,9 @@ export const formatDate = (date: Date): string => {
 };
 
 export const formatScheduleDate = (date: Date): string => {
+    if (!isValid(date)) {
+        return "";
+    }
     return format(date, "EEE, d MMM yyyy 'lúc' HH:mm", {locale: viLang});
 };
 

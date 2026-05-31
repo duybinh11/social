@@ -101,8 +101,7 @@ const PrivacyAndSafety: FC = (): ReactElement => {
                                     Nội dung bạn thấy
                                 </Typography>
                                 <Typography variant={"subtitle2"} component={"div"}>
-                                    Decide what you see on Twitter based on your preferences like Topics and
-                                    interests
+                                    Quyết định nội dung bạn thấy trên Twitter dựa trên sở thích và mối quan tâm của bạn
                                 </Typography>
                             </div>
                             <div className={globalClasses.arrowIcon}>

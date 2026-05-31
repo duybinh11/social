@@ -6,8 +6,21 @@ interface SettingsStylesProps {
 }
 
 export const useSettingsStyles = makeStyles<Theme, SettingsStylesProps>((theme) => ({
-    grid: {
-        padding: "12px 0px 0px 0px !important",
+    settingsLayout: {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "flex-start",
+        width: "100%",
+        paddingTop: 12,
+    },
+    settingsNavColumn: {
+        width: 416,
+        flexShrink: 0,
+    },
+    settingsDetailColumn: {
+        width: 599,
+        flexShrink: 0,
+        minWidth: 0,
     },
     container: {
         padding: 0,
@@ -17,13 +30,22 @@ export const useSettingsStyles = makeStyles<Theme, SettingsStylesProps>((theme) 
         borderBottom: 0,
     },
     leftSideHeader: {
-        width: 416,
+        width: "100%",
+        position: "relative",
+        top: "auto",
+        zIndex: 1,
     },
     rightSideHeader: {
-        width: 599,
+        width: "100%",
+        position: "relative",
+        top: "auto",
+        zIndex: 1,
         '& .MuiTypography-h5': {
             marginLeft: 15,
         },
+    },
+    detailContent: {
+        paddingTop: 0,
     },
     listWrapper: {
         "& a": {

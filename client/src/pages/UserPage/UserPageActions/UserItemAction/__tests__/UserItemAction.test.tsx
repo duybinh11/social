@@ -1,12 +1,10 @@
-import React from "react";
-
+import {ListsIcon} from "../../../../../icons";
 import {mountWithStore} from "../../../../../util/testHelper";
 import UserItemAction from "../UserItemAction";
-import {TopicIcon} from "../../../../../icons";
 
 describe("UserItemAction", () => {
     it("should render correctly", () => {
-        const wrapper = mountWithStore(<UserItemAction title={"View Topics"} icon={TopicIcon}/>);
-        expect(wrapper.text().includes("View Topics")).toBe(true);
+        const wrapper = mountWithStore(<UserItemAction title={"View Lists"} icon={ListsIcon}/>);
+        expect(wrapper.text().includes("View Lists")).toBe(true);
     });
 });

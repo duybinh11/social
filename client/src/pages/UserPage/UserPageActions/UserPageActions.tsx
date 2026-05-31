@@ -4,9 +4,9 @@ import {ClickAwayListener, List} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
 import {useUserPageActionsStyles} from "./UserPageActionsStyles";
-import {EditIcon, ListsIcon, MomentsIcon, ReportIcon, ShareIcon, TopicIcon} from "../../../icons";
+import {EditIcon, ListsIcon, MomentsIcon, ReportIcon, ShareIcon} from "../../../icons";
 import {useGlobalStyles} from "../../../util/globalClasses";
-import {LISTS_MEMBERSHIPS, PROFILE, TOPICS} from "../../../util/pathConstants";
+import {LISTS_MEMBERSHIPS, PROFILE} from "../../../util/pathConstants";
 import ActionIconButton from "../../../components/ActionIconButton/ActionIconButton";
 import {
     selectUserProfileId,
@@ -48,9 +48,6 @@ const UserPageActions = memo((): ReactElement => {
                         <List>
                             {!isPrivateProfile && (
                                 <>
-                                    <Link to={`${PROFILE}/${userProfileId}${TOPICS}`} className={classes.routeLink}>
-                                        <UserItemAction title={"View Topics"} icon={TopicIcon}/>
-                                    </Link>
                                     <AddUserToListsButton/>
                                     <Link to={`${LISTS_MEMBERSHIPS}/${userProfileId}`} className={classes.routeLink}>
                                         <UserItemAction title={"View Lists"} icon={ListsIcon}/>

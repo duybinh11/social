@@ -6,7 +6,6 @@ import CreateIcon from '@material-ui/icons/Create';
 import classnames from "classnames";
 
 import {
-    AnalyticsIcon,
     BookmarksIcon,
     BookmarksIconFilled,
     DisplayIcon,
@@ -22,15 +21,12 @@ import {
     MessagesIcon,
     MessagesIconFilled,
     MoreIcon,
-    NewslettersIcon,
     NotificationsIcon,
     NotificationsIconFilled,
     ProfileIcon,
     ProfileIconFilled,
     SettingsIcon,
-    TopicIcon,
-    TweetIcon,
-    TwitterAdsIcon
+    TweetIcon
 } from "../../icons";
 import UserSideProfile from "../UserSideProfile/UserSideProfile";
 import {
@@ -56,10 +52,9 @@ import {
     NOTIFICATIONS,
     PROFILE,
     SEARCH,
-    SETTINGS,
-    TOPICS_FOLLOWED
+    SETTINGS
 } from "../../util/pathConstants";
-import {HELP_TWITTER, TWITTER_ABOUT, TWITTER_LOGIN} from "../../util/url";
+import {HELP_TWITTER} from "../../util/url";
 import {LoadingStatus} from "../../store/types/common";
 
 const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}): ReactElement => {
@@ -319,36 +314,6 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                         </Typography>
                                     </ListItem>
                                 )}
-                                <Link to={TOPICS_FOLLOWED}>
-                                    <ListItem id={"closePopup"} onClick={handleClosePopup}>
-                                        {TopicIcon}
-                                        <Typography variant={"body1"} component={"span"}>
-                                            Chủ đề
-                                        </Typography>
-                                    </ListItem>
-                                </Link>
-                                <ListItem>
-                                    {NewslettersIcon}
-                                    <Typography variant={"body1"} component={"span"}>
-                                        Bản tin
-                                    </Typography>
-                                </ListItem>
-                                <a href={TWITTER_LOGIN} target="_blank">
-                                    <ListItem>
-                                        {TwitterAdsIcon}
-                                        <Typography variant={"body1"} component={"span"}>
-                                            Quảng cáo Twitter
-                                        </Typography>
-                                    </ListItem>
-                                </a>
-                                <a href={TWITTER_ABOUT} target="_blank">
-                                    <ListItem>
-                                        {AnalyticsIcon}
-                                        <Typography variant={"body1"} component={"span"}>
-                                            Phân tích
-                                        </Typography>
-                                    </ListItem>
-                                </a>
                                 <Divider/>
                                 <Link to={SETTINGS}>
                                     <ListItem id={"closePopup"} onClick={handleClosePopup}>

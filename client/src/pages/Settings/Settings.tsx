@@ -1,6 +1,6 @@
 import React, {FC, ReactElement, useEffect} from 'react';
 import {NavLink, Route, useLocation} from 'react-router-dom';
-import {Grid, List, ListItem, Paper, Typography} from "@material-ui/core";
+import {List, ListItem, Paper, Typography} from "@material-ui/core";
 import classnames from "classnames";
 
 import {useSettingsStyles} from "./SettingsStyles";
@@ -150,15 +150,15 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
         } else {
             setSelectedIndex(1);
         }
-    }, []);
+    }, [location.pathname]);
 
     const handleListItemClick = (index: number): void => {
         setSelectedIndex(index);
     };
 
     return (
-        <>
-            <Grid className={classes.grid} md={4} item>
+        <div className={classes.settingsLayout}>
+            <div className={classes.settingsNavColumn}>
                 <Paper className={classes.container} variant="outlined">
                     <Paper className={classnames(globalClasses.pageHeader, classes.leftSideHeader)} variant="outlined">
                         <Typography variant="h5" className={globalClasses.pageHeaderTitleWrapper}>
@@ -236,8 +236,8 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                         </List>
                     </div>
                 </Paper>
-            </Grid>
-            <Grid className={classes.grid} md={5} item>
+            </div>
+            <div className={classes.settingsDetailColumn}>
                 <Paper className={classnames(globalClasses.pageHeader, classes.rightSideHeader)} variant="outlined">
                     <Route exact path={SETTINGS}>
                         <Typography variant="h5">
@@ -570,7 +570,7 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                     </Route>
                 </Paper>
                 <Paper className={classnames(globalClasses.pageContainer, classes.pageContainer)} variant="outlined">
-                    <div className={globalClasses.contentWrapper}>
+                    <div className={classnames(globalClasses.contentWrapper, classes.detailContent)}>
                         <Route exact path={SETTINGS} component={Account}/>
                         <Route exact path={SETTINGS_INFO} component={AccountInformation}/>
                         <Route exact path={SETTINGS_INFO_USERNAME} component={ChangeUsername}/>
@@ -633,8 +633,8 @@ const Settings: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                         <Route exact path={SETTINGS_PERSONALIZATION} component={PersonalizationAndData}/>
                     </div>
                 </Paper>
-            </Grid>
-        </>
+            </div>
+        </div>
     );
 };
 
