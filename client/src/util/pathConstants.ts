@@ -19,9 +19,7 @@ export const NOTIFICATION = "/notification";
 export const MESSAGES = "/messages";
 export const MESSAGES_SETTINGS = MESSAGES + "/settings";
 
-export const SUGGESTED = "/suggested";
 export const LISTS = "/lists";
-export const LISTS_MEMBERSHIPS = LISTS + "/memberships";
 export const PROFILE = "/profile";
 export const PROFILE_PHOTO = PROFILE + "/photo";
 export const PROFILE_HEADER_PHOTO = PROFILE + "/header_photo";

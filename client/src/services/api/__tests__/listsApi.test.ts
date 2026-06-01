@@ -9,18 +9,14 @@ import {
     API_LISTS_FOLLOW,
     API_LISTS_FOLLOWERS,
     API_LISTS_MEMBERS,
-    API_LISTS_PIN,
-    API_LISTS_PINNED,
     API_LISTS_SEARCH,
     API_LISTS_TWEETS,
-    API_LISTS_USER,
-    API_LISTS_USER_CONSIST
+    API_LISTS_USER
 } from "../../../util/endpoints";
 import {
     mockFullList,
     mockLists,
     mockListsOwnerMember,
-    mockPinnedLists,
     mockSimpleList,
     mockTweets,
     mockUserLists
@@ -44,24 +40,6 @@ describe("ListsApi", () => {
     describe("should fetch ListsApi.getUserTweetLists", () => {
         it("[200] should get user tweet lists Success", () => {
             testApiCall(mockAdapter, "onGet", API_LISTS_USER, 200, mockUserLists, ListsApi.getUserTweetLists);
-        });
-    });
-
-    describe("should fetch ListsApi.getUserTweetListsById", () => {
-        it("[200] should get user tweet lists by id Success", () => {
-            testApiCall(mockAdapter, "onGet", `${API_LISTS_USER}/1`, 200, mockLists, ListsApi.getUserTweetListsById, 1);
-        });
-    });
-
-    describe("should fetch ListsApi.getTweetListsWhichUserIn", () => {
-        it("[200] should get tweet lists which user in Success", () => {
-            testApiCall(mockAdapter, "onGet", API_LISTS_USER_CONSIST, 200, mockLists, ListsApi.getTweetListsWhichUserIn);
-        });
-    });
-
-    describe("should fetch ListsApi.getUserPinnedLists", () => {
-        it("[200] should get user pinned lists Success", () => {
-            testApiCall(mockAdapter, "onGet", API_LISTS_PINNED, 200, mockPinnedLists, ListsApi.getUserPinnedLists);
         });
     });
 
@@ -124,16 +102,6 @@ describe("ListsApi", () => {
 
         it("[404] should follow list not found", () => {
             testApiCall(mockAdapter, "onGet", `${API_LISTS_FOLLOW}/1`, 404, mockListNotFound, ListsApi.followList, 1);
-        });
-    });
-
-    describe("should fetch ListsApi.pinList", () => {
-        it("[200] should pin List Success", () => {
-            testApiCall(mockAdapter, "onGet", `${API_LISTS_PIN}/1`, 200, mockPinnedLists[0], ListsApi.pinList, 1);
-        });
-
-        it("[404] should pin List not found", () => {
-            testApiCall(mockAdapter, "onGet", `${API_LISTS_PIN}/1`, 404, mockListNotFound, ListsApi.pinList, 1);
         });
     });
 

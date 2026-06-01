@@ -18,7 +18,6 @@ import {
     ListResponse,
     ListsOwnerMemberResponse,
     ListUserResponse,
-    PinnedListResponse,
     SimpleListResponse
 } from "../../store/types/lists";
 import {ChatMessageResponse, ChatResponse} from "../../store/types/chat";
@@ -675,7 +674,6 @@ export const mockFullList = {
     "id": 3,
     "name": "Hello World!",
     "description": "Hello from my list",
-    "pinnedDate": "2022-03-29T20:03:47",
     "altWallpaper": "https://pbs.twimg.com/media/EXZ27UwVcAIcDfd?format=png&name=small",
     "wallpaper": null,
     "listOwner": {
@@ -698,7 +696,6 @@ export const mockUserFullList = {
     "id": 1,
     "name": "Random List",
     "description": "Random List Description",
-    "pinnedDate": "2021-10-16T16:36:08",
     "altWallpaper": "https://pbs.twimg.com/media/EXZ1_hkUYAA56JA?format=png&name=small",
     "wallpaper": null,
     "listOwner": {
@@ -754,23 +751,12 @@ export const mockListsOwnerMember = [
     }
 ] as unknown as ListsOwnerMemberResponse[];
 
-export const mockPinnedLists = [
-    {
-        "id": 3,
-        "name": "Hello World!",
-        "pinnedDate": "2022-03-29T20:03:47",
-        "altWallpaper": "https://pbs.twimg.com/media/EXZ27UwVcAIcDfd?format=png&name=small",
-        "wallpaper": null,
-        "isPrivate": false
-    }
-] as unknown as PinnedListResponse[];
 
 export const mockLists = [
     {
         "id": 2,
         "name": "Internal",
         "description": "Some description",
-        "pinnedDate": null,
         "altWallpaper": "https://pbs.twimg.com/media/EXZ2w_qUcAMwN3x?format=png&name=small",
         "wallpaper": null,
         "listOwner": {
@@ -789,7 +775,6 @@ export const mockLists = [
         "id": 1,
         "name": "Random List",
         "description": "Random List Description",
-        "pinnedDate": "2021-10-16T16:36:08",
         "altWallpaper": "https://pbs.twimg.com/media/EXZ1_hkUYAA56JA?format=png&name=small",
         "wallpaper": null,
         "listOwner": {
@@ -808,7 +793,6 @@ export const mockLists = [
         "id": 3,
         "name": "Hello World!",
         "description": "Hello from my list",
-        "pinnedDate": "2022-03-29T20:03:47",
         "altWallpaper": "https://pbs.twimg.com/media/EXZ27UwVcAIcDfd?format=png&name=small",
         "wallpaper": null,
         "listOwner": {
@@ -830,7 +814,6 @@ export const mockUserLists = [
         "id": 3,
         "name": "Hello World!",
         "description": "Hello from my list",
-        "pinnedDate": "2022-03-29T20:03:47",
         "altWallpaper": "https://pbs.twimg.com/media/EXZ27UwVcAIcDfd?format=png&name=small",
         "wallpaper": null,
         "listOwner": {

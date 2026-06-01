@@ -38,21 +38,6 @@ public class ListsMapper {
         return basicMapper.convertToResponseList(lists, ListUserResponse.class);
     }
 
-    public List<ListResponse> getUserTweetListsById(Long userId) {
-        List<ListProjection> lists = listsService.getUserTweetListsById(userId);
-        return basicMapper.convertToResponseList(lists, ListResponse.class);
-    }
-
-    public List<ListResponse> getTweetListsWhichUserIn() {
-        List<ListProjection> lists = listsService.getTweetListsWhichUserIn();
-        return basicMapper.convertToResponseList(lists, ListResponse.class);
-    }
-
-    public List<PinnedListResponse> getUserPinnedLists() {
-        List<PinnedListProjection> userPinnedLists = listsService.getUserPinnedLists();
-        return basicMapper.convertToResponseList(userPinnedLists, PinnedListResponse.class);
-    }
-
     public BaseListResponse getListById(Long listId) {
         BaseListProjection list = listsService.getListById(listId);
         return basicMapper.convertToResponse(list, BaseListResponse.class);
@@ -75,11 +60,6 @@ public class ListsMapper {
     public ListUserResponse followList(Long listId) {
         ListUserProjection list = listsService.followList(listId);
         return basicMapper.convertToResponse(list, ListUserResponse.class);
-    }
-
-    public PinnedListResponse pinList(Long listId) {
-        PinnedListProjection list = listsService.pinList(listId);
-        return basicMapper.convertToResponse(list, PinnedListResponse.class);
     }
 
     public List<SimpleListResponse> getListsToAddUser(Long userId) {

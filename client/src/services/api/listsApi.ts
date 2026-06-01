@@ -7,7 +7,6 @@ import {
     ListResponse,
     ListsOwnerMemberResponse,
     ListUserResponse,
-    PinnedListResponse,
     SimpleListResponse
 } from "../../store/types/lists";
 import {TweetResponse} from "../../store/types/tweet";
@@ -19,12 +18,9 @@ import {
     API_LISTS_FOLLOW,
     API_LISTS_FOLLOWERS,
     API_LISTS_MEMBERS,
-    API_LISTS_PIN,
-    API_LISTS_PINNED,
     API_LISTS_SEARCH,
     API_LISTS_TWEETS,
-    API_LISTS_USER,
-    API_LISTS_USER_CONSIST
+    API_LISTS_USER
 } from "../../util/endpoints";
 
 export const ListsApi = {
@@ -33,15 +29,6 @@ export const ListsApi = {
     },
     async getUserTweetLists(): Promise<AxiosResponse<ListUserResponse[]>> {
         return await axios.get<ListUserResponse[]>(API_LISTS_USER);
-    },
-    async getUserTweetListsById(userId: number): Promise<AxiosResponse<ListResponse[]>> {
-        return await axios.get<ListResponse[]>(`${API_LISTS_USER}/${userId}`);
-    },
-    async getTweetListsWhichUserIn(): Promise<AxiosResponse<ListResponse[]>> {
-        return await axios.get<ListResponse[]>(API_LISTS_USER_CONSIST);
-    },
-    async getUserPinnedLists(): Promise<AxiosResponse<PinnedListResponse[]>> {
-        return await axios.get<PinnedListResponse[]>(API_LISTS_PINNED);
     },
     async getListById(listId: number): Promise<AxiosResponse<BaseListResponse>> {
         return await axios.get<BaseListResponse>(`${API_LISTS}/${listId}`);
@@ -57,9 +44,6 @@ export const ListsApi = {
     },
     async followList(listId: number): Promise<AxiosResponse<ListUserResponse>> {
         return await axios.get<ListUserResponse>(`${API_LISTS_FOLLOW}/${listId}`);
-    },
-    async pinList(listId: number): Promise<AxiosResponse<PinnedListResponse>> {
-        return await axios.get<PinnedListResponse>(`${API_LISTS_PIN}/${listId}`);
     },
     async getListsToAddUser(userId: number): Promise<AxiosResponse<SimpleListResponse[]>> {
         return await axios.get<SimpleListResponse[]>(`${API_LISTS_ADD_USER}/${userId}`);

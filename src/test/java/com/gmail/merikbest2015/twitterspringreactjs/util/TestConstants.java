@@ -69,6 +69,4 @@ public class TestConstants {
     public static final String LIST_ALT_WALLPAPER = "https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small";
     public static final String LIST_NAME = "test list name";
     public static final String LIST_DESCRIPTION = "test list description";
-    public static final String LIST_PINNED_DATE = "2021-10-03T20:42:53";
-
 }

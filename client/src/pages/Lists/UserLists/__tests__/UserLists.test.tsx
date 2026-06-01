@@ -2,7 +2,7 @@ import React from "react";
 
 import {createMockRootState, mountWithStore} from "../../../../util/testHelper";
 import {LoadingStatus} from "../../../../store/types/common";
-import {mockLists, mockPinnedLists, mockSimpleList, mockUserLists} from "../../../../util/mockData/mockData";
+import {mockLists, mockSimpleList, mockUserLists} from "../../../../util/mockData/mockData";
 import Spinner from "../../../../components/Spinner/Spinner";
 import ListsItem from "../../ListsItem/ListsItem";
 import UserLists from "../UserLists";
@@ -15,7 +15,6 @@ describe("UserLists", () => {
             ...mockStore.lists,
             lists: mockLists,
             userLists: mockUserLists,
-            pinnedLists: mockPinnedLists,
             simpleLists: mockSimpleList
         }
     };

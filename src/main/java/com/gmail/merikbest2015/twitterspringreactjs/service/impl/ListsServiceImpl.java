@@ -22,7 +22,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -48,12 +47,6 @@ public class ListsServiceImpl implements ListsService {
     }
 
     @Override
-    public List<PinnedListProjection> getUserPinnedLists() {
-        Long userId = authenticationService.getAuthenticatedUserId();
-        return listsRepository.getUserPinnedLists(userId);
-    }
-
-    @Override
     public BaseListProjection getListById(Long listId) {
         Long userId = authenticationService.getAuthenticatedUserId();
         return listsRepository.getListById(listId, userId)
@@ -72,17 +65,6 @@ public class ListsServiceImpl implements ListsService {
         List<Lists> userLists = user.getLists();
         userLists.add(userTweetList);
         return listsRepository.getUserTweetListById(userTweetList.getId());
-    }
-
-    @Override
-    public List<ListProjection> getUserTweetListsById(Long userId) {
-        return listsRepository.findByListOwnerIdAndIsPrivateFalse(userId);
-    }
-
-    @Override
-    public List<ListProjection> getTweetListsWhichUserIn() {
-        Long userId = authenticationService.getAuthenticatedUserId();
-        return listsRepository.findByMembers_Id(userId);
     }
 
     @Override
@@ -142,36 +124,12 @@ public class ListsServiceImpl implements ListsService {
 
         if (listFollower.isPresent()) {
             listFollowers.remove(listFollower.get());
-            if (list.getPinnedDate() != null) {
-                list.setPinnedDate(null);
-            }
             user.getLists().remove(list);
         } else {
             listFollowers.add(user);
             user.getLists().add(list);
         }
         return listsRepository.getUserTweetListById(list.getId());
-    }
-
-    @Override
-    @Transactional
-    public PinnedListProjection pinList(Long listId) {
-        Long userId = authenticationService.getAuthenticatedUserId();
-        List<Lists> userLists = listsRepository.findByListOwner_Id(userId);
-        Optional<Lists> list = userLists.stream()
-                .filter(userList -> userList.getId().equals(listId))
-                .findFirst();
-
-        if (list.isPresent()) {
-            if (list.get().getPinnedDate() == null) {
-                list.get().setPinnedDate(LocalDateTime.now().withNano(0));
-            } else {
-                list.get().setPinnedDate(null);
-            }
-            return listsRepository.getUserPinnedListById(list.get().getId());
-        } else {
-            throw new ApiRequestException("Không tìm thấy danh sách", HttpStatus.NOT_FOUND);
-        }
     }
 
     @Override

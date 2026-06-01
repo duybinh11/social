@@ -3,19 +3,16 @@ import {
     selectIsListsLoading,
     selectIsLoaded,
     selectIsLoading,
-    selectIsPinnedListsLoaded,
-    selectIsPinnedListsLoading,
     selectIsSimpleListsLoaded,
     selectIsSimpleListsLoading,
     selectIsUserListsLoaded,
     selectIsUserListsLoading,
     selectListsItems,
-    selectPinnedListsItems,
     selectSimpleListsItems,
     selectUserListsItems
 } from "../selectors";
 import {createMockRootState} from "../../../../util/testHelper";
-import {mockLists, mockPinnedLists, mockSimpleList, mockUserLists} from "../../../../util/mockData/mockData";
+import {mockLists, mockSimpleList, mockUserLists} from "../../../../util/mockData/mockData";
 import {LoadingStatus} from "../../../types/common";
 
 describe("lists selectors:", () => {
@@ -36,15 +33,6 @@ describe("lists selectors:", () => {
                 ...mockState,
                 lists: {...mockState.lists, userLists: mockUserLists}
             })).toBe(mockUserLists);
-        });
-    });
-
-    describe("selectPinnedListsItems", () => {
-        it("should return PinnedListResponse array", () => {
-            expect(selectPinnedListsItems({
-                ...mockState,
-                lists: {...mockState.lists, pinnedLists: mockPinnedLists}
-            })).toBe(mockPinnedLists);
         });
     });
 
@@ -90,18 +78,6 @@ describe("lists selectors:", () => {
     describe("selectIsUserListsLoaded", () => {
         it("should return correct result", () => {
             expect(selectIsUserListsLoaded(createMockRootState(LoadingStatus.LOADED))).toBe(true);
-        });
-    });
-
-    describe("selectIsPinnedListsLoading", () => {
-        it("should return correct result", () => {
-            expect(selectIsPinnedListsLoading(createMockRootState(LoadingStatus.LOADING))).toBe(true);
-        });
-    });
-
-    describe("selectIsPinnedListsLoaded", () => {
-        it("should return correct result", () => {
-            expect(selectIsPinnedListsLoaded(createMockRootState(LoadingStatus.LOADED))).toBe(true);
         });
     });
 

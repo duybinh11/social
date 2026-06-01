@@ -1,16 +1,13 @@
 import React, {FC, memo, ReactElement} from "react";
 import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {Paper} from "@material-ui/core";
 
 import {useListsItemStyles} from "./ListsItemStyles";
 import {selectUserDataId} from "../../../store/ducks/user/selectors";
-import {PinIcon, PinIconFilled} from "../../../icons";
-import {pinList, unpinList} from "../../../store/ducks/lists/actionCreators";
 import {useGlobalStyles} from "../../../util/globalClasses";
 import {ListResponse, ListUserResponse} from "../../../store/types/lists";
 import {LISTS} from "../../../util/pathConstants";
-import ActionIconButton from "../../../components/ActionIconButton/ActionIconButton";
 import FollowListButton from "../../../components/FollowListButton/FollowListButton";
 import ListInfoDescription from "./ListInfoDescription/ListInfoDescription";
 import ListsItemAvatar from "./ListsItemAvatar/ListsItemAvatar";
@@ -24,19 +21,7 @@ interface ListsItemProps {
 const ListsItem: FC<ListsItemProps> = memo(({list, listIndex, isMyList}): ReactElement => {
     const globalClasses = useGlobalStyles();
     const classes = useListsItemStyles();
-    const dispatch = useDispatch();
     const myProfileId = useSelector(selectUserDataId);
-
-    const onClickPinList = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-        event.preventDefault();
-        event.stopPropagation();
-        // TODO fix "Không tìm thấy danh sách" error
-        if (list?.pinnedDate) {
-            dispatch(unpinList(list!.id));
-        } else {
-            dispatch(pinList(list!.id));
-        }
-    };
 
     return (
         <Link to={`${LISTS}/${list?.id}`} className={globalClasses.link}>
@@ -52,13 +37,6 @@ const ListsItem: FC<ListsItemProps> = memo(({list, listIndex, isMyList}): ReactE
                         listOwnerUsername={list?.listOwner.username}
                         listOwnerAvatar={list?.listOwner.avatar}
                     />
-                    {isMyList && (
-                        <ActionIconButton
-                            onClick={onClickPinList}
-                            actionText={list?.pinnedDate ? "Unpin" : "Pin"}
-                            icon={list?.pinnedDate ? PinIconFilled : PinIcon}
-                        />
-                    )}
                     {(myProfileId === list?.listOwner.id || isMyList) ? null : (
                         <FollowListButton
                             listId={list!.id}

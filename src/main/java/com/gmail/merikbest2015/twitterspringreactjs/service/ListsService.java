@@ -16,23 +16,15 @@ public interface ListsService {
 
     List<ListUserProjection> getUserTweetLists();
 
-    List<PinnedListProjection> getUserPinnedLists();
-
     BaseListProjection getListById(Long listId);
 
     ListUserProjection createTweetList(Lists lists);
-
-    List<ListProjection> getUserTweetListsById(Long userId);
-
-    List<ListProjection> getTweetListsWhichUserIn();
 
     BaseListProjection editTweetList(Lists lists);
 
     String deleteList(Long listId);
 
     ListUserProjection followList(Long listId);
-
-    PinnedListProjection pinList(Long listId);
 
     List<Map<String, Object>> getListsToAddUser(Long userId);
 

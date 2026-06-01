@@ -46,15 +46,6 @@ public interface ListsRepository extends JpaRepository<Lists, Long> {
             "AND l.id IN :listIds")
     List<Lists> getListsByIds(Long ownerId, List<Long> listIds);
 
-    @Query("SELECT list FROM Lists list " +
-            "WHERE list.listOwner.id = :userId " +
-            "AND list.pinnedDate IS NOT NULL " +
-            "ORDER BY list.pinnedDate DESC")
-    List<PinnedListProjection> getUserPinnedLists(Long userId);
-
-    @Query("SELECT list FROM Lists list WHERE list.id = :listId")
-    PinnedListProjection getUserPinnedListById(Long listId);
-
     @Query("SELECT m.id FROM Lists l " +
             "LEFT JOIN l.members m " +
             "WHERE l.id = :listId AND l.isPrivate = false " +
@@ -99,14 +90,6 @@ public interface ListsRepository extends JpaRepository<Lists, Long> {
             "AND userList.id = :listId " +
             "AND meber.id = :memberId")
     boolean isListIncludeUser(Long listId, Long authUserId, Long memberId);
-
-    @Query("SELECT list FROM Lists list WHERE list.listOwner.id = :ownerId AND list.isPrivate = false")
-    List<ListProjection> findByListOwnerIdAndIsPrivateFalse(Long ownerId);
-
-    @Query("SELECT list FROM Lists list " +
-            "LEFT JOIN list.members m " + // <- QuerySyntaxException: unexpected token: LEFT JOIN list.members member ???
-            "WHERE m.id = :userId")
-    List<ListProjection> findByMembers_Id(Long userId);
 
     @Query("SELECT lists FROM Lists lists " +
             "WHERE lists.id = :listId AND lists.isPrivate = false " +

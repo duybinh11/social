@@ -2,7 +2,7 @@ import React from "react";
 
 import {createMockRootState, mountWithStore} from "../../../../util/testHelper";
 import {LoadingStatus} from "../../../../store/types/common";
-import {mockLists, mockPinnedLists, mockSimpleList, mockUserLists} from "../../../../util/mockData/mockData";
+import {mockLists, mockSimpleList, mockUserLists} from "../../../../util/mockData/mockData";
 import DiscoverLists from "../DiscoverLists";
 import Spinner from "../../../../components/Spinner/Spinner";
 import ListsItem from "../../ListsItem/ListsItem";
@@ -15,7 +15,6 @@ describe("DiscoverLists", () => {
             ...mockStore.lists,
             lists: mockLists,
             userLists: mockUserLists,
-            pinnedLists: mockPinnedLists,
             simpleLists: mockSimpleList
         }
     };
@@ -23,7 +22,6 @@ describe("DiscoverLists", () => {
     it("should render loading Spinner", () => {
         const wrapper = mountWithStore(<DiscoverLists/>, createMockRootState());
         expect(wrapper.find(Spinner).exists()).toBe(true);
-        expect(wrapper.text().includes("Xem thêm")).toBe(true);
     });
 
     it("should render Lists", () => {

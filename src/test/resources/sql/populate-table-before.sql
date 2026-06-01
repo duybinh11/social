@@ -129,13 +129,13 @@ INSERT INTO unread_messages (user_id, chat_message_id) VALUES (2, 7);
 INSERT INTO unread_messages (user_id, chat_message_id) VALUES (1, 5);
 
 -- lists
-INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id, pinned_date) VALUES (4, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', false, 'test list name', 2, null, '2021-10-03 20:42:53.000000');
-INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id, pinned_date) VALUES (5, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', true, 'test list name', 1, null, '2021-10-03 20:42:53.000000');
-INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id, pinned_date) VALUES (6, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', true, 'test list name', 2, null, '2021-10-03 20:42:53.000000');
-INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id, pinned_date) VALUES (7, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', true, 'test list name', 1, null, '2021-10-03 20:42:53.000000');
-INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id, pinned_date) VALUES (8, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', true, 'test list name', 1, null, '2021-10-03 20:42:53.000000');
-INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id, pinned_date) VALUES (9, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', false, 'test list name', 1, null, '2021-10-03 20:42:53.000000');
-INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id, pinned_date) VALUES (10, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', false, 'test list name', 5, null, '2021-10-03 20:42:53.000000');
+INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id) VALUES (4, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', false, 'test list name', 2, null);
+INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id) VALUES (5, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', true, 'test list name', 1, null);
+INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id) VALUES (6, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', true, 'test list name', 2, null);
+INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id) VALUES (7, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', true, 'test list name', 1, null);
+INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id) VALUES (8, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', true, 'test list name', 1, null);
+INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id) VALUES (9, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', false, 'test list name', 1, null);
+INSERT INTO lists (id, alt_wallpaper, description, private, name, user_id, wallpaper_id) VALUES (10, 'https://pbs.twimg.com/media/EXZ2rMvVAAAAfrN?format=png&name=small', 'test list description', false, 'test list name', 5, null);
 
 -- lists_followers
 INSERT INTO lists_followers (lists_id, followers_id) VALUES (4, 1);

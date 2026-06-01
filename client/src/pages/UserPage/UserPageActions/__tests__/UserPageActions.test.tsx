@@ -1,5 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import {ClickAwayListener, IconButton} from "@material-ui/core";
 import {createMemoryHistory} from "history";
 
@@ -9,7 +8,6 @@ import {mockUserProfile} from "../../../../util/mockData/mockData";
 import ListsModal from "../../../../components/ListsModal/ListsModal";
 import CloseButton from "../../../../components/CloseButton/CloseButton";
 import HoverAction from "../../../../components/HoverAction/HoverAction";
-import {LISTS_MEMBERSHIPS} from "../../../../util/pathConstants";
 import {LoadingStatus} from "../../../../store/types/common";
 import {ActionSnackbarTypes} from "../../../../store/ducks/actionSnackbar/contracts/actionTypes";
 
@@ -24,8 +22,6 @@ describe("UserPageActions", () => {
     it("should click and open User Page Actions", () => {
         const {wrapper} = createWrapper();
         expect(wrapper.text().includes(`Add/remove @${mockUserProfile.username} from Lists`)).toBe(true);
-        expect(wrapper.find(Link).at(0).prop("to")).toBe(`${LISTS_MEMBERSHIPS}/${mockUserProfile.id}`);
-        expect(wrapper.text().includes("View Lists")).toBe(true);
         expect(wrapper.text().includes("View Moments")).toBe(true);
         expect(wrapper.text().includes("Share profile via...")).toBe(true);
         expect(wrapper.text().includes("Copy link to profile")).toBe(true);
@@ -74,13 +70,6 @@ describe("UserPageActions", () => {
         wrapper.update();
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
         expect(wrapper.find(HoverAction).prop("actionText")).toBe("Thêm");
-    });
-
-    it("should redirect to Lists page", () => {
-        const {wrapper, pushSpy} = createWrapper();
-        wrapper.find(Link).at(0).simulate("click", {button: 0});
-        expect(pushSpy).toHaveBeenCalled();
-        expect(pushSpy).toHaveBeenCalledWith(`${LISTS_MEMBERSHIPS}/${mockUserProfile.id}`);
     });
 
     it("should render muted user", () => {

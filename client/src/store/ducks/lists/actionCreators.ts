@@ -1,14 +1,10 @@
 import {
     CreateListActionInterface,
     FetchListsActionInterface,
-    FetchPinnedListsActionInterface,
     FetchSimpleListsActionInterface,
-    FetchTweetListsWhichUserInActionInterface,
     FetchUserListsActionInterface,
-    FetchUserListsByIdActionInterface,
     FollowListActionInterface,
     ListsActionType,
-    PinListActionInterface,
     ProcessUserToListsActionInterface,
     ResetListsStateActionInterface,
     SetFollowListActionInterface,
@@ -16,22 +12,16 @@ import {
     SetListsActionInterface,
     SetListsLoadingStateInterface,
     SetLoadingStateInterface,
-    SetPinedListActionInterface,
-    SetPinedListToUserListActionInterface,
-    SetPinnedListsActionInterface,
-    SetPinnedListsLoadingStateInterface,
     SetSimpleListsActionInterface,
     SetSimpleListsLoadingStateInterface,
     SetUnfollowListActionInterface,
-    SetUnpinListActionInterface,
     SetUpdatedListActionInterface,
     SetUserListsActionInterface,
     SetUserListsLoadingStateInterface,
-    UnfollowListActionInterface,
-    UnpinListActionInterface
+    UnfollowListActionInterface
 } from "./contracts/actionTypes";
 import {AddLists, AddUserToListsRequest, ListsState, UpdateListsPayload} from "./contracts/state";
-import {ListUserResponse, PinnedListResponse} from "../../types/lists";
+import {ListUserResponse} from "../../types/lists";
 import {LoadingStatus} from "../../types/common";
 
 export const setLists = (payload: ListsState["lists"]): SetListsActionInterface => ({
@@ -41,11 +31,6 @@ export const setLists = (payload: ListsState["lists"]): SetListsActionInterface 
 
 export const setUserLists = (payload: ListsState["userLists"]): SetUserListsActionInterface => ({
     type: ListsActionType.SET_USER_LISTS,
-    payload
-});
-
-export const setPinnedLists = (payload: ListsState["pinnedLists"]): SetPinnedListsActionInterface => ({
-    type: ListsActionType.SET_PINNED_LISTS,
     payload
 });
 
@@ -102,46 +87,8 @@ export const fetchUserLists = (): FetchUserListsActionInterface => ({
     type: ListsActionType.FETCH_USER_LISTS
 });
 
-export const fetchUserListsById = (payload: number): FetchUserListsByIdActionInterface => ({
-    type: ListsActionType.FETCH_USER_LISTS_BY_ID,
-    payload
-});
-
-export const fetchTweetListsWhichUserIn = (): FetchTweetListsWhichUserInActionInterface => ({
-    type: ListsActionType.FETCH_TWEET_LISTS_WHICH_USER_IN
-});
-
-export const fetchPinnedLists = (): FetchPinnedListsActionInterface => ({
-    type: ListsActionType.FETCH_PINNED_LISTS
-});
-
 export const fetchSimpleLists = (payload: number): FetchSimpleListsActionInterface => ({
     type: ListsActionType.FETCH_SIMPLE_LISTS,
-    payload
-});
-
-export const pinList = (payload: number): PinListActionInterface => ({
-    type: ListsActionType.PIN_LIST,
-    payload
-});
-
-export const unpinList = (payload: number): UnpinListActionInterface => ({
-    type: ListsActionType.UNPIN_LIST,
-    payload
-});
-
-export const setPinedList = (payload: PinnedListResponse): SetPinedListActionInterface => ({
-    type: ListsActionType.SET_PINED_LIST,
-    payload
-});
-
-export const setUnpinList = (payload: PinnedListResponse): SetUnpinListActionInterface => ({
-    type: ListsActionType.SET_UNPIN_LIST,
-    payload
-});
-
-export const setPinedListToUserList = (payload: PinnedListResponse): SetPinedListToUserListActionInterface => ({
-    type: ListsActionType.SET_PINED_LIST_TO_USER_LIST,
     payload
 });
 
@@ -161,11 +108,6 @@ export const setListsLoadingState = (payload: LoadingStatus): SetListsLoadingSta
 
 export const setUserListsLoadingState = (payload: LoadingStatus): SetUserListsLoadingStateInterface => ({
     type: ListsActionType.SET_USER_LISTS_LOADING_STATE,
-    payload
-});
-
-export const setPinnedListsLoadingState = (payload: LoadingStatus): SetPinnedListsLoadingStateInterface => ({
-    type: ListsActionType.SET_PINNED_LISTS_LOADING_STATE,
     payload
 });
 

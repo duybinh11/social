@@ -1,19 +1,16 @@
 import React from "react";
-import {Avatar, Button, IconButton} from "@material-ui/core";
+import {Avatar, Button} from "@material-ui/core";
 
 import ListsItem from "../ListsItem";
 import {createMockRootState, mockDispatch, mountWithStore} from "../../../../util/testHelper";
 import {mockLists, mockUserFullList} from "../../../../util/mockData/mockData";
 import {ListsActionType} from "../../../../store/ducks/lists/contracts/actionTypes";
-import {ListResponse} from "../../../../store/types/lists";
-import HoverAction from "../../../../components/HoverAction/HoverAction";
 import PopperListWindow from "../../PopperListWindow/PopperListWindow";
 import {LoadingStatus} from "../../../../store/types/common";
 
 describe("ListsItem", () => {
     const mockStore = createMockRootState(LoadingStatus.LOADED);
     const mockList = mockLists[0];
-    const mockMyList = mockLists[2];
     let mockDispatchFn: jest.Mock;
 
     beforeEach(() => {
@@ -54,21 +51,6 @@ describe("ListsItem", () => {
         expect(mockDispatchFn).nthCalledWith(1, {payload: 2, type: ListsActionType.UNFOLLOW_LIST});
     });
 
-    it("should click unpin ListsItem", () => {
-        const wrapper = mountWithStore(<ListsItem list={mockMyList} listIndex={2} isMyList={true}/>, mockStore);
-        wrapper.find(IconButton).at(0).simulate("click");
-
-        expect(mockDispatchFn).nthCalledWith(1, {payload: 3, type: ListsActionType.UNPIN_LIST});
-    });
-
-    it("should click pin ListsItem", () => {
-        const mockPinList = {...mockMyList, pinnedDate: null} as unknown as ListResponse;
-        const wrapper = mountWithStore(<ListsItem list={mockPinList} listIndex={2} isMyList={true}/>, mockStore);
-        wrapper.find(IconButton).at(0).simulate("click");
-
-        expect(mockDispatchFn).nthCalledWith(1, {payload: 3, type: ListsActionType.PIN_LIST});
-    });
-
     it("should hover list info and render Popper List Window", () => {
         const mockListsStore = {...mockStore, listDetail: {...mockStore.listDetail, item: mockUserFullList}}
         jest.useFakeTimers();
@@ -79,17 +61,5 @@ describe("ListsItem", () => {
         
         expect(wrapper.find(PopperListWindow).exists()).toBeTruthy();
         expect(wrapper.find(PopperListWindow).at(0).prop("visible")).toBe(true);
-    });
-
-    it("should hover pin icon and render Hover Action", () => {
-        jest.useFakeTimers();
-        const wrapper = mountWithStore(<ListsItem list={mockList} listIndex={2} isMyList={true}/>, mockStore);
-        wrapper.find(IconButton).at(0).simulate("mouseenter");
-        jest.runAllTimers();
-        wrapper.update();
-
-        expect(wrapper.find(HoverAction).exists()).toBeTruthy();
-        expect(wrapper.find(HoverAction).at(0).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).at(0).prop("actionText")).toBe("Pin");
     });
 });

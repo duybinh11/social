@@ -29,10 +29,7 @@ export const API_CHAT_SEARCH = `${API_ENDPOINT}/chat/search`;
 // ListsApi
 export const API_LISTS = `${API_ENDPOINT}/lists`;
 export const API_LISTS_USER = `${API_ENDPOINT}/lists/user`;
-export const API_LISTS_USER_CONSIST = `${API_ENDPOINT}/lists/user/consist`;
-export const API_LISTS_PINNED = `${API_ENDPOINT}/lists/pined`;
 export const API_LISTS_FOLLOW = `${API_ENDPOINT}/lists/follow`;
-export const API_LISTS_PIN = `${API_ENDPOINT}/lists/pin`;
 export const API_LISTS_ADD_USER = `${API_ENDPOINT}/lists/add/user`;
 export const API_LISTS_TWEETS = (listId: number) => `${API_ENDPOINT}/lists/${listId}/tweets`;
 export const API_LISTS_DETAILS = (listId: number) => `${API_ENDPOINT}/lists/${listId}/details`;

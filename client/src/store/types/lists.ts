@@ -4,7 +4,6 @@ export interface BaseListResponse {
     id: number;
     name: string;
     description: string;
-    pinnedDate: string;
     altWallpaper: string;
     wallpaper: Image
     listOwner: ListOwnerResponse;
@@ -44,7 +43,6 @@ export interface ListResponse {
     id: number;
     name: string;
     description: string;
-    pinnedDate: string;
     altWallpaper: string;
     wallpaper: Image
     listOwner: ListOwnerResponse;
@@ -55,19 +53,9 @@ export interface ListUserResponse {
     id: number;
     name: string;
     description: string;
-    pinnedDate: string;
     altWallpaper: string;
     wallpaper: Image
     listOwner: ListOwnerResponse;
-    isPrivate: boolean;
-}
-
-export interface PinnedListResponse {
-    id: number;
-    name: string;
-    pinnedDate: string;
-    altWallpaper: string;
-    wallpaper: Image
     isPrivate: boolean;
 }
 

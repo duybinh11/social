@@ -24,8 +24,6 @@ import Messages from "./pages/Messages/Messages";
 import {useRealtimeWebSocket} from "./hook/useRealtimeWebSocket";
 import Lists from "./pages/Lists/Lists";
 import FullList from "./pages/FullList/FullList";
-import SuggestedLists from "./pages/SuggestedLists/SuggestedLists";
-import ListsMemberships from "./pages/Lists/ListsMemberships/ListsMemberships";
 import Settings from "./pages/Settings/Settings";
 import {
     blueColor,
@@ -52,7 +50,6 @@ import {
     HOME_TRENDS,
     HOME_TWEET,
     LISTS,
-    LISTS_MEMBERSHIPS,
     MESSAGES,
     MODAL,
     NOTIFICATION,
@@ -64,7 +61,6 @@ import {
     QUOTES,
     SEARCH,
     SETTINGS,
-    SUGGESTED,
     USER,
     USER_FOLLOWERS_YOU_FOLLOW
 } from "./util/pathConstants";
@@ -185,9 +181,7 @@ const App: FC = (): ReactElement => {
                                    changeColorScheme={changeColorScheme}/>
                                }/>
                         <Route path={`${QUOTES}/:tweetId`} component={QuoteTweets}/>
-                        <Route path={SUGGESTED} component={SuggestedLists}/>
                         <Route path={LISTS} component={Lists} exact/>
-                        <Route path={`${LISTS_MEMBERSHIPS}/:id`} component={ListsMemberships} exact/>
                         <Route path={`${LISTS}/:listId`} component={FullList} exact/>
                         <Route path={`${PROFILE}/:userId`} component={UserPage} exact/>
                         <Route path={`${USER_FOLLOWERS_YOU_FOLLOW}/:id`} component={FollowersYouKnow} exact/>

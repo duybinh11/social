@@ -1,15 +1,12 @@
 import React, {memo, ReactElement, useState} from "react";
-import {Link} from "react-router-dom";
 import {ClickAwayListener, List} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
 import {useUserPageActionsStyles} from "./UserPageActionsStyles";
-import {EditIcon, ListsIcon, MomentsIcon, ReportIcon, ShareIcon} from "../../../icons";
+import {EditIcon, MomentsIcon, ReportIcon, ShareIcon} from "../../../icons";
 import {useGlobalStyles} from "../../../util/globalClasses";
-import {LISTS_MEMBERSHIPS, PROFILE} from "../../../util/pathConstants";
 import ActionIconButton from "../../../components/ActionIconButton/ActionIconButton";
 import {
-    selectUserProfileId,
     selectUserProfileIsPrivateProfile,
     selectUserProfileIsUserBlocked,
     selectUserProfileUsername
@@ -23,7 +20,6 @@ import UserItemAction from "./UserItemAction/UserItemAction";
 const UserPageActions = memo((): ReactElement => {
     const globalClasses = useGlobalStyles();
     const classes = useUserPageActionsStyles();
-    const userProfileId = useSelector(selectUserProfileId);
     const username = useSelector(selectUserProfileUsername);
     const isUserBlocked = useSelector(selectUserProfileIsUserBlocked);
     const isPrivateProfile = useSelector(selectUserProfileIsPrivateProfile);
@@ -49,9 +45,6 @@ const UserPageActions = memo((): ReactElement => {
                             {!isPrivateProfile && (
                                 <>
                                     <AddUserToListsButton/>
-                                    <Link to={`${LISTS_MEMBERSHIPS}/${userProfileId}`} className={classes.routeLink}>
-                                        <UserItemAction title={"View Lists"} icon={ListsIcon}/>
-                                    </Link>
                                     <UserItemAction title={"View Moments"} icon={MomentsIcon}/>
                                     {!isUserBlocked && (
                                         <>

@@ -1,11 +1,9 @@
 import React, {ReactElement} from "react";
-import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {Paper, Typography} from "@material-ui/core";
 
 import Spinner from "../../../components/Spinner/Spinner";
 import ListsItem from "../ListsItem/ListsItem";
-import {SUGGESTED} from "../../../util/pathConstants";
 import {useDiscoverListsStyles} from "./DiscoverListsStyles";
 import {useGlobalStyles} from "../../../util/globalClasses";
 import {selectIsListsLoading, selectListsItems} from "../../../store/ducks/lists/selectors";
@@ -26,15 +24,10 @@ const DiscoverLists = (): ReactElement => {
                     <Spinner/>
                 </div>
             ) : (
-                lists.slice(0, 3).map((list, index) => (
+                lists.map((list, index) => (
                     <ListsItem key={list.id} list={list} listIndex={index}/>
                 ))
             )}
-            <Link to={SUGGESTED} className={globalClasses.link}>
-                <Typography variant={"body1"} component={"div"} className={classes.showMore}>
-                    Xem thêm
-                </Typography>
-            </Link>
         </Paper>
     );
 };

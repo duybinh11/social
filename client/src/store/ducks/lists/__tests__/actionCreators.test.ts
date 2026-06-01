@@ -1,13 +1,9 @@
 import {
     createList,
     fetchLists,
-    fetchPinnedLists,
     fetchSimpleLists,
-    fetchTweetListsWhichUserIn,
     fetchUserLists,
-    fetchUserListsById,
     followList,
-    pinList,
     processUserToLists,
     resetListsState,
     setCreatedList,
@@ -15,21 +11,15 @@ import {
     setLists,
     setListsLoadingState,
     setLoadingState,
-    setPinedList,
-    setPinedListToUserList,
-    setPinnedLists,
-    setPinnedListsLoadingState,
     setSimpleLists,
     setSimpleListsLoadingState,
     setUnfollowList,
-    setUnpinList,
     setUpdatedList,
     setUserLists,
     setUserListsLoadingState,
-    unfollowList,
-    unpinList
+    unfollowList
 } from "../actionCreators";
-import {ListResponse, ListUserResponse, PinnedListResponse, SimpleListResponse} from "../../../types/lists";
+import {ListResponse, ListUserResponse, SimpleListResponse} from "../../../types/lists";
 import {ListsActionType} from "../contracts/actionTypes";
 import {testAction} from "../../../../util/testHelper";
 import {AddLists, AddUserToListsRequest} from "../contracts/state";
@@ -44,11 +34,6 @@ describe("lists actions", () => {
     testAction(setUserLists, setUserLists([{id: 1}] as ListUserResponse[]), {
         type: ListsActionType.SET_USER_LISTS,
         payload: [{id: 1}] as ListUserResponse[]
-    });
-
-    testAction(setPinnedLists, setPinnedLists([{id: 1}] as PinnedListResponse[]), {
-        type: ListsActionType.SET_PINNED_LISTS,
-        payload: [{id: 1}] as PinnedListResponse[]
     });
 
     testAction(setSimpleLists, setSimpleLists([{id: 1}] as SimpleListResponse[]), {
@@ -107,47 +92,9 @@ describe("lists actions", () => {
         type: ListsActionType.FETCH_USER_LISTS
     });
 
-    testAction(fetchUserListsById, fetchUserListsById(1), {
-        type: ListsActionType.FETCH_USER_LISTS_BY_ID,
-        payload: 1
-    });
-
-    testAction(fetchTweetListsWhichUserIn, fetchTweetListsWhichUserIn(), {
-        type: ListsActionType.FETCH_TWEET_LISTS_WHICH_USER_IN,
-    });
-
-    testAction(fetchPinnedLists, fetchPinnedLists(), {
-        type: ListsActionType.FETCH_PINNED_LISTS,
-    });
-
     testAction(fetchSimpleLists, fetchSimpleLists(1), {
         type: ListsActionType.FETCH_SIMPLE_LISTS,
         payload: 1
-    });
-
-    testAction(pinList, pinList(1), {
-        type: ListsActionType.PIN_LIST,
-        payload: 1
-    });
-
-    testAction(unpinList, unpinList(1), {
-        type: ListsActionType.UNPIN_LIST,
-        payload: 1
-    });
-
-    testAction(setPinedList, setPinedList({id: 1} as PinnedListResponse), {
-        type: ListsActionType.SET_PINED_LIST,
-        payload: {id: 1} as PinnedListResponse
-    });
-
-    testAction(setUnpinList, setUnpinList({id: 1} as PinnedListResponse), {
-        type: ListsActionType.SET_UNPIN_LIST,
-        payload: {id: 1} as PinnedListResponse
-    });
-
-    testAction(setPinedListToUserList, setPinedListToUserList({id: 1} as PinnedListResponse), {
-        type: ListsActionType.SET_PINED_LIST_TO_USER_LIST,
-        payload: {id: 1} as PinnedListResponse
     });
 
     testAction(resetListsState, resetListsState(), {
@@ -166,11 +113,6 @@ describe("lists actions", () => {
 
     testAction(setUserListsLoadingState, setUserListsLoadingState(LoadingStatus.LOADING), {
         type: ListsActionType.SET_USER_LISTS_LOADING_STATE,
-        payload: LoadingStatus.LOADING
-    });
-
-    testAction(setPinnedListsLoadingState, setPinnedListsLoadingState(LoadingStatus.LOADING), {
-        type: ListsActionType.SET_PINNED_LISTS_LOADING_STATE,
         payload: LoadingStatus.LOADING
     });
 

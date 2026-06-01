@@ -59,7 +59,6 @@ public class ListsControllerTest {
                 .andExpect(jsonPath("$[0].id").value(4L))
                 .andExpect(jsonPath("$[0].name").value(LIST_NAME))
                 .andExpect(jsonPath("$[0].description").value(LIST_DESCRIPTION))
-                .andExpect(jsonPath("$[0].pinnedDate").value(LIST_PINNED_DATE))
                 .andExpect(jsonPath("$[0].altWallpaper").value(LIST_ALT_WALLPAPER))
                 .andExpect(jsonPath("$[0].wallpaper").isEmpty())
                 .andExpect(jsonPath("$[0].listOwner.id").value(LIST_USER_ID))
@@ -76,59 +75,9 @@ public class ListsControllerTest {
                 .andExpect(jsonPath("$[0].id").isNotEmpty())
                 .andExpect(jsonPath("$[0].name").value(LIST_NAME))
                 .andExpect(jsonPath("$[0].description").value(LIST_DESCRIPTION))
-                .andExpect(jsonPath("$[0].pinnedDate").value(LIST_PINNED_DATE))
                 .andExpect(jsonPath("$[0].altWallpaper").value(LIST_ALT_WALLPAPER))
                 .andExpect(jsonPath("$[0].wallpaper").isEmpty())
                 .andExpect(jsonPath("$[0].listOwner.id").value(LIST_USER_ID))
-                .andExpect(jsonPath("$[0].isPrivate").value(false));
-    }
-
-    @Test
-    @DisplayName("[200] GET /api/v1/lists/user/2 - Get user tweet lists by id")
-    @WithUserDetails(USER_EMAIL)
-    public void getUserTweetListsById() throws Exception {
-        mockMvc.perform(get(URL_LISTS_BASIC + "/user/2"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[*]", hasSize(1)))
-                .andExpect(jsonPath("$[0].id").value(4L))
-                .andExpect(jsonPath("$[0].name").value(LIST_NAME))
-                .andExpect(jsonPath("$[0].description").value(LIST_DESCRIPTION))
-                .andExpect(jsonPath("$[0].pinnedDate").value(LIST_PINNED_DATE))
-                .andExpect(jsonPath("$[0].altWallpaper").value(LIST_ALT_WALLPAPER))
-                .andExpect(jsonPath("$[0].wallpaper").isEmpty())
-                .andExpect(jsonPath("$[0].listOwner.id").value(LIST_USER_ID))
-                .andExpect(jsonPath("$[0].isFollower").value(false));
-    }
-
-    @Test
-    @DisplayName("[200] GET /api/v1/lists/user/consist - Get tweet lists which user in")
-    @WithUserDetails(USER_EMAIL)
-    public void getTweetListsWhichUserIn() throws Exception {
-        mockMvc.perform(get(URL_LISTS_BASIC + "/user/consist"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[*]", hasSize(1)))
-                .andExpect(jsonPath("$[0].id").value(7L))
-                .andExpect(jsonPath("$[0].name").value(LIST_NAME))
-                .andExpect(jsonPath("$[0].description").value(LIST_DESCRIPTION))
-                .andExpect(jsonPath("$[0].pinnedDate").value(LIST_PINNED_DATE))
-                .andExpect(jsonPath("$[0].altWallpaper").value(LIST_ALT_WALLPAPER))
-                .andExpect(jsonPath("$[0].wallpaper").isEmpty())
-                .andExpect(jsonPath("$[0].listOwner.id").value(1L))
-                .andExpect(jsonPath("$[0].isFollower").value(true));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[200] GET /api/v1/lists/pined - Get user pinned tweet lists")
-    public void getUserPinnedLists() throws Exception {
-        mockMvc.perform(get(URL_LISTS_BASIC + "/pined"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[*]", hasSize(2)))
-                .andExpect(jsonPath("$[0].id").value(4L))
-                .andExpect(jsonPath("$[0].name").value(LIST_NAME))
-                .andExpect(jsonPath("$[0].pinnedDate").value(LIST_PINNED_DATE))
-                .andExpect(jsonPath("$[0].altWallpaper").value(LIST_ALT_WALLPAPER))
-                .andExpect(jsonPath("$[0].wallpaper").isEmpty())
                 .andExpect(jsonPath("$[0].isPrivate").value(false));
     }
 
@@ -141,7 +90,6 @@ public class ListsControllerTest {
                 .andExpect(jsonPath("$.id").value(4))
                 .andExpect(jsonPath("$.name").value(LIST_NAME))
                 .andExpect(jsonPath("$.description").value(LIST_DESCRIPTION))
-                .andExpect(jsonPath("$.pinnedDate").value(LIST_PINNED_DATE))
                 .andExpect(jsonPath("$.altWallpaper").value(LIST_ALT_WALLPAPER))
                 .andExpect(jsonPath("$.wallpaper").isEmpty())
                 .andExpect(jsonPath("$.listOwner.id").value(LIST_USER_ID))
@@ -160,7 +108,6 @@ public class ListsControllerTest {
                 .andExpect(jsonPath("$.id").value(6))
                 .andExpect(jsonPath("$.name").value(LIST_NAME))
                 .andExpect(jsonPath("$.description").value(LIST_DESCRIPTION))
-                .andExpect(jsonPath("$.pinnedDate").value(LIST_PINNED_DATE))
                 .andExpect(jsonPath("$.altWallpaper").value(LIST_ALT_WALLPAPER))
                 .andExpect(jsonPath("$.wallpaper").isEmpty())
                 .andExpect(jsonPath("$.listOwner.id").value(LIST_USER_ID))
@@ -179,7 +126,6 @@ public class ListsControllerTest {
                 .andExpect(jsonPath("$.id").value(7))
                 .andExpect(jsonPath("$.name").value(LIST_NAME))
                 .andExpect(jsonPath("$.description").value(LIST_DESCRIPTION))
-                .andExpect(jsonPath("$.pinnedDate").value(LIST_PINNED_DATE))
                 .andExpect(jsonPath("$.altWallpaper").value(LIST_ALT_WALLPAPER))
                 .andExpect(jsonPath("$.wallpaper").isEmpty())
                 .andExpect(jsonPath("$.listOwner.id").value(1L))
@@ -223,7 +169,6 @@ public class ListsControllerTest {
                 .andExpect(jsonPath("$.id").value(100))
                 .andExpect(jsonPath("$.name").value(LIST_NAME))
                 .andExpect(jsonPath("$.description").value(LIST_DESCRIPTION))
-                .andExpect(jsonPath("$.pinnedDate").isEmpty())
                 .andExpect(jsonPath("$.altWallpaper").value(LIST_ALT_WALLPAPER))
                 .andExpect(jsonPath("$.wallpaper").isEmpty())
                 .andExpect(jsonPath("$.listOwner.id").value(LIST_USER_ID))
@@ -278,7 +223,6 @@ public class ListsControllerTest {
                 .andExpect(jsonPath("$.id").value(4))
                 .andExpect(jsonPath("$.name").value("edited name"))
                 .andExpect(jsonPath("$.description").value("edited description"))
-                .andExpect(jsonPath("$.pinnedDate").value(LIST_PINNED_DATE))
                 .andExpect(jsonPath("$.altWallpaper").value(LIST_ALT_WALLPAPER))
                 .andExpect(jsonPath("$.wallpaper").isEmpty())
                 .andExpect(jsonPath("$.listOwner.id").value(LIST_USER_ID))
@@ -394,7 +338,6 @@ public class ListsControllerTest {
                 .andExpect(jsonPath("$.id").value(9))
                 .andExpect(jsonPath("$.name").value(LIST_NAME))
                 .andExpect(jsonPath("$.description").value(LIST_DESCRIPTION))
-                .andExpect(jsonPath("$.pinnedDate").value(LIST_PINNED_DATE))
                 .andExpect(jsonPath("$.altWallpaper").value(LIST_ALT_WALLPAPER))
                 .andExpect(jsonPath("$.wallpaper").isEmpty())
                 .andExpect(jsonPath("$.listOwner.id").value(1))
@@ -428,34 +371,10 @@ public class ListsControllerTest {
                 .andExpect(jsonPath("$.id").value(4))
                 .andExpect(jsonPath("$.name").value(LIST_NAME))
                 .andExpect(jsonPath("$.description").value(LIST_DESCRIPTION))
-                .andExpect(jsonPath("$.pinnedDate").value(LIST_PINNED_DATE))
                 .andExpect(jsonPath("$.altWallpaper").value(LIST_ALT_WALLPAPER))
                 .andExpect(jsonPath("$.wallpaper").isEmpty())
                 .andExpect(jsonPath("$.listOwner.id").value(2))
                 .andExpect(jsonPath("$.isPrivate").value(false));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[200] GET /api/v1/lists/pin/6 - Pin list")
-    public void pinList() throws Exception {
-        mockMvc.perform(get(URL_LISTS_BASIC + "/pin/6"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(6))
-                .andExpect(jsonPath("$.name").value(LIST_NAME))
-                .andExpect(jsonPath("$.pinnedDate").isEmpty())
-                .andExpect(jsonPath("$.altWallpaper").value(LIST_ALT_WALLPAPER))
-                .andExpect(jsonPath("$.wallpaper").isEmpty())
-                .andExpect(jsonPath("$.isPrivate").value(true));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[404] GET /api/v1/lists/pin/8 - Should pinned list Not Found by id")
-    public void pinList_ShouldPinnedListNotFound() throws Exception {
-        mockMvc.perform(get(URL_LISTS_BASIC + "/pin/8"))
-                .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy danh sách")));
     }
 
     @Test
@@ -471,20 +390,6 @@ public class ListsControllerTest {
                 .andExpect(jsonPath("$[0].wallpaper").isEmpty())
                 .andExpect(jsonPath("$[0].isMemberInList").value(true))
                 .andExpect(jsonPath("$[0].isPrivate").value(false));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[200] GET /api/v1/lists/pin/4 - Unpin list")
-    public void unpinList() throws Exception {
-        mockMvc.perform(get(URL_LISTS_BASIC + "/pin/4"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(4))
-                .andExpect(jsonPath("$.name").value(LIST_NAME))
-                .andExpect(jsonPath("$.pinnedDate").isEmpty())
-                .andExpect(jsonPath("$.altWallpaper").value(LIST_ALT_WALLPAPER))
-                .andExpect(jsonPath("$.wallpaper").isEmpty())
-                .andExpect(jsonPath("$.isPrivate").value(false));
     }
 
     @Test
@@ -643,7 +548,6 @@ public class ListsControllerTest {
                 .andExpect(jsonPath("$.id").value(4))
                 .andExpect(jsonPath("$.name").value(LIST_NAME))
                 .andExpect(jsonPath("$.description").value(LIST_DESCRIPTION))
-                .andExpect(jsonPath("$.pinnedDate").value(LIST_PINNED_DATE))
                 .andExpect(jsonPath("$.altWallpaper").value(LIST_ALT_WALLPAPER))
                 .andExpect(jsonPath("$.wallpaper").isEmpty())
                 .andExpect(jsonPath("$.listOwner.id").value(LIST_USER_ID))
