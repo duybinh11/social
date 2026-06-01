@@ -40,26 +40,6 @@ public class UserSettingsController {
         return ResponseEntity.ok(userMapper.updateCountry(request));
     }
 
-    @PutMapping("/update/gender")
-    public ResponseEntity<String> updateGender(@RequestBody SettingsRequest request) {
-        return ResponseEntity.ok(userMapper.updateGender(request));
-    }
-
-    @PutMapping("/update/language")
-    public ResponseEntity<String> updateLanguage(@RequestBody SettingsRequest request) {
-        return ResponseEntity.ok(userMapper.updateLanguage(request));
-    }
-
-    @PutMapping("/update/direct")
-    public ResponseEntity<Boolean> updateDirectMessageRequests(@RequestBody SettingsRequest request) {
-        return ResponseEntity.ok(userMapper.updateDirectMessageRequests(request));
-    }
-
-    @PutMapping("/update/private")
-    public ResponseEntity<Boolean> updatePrivateProfile(@RequestBody SettingsRequest request) {
-        return ResponseEntity.ok(userMapper.updatePrivateProfile(request));
-    }
-
     @PutMapping("/update/color_scheme")
     public ResponseEntity<ColorSchemeType> updateColorScheme(@RequestBody SettingsRequest request) {
         return ResponseEntity.ok(userMapper.updateColorScheme(request));

@@ -10,7 +10,6 @@ import {useHomeStyles} from './HomeStyles';
 import AddTweetForm from '../../components/AddTweetForm/AddTweetForm';
 import {
     fetchFollowersTweets,
-    fetchTweets,
     resetTweets,
 } from "../../store/ducks/tweets/actionCreators";
 import {selectIsTweetsLoading, selectPagesCount, selectTweetsItems} from "../../store/ducks/tweets/selectors";
@@ -18,7 +17,6 @@ import {selectUserDataIsProfileStarted, selectUserIsLoaded} from "../../store/du
 import Welcome from "../../components/Welcome/Welcome";
 import Spinner from "../../components/Spinner/Spinner";
 import {useGlobalStyles} from "../../util/globalClasses";
-import TopTweetActions from "./TopTweetActions/TopTweetActions";
 import {withDocumentTitle} from "../../hoc/withDocumentTitle";
 import {SEARCH} from "../../util/pathConstants";
 
@@ -32,7 +30,6 @@ const Home: FC = (): ReactElement => {
     const tweets = useSelector(selectTweetsItems);
     const isLoading = useSelector(selectIsTweetsLoading);
     const pagesCount = useSelector(selectPagesCount);
-    const [switchTweets, setSwitchTweets] = React.useState<boolean>(false);
     const [page, setPage] = React.useState<number>(0);
     const initialTweetsLoaded = React.useRef(false);
 
@@ -49,32 +46,14 @@ const Home: FC = (): ReactElement => {
     useEffect(() => {
         if (isUserLoaded && location.pathname !== SEARCH && !initialTweetsLoaded.current) {
             initialTweetsLoaded.current = true;
-            dispatch(fetchTweets(0));
+            dispatch(fetchFollowersTweets(0));
             setPage(1);
         }
     }, [dispatch, isUserLoaded, location.pathname]);
 
     const loadTweets = (): void => {
-        if (switchTweets) {
-            dispatch(fetchFollowersTweets(page));
-        } else {
-            dispatch(fetchTweets(page));
-        }
+        dispatch(fetchFollowersTweets(page));
         setPage(prevState => prevState + 1);
-    };
-
-    const handleLatestTweets = (): void => {
-        dispatch(resetTweets());
-        setSwitchTweets(true);
-        setPage(1);
-        dispatch(fetchFollowersTweets(0));
-    };
-
-    const handleTopTweets = (): void => {
-        dispatch(resetTweets());
-        setSwitchTweets(false);
-        setPage(1);
-        dispatch(fetchTweets(0));
     };
 
     return (
@@ -90,11 +69,6 @@ const Home: FC = (): ReactElement => {
                     <Typography variant="h5">
                         Trang chủ
                     </Typography>
-                    <TopTweetActions
-                        switchTweets={switchTweets}
-                        handleLatestTweets={handleLatestTweets}
-                        handleTopTweets={handleTopTweets}
-                    />
                 </Paper>
                 <div className={classes.addForm}>
                     <AddTweetForm title={"Chuyện gì đang xảy ra?"} buttonName={"Đăng"}/>

@@ -33,13 +33,9 @@ import {
     unfollowUser,
     updateColorScheme,
     updateCountry,
-    updateDirect,
     updatedUserData,
     updateEmail,
-    updateGender,
-    updateLanguage,
     updatePhone,
-    updatePrivateProfile,
     updateUsername
 } from "../actionCreators";
 import {UserActionsType} from "../contracts/actionTypes";
@@ -174,26 +170,6 @@ describe("user actions", () => {
     testAction(updateCountry, updateCountry({country: "test"} as Settings), {
         type: UserActionsType.UPDATE_COUNTRY,
         payload: {country: "test"} as Settings
-    });
-
-    testAction(updateGender, updateGender({gender: "test"} as Settings), {
-        type: UserActionsType.UPDATE_GENDER,
-        payload: {gender: "test"} as Settings
-    });
-
-    testAction(updateLanguage, updateLanguage({language: "test"} as Settings), {
-        type: UserActionsType.UPDATE_LANGUAGE,
-        payload: {language: "test"} as Settings
-    });
-
-    testAction(updateDirect, updateDirect({mutedDirectMessages: true} as Settings), {
-        type: UserActionsType.UPDATE_DIRECT,
-        payload: {mutedDirectMessages: true} as Settings
-    });
-
-    testAction(updatePrivateProfile, updatePrivateProfile({privateProfile: true} as Settings), {
-        type: UserActionsType.UPDATE_PRIVATE_PROFILE,
-        payload: {privateProfile: true} as Settings
     });
 
     testAction(updateColorScheme, updateColorScheme({colorScheme: "BLUE"} as Settings), {

@@ -215,22 +215,6 @@ public class UserMapper {
         return userSettingsService.updateCountry(request.getCountry());
     }
 
-    public String updateGender(SettingsRequest request) {
-        return userSettingsService.updateGender(request.getGender());
-    }
-
-    public String updateLanguage(SettingsRequest request) {
-        return userSettingsService.updateLanguage(request.getLanguage());
-    }
-
-    public boolean updateDirectMessageRequests(SettingsRequest request) {
-        return userSettingsService.updateDirectMessageRequests(request.isMutedDirectMessages());
-    }
-
-    public boolean updatePrivateProfile(SettingsRequest request) {
-        return userSettingsService.updatePrivateProfile(request.isPrivateProfile());
-    }
-
     public ColorSchemeType updateColorScheme(SettingsRequest request) {
         return userSettingsService.updateColorScheme(request.getColorScheme());
     }

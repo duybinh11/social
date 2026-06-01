@@ -14,12 +14,8 @@ import {
     updateBackgroundColorRequest,
     updateColorSchemeRequest,
     updateCountryRequest,
-    updateDirectRequest,
     updateEmailRequest,
-    updateGenderRequest,
-    updateLanguageRequest,
     updatePhoneRequest,
-    updatePrivateProfileRequest,
     updateUserDataRequest,
     updateUsernameRequest,
     userSaga
@@ -36,13 +32,9 @@ import {
     setBackgroundColor,
     setColorScheme,
     setCountry,
-    setDirect,
     setEmail,
-    setGender,
-    setLanguage,
     setPhone,
     setPinTweetId,
-    setPrivateProfile,
     setProfileStarted,
     setReadMessage,
     setUserData,
@@ -53,13 +45,9 @@ import {
     updateBackgroundColor,
     updateColorScheme,
     updateCountry,
-    updateDirect,
     updatedUserData,
     updateEmail,
-    updateGender,
-    updateLanguage,
     updatePhone,
-    updatePrivateProfile,
     updateUsername
 } from "../actionCreators";
 
@@ -239,37 +227,6 @@ describe("userSaga:", () => {
         testLoadingStatus(worker, setUserLoadingStatus, LoadingStatus.ERROR);
     });
 
-    describe("updateGenderRequest:", () => {
-        const worker = updateGenderRequest(updateGender({updateGender: "testGender"} as Settings));
-        testLoadingStatus(worker, setUserLoadingStatus, LoadingStatus.LOADING);
-        testCall(worker, UserSettingsApi.updateGender, {updateGender: "testGender"}, "testGender");
-        testSetResponse(worker, {data: "testGender"}, setGender, "testGender", "string");
-        testLoadingStatus(worker, setUserLoadingStatus, LoadingStatus.ERROR);
-    });
-
-    describe("updateLanguageRequest:", () => {
-        const worker = updateLanguageRequest(updateLanguage({language: "english"}));
-        testLoadingStatus(worker, setUserLoadingStatus, LoadingStatus.LOADING);
-        testCall(worker, UserSettingsApi.updateLanguage, {language: "english"}, "english");
-        testSetResponse(worker, {data: "english"}, setLanguage, "english", "string");
-        testLoadingStatus(worker, setUserLoadingStatus, LoadingStatus.ERROR);
-    });
-
-    describe("updateDirectRequest:", () => {
-        const worker = updateDirectRequest(updateDirect({mutedDirectMessages: true}));
-        testCall(worker, UserSettingsApi.updateDirectMessageRequests, {mutedDirectMessages: true}, true);
-        testSetResponse(worker, {data: true}, setDirect, true, "boolean");
-        testLoadingStatus(worker, setUserLoadingStatus, LoadingStatus.ERROR);
-    });
-
-    describe("updatePrivateProfileRequest:", () => {
-        const worker = updatePrivateProfileRequest(updatePrivateProfile({privateProfile: true}));
-        testLoadingStatus(worker, setUserLoadingStatus, LoadingStatus.LOADING);
-        testCall(worker, UserSettingsApi.updatePrivateProfile, {privateProfile: true}, true);
-        testSetResponse(worker, {data: true}, setPrivateProfile, true, "boolean");
-        testLoadingStatus(worker, setUserLoadingStatus, LoadingStatus.ERROR);
-    });
-
     describe("updateColorSchemeRequest:", () => {
         const worker = updateColorSchemeRequest(updateColorScheme({colorScheme: ColorScheme.BLUE}));
         testLoadingStatus(worker, setUserLoadingStatus, LoadingStatus.LOADING);
@@ -345,10 +302,6 @@ describe("userSaga:", () => {
         {actionType: UserActionsType.UPDATE_EMAIL, workSaga: updateEmailRequest},
         {actionType: UserActionsType.UPDATE_PHONE, workSaga: updatePhoneRequest},
         {actionType: UserActionsType.UPDATE_COUNTRY, workSaga: updateCountryRequest},
-        {actionType: UserActionsType.UPDATE_GENDER, workSaga: updateGenderRequest},
-        {actionType: UserActionsType.UPDATE_LANGUAGE, workSaga: updateLanguageRequest},
-        {actionType: UserActionsType.UPDATE_DIRECT, workSaga: updateDirectRequest},
-        {actionType: UserActionsType.UPDATE_PRIVATE_PROFILE, workSaga: updatePrivateProfileRequest},
         {actionType: UserActionsType.UPDATE_COLOR_SCHEME, workSaga: updateColorSchemeRequest},
         {actionType: UserActionsType.UPDATE_BACKGROUND_COLOR, workSaga: updateBackgroundColorRequest},
         {actionType: UserActionsType.PROCESS_USER_TO_BLOCKLIST, workSaga: processUserToBlocklistRequest},

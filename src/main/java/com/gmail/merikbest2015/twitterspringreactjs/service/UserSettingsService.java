@@ -15,14 +15,6 @@ public interface UserSettingsService {
 
     String updateCountry(String country);
 
-    String updateGender(String gender);
-
-    String updateLanguage(String language);
-
-    boolean updateDirectMessageRequests(boolean mutedDirectMessages);
-
-    boolean updatePrivateProfile(boolean privateProfile);
-
     ColorSchemeType updateColorScheme(ColorSchemeType colorSchemeType);
 
     BackgroundColorType updateBackgroundColor(BackgroundColorType backgroundColorType);

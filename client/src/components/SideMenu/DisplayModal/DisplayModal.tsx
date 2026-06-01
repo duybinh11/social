@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux";
 
 import {useDisplayModalStyles} from "./DisplayModalStyles";
 import {CheckIcon, TweetIcon, VerifiedIcon} from "../../../icons";
-import {DisplayProps} from "../../../pages/Settings/AccessibilityDisplayLanguages/Display/Display";
+import {DisplayProps} from "../../../types/display";
 import {updateBackgroundColor, updateColorScheme} from "../../../store/ducks/user/actionCreators";
 import {BackgroundTheme, ColorScheme} from "../../../store/types/common";
 

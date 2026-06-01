@@ -7,12 +7,8 @@ import {
     API_SETTINGS_UPDATE_BACKGROUND_COLOR,
     API_SETTINGS_UPDATE_COLOR_SCHEME,
     API_SETTINGS_UPDATE_COUNTRY,
-    API_SETTINGS_UPDATE_DIRECT,
     API_SETTINGS_UPDATE_EMAIL,
-    API_SETTINGS_UPDATE_GENDER,
-    API_SETTINGS_UPDATE_LANGUAGE,
     API_SETTINGS_UPDATE_PHONE,
-    API_SETTINGS_UPDATE_PRIVATE,
     API_SETTINGS_UPDATE_USERNAME
 } from "../../util/endpoints";
 
@@ -28,18 +24,6 @@ export const UserSettingsApi = {
     },
     async updateCountry(settings: Settings): Promise<AxiosResponse<string>> {
         return await axios.put<string>(API_SETTINGS_UPDATE_COUNTRY, settings);
-    },
-    async updateGender(settings: Settings): Promise<AxiosResponse<string>> {
-        return await axios.put<string>(API_SETTINGS_UPDATE_GENDER, settings);
-    },
-    async updateLanguage(settings: Settings): Promise<AxiosResponse<string>> {
-        return await axios.put<string>(API_SETTINGS_UPDATE_LANGUAGE, settings);
-    },
-    async updateDirectMessageRequests(settings: Settings): Promise<AxiosResponse<boolean>> {
-        return await axios.put<boolean>(API_SETTINGS_UPDATE_DIRECT, settings);
-    },
-    async updatePrivateProfile(settings: Settings): Promise<AxiosResponse<boolean>> {
-        return await axios.put<boolean>(API_SETTINGS_UPDATE_PRIVATE, settings);
     },
     async updateColorScheme(settings: Settings): Promise<AxiosResponse<string>> {
         return await axios.put<string>(API_SETTINGS_UPDATE_COLOR_SCHEME, settings);

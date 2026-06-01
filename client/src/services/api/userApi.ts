@@ -53,7 +53,8 @@ export const UserApi = {
         return await axios.get<UserResponse[]>(API_USER_RELEVANT);
     },
     async searchUsersByUsername({username, pageNumber}: SearchByNameRequest): Promise<AxiosResponse<UserResponse[]>> {
-        return await axios.get<UserResponse[]>(`${API_USER_SEARCH}/${username}`, {params: {page: pageNumber}});
+        const encodedUsername = encodeURIComponent(username);
+        return await axios.get<UserResponse[]>(`${API_USER_SEARCH}/${encodedUsername}`, {params: {page: pageNumber}});
     },
     async getUserInfo(userId: number): Promise<AxiosResponse<UserProfileResponse>> {
         return await axios.get<UserProfileResponse>(`${API_USER}/${userId}`);

@@ -75,9 +75,7 @@ describe("SideMenu", () => {
 
         expect(wrapper.find(Popover).at(0).prop("open")).toBe(true);
         expect(wrapper.find(Popover).at(0).text().includes("Cài đặt và quyền riêng tư")).toBe(true);
-        expect(wrapper.find(Popover).at(0).text().includes("Trung tâm trợ giúp")).toBe(true);
         expect(wrapper.find(Popover).at(0).text().includes("Hiển thị")).toBe(true);
-        expect(wrapper.find(Popover).at(0).text().includes("Phím tắt")).toBe(true);
     });
 
     it("should click close Popup", () => {

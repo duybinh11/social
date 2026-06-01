@@ -10,10 +10,8 @@ import {
     ExploreIcon,
     ExploreIconFilled,
     FollowerRequestIcon,
-    HelpCenterIcon,
     HomeIcon,
     HomeIconFilled,
-    KeyboardShortcutsIcon,
     ListsIcon,
     ListsIconFilled,
     MessagesIcon,
@@ -38,7 +36,7 @@ import {useSideMenuStyles} from "./SideMenuStyles";
 import AddTweetModal from "../AddTweetModal/AddTweetModal";
 import {selectLoadingState} from "../../store/ducks/tweets/selectors";
 import DisplayModal from "./DisplayModal/DisplayModal";
-import {DisplayProps} from "../../pages/Settings/AccessibilityDisplayLanguages/Display/Display";
+import {DisplayProps} from "../../types/display";
 import FollowerRequestsModal from "./FollowerRequestsModal/FollowerRequestsModal";
 import {useGlobalStyles} from "../../util/globalClasses";
 import {resetFollowerRequestsState} from "../../store/ducks/followerRequests/actionCreators";
@@ -51,7 +49,6 @@ import {
     SEARCH,
     SETTINGS
 } from "../../util/pathConstants";
-import {HELP_TWITTER} from "../../util/url";
 import {LoadingStatus} from "../../store/types/common";
 
 const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}): ReactElement => {
@@ -302,24 +299,10 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                         </Typography>
                                     </ListItem>
                                 </Link>
-                                <a href={HELP_TWITTER} target="_blank">
-                                    <ListItem>
-                                        {HelpCenterIcon}
-                                        <Typography variant={"body1"} component={"span"}>
-                                            Trung tâm trợ giúp
-                                        </Typography>
-                                    </ListItem>
-                                </a>
                                 <ListItem id={"openDisplayModal"} onClick={onOpenDisplayModal}>
                                     {DisplayIcon}
                                     <Typography variant={"body1"} component={"span"}>
                                         Hiển thị
-                                    </Typography>
-                                </ListItem>
-                                <ListItem>
-                                    {KeyboardShortcutsIcon}
-                                    <Typography variant={"body1"} component={"span"}>
-                                        Phím tắt
                                     </Typography>
                                 </ListItem>
                             </List>

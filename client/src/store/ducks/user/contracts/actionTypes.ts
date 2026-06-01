@@ -30,10 +30,6 @@ export enum UserActionsType {
     UPDATE_EMAIL = 'user/UPDATE_EMAIL',
     UPDATE_PHONE = 'user/UPDATE_PHONE',
     UPDATE_COUNTRY = 'user/UPDATE_COUNTRY',
-    UPDATE_GENDER = 'user/UPDATE_GENDER',
-    UPDATE_LANGUAGE = 'user/UPDATE_LANGUAGE',
-    UPDATE_DIRECT = 'user/UPDATE_DIRECT',
-    UPDATE_PRIVATE_PROFILE = 'user/UPDATE_PRIVATE_PROFILE',
     UPDATE_COLOR_SCHEME = 'user/UPDATE_COLOR_SCHEME',
     UPDATE_BACKGROUND_COLOR = 'user/UPDATE_BACKGROUND_COLOR',
     SET_USERNAME = 'user/SET_USERNAME',
@@ -157,26 +153,6 @@ export interface UpdatePhoneActionInterface extends Action<UserActionsType> {
 
 export interface UpdateCountryActionInterface extends Action<UserActionsType> {
     type: UserActionsType.UPDATE_COUNTRY;
-    payload: Settings;
-}
-
-export interface UpdateGenderActionInterface extends Action<UserActionsType> {
-    type: UserActionsType.UPDATE_GENDER;
-    payload: Settings;
-}
-
-export interface UpdateLanguageActionInterface extends Action<UserActionsType> {
-    type: UserActionsType.UPDATE_LANGUAGE;
-    payload: Settings;
-}
-
-export interface UpdateDirectActionInterface extends Action<UserActionsType> {
-    type: UserActionsType.UPDATE_DIRECT;
-    payload: Settings;
-}
-
-export interface UpdatePrivateProfileActionInterface extends Action<UserActionsType> {
-    type: UserActionsType.UPDATE_PRIVATE_PROFILE;
     payload: Settings;
 }
 

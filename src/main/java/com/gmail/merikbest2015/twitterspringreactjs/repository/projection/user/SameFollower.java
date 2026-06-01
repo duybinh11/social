@@ -1,5 +1,6 @@
 package com.gmail.merikbest2015.twitterspringreactjs.repository.projection.user;
 
+import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.ProjectionAvatarMapper;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Map;
@@ -13,6 +14,6 @@ public interface SameFollower {
     Map<String, Object> getAvatar();
 
     static Map<String, Object> convertToAvatar(Long id, String src) {
-        return Map.of("id", id,"src", src);
+        return ProjectionAvatarMapper.toAvatar(id, src);
     }
 }

@@ -80,41 +80,6 @@ public class UserSettingsServiceImpl implements UserSettingsService {
 
     @Override
     @Transactional
-    public String updateGender(String gender) {
-        if (gender.length() == 0 || gender.length() > 30) {
-            throw new ApiRequestException("Độ dài giới tính không hợp lệ", HttpStatus.BAD_REQUEST);
-        }
-        Long userId = authenticationService.getAuthenticatedUserId();
-        userRepository.updateGender(gender, userId);
-        return gender;
-    }
-
-    @Override
-    @Transactional
-    public String updateLanguage(String language) {
-        Long userId = authenticationService.getAuthenticatedUserId();
-        userRepository.updateLanguage(language, userId);
-        return language;
-    }
-
-    @Override
-    @Transactional
-    public boolean updateDirectMessageRequests(boolean mutedDirectMessages) {
-        Long userId = authenticationService.getAuthenticatedUserId();
-        userRepository.updateDirectMessageRequests(mutedDirectMessages, userId);
-        return mutedDirectMessages;
-    }
-
-    @Override
-    @Transactional
-    public boolean updatePrivateProfile(boolean privateProfile) {
-        Long userId = authenticationService.getAuthenticatedUserId();
-        userRepository.updatePrivateProfile(privateProfile, userId);
-        return privateProfile;
-    }
-
-    @Override
-    @Transactional
     public ColorSchemeType updateColorScheme(ColorSchemeType colorSchemeType) {
         Long userId = authenticationService.getAuthenticatedUserId();
         userRepository.updateColorScheme(colorSchemeType, userId);

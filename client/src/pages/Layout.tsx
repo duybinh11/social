@@ -11,7 +11,7 @@ import Users from '../components/Users/Users';
 import {useLayoutStyles} from "./LayoutStyles";
 import SideSearch from "../components/SideSearch/SideSearch";
 import {EditIcon} from "../icons";
-import {DisplayProps} from "./Settings/AccessibilityDisplayLanguages/Display/Display";
+import {DisplayProps} from "../types/display";
 import ProfileImages from "../components/ProfileImages/ProfileImages";
 import {selectImages} from "../store/ducks/userProfile/selectors";
 import {SETTINGS} from "../util/pathConstants";

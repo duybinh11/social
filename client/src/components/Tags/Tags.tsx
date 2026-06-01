@@ -6,7 +6,6 @@ import {List, ListItem, Paper, Typography} from "@material-ui/core";
 import {selectIsTagsLoading, selectTagsItems} from "../../store/ducks/tags/selectors";
 import {useTagsStyles} from "./TagsStyles";
 import Spinner from "../Spinner/Spinner";
-import SettingsModal from "./SettingsModal/SettingsModal";
 import {HOME_TRENDS} from "../../util/pathConstants";
 import TagItem from "./TagItem/TagItem";
 
@@ -21,7 +20,6 @@ const Tags = (): ReactElement => {
                 <Typography variant={"h5"} component={"div"}>
                     Xu hướng dành cho bạn
                 </Typography>
-                <SettingsModal/>
             </Paper>
             {isTagsLoading ? (
                 <Spinner/>

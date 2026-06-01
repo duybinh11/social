@@ -1,6 +1,6 @@
-import React, {FC, FormEvent, ReactElement, useState} from "react";
+import React, {FC, FormEvent, ReactElement, useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Button, Dialog, Divider, InputAdornment, List, ListItem} from "@material-ui/core";
+import {Button, Dialog, Divider, InputAdornment, List, ListItem, Typography} from "@material-ui/core";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 
@@ -8,7 +8,6 @@ import {useMessagesModalStyles} from "./MessagesModalStyles";
 import {MessagesModalInput} from "./MessagesModalInput/MessagesModalInput"
 import {
     fetchUsersSearchByUsername,
-    resetUsersState,
     setUsersSearch
 } from "../../../store/ducks/usersSearch/actionCreators";
 import {selectUsersPagesCount, selectUsersSearch} from "../../../store/ducks/usersSearch/selectors";
@@ -19,6 +18,11 @@ import CloseButton from "../../../components/CloseButton/CloseButton";
 import {selectUserDataId} from "../../../store/ducks/user/selectors";
 import {UserResponse} from "../../../store/types/user";
 import InfiniteScrollWrapper from '../../../components/InfiniteScrollWrapper/InfiniteScrollWrapper';
+import {normalizeUserSearchQuery} from "../../../util/normalizeUserSearchQuery";
+import {selectUsersSearchIsLoading} from "../../../store/ducks/usersSearch/selectors";
+import Spinner from "../../../components/Spinner/Spinner";
+
+const SEARCH_DEBOUNCE_MS = 300;
 
 interface MessagesModalProps {
     visible?: boolean;
@@ -31,28 +35,62 @@ const MessagesModal: FC<MessagesModalProps> = ({visible, onClose}): ReactElement
     const users = useSelector(selectUsersSearch);
     const myProfileId = useSelector(selectUserDataId);
     const usersPagesCount = useSelector(selectUsersPagesCount);
+    const isUsersSearchLoading = useSelector(selectUsersSearchIsLoading);
     const [text, setText] = useState<string>("");
     const [selectedIndex, setSelectedIndex] = useState<number>();
     const [selectedUser, setSelectedUser] = useState<UserResponse>();
 
+    useEffect(() => {
+        if (!visible) {
+            return;
+        }
+        setText("");
+        setSelectedIndex(undefined);
+        setSelectedUser(undefined);
+        dispatch(setUsersSearch([]));
+    }, [visible, dispatch]);
+
+    useEffect(() => {
+        if (!visible) {
+            return;
+        }
+
+        const query = normalizeUserSearchQuery(text);
+        if (!query) {
+            dispatch(setUsersSearch([]));
+            return;
+        }
+
+        const timer = setTimeout(() => {
+            dispatch(fetchUsersSearchByUsername({
+                username: query,
+                pageNumber: 0
+            }));
+        }, SEARCH_DEBOUNCE_MS);
+
+        return () => clearTimeout(timer);
+    }, [text, visible, dispatch]);
+
     const handleSubmitSearch = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
-        dispatch(fetchUsersSearchByUsername({ username: encodeURIComponent(text), pageNumber: 0 })); // TODO add <InfiniteScroll/>
-    };
-
-    const onSearch = (text: string): void => {
-        if (text) {
-            setText(text);
-            dispatch(resetUsersState());
-            dispatch(fetchUsersSearchByUsername({ username: encodeURIComponent(text), pageNumber: 0 }));
-        } else {
-            setText("");
-            dispatch(setUsersSearch([]));
+        const query = normalizeUserSearchQuery(text);
+        if (query) {
+            dispatch(fetchUsersSearchByUsername({
+                username: query,
+                pageNumber: 0
+            }));
         }
     };
 
     const loadParticipants = (page: number): void => {
-        dispatch(fetchUsersSearchByUsername({ username: encodeURIComponent(text), pageNumber: page }));
+        const query = normalizeUserSearchQuery(text);
+        if (!query) {
+            return;
+        }
+        dispatch(fetchUsersSearchByUsername({
+            username: query,
+            pageNumber: page
+        }));
     };
 
     const handleClickAddUserToChat = (): void => {
@@ -103,9 +141,9 @@ const MessagesModal: FC<MessagesModalProps> = ({visible, onClose}): ReactElement
                     <form onSubmit={handleSubmitSearch}>
                         <MessagesModalInput
                             fullWidth
-                            placeholder="Explore people"
+                            placeholder="Tìm người dùng"
                             variant="outlined"
-                            onChange={(event) => onSearch(event.target.value)}
+                            onChange={(event) => setText(event.target.value)}
                             value={text}
                             InputProps={{
                                 startAdornment: (
@@ -117,6 +155,12 @@ const MessagesModal: FC<MessagesModalProps> = ({visible, onClose}): ReactElement
                         />
                     </form>
                     <Divider/>
+                    {isUsersSearchLoading && users.length === 0 && <Spinner/>}
+                    {!isUsersSearchLoading && normalizeUserSearchQuery(text) && users.length === 0 && (
+                        <Typography variant="body2" color="textSecondary" style={{padding: 16}}>
+                            Không tìm thấy người dùng. Thử tìm theo tên hoặc @username (không cần dấu @).
+                        </Typography>
+                    )}
                     <List component="nav">
                         {users.map((user) => (
                             <ListItem

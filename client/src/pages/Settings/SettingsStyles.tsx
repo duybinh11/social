@@ -1,11 +1,6 @@
 import {makeStyles, Theme} from "@material-ui/core";
-import {LocationState} from "./Settings";
 
-interface SettingsStylesProps {
-    location: LocationState,
-}
-
-export const useSettingsStyles = makeStyles<Theme, SettingsStylesProps>((theme) => ({
+export const useSettingsStyles = makeStyles((theme) => ({
     settingsLayout: {
         display: "flex",
         flexDirection: "row",
@@ -25,7 +20,7 @@ export const useSettingsStyles = makeStyles<Theme, SettingsStylesProps>((theme) 
     container: {
         padding: 0,
         borderRadius: 0,
-        minHeight: props => props.location.pathname.includes("privacy_and_safety") ? 1300 : "100vh",
+        minHeight: "100vh",
         borderTop: 0,
         borderBottom: 0,
     },

@@ -24,8 +24,6 @@ export const useTagsStyles = makeStyles((theme) => ({
         },
     },
     header: {
-        display: "flex",
-        justifyContent: "space-between",
         borderTop: 0,
         borderLeft: 0,
         borderRight: 0,

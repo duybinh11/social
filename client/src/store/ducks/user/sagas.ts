@@ -5,13 +5,9 @@ import {
     setBackgroundColor,
     setColorScheme,
     setCountry,
-    setDirect,
     setEmail,
-    setGender,
-    setLanguage,
     setPhone,
     setPinTweetId,
-    setPrivateProfile,
     setProfileStarted,
     setReadMessage,
     setUserData,
@@ -32,12 +28,8 @@ import {
     UpdateBackgroundColorActionInterface,
     UpdateColorSchemeActionInterface,
     UpdateCountryActionInterface,
-    UpdateDirectActionInterface,
     UpdateEmailActionInterface,
-    UpdateGenderActionInterface,
-    UpdateLanguageActionInterface,
     UpdatePhoneActionInterface,
-    UpdatePrivateProfileActionInterface,
     UpdateUserDataActionInterface,
     UpdateUsernameActionInterface,
     UserActionsType
@@ -225,45 +217,6 @@ export function* updateCountryRequest({payload}: UpdateCountryActionInterface) {
     }
 }
 
-export function* updateGenderRequest({payload}: UpdateGenderActionInterface) {
-    try {
-        yield put(setUserLoadingStatus(LoadingStatus.LOADING));
-        const response: AxiosResponse<string> = yield call(UserSettingsApi.updateGender, payload);
-        yield put(setGender(response.data));
-    } catch (e) {
-        yield put(setUserLoadingStatus(LoadingStatus.ERROR));
-    }
-}
-
-export function* updateLanguageRequest({payload}: UpdateLanguageActionInterface) {
-    try {
-        yield put(setUserLoadingStatus(LoadingStatus.LOADING));
-        const response: AxiosResponse<string> = yield call(UserSettingsApi.updateLanguage, payload);
-        yield put(setLanguage(response.data));
-    } catch (e) {
-        yield put(setUserLoadingStatus(LoadingStatus.ERROR));
-    }
-}
-
-export function* updateDirectRequest({payload}: UpdateDirectActionInterface) {
-    try {
-        const response: AxiosResponse<boolean> = yield call(UserSettingsApi.updateDirectMessageRequests, payload);
-        yield put(setDirect(response.data));
-    } catch (e) {
-        yield put(setUserLoadingStatus(LoadingStatus.ERROR));
-    }
-}
-
-export function* updatePrivateProfileRequest({payload}: UpdatePrivateProfileActionInterface) {
-    try {
-        yield put(setUserLoadingStatus(LoadingStatus.LOADING));
-        const response: AxiosResponse<boolean> = yield call(UserSettingsApi.updatePrivateProfile, payload);
-        yield put(setPrivateProfile(response.data));
-    } catch (e) {
-        yield put(setUserLoadingStatus(LoadingStatus.ERROR));
-    }
-}
-
 export function* updateColorSchemeRequest({payload}: UpdateColorSchemeActionInterface) {
     try {
         yield put(setUserLoadingStatus(LoadingStatus.LOADING));
@@ -344,10 +297,6 @@ export function* userSaga() {
     yield takeLatest(UserActionsType.UPDATE_EMAIL, updateEmailRequest);
     yield takeLatest(UserActionsType.UPDATE_PHONE, updatePhoneRequest);
     yield takeLatest(UserActionsType.UPDATE_COUNTRY, updateCountryRequest);
-    yield takeLatest(UserActionsType.UPDATE_GENDER, updateGenderRequest);
-    yield takeLatest(UserActionsType.UPDATE_LANGUAGE, updateLanguageRequest);
-    yield takeLatest(UserActionsType.UPDATE_DIRECT, updateDirectRequest);
-    yield takeLatest(UserActionsType.UPDATE_PRIVATE_PROFILE, updatePrivateProfileRequest);
     yield takeLatest(UserActionsType.UPDATE_COLOR_SCHEME, updateColorSchemeRequest);
     yield takeLatest(UserActionsType.UPDATE_BACKGROUND_COLOR, updateBackgroundColorRequest);
     yield takeLatest(UserActionsType.PROCESS_USER_TO_BLOCKLIST, processUserToBlocklistRequest);

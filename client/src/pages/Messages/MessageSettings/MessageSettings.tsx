@@ -4,7 +4,6 @@ import classnames from "classnames";
 
 import {useMessageSettingsStyles} from "./MessageSettingsStyles";
 import BackButton from "../../../components/BackButton/BackButton";
-import DirectMessages from "../../Settings/PrivacyAndSafety/DirectMessages/DirectMessages";
 import {useGlobalStyles} from "../../../util/globalClasses";
 
 const MessageSettings = memo((): ReactElement => {
@@ -20,7 +19,9 @@ const MessageSettings = memo((): ReactElement => {
                 </Typography>
             </Paper>
             <div className={globalClasses.contentWrapper}>
-                <DirectMessages/>
+                <Typography variant="body1" color="textSecondary">
+                    Cài đặt tin nhắn trực tiếp hiện không khả dụng.
+                </Typography>
             </div>
         </Paper>
     );

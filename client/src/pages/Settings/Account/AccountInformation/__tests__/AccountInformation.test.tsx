@@ -5,11 +5,8 @@ import {createMockRootState, mockDispatch, mountWithStore, testClickOnLink} from
 import {getCountry, getPhoneCode} from "../../../../../util/countryCodes";
 import {formatScheduleDate} from "../../../../../util/formatDate";
 import {
-    SETTINGS_ACCESSIBILITY_DISPLAY_AND_LANGUAGES_LANGUAGES,
-    SETTINGS_INFO_AGE,
     SETTINGS_INFO_COUNTRY,
     SETTINGS_INFO_EMAIL,
-    SETTINGS_INFO_GENDER,
     SETTINGS_INFO_PHONE,
     SETTINGS_INFO_USERNAME
 } from "../../../../../util/pathConstants";
@@ -25,7 +22,7 @@ describe("AccountInformation", () => {
     beforeEach(() => {
         mockDispatchFn = mockDispatch();
     });
-    
+
     it("should render correctly", () => {
         const wrapper = mountWithStore(<AccountInformation/>, mockStore);
 
@@ -39,10 +36,6 @@ describe("AccountInformation", () => {
         expect(wrapper.text().includes(formatScheduleDate(new Date(mockUser.registrationDate)))).toBe(true);
         expect(wrapper.text().includes("Quốc gia")).toBe(true);
         expect(wrapper.text().includes(getCountry(mockUser.countryCode))).toBe(true);
-        expect(wrapper.text().includes("Ngôn ngữ")).toBe(true);
-        expect(wrapper.text().includes(mockUser.language)).toBe(true);
-        expect(wrapper.text().includes("Giới tính")).toBe(true);
-        expect(wrapper.text().includes(mockUser.gender)).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {type: UserActionsType.FETCH_USER_DATA});
     });
 
@@ -60,17 +53,5 @@ describe("AccountInformation", () => {
 
     it("should link to Country", () => {
         testClickOnLink(<AccountInformation/>, SETTINGS_INFO_COUNTRY, 3);
-    });
-
-    it("should link to Languages", () => {
-        testClickOnLink(<AccountInformation/>, SETTINGS_ACCESSIBILITY_DISPLAY_AND_LANGUAGES_LANGUAGES, 4);
-    });
-
-    it("should link to Gender", () => {
-        testClickOnLink(<AccountInformation/>, SETTINGS_INFO_GENDER, 5);
-    });
-
-    it("should link to Age", () => {
-        testClickOnLink(<AccountInformation/>, SETTINGS_INFO_AGE, 6);
     });
 });

@@ -5,9 +5,9 @@ import {testApiCall} from "../../../util/apiTestHelper";
 import {
     API_SETTINGS_UPDATE_BACKGROUND_COLOR,
     API_SETTINGS_UPDATE_COLOR_SCHEME,
-    API_SETTINGS_UPDATE_COUNTRY, API_SETTINGS_UPDATE_DIRECT,
-    API_SETTINGS_UPDATE_EMAIL, API_SETTINGS_UPDATE_GENDER, API_SETTINGS_UPDATE_LANGUAGE,
-    API_SETTINGS_UPDATE_PHONE, API_SETTINGS_UPDATE_PRIVATE,
+    API_SETTINGS_UPDATE_COUNTRY,
+    API_SETTINGS_UPDATE_EMAIL,
+    API_SETTINGS_UPDATE_PHONE,
     API_SETTINGS_UPDATE_USERNAME
 } from "../../../util/endpoints";
 import {UserSettingsApi} from "../userSettingsApi";
@@ -22,10 +22,6 @@ describe("UserSettingsApi", () => {
         countryCode: "111",
         phone: 1234567,
         country: "test",
-        gender: "test",
-        language: "test",
-        mutedDirectMessages: true,
-        privateProfile: true,
         colorScheme: ColorScheme.GREEN,
         backgroundColor: BackgroundTheme.LIGHTS_OUT
     };
@@ -69,34 +65,6 @@ describe("UserSettingsApi", () => {
     describe("should call UserSettingsApi.updateCountry", () => {
         it("[200] should update country Success", () => {
             testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_COUNTRY, 200, "test", UserSettingsApi.updateCountry, mockRequest);
-        });
-    });
-
-    describe("should call UserSettingsApi.updateGender", () => {
-        it("[200] should update gender Success", () => {
-            testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_GENDER, 200, "test", UserSettingsApi.updateGender, mockRequest);
-        });
-
-        it("[400] should return Incorrect gender length error", () => {
-            testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_GENDER, 400, "Độ dài giới tính không hợp lệ", UserSettingsApi.updateGender, mockRequest);
-        });
-    });
-
-    describe("should call UserSettingsApi.updateLanguage", () => {
-        it("[200] should update language Success", () => {
-            testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_LANGUAGE, 200, "test", UserSettingsApi.updateLanguage, mockRequest);
-        });
-    });
-
-    describe("should call UserSettingsApi.updateDirectMessageRequests", () => {
-        it("[200] should update direct message requests Success", () => {
-            testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_DIRECT, 200, true, UserSettingsApi.updateDirectMessageRequests, mockRequest);
-        });
-    });
-
-    describe("should call UserSettingsApi.updatePrivateProfile", () => {
-        it("[200] should update private profile Success", () => {
-            testApiCall(mockAdapter, "onPut", API_SETTINGS_UPDATE_PRIVATE, 200, true, UserSettingsApi.updatePrivateProfile, mockRequest);
         });
     });
 

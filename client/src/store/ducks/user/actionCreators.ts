@@ -35,12 +35,8 @@ import {
     UpdateBackgroundColorActionInterface,
     UpdateColorSchemeActionInterface,
     UpdateCountryActionInterface,
-    UpdateDirectActionInterface,
     UpdateEmailActionInterface,
-    UpdateGenderActionInterface,
-    UpdateLanguageActionInterface,
     UpdatePhoneActionInterface,
-    UpdatePrivateProfileActionInterface,
     UpdateUserDataActionInterface,
     UpdateUsernameActionInterface,
     UserActionsType
@@ -176,26 +172,6 @@ export const updatePhone = (payload: Settings): UpdatePhoneActionInterface => ({
 
 export const updateCountry = (payload: Settings): UpdateCountryActionInterface => ({
     type: UserActionsType.UPDATE_COUNTRY,
-    payload,
-});
-
-export const updateGender = (payload: Settings): UpdateGenderActionInterface => ({
-    type: UserActionsType.UPDATE_GENDER,
-    payload,
-});
-
-export const updateLanguage = (payload: Settings): UpdateLanguageActionInterface => ({
-    type: UserActionsType.UPDATE_LANGUAGE,
-    payload,
-});
-
-export const updateDirect = (payload: Settings): UpdateDirectActionInterface => ({
-    type: UserActionsType.UPDATE_DIRECT,
-    payload,
-});
-
-export const updatePrivateProfile = (payload: Settings): UpdatePrivateProfileActionInterface => ({
-    type: UserActionsType.UPDATE_PRIVATE_PROFILE,
     payload,
 });
 

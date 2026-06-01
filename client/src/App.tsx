@@ -175,11 +175,7 @@ const App: FC = (): ReactElement => {
                         <Route path={NOTIFICATIONS_TIMELINE} component={NotificationsTimeline} exact/>
                         <Route path={`${NOTIFICATION}/:id`} component={NotificationInfo} exact/>
                         <Route path={MESSAGES} component={Messages}/>
-                        <Route path={SETTINGS}
-                               render={() => <Settings
-                                   changeBackgroundColor={changeBackgroundColor}
-                                   changeColorScheme={changeColorScheme}/>
-                               }/>
+                        <Route path={SETTINGS} component={Settings}/>
                         <Route path={`${QUOTES}/:tweetId`} component={QuoteTweets}/>
                         <Route path={LISTS} component={Lists} exact/>
                         <Route path={`${LISTS}/:listId`} component={FullList} exact/>
