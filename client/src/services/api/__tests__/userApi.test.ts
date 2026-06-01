@@ -6,7 +6,6 @@ import {
     API_USER,
     API_USER_ALL,
     API_USER_BLOCKED,
-    API_USER_BOOKMARKS,
     API_USER_DETAILS,
     API_USER_FOLLOW,
     API_USER_FOLLOW_ACCEPT,
@@ -257,22 +256,6 @@ describe("UserApi", () => {
     describe("should fetch UserApi.getUserMentions", () => {
         it("[200] should get user mentions Success", () => {
             testApiCall(mockAdapter, "onGet", API_USER_MENTIONS, 200, mockTweets, UserApi.getUserMentions, 1);
-        });
-    });
-
-    describe("should fetch UserApi.getUserBookmarks", () => {
-        it("[200] should get user bookmarks Success", () => {
-            testApiCall(mockAdapter, "onGet", API_USER_BOOKMARKS, 200, mockTweets, UserApi.getUserBookmarks, 1);
-        });
-    });
-
-    describe("should fetch UserApi.addTweetToBookmarks", () => {
-        it("[200] should add tweet to bookmarks Success", () => {
-            testApiCall(mockAdapter, "onGet", `${API_USER_BOOKMARKS}/1`, 200, true, UserApi.addTweetToBookmarks, 1);
-        });
-
-        it("[404] should tweet not found", () => {
-            testApiCall(mockAdapter, "onGet", `${API_USER_BOOKMARKS}/1`, 404, mockTweetErrorResponse, UserApi.addTweetToBookmarks, 1);
         });
     });
 

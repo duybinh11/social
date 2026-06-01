@@ -1,10 +1,8 @@
 import {
-    FetchIsTweetBookmarkedAdditionalInfoActionInterface,
     FetchTweetAdditionalInfoActionInterface,
     ResetTweetAdditionalInfoActionInterface,
     SetBlockedTweetAdditionalInfoActionInterface,
     SetFollowedTweetAdditionalInfoActionInterface,
-    SetIsTweetBookmarkedAdditionalInfoActionInterface,
     SetMutedTweetAdditionalInfoActionInterface,
     SetTweetAdditionalInfoActionInterface,
     SetTweetAdditionalInfoLoadingStateActionInterface,
@@ -35,16 +33,6 @@ export const setBlockedTweetAdditionalInfo = (payload: boolean): SetBlockedTweet
 
 export const setFollowedTweetAdditionalInfo = (payload: boolean): SetFollowedTweetAdditionalInfoActionInterface => ({
     type: TweetAdditionalInfoType.SET_FOLLOWED_TWEET_ADDITIONAL_INFO,
-    payload,
-});
-
-export const fetchIsTweetBookmarkedAdditionalInfo = (payload: number): FetchIsTweetBookmarkedAdditionalInfoActionInterface => ({
-    type: TweetAdditionalInfoType.FETCH_IS_TWEET_BOOKMARKED_ADDITIONAL_INFO,
-    payload,
-});
-
-export const setIsTweetBookmarkedAdditionalInfo = (payload: boolean): SetIsTweetBookmarkedAdditionalInfoActionInterface => ({
-    type: TweetAdditionalInfoType.SET_IS_TWEET_BOOKMARKED_ADDITIONAL_INFO,
     payload,
 });
 

@@ -61,18 +61,8 @@ export const tweetsReducer = produce((draft: Draft<TweetsState>, action: TweetsA
             }
             break;
 
-        case TweetsActionType.SET_UPDATED_BOOKMARKED_TWEET:
-            const bookmarkedTweetIndex = draft.items.findIndex((tweet) => tweet.id === action.payload.tweetId);
-            if (bookmarkedTweetIndex !== -1) draft.items[bookmarkedTweetIndex].isTweetBookmarked = action.payload.isTweetBookmarked;
-            break;
-
         case TweetsActionType.SET_LOADING_STATE:
             draft.loadingState = action.payload;
-            break;
-
-        case TweetsActionType.REMOVE_TWEET_FROM_BOOKMARKS:
-            draft.items = draft.items.filter((tweet) => tweet.id !== action.payload);
-            draft.loadingState = LoadingStatus.LOADED
             break;
 
         case TweetsActionType.DELETE_TWEET:

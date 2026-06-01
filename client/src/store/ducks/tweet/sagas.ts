@@ -3,7 +3,6 @@ import {call, put, takeEvery} from 'redux-saga/effects';
 
 import {TweetApi} from "../../../services/api/tweetApi";
 import {
-    AddTweetToBookmarksActionInterface,
     DeleteTweetReplyActionInterface,
     FetchLikedUsersActionInterface,
     FetchRepliesActionInterface,
@@ -13,7 +12,6 @@ import {
     TweetActionType
 } from "./contracts/actionTypes";
 import {
-    setBookmarkedTweet,
     setErrorMessage,
     setLikedUsers,
     setLikedUsersLoadingState,
@@ -25,11 +23,9 @@ import {
     setTweetLoadingState
 } from './actionCreators';
 import {TweetResponse} from "../../types/tweet";
-import {UserApi} from "../../../services/api/userApi";
 import {UserResponse} from "../../types/user";
-import {deleteTweet, setUpdatedBookmarkedTweetTweetsState} from "../tweets/actionCreators";
-import {deleteUserTweet, setUpdatedBookmarkedTweetUserTweetState} from "../userTweets/actionCreators";
-import {setIsTweetBookmarkedAdditionalInfo} from "../tweetAdditionalInfo/actionCreators";
+import {deleteTweet} from "../tweets/actionCreators";
+import {deleteUserTweet} from "../userTweets/actionCreators";
 import {LoadingStatus} from "../../types/common";
 
 export function* fetchTweetDataRequest({payload: tweetId}: FetchTweetDataActionInterface) {
@@ -39,18 +35,6 @@ export function* fetchTweetDataRequest({payload: tweetId}: FetchTweetDataActionI
         yield put(setTweetData(response.data));
     } catch (error: any) {
         yield put(setErrorMessage(error.response.data));
-    }
-}
-
-export function* addTweetToBookmarksRequest({payload}: AddTweetToBookmarksActionInterface) {
-    try {
-        const {data}: AxiosResponse<boolean> = yield call(UserApi.addTweetToBookmarks, payload);
-        yield put(setBookmarkedTweet(data));
-        yield put(setUpdatedBookmarkedTweetTweetsState({tweetId: payload, isTweetBookmarked: data}));
-        yield put(setUpdatedBookmarkedTweetUserTweetState({tweetId: payload, isTweetBookmarked: data}));
-        yield put(setIsTweetBookmarkedAdditionalInfo(data));
-    } catch (error) {
-        yield put(setTweetLoadingState(LoadingStatus.ERROR));
     }
 }
 
@@ -112,7 +96,6 @@ export function* fetchRepliesRequest({payload}: FetchRepliesActionInterface) {
 
 export function* tweetSaga() {
     yield takeEvery(TweetActionType.FETCH_TWEET_DATA, fetchTweetDataRequest);
-    yield takeEvery(TweetActionType.ADD_TWEET_TO_BOOKMARKS, addTweetToBookmarksRequest);
     yield takeEvery(TweetActionType.FETCH_REPLY_TWEET, fetchReplyTweetRequest);
     yield takeEvery(TweetActionType.DELETE_TWEET_REPLY, deleteTweetReplyRequest);
     // liked and retweeted users

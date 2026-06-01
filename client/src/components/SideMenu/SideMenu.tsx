@@ -6,8 +6,6 @@ import CreateIcon from '@material-ui/icons/Create';
 import classnames from "classnames";
 
 import {
-    BookmarksIcon,
-    BookmarksIconFilled,
     DisplayIcon,
     ExploreIcon,
     ExploreIconFilled,
@@ -45,7 +43,6 @@ import FollowerRequestsModal from "./FollowerRequestsModal/FollowerRequestsModal
 import {useGlobalStyles} from "../../util/globalClasses";
 import {resetFollowerRequestsState} from "../../store/ducks/followerRequests/actionCreators";
 import {
-    BOOKMARKS,
     HOME,
     LISTS,
     MESSAGES,
@@ -209,24 +206,6 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                     )}
                                     <Typography variant={"h5"}>
                                         Tin nhắn
-                                    </Typography>
-                                </>
-                            </Hidden>
-                        </div>
-                    </NavLink>
-                </li>
-                <li className={classes.itemWrapper}>
-                    <NavLink to={BOOKMARKS} activeClassName={"selected"}>
-                        <div>
-                            <Hidden smDown>
-                                <>
-                                    {(location.pathname.includes(BOOKMARKS)) ? (
-                                        <span>{BookmarksIconFilled}</span>
-                                    ) : (
-                                        <span>{BookmarksIcon}</span>
-                                    )}
-                                    <Typography variant={"h5"}>
-                                        Dấu trang
                                     </Typography>
                                 </>
                             </Hidden>

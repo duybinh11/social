@@ -2,7 +2,6 @@ package com.gmail.merikbest2015.twitterspringreactjs.service;
 
 import com.gmail.merikbest2015.twitterspringreactjs.model.Image;
 import com.gmail.merikbest2015.twitterspringreactjs.model.User;
-import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.BookmarkProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.LikeTweetProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.notification.NotificationInfoProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.notification.NotificationProjection;
@@ -49,10 +48,6 @@ public interface UserService {
     Page<TweetProjection> getUserMentions(Pageable pageable);
 
     Page<TweetsProjection> getNotificationsFromTweetAuthors(Pageable pageable);
-
-    Page<BookmarkProjection> getUserBookmarks(Pageable pageable);
-
-    Boolean processUserBookmarks(Long tweetId);
 
     Image uploadImage(MultipartFile multipartFile);
     

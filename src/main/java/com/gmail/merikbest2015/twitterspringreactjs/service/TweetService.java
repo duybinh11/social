@@ -53,5 +53,4 @@ public interface TweetService {
 
     TweetProjection voteInPoll(Long tweetId, Long pollId, Long pollChoiceId);
 
-    Boolean getIsTweetBookmarked(Long tweetId);
 }

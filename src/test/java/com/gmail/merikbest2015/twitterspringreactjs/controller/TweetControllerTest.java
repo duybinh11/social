@@ -69,7 +69,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[0].isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(false))
                 .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(false));
     }
 
     @Test
@@ -101,7 +100,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$.isUserFollowByOtherUser").value(false))
                 .andExpect(jsonPath("$.isTweetDeleted").value(false))
-                .andExpect(jsonPath("$.isTweetBookmarked").value(false));
     }
 
     @Test
@@ -187,7 +185,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[0].isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(true))
                 .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(false));
     }
 
     @Test
@@ -220,7 +217,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[0].isTweetRetweeted").value(true))
                 .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(true))
                 .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(false));
     }
     
     @Test
@@ -291,7 +287,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[0].isTweetRetweeted").value(true))
                 .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(true))
                 .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(false));
     }
 
     @Test
@@ -324,7 +319,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[0].isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(false))
                 .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(false));
     }
 
     @Test
@@ -357,7 +351,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[6].isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$[6].isUserFollowByOtherUser").value(false))
                 .andExpect(jsonPath("$[6].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[6].isTweetBookmarked").value(false));
     }
 
     @Test
@@ -425,7 +418,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$.isUserFollowByOtherUser").value(false))
                 .andExpect(jsonPath("$.isTweetDeleted").value(false))
-                .andExpect(jsonPath("$.isTweetBookmarked").value(false));
     }
 
     @Test
@@ -463,7 +455,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$.isUserFollowByOtherUser").value(false))
                 .andExpect(jsonPath("$.isTweetDeleted").value(false))
-                .andExpect(jsonPath("$.isTweetBookmarked").value(false));
     }
 
     @Test
@@ -501,7 +492,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$.isUserFollowByOtherUser").value(false))
                 .andExpect(jsonPath("$.isTweetDeleted").value(false))
-                .andExpect(jsonPath("$.isTweetBookmarked").value(false));
     }
 
     @Test
@@ -546,7 +536,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$.isUserFollowByOtherUser").value(false))
                 .andExpect(jsonPath("$.isTweetDeleted").value(false))
-                .andExpect(jsonPath("$.isTweetBookmarked").value(false));
     }
 
     @Test
@@ -679,7 +668,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$[0].isTweetRetweeted").value(true))
                 .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(true))
                 .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(false));
     }
 
     @Test
@@ -821,7 +809,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$.isUserFollowByOtherUser").value(false))
                 .andExpect(jsonPath("$.isTweetDeleted").value(false))
-                .andExpect(jsonPath("$.isTweetBookmarked").value(false));
     }
 
     @Test
@@ -869,7 +856,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$.isUserFollowByOtherUser").value(false))
                 .andExpect(jsonPath("$.isTweetDeleted").value(false))
-                .andExpect(jsonPath("$.isTweetBookmarked").value(false));
     }
 
     @Test
@@ -931,7 +917,6 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$.isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$.isUserFollowByOtherUser").value(false))
                 .andExpect(jsonPath("$.isTweetDeleted").value(false))
-                .andExpect(jsonPath("$.isTweetBookmarked").value(true));
     }
 
     @Test
@@ -998,12 +983,4 @@ public class TweetControllerTest {
                 .andExpect(jsonPath("$", is("Bình chọn trong tweet không tồn tại")));
     }
 
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[200] GET /api/v1/tweets/43/bookmarked - Get is tweet bookmarked")
-    public void getIsTweetBookmarked() throws Exception {
-        mockMvc.perform(get(URL_TWEETS_BASIC + "/43/bookmarked"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$").value(false));
-    }
 }

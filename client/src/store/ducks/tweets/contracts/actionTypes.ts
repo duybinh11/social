@@ -9,7 +9,6 @@ import {
     TweetsByListIdRequest,
     TweetsState,
     TweetsWithQuotesByIdRequest,
-    UpdatedBookmarkedTweetPayload,
     Vote
 } from "./state";
 import {BlockedToTweetsPayload, FollowToTweetsPayload, MutedToTweetsPayload, TweetResponse} from "../../../types/tweet";
@@ -36,13 +35,10 @@ export enum TweetsActionType {
     ADD_POLL = "tweets/ADD_POLL",
     SET_TWEET = "tweets/SET_TWEET",
     ADD_QUOTE_TWEET = "tweets/ADD_QUOTE_TWEET",
-    FETCH_BOOKMARKS = "tweets/FETCH_BOOKMARKS",
     VOTE = "tweets/VOTE",
     CHANGE_REPLY_TYPE = "tweets/CHANGE_REPLY_TYPE",
-    REMOVE_TWEET_FROM_BOOKMARKS = "tweets/REMOVE_TWEET_FROM_BOOKMARKS",
     LIKE_TWEET = 'tweets/LIKE_TWEET',
     RETWEET = 'tweets/RETWEET',
-    SET_UPDATED_BOOKMARKED_TWEET = "tweets/SET_UPDATED_BOOKMARKED_TWEET",
     SET_UPDATED_TWEET = "tweets/SET_UPDATED_TWEET",
     FETCH_DELETE_TWEET = "tweets/FETCH_DELETE_TWEET",
     DELETE_TWEET = "tweets/DELETE_TWEET",
@@ -142,11 +138,6 @@ export interface AddQuoteTweetActionInterface extends Action<TweetsActionType> {
     payload: AddQuoteTweet;
 }
 
-export interface FetchBookmarksActionInterface extends Action<TweetsActionType> {
-    type: TweetsActionType.FETCH_BOOKMARKS;
-    payload: number;
-}
-
 export interface VoteActionInterface extends Action<TweetsActionType> {
     type: TweetsActionType.VOTE;
     payload: Vote;
@@ -157,11 +148,6 @@ export interface ChangeReplyTypeActionInterface extends Action<TweetsActionType>
     payload: ChangeReplyTypeRequest;
 }
 
-export interface RemoveTweetFromBookmarksActionInterface extends Action<TweetsActionType> {
-    type: TweetsActionType.REMOVE_TWEET_FROM_BOOKMARKS;
-    payload: number;
-}
-
 export interface LikeTweetActionInterface extends Action<TweetsActionType> {
     type: TweetsActionType.LIKE_TWEET;
     payload: TweetActionPayload;
@@ -170,11 +156,6 @@ export interface LikeTweetActionInterface extends Action<TweetsActionType> {
 export interface RetweetActionInterface extends Action<TweetsActionType> {
     type: TweetsActionType.RETWEET;
     payload: TweetActionPayload;
-}
-
-export interface SetUpdatedBookmarkedTweetActionInterface extends Action<TweetsActionType> {
-    type: TweetsActionType.SET_UPDATED_BOOKMARKED_TWEET;
-    payload: UpdatedBookmarkedTweetPayload;
 }
 
 export interface SetUpdatedTweetActionInterface extends Action<TweetsActionType> {
@@ -200,8 +181,6 @@ export type TweetsActions =
     | SetUpdatedTweetActionInterface
     | DeleteTweetActionInterface
     | SetTweetActionInterface
-    | RemoveTweetFromBookmarksActionInterface
     | SetFollowToTweetsStateActionInterface
     | SetBlockedToTweetsStateActionInterface
-    | SetUpdatedBookmarkedTweetActionInterface
     | SetMutedToTweetsStateActionInterface;

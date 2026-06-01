@@ -26,7 +26,6 @@ export interface TweetResponse {
     isTweetRetweeted: boolean;
     isUserFollowByOtherUser: boolean;
     isTweetDeleted: boolean;
-    isTweetBookmarked: boolean;
     retweetsUserIds?: number[];
 }
 

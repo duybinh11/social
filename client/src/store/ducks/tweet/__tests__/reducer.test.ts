@@ -145,23 +145,6 @@ describe("tweetReducer:", () => {
         );
 
         testActionDispatch(
-            TweetActionType.SET_BOOKMARKED_TWEET,
-            tweetReducer({
-                    ...initialTweetState,
-                    tweet: {id: 1, isTweetBookmarked: false} as TweetResponse
-                },
-                {
-                    type: TweetActionType.SET_BOOKMARKED_TWEET,
-                    payload: true
-                }),
-            {
-                ...initialTweetState,
-                tweet: {id: 1, isTweetBookmarked: true} as TweetResponse,
-                loadingState: LoadingStatus.SUCCESS
-            }
-        );
-
-        testActionDispatch(
             TweetActionType.RESET_TWEET_STATE,
             tweetReducer(
                 {...initialTweetState, tweet: {id: 1} as TweetResponse},

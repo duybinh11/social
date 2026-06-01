@@ -18,7 +18,6 @@ import FollowingFollowers from "./pages/FollowingFollowers/FollowingFollowers";
 import TweetImageModal from "./components/TweetImageModal/TweetImageModal";
 import Login from "./pages/Login/Login";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
-import Bookmarks from "./pages/Bookmarks/Bookmarks";
 import Notifications from "./pages/Notifications/Notifications";
 import NotificationInfo from "./pages/Notifications/NotificationsPage/NotificationInfo/NotificationInfo";
 import Messages from "./pages/Messages/Messages";
@@ -48,7 +47,6 @@ import {
     ACCOUNT_FORGOT,
     ACCOUNT_LOGIN,
     ACCOUNT_SIGNIN,
-    BOOKMARKS,
     HOME,
     HOME_CONNECT,
     HOME_TRENDS,
@@ -186,7 +184,6 @@ const App: FC = (): ReactElement => {
                                    changeBackgroundColor={changeBackgroundColor}
                                    changeColorScheme={changeColorScheme}/>
                                }/>
-                        <Route path={BOOKMARKS} component={Bookmarks}/>
                         <Route path={`${QUOTES}/:tweetId`} component={QuoteTweets}/>
                         <Route path={SUGGESTED} component={SuggestedLists}/>
                         <Route path={LISTS} component={Lists} exact/>

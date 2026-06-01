@@ -49,9 +49,6 @@ public class TweetResponse {
     @JsonProperty("isTweetDeleted")
     private boolean isTweetDeleted;
 
-    @JsonProperty("isTweetBookmarked")
-    private boolean isTweetBookmarked;
-
     @Getter
     @Setter
     static class PollResponse {

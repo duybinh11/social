@@ -19,7 +19,6 @@ import {
     API_USER,
     API_USER_ALL,
     API_USER_BLOCKED,
-    API_USER_BOOKMARKS,
     API_USER_DETAILS,
     API_USER_FOLLOW,
     API_USER_FOLLOW_ACCEPT,
@@ -118,12 +117,6 @@ export const UserApi = {
     },
     async getUserMentions(pageNumber: number): Promise<AxiosResponse<TweetResponse[]>> {
         return await axios.get<TweetResponse[]>(API_USER_MENTIONS, {params: {page: pageNumber}});
-    },
-    async getUserBookmarks(pageNumber: number): Promise<AxiosResponse<TweetResponse[]>> {
-        return await axios.get<TweetResponse[]>(API_USER_BOOKMARKS, {params: {page: pageNumber}});
-    },
-    async addTweetToBookmarks(tweetId: number): Promise<AxiosResponse<boolean>> {
-        return await axios.get<boolean>(`${API_USER_BOOKMARKS}/${tweetId}`);
     },
     async startUseTwitter(): Promise<AxiosResponse<boolean>> {
         return await axios.get<boolean>(API_USER_START);

@@ -320,11 +320,6 @@ public class TweetServiceImpl implements TweetService {
         return getTweetById(tweet.getId());
     }
 
-    @Override
-    public Boolean getIsTweetBookmarked(Long tweetId) {
-        return isUserBookmarkedTweet(tweetId);
-    }
-
     public List<Long> getRetweetsUserIds(Long tweetId) {
         List<Long> retweetsUserIds = tweetRepository.getRetweetsUserIds(tweetId);
         return retweetsUserIds.contains(null) ? new ArrayList<>() : retweetsUserIds;
@@ -338,11 +333,6 @@ public class TweetServiceImpl implements TweetService {
     public boolean isUserRetweetedTweet(Long tweetId) {
         Long authUserId = authenticationService.getAuthenticatedUserId();
         return tweetRepository.isUserRetweetedTweet(authUserId, tweetId);
-    }
-
-    public boolean isUserBookmarkedTweet(Long tweetId) {
-        Long authUserId = authenticationService.getAuthenticatedUserId();
-        return tweetRepository.isUserBookmarkedTweet(authUserId, tweetId);
     }
 
     private Notification replyNotificationHandler(User replier, Tweet parentTweet, Tweet replyTweet) {

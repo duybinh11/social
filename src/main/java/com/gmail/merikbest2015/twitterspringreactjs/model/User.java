@@ -137,9 +137,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Retweet> retweets;
 
-    @OneToMany(mappedBy = "user")
-    private List<Bookmark> bookmarks;
-
     @OneToMany
     private List<Notification> notifications;
 
@@ -193,7 +190,6 @@ public class User {
 
     public User() {
         this.registrationDate = LocalDateTime.now().withNano(0);
-        this.bookmarks = new ArrayList<>();
         this.lists = new ArrayList<>();
         this.unreadMessages = new ArrayList<>();
         this.subscribers = new ArrayList<>();

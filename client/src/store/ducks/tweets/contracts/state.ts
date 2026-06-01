@@ -47,11 +47,6 @@ export interface ChangeReplyTypeRequest {
     replyType: ReplyType;
 }
 
-export interface UpdatedBookmarkedTweetPayload {
-    tweetId: number;
-    isTweetBookmarked: boolean;
-}
-
 export interface FetchTweetsByTextRequest {
     text: string;
     pageNumber: number;

@@ -622,8 +622,7 @@ public class ListsControllerTest {
                 .andExpect(jsonPath("$[0].isTweetLiked").value(true))
                 .andExpect(jsonPath("$[0].isTweetRetweeted").value(true))
                 .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(true))
-                .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(false));
+                .andExpect(jsonPath("$[0].isTweetDeleted").value(false));
     }
 
     @Test

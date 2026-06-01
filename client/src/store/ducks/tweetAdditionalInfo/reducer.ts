@@ -6,7 +6,6 @@ import {LoadingStatus} from "../../types/common";
 
 export const initialTweetAdditionalInfoState: TweetAdditionalInfoState = {
     tweetAdditionalInfo: undefined,
-    isTweetBookmarked: false,
     loadingState: LoadingStatus.LOADING,
 };
 
@@ -35,14 +34,8 @@ export const tweetAdditionalInfoReducer = produce((draft: Draft<TweetAdditionalI
             }
             break;
 
-        case TweetAdditionalInfoType.SET_IS_TWEET_BOOKMARKED_ADDITIONAL_INFO:
-            draft.isTweetBookmarked = action.payload;
-            draft.loadingState = LoadingStatus.LOADED;
-            break;
-
         case TweetAdditionalInfoType.RESET_TWEET_ADDITIONAL_INFO_STATE:
             draft.tweetAdditionalInfo = undefined;
-            draft.isTweetBookmarked = false;
             draft.loadingState = LoadingStatus.LOADING;
             break;
 

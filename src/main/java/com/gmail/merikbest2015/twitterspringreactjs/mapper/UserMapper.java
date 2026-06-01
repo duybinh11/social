@@ -13,7 +13,6 @@ import com.gmail.merikbest2015.twitterspringreactjs.dto.response.tweet.TweetUser
 import com.gmail.merikbest2015.twitterspringreactjs.enums.BackgroundColorType;
 import com.gmail.merikbest2015.twitterspringreactjs.enums.ColorSchemeType;
 import com.gmail.merikbest2015.twitterspringreactjs.model.*;
-import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.BookmarkProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.LikeTweetProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.notification.NotificationInfoProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.notification.NotificationProjection;
@@ -95,17 +94,6 @@ public class UserMapper {
     public HeaderResponse<TweetUserResponse> getUserRetweetsAndReplies(Long userId, Pageable pageable) {
         Page<TweetUserProjection> tweets = userService.getUserRetweetsAndReplies(userId, pageable);
         return basicMapper.getHeaderResponse(tweets, TweetUserResponse.class);
-    }
-
-    public HeaderResponse<TweetResponse> getUserBookmarks(Pageable pageable) {
-        Page<BookmarkProjection> bookmarks = userService.getUserBookmarks(pageable);
-        List<TweetProjection> tweets = new ArrayList<>();
-        bookmarks.getContent().forEach(bookmark -> tweets.add(bookmark.getTweet()));
-        return basicMapper.getHeaderResponse(tweets, bookmarks.getTotalPages(), TweetResponse.class);
-    }
-
-    public Boolean processUserBookmarks(Long tweetId) {
-        return userService.processUserBookmarks(tweetId);
     }
 
     public HeaderResponse<UserResponse> getFollowers(Long userId, Pageable pageable) {

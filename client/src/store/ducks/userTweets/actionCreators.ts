@@ -1,4 +1,4 @@
-import {BookmarkedTweetPayload, UserTweetRequest, UserTweetsState} from "./contracts/state";
+import {UserTweetRequest, UserTweetsState} from "./contracts/state";
 import {
     DeleteUserTweetActionInterface,
     FetchUserLikedTweetsActionInterface,
@@ -10,7 +10,6 @@ import {
     SetBlockedUsersTweetStateActionInterface,
     SetFollowToUsersTweetStateActionInterface,
     SetMutedUsersTweetStateActionInterface,
-    SetUpdatedBookmarkedTweetActionInterface,
     SetUpdatedUserTweetActionInterface,
     SetUserTweetsActionInterface,
     SetUserTweetsLoadingStatusInterface,
@@ -51,11 +50,6 @@ export const setAddedUserTweet = (payload: TweetResponse): SetAddedUserTweetActi
 
 export const setUpdatedUserTweet = (payload: NotificationResponse | NotificationReplyResponse): SetUpdatedUserTweetActionInterface => ({
     type: UserTweetsActionType.SET_UPDATED_TWEET,
-    payload
-});
-
-export const setUpdatedBookmarkedTweetUserTweetState = (payload: BookmarkedTweetPayload): SetUpdatedBookmarkedTweetActionInterface => ({
-    type: UserTweetsActionType.SET_UPDATED_BOOKMARKED_TWEET,
     payload
 });
 

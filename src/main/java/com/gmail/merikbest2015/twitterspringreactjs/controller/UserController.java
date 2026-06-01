@@ -107,17 +107,6 @@ public class UserController {
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
-    @GetMapping("/bookmarks")
-    public ResponseEntity<List<TweetResponse>> getUserBookmarks(@PageableDefault(size = 10) Pageable pageable) {
-        HeaderResponse<TweetResponse> response = userMapper.getUserBookmarks(pageable);
-        return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
-    }
-
-    @GetMapping("/bookmarks/{tweetId}")
-    public ResponseEntity<Boolean> processUserBookmarks(@PathVariable Long tweetId) {
-        return ResponseEntity.ok(userMapper.processUserBookmarks(tweetId));
-    }
-
     @PutMapping
     public ResponseEntity<AuthUserResponse> updateUserProfile(@RequestBody UserRequest userRequest) {
         return ResponseEntity.ok(userMapper.updateUserProfile(userRequest));

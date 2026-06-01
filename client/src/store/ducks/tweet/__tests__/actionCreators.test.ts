@@ -1,6 +1,5 @@
 import {TweetActionType} from "../contracts/actionTypes";
 import {
-    addTweetToBookmarks,
     deleteTweetReply,
     fetchLikedUsers,
     fetchReplies,
@@ -12,7 +11,6 @@ import {
     resetRetweetedUsersState,
     resetTweetState,
     setBlockedToTweetState,
-    setBookmarkedTweet,
     setErrorMessage,
     setFollowToTweetState,
     setLikedUsers,
@@ -81,16 +79,6 @@ describe("tweet actions", () => {
     testAction(setErrorMessage, setErrorMessage("Không tìm thấy tweet"), {
         type: TweetActionType.SET_ERROR_MESSAGE,
         payload: "Không tìm thấy tweet"
-    });
-
-    testAction(addTweetToBookmarks, addTweetToBookmarks(1), {
-        type: TweetActionType.ADD_TWEET_TO_BOOKMARKS,
-        payload: 1,
-    });
-
-    testAction(setBookmarkedTweet, setBookmarkedTweet(true), {
-        type: TweetActionType.SET_BOOKMARKED_TWEET,
-        payload: true,
     });
 
     testAction(fetchReplyTweet, fetchReplyTweet({tweetId: 1} as ReplyTweet), {

@@ -14,7 +14,6 @@ import {
     fetchTweetsByTextRequest,
     fetchTweetsRequest,
     fetchTweetsWithVideoRequest,
-    fetchUserBookmarksRequest,
     likeTweetRequest,
     retweetRequest,
     tweetsSaga,
@@ -34,7 +33,6 @@ import {
     fetchTweetsByTag,
     fetchTweetsByText,
     fetchTweetsWithVideo,
-    fetchUserBookmarks,
     likeTweet,
     retweet,
     setPageableTweets,
@@ -48,7 +46,6 @@ import {AxiosResponse} from "axios";
 import {TagApi} from "../../../../services/api/tagApi";
 import {ListsApi} from "../../../../services/api/listsApi";
 import {AddQuoteTweet, AddTweet, Vote} from "../contracts/state";
-import {UserApi} from "../../../../services/api/userApi";
 import {
     mockExpectedResponse,
     testCall,
@@ -203,14 +200,6 @@ describe("tweetsSaga:", () => {
         testCall(worker, TweetApi.retweet, {tweetId: 1});
     });
 
-    describe("fetchUserBookmarksRequest:", () => {
-        const worker = fetchUserBookmarksRequest(fetchUserBookmarks(1));
-        testLoadingStatus(worker, setTweetsLoadingState, LoadingStatus.LOADING);
-        testCall(worker, UserApi.getUserBookmarks, 1);
-        testSetResponse(worker, mockPageableTweets, setPageableTweets, mockExpectedResponse(mockPageableTweets), "TweetResponse");
-        testLoadingStatus(worker, setTweetsLoadingState, LoadingStatus.ERROR);
-    });
-
     testWatchSaga(tweetsSaga, [
         {actionType: TweetsActionType.FETCH_TWEETS, workSaga: fetchTweetsRequest},
         {actionType: TweetsActionType.FETCH_MEDIA_TWEETS, workSaga: fetchMediaTweetsRequest},
@@ -228,6 +217,5 @@ describe("tweetsSaga:", () => {
         {actionType: TweetsActionType.FETCH_TWEETS_BY_TEXT, workSaga: fetchTweetsByTextRequest},
         {actionType: TweetsActionType.FETCH_TWEETS_BY_LIST_ID, workSaga: fetchTweetsByListIdRequest},
         {actionType: TweetsActionType.FETCH_TWEETS_WITH_QUOTES_BY_ID, workSaga: fetchQuotesByTweetIdRequest},
-        {actionType: TweetsActionType.FETCH_BOOKMARKS, workSaga: fetchUserBookmarksRequest},
     ]);
 });

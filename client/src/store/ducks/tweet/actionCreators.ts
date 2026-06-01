@@ -1,5 +1,4 @@
 import {
-    AddTweetToBookmarksActionInterface,
     DeleteTweetReplyActionInterface,
     FetchLikedUsersActionInterface,
     FetchRepliesActionInterface,
@@ -11,7 +10,6 @@ import {
     ResetRetweetedUsersStateActionInterface,
     ResetTweetStateActionInterface,
     SetBlockedToTweetStateActionInterface,
-    SetBookmarkedTweetActionInterface,
     SetErrorMessageActionInterface,
     SetFollowToTweetStateActionInterface,
     SetLikedUsersActionInterface,
@@ -73,16 +71,6 @@ export const setTweetLoadingState = (payload: LoadingStatus): SetTweetDataLoadin
 export const setErrorMessage = (payload: string): SetErrorMessageActionInterface => ({
     type: TweetActionType.SET_ERROR_MESSAGE,
     payload
-});
-
-export const addTweetToBookmarks = (payload: number): AddTweetToBookmarksActionInterface => ({
-    type: TweetActionType.ADD_TWEET_TO_BOOKMARKS,
-    payload,
-});
-
-export const setBookmarkedTweet = (payload: boolean): SetBookmarkedTweetActionInterface => ({
-    type: TweetActionType.SET_BOOKMARKED_TWEET,
-    payload,
 });
 
 export const fetchReplyTweet = (payload: ReplyTweet): FetchReplyTweetActionInterface => ({

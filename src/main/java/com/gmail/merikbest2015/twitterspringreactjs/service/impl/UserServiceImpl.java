@@ -6,7 +6,6 @@ import com.gmail.merikbest2015.twitterspringreactjs.enums.NotificationType;
 import com.gmail.merikbest2015.twitterspringreactjs.exception.ApiRequestException;
 import com.gmail.merikbest2015.twitterspringreactjs.model.*;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.*;
-import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.BookmarkProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.LikeTweetProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.notification.NotificationInfoProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.notification.NotificationProjection;
@@ -42,7 +41,6 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final TweetRepository tweetRepository;
     private final ImageRepository imageRepository;
-    private final BookmarkRepository bookmarkRepository;
     private final RetweetRepository retweetRepository;
     private final LikeTweetRepository likeTweetRepository;
     private final NotificationRepository notificationRepository;
@@ -150,37 +148,6 @@ public class UserServiceImpl implements UserService {
         Long userId = authenticationService.getAuthenticatedUserId();
         List<TweetsProjection> tweets = tweetRepository.getNotificationsFromTweetAuthors(userId);
         return getPageableTweetProjectionList(pageable, tweets, tweets.size());
-    }
-
-    @Override
-    public Page<BookmarkProjection> getUserBookmarks(Pageable pageable) {
-        Long userId = authenticationService.getAuthenticatedUserId();
-        return bookmarkRepository.getUserBookmarks(userId, pageable);
-    }
-
-    @Override
-    @Transactional
-    public Boolean processUserBookmarks(Long tweetId) {
-        User user = authenticationService.getAuthenticatedUser();
-        Tweet tweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
-        List<Bookmark> bookmarks = user.getBookmarks();
-        Optional<Bookmark> bookmark = bookmarks.stream()
-                .filter(b -> b.getTweet().getId().equals(tweet.getId()))
-                .findFirst();
-
-        if (bookmark.isPresent()) {
-            bookmarks.remove(bookmark.get());
-            bookmarkRepository.delete(bookmark.get());
-            return false;
-        } else {
-            Bookmark newBookmark = new Bookmark();
-            newBookmark.setTweet(tweet);
-            newBookmark.setUser(user);
-            bookmarkRepository.save(newBookmark);
-            bookmarks.add(newBookmark);
-            return true;
-        }
     }
 
     @Override

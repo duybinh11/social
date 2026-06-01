@@ -145,7 +145,4 @@ public class TweetMapper {
         return basicMapper.convertToResponse(tweet, TweetResponse.class);
     }
 
-    public Boolean getIsTweetBookmarked(Long tweetId) {
-        return tweetService.getIsTweetBookmarked(tweetId);
-    }
 }

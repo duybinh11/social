@@ -8,7 +8,6 @@ import {
     AddQuoteTweetActionInterface,
     AddTweetActionInterface,
     ChangeReplyTypeActionInterface,
-    FetchBookmarksActionInterface,
     FetchDeleteTweetActionInterface,
     FetchFollowersTweetsActionInterface,
     FetchMediaTweetsActionInterface,
@@ -24,7 +23,6 @@ import {
     VoteActionInterface
 } from "./contracts/actionTypes";
 import {TagApi} from "../../../services/api/tagApi";
-import {UserApi} from "../../../services/api/userApi";
 import {TweetResponse} from "../../types/tweet";
 import {ListsApi} from "../../../services/api/listsApi";
 import {deleteUserTweet} from "../userTweets/actionCreators";
@@ -189,19 +187,6 @@ export function* retweetRequest({payload}: RetweetActionInterface) {
     yield call(TweetApi.retweet, payload);
 }
 
-export function* fetchUserBookmarksRequest({payload}: FetchBookmarksActionInterface) {
-    try {
-        yield put(setTweetsLoadingState(LoadingStatus.LOADING));
-        const response: AxiosResponse<TweetResponse[]> = yield call(UserApi.getUserBookmarks, payload);
-        yield put(setPageableTweets({
-            items: response.data,
-            pagesCount: parseInt(response.headers["page-total-count"])
-        }));
-    } catch (error) {
-        yield put(setTweetsLoadingState(LoadingStatus.ERROR));
-    }
-}
-
 export function* tweetsSaga() {
     yield takeLatest(TweetsActionType.FETCH_TWEETS, fetchTweetsRequest);
     yield takeLatest(TweetsActionType.FETCH_MEDIA_TWEETS, fetchMediaTweetsRequest);
@@ -219,5 +204,4 @@ export function* tweetsSaga() {
     yield takeLatest(TweetsActionType.FETCH_TWEETS_BY_TEXT, fetchTweetsByTextRequest);
     yield takeLatest(TweetsActionType.FETCH_TWEETS_BY_LIST_ID, fetchTweetsByListIdRequest);
     yield takeLatest(TweetsActionType.FETCH_TWEETS_WITH_QUOTES_BY_ID, fetchQuotesByTweetIdRequest);
-    yield takeLatest(TweetsActionType.FETCH_BOOKMARKS, fetchUserBookmarksRequest);
 }

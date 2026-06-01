@@ -1,35 +1,32 @@
 import {AxiosResponse} from "axios";
 
-import {testCall, testLoadingStatus, testSetResponse} from "../../../../util/testHelper";
-import {LoadingStatus} from "../../../types/common";
 import {
-    fetchIsTweetBookmarkedAdditionalInfo,
     fetchTweetAdditionalInfo,
-    setIsTweetBookmarkedAdditionalInfo,
     setTweetAdditionalInfo,
     setTweetAdditionalInfoLoadingState
 } from "../actionCreators";
-import {fetchIsTweetBookmarkedAdditionalInfoRequest, fetchTweetAdditionalInfoRequest} from "../saga";
+import {fetchTweetAdditionalInfoRequest} from "../saga";
+import {TweetAdditionalInfoResponse} from "../../../types/tweet";
 import {TweetApi} from "../../../../services/api/tweetApi";
 import {mockUserTweetAdditionalInfo} from "../../../../util/mockData/mockData";
-import {TweetAdditionalInfoResponse} from "../../../types/tweet";
+import {testCall, testLoadingStatus, testSetResponse, testWatchSaga} from "../../../../util/testHelper";
+import {TweetAdditionalInfoType} from "../contracts/actionTypes";
+import {LoadingStatus} from "../../../types/common";
+import {takeLatest} from "redux-saga/effects";
+import {tweetAdditionalInfoSaga} from "../saga";
 
 describe("tweetAdditionalInfoSaga:", () => {
+    const mockResponse = {data: mockUserTweetAdditionalInfo} as AxiosResponse<TweetAdditionalInfoResponse>;
+
     describe("fetchTweetAdditionalInfoRequest:", () => {
         const worker = fetchTweetAdditionalInfoRequest(fetchTweetAdditionalInfo(1));
-        const mockResponse = {data: mockUserTweetAdditionalInfo} as AxiosResponse<TweetAdditionalInfoResponse>;
         testLoadingStatus(worker, setTweetAdditionalInfoLoadingState, LoadingStatus.LOADING);
-        testCall(worker, TweetApi.getTweetAdditionalInfoById, 1, mockUserTweetAdditionalInfo);
+        testCall(worker, TweetApi.getTweetAdditionalInfoById, 1);
         testSetResponse(worker, mockResponse, setTweetAdditionalInfo, mockResponse.data, "TweetAdditionalInfoResponse");
         testLoadingStatus(worker, setTweetAdditionalInfoLoadingState, LoadingStatus.ERROR);
     });
 
-    describe("fetchIsTweetBookmarkedAdditionalInfoRequest:", () => {
-        const worker = fetchIsTweetBookmarkedAdditionalInfoRequest(fetchIsTweetBookmarkedAdditionalInfo(1));
-        const mockResponse = {data: true} as AxiosResponse<boolean>;
-        testLoadingStatus(worker, setTweetAdditionalInfoLoadingState, LoadingStatus.LOADING);
-        testCall(worker, TweetApi.getIsTweetBookmarked, 1, mockUserTweetAdditionalInfo);
-        testSetResponse(worker, mockResponse, setIsTweetBookmarkedAdditionalInfo, mockResponse.data, "TweetAdditionalInfoResponse");
-        testLoadingStatus(worker, setTweetAdditionalInfoLoadingState, LoadingStatus.ERROR);
-    });
+    testWatchSaga(tweetAdditionalInfoSaga, [
+        {actionType: TweetAdditionalInfoType.FETCH_TWEET_ADDITIONAL_INFO, workSaga: fetchTweetAdditionalInfoRequest},
+    ], takeLatest);
 });

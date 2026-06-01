@@ -2,7 +2,6 @@ import {createMockRootState} from "../../../../util/testHelper";
 import {mockUserTweetAdditionalInfo} from "../../../../util/mockData/mockData";
 import {
     selectIsTweetAdditionalInfoLoading,
-    selectIsTweetBookmarkedAdditionalInfo,
     selectTweetAdditionalInfo,
     selectTweetInfoAddressedTweetId,
     selectTweetInfoReplyType,
@@ -29,12 +28,6 @@ describe("tweetAdditionalInfo selectors:", () => {
     describe("selectTweetAdditionalInfo", () => {
         it("should return TweetAdditionalInfoResponse", () => {
             expect(selectTweetAdditionalInfo(mockTweetState)).toBe(mockUserTweetAdditionalInfo);
-        });
-    });
-
-    describe("selectIsTweetBookmarkedAdditionalInfo", () => {
-        it("should return IsTweetBookmarked boolean", () => {
-            expect(selectIsTweetBookmarkedAdditionalInfo(mockTweetState)).toBe(false);
         });
     });
 

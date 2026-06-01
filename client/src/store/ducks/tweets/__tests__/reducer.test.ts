@@ -134,24 +134,6 @@ describe("tweetsReducer:", () => {
         );
 
         testActionDispatch(
-            TweetsActionType.SET_UPDATED_BOOKMARKED_TWEET,
-            tweetsReducer(
-                {
-                    ...initialTweetsState,
-                    items: [{id: 1, isTweetBookmarked: false}] as TweetResponse[],
-                },
-                {
-                    type: TweetsActionType.SET_UPDATED_BOOKMARKED_TWEET,
-                    payload: {tweetId: 1, isTweetBookmarked: true}
-                }
-            ),
-            {
-                ...initialTweetsState,
-                items: [{id: 1, isTweetBookmarked: true}] as TweetResponse[],
-            }
-        );
-
-        testActionDispatch(
             TweetsActionType.SET_LOADING_STATE,
             tweetsReducer(initialTweetsState, {
                 type: TweetsActionType.SET_LOADING_STATE,
@@ -160,25 +142,6 @@ describe("tweetsReducer:", () => {
             {
                 ...initialTweetsState,
                 loadingState: LoadingStatus.SUCCESS
-            }
-        );
-
-        testActionDispatch(
-            TweetsActionType.REMOVE_TWEET_FROM_BOOKMARKS,
-            tweetsReducer(
-                {
-                    ...initialTweetsState,
-                    items: [{id: 1}] as TweetResponse[],
-                },
-                {
-                    type: TweetsActionType.REMOVE_TWEET_FROM_BOOKMARKS,
-                    payload: 1
-                }
-            ),
-            {
-                ...initialTweetsState,
-                items: [],
-                loadingState: LoadingStatus.LOADED
             }
         );
 

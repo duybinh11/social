@@ -1,7 +1,11 @@
 package com.gmail.merikbest2015.twitterspringreactjs.repository;
 
 import com.gmail.merikbest2015.twitterspringreactjs.model.Tweet;
-import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.*;
+import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.TweetAdditionalInfoProjection;
+import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.TweetImageProjection;
+import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.TweetProjection;
+import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.TweetsProjection;
+import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.TweetsUserProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.user.UserProjection;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -133,13 +137,6 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
             "WHERE user.id = :userId " +
             "AND retweets.tweet.id = :tweetId")
     boolean isUserRetweetedTweet(Long userId, Long tweetId);
-
-    @Query("SELECT CASE WHEN count(user) > 0 THEN true ELSE false END " +
-            "FROM User user " +
-            "LEFT JOIN user.bookmarks bookmark " +
-            "WHERE user.id = :userId " +
-            "AND bookmark.tweet.id = :tweetId")
-    boolean isUserBookmarkedTweet(Long userId, Long tweetId);
 
     @Query("SELECT rp as tweet FROM Tweet t " +
             "LEFT JOIN t.replies rp " +

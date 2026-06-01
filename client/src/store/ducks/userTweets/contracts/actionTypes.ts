@@ -1,6 +1,6 @@
 import {Action} from "redux";
 
-import {BookmarkedTweetPayload, UserTweetRequest, UserTweetsState} from "./state";
+import {UserTweetRequest, UserTweetsState} from "./state";
 import {BlockedToTweetsPayload, FollowToTweetsPayload, MutedToTweetsPayload, TweetResponse} from "../../../types/tweet";
 import {NotificationReplyResponse, NotificationResponse} from "../../../types/notification";
 import {LoadingStatus, PageableResponse} from "../../../types/common";
@@ -13,7 +13,6 @@ export enum UserTweetsActionType {
     RESET_TWEETS = "userTweets/RESET_TWEETS",
     SET_ADDED_TWEET = "userTweets/SET_ADDED_TWEET",
     SET_UPDATED_TWEET = "userTweets/SET_UPDATED_TWEET",
-    SET_UPDATED_BOOKMARKED_TWEET = "userTweets/SET_UPDATED_BOOKMARKED_TWEET",
     DELETE_TWEET = "userTweets/DELETE_TWEET",
     FETCH_TWEETS = "userTweets/FETCH_TWEETS",
     FETCH_LIKED_TWEETS = "userTweets/FETCH_LIKED_TWEETS",
@@ -56,11 +55,6 @@ export interface SetUpdatedUserTweetActionInterface extends Action<UserTweetsAct
     payload: NotificationResponse | NotificationReplyResponse;
 }
 
-export interface SetUpdatedBookmarkedTweetActionInterface extends Action<UserTweetsActionType> {
-    type: UserTweetsActionType.SET_UPDATED_BOOKMARKED_TWEET;
-    payload: BookmarkedTweetPayload;
-}
-
 export interface DeleteUserTweetActionInterface extends Action<UserTweetsActionType> {
     type: UserTweetsActionType.DELETE_TWEET;
     payload: number;
@@ -99,6 +93,5 @@ export type UserTweetsActions =
     | ResetUserTweetsActionInterface
     | SetAddedUserTweetActionInterface
     | SetUpdatedUserTweetActionInterface
-    | SetUpdatedBookmarkedTweetActionInterface
     | DeleteUserTweetActionInterface
     | SetUserTweetsLoadingStatusInterface;

@@ -10,7 +10,6 @@ import {
     setBlockedUsersTweetState,
     setFollowToUsersTweetState,
     setMutedUsersTweetState,
-    setUpdatedBookmarkedTweetUserTweetState,
     setUpdatedUserTweet,
     setUserTweets,
     setUserTweetsLoadingStatus
@@ -53,14 +52,6 @@ describe("userTweets actions", () => {
     testAction(setUpdatedUserTweet, setUpdatedUserTweet({id: 1} as NotificationResponse), {
         type: UserTweetsActionType.SET_UPDATED_TWEET,
         payload: {id: 1} as NotificationResponse
-    });
-
-    testAction(setUpdatedBookmarkedTweetUserTweetState, setUpdatedBookmarkedTweetUserTweetState({
-        tweetId: 1,
-        isTweetBookmarked: true
-    }), {
-        type: UserTweetsActionType.SET_UPDATED_BOOKMARKED_TWEET,
-        payload: {tweetId: 1, isTweetBookmarked: true}
     });
 
     testAction(deleteUserTweet, deleteUserTweet(1), {

@@ -83,19 +83,6 @@ describe("tweetAdditionalInfoReducer:", () => {
         );
 
         testActionDispatch(
-            TweetAdditionalInfoType.SET_IS_TWEET_BOOKMARKED_ADDITIONAL_INFO,
-            tweetAdditionalInfoReducer(initialTweetAdditionalInfoState, {
-                type: TweetAdditionalInfoType.SET_IS_TWEET_BOOKMARKED_ADDITIONAL_INFO,
-                payload: true
-            }),
-            {
-                ...initialTweetAdditionalInfoState,
-                isTweetBookmarked: true,
-                loadingState: LoadingStatus.LOADED
-            }
-        );
-
-        testActionDispatch(
             TweetAdditionalInfoType.RESET_TWEET_ADDITIONAL_INFO_STATE,
             tweetAdditionalInfoReducer({
                 ...initialTweetAdditionalInfoState,
@@ -105,7 +92,6 @@ describe("tweetAdditionalInfoReducer:", () => {
             }),
             {
                 tweetAdditionalInfo: undefined,
-                isTweetBookmarked: false,
                 loadingState: LoadingStatus.LOADING
             }
         );

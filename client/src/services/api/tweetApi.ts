@@ -14,7 +14,6 @@ import {NotificationTweetResponse} from "../../store/types/notification";
 import {UserResponse} from "../../store/types/user";
 import {
     API_TWEETS,
-    API_TWEETS_BOOKMARKED,
     API_TWEETS_CHANGE_REPLY,
     API_TWEETS_FOLLOWER,
     API_TWEETS_INFO,
@@ -94,8 +93,5 @@ export const TweetApi = {
     },
     async voteInPoll(payload: Vote): Promise<AxiosResponse<TweetResponse>> {
         return await axios.post<TweetResponse>(API_TWEETS_VOTE, payload);
-    },
-    async getIsTweetBookmarked(tweetId: number): Promise<AxiosResponse<boolean>> {
-        return await axios.get<boolean>(API_TWEETS_BOOKMARKED(tweetId)); // TODO add tests
     },
 };

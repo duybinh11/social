@@ -3,7 +3,6 @@ import {LoadingStatus} from "../../types/common";
 
 export const selectTweetAdditionalInfoState = (state: RootState) => state.tweetAdditionalInfo;
 export const selectTweetAdditionalInfo = (state: RootState) => selectTweetAdditionalInfoState(state).tweetAdditionalInfo;
-export const selectIsTweetBookmarkedAdditionalInfo = (state: RootState) => selectTweetAdditionalInfoState(state).isTweetBookmarked;
 export const selectTweetInfoText = (state: RootState) => selectTweetAdditionalInfo(state)?.text;
 export const selectTweetInfoReplyType = (state: RootState) => selectTweetAdditionalInfo(state)?.replyType;
 export const selectTweetInfoAddressedTweetId = (state: RootState) => selectTweetAdditionalInfo(state)?.addressedTweetId;

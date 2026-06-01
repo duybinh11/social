@@ -109,9 +109,6 @@ INSERT INTO tags (id, tag_name, tweets_quantity) VALUES (3, '#test', 1);
 INSERT INTO tweets_tags (tags_id, tweets_id) VALUES (2, 43);
 INSERT INTO tweets_tags (tags_id, tweets_id) VALUES (3, 40);
 
--- bookmarks
-INSERT INTO bookmarks (id, bookmark_date, tweet_id, users_id) VALUES (2, '2021-10-03 20:35:53.000000', 40, 2);
-
 -- chats
 INSERT INTO chats (id, creation_date) VALUES (8, '2021-10-03 20:29:55.000000');
 INSERT INTO chats (id, creation_date) VALUES (10, '2021-10-03 20:29:55.000000');

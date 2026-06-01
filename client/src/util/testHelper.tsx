@@ -171,7 +171,6 @@ export const createMockRootState = (loadingStatus = LoadingStatus.LOADING): Root
         },
         tweetAdditionalInfo: {
             tweetAdditionalInfo: undefined,
-            isTweetBookmarked: false,
             loadingState: loadingStatus,
         },
         actionSnackbar: {

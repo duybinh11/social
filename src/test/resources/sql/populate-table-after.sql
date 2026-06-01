@@ -23,7 +23,6 @@ delete from tweet_pool;
 delete from tweet_quote;
 delete from user_pinned_tweet;
 
-delete from bookmarks;
 delete from chat_messages;
 delete from like_tweets;
 delete from pool_choices;

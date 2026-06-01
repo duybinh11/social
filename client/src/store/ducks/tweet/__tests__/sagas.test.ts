@@ -2,7 +2,6 @@ import {AxiosResponse} from "axios";
 import {takeEvery} from "redux-saga/effects";
 
 import {
-    addTweetToBookmarksRequest,
     deleteTweetReplyRequest,
     fetchLikedUsersRequest,
     fetchRepliesRequest,
@@ -12,14 +11,12 @@ import {
     tweetSaga
 } from "../sagas";
 import {
-    addTweetToBookmarks,
     deleteTweetReply,
     fetchLikedUsers,
     fetchReplies,
     fetchReplyTweet,
     fetchRetweetedUsers,
     fetchTweetData,
-    setBookmarkedTweet,
     setLikedUsers,
     setLikedUsersLoadingState,
     setReplies,
@@ -31,9 +28,6 @@ import {
 } from "../actionCreators";
 import {TweetResponse} from "../../../types/tweet";
 import {TweetApi} from "../../../../services/api/tweetApi";
-import {UserApi} from "../../../../services/api/userApi";
-import {setUpdatedBookmarkedTweetTweetsState} from "../../tweets/actionCreators";
-import {setUpdatedBookmarkedTweetUserTweetState} from "../../userTweets/actionCreators";
 import {ReplyTweet} from "../contracts/state";
 import {UserResponse} from "../../../types/user";
 import {
@@ -55,18 +49,6 @@ describe("tweetSaga:", () => {
         testLoadingStatus(worker, setTweetLoadingState, LoadingStatus.LOADING);
         testCall(worker, TweetApi.fetchTweetData, 1);
         testSetResponse(worker, mockTweet, setTweetData, mockTweet.data, "TweetResponse");
-    });
-
-    describe("addTweetToBookmarksRequest:", () => {
-        const worker = addTweetToBookmarksRequest(addTweetToBookmarks(1));
-        const mockResponse = {data: true} as AxiosResponse<boolean>;
-        const mockPayload = {tweetId: 1, isTweetBookmarked: true};
-
-        testCall(worker, UserApi.addTweetToBookmarks, 1, true);
-        testSetResponse(worker, mockResponse, setBookmarkedTweet, mockResponse.data, "boolean");
-        testSetResponse(worker, true, setUpdatedBookmarkedTweetTweetsState, mockPayload, "boolean");
-        testSetResponse(worker, true, setUpdatedBookmarkedTweetUserTweetState, mockPayload, "boolean");
-        testLoadingStatus(worker, setTweetLoadingState, LoadingStatus.ERROR);
     });
 
     describe("fetchReplyTweetRequest:", () => {
@@ -109,7 +91,6 @@ describe("tweetSaga:", () => {
 
     testWatchSaga(tweetSaga, [
         {actionType: TweetActionType.FETCH_TWEET_DATA, workSaga: fetchTweetDataRequest},
-        {actionType: TweetActionType.ADD_TWEET_TO_BOOKMARKS, workSaga: addTweetToBookmarksRequest},
         {actionType: TweetActionType.FETCH_REPLY_TWEET, workSaga: fetchReplyTweetRequest},
         {actionType: TweetActionType.DELETE_TWEET_REPLY, workSaga: deleteTweetReplyRequest},
         {actionType: TweetActionType.FETCH_LIKED_USERS, workSaga: fetchLikedUsersRequest},

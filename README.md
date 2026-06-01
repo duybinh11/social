@@ -20,7 +20,7 @@ See more demo screenshots below.
 
 * Authentication with JWT and Email validation. Password change.
 * Users can Add tweets, Like, Retweet, Reply, Quote tweets, Schedule tweets.
-* Users can Delete tweets, Send tweet via Direct Message, Add tweet to Bookmarks.
+* Users can Delete tweets, Send tweet via Direct Message.
 * Users can Create Lists, Edit Lists, Add other users to Lists, Follow List, Pin Lists.
 * Users get notifications when someone subscribed, retweet or liked tweet.
 * Users can add Images to tweet, Create Poll and vote, Post tweets with link preview, Posts tweets with YouTube video link.
@@ -112,8 +112,6 @@ ___
 #### Trends
 ![Trends](screenshots/13_Trends.jpg)
 ___
-#### Bookmarks
-![Bookmarks](screenshots/14_Bookmarks.jpg)
 ___
 #### Chat
 ![Chat](screenshots/15_Chat.jpg)

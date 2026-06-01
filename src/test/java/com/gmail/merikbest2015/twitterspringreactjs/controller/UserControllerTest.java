@@ -192,7 +192,6 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$[*].isTweetRetweeted").isNotEmpty())
                 .andExpect(jsonPath("$[*].isUserFollowByOtherUser").isNotEmpty())
                 .andExpect(jsonPath("$[*].isTweetDeleted").isNotEmpty())
-                .andExpect(jsonPath("$[*].isTweetBookmarked").isNotEmpty());
     }
 
     @Test
@@ -234,7 +233,6 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$[0].isTweetRetweeted").value(true))
                 .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(true))
                 .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(false));
     }
 
     @Test
@@ -276,7 +274,6 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$[0].isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(false))
                 .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(false));
     }
 
     @Test
@@ -318,7 +315,6 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$[0].isTweetRetweeted").value(true))
                 .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(true))
                 .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(false));
     }
 
     @Test
@@ -409,67 +405,6 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$[0].isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(true))
                 .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(false));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[200] GET /api/v1/user/bookmarks - Get user bookmarks")
-    public void getUserBookmarks() throws Exception {
-        mockMvc.perform(get(URL_USER_BASIC + "/bookmarks"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[*]", hasSize(1)))
-                .andExpect(jsonPath("$[0].id").value(40L))
-                .andExpect(jsonPath("$[0].text").value("test tweet"))
-                .andExpect(jsonPath("$[0].dateTime").value("2021-10-03T20:29:03"))
-                .andExpect(jsonPath("$[0].addressedUsername").isEmpty())
-                .andExpect(jsonPath("$[0].addressedId").isEmpty())
-                .andExpect(jsonPath("$[0].addressedTweetId").isEmpty())
-                .andExpect(jsonPath("$[0].replyType").value(ReplyType.EVERYONE.toString()))
-                .andExpect(jsonPath("$[0].link").isEmpty())
-                .andExpect(jsonPath("$[0].linkTitle").isEmpty())
-                .andExpect(jsonPath("$[0].linkDescription").isEmpty())
-                .andExpect(jsonPath("$[0].linkCover").isEmpty())
-                .andExpect(jsonPath("$[0].linkCoverSize").isEmpty())
-                .andExpect(jsonPath("$[0].quoteTweet").isEmpty())
-                .andExpect(jsonPath("$[0].user.id").value(2L))
-                .andExpect(jsonPath("$[0].poll.id").value(2L))
-                .andExpect(jsonPath("$[*].images", hasSize(1)))
-                .andExpect(jsonPath("$[0].retweetsCount").value(1L))
-                .andExpect(jsonPath("$[0].likedTweetsCount").value(1L))
-                .andExpect(jsonPath("$[0].repliesCount").value(1L))
-                .andExpect(jsonPath("$[0].isTweetLiked").value(false))
-                .andExpect(jsonPath("$[0].isTweetRetweeted").value(false))
-                .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(false))
-                .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(true));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[200] GET /api/v1/user/bookmarks/43 - Add tweet to bookmarks")
-    public void processUserBookmarks_addBookmark() throws Exception {
-        mockMvc.perform(get(URL_USER_BASIC + "/bookmarks/43"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$").value(true));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[200] GET /api/v1/user/bookmarks/40 - Remove tweet from bookmarks")
-    public void processUserBookmarks_removeBookmark() throws Exception {
-        mockMvc.perform(get(URL_USER_BASIC + "/bookmarks/40"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$").value(false));
-    }
-
-    @Test
-    @WithUserDetails(USER_EMAIL)
-    @DisplayName("[404] GET /api/v1/user/bookmarks/99 - Should Tweet Not Found")
-    public void processUserBookmarks_ShouldTweetNotFound() throws Exception {
-        mockMvc.perform(get(URL_USER_BASIC + "/bookmarks/99"))
-                .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
     }
 
     @Test

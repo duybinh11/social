@@ -70,12 +70,6 @@ export const userTweetsReducer = produce((draft: Draft<UserTweetsState>, action:
             draft.loadingState = LoadingStatus.LOADED
             break;
 
-        case UserTweetsActionType.SET_UPDATED_BOOKMARKED_TWEET:
-            const bookmarkedTweetIndex = draft.items.findIndex((tweet) => tweet.id === action.payload.tweetId);
-            if (bookmarkedTweetIndex !== -1) draft.items[bookmarkedTweetIndex].isTweetBookmarked = action.payload.isTweetBookmarked;
-            draft.loadingState = LoadingStatus.LOADED
-            break;
-
         case UserTweetsActionType.RESET_TWEETS:
             draft.items = [];
             draft.pagesCount = 1;

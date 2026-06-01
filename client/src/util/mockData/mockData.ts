@@ -64,7 +64,6 @@ export const mockTweets = [
         "isTweetRetweeted": false,
         "isUserFollowByOtherUser": true,
         "isTweetDeleted": false,
-        "isTweetBookmarked": true
     },
     {
         "id": 15,
@@ -128,7 +127,6 @@ export const mockTweets = [
         "isTweetRetweeted": false,
         "isUserFollowByOtherUser": true,
         "isTweetDeleted": false,
-        "isTweetBookmarked": true
     }
 ] as unknown as TweetResponse[];
 
@@ -585,7 +583,6 @@ export const mockMediaTweets = [
         "isTweetRetweeted": false,
         "isUserFollowByOtherUser": false,
         "isTweetDeleted": false,
-        "isTweetBookmarked": false
     },
     {
         "id": 10,
@@ -628,7 +625,6 @@ export const mockMediaTweets = [
         "isTweetRetweeted": true,
         "isUserFollowByOtherUser": false,
         "isTweetDeleted": false,
-        "isTweetBookmarked": false
     },
 ];
 
@@ -671,7 +667,6 @@ export const mockVideoTweets = [
         "isTweetRetweeted": false,
         "isUserFollowByOtherUser": true,
         "isTweetDeleted": false,
-        "isTweetBookmarked": false
     },
 ];
 
@@ -940,7 +935,6 @@ export const mockFullTweet = {
     "isTweetRetweeted": true,
     "isUserFollowByOtherUser": false,
     "isTweetDeleted": false,
-    "isTweetBookmarked": false
 } as unknown as TweetResponse;
 
 export const mockUserTweetAdditionalInfo = {
@@ -1011,7 +1005,6 @@ export const mockMyFullTweet = {
     "isTweetRetweeted": true,
     "isUserFollowByOtherUser": false,
     "isTweetDeleted": false,
-    "isTweetBookmarked": false
 } as unknown as TweetResponse;
 
 export const mockQuoteTweet = {
@@ -1288,7 +1281,6 @@ export const mockNotificationInfo = {
         "isTweetRetweeted": false,
         "isUserFollowByOtherUser": false,
         "isTweetDeleted": false,
-        "isTweetBookmarked": false
     }
 } as unknown as NotificationInfoResponse;
 

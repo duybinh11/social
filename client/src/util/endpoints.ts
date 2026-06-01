@@ -55,7 +55,6 @@ export const API_TWEETS_REPLIES = (tweetId: number) => `${API_ENDPOINT}/tweets/$
 export const API_TWEETS_QUOTES = (tweetId: number) => `${API_ENDPOINT}/tweets/${tweetId}/quotes`;
 export const API_TWEETS_LIKED_USERS = (tweetId: number) => `${API_ENDPOINT}/tweets/${tweetId}/liked-users`;
 export const API_TWEETS_RETWEETED_USERS = (tweetId: number) => `${API_ENDPOINT}/tweets/${tweetId}/retweeted-users`;
-export const API_TWEETS_BOOKMARKED = (tweetId: number) => `${API_ENDPOINT}/tweets/${tweetId}/bookmarked`;
 export const API_TWEETS_POOL = `${API_ENDPOINT}/tweets/poll`;
 export const API_TWEETS_SEARCH = `${API_ENDPOINT}/tweets/search`;
 export const API_TWEETS_LIKE = `${API_ENDPOINT}/tweets/like`;
@@ -89,7 +88,6 @@ export const API_USER_NOTIFICATIONS = `${API_ENDPOINT}/user/notifications`;
 export const API_USER_NOTIFICATIONS_SUBSCRIBES = `${API_ENDPOINT}/user/notifications/subscribes`;
 export const API_USER_NOTIFICATIONS_TIMELINE = `${API_ENDPOINT}/user/notifications/timeline`;
 export const API_USER_MENTIONS = `${API_ENDPOINT}/user/mentions`;
-export const API_USER_BOOKMARKS = `${API_ENDPOINT}/user/bookmarks`;
 export const API_USER_START = `${API_ENDPOINT}/user/start`;
 export const API_USER_PIN_TWEET = `${API_ENDPOINT}/user/pin/tweet`;
 export const API_USER_BLOCKED = `${API_ENDPOINT}/user/blocked`;

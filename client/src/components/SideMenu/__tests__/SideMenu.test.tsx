@@ -9,7 +9,7 @@ import {createTheme} from "@material-ui/core/styles";
 import {NavLink, Router} from "react-router-dom";
 
 import {createMockRootState, mockDispatch} from "../../../util/testHelper";
-import {BOOKMARKS, HOME, LISTS, MESSAGES, NOTIFICATIONS, PROFILE, SEARCH} from "../../../util/pathConstants";
+import {HOME, LISTS, MESSAGES, NOTIFICATIONS, PROFILE, SEARCH} from "../../../util/pathConstants";
 import {mockUser} from "../../../util/mockData/mockData";
 import AddTweetModal from "../../AddTweetModal/AddTweetModal";
 import CloseButton from "../../CloseButton/CloseButton";
@@ -43,8 +43,6 @@ describe("SideMenu", () => {
         expect(wrapper.text().includes("Thông báo")).toBe(true);
         expect(wrapper.find("#messagesIcon").exists()).toBeTruthy();
         expect(wrapper.text().includes("Tin nhắn")).toBe(true);
-        expect(wrapper.find("#bookmarksIcon").exists()).toBeTruthy();
-        expect(wrapper.text().includes("Dấu trang")).toBe(true);
         expect(wrapper.find("#listsIcon").exists()).toBeTruthy();
         expect(wrapper.text().includes("Danh sách")).toBe(true);
         expect(wrapper.find("#profileIcon").exists()).toBeTruthy();
@@ -154,10 +152,6 @@ describe("SideMenu", () => {
         testSelectedIcon(MESSAGES, "#messagesIconFilled");
     });
 
-    it("should render BookmarksIconFilled", () => {
-        testSelectedIcon(BOOKMARKS, "#bookmarksIconFilled");
-    });
-
     it("should render ListsIconFilled", () => {
         testSelectedIcon(LISTS, "#listsIconFilled");
     });
@@ -186,16 +180,12 @@ describe("SideMenu", () => {
         testClickToNavLink(MESSAGES, 4);
     });
 
-    it("should click to Bookmarks Link", () => {
-        testClickToNavLink(BOOKMARKS, 5);
-    });
-
     it("should click to Lists Link", () => {
-        testClickToNavLink(LISTS, 6);
+        testClickToNavLink(LISTS, 5);
     });
 
     it("should click to Profile Link", () => {
-        testClickToNavLink(`${PROFILE}/2`, 7);
+        testClickToNavLink(`${PROFILE}/2`, 6);
     });
 
     const testSelectedIcon = (pathname: string, iconId: string): void => {

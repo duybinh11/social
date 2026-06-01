@@ -19,7 +19,6 @@ export const NOTIFICATION = "/notification";
 export const MESSAGES = "/messages";
 export const MESSAGES_SETTINGS = MESSAGES + "/settings";
 
-export const BOOKMARKS = "/bookmarks";
 export const SUGGESTED = "/suggested";
 export const LISTS = "/lists";
 export const LISTS_MEMBERSHIPS = LISTS + "/memberships";

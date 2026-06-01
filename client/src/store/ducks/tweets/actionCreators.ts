@@ -7,7 +7,6 @@ import {
     TweetsByListIdRequest,
     TweetsState,
     TweetsWithQuotesByIdRequest,
-    UpdatedBookmarkedTweetPayload,
     Vote
 } from "./contracts/state";
 import {
@@ -16,7 +15,6 @@ import {
     AddTweetActionInterface,
     ChangeReplyTypeActionInterface,
     DeleteTweetActionInterface,
-    FetchBookmarksActionInterface,
     FetchDeleteTweetActionInterface,
     FetchFollowersTweetsActionInterface,
     FetchMediaTweetsActionInterface,
@@ -27,7 +25,6 @@ import {
     FetchTweetsWithQuotesByIdActionInterface,
     FetchTweetsWithVideoActionInterface,
     LikeTweetActionInterface,
-    RemoveTweetFromBookmarksActionInterface,
     ResetTweetsActionInterface,
     RetweetActionInterface,
     SetBlockedToTweetsStateActionInterface,
@@ -37,7 +34,6 @@ import {
     SetTweetActionInterface,
     SetTweetsActionInterface,
     SetTweetsLoadingStateInterface,
-    SetUpdatedBookmarkedTweetActionInterface,
     SetUpdatedTweetActionInterface,
     TweetsActionType,
     VoteActionInterface,
@@ -145,11 +141,6 @@ export const retweet = (payload: TweetActionPayload): RetweetActionInterface => 
     payload,
 });
 
-export const setUpdatedBookmarkedTweetTweetsState = (payload: UpdatedBookmarkedTweetPayload): SetUpdatedBookmarkedTweetActionInterface => ({
-    type: TweetsActionType.SET_UPDATED_BOOKMARKED_TWEET,
-    payload,
-});
-
 export const fetchTweets = (payload: number): FetchTweetsActionInterface => ({
     type: TweetsActionType.FETCH_TWEETS,
     payload,
@@ -180,12 +171,3 @@ export const fetchQuotesByTweetId = (payload: TweetsWithQuotesByIdRequest): Fetc
     payload
 });
 
-export const fetchUserBookmarks = (payload: number): FetchBookmarksActionInterface => ({
-    type: TweetsActionType.FETCH_BOOKMARKS,
-    payload
-});
-
-export const removeTweetFromBookmarks = (payload: number): RemoveTweetFromBookmarksActionInterface => ({
-    type: TweetsActionType.REMOVE_TWEET_FROM_BOOKMARKS,
-    payload,
-});

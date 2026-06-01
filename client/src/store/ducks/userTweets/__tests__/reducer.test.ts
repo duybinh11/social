@@ -85,25 +85,6 @@ describe("userTweetsReducer:", () => {
         );
 
         testActionDispatch(
-            UserTweetsActionType.SET_UPDATED_BOOKMARKED_TWEET,
-            userTweetsReducer(
-                {
-                    ...initialUserTweetsState,
-                    items: [{id: 1, isTweetBookmarked: false}] as TweetResponse[],
-                },
-                {
-                    type: UserTweetsActionType.SET_UPDATED_BOOKMARKED_TWEET,
-                    payload: { tweetId: 1, isTweetBookmarked: true }
-                }
-            ),
-            {
-                ...initialUserTweetsState,
-                items: [{id: 1, isTweetBookmarked: true}] as TweetResponse[],
-                loadingState: LoadingStatus.LOADED
-            }
-        );
-
-        testActionDispatch(
             UserTweetsActionType.SET_ADDED_TWEET,
             userTweetsReducer(
                 {

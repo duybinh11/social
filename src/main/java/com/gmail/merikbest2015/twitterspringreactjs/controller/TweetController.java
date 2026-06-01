@@ -193,8 +193,4 @@ public class TweetController {
         return ResponseEntity.ok(tweet);
     }
 
-    @GetMapping("/{tweetId}/bookmarked")
-    public ResponseEntity<Boolean> getIsTweetBookmarked(@PathVariable Long tweetId) {
-        return ResponseEntity.ok(tweetMapper.getIsTweetBookmarked(tweetId));
-    }
 }

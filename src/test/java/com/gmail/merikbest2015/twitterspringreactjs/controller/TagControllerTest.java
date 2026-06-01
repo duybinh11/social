@@ -80,7 +80,6 @@ public class TagControllerTest {
                 .andExpect(jsonPath("$[0].isTweetLiked").value(false))
                 .andExpect(jsonPath("$[0].isTweetRetweeted").value(false))
                 .andExpect(jsonPath("$[0].isUserFollowByOtherUser").value(false))
-                .andExpect(jsonPath("$[0].isTweetDeleted").value(false))
-                .andExpect(jsonPath("$[0].isTweetBookmarked").value(false));
+                .andExpect(jsonPath("$[0].isTweetDeleted").value(false));
     }
 }

@@ -13,9 +13,7 @@ import {
     fetchTweetsByTag,
     fetchTweetsByText,
     fetchTweetsWithVideo,
-    fetchUserBookmarks,
     likeTweet,
-    removeTweetFromBookmarks,
     resetTweets,
     retweet,
     setBlockedToTweetsState,
@@ -25,7 +23,6 @@ import {
     setTweet,
     setTweets,
     setTweetsLoadingState,
-    setUpdatedBookmarkedTweetTweetsState,
     setUpdatedTweet,
     vote
 } from "../actionCreators";
@@ -135,11 +132,6 @@ describe("tweets actions", () => {
         payload: {tweetId: 1}
     });
 
-    testAction(setUpdatedBookmarkedTweetTweetsState, setUpdatedBookmarkedTweetTweetsState({tweetId: 1, isTweetBookmarked: true}), {
-        type: TweetsActionType.SET_UPDATED_BOOKMARKED_TWEET,
-        payload: {tweetId: 1, isTweetBookmarked: true}
-    });
-
     testAction(fetchTweets, fetchTweets(1), {
         type: TweetsActionType.FETCH_TWEETS,
         payload: 1
@@ -165,13 +157,4 @@ describe("tweets actions", () => {
         payload: {listId: 1, pageNumber: 1}
     });
 
-    testAction(fetchUserBookmarks, fetchUserBookmarks(1), {
-        type: TweetsActionType.FETCH_BOOKMARKS,
-        payload: 1
-    });
-
-    testAction(removeTweetFromBookmarks, removeTweetFromBookmarks(1), {
-        type: TweetsActionType.REMOVE_TWEET_FROM_BOOKMARKS,
-        payload: 1
-    });
 });
