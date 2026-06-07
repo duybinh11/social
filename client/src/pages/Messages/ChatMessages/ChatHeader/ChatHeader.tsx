@@ -33,7 +33,7 @@ const ChatHeader = memo((): ReactElement => {
             <div className={classes.iconGroup}>
                 <ActionIcon
                     path={`${MESSAGES}/${chatParticipant?.id}/info`}
-                    actionText={"Details"}
+                    actionText={"Chi tiết"}
                     className={"icon"}
                     icon={DetailsIcon}
                 />

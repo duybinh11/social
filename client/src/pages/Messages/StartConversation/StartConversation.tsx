@@ -2,24 +2,25 @@ import React, {memo, ReactElement} from "react";
 import {Button, Typography} from "@material-ui/core";
 
 import {useStartConversationStyles} from "./StartConversationStyles";
-import MessagesModal from "../MessagesModal/MessagesModal";
-import {useMessagesModal} from "../MessagesModal/useMessagesModal";
 
-const StartConversation = memo((): ReactElement => {
+interface StartConversationProps {
+    onStartConversation?: () => void;
+}
+
+const StartConversation = memo(({onStartConversation}: StartConversationProps): ReactElement => {
     const classes = useStartConversationStyles();
-    const {visibleModalWindow, onOpenModalWindow, onCloseModalWindow} = useMessagesModal();
 
     return (
         <>
-            <Typography variant={"h4"} component={"div"} className={classes.messagesTitle}>
-                Send a message, get a message
+            <Typography variant={"h5"} component={"div"} className={classes.messagesTitle}>
+                Gửi tin nhắn, nhận tin nhắn
             </Typography>
-            <Typography variant={"subtitle1"} component={"div"} className={classes.messagesText}>
-                Direct Messages are private conversations between you and other people on Twitter.
-                Share Tweets, media, and more!
+            <Typography variant={"body1"} component={"div"} className={classes.messagesText}>
+                Tin nhắn trực tiếp là cuộc trò chuyện riêng tư giữa bạn và người khác trên Twitter.
+                Chia sẻ tweet, phương tiện và nhiều hơn nữa!
             </Typography>
             <Button
-                onClick={onOpenModalWindow}
+                onClick={onStartConversation}
                 className={classes.messagesButton}
                 variant="contained"
                 color="primary"
@@ -27,7 +28,6 @@ const StartConversation = memo((): ReactElement => {
             >
                 Bắt đầu trò chuyện
             </Button>
-            <MessagesModal visible={visibleModalWindow} onClose={onCloseModalWindow}/>
         </>
     );
 });

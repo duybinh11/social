@@ -1,4 +1,4 @@
-import React, {FC, FormEvent, ReactElement, useEffect, useState} from "react";
+import React, {FC, FormEvent, ReactElement, useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Button, Dialog, Divider, InputAdornment, List, ListItem, Typography} from "@material-ui/core";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -7,7 +7,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import {useMessagesModalStyles} from "./MessagesModalStyles";
 import {MessagesModalInput} from "./MessagesModalInput/MessagesModalInput"
 import {
+    fetchUsersSearch,
     fetchUsersSearchByUsername,
+    resetUsersState,
     setUsersSearch
 } from "../../../store/ducks/usersSearch/actionCreators";
 import {selectUsersPagesCount, selectUsersSearch} from "../../../store/ducks/usersSearch/selectors";
@@ -21,6 +23,7 @@ import InfiniteScrollWrapper from '../../../components/InfiniteScrollWrapper/Inf
 import {normalizeUserSearchQuery} from "../../../util/normalizeUserSearchQuery";
 import {selectUsersSearchIsLoading} from "../../../store/ducks/usersSearch/selectors";
 import Spinner from "../../../components/Spinner/Spinner";
+import {isSameUserId} from "../../../util/chatUtils";
 
 const SEARCH_DEBOUNCE_MS = 300;
 
@@ -39,15 +42,20 @@ const MessagesModal: FC<MessagesModalProps> = ({visible, onClose}): ReactElement
     const [text, setText] = useState<string>("");
     const [selectedIndex, setSelectedIndex] = useState<number>();
     const [selectedUser, setSelectedUser] = useState<UserResponse>();
+    const selectedUserRef = useRef<UserResponse>();
 
     useEffect(() => {
-        if (!visible) {
-            return;
-        }
         setText("");
         setSelectedIndex(undefined);
         setSelectedUser(undefined);
-        dispatch(setUsersSearch([]));
+        selectedUserRef.current = undefined;
+
+        if (!visible) {
+            return;
+        }
+
+        dispatch(resetUsersState());
+        dispatch(fetchUsersSearch(0));
     }, [visible, dispatch]);
 
     useEffect(() => {
@@ -56,16 +64,16 @@ const MessagesModal: FC<MessagesModalProps> = ({visible, onClose}): ReactElement
         }
 
         const query = normalizeUserSearchQuery(text);
-        if (!query) {
-            dispatch(setUsersSearch([]));
-            return;
-        }
-
         const timer = setTimeout(() => {
-            dispatch(fetchUsersSearchByUsername({
-                username: query,
-                pageNumber: 0
-            }));
+            dispatch(resetUsersState());
+            if (query) {
+                dispatch(fetchUsersSearchByUsername({
+                    username: query,
+                    pageNumber: 0
+                }));
+            } else {
+                dispatch(fetchUsersSearch(0));
+            }
         }, SEARCH_DEBOUNCE_MS);
 
         return () => clearTimeout(timer);
@@ -74,41 +82,49 @@ const MessagesModal: FC<MessagesModalProps> = ({visible, onClose}): ReactElement
     const handleSubmitSearch = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
         const query = normalizeUserSearchQuery(text);
+        dispatch(resetUsersState());
         if (query) {
             dispatch(fetchUsersSearchByUsername({
                 username: query,
                 pageNumber: 0
             }));
+        } else {
+            dispatch(fetchUsersSearch(0));
         }
     };
 
     const loadParticipants = (page: number): void => {
         const query = normalizeUserSearchQuery(text);
-        if (!query) {
-            return;
+        if (query) {
+            dispatch(fetchUsersSearchByUsername({
+                username: query,
+                pageNumber: page
+            }));
+        } else {
+            dispatch(fetchUsersSearch(page));
         }
-        dispatch(fetchUsersSearchByUsername({
-            username: query,
-            pageNumber: page
-        }));
     };
 
     const handleClickAddUserToChat = (): void => {
-        dispatch(createChat(selectedUser?.id!));
+        const user = selectedUserRef.current;
+
+        if (!user?.id) {
+            return;
+        }
+
+        dispatch(createChat(user.id));
         dispatch(setUsersSearch([]));
         onClose();
     };
 
     const handleListItemClick = (user: UserResponse): void => {
-        if (!user.isMutedDirectMessages) {
-            if (user.id !== selectedIndex) {
-                setSelectedIndex(user.id);
-                setSelectedUser(user);
-            } else {
-                setSelectedIndex(undefined);
-                setSelectedUser(undefined);
-            }
+        if (user.isMutedDirectMessages || isSameUserId(user.id, myProfileId)) {
+            return;
         }
+
+        setSelectedIndex(user.id);
+        setSelectedUser(user);
+        selectedUserRef.current = user;
     };
 
     if (!visible) {
@@ -134,6 +150,7 @@ const MessagesModal: FC<MessagesModalProps> = ({visible, onClose}): ReactElement
             </DialogTitle>
             <DialogContent id="scrollableDiv" className={classes.content}>
                 <InfiniteScrollWrapper
+                    key={visible ? "messages-modal-search" : "messages-modal-closed"}
                     dataLength={users.length}
                     pagesCount={usersPagesCount}
                     loadItems={loadParticipants}
@@ -166,7 +183,7 @@ const MessagesModal: FC<MessagesModalProps> = ({visible, onClose}): ReactElement
                             <ListItem
                                 key={user.id}
                                 selected={selectedIndex === user.id!}
-                                disabled={user.isMutedDirectMessages || user.id === myProfileId}
+                                disabled={user.isMutedDirectMessages || isSameUserId(user.id, myProfileId)}
                                 onClick={() => handleListItemClick(user)}
                                 button
                             >

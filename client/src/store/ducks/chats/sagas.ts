@@ -23,9 +23,8 @@ export function* fetchChatsRequest() {
 
 export function* createChatRequest({payload}: CreateChatActionInterface) {
     try {
-        yield put(setChatsLoadingState(LoadingStatus.LOADING));
         const response: AxiosResponse<ChatResponse> = yield call(ChatApi.createChat, payload);
-        yield put(setChat(response.data));
+        yield put(setChat(response.data, payload));
     } catch (error) {
         yield put(setChatsLoadingState(LoadingStatus.ERROR));
     }

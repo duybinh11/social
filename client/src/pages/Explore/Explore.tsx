@@ -23,12 +23,16 @@ import {
     fetchUsersSearchByUsername,
     resetUsersState
 } from "../../store/ducks/usersSearch/actionCreators";
-import {selectUsersPagesCount} from "../../store/ducks/usersSearch/selectors";
+import {selectUsersPagesCount, selectUsersSearchItemsSize} from "../../store/ducks/usersSearch/selectors";
 import {useGlobalStyles} from "../../util/globalClasses";
+import {normalizeUserSearchQuery} from "../../util/normalizeUserSearchQuery";
 import {withDocumentTitle} from "../../hoc/withDocumentTitle";
 import PageHeaderWrapper from "../../components/PageHeaderWrapper/PageHeaderWrapper";
 import UsersList from "./UsersList/UsersList";
 import TweetsList from "./TweetsList/TweetsList";
+
+const PEOPLE_TAB_INDEX = 2;
+const SEARCH_DEBOUNCE_MS = 300;
 
 const Explore: FC = (): ReactElement => {
     const globalClasses = useGlobalStyles();
@@ -38,11 +42,13 @@ const Explore: FC = (): ReactElement => {
     const tweetsSize = useSelector(selectTweetsItemsSize);
     const tweetsPagesCount = useSelector(selectPagesCount);
     const usersPagesCount = useSelector(selectUsersPagesCount);
+    const usersSize = useSelector(selectUsersSearchItemsSize);
     const location = useLocation<{ tag: string | undefined; text: string | undefined; }>();
     const history = useHistory();
     const [text, setText] = useState<string>("");
     const [activeTab, setActiveTab] = useState<number>(0);
     const [page, setPage] = useState<number>(0);
+    const userSearchQuery = normalizeUserSearchQuery(text);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -66,16 +72,43 @@ const Explore: FC = (): ReactElement => {
         };
     }, [location.state?.tag, location.state?.text]);
 
+    useEffect(() => {
+        if (activeTab !== PEOPLE_TAB_INDEX) {
+            return;
+        }
+
+        const timer = setTimeout(() => {
+            setPage(0);
+            dispatch(resetUsersState());
+            if (userSearchQuery) {
+                dispatch(fetchUsersSearchByUsername({username: userSearchQuery, pageNumber: 0}));
+            } else {
+                dispatch(fetchUsersSearch(0));
+            }
+            setPage(1);
+        }, SEARCH_DEBOUNCE_MS);
+
+        return () => clearTimeout(timer);
+    }, [userSearchQuery, dispatch]);
+
+    const loadUsers = (pageNumber: number): void => {
+        if (userSearchQuery) {
+            dispatch(fetchUsersSearchByUsername({username: userSearchQuery, pageNumber}));
+        } else {
+            dispatch(fetchUsersSearch(pageNumber));
+        }
+    };
+
     const loadTweets = (): void => {
         if (text) {
-            if (activeTab !== 2) {
+            if (activeTab !== PEOPLE_TAB_INDEX) {
                 dispatch(fetchTweetsByText({text: encodeURIComponent(text), pageNumber: page}));
             } else {
-                dispatch(fetchUsersSearchByUsername({username: encodeURIComponent(text), pageNumber: page}));
+                loadUsers(page);
             }
         } else {
-            if (activeTab === 2) {
-                dispatch(fetchUsersSearch(page));
+            if (activeTab === PEOPLE_TAB_INDEX) {
+                loadUsers(page);
             } else if (activeTab === 3) {
                 dispatch(fetchMediaTweets(page));
             } else {
@@ -89,7 +122,6 @@ const Explore: FC = (): ReactElement => {
     };
 
     const handleChangeTab = (event: ChangeEvent<{}>, newValue: number): void => {
-        setText("");
         history.replace({pathname: location.pathname, state: {}});
         setActiveTab(newValue);
     };
@@ -97,14 +129,22 @@ const Explore: FC = (): ReactElement => {
     const handleSubmitSearch = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
 
-        if (text) {
-            if (activeTab !== 2) {
-                dispatch(resetTweets());
-                dispatch(fetchTweetsByText({text: encodeURIComponent(text), pageNumber: 0}));
+        if (activeTab === PEOPLE_TAB_INDEX) {
+            setPage(0);
+            dispatch(resetUsersState());
+            if (userSearchQuery) {
+                dispatch(fetchUsersSearchByUsername({username: userSearchQuery, pageNumber: 0}));
+                setPage(1);
             } else {
-                dispatch(resetUsersState());
-                dispatch(fetchUsersSearchByUsername({username: encodeURIComponent(text), pageNumber: 0}));
+                dispatch(fetchUsersSearch(0));
+                setPage(1);
             }
+            return;
+        }
+
+        if (text) {
+            dispatch(resetTweets());
+            dispatch(fetchTweetsByText({text: encodeURIComponent(text), pageNumber: 0}));
         }
     };
 
@@ -122,7 +162,11 @@ const Explore: FC = (): ReactElement => {
     };
 
     const showUsers = (): void => {
-        dispatch(fetchUsersSearch(0));
+        if (userSearchQuery) {
+            dispatch(fetchUsersSearchByUsername({username: userSearchQuery, pageNumber: 0}));
+        } else {
+            dispatch(fetchUsersSearch(0));
+        }
         setPage(prevState => prevState + 1);
     };
 
@@ -169,15 +213,15 @@ const Explore: FC = (): ReactElement => {
             <div className={classes.contentWrapper}>
                 <InfiniteScroll
                     style={{overflow: "unset"}}
-                    dataLength={tweetsSize}
+                    dataLength={activeTab === PEOPLE_TAB_INDEX ? usersSize : tweetsSize}
                     next={loadTweets}
-                    hasMore={page < (activeTab === 2 ? usersPagesCount : tweetsPagesCount)}
+                    hasMore={page < (activeTab === PEOPLE_TAB_INDEX ? usersPagesCount : tweetsPagesCount)}
                     loader={null}
                 >
-                    {(activeTab !== 2) ? (
+                    {(activeTab !== PEOPLE_TAB_INDEX) ? (
                         <TweetsList/>
                     ) : (
-                        <UsersList/>
+                        <UsersList searchQuery={userSearchQuery}/>
                     )}
                 </InfiniteScroll>
             </div>

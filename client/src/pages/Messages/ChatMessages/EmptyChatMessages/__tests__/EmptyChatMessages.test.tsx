@@ -8,7 +8,7 @@ describe("EmptyChatMessages", () => {
 
     it("should render correctly", () => {
         const wrapper = mountWithStore(<EmptyChatMessages/>, mockRootState);
-        expect(wrapper.text().includes("You don’t have a message selected")).toBe(true);
-        expect(wrapper.text().includes("Choose one from your existing messages, or start a new one.")).toBe(true);
+        expect(wrapper.text().includes("Chọn tin nhắn")).toBe(true);
+        expect(wrapper.text().includes("Chọn một cuộc trò chuyện từ danh sách bên trái")).toBe(true);
     });
 });

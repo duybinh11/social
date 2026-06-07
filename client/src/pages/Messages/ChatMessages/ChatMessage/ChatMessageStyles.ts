@@ -36,16 +36,18 @@ export const useChatMessageStyles = makeStyles<Theme, UseChatMessageStyles>((the
             border: `1px solid ${theme.palette.divider}`,
             borderRadius: "16px 16px 16px 0px",
             padding: 12,
-            width: 384,
+            width: "100%",
+            maxWidth: 420,
             "&:hover": {
                 cursor: "pointer",
-                backgroundColor: "rgb(247, 249, 249)"
+                backgroundColor: theme.palette.action.hover,
             },
         } : {
             border: `1px solid ${theme.palette.primary.main}`,
             borderRadius: "16px 16px 0px 16px",
             padding: 12,
-            width: 384,
+            width: "100%",
+            maxWidth: 420,
             "&:hover": {
                 cursor: "pointer",
                 backgroundColor: theme.palette.secondary.main,
@@ -70,7 +72,7 @@ export const useChatMessageStyles = makeStyles<Theme, UseChatMessageStyles>((the
             "& .MuiTypography-root": {
                 backgroundColor: theme.palette.divider,
                 padding: "11px 16px",
-                maxWidth: 384,
+                maxWidth: 420,
             },
         } : {
             display: "flex",
@@ -79,7 +81,7 @@ export const useChatMessageStyles = makeStyles<Theme, UseChatMessageStyles>((the
                 backgroundColor: theme.palette.primary.main,
                 color: theme.palette.common.white,
                 padding: "11px 15px",
-                maxWidth: 384,
+                maxWidth: 420,
             },
         }
     ),

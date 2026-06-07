@@ -10,7 +10,7 @@ import {
     UsersSearchActionsType
 } from "./contracts/actionTypes";
 import {UserApi} from "../../../services/api/userApi";
-import {setPageableFollowers, setPageableUsersSearch, setUsersSearchLoadingState} from "./actionCreators";
+import {setPageableFollowers, setPageableUsersSearch, setUsersSearch, setUsersSearchLoadingState} from "./actionCreators";
 import {UserResponse} from "../../types/user";
 import {ChatApi} from "../../../services/api/chatApi";
 import {LoadingStatus} from "../../types/common";
@@ -18,6 +18,9 @@ import {LoadingStatus} from "../../types/common";
 export function* fetchUsersSearchRequest({payload}: FetchUsersSearchActionInterface) {
     try {
         yield put(setUsersSearchLoadingState(LoadingStatus.LOADING));
+        if (payload === 0) {
+            yield put(setUsersSearch([]));
+        }
         const response: AxiosResponse<UserResponse[]> = yield call(UserApi.getUsers, payload);
         yield put(setPageableUsersSearch({
             items: response.data,
@@ -31,6 +34,9 @@ export function* fetchUsersSearchRequest({payload}: FetchUsersSearchActionInterf
 export function* fetchUsersSearchByUsernameRequest({payload}: FetchUsersSearchByNameActionInterface) {
     try {
         yield put(setUsersSearchLoadingState(LoadingStatus.LOADING));
+        if (payload.pageNumber === 0) {
+            yield put(setUsersSearch([]));
+        }
         const response: AxiosResponse<UserResponse[]> = yield call(UserApi.searchUsersByUsername, payload);
         yield put(setPageableUsersSearch({
             items: response.data,

@@ -22,6 +22,10 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
+    @Query("SELECT u.id AS id, u.fullName AS fullName, u.username AS username, u.about AS about, avatar AS avatar, " +
+            "u.privateProfile AS privateProfile, u.mutedDirectMessages AS mutedDirectMessages " +
+            "FROM User u LEFT JOIN u.avatar avatar " +
+            "WHERE u.active = true AND u.id <> :id")
     Page<UserProjection> findByActiveTrueAndIdNot(Long id, Pageable pageable);
 
     @Query("SELECT new com.gmail.merikbest2015.twitterspringreactjs.repository.projection.UserPrincipalProjection(user.id, user.email, user.password, user.activationCode) FROM User user WHERE user.email = :email")
@@ -43,11 +47,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findByIdIn(List<Long> ids);
 
-    @Query("SELECT u.id AS id, u.fullName AS fullName, u.username AS username, u.about AS about, u.avatar AS avatar, " +
+    @Query("SELECT u.id AS id, u.fullName AS fullName, u.username AS username, u.about AS about, avatar AS avatar, " +
             "u.privateProfile AS privateProfile, u.mutedDirectMessages AS mutedDirectMessages " +
-            "FROM User u " +
-            "WHERE UPPER(u.fullName) LIKE UPPER(CONCAT('%',:name,'%')) AND u.active = true " +
-            "OR UPPER(u.username) LIKE UPPER(CONCAT('%',:name,'%')) AND u.active = true")
+            "FROM User u LEFT JOIN u.avatar avatar " +
+            "WHERE u.active = true AND (" +
+            "UPPER(u.fullName) LIKE UPPER(CONCAT('%',:name,'%')) " +
+            "OR UPPER(u.username) LIKE UPPER(CONCAT('%',:name,'%')) " +
+            "OR UPPER(u.email) LIKE UPPER(CONCAT('%',:name,'%')))")
     <T> Page<T> findByFullNameOrUsername(String name, Pageable pageable, Class<T> type);
 
     @Query("SELECT user FROM User user WHERE user.email = :email")
@@ -58,7 +64,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<AuthUserProjection> findByPasswordResetCode(String code);
 
-    List<UserProjection> findTop5ByActiveTrue();
+    @Query("SELECT u.id AS id, u.fullName AS fullName, u.username AS username, u.about AS about, avatar AS avatar, " +
+            "u.privateProfile AS privateProfile, u.mutedDirectMessages AS mutedDirectMessages " +
+            "FROM User u LEFT JOIN u.avatar avatar " +
+            "WHERE u.active = true")
+    List<UserProjection> findTop5ByActiveTrue(Pageable pageable);
 
     List<User> findByUnreadMessages_Tweet(Tweet tweet);
 
@@ -74,17 +84,19 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("SELECT follower.id FROM User user LEFT JOIN user.followers follower WHERE user.id = :userId")
     List<Long> getUserFollowersIds(Long userId);
 
-    @Query("SELECT f.id AS id, f.fullName AS fullName, f.username AS username, f.about AS about, f.avatar AS avatar, " +
+    @Query("SELECT f.id AS id, f.fullName AS fullName, f.username AS username, f.about AS about, avatar AS avatar, " +
             "f.privateProfile AS privateProfile, f.mutedDirectMessages AS mutedDirectMessages " +
             "FROM User user " +
             "LEFT JOIN user.followers f " +
+            "LEFT JOIN f.avatar avatar " +
             "WHERE user.id = :userId")
     Page<UserProjection> getFollowersById(Long userId, Pageable pageable);
 
-    @Query("SELECT f.id AS id, f.fullName AS fullName, f.username AS username, f.about AS about, f.avatar AS avatar, " +
+    @Query("SELECT f.id AS id, f.fullName AS fullName, f.username AS username, f.about AS about, avatar AS avatar, " +
             "f.privateProfile AS privateProfile, f.mutedDirectMessages AS mutedDirectMessages " +
             "FROM User user " +
             "LEFT JOIN user.following f " +
+            "LEFT JOIN f.avatar avatar " +
             "WHERE user.id = :userId")
     Page<UserProjection> getFollowingById(Long userId, Pageable pageable);
 

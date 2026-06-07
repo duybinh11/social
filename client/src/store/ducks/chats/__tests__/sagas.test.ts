@@ -1,4 +1,5 @@
 import {AxiosResponse} from "axios";
+import {put} from "redux-saga/effects";
 
 import {chatsSaga, createChatRequest, fetchChatsRequest, leaveFromConversationRequest} from "../sagas";
 import {createChat, leaveFromConversation, setChat, setChats, setChatsLoadingState} from "../actionCreators";
@@ -24,9 +25,11 @@ describe("chatsSaga:", () => {
         const mockChatResponse = {data: {id: 1}} as AxiosResponse<ChatResponse>;
         const worker = createChatRequest(createChat(1));
 
-        testLoadingStatus(worker, setChatsLoadingState, LoadingStatus.LOADING);
         testCall(worker, ChatApi.createChat, 1);
-        testSetResponse(worker, mockChatResponse, setChat, mockChatResponse.data, "ChatResponse");
+        it("should yield put setChat with userId", () => {
+            const actualYield = worker.next(mockChatResponse).value;
+            expect(actualYield).toEqual(put(setChat(mockChatResponse.data, 1)));
+        });
         testLoadingStatus(worker, setChatsLoadingState, LoadingStatus.ERROR)
     });
 

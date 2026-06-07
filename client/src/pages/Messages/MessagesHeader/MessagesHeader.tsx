@@ -7,13 +7,14 @@ import {NewMessageIcon, SettingsIcon} from "../../../icons";
 import {useGlobalStyles} from "../../../util/globalClasses";
 import {useMessagesHeaderStyles} from "./MessagesHeaderStyles";
 import ActionIcon from "../ActionIcon/ActionIcon";
-import MessagesModal from "../MessagesModal/MessagesModal";
-import {useMessagesModal} from "../MessagesModal/useMessagesModal";
 
-const MessagesHeader = memo((): ReactElement => {
+interface MessagesHeaderProps {
+    onNewMessageClick?: () => void;
+}
+
+const MessagesHeader = memo(({onNewMessageClick}: MessagesHeaderProps): ReactElement => {
     const globalClasses = useGlobalStyles();
     const classes = useMessagesHeaderStyles();
-    const {visibleModalWindow, onOpenModalWindow, onCloseModalWindow} = useMessagesModal();
 
     return (
         <Paper className={classnames(globalClasses.pageHeader, classes.header)} variant="outlined">
@@ -28,13 +29,12 @@ const MessagesHeader = memo((): ReactElement => {
                     icon={SettingsIcon}
                 />
                 <ActionIcon
-                    onClick={onOpenModalWindow}
+                    onClick={onNewMessageClick}
                     actionText={"Tin nhắn mới"}
                     className={"icon"}
                     icon={NewMessageIcon}
                 />
             </div>
-            <MessagesModal visible={visibleModalWindow} onClose={onCloseModalWindow}/>
         </Paper>
     );
 });

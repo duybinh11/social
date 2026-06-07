@@ -63,12 +63,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserProjection> getRelevantUsers() {
-        return userRepository.findTop5ByActiveTrue();
+        return userRepository.findTop5ByActiveTrue(PageRequest.of(0, 5));
     }
 
     @Override
     public <T> Page<T> searchUsersByUsername(String text, Pageable pageable, Class<T> type) {
-        return userRepository.findByFullNameOrUsername(text, pageable, type);
+        if (text == null) {
+            return Page.empty(pageable);
+        }
+        String searchText = text.trim().replaceAll("^@+", "");
+        if (searchText.isEmpty()) {
+            return Page.empty(pageable);
+        }
+        return userRepository.findByFullNameOrUsername(searchText, pageable, type);
     }
 
     @Override

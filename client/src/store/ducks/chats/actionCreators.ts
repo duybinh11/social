@@ -1,5 +1,6 @@
 import {
     ChatsActionsType,
+    ClearActiveChatSelectionActionInterface,
     CreateChatActionInterface,
     FetchChatsActionInterface,
     LeaveFromConversationActionInterface,
@@ -17,9 +18,14 @@ export const setChats = (payload: ChatsState["items"]): SetChatsActionInterface 
     payload,
 });
 
-export const setChat = (payload: ChatResponse): SetChatActionInterface => ({
+export const setChat = (payload: ChatResponse, userId?: number): SetChatActionInterface => ({
     type: ChatsActionsType.SET_CHAT,
     payload,
+    userId,
+});
+
+export const clearActiveChatSelection = (): ClearActiveChatSelectionActionInterface => ({
+    type: ChatsActionsType.CLEAR_ACTIVE_CHAT_SELECTION,
 });
 
 export const fetchChats = (): FetchChatsActionInterface => ({

@@ -3,14 +3,14 @@ import TextField from "@material-ui/core/TextField/TextField";
 
 export const PeopleSearchInput = withStyles((theme: Theme) => ({
     root: {
-        paddingTop: 60,
+        width: "100%",
         '& .MuiOutlinedInput-root': {
-            borderRadius: 30,
+            borderRadius: 999,
             border: `1px solid ${theme.palette.divider}`,
             padding: 0,
-            paddingLeft: 15,
-            marginLeft: 15,
-            width: 385,
+            paddingLeft: 12,
+            width: "100%",
+            backgroundColor: theme.palette.action.hover,
             '&.Mui-focused': {
                 backgroundColor: theme.palette.background.paper,
                 '& fieldset': { borderWidth: 1, borderColor: theme.palette.primary.main },
@@ -19,6 +19,7 @@ export const PeopleSearchInput = withStyles((theme: Theme) => ({
                 },
             },
             '&:hover': {
+                backgroundColor: theme.palette.background.paper,
                 '& fieldset': { borderColor: 'transparent' },
             },
             '& fieldset': {
@@ -26,14 +27,16 @@ export const PeopleSearchInput = withStyles((theme: Theme) => ({
                 borderWidth: 1,
             },
             "& .MuiInputAdornment-root": {
-                "& svg" : {
+                marginRight: 4,
+                "& svg": {
                     color: theme.palette.text.secondary,
-                    height: "1.25em"
+                    height: "1.2em",
                 }
             },
         },
         '& .MuiOutlinedInput-input': {
-            padding: "12px 0px",
+            padding: "10px 12px 10px 0",
+            fontSize: 15,
         },
     },
 }))(TextField);

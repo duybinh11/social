@@ -7,6 +7,7 @@ import {LoadingStatus} from "../../../types/common";
 export enum ChatsActionsType {
     SET_CHATS = 'chats/SET_CHATS',
     SET_CHAT = 'chats/SET_CHAT',
+    CLEAR_ACTIVE_CHAT_SELECTION = 'chats/CLEAR_ACTIVE_CHAT_SELECTION',
     FETCH_CHATS = 'chats/FETCH_CHATS',
     CREATE_CHAT = 'chats/CREATE_CHAT',
     LEAVE_FROM_CONVERSATION = 'chats/LEAVE_FROM_CONVERSATION',
@@ -22,6 +23,11 @@ export interface SetChatsActionInterface extends Action<ChatsActionsType> {
 export interface SetChatActionInterface extends Action<ChatsActionsType> {
     type: ChatsActionsType.SET_CHAT;
     payload: ChatResponse;
+    userId?: number;
+}
+
+export interface ClearActiveChatSelectionActionInterface extends Action<ChatsActionsType> {
+    type: ChatsActionsType.CLEAR_ACTIVE_CHAT_SELECTION;
 }
 
 export interface FetchChatsActionInterface extends Action<ChatsActionsType> {
@@ -50,6 +56,7 @@ export interface SetChatsLoadingStateActionInterface extends Action<ChatsActions
 export type ChatsActions =
     | SetChatsActionInterface
     | SetChatActionInterface
+    | ClearActiveChatSelectionActionInterface
     | LeaveFromConversationActionInterface
     | ResetChatsStateActionInterface
     | SetChatsLoadingStateActionInterface;

@@ -2,12 +2,13 @@ import {makeStyles, Theme} from "@material-ui/core";
 
 export const useChatHeaderStyles = makeStyles((theme: Theme) => ({
     chatHeader: {
-        width: 598,
+        width: "100%",
+        borderBottom: `1px solid ${theme.palette.divider}`,
     },
     chatAvatar: {
-        width: theme.spacing(4),
-        height: theme.spacing(4),
-        margin: "0px 15px",
+        width: 40,
+        height: 40,
+        margin: "0px 12px",
     },
     iconGroup: {
         marginLeft: "auto",

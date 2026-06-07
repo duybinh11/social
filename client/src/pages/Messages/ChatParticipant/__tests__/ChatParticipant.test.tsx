@@ -13,7 +13,7 @@ describe("ChatParticipant", () => {
         const wrapper = mountWithStore(
             <ChatParticipant
                 chat={mockChat}
-                participantUserId={1}
+                selectedChatId={1}
                 handleListItemClick={mockHandleListItemClick}
             />, createMockRootState(LoadingStatus.LOADED));
         wrapper.find(ListItem).simulate("click");

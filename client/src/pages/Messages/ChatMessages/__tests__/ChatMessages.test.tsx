@@ -32,8 +32,8 @@ describe("ChatMessages", () => {
             <ChatMessages chatId={mockChat.id}/>,
             mockChatMessagesStore);
 
-        expect(wrapper.text().includes("You don’t have a message selected")).toBe(true);
-        expect(wrapper.text().includes("Choose one from your existing messages, or start a new one.")).toBe(true);
+        expect(wrapper.text().includes("Chọn tin nhắn")).toBe(true);
+        expect(wrapper.text().includes("Chọn một cuộc trò chuyện từ danh sách bên trái")).toBe(true);
         expect(wrapper.find(Button).text().includes("Tin nhắn mới")).toBe(true);
     });
 

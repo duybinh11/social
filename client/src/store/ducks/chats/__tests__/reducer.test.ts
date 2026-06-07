@@ -29,11 +29,22 @@ describe("chatsReducer:", () => {
             ChatsActionsType.SET_CHAT,
             chatsReducer(initialChatsState, {
                 type: ChatsActionsType.SET_CHAT,
-                payload: {id: 1} as ChatResponse
+                payload: {
+                    id: 1,
+                    participants: [{id: 6033, user: {id: 2}}],
+                } as ChatResponse,
+                userId: 2,
             }),
             {
                 ...initialChatsState,
-                items: [{id: 1}] as ChatResponse[],
+                items: [{
+                    id: 1,
+                    participants: [{id: 6033, user: {id: 2}}],
+                }] as ChatResponse[],
+                activeChatSelection: {
+                    chatId: 1,
+                    participantId: 6033,
+                },
                 loadingState: LoadingStatus.LOADED
             }
         );

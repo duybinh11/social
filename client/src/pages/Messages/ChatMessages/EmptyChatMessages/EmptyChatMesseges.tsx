@@ -2,23 +2,24 @@ import React, {memo, ReactElement} from "react";
 import {Button, Typography} from "@material-ui/core";
 
 import {useEmptyChatMessagesStyles} from "./EmptyChatMessagesStyles";
-import {useMessagesModal} from "../../MessagesModal/useMessagesModal";
-import MessagesModal from "../../MessagesModal/MessagesModal";
 
-const EmptyChatMessages = memo((): ReactElement => {
+interface EmptyChatMessagesProps {
+    onNewMessageClick?: () => void;
+}
+
+const EmptyChatMessages = memo(({onNewMessageClick}: EmptyChatMessagesProps): ReactElement => {
     const classes = useEmptyChatMessagesStyles();
-    const {visibleModalWindow, onOpenModalWindow, onCloseModalWindow} = useMessagesModal();
 
     return (
         <div className={classes.chatInfoWrapper}>
-            <Typography variant={"h4"} component={"div"}>
-                You don’t have a message selected
+            <Typography variant="h5" component="div" className={classes.title}>
+                Chọn tin nhắn
             </Typography>
-            <Typography variant={"subtitle1"} component={"div"}>
-                Choose one from your existing messages, or start a new one.
+            <Typography variant="body1" component="div" className={classes.subtitle}>
+                Chọn một cuộc trò chuyện từ danh sách bên trái hoặc bắt đầu cuộc trò chuyện mới.
             </Typography>
             <Button
-                onClick={onOpenModalWindow}
+                onClick={onNewMessageClick}
                 className={classes.chatInfoButton}
                 variant="contained"
                 color="primary"
@@ -26,7 +27,6 @@ const EmptyChatMessages = memo((): ReactElement => {
             >
                 Tin nhắn mới
             </Button>
-            <MessagesModal visible={visibleModalWindow} onClose={onCloseModalWindow}/>
         </div>
     );
 });

@@ -18,7 +18,6 @@ const ChatFooter: FC<ChatFooterProps> = ({chatId}): ReactElement => {
     const classes = useChatFooterStyles();
     const dispatch = useDispatch();
     const [message, setMessage] = useState<string>("");
-    // Popover
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const openPopover = Boolean(anchorEl);
     const popoverId = openPopover ? "simple-popover" : undefined;
@@ -52,7 +51,7 @@ const ChatFooter: FC<ChatFooterProps> = ({chatId}): ReactElement => {
     };
 
     return (
-        <Paper className={classes.chatFooter}>
+        <Paper className={classes.chatFooter} elevation={0} variant="outlined">
             <ActionIcon
                 actionText={"Phương tiện"}
                 className={"chatIcon"}
@@ -65,13 +64,15 @@ const ChatFooter: FC<ChatFooterProps> = ({chatId}): ReactElement => {
                 icon={GifIcon}
                 positionTop
             />
-            <MessageInput
-                multiline
-                value={message}
-                onChange={(event) => setMessage(event.target.value)}
-                variant="outlined"
-                placeholder="Start a new message"
-            />
+            <div className={classes.inputWrapper}>
+                <MessageInput
+                    multiline
+                    value={message}
+                    onChange={(event) => setMessage(event.target.value)}
+                    variant="outlined"
+                    placeholder="Nhập tin nhắn..."
+                />
+            </div>
             <div id={"handleOpenPopup"} onClick={handleOpenPopup}>
                 <ActionIcon
                     actionText={"Emoji"}
@@ -80,7 +81,7 @@ const ChatFooter: FC<ChatFooterProps> = ({chatId}): ReactElement => {
                     positionTop
                 />
             </div>
-            <div style={{marginLeft: 8}}>
+            <div className={classes.sendWrapper}>
                 <ActionIcon
                     onClick={onSendMessage}
                     actionText={"Gửi"}

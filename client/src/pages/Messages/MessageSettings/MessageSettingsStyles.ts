@@ -5,8 +5,11 @@ export const useMessageSettingsStyles = makeStyles((theme: Theme) => ({
         minWidth: 600,
         padding: 0,
         borderLeft: 0,
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
     },
     chatHeader: {
-        width: 598,
+        width: "100%",
     },
 }));

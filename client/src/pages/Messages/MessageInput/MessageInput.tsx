@@ -3,18 +3,15 @@ import TextField from "@material-ui/core/TextField/TextField";
 
 export const MessageInput = withStyles((theme: Theme) => ({
     root: {
+        width: "100%",
         '& .MuiOutlinedInput-root': {
-            marginTop: 2,
-            borderRadius: 20,
-            padding: "9px 14px",
+            borderRadius: 22,
+            padding: "8px 14px",
             border: `1px solid ${theme.palette.divider}`,
-            width: 475,
+            width: "100%",
             '&.Mui-focused': {
                 backgroundColor: theme.palette.background.paper,
                 '& fieldset': { borderWidth: 1, borderColor: theme.palette.primary.main },
-                '& svg path': {
-                    fill: theme.palette.primary.main,
-                },
             },
             '&:hover': {
                 '& fieldset': { borderColor: 'transparent' },
@@ -25,8 +22,11 @@ export const MessageInput = withStyles((theme: Theme) => ({
             },
         },
         '& .MuiOutlinedInput-input': {
+            padding: 0,
+            fontSize: 15,
             "&::placeholder": {
-                color: theme.palette.text.primary,
+                color: theme.palette.text.secondary,
+                opacity: 1,
             },
         },
     },

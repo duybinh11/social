@@ -6,63 +6,42 @@ import {Avatar, ListItem, Typography} from "@material-ui/core";
 import {DEFAULT_PROFILE_IMG} from "../../../util/url";
 import {ChatResponse} from "../../../store/types/chat";
 import {selectUserDataId} from "../../../store/ducks/user/selectors";
+import {getOtherChatParticipant} from "../../../util/chatUtils";
 
 interface ChatParticipantProps {
     chat: ChatResponse;
-    participantUserId?: number;
+    selectedChatId?: number;
     handleListItemClick: (chat: ChatResponse) => void;
 }
 
 const ChatParticipant: FC<ChatParticipantProps> = memo((
     {
         chat,
-        participantUserId,
+        selectedChatId,
         handleListItemClick
     }
 ): ReactElement => {
     const classes = useChatParticipantStyles();
     const myProfileId = useSelector(selectUserDataId);
-    const isParticipantSelected = chat.participants.findIndex((participant) => participant.id === participantUserId);
-    const isMyProfile = myProfileId === chat.participants[1].user.id;
+    const otherParticipant = getOtherChatParticipant(chat, myProfileId)?.user;
+    const avatar = otherParticipant?.avatar?.src ?? DEFAULT_PROFILE_IMG;
 
     return (
         <ListItem
             className={classes.listItem}
-            id={isParticipantSelected ? "selected" : ""}
-            selected={isParticipantSelected !== -1}
+            id={selectedChatId === chat.id ? "selected" : ""}
+            selected={selectedChatId === chat.id}
             onClick={() => handleListItemClick(chat)}
             button
         >
             <div className={classes.userWrapper}>
-                <Avatar
-                    className={classes.userAvatar}
-                    src={(isMyProfile) ? (
-                        (chat.participants[0].user.avatar?.src) ? (
-                            chat.participants[0].user.avatar.src
-                        ) : (
-                            DEFAULT_PROFILE_IMG
-                        )
-                    ) : ((chat.participants[1].user.avatar?.src) ? (
-                            chat.participants[1].user.avatar?.src
-                        ) : (
-                            DEFAULT_PROFILE_IMG
-                        )
-                    )}
-                />
-                <div>
-                    <Typography variant={"h6"} component={"span"}>
-                        {(isMyProfile) ? (
-                            chat.participants[0].user.fullName
-                        ) : (
-                            chat.participants[1].user.fullName
-                        )}
+                <Avatar className={classes.userAvatar} src={avatar}/>
+                <div className={classes.userInfo}>
+                    <Typography variant="body1" component="span" className={classes.userName}>
+                        {otherParticipant?.fullName}
                     </Typography>
-                    <Typography variant={"subtitle1"} component={"span"} className={classes.username}>
-                        {(isMyProfile) ? (
-                            `@${chat.participants[0].user.username}`
-                        ) : (
-                            `@${chat.participants[1].user.username}`
-                        )}
+                    <Typography variant="body2" component="span" className={classes.username}>
+                        @{otherParticipant?.username}
                     </Typography>
                 </div>
             </div>

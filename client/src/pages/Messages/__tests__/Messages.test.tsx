@@ -48,8 +48,8 @@ describe("Tin nhắn", () => {
     it("should render empty chat", () => {
         const wrapper = mountWithStore(<Messages/>, {...mockStore, chats: {...mockStore.chats, items: []}});
 
-        expect(wrapper.text().includes("Send a message, get a message")).toBe(true);
-        expect(wrapper.text().includes("Direct Messages are private conversations between you and other people on Twitter.")).toBe(true);
+        expect(wrapper.text().includes("Gửi tin nhắn, nhận tin nhắn")).toBe(true);
+        expect(wrapper.text().includes("Tin nhắn trực tiếp là cuộc trò chuyện riêng tư")).toBe(true);
         expect(wrapper.find(Button).at(0).text().includes("Bắt đầu trò chuyện")).toBe(true);
     });
 
@@ -171,7 +171,7 @@ describe("Tin nhắn", () => {
     });
 
     it("should hover Details icon and render Hover Action", () => {
-        processHoverAction(0, "Details");
+        processHoverAction(0, "Chi tiết");
     });
 
     it("should hover Media icon and render Hover Action", () => {

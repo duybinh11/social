@@ -22,9 +22,10 @@ import {fetchChat} from "../../../store/ducks/chat/actionCreators";
 interface ChatMessagesProps {
     participantId?: number;
     chatId?: number;
+    onNewMessageClick?: () => void;
 }
 
-const ChatMessages: FC<ChatMessagesProps> = ({participantId, chatId}): ReactElement => {
+const ChatMessages: FC<ChatMessagesProps> = ({participantId, chatId, onNewMessageClick}): ReactElement => {
     const globalClasses = useGlobalStyles();
     const classes = useChatMessagesStyles();
     const dispatch = useDispatch();
@@ -56,33 +57,35 @@ const ChatMessages: FC<ChatMessagesProps> = ({participantId, chatId}): ReactElem
     return (
         <Paper className={classnames(globalClasses.pageContainer, classes.chatContainer)} variant="outlined">
             {(!participantId) ? (
-                <EmptyChatMessages/>
+                <div className={classes.emptyWrapper}>
+                    <EmptyChatMessages onNewMessageClick={onNewMessageClick}/>
+                </div>
             ) : (
                 <>
                     <ChatHeader/>
-                    <Paper className={classes.chat}>
-                        {isChatMessagesLoading ? (
-                            <Spinner paddingTop={150}/>
-                        ) : (
-                            <>
-                                {messages.map((message) => (
-                                    <ChatMessage
-                                        key={message.id}
-                                        message={message}
-                                        isParticipantMessage={message.author.id !== myProfileId}
-                                    />
-                                ))}
-                                <div ref={chatEndRef}/>
-                            </>
-                        )}
-                    </Paper>
-                    <>
+                    <div className={classes.chatBody}>
+                        <Paper className={classes.chat} variant="outlined">
+                            {isChatMessagesLoading ? (
+                                <Spinner paddingTop={150}/>
+                            ) : (
+                                <>
+                                    {messages.map((message) => (
+                                        <ChatMessage
+                                            key={message.id}
+                                            message={message}
+                                            isParticipantMessage={message.author.id !== myProfileId}
+                                        />
+                                    ))}
+                                    <div ref={chatEndRef}/>
+                                </>
+                            )}
+                        </Paper>
                         {chatParticipant?.isUserBlocked ? (
                             <ChatUserBlocked/>
                         ) : (
                             <ChatFooter chatId={chatId!}/>
                         )}
-                    </>
+                    </div>
                 </>
             )}
         </Paper>
