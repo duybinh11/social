@@ -14,18 +14,22 @@ import ListsItemAvatar from "./ListsItemAvatar/ListsItemAvatar";
 
 interface ListsItemProps {
     list?: ListResponse | ListUserResponse;
-    listIndex?: number;
+    isLastItem?: boolean;
     isMyList?: boolean;
 }
 
-const ListsItem: FC<ListsItemProps> = memo(({list, listIndex, isMyList}): ReactElement => {
+const ListsItem: FC<ListsItemProps> = memo(({list, isLastItem, isMyList}): ReactElement => {
     const globalClasses = useGlobalStyles();
     const classes = useListsItemStyles();
     const myProfileId = useSelector(selectUserDataId);
 
     return (
         <Link to={`${LISTS}/${list?.id}`} className={globalClasses.link}>
-            <Paper className={classes.container} style={{border: (listIndex === 2) ? 0 : 1}} variant="outlined">
+            <Paper
+                className={classes.container}
+                style={isLastItem ? {borderBottom: 0} : undefined}
+                variant="outlined"
+            >
                 <ListsItemAvatar listWallpaper={list?.wallpaper} listAltWallpaper={list?.altWallpaper}/>
                 <div className={classes.listInfoContainer}>
                     <ListInfoDescription

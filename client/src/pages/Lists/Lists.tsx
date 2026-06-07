@@ -26,8 +26,10 @@ const Lists = (): ReactElement => {
     return (
         <Paper className={globalClasses.pageContainer} variant="outlined">
             <ListsHeader/>
-            <DiscoverLists/>
-            <UserLists/>
+            <div className={globalClasses.contentWrapper}>
+                <DiscoverLists/>
+                <UserLists/>
+            </div>
         </Paper>
     );
 };

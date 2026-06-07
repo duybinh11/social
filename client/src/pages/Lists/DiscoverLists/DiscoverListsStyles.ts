@@ -2,7 +2,6 @@ import {makeStyles, Theme} from "@material-ui/core";
 
 export const useDiscoverListsStyles = makeStyles((theme: Theme) => ({
     newLists: {
-        maxHeight: 345,
         borderTop: 0,
         borderLeft: 0,
         borderRight: 0,

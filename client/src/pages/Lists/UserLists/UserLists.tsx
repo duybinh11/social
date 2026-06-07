@@ -17,12 +17,23 @@ const UserLists = (): ReactElement => {
     return (
         <Paper id={"userLists"} className={classes.myLists} variant="outlined">
             <Typography variant="h5" className={globalClasses.itemInfoWrapper}>
-                Your Lists
+                Danh sách của tôi
             </Typography>
             {isUserListsLoading ? (
                 <Spinner/>
+            ) : userLists.length === 0 ? (
+                <Typography variant="body1" className={classes.emptyState}>
+                    Bạn chưa tạo danh sách nào. Nhấn biểu tượng + ở trên để tạo danh sách mới.
+                </Typography>
             ) : (
-                userLists.map((list) => (<ListsItem key={list.id} list={list} isMyList/>))
+                userLists.map((list, index) => (
+                    <ListsItem
+                        key={list.id}
+                        list={list}
+                        isMyList
+                        isLastItem={index === userLists.length - 1}
+                    />
+                ))
             )}
         </Paper>
     );

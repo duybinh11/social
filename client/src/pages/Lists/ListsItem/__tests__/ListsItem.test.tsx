@@ -18,7 +18,7 @@ describe("ListsItem", () => {
     });
 
     it("should render ListsItem correctly", () => {
-        const wrapper = mountWithStore(<ListsItem list={mockList} listIndex={2} isMyList={false}/>, mockStore);
+        const wrapper = mountWithStore(<ListsItem list={mockList} isLastItem isMyList={false}/>, mockStore);
         
         expect(wrapper.find(Avatar).at(0).prop("src")).toEqual(mockList.altWallpaper);
         expect(wrapper.text().includes(mockList.name)).toBe(true);
@@ -30,7 +30,7 @@ describe("ListsItem", () => {
     });
 
     it("should click follow ListsItem", () => {
-        const wrapper = mountWithStore(<ListsItem list={mockList} listIndex={2} isMyList={false}/>, mockStore);
+        const wrapper = mountWithStore(<ListsItem list={mockList} isLastItem isMyList={false}/>, mockStore);
         wrapper.find(Button).at(0).simulate("click");
         
         expect(mockDispatchFn).nthCalledWith(1, {payload: 2, type: ListsActionType.FOLLOW_LIST});
@@ -38,7 +38,7 @@ describe("ListsItem", () => {
 
     it("should click unfollow ListsItem", () => {
         const mockFollowList = {...mockList, isFollower: true};
-        const wrapper = mountWithStore(<ListsItem list={mockFollowList} listIndex={2} isMyList={false}/>, mockStore);
+        const wrapper = mountWithStore(<ListsItem list={mockFollowList} isLastItem isMyList={false}/>, mockStore);
         const mockButton = wrapper.find(Button).at(0);
         
         mockButton.simulate("mouseover");
@@ -54,7 +54,7 @@ describe("ListsItem", () => {
     it("should hover list info and render Popper List Window", () => {
         const mockListsStore = {...mockStore, listDetail: {...mockStore.listDetail, item: mockUserFullList}}
         jest.useFakeTimers();
-        const wrapper = mountWithStore(<ListsItem list={mockList} listIndex={2} isMyList={false}/>, mockListsStore);
+        const wrapper = mountWithStore(<ListsItem list={mockList} isLastItem isMyList={false}/>, mockListsStore);
         wrapper.find("#listInfoWrapper").at(0).simulate("mouseenter");
         jest.runAllTimers();
         wrapper.update();

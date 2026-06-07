@@ -43,7 +43,7 @@ describe("Danh sách", () => {
         expect(wrapper.find(Spinner).at(0).exists()).toBe(true);
         expect(wrapper.find(Spinner).at(1).exists()).toBe(true);
         expect(wrapper.text().includes("Discover new Lists")).toBe(true);
-        expect(wrapper.text().includes("Your Lists")).toBe(true);
+        expect(wrapper.text().includes("Danh sách của tôi")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {type: ListsActionType.FETCH_LISTS});
         expect(mockDispatchFn).nthCalledWith(2, {type: ListsActionType.FETCH_USER_LISTS});
     });

@@ -25,7 +25,11 @@ const DiscoverLists = (): ReactElement => {
                 </div>
             ) : (
                 lists.map((list, index) => (
-                    <ListsItem key={list.id} list={list} listIndex={index}/>
+                    <ListsItem
+                        key={list.id}
+                        list={list}
+                        isLastItem={index === lists.length - 1}
+                    />
                 ))
             )}
         </Paper>
