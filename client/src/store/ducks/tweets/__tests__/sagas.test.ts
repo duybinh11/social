@@ -13,7 +13,6 @@ import {
     fetchTweetsByTagRequest,
     fetchTweetsByTextRequest,
     fetchTweetsRequest,
-    fetchTweetsWithVideoRequest,
     likeTweetRequest,
     retweetRequest,
     tweetsSaga,
@@ -32,7 +31,6 @@ import {
     fetchTweetsByListId,
     fetchTweetsByTag,
     fetchTweetsByText,
-    fetchTweetsWithVideo,
     likeTweet,
     retweet,
     setPageableTweets,
@@ -76,17 +74,6 @@ describe("tweetsSaga:", () => {
         const worker = fetchMediaTweetsRequest(fetchMediaTweets(1));
         testLoadingStatus(worker, setTweetsLoadingState, LoadingStatus.LOADING);
         testCall(worker, TweetApi.fetchMediaTweets, 1);
-        testSetResponse(worker, mockPageableTweets, setPageableTweets, {
-            items: mockPageableTweets.data,
-            pagesCount: parseInt(mockPageableTweets.headers["page-total-count"])
-        }, "TweetResponse");
-        testLoadingStatus(worker, setTweetsLoadingState, LoadingStatus.ERROR);
-    });
-
-    describe("fetchTweetsWithVideoRequest:", () => {
-        const worker = fetchTweetsWithVideoRequest(fetchTweetsWithVideo(1));
-        testLoadingStatus(worker, setTweetsLoadingState, LoadingStatus.LOADING);
-        testCall(worker, TweetApi.fetchTweetsWithVideo, 1);
         testSetResponse(worker, mockPageableTweets, setPageableTweets, {
             items: mockPageableTweets.data,
             pagesCount: parseInt(mockPageableTweets.headers["page-total-count"])
@@ -203,7 +190,6 @@ describe("tweetsSaga:", () => {
     testWatchSaga(tweetsSaga, [
         {actionType: TweetsActionType.FETCH_TWEETS, workSaga: fetchTweetsRequest},
         {actionType: TweetsActionType.FETCH_MEDIA_TWEETS, workSaga: fetchMediaTweetsRequest},
-        {actionType: TweetsActionType.FETCH_TWEETS_WITH_VIDEO, workSaga: fetchTweetsWithVideoRequest},
         {actionType: TweetsActionType.FETCH_FOLLOWERS_TWEETS, workSaga: fetchFollowersTweetsRequest},
         {actionType: TweetsActionType.ADD_TWEET, workSaga: addTweetRequest},
         {actionType: TweetsActionType.ADD_POLL, workSaga: addPollRequest},

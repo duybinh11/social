@@ -127,7 +127,7 @@ describe("UserPage", () => {
     });
 
     it("should click Media Tab and fetch user tweets", () => {
-        testClickTab(2, `${mockUser.mediaTweetCount} Photos & videos`, "Phương tiện", UserTweetsActionType.FETCH_MEDIA_TWEETS);
+        testClickTab(2, `${mockUser.mediaTweetCount} Photos`, "Phương tiện", UserTweetsActionType.FETCH_MEDIA_TWEETS);
     });
 
     it("should click Likes Tab and fetch user tweets", () => {
@@ -143,8 +143,8 @@ describe("UserPage", () => {
         testShowSingleTweetCount(1, `${mockUserWithSingleCount.tweetCount} Tweet`);
     });
 
-    it("should show single Photo & video count", () => {
-        testShowSingleTweetCount(2, `${mockUserWithSingleCount.mediaTweetCount} Photo & video`);
+    it("should show single Photo count", () => {
+        testShowSingleTweetCount(2, `${mockUserWithSingleCount.mediaTweetCount} Photo`);
     });
 
     it("should show single Like count", () => {

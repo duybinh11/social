@@ -41,11 +41,6 @@ public class TweetMapper {
         return basicMapper.getHeaderResponse(tweets, TweetResponse.class);
     }
 
-    public HeaderResponse<TweetResponse> getTweetsWithVideo(Pageable pageable) {
-        Page<TweetProjection> tweets = tweetService.getTweetsWithVideo(pageable);
-        return basicMapper.getHeaderResponse(tweets, TweetResponse.class);
-    }
-    
     public HeaderResponse<TweetResponse> getFollowersTweets(Pageable pageable) {
         Page<TweetProjection> tweets = tweetService.getFollowersTweets(pageable);
         return basicMapper.getHeaderResponse(tweets, TweetResponse.class);

@@ -14,7 +14,6 @@ import {
     API_TWEETS_REPLY,
     API_TWEETS_RETWEET,
     API_TWEETS_SEARCH,
-    API_TWEETS_VIDEO,
     API_TWEETS_VOTE
 } from "../../../util/endpoints";
 import {mockFullTweet, mockTweets, mockUsers} from "../../../util/mockData/mockData";
@@ -39,12 +38,6 @@ describe("TweetApi", () => {
     describe("should fetch TweetApi.fetchMediaTweets", () => {
         it("[200] should fetch media tweets Success", () => {
             testApiCall(mockAdapter, "onGet", API_TWEETS_MEDIA, 200, mockTweets, TweetApi.fetchMediaTweets, 1);
-        });
-    });
-
-    describe("should fetch TweetApi.fetchTweetsWithVideo", () => {
-        it("[200] should fetch tweets with video Success", () => {
-            testApiCall(mockAdapter, "onGet", API_TWEETS_VIDEO, 200, mockTweets, TweetApi.fetchTweetsWithVideo, 1);
         });
     });
 

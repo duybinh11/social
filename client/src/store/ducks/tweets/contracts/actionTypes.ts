@@ -22,7 +22,6 @@ export enum TweetsActionType {
     SET_TWEETS = "tweets/SET_TWEETS",
     FETCH_TWEETS = "tweets/FETCH_TWEETS",
     FETCH_MEDIA_TWEETS = "tweets/FETCH_MEDIA_TWEETS",
-    FETCH_TWEETS_WITH_VIDEO = "tweets/FETCH_TWEETS_WITH_VIDEO",
     FETCH_FOLLOWERS_TWEETS = "tweets/FETCH_FOLLOWERS_TWEETS",
     FETCH_TWEETS_BY_LIST_ID = "tweets/FETCH_TWEETS_BY_LIST_ID",
     FETCH_TWEETS_WITH_QUOTES_BY_ID = "tweets/FETCH_TWEETS_WITH_QUOTES_BY_ID",
@@ -85,11 +84,6 @@ export interface ResetTweetsActionInterface extends Action<TweetsActionType> {
 
 export interface FetchMediaTweetsActionInterface extends Action<TweetsActionType> {
     type: TweetsActionType.FETCH_MEDIA_TWEETS;
-    payload: number;
-}
-
-export interface FetchTweetsWithVideoActionInterface extends Action<TweetsActionType> {
-    type: TweetsActionType.FETCH_TWEETS_WITH_VIDEO;
     payload: number;
 }
 

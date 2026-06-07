@@ -12,7 +12,6 @@ import TweetComponent from "../TweetComponent";
 import VoteComponent from "../../VoteComponent/VoteComponent";
 import {TweetResponse} from "../../../store/types/tweet";
 import Quote from "../../Quote/Quote";
-import YouTubeVideo from "../../YouTubeVideo/YouTubeVideo";
 import SmallLinkPreview from "../../SmallLinkPreview/SmallLinkPreview";
 import LargeLinkPreview from "../../LargeLinkPreview/LargeLinkPreview";
 import CloseButton from "../../CloseButton/CloseButton";
@@ -158,24 +157,11 @@ describe("TweetComponent", () => {
     it("should render empty tweet Link preview", () => {
         const mockTweet = {...mockFullTweet, link: null} as unknown as TweetResponse;
         const {wrapper} = createTweetComponentWrapper(mockRootState, mockTweet);
-        expect(wrapper.find(YouTubeVideo).exists()).toBeFalsy();
         expect(wrapper.find(SmallLinkPreview).exists()).toBeFalsy();
         expect(wrapper.find(LargeLinkPreview).exists()).toBeFalsy();
     });
 
-    it("should render Small YouTube Link preview", () => {
-        const {wrapper} = createTweetComponentWrapper();
-        expect(wrapper.find(SmallLinkPreview).exists()).toBeTruthy();
-    });
-
-    it("should render YouTube Video preview", () => {
-        const {wrapper} = createTweetComponentWrapper();
-        expect(wrapper.find(YouTubeVideo).exists()).toBeFalsy();
-        wrapper.find(SmallLinkPreview).find("#openYouTubeVideo").simulate("click");
-        expect(wrapper.find(YouTubeVideo).exists()).toBeTruthy();
-    });
-
-    it("should render small YouTube Link preview", () => {
+    it("should render small link preview", () => {
         const {wrapper} = createTweetComponentWrapper();
         expect(wrapper.find(SmallLinkPreview).exists()).toBeTruthy();
     });

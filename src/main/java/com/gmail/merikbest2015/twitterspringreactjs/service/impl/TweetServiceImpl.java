@@ -16,19 +16,15 @@ import com.gmail.merikbest2015.twitterspringreactjs.service.PersonalizationServi
 import com.gmail.merikbest2015.twitterspringreactjs.service.TweetService;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestTemplate;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -52,14 +48,7 @@ public class TweetServiceImpl implements TweetService {
     private final TagRepository tagRepository;
     private final PollRepository pollRepository;
     private final PollChoiceRepository pollChoiceRepository;
-    private final RestTemplate restTemplate;
     private final PersonalizationService personalizationService;
-
-    @Value("${google.api.url}")
-    private String googleApiUrl;
-
-    @Value("${google.api.key}")
-    private String googleApiKey;
 
     @Override
     public Page<TweetProjection> getTweets(Pageable pageable) {
@@ -114,11 +103,6 @@ public class TweetServiceImpl implements TweetService {
     @Override
     public Page<TweetProjection> getMediaTweets(Pageable pageable) {
         return tweetRepository.findAllTweetsWithImages(pageable);
-    }
-
-    @Override
-    public Page<TweetProjection> getTweetsWithVideo(Pageable pageable) {
-        return tweetRepository.findAllTweetsWithVideo(pageable);
     }
 
     @Override
@@ -461,7 +445,6 @@ public class TweetServiceImpl implements TweetService {
     private boolean parseMetadataFromURL(Tweet tweet) {
         Pattern urlRegex = Pattern.compile("https?:\\/\\/?[\\w\\d\\._\\-%\\/\\?=&#]+", Pattern.CASE_INSENSITIVE);
         Pattern imgRegex = Pattern.compile("\\.(jpeg|jpg|gif|png)$", Pattern.CASE_INSENSITIVE);
-        Pattern youTubeUrlRegex = Pattern.compile("(?<=watch\\?v=|/videos/|embed\\/|youtu.be\\/|\\/v\\/|\\/e\\/|watch\\?v%3D|watch\\?feature=player_embedded&v=|%2Fvideos%2F|embed%\u200C\u200B2F|youtu.be%2F|%2Fv%2F)[^#\\&\\?\\n]*", Pattern.CASE_INSENSITIVE);
         String text = tweet.getText();
         Matcher matcher = urlRegex.matcher(text);
 
@@ -485,33 +468,6 @@ public class TweetServiceImpl implements TweetService {
                 tweet.setLinkDescription(getContent(description.first()));
                 tweet.setLinkCover(getContent(cover.first()));
                 tweet.setLinkCoverSize(coverDataSize > 267.0 ? LinkCoverSize.SMALL : LinkCoverSize.LARGE);
-            } else {
-                String youTubeVideoId = null;
-                Matcher youTubeMatcher = youTubeUrlRegex.matcher(url);
-
-                if (youTubeMatcher.find()) {
-                    youTubeVideoId = youTubeMatcher.group();
-                }
-                String youtubeUrl = String.format(googleApiUrl, youTubeVideoId, googleApiKey);
-                String youTubeVideData = restTemplate.getForObject(youtubeUrl, String.class);
-                JSONObject jsonObject = new JSONObject(youTubeVideData);
-                JSONArray items = jsonObject.getJSONArray("items");
-                String videoTitle = null;
-                String videoCoverImage = null;
-
-                for (int i = 0; i < items.length(); i++) {
-                    videoTitle = items.getJSONObject(i)
-                            .getJSONObject("snippet")
-                            .getString("title");
-                    videoCoverImage = items.getJSONObject(i)
-                            .getJSONObject("snippet")
-                            .getJSONObject("thumbnails")
-                            .getJSONObject("medium")
-                            .getString("url");
-                }
-                tweet.setLinkTitle(videoTitle);
-                tweet.setLinkCover(videoCoverImage);
-                return true;
             }
         }
         return false;

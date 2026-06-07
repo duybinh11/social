@@ -12,7 +12,6 @@ import {
     fetchTweetsByListId,
     fetchTweetsByTag,
     fetchTweetsByText,
-    fetchTweetsWithVideo,
     likeTweet,
     resetTweets,
     retweet,
@@ -139,11 +138,6 @@ describe("tweets actions", () => {
 
     testAction(fetchMediaTweets, fetchMediaTweets(1), {
         type: TweetsActionType.FETCH_MEDIA_TWEETS,
-        payload: 1
-    });
-
-    testAction(fetchTweetsWithVideo, fetchTweetsWithVideo(1), {
-        type: TweetsActionType.FETCH_TWEETS_WITH_VIDEO,
         payload: 1
     });
 

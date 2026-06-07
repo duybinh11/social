@@ -23,7 +23,6 @@ import {
     FetchTweetsByTagActionInterface,
     FetchTweetsByTextActionInterface,
     FetchTweetsWithQuotesByIdActionInterface,
-    FetchTweetsWithVideoActionInterface,
     LikeTweetActionInterface,
     ResetTweetsActionInterface,
     RetweetActionInterface,
@@ -148,11 +147,6 @@ export const fetchTweets = (payload: number): FetchTweetsActionInterface => ({
 
 export const fetchMediaTweets = (payload: number): FetchMediaTweetsActionInterface => ({
     type: TweetsActionType.FETCH_MEDIA_TWEETS,
-    payload
-});
-
-export const fetchTweetsWithVideo = (payload: number): FetchTweetsWithVideoActionInterface => ({
-    type: TweetsActionType.FETCH_TWEETS_WITH_VIDEO,
     payload
 });
 

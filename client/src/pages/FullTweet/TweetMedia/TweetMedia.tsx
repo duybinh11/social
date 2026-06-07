@@ -1,7 +1,6 @@
-import React, {memo, ReactElement, useState} from "react";
+import React, {memo, ReactElement} from "react";
 import {useSelector} from "react-redux";
 
-import YouTubeVideo from "../../../components/YouTubeVideo/YouTubeVideo";
 import SmallLinkPreview from "../../../components/SmallLinkPreview/SmallLinkPreview";
 import {LinkCoverSize} from "../../../store/types/common";
 import LargeLinkPreview from "../../../components/LargeLinkPreview/LargeLinkPreview";
@@ -19,50 +18,26 @@ const TweetMedia = memo((): ReactElement => {
     const linkCoverSize = useSelector(selectLinkCoverSize);
     const linkTitle = useSelector(selectLinkTitle);
     const linkDescription = useSelector(selectLinkDescription);
-    const [openYouTubeVideo, setOpenYouTubeVideo] = useState<boolean>(false);
-    const isYouTubeLink = link && link.includes("youtu");
-
-    const onOpenYouTubeVideo = (): void => {
-        setOpenYouTubeVideo(true);
-    };
 
     return (
         <>
             {link && (
-                isYouTubeLink ? (
-                    openYouTubeVideo ? (
-                        <YouTubeVideo
-                            link={link}
-                            linkTitle={linkTitle!}
-                            linkDescription={linkDescription!}
-                        />
-                    ) : (
-                        <SmallLinkPreview
-                            link={link}
-                            linkTitle={linkTitle!}
-                            linkDescription={linkDescription!}
-                            linkCover={linkCover!}
-                            onOpenYouTubeVideo={onOpenYouTubeVideo}
-                            isFullTweet
-                        />
-                    )
+                (linkCoverSize === LinkCoverSize.LARGE) ? (
+                    <LargeLinkPreview
+                        link={link}
+                        linkTitle={linkTitle!}
+                        linkDescription={linkDescription!}
+                        linkCover={linkCover!}
+                        isFullTweet
+                    />
                 ) : (
-                    (linkCoverSize === LinkCoverSize.LARGE) ? (
-                        <LargeLinkPreview
-                            link={link}
-                            linkTitle={linkTitle!}
-                            linkDescription={linkDescription!}
-                            linkCover={linkCover!}
-                            isFullTweet
-                        />
-                    ) : (
-                        <SmallLinkPreview
-                            link={link}
-                            linkTitle={linkTitle!}
-                            linkDescription={linkDescription!}
-                            linkCover={linkCover!}
-                        />
-                    )
+                    <SmallLinkPreview
+                        link={link}
+                        linkTitle={linkTitle!}
+                        linkDescription={linkDescription!}
+                        linkCover={linkCover!}
+                        isFullTweet
+                    />
                 )
             )}
         </>

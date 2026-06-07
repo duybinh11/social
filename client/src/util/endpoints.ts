@@ -45,7 +45,6 @@ export const API_TAGS_SEARCH = `${API_ENDPOINT}/tags/search`;
 // TweetApi
 export const API_TWEETS = `${API_ENDPOINT}/tweets`;
 export const API_TWEETS_MEDIA = `${API_ENDPOINT}/tweets/media`;
-export const API_TWEETS_VIDEO = `${API_ENDPOINT}/tweets/video`;
 export const API_TWEETS_FOLLOWER = `${API_ENDPOINT}/tweets/follower`;
 export const API_TWEETS_INFO = (tweetId: number) => `${API_ENDPOINT}/tweets/${tweetId}/info`;
 export const API_TWEETS_REPLIES = (tweetId: number) => `${API_ENDPOINT}/tweets/${tweetId}/replies`;

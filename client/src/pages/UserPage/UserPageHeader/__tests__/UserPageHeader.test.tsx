@@ -22,7 +22,7 @@ describe("UserPageHeader", () => {
 
     it("should render mediaTweetCount", () => {
         const wrapper = mountWithStore(<UserPageHeader activeTab={2} />, mockRootState);
-        expect(wrapper.text().includes(`${mockMyProfile.mediaTweetCount} Photos & videos`)).toBe(true);
+        expect(wrapper.text().includes(`${mockMyProfile.mediaTweetCount} Photos`)).toBe(true);
     });
 
     it("should render likeCount", () => {
@@ -37,7 +37,7 @@ describe("UserPageHeader", () => {
 
     it("should render single mediaTweetCount", () => {
         const wrapper = mountWithStore(<UserPageHeader activeTab={2} />, mockState);
-        expect(wrapper.text().includes("1 Photo & video")).toBe(true);
+        expect(wrapper.text().includes("1 Photo")).toBe(true);
     });
 
     it("should render single likeCount", () => {

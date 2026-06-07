@@ -60,11 +60,6 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
     Page<TweetProjection> findAllByText(String text, Pageable pageable);
 
     @Query("SELECT tweet FROM Tweet tweet " +
-            "WHERE tweet.deleted = false " +
-            "AND tweet.text LIKE CONCAT('%','youtu','%')")
-    Page<TweetProjection> findAllTweetsWithVideo(Pageable pageable);
-
-    @Query("SELECT tweet FROM Tweet tweet " +
             "WHERE tweet.images.size != 0 " +
             "AND tweet.deleted = false " +
             "ORDER BY tweet.dateTime DESC")
@@ -73,9 +68,8 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
     @Query("SELECT tweet FROM Tweet tweet " +
             "LEFT JOIN tweet.images image " +
             "WHERE tweet.deleted = false " +
-            "AND (tweet.user.id = :userId AND image.id IS NOT NULL) " +
-            "OR tweet.deleted = false " +
-            "AND (tweet.user.id = :userId AND tweet.text LIKE CONCAT('%','youtu','%')) " +
+            "AND tweet.user.id = :userId " +
+            "AND image.id IS NOT NULL " +
             "ORDER BY tweet.dateTime DESC")
     Page<TweetProjection> findAllUserMediaTweets(Long userId, Pageable pageable);
 

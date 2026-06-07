@@ -28,7 +28,6 @@ import {
     API_TWEETS_RETWEET,
     API_TWEETS_RETWEETED_USERS,
     API_TWEETS_SEARCH,
-    API_TWEETS_VIDEO,
     API_TWEETS_VOTE
 } from "../../util/endpoints";
 
@@ -38,9 +37,6 @@ export const TweetApi = {
     },
     async fetchMediaTweets(pageNumber: number): Promise<AxiosResponse<TweetResponse[]>> {
         return await axios.get<TweetResponse[]>(API_TWEETS_MEDIA, {params: {page: pageNumber}});
-    },
-    async fetchTweetsWithVideo(pageNumber: number): Promise<AxiosResponse<TweetResponse[]>> {
-        return await axios.get<TweetResponse[]>(API_TWEETS_VIDEO, {params: {page: pageNumber}});
     },
     async fetchFollowersTweets(pageNumber: number): Promise<AxiosResponse<TweetResponse[]>> {
         return await axios.get<TweetResponse[]>(API_TWEETS_FOLLOWER, {params: {page: pageNumber}});

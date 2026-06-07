@@ -41,10 +41,6 @@ describe("Khám phá", () => {
         testRenderItems(3, "Ảnh", TweetComponent, TweetsActionType.FETCH_MEDIA_TWEETS);
     });
 
-    it("should render list of Videos", () => {
-        testRenderItems(4, "Video", TweetComponent, TweetsActionType.FETCH_TWEETS_WITH_VIDEO);
-    });
-
     it("should render list of Tweets by input text", () => {
         testRenderItemsByInputText(0, TweetComponent, TweetsActionType.FETCH_TWEETS_BY_TEXT);
     });
@@ -83,10 +79,6 @@ describe("Khám phá", () => {
 
     it("should scroll Photos tweets tab", () => {
         testScrollItems(3, TweetsActionType.FETCH_MEDIA_TWEETS);
-    });
-
-    it("should scroll Videos tweets tab", () => {
-        testScrollItems(4, TweetsActionType.FETCH_TWEETS_WITH_VIDEO);
     });
 
     it("should unmount Explore", () => {

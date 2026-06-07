@@ -41,8 +41,8 @@ describe("UserPageTweets", () => {
         testAddTweetModal(0, "Send Tweet");
     });
 
-    it("should render Add Tweet Modal on click Tweet a photo or video button and close", () => {
-        testAddTweetModal(2, "Tweet a photo or video");
+    it("should render Add Tweet Modal on click Tweet a photo button and close", () => {
+        testAddTweetModal(2, "Tweet a photo");
     });
 
     it("should render empty tweets message on Tweets tab my profile", () => {
@@ -62,11 +62,11 @@ describe("UserPageTweets", () => {
     });
 
     it("should render empty tweets message on Media tab my profile", () => {
-        testTitleWithEmptyTweet(2, true, "You haven’t Tweeted any photos or videos yet", "When you send Tweets with photos or videos in them, it will show up here.")
+        testTitleWithEmptyTweet(2, true, "You haven’t Tweeted any photos yet", "When you send Tweets with photos in them, it will show up here.")
     });
 
     it("should render empty tweets message on Media tab user profile", () => {
-        testTitleWithEmptyTweet(2, false, `@${mockUserProfile.username} hasn’t Tweeted any photos or videos`, "When they do, their media will show up here.")
+        testTitleWithEmptyTweet(2, false, `@${mockUserProfile.username} hasn’t Tweeted any photos`, "When they do, their photos will show up here.")
     });
 
     it("should render empty tweets message on Likes tab my profile", () => {

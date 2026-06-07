@@ -20,7 +20,6 @@ import UsersListModal, {UsersListModalAction} from "../../../components/UsersLis
 import CloseButton from "../../../components/CloseButton/CloseButton";
 import PopperUserWindow from "../../../components/PopperUserWindow/PopperUserWindow";
 import HoverAction from "../../../components/HoverAction/HoverAction";
-import YouTubeVideo from "../../../components/YouTubeVideo/YouTubeVideo";
 import TweetActionResult, {TweetActionResults} from "../../../components/TweetActionResult/TweetActionResult";
 import {MODAL, PROFILE, QUOTES} from "../../../util/pathConstants";
 import {LoadingStatus} from "../../../store/types/common";
@@ -208,15 +207,6 @@ describe("FullTweet", () => {
         wrapper.unmount();
 
         expect(mockDispatchFn).nthCalledWith(3, {type: TweetActionType.RESET_TWEET_STATE});
-    });
-
-    it("should open YouTubeVideo", () => {
-        const wrapper = mountWithStore(<FullTweet/>, mockStore);
-        expect(wrapper.find(YouTubeVideo).exists()).toBeFalsy();
-
-        wrapper.find(SmallLinkPreview).find("#openYouTubeVideo").simulate("click");
-
-        expect(wrapper.find(YouTubeVideo).exists()).toBeTruthy();
     });
 
     it("should render TweetActionResult", () => {

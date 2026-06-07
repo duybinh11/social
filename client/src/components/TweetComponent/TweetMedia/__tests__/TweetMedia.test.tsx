@@ -3,7 +3,6 @@ import React from "react";
 import {createMockRootState, mountWithStore} from "../../../../util/testHelper";
 import {mockFullTweet} from "../../../../util/mockData/mockData";
 import {LinkCoverSize, LoadingStatus} from "../../../../store/types/common";
-import YouTubeVideo from "../../../YouTubeVideo/YouTubeVideo";
 import SmallLinkPreview from "../../../SmallLinkPreview/SmallLinkPreview";
 import LargeLinkPreview from "../../../LargeLinkPreview/LargeLinkPreview";
 import TweetMedia from "../TweetMedia";
@@ -19,38 +18,11 @@ describe("TweetMedia", () => {
                 linkCover={mockFullTweet.linkCover}
                 linkCoverSize={mockFullTweet.linkCoverSize}
             />, mockTweet);
-        expect(wrapper.find(YouTubeVideo).exists()).toBeFalsy();
         expect(wrapper.find(SmallLinkPreview).exists()).toBeFalsy();
         expect(wrapper.find(LargeLinkPreview).exists()).toBeFalsy();
     });
 
-    it("should render Small YouTube Link preview", () => {
-        const wrapper = mountWithStore(
-            <TweetMedia
-                link={mockFullTweet.link}
-                linkTitle={mockFullTweet.linkTitle}
-                linkDescription={mockFullTweet.linkDescription}
-                linkCover={mockFullTweet.linkCover}
-                linkCoverSize={mockFullTweet.linkCoverSize}
-            />, mockTweet);
-        expect(wrapper.find(SmallLinkPreview).exists()).toBeTruthy();
-    });
-
-    it("should render YouTube Video preview", () => {
-        const wrapper = mountWithStore(
-            <TweetMedia
-                link={mockFullTweet.link}
-                linkTitle={mockFullTweet.linkTitle}
-                linkDescription={mockFullTweet.linkDescription}
-                linkCover={mockFullTweet.linkCover}
-                linkCoverSize={mockFullTweet.linkCoverSize}
-            />, mockTweet);
-        expect(wrapper.find(YouTubeVideo).exists()).toBeFalsy();
-        wrapper.find(SmallLinkPreview).find("#openYouTubeVideo").simulate("click");
-        expect(wrapper.find(YouTubeVideo).exists()).toBeTruthy();
-    });
-
-    it("should render small YouTube Link preview", () => {
+    it("should render small link preview", () => {
         const wrapper = mountWithStore(
             <TweetMedia
                 link={mockFullTweet.link}

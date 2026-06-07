@@ -35,21 +35,6 @@ export const useSmallLinkPreviewStyles = makeStyles<Theme, SmallLinkPreviewStyle
         backgroundPosition: "center center",
         borderRadius: "16px 0px 0px 16px",
     },
-    videoIcon: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: 35,
-        height: 35,
-        backgroundColor: theme.palette.primary.main,
-        border: `4px solid ${theme.palette.common.white}`,
-        borderRadius: "50%",
-        "& svg": {
-            marginLeft: 2,
-            fill: theme.palette.common.white,
-            height: "1.10em",
-        },
-    },
     linkPreviewTitle: {
         fontSize: 15,
         lineHeight: "18px",

@@ -627,48 +627,6 @@ export const mockMediaTweets = [
     },
 ];
 
-export const mockVideoTweets = [
-    {
-        "id": 4,
-        "text": "https://www.youtube.com/watch?v=hTWKbfoikeg&ab_channel=NirvanaVEVO",
-        "dateTime": "2021-10-15T21:20:22",
-        "addressedUsername": null,
-        "addressedId": null,
-        "addressedTweetId": null,
-        "replyType": "EVERYONE",
-        "link": "https://www.youtube.com/watch?v=hTWKbfoikeg&ab_channel=NirvanaVEVO",
-        "linkTitle": "Nirvana - Smells Like Teen Spirit (Official Music Video)",
-        "linkDescription": null,
-        "linkCover": "https://i.ytimg.com/vi/hTWKbfoikeg/mqdefault.jpg",
-        "linkCoverSize": null,
-        "user": {
-            "id": 1,
-            "email": "user2015@gmail.com",
-            "fullName": "Random",
-            "username": "Random",
-            "avatar": {
-                "id": 11,
-                "src": "https://twitterclonestorage.s3.eu-central-1.amazonaws.com/ae83099c-885b-499a-bb6f-5e34e1b69e7d_4ec7201fd370bd9870cdb326f0511f38.jpg"
-            },
-            "isPrivateProfile": false,
-            "isFollower": true,
-            "isMyProfileBlocked": false,
-            "isUserBlocked": false,
-            "isUserMuted": false
-        },
-        "images": [],
-        "quoteTweet": null,
-        "poll": null,
-        "retweetsCount": 0,
-        "likedTweetsCount": 1,
-        "repliesCount": 0,
-        "isTweetLiked": true,
-        "isTweetRetweeted": false,
-        "isUserFollowByOtherUser": true,
-        "isTweetDeleted": false,
-    },
-];
-
 // lists
 export const mockFullList = {
     "id": 3,

@@ -16,7 +16,6 @@ import {
     FetchTweetsByTagActionInterface,
     FetchTweetsByTextActionInterface,
     FetchTweetsWithQuotesByIdActionInterface,
-    FetchTweetsWithVideoActionInterface,
     LikeTweetActionInterface,
     RetweetActionInterface,
     TweetsActionType,
@@ -45,19 +44,6 @@ export function* fetchMediaTweetsRequest({payload}: FetchMediaTweetsActionInterf
     try {
         yield put(setTweetsLoadingState(LoadingStatus.LOADING));
         const response: AxiosResponse<TweetResponse[]> = yield call(TweetApi.fetchMediaTweets, payload);
-        yield put(setPageableTweets({
-            items: response.data,
-            pagesCount: parseInt(response.headers["page-total-count"])
-        }));
-    } catch (error) {
-        yield put(setTweetsLoadingState(LoadingStatus.ERROR));
-    }
-}
-
-export function* fetchTweetsWithVideoRequest({payload}: FetchTweetsWithVideoActionInterface) {
-    try {
-        yield put(setTweetsLoadingState(LoadingStatus.LOADING));
-        const response: AxiosResponse<TweetResponse[]> = yield call(TweetApi.fetchTweetsWithVideo, payload);
         yield put(setPageableTweets({
             items: response.data,
             pagesCount: parseInt(response.headers["page-total-count"])
@@ -190,7 +176,6 @@ export function* retweetRequest({payload}: RetweetActionInterface) {
 export function* tweetsSaga() {
     yield takeLatest(TweetsActionType.FETCH_TWEETS, fetchTweetsRequest);
     yield takeLatest(TweetsActionType.FETCH_MEDIA_TWEETS, fetchMediaTweetsRequest);
-    yield takeLatest(TweetsActionType.FETCH_TWEETS_WITH_VIDEO, fetchTweetsWithVideoRequest);
     yield takeLatest(TweetsActionType.FETCH_FOLLOWERS_TWEETS, fetchFollowersTweetsRequest);
     yield takeLatest(TweetsActionType.ADD_TWEET, addTweetRequest);
     yield takeLatest(TweetsActionType.ADD_POLL, addPollRequest);

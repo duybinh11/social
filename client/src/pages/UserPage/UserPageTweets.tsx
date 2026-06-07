@@ -94,16 +94,16 @@ const UserPageTweets: FC<UserPageTweetsProps> = memo(({activeTab, page, loadUser
                 <div className={classes.textWrapper}>
                     <Typography variant={"h5"}>
                         {(userProfileId === myProfileId) ? (
-                            "You haven’t Tweeted any photos or videos yet"
+                            "You haven’t Tweeted any photos yet"
                         ) : (
-                            `@${username} hasn’t Tweeted any photos or videos`
+                            `@${username} hasn’t Tweeted any photos`
                         )}
                     </Typography>
                     <Typography variant={"subtitle1"}>
                         {(userProfileId === myProfileId) ? (
-                            "When you send Tweets with photos or videos in them, it will show up here."
+                            "When you send Tweets with photos in them, it will show up here."
                         ) : (
-                            "When they do, their media will show up here."
+                            "When they do, their photos will show up here."
                         )}
                     </Typography>
                     {(userProfileId === myProfileId) && (
@@ -114,7 +114,7 @@ const UserPageTweets: FC<UserPageTweetsProps> = memo(({activeTab, page, loadUser
                             color="primary"
                             size="medium"
                         >
-                            Tweet a photo or video
+                            Tweet a photo
                         </Button>
                     )}
                 </div>

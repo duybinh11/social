@@ -77,12 +77,6 @@ public class TweetController {
         return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
     }
 
-    @GetMapping("/video")
-    public ResponseEntity<List<TweetResponse>> getTweetsWithVideo(@PageableDefault(size = 10) Pageable pageable) {
-        HeaderResponse<TweetResponse> response = tweetMapper.getTweetsWithVideo(pageable);
-        return ResponseEntity.ok().headers(response.getHeaders()).body(response.getItems());
-    }
-
     @GetMapping("/follower")
     public ResponseEntity<List<TweetResponse>> getFollowersTweets(@PageableDefault(size = 10) Pageable pageable) {
         HeaderResponse<TweetResponse> response = tweetMapper.getFollowersTweets(pageable);

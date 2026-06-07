@@ -12,7 +12,6 @@ import {
     fetchTweets,
     fetchTweetsByTag,
     fetchTweetsByText,
-    fetchTweetsWithVideo,
     resetTweets
 } from "../../store/ducks/tweets/actionCreators";
 import BackButton from "../../components/BackButton/BackButton";
@@ -79,8 +78,6 @@ const Explore: FC = (): ReactElement => {
                 dispatch(fetchUsersSearch(page));
             } else if (activeTab === 3) {
                 dispatch(fetchMediaTweets(page));
-            } else if (activeTab === 4) {
-                dispatch(fetchTweetsWithVideo(page));
             } else {
                 dispatch(fetchTweets(page));
             }
@@ -134,11 +131,6 @@ const Explore: FC = (): ReactElement => {
         setPage(prevState => prevState + 1);
     };
 
-    const showTweetsWithVideos = (): void => {
-        dispatch(fetchTweetsWithVideo(0));
-        setPage(prevState => prevState + 1);
-    };
-
     return (
         <Paper className={globalClasses.pageContainer} variant="outlined">
             <PageHeaderWrapper>
@@ -170,7 +162,6 @@ const Explore: FC = (): ReactElement => {
                             <Tab onClick={() => handleShowItems(showTopTweets)} label="Mới nhất"/>
                             <Tab onClick={() => handleShowItems(showUsers)} label="Mọi người"/>
                             <Tab onClick={() => handleShowItems(showMediaTweets)} label="Ảnh"/>
-                            <Tab onClick={() => handleShowItems(showTweetsWithVideos)} label="Video"/>
                         </Tabs>
                     </div>
                 </div>

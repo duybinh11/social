@@ -29,8 +29,6 @@ public interface TweetService {
 
     Page<TweetProjection> getMediaTweets(Pageable pageable);
 
-    Page<TweetProjection> getTweetsWithVideo(Pageable pageable);
-
     Page<TweetProjection> getFollowersTweets(Pageable pageable);
 
     TweetProjection createNewTweet(Tweet tweet);

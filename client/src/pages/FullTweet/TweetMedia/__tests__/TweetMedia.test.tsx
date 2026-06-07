@@ -3,7 +3,6 @@ import React from "react";
 import {createMockRootState, mountWithStore} from "../../../../util/testHelper";
 import {LinkCoverSize, LoadingStatus} from "../../../../store/types/common";
 import SmallLinkPreview from "../../../../components/SmallLinkPreview/SmallLinkPreview";
-import YouTubeVideo from "../../../../components/YouTubeVideo/YouTubeVideo";
 import {mockFullTweet} from "../../../../util/mockData/mockData";
 import LargeLinkPreview from "../../../../components/LargeLinkPreview/LargeLinkPreview";
 import TweetMedia from "../TweetMedia";
@@ -11,16 +10,9 @@ import TweetMedia from "../TweetMedia";
 describe("TweetMedia", () => {
     const mockRootState = createMockRootState(LoadingStatus.SUCCESS);
 
-    it("should render youtube SmallLinkPreview component", () => {
+    it("should render SmallLinkPreview component", () => {
         const wrapper = mountWithStore(<TweetMedia/>, mockRootState);
         expect(wrapper.find(SmallLinkPreview).exists()).toBeTruthy();
-    });
-
-    it("should render YouTubeVideo component", () => {
-        const wrapper = mountWithStore(<TweetMedia/>, mockRootState);
-        expect(wrapper.find(YouTubeVideo).exists()).toBeFalsy();
-        wrapper.find(SmallLinkPreview).find("#openYouTubeVideo").simulate("click");
-        expect(wrapper.find(YouTubeVideo).exists()).toBeTruthy();
     });
 
     it("should render LargeLinkPreview component", () => {
@@ -38,7 +30,7 @@ describe("TweetMedia", () => {
         expect(wrapper.find(LargeLinkPreview).exists()).toBeTruthy();
     });
 
-    it("should render SmallLinkPreview component", () => {
+    it("should render SmallLinkPreview component for site link", () => {
         const mockState = {
             ...mockRootState,
             tweet: {...mockRootState.tweet,
@@ -63,7 +55,6 @@ describe("TweetMedia", () => {
             }
         };
         const wrapper = mountWithStore(<TweetMedia/>, mockState);
-        expect(wrapper.find(YouTubeVideo).exists()).toBeFalsy();
         expect(wrapper.find(SmallLinkPreview).exists()).toBeFalsy();
         expect(wrapper.find(LargeLinkPreview).exists()).toBeFalsy();
     });
