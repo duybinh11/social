@@ -2,7 +2,7 @@ import React, {FC, memo, ReactElement} from 'react';
 import {List, ListItem, Typography} from "@material-ui/core";
 
 import {useChangeReplyWindowStyles} from "./ChangeReplyWindowStyles";
-import {CheckIcon, EveryoneReplyOutlinedIcon, FollowReplyOutlinedIcon, MentionReplyOutlinedIcon} from "../../icons";
+import {CheckIcon, EveryoneReplyOutlinedIcon, FollowReplyOutlinedIcon} from "../../icons";
 import {ReplyType} from "../../store/types/common";
 
 interface ChangeReplyWindowProps {
@@ -21,7 +21,6 @@ const ChangeReplyWindow: FC<ChangeReplyWindowProps> = memo(({replyType, onChange
                 </Typography>
                 <Typography variant={"subtitle1"} component={"div"}>
                     Choose who can reply to this Tweet.
-                    Anyone mentioned can always reply.
                 </Typography>
             </div>
             <List component="nav" aria-label="main mailbox folders">
@@ -45,6 +44,7 @@ const ChangeReplyWindow: FC<ChangeReplyWindowProps> = memo(({replyType, onChange
                     )}
                 </ListItem>
                 <ListItem
+                    id={"lastItem"}
                     className={classes.listItem}
                     onClick={() => onChangeTweetReplyType(ReplyType.FOLLOW)}
                     button
@@ -58,26 +58,6 @@ const ChangeReplyWindow: FC<ChangeReplyWindowProps> = memo(({replyType, onChange
                         Người bạn theo dõi
                     </Typography>
                     {(replyType === ReplyType.FOLLOW) && (
-                        <span className={classes.checkIcon}>
-                            {CheckIcon}
-                        </span>
-                    )}
-                </ListItem>
-                <ListItem
-                    id={"lastItem"}
-                    className={classes.listItem}
-                    onClick={() => onChangeTweetReplyType(ReplyType.MENTION)}
-                    button
-                >
-                    <div className={classes.iconCircle}>
-                        <span className={classes.icon}>
-                            {MentionReplyOutlinedIcon}
-                        </span>
-                    </div>
-                    <Typography variant={"body1"} component={"span"}>
-                        Chỉ người bạn đề cập
-                    </Typography>
-                    {(replyType === ReplyType.MENTION) && (
                         <span className={classes.checkIcon}>
                             {CheckIcon}
                         </span>

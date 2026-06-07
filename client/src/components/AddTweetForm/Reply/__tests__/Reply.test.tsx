@@ -40,10 +40,6 @@ describe("Trả lời", () => {
         testReply(ReplyType.FOLLOW, "#followReplyIcon", "Người bạn theo dõi");
     });
 
-    it("should render Only people you mention reply", () => {
-        testReply(ReplyType.MENTION, "#mentionReplyIcon", "Chỉ người bạn đề cập");
-    });
-    
     const testReply = (replyType: ReplyType, replyIconId: string, buttonText: string): void => {
         const wrapper = mountWithStore(
             <Reply

@@ -16,10 +16,6 @@ describe("ChangeReplyWindow", () => {
         testReply(ReplyType.FOLLOW, 1, "Người bạn theo dõi");
     });
 
-    it("should render correctly with MENTION reply", () => {
-        testReply(ReplyType.MENTION, 2, "Chỉ người bạn đề cập");
-    });
-    
     const testReply = (reply: ReplyType, itemIndex: number, text: string): void => {
         const mockOnChangeTweetReplyType = jest.fn();
         const wrapper = mountWithStore(

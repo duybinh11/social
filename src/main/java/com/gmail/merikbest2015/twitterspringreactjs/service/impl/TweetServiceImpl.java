@@ -291,6 +291,9 @@ public class TweetServiceImpl implements TweetService {
     @Override
     @Transactional
     public TweetProjection changeTweetReplyType(Long tweetId, ReplyType replyType) {
+        if (replyType == ReplyType.MENTION) {
+            throw new ApiRequestException("Loại trả lời không được hỗ trợ", HttpStatus.BAD_REQUEST);
+        }
         Tweet tweet = tweetRepository.findById(tweetId)
                 .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
         User user = authenticationService.getAuthenticatedUser();
@@ -392,6 +395,9 @@ public class TweetServiceImpl implements TweetService {
         }
         User user = authenticationService.getAuthenticatedUser();
         tweet.setUser(user);
+        if (tweet.getReplyType() == ReplyType.MENTION) {
+            tweet.setReplyType(ReplyType.EVERYONE);
+        }
         boolean isMediaTweetCreated = parseMetadataFromURL(tweet); // find metadata from url
         Tweet createdTweet = tweetRepository.save(tweet);
 

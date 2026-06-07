@@ -27,7 +27,7 @@ const AddReplyToTweet = memo((): ReactElement => {
 
     return (
         <>
-            {((replyType !== ReplyType.FOLLOW) && (replyType !== ReplyType.MENTION) ||
+            {((replyType !== ReplyType.FOLLOW) ||
                 (myProfileId === tweetUserId) || (tweetUserIsFollower && replyType === ReplyType.FOLLOW)
             ) ? (
                 <>

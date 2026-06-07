@@ -96,10 +96,8 @@ const TweetComponentActions: FC<TweetComponentActionsProps> = memo(({tweetId, is
 
         if (replyType === ReplyType.EVERYONE) {
             snackBarMessage = "Everyone can reply now";
-        } else if (replyType === ReplyType.FOLLOW) {
-            snackBarMessage = "People you follow can reply now";
         } else {
-            snackBarMessage = "Only you can reply now";
+            snackBarMessage = "People you follow can reply now";
         }
         dispatch(setOpenSnackBar(snackBarMessage));
         handleClickReplyDropdown();
@@ -186,7 +184,7 @@ const TweetComponentActions: FC<TweetComponentActionsProps> = memo(({tweetId, is
                     {openChangeReplyDropdown && (
                         <div className={classes.replyWindowWrapper}>
                             <ChangeReplyWindow
-                                replyType={tweetReplyType!}
+                                replyType={tweetReplyType === ReplyType.MENTION ? ReplyType.EVERYONE : tweetReplyType!}
                                 onChangeTweetReplyType={onChangeTweetReplyType}
                             />
                         </div>

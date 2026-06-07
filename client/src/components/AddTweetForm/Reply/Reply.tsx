@@ -3,7 +3,7 @@ import {Divider, Popover} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 
 import {useReplyStyles} from "./ReplyStyles";
-import {EveryoneReplyIcon, FollowReplyIcon, MentionReplyIcon} from "../../../icons";
+import {EveryoneReplyIcon, FollowReplyIcon} from "../../../icons";
 import ChangeReplyWindow from "../../ChangeReplyWindow/ChangeReplyWindow";
 import {ReplyType} from '../../../store/types/common';
 
@@ -38,12 +38,10 @@ const Reply: FC<ReplyProps> = memo(({replyType, setReplyType}): ReactElement => 
                     <span>
                         {replyType === ReplyType.EVERYONE && EveryoneReplyIcon}
                         {replyType === ReplyType.FOLLOW && FollowReplyIcon}
-                        {replyType === ReplyType.MENTION && MentionReplyIcon}
                     </span>
                     <span>
                         {replyType === ReplyType.EVERYONE && "Mọi người có thể trả lời"}
                         {replyType === ReplyType.FOLLOW && "Người bạn theo dõi"}
-                        {replyType === ReplyType.MENTION && "Chỉ người bạn đề cập"}
                     </span>
                 </Button>
                 <Divider/>

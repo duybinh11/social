@@ -1,9 +1,7 @@
 import React, {FC, memo, ReactElement} from "react";
-import {useSelector} from "react-redux";
 import {Paper} from "@material-ui/core";
 
 import {useTweetComponentStyles} from "./TweetComponentStyles";
-import {selectUserDataId} from "../../store/ducks/user/selectors";
 import TweetComponentActions from "../TweetComponentActions/TweetComponentActions";
 import VoteComponent from "../VoteComponent/VoteComponent";
 import QuoteIconButton from "../QuoteIconButton/QuoteIconButton";
@@ -30,8 +28,6 @@ export interface TweetComponentProps {
 }
 
 const TweetComponent: FC<TweetComponentProps> = memo(({tweet, activeTab, isTweetImageModal}): ReactElement => {
-    const myProfileId = useSelector(selectUserDataId);
-    const isUserCanReply = (tweet?.replyType === ReplyType.MENTION) && (myProfileId !== tweet?.user.id);
     const classes = useTweetComponentStyles({isTweetImageModal});
     const avatar = tweet?.user.avatar ? tweet?.user.avatar.src : DEFAULT_PROFILE_IMG;
 
@@ -89,7 +85,7 @@ const TweetComponent: FC<TweetComponentProps> = memo(({tweet, activeTab, isTweet
                             dateTime={tweet?.dateTime}
                             tweetUser={tweet?.user}
                             repliesCount={tweet?.repliesCount}
-                            isUserCanReply={isUserCanReply}
+                            isUserCanReply={false}
                         />
                         <QuoteIconButton
                             tweetId={tweet?.id}

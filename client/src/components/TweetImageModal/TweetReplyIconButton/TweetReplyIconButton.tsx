@@ -8,26 +8,18 @@ import {
     selectTweetDateTime,
     selectTweetId,
     selectTweetImages,
-    selectTweetReplyType,
     selectTweetText,
-    selectTweetUser,
-    selectTweetUserId
+    selectTweetUser
 } from "../../../store/ducks/tweet/selectors";
-import {ReplyType} from "../../../store/types/common";
-import {selectUserDataId} from "../../../store/ducks/user/selectors";
 import {useTweetReplyIconButtonStyles} from "./TweetReplyIconButtonStyles";
 
 const TweetReplyIconButton = memo((): ReactElement => {
-    const myProfileId = useSelector(selectUserDataId);
-    const tweetUserId = useSelector(selectTweetUserId);
     const user = useSelector(selectTweetUser);
     const tweetId = useSelector(selectTweetId);
     const text = useSelector(selectTweetText);
     const images = useSelector(selectTweetImages);
     const dateTime = useSelector(selectTweetDateTime);
-    const tweetReplyType = useSelector(selectTweetReplyType);
-    const isUserCanReply = (tweetReplyType === ReplyType.MENTION) && (myProfileId !== tweetUserId);
-    const classes = useTweetReplyIconButtonStyles({isUserCanReply});
+    const classes = useTweetReplyIconButtonStyles({isUserCanReply: false});
     const [visibleReplyModalWindow, setVisibleReplyModalWindow] = useState<boolean>(false);
 
     const onOpenReplyModalWindow = (): void => {
@@ -44,7 +36,7 @@ const TweetReplyIconButton = memo((): ReactElement => {
                 actionText={"Trả lời"}
                 icon={ReplyIcon}
                 onClick={onOpenReplyModalWindow}
-                disabled={isUserCanReply}
+                disabled={false}
             />
             <ReplyModal
                 user={user!}

@@ -79,10 +79,6 @@ describe("TweetComponentActions", () => {
         testClickChangeReplyType(1, ReplyType.FOLLOW, "People you follow can reply now");
     });
 
-    it("should click MENTION can reply", () => {
-        testClickChangeReplyType(2, ReplyType.MENTION, "Only you can reply now");
-    });
-
     it("should click Pin Tweet", () => {
         testPinTweet(9, "Your Tweet was pinned to your profile.");
     });
