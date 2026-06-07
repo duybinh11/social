@@ -18,13 +18,13 @@ describe("MuteUserButton", () => {
     it("should click mute user", () => {
         const wrapper = mountWithStore(<MuteUserButton onCloseUserPageActions={jest.fn()}/>, mockRootState);
         wrapper.find("#handleMuteUser").at(0).simulate("click");
-        expect(wrapper.text().includes("Tắt tiếng")).toBe(true);
+        expect(wrapper.text().includes("Hạn chế")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: {userId: 2},
             type: UserActionsType.PROCESS_USER_TO_MUTELIST
         });
         expect(mockDispatchFn).nthCalledWith(2, {
-            payload: `@${mockMyProfile.username} đã tắt tiếng.`,
+            payload: `@${mockMyProfile.username} đã hạn chế.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });
@@ -38,13 +38,13 @@ describe("MuteUserButton", () => {
             }
         });
         wrapper.find("#handleMuteUser").at(0).simulate("click");
-        expect(wrapper.text().includes("Bật tiếng")).toBe(true);
+        expect(wrapper.text().includes("Bỏ hạn chế")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: {userId: 2},
             type: UserActionsType.PROCESS_USER_TO_MUTELIST
         });
         expect(mockDispatchFn).nthCalledWith(2, {
-            payload: `@${mockMyProfile.username} đã bật tiếng.`,
+            payload: `@${mockMyProfile.username} đã bỏ hạn chế.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });

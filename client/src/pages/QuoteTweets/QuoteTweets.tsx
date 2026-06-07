@@ -4,7 +4,7 @@ import {Paper, Typography} from "@material-ui/core";
 import {useParams} from "react-router-dom";
 
 import {useGlobalStyles} from "../../util/globalClasses";
-import {selectIsTweetsLoading, selectPagesCount, selectTweetsItems} from "../../store/ducks/tweets/selectors";
+import {selectIsTweetsLoading, selectPagesCount, selectVisibleTweetsItems} from "../../store/ducks/tweets/selectors";
 import {fetchQuotesByTweetId, resetTweets} from "../../store/ducks/tweets/actionCreators";
 import TweetComponent from "../../components/TweetComponent/TweetComponent";
 import Spinner from "../../components/Spinner/Spinner";
@@ -16,7 +16,7 @@ const QuoteTweets: FC = (): ReactElement => {
     const globalClasses = useGlobalStyles();
     const dispatch = useDispatch();
     const params = useParams<{ tweetId: string }>();
-    const tweets = useSelector(selectTweetsItems);
+    const tweets = useSelector(selectVisibleTweetsItems);
     const isTweetsLoading = useSelector(selectIsTweetsLoading);
     const pagesCount = useSelector(selectPagesCount);
     

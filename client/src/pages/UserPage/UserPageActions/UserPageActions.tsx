@@ -3,24 +3,21 @@ import {ClickAwayListener, List} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
 import {useUserPageActionsStyles} from "./UserPageActionsStyles";
-import {EditIcon, MomentsIcon, ReportIcon, ShareIcon} from "../../../icons";
+import {EditIcon} from "../../../icons";
 import {useGlobalStyles} from "../../../util/globalClasses";
 import ActionIconButton from "../../../components/ActionIconButton/ActionIconButton";
 import {
     selectUserProfileIsPrivateProfile,
     selectUserProfileIsUserBlocked,
-    selectUserProfileUsername
 } from "../../../store/ducks/userProfile/selectors";
 import AddUserToListsButton from "./AddUserToListsButton/AddUserToListsButton";
 import CopyProfileLinkButton from "./CopyProfileLinkButton/CopyProfileLinkButton";
 import MuteUserButton from "./MuteUserButton/MuteUserButton";
 import BlockUserButton from "./BlockUserButton/BlockUserButton";
-import UserItemAction from "./UserItemAction/UserItemAction";
 
 const UserPageActions = memo((): ReactElement => {
     const globalClasses = useGlobalStyles();
     const classes = useUserPageActionsStyles();
-    const username = useSelector(selectUserProfileUsername);
     const isUserBlocked = useSelector(selectUserProfileIsUserBlocked);
     const isPrivateProfile = useSelector(selectUserProfileIsPrivateProfile);
     const [open, setOpen] = useState<boolean>(false);
@@ -45,12 +42,8 @@ const UserPageActions = memo((): ReactElement => {
                             {!isPrivateProfile && (
                                 <>
                                     <AddUserToListsButton/>
-                                    <UserItemAction title={"Xem Moments"} icon={MomentsIcon}/>
                                     {!isUserBlocked && (
-                                        <>
-                                            <UserItemAction title={"Chia sẻ hồ sơ qua..."} icon={ShareIcon}/>
-                                            <CopyProfileLinkButton onCloseUserPageActions={handleClickAway}/>
-                                        </>
+                                        <CopyProfileLinkButton onCloseUserPageActions={handleClickAway}/>
                                     )}
                                 </>
                             )}
@@ -58,7 +51,6 @@ const UserPageActions = memo((): ReactElement => {
                                 <MuteUserButton onCloseUserPageActions={handleClickAway}/>
                             )}
                             <BlockUserButton/>
-                            <UserItemAction title={`Báo cáo @${username}`} icon={ReportIcon}/>
                         </List>
                     </div>
                 )}

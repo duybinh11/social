@@ -9,7 +9,7 @@ import {
     selectIsTweetsLoaded,
     selectIsTweetsLoading,
     selectPagesCount,
-    selectTweetsItems
+    selectVisibleTweetsItems
 } from "../../../store/ducks/tweets/selectors";
 import InfiniteScrollWrapper from "../../../components/InfiniteScrollWrapper/InfiniteScrollWrapper";
 import {fetchTweetsByListId, resetTweets} from "../../../store/ducks/tweets/actionCreators";
@@ -17,7 +17,7 @@ import {fetchTweetsByListId, resetTweets} from "../../../store/ducks/tweets/acti
 const FullListTweets = memo((): ReactElement => {
     const dispatch = useDispatch();
     const params = useParams<{ listId: string }>();
-    const tweets = useSelector(selectTweetsItems);
+    const tweets = useSelector(selectVisibleTweetsItems);
     const isTweetsLoading = useSelector(selectIsTweetsLoading);
     const isTweetsLoaded = useSelector(selectIsTweetsLoaded);
     const pagesCount = useSelector(selectPagesCount);

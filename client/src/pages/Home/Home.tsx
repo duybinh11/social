@@ -12,7 +12,7 @@ import {
     fetchTweets,
     resetTweets,
 } from "../../store/ducks/tweets/actionCreators";
-import {selectIsTweetsLoading, selectPagesCount, selectTweetsItems} from "../../store/ducks/tweets/selectors";
+import {selectIsTweetsLoading, selectPagesCount, selectVisibleTweetsItems} from "../../store/ducks/tweets/selectors";
 import {selectUserDataIsProfileStarted, selectUserIsLoaded} from "../../store/ducks/user/selectors";
 import Welcome from "../../components/Welcome/Welcome";
 import Spinner from "../../components/Spinner/Spinner";
@@ -27,7 +27,7 @@ const Home: FC = (): ReactElement => {
     const location = useLocation<{ background: Location }>();
     const isProfileStarted = useSelector(selectUserDataIsProfileStarted);
     const isUserLoaded = useSelector(selectUserIsLoaded);
-    const tweets = useSelector(selectTweetsItems);
+    const tweets = useSelector(selectVisibleTweetsItems);
     const isLoading = useSelector(selectIsTweetsLoading);
     const pagesCount = useSelector(selectPagesCount);
     const [page, setPage] = React.useState<number>(0);

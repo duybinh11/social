@@ -15,6 +15,7 @@ import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.lists.
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.TweetProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.service.AuthenticationService;
 import com.gmail.merikbest2015.twitterspringreactjs.service.ListsService;
+import com.gmail.merikbest2015.twitterspringreactjs.service.MutedUsersFilterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,6 +35,7 @@ public class ListsServiceImpl implements ListsService {
     private final UserRepository userRepository;
     private final NotificationRepository notificationRepository;
     private final ImageRepository imageRepository;
+    private final MutedUsersFilterService mutedUsersFilterService;
 
     @Override
     public List<ListProjection> getAllTweetLists() {
@@ -220,7 +222,11 @@ public class ListsServiceImpl implements ListsService {
     @Override
     public Page<TweetProjection> getTweetsByListId(Long listId, Pageable pageable) {
         Long authUserId = authenticationService.getAuthenticatedUserId();
-        List<Long> listMembersIds = listsRepository.getListMembersIds(listId, authUserId); // TODO check if list exist
+        List<Long> listMembersIds = mutedUsersFilterService.excludeMutedUserIds(
+                listsRepository.getListMembersIds(listId, authUserId));
+        if (listMembersIds.isEmpty()) {
+            return Page.empty(pageable);
+        }
         return tweetRepository.findTweetsByUserIds(listMembersIds, pageable);
     }
 

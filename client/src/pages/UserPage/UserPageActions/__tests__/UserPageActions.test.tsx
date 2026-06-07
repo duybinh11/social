@@ -22,12 +22,9 @@ describe("UserPageActions", () => {
     it("should click and open User Page Actions", () => {
         const {wrapper} = createWrapper();
         expect(wrapper.text().includes(`Add/remove @${mockUserProfile.username} from Lists`)).toBe(true);
-        expect(wrapper.text().includes("Xem Moments")).toBe(true);
-        expect(wrapper.text().includes("Chia sẻ hồ sơ qua...")).toBe(true);
         expect(wrapper.text().includes("Sao chép liên kết hồ sơ")).toBe(true);
-        expect(wrapper.text().includes(`Mute @${mockUserProfile.username}`)).toBe(true);
+        expect(wrapper.text().includes(`Hạn chế @${mockUserProfile.username}`)).toBe(true);
         expect(wrapper.text().includes(`Block @${mockUserProfile.username}`)).toBe(true);
-        expect(wrapper.text().includes(`Report @${mockUserProfile.username}`)).toBe(true);
     });
 
     it("should click open and close ListsModal", () => {
@@ -74,7 +71,7 @@ describe("UserPageActions", () => {
 
     it("should render muted user", () => {
         const {wrapper} = createWrapper(true, false);
-        expect(wrapper.text().includes(`Unmute @${mockUserProfile.username}`)).toBe(true);
+        expect(wrapper.text().includes(`Bỏ hạn chế @${mockUserProfile.username}`)).toBe(true);
     });
 
     it("should render bocked user", () => {

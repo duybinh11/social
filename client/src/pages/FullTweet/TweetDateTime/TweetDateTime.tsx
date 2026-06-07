@@ -17,7 +17,7 @@ const TweetDateTime = memo((): ReactElement => {
                 {format(new Date(dateTime!), "HH:mm", {locale: viLang})} ·
             </Typography>
             <Typography variant={"subtitle1"} component={"span"}>
-                {format(new Date(dateTime!), " d MMM yyyy", {locale: viLang})} · Ứng dụng web Twitter
+                {format(new Date(dateTime!), " d MMM yyyy", {locale: viLang})}
             </Typography>
         </div>
     );

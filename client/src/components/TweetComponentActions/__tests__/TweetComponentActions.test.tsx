@@ -38,7 +38,7 @@ describe("TweetComponentActions", () => {
         wrapper.find(IconButton).simulate("click");
         expect(wrapper.find(List).exists()).toBeTruthy();
         expect(wrapper.find("#muteIcon").exists()).toBeTruthy();
-        expect(wrapper.text().includes(`Mute @${mockUserTweetAdditionalInfo.user.username}`)).toBe(true);
+        expect(wrapper.text().includes(`Hạn chế @${mockUserTweetAdditionalInfo.user.username}`)).toBe(true);
         expect(wrapper.find("#blockIcon").exists()).toBeTruthy();
         expect(wrapper.text().includes(`Block @${mockUserTweetAdditionalInfo.user.username}`)).toBe(true);
         expect(wrapper.text().includes("Nhúng tweet")).toBe(true);
@@ -133,7 +133,7 @@ describe("TweetComponentActions", () => {
     });
 
     it("should click Mute user", () => {
-        testClickMuteUser("#muteIcon", "Tắt tiếng", "đã tắt tiếng");
+        testClickMuteUser("#muteIcon", "Hạn chế", "đã hạn chế");
     });
 
     it("should click Unmute user", () => {
@@ -147,7 +147,7 @@ describe("TweetComponentActions", () => {
                 }
             }
         };
-        testClickMuteUser("#unmuteIcon", "Bật tiếng", "đã bật tiếng", mockUserTweetState);
+        testClickMuteUser("#unmuteIcon", "Bỏ hạn chế", "đã bỏ hạn chế", mockUserTweetState);
     });
 
     it("should click Block user", () => {

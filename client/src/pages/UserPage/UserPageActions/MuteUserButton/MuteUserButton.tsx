@@ -23,7 +23,7 @@ const MuteUserButton: FC<MuteUserButtonProps> = memo(({onCloseUserPageActions}):
 
     const handleMuteUser = (): void => {
         dispatch(processUserToMuteList({userId: userProfileId!}));
-        dispatch(setOpenSnackBar(`@${username} ${isUserMuted ? "đã bật tiếng" : "đã tắt tiếng"}.`));
+        dispatch(setOpenSnackBar(`@${username} ${isUserMuted ? "đã bỏ hạn chế" : "đã hạn chế"}.`));
         onCloseUserPageActions();
     };
 
@@ -31,7 +31,7 @@ const MuteUserButton: FC<MuteUserButtonProps> = memo(({onCloseUserPageActions}):
         <ListItem id={"handleMuteUser"} onClick={handleMuteUser}>
             <>{isUserMuted ? UnmuteIcon : MuteIcon}</>
             <Typography component={"span"}>
-                {isUserMuted ? "Bật tiếng" : "Tắt tiếng"} @{username}
+                {isUserMuted ? "Bỏ hạn chế" : "Hạn chế"} @{username}
             </Typography>
         </ListItem>
     );

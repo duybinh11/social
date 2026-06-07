@@ -8,7 +8,7 @@ export const useDisplayModalStyles = makeStyles((theme: Theme) => ({
         },
     },
     content: {
-        height: 603,
+        height: 520,
         width: 598,
         padding: "0px 32px 32px 32px",
         overflowX: "hidden",
@@ -23,43 +23,6 @@ export const useDisplayModalStyles = makeStyles((theme: Theme) => ({
         marginBottom: 20,
         textAlign: "center",
     },
-    tweetInfoWrapper: {
-        display: "flex",
-        justifyContent: "flex-start",
-        margin: "0px auto 16px auto",
-        padding: "16px 12px",
-        width: 455,
-        border: `1px solid ${theme.palette.divider}`,
-        borderRadius: 16,
-    },
-    tweetIconWrapper: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        marginRight: 16,
-        width: 48,
-        height: 48,
-        backgroundColor: theme.palette.primary.main,
-        borderRadius: "50%",
-    },
-    tweetIcon: {
-        marginTop: 5,
-        "& svg": {
-            color: theme.palette.common.white,
-            height: "1.7em"
-        },
-    },
-    tweetTitle: {
-        marginRight: 3,
-    },
-    tweetVerifiedIcon: {
-        marginRight: 3,
-        "& svg": {
-            verticalAlign: "bottom",
-            color: theme.palette.primary.main,
-            height: "1.35em"
-        },
-    },
     tweetText: {
         "&#xs": {
             fontSize: 13,
@@ -67,9 +30,6 @@ export const useDisplayModalStyles = makeStyles((theme: Theme) => ({
         "&#xl": {
             fontSize: 20,
         },
-    },
-    tweetLink: {
-        color: theme.palette.primary.main,
     },
     subtitle: {
         fontWeight: 700,

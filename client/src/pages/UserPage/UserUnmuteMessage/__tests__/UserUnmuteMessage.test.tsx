@@ -23,14 +23,14 @@ describe("UserUnmuteMessage", () => {
                 user: {...mockRootState.userProfile.user, isUserMuted: true}
             }
         });
-        expect(wrapper.text().includes("Bạn đã tắt tiếng tweet từ tài khoản này.")).toBe(true);
+        expect(wrapper.text().includes("Bạn đã hạn chế tweet từ tài khoản này.")).toBe(true);
         wrapper.find("#unmuteUser").at(0).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: {userId: 2},
             type: UserActionsType.PROCESS_USER_TO_MUTELIST
         });
         expect(mockDispatchFn).nthCalledWith(2, {
-            payload: `@${mockMyProfile.username} đã bật tiếng.`,
+            payload: `@${mockMyProfile.username} đã bỏ hạn chế.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });

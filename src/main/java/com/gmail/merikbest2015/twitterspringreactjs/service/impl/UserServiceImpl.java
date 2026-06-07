@@ -13,6 +13,7 @@ import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.user.F
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.user.MutedUserProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.service.AuthenticationService;
 import com.gmail.merikbest2015.twitterspringreactjs.service.LocalImageStorageService;
+import com.gmail.merikbest2015.twitterspringreactjs.service.MutedUsersFilterService;
 import com.gmail.merikbest2015.twitterspringreactjs.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.support.PagedListHolder;
@@ -40,6 +41,7 @@ public class UserServiceImpl implements UserService {
     private final LikeTweetRepository likeTweetRepository;
     private final NotificationRepository notificationRepository;
     private final LocalImageStorageService localImageStorageService;
+    private final MutedUsersFilterService mutedUsersFilterService;
 
     @Override
     public UserProfileProjection getUserById(Long userId) {
@@ -145,7 +147,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<TweetsProjection> getNotificationsFromTweetAuthors(Pageable pageable) {
         Long userId = authenticationService.getAuthenticatedUserId();
-        List<TweetsProjection> tweets = tweetRepository.getNotificationsFromTweetAuthors(userId);
+        Set<Long> mutedUserIds = Set.copyOf(mutedUsersFilterService.getMutedUserIdsForAuthUser());
+        List<TweetsProjection> tweets = tweetRepository.getNotificationsFromTweetAuthors(userId).stream()
+                .filter(tweetsProjection -> {
+                    TweetProjection tweet = tweetsProjection.getTweet();
+                    return tweet.getUser() == null || !mutedUserIds.contains(tweet.getUser().getId());
+                })
+                .collect(Collectors.toList());
         return getPageableTweetProjectionList(pageable, tweets, tweets.size());
     }
 

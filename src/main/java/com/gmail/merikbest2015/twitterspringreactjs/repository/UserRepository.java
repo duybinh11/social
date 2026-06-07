@@ -123,6 +123,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "WHERE user.id = :userId")
     Page<FollowerUserProjection> getFollowerRequests(Long userId, Pageable pageable);
 
+    @Query("SELECT muted.id FROM User user JOIN user.userMutedList muted WHERE user.id = :userId")
+    List<Long> getMutedUserIdsByUserId(Long userId);
+
     @Query("SELECT user.userMutedList FROM User user WHERE user.id = :userId")
     List<User> getUserMutedListById(Long userId);
 

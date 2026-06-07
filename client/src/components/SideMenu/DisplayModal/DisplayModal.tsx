@@ -4,8 +4,7 @@ import {CheckCircle, RadioButtonUnchecked} from "@material-ui/icons";
 import {useDispatch} from "react-redux";
 
 import {useDisplayModalStyles} from "./DisplayModalStyles";
-import VkuLogo from "../../VkuLogo/VkuLogo";
-import {CheckIcon, VerifiedIcon} from "../../../icons";
+import {CheckIcon} from "../../../icons";
 import {DisplayProps} from "../../../types/display";
 import {updateBackgroundColor, updateColorScheme} from "../../../store/ducks/user/actionCreators";
 import {BackgroundTheme, ColorScheme} from "../../../store/types/common";
@@ -84,38 +83,8 @@ const DisplayModal: FC<DisplayModalProps & DisplayProps> = (
             </Typography>
             <DialogContent className={classes.content}>
                 <Typography variant={"subtitle1"} component={"div"} className={classes.text}>
-                    Quản lý cỡ chữ, màu sắc và nền. Cài đặt này áp dụng cho mọi tài khoản Twitter trên trình duyệt này.
+                    Quản lý cỡ chữ, màu sắc và nền. Cài đặt này áp dụng cho mọi tài khoản trên trình duyệt này.
                 </Typography>
-                <div className={classes.tweetInfoWrapper}>
-                    <div>
-                        <div className={classes.tweetIconWrapper}>
-                            <span className={classes.tweetIcon}>
-                                <VkuLogo height={27} width={27}/>
-                            </span>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <Typography variant={"h6"} component={"span"} className={classes.tweetTitle}>
-                                Twitter
-                            </Typography>
-                            <span className={classes.tweetVerifiedIcon}>
-                                {VerifiedIcon}
-                            </span>
-                            <Typography variant={"subtitle1"} component={"span"}>
-                                @Twitter
-                            </Typography>
-                            <Typography variant={"subtitle1"} component={"span"}>
-                                {" · 31m"}
-                            </Typography>
-                        </div>
-                        <Typography variant={"body1"} component={"div"} className={classes.tweetText}>
-                            Trung tâm của Twitter là các tin nhắn ngắn gọi là Tweet — giống như tin này — có thể
-                            bao gồm ảnh, video, liên kết, văn bản, hashtag và đề cập như <span
-                            className={classes.tweetLink}>@Twitter</span>
-                        </Typography>
-                    </div>
-                </div>
                 <Typography variant={"subtitle2"} component={"div"} className={classes.subtitle}>
                     Cỡ chữ
                 </Typography>

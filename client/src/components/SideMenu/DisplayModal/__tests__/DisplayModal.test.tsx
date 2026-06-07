@@ -19,7 +19,8 @@ describe("DisplayModal", () => {
         const {wrapper} = createDisplayModalWrapper();
 
         expect(wrapper.text().includes("Tùy chỉnh giao diện")).toBe(true);
-        expect(wrapper.text().includes("Manage your font size, color, and background.")).toBe(true);
+        expect(wrapper.text().includes("Quản lý cỡ chữ, màu sắc và nền")).toBe(true);
+        expect(wrapper.text().includes("Twitter")).toBe(false);
         expect(wrapper.text().includes("Cỡ chữ")).toBe(true);
         expect(wrapper.text().includes("Màu")).toBe(true);
         expect(wrapper.text().includes("Nền")).toBe(true);

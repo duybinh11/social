@@ -4,6 +4,10 @@ import {TweetsState} from "./contracts/state";
 import {TweetsActions, TweetsActionType} from './contracts/actionTypes';
 import {LoadingStatus, NotificationType} from "../../types/common";
 import {NotificationReplyResponse, NotificationResponse} from "../../types/notification";
+import {TweetResponse} from "../../types/tweet";
+
+const isVisibleTweet = (tweet: TweetResponse): boolean => !tweet.user?.isUserMuted;
+const filterVisibleTweets = (tweets: TweetResponse[]): TweetResponse[] => tweets.filter(isVisibleTweet);
 
 export const initialTweetsState: TweetsState = {
     items: [],
@@ -15,18 +19,20 @@ export const tweetsReducer = produce((draft: Draft<TweetsState>, action: TweetsA
 
     switch (action.type) {
         case TweetsActionType.SET_TWEETS:
-            draft.items = [...draft.items, ...action.payload];
+            draft.items = [...draft.items, ...filterVisibleTweets(action.payload)];
             draft.loadingState = LoadingStatus.LOADED;
             break;
 
         case TweetsActionType.SET_PAGEABLE_TWEETS:
-            draft.items = [...draft.items, ...action.payload.items];
+            draft.items = [...draft.items, ...filterVisibleTweets(action.payload.items)];
             draft.pagesCount = action.payload.pagesCount;
             draft.loadingState = LoadingStatus.LOADED;
             break;
 
         case TweetsActionType.SET_TWEET:
-            draft.items = [action.payload, ...draft.items];
+            if (isVisibleTweet(action.payload)) {
+                draft.items = [action.payload, ...draft.items];
+            }
             break;
 
         case TweetsActionType.RESET_TWEETS:
@@ -103,17 +109,14 @@ export const tweetsReducer = produce((draft: Draft<TweetsState>, action: TweetsA
             break;
 
         case TweetsActionType.SET_MUTED_TO_TWEETS_STATE:
-            if (action.payload.tweetId) {
-                const mutedUserTweetIndex = draft.items.findIndex((tweet) => tweet.id === action.payload.tweetId);
-                if (mutedUserTweetIndex !== -1) draft.items[mutedUserTweetIndex].user.isUserMuted = action.payload.isUserMuted;
+            if (action.payload.isUserMuted) {
+                draft.items = draft.items.filter((tweet) => tweet.user.id !== action.payload.userId);
             } else {
                 draft.items = draft.items.map((tweet) => {
                     if (tweet.user.id === action.payload.userId) {
-                        tweet.user.isUserMuted = action.payload.isUserMuted
-                        return tweet;
-                    } else {
-                        return tweet;
+                        tweet.user.isUserMuted = action.payload.isUserMuted;
                     }
+                    return tweet;
                 });
             }
             draft.loadingState = LoadingStatus.LOADED

@@ -41,11 +41,26 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
     Page<TweetProjection> findAllTweets(Pageable pageable);
 
     @Query("SELECT tweet FROM Tweet tweet " +
+            "WHERE tweet.addressedUsername IS NULL " +
+            "AND tweet.deleted = false " +
+            "AND tweet.user.id NOT IN :mutedUserIds " +
+            "ORDER BY tweet.dateTime DESC")
+    Page<TweetProjection> findAllTweetsExcludingUsers(List<Long> mutedUserIds, Pageable pageable);
+
+    @Query("SELECT tweet FROM Tweet tweet " +
             "LEFT JOIN FETCH tweet.user user " +
             "WHERE tweet.addressedUsername IS NULL " +
             "AND tweet.deleted = false " +
             "ORDER BY tweet.dateTime DESC")
     List<Tweet> findCandidateTweets(Pageable pageable);
+
+    @Query("SELECT tweet FROM Tweet tweet " +
+            "LEFT JOIN FETCH tweet.user user " +
+            "WHERE tweet.addressedUsername IS NULL " +
+            "AND tweet.deleted = false " +
+            "AND tweet.user.id NOT IN :mutedUserIds " +
+            "ORDER BY tweet.dateTime DESC")
+    List<Tweet> findCandidateTweetsExcludingUsers(List<Long> mutedUserIds, Pageable pageable);
 
     @Query("SELECT tweet FROM Tweet tweet " +
             "WHERE tweet.addressedUsername IS NULL " +
@@ -67,11 +82,33 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
             "ORDER BY t.dateTime DESC")
     Page<TweetProjection> findAllByText(String text, Pageable pageable);
 
+    @Query("SELECT t FROM Tweet t " +
+            "LEFT JOIN t.user u " +
+            "WHERE t.deleted = false " +
+            "AND t.user.id NOT IN :mutedUserIds " +
+            "AND (t.text LIKE CONCAT('%',:text,'%') " +
+            "AND UPPER(u.fullName) LIKE UPPER(CONCAT('%',:text,'%')) " +
+            "OR UPPER(u.username) LIKE UPPER(CONCAT('%',:text,'%'))) " +
+            "OR t.deleted = false " +
+            "AND t.user.id NOT IN :mutedUserIds " +
+            "AND (t.text LIKE CONCAT('%',:text,'%') " +
+            "OR UPPER(u.fullName) LIKE UPPER(CONCAT('%',:text,'%')) " +
+            "OR UPPER(u.username) LIKE UPPER(CONCAT('%',:text,'%'))) " +
+            "ORDER BY t.dateTime DESC")
+    Page<TweetProjection> findAllByTextExcludingUsers(String text, List<Long> mutedUserIds, Pageable pageable);
+
     @Query("SELECT tweet FROM Tweet tweet " +
             "WHERE tweet.images.size != 0 " +
             "AND tweet.deleted = false " +
             "ORDER BY tweet.dateTime DESC")
     Page<TweetProjection> findAllTweetsWithImages(Pageable pageable);
+
+    @Query("SELECT tweet FROM Tweet tweet " +
+            "WHERE tweet.images.size != 0 " +
+            "AND tweet.deleted = false " +
+            "AND tweet.user.id NOT IN :mutedUserIds " +
+            "ORDER BY tweet.dateTime DESC")
+    Page<TweetProjection> findAllTweetsWithImagesExcludingUsers(List<Long> mutedUserIds, Pageable pageable);
 
     @Query("SELECT tweet FROM Tweet tweet " +
             "LEFT JOIN tweet.images image " +

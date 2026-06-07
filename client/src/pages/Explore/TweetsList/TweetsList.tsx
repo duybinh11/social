@@ -3,10 +3,10 @@ import {useSelector} from "react-redux";
 
 import TweetComponent from "../../../components/TweetComponent/TweetComponent";
 import Spinner from "../../../components/Spinner/Spinner";
-import {selectIsTweetsLoading, selectTweetsItems} from "../../../store/ducks/tweets/selectors";
+import {selectIsTweetsLoading, selectVisibleTweetsItems} from "../../../store/ducks/tweets/selectors";
 
 const TweetsList = (): ReactElement => {
-    const tweets = useSelector(selectTweetsItems);
+    const tweets = useSelector(selectVisibleTweetsItems);
     const isTweetsLoading = useSelector(selectIsTweetsLoading);
 
     return (

@@ -25,14 +25,14 @@ const MuteUserButton: FC<MuteUserButtonProps> = memo((
 
     const onMuteUser = (): void => {
         dispatch(processUserToMuteList({userId, tweetId}));
-        dispatch(setOpenSnackBar(`@${username} ${isUserMuted ? "đã bật tiếng" : "đã tắt tiếng"}.`));
+        dispatch(setOpenSnackBar(`@${username} ${isUserMuted ? "đã bỏ hạn chế" : "đã hạn chế"}.`));
     };
 
     return (
         <ListItem id={"onMuteUser"} onClick={onMuteUser}>
             <>{isUserMuted ? UnmuteIcon : MuteIcon}</>
             <Typography variant={"body1"} component={"span"}>
-                {isUserMuted ? "Bật tiếng" : "Tắt tiếng"} @{username}
+                {isUserMuted ? "Bỏ hạn chế" : "Hạn chế"} @{username}
             </Typography>
         </ListItem>
     );

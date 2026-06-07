@@ -12,6 +12,7 @@ import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.TweetsProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.user.UserProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.service.AuthenticationService;
+import com.gmail.merikbest2015.twitterspringreactjs.service.MutedUsersFilterService;
 import com.gmail.merikbest2015.twitterspringreactjs.service.PersonalizationService;
 import com.gmail.merikbest2015.twitterspringreactjs.service.TweetService;
 import lombok.RequiredArgsConstructor;
@@ -49,6 +50,7 @@ public class TweetServiceImpl implements TweetService {
     private final PollRepository pollRepository;
     private final PollChoiceRepository pollChoiceRepository;
     private final PersonalizationService personalizationService;
+    private final MutedUsersFilterService mutedUsersFilterService;
 
     @Override
     public Page<TweetProjection> getTweets(Pageable pageable) {
@@ -102,14 +104,22 @@ public class TweetServiceImpl implements TweetService {
 
     @Override
     public Page<TweetProjection> getMediaTweets(Pageable pageable) {
-        return tweetRepository.findAllTweetsWithImages(pageable);
+        List<Long> mutedUserIds = mutedUsersFilterService.getMutedUserIdsForAuthUser();
+        if (mutedUserIds.isEmpty()) {
+            return tweetRepository.findAllTweetsWithImages(pageable);
+        }
+        return tweetRepository.findAllTweetsWithImagesExcludingUsers(mutedUserIds, pageable);
     }
 
     @Override
     public Page<TweetProjection> getFollowersTweets(Pageable pageable) {
         Long userId = authenticationService.getAuthenticatedUserId();
-        List<Long> userFollowersIds = userRepository.getUserFollowersIds(userId);
+        List<Long> userFollowersIds = new ArrayList<>(userRepository.getUserFollowersIds(userId));
         userFollowersIds.add(userId);
+        userFollowersIds = mutedUsersFilterService.excludeMutedUserIds(userFollowersIds);
+        if (userFollowersIds.isEmpty()) {
+            return Page.empty(pageable);
+        }
         return tweetRepository.findTweetsByUserIds(userFollowersIds, pageable);
     }
 
@@ -175,7 +185,11 @@ public class TweetServiceImpl implements TweetService {
 
     @Override
     public Page<TweetProjection> searchTweets(String text, Pageable pageable) {
-        return tweetRepository.findAllByText(text, pageable);
+        List<Long> mutedUserIds = mutedUsersFilterService.getMutedUserIdsForAuthUser();
+        if (mutedUserIds.isEmpty()) {
+            return tweetRepository.findAllByText(text, pageable);
+        }
+        return tweetRepository.findAllByTextExcludingUsers(text, mutedUserIds, pageable);
     }
 
     @Override

@@ -11,6 +11,7 @@ import com.gmail.merikbest2015.twitterspringreactjs.repository.UserInteractionEv
 import com.gmail.merikbest2015.twitterspringreactjs.repository.UserRepository;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.TweetProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.service.AuthenticationService;
+import com.gmail.merikbest2015.twitterspringreactjs.service.MutedUsersFilterService;
 import com.gmail.merikbest2015.twitterspringreactjs.service.PersonalizationService;
 import com.gmail.merikbest2015.twitterspringreactjs.service.TrendingService;
 import lombok.RequiredArgsConstructor;
@@ -57,6 +58,7 @@ public class PersonalizationServiceImpl implements PersonalizationService {
     private final UserInteractionEventRepository userInteractionEventRepository;
     private final UserRepository userRepository;
     private final TrendingService trendingService;
+    private final MutedUsersFilterService mutedUsersFilterService;
 
     @Override
     @Transactional(readOnly = true)
@@ -67,7 +69,7 @@ public class PersonalizationServiceImpl implements PersonalizationService {
         } catch (Exception exception) {
             return tweetRepository.findAllTweets(pageable);
         }
-        List<Tweet> candidates = tweetRepository.findCandidateTweets(PageRequest.of(0, 300));
+        List<Tweet> candidates = loadCandidateTweets(userId);
         if (candidates.isEmpty()) {
             return Page.empty(pageable);
         }
@@ -135,6 +137,14 @@ public class PersonalizationServiceImpl implements PersonalizationService {
         event.setInteractionType(interactionType);
         event.setDwellSeconds(dwellSeconds);
         userInteractionEventRepository.save(event);
+    }
+
+    private List<Tweet> loadCandidateTweets(Long userId) {
+        List<Long> mutedUserIds = mutedUsersFilterService.getMutedUserIdsForAuthUser();
+        if (mutedUserIds.isEmpty()) {
+            return tweetRepository.findCandidateTweets(PageRequest.of(0, 300));
+        }
+        return tweetRepository.findCandidateTweetsExcludingUsers(mutedUserIds, PageRequest.of(0, 300));
     }
 
     private Page<TweetProjection> fallbackByRecency(List<Tweet> candidates, Pageable pageable) {

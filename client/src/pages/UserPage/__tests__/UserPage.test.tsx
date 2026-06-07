@@ -294,7 +294,7 @@ describe("UserPage", () => {
             type: UserActionsType.PROCESS_USER_TO_MUTELIST
         });
         expect(mockDispatchFn).nthCalledWith(5, {
-            payload: `@${mockUserProfile.username} đã tắt tiếng.`,
+            payload: `@${mockUserProfile.username} đã hạn chế.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });
@@ -308,7 +308,7 @@ describe("UserPage", () => {
             }
         });
 
-        expect(wrapper.text().includes("Bạn đã tắt tiếng tweet từ tài khoản này.")).toBe(true);
+        expect(wrapper.text().includes("Bạn đã hạn chế tweet từ tài khoản này.")).toBe(true);
 
         wrapper.find("#unmuteUser").at(0).simulate("click");
 
@@ -317,7 +317,7 @@ describe("UserPage", () => {
             type: UserActionsType.PROCESS_USER_TO_MUTELIST
         });
         expect(mockDispatchFn).nthCalledWith(5, {
-            payload: `@${mockUserProfile.username} đã bật tiếng.`,
+            payload: `@${mockUserProfile.username} đã bỏ hạn chế.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });

@@ -20,7 +20,7 @@ const UserUnmuteMessage = memo((): ReactElement => {
 
     const onMuteUser = (): void => {
         dispatch(processUserToMuteList({userId: userProfileId!}));
-        dispatch(setOpenSnackBar(`@${username} ${isUserMuted ? "đã bật tiếng" : "đã tắt tiếng"}.`));
+        dispatch(setOpenSnackBar(`@${username} ${isUserMuted ? "đã bỏ hạn chế" : "đã hạn chế"}.`));
     };
 
     return (
@@ -28,7 +28,7 @@ const UserUnmuteMessage = memo((): ReactElement => {
             {userProfileId && (
                 isUserMuted && (
                     <Typography variant={"subtitle1"} component={"div"} className={classes.description}>
-                        {"Bạn đã tắt tiếng tweet từ tài khoản này. "}
+                        {"Bạn đã hạn chế tweet từ tài khoản này. "}
                         <Typography
                             id={"unmuteUser"}
                             className={classes.unfollowLink}
@@ -36,7 +36,7 @@ const UserUnmuteMessage = memo((): ReactElement => {
                             variant={"subtitle1"}
                             component={"span"}
                         >
-                            Bật tiếng
+                            Bỏ hạn chế
                         </Typography>
                     </Typography>
                 )
