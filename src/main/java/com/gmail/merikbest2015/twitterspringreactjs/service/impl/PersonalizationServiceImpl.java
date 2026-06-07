@@ -8,9 +8,11 @@ import com.gmail.merikbest2015.twitterspringreactjs.model.UserInteractionEvent;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.TweetEmbeddingRepository;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.TweetRepository;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.UserInteractionEventRepository;
+import com.gmail.merikbest2015.twitterspringreactjs.repository.UserRepository;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.TweetProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.service.AuthenticationService;
 import com.gmail.merikbest2015.twitterspringreactjs.service.PersonalizationService;
+import com.gmail.merikbest2015.twitterspringreactjs.service.TrendingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -38,10 +40,23 @@ public class PersonalizationServiceImpl implements PersonalizationService {
     );
     private static final Pattern TAG_PATTERN = Pattern.compile("(#\\w+)\\b");
 
+    private static final double WEIGHT_SEMANTIC_SIMILARITY = 0.35;
+    private static final double WEIGHT_TREND_BOOST_24H = 0.15;
+    private static final double WEIGHT_FRESHNESS = 0.15;
+    private static final double WEIGHT_POPULARITY = 0.15;
+    private static final double WEIGHT_SOCIAL_GRAPH = 0.10;
+    private static final double WEIGHT_TAG_AFFINITY = 0.10;
+
+    private static final double DIVERSITY_TAG_PENALTY = 0.05;
+    private static final double DIVERSITY_AUTHOR_PENALTY = 0.15;
+    private static final int MAX_TWEETS_PER_AUTHOR_BEFORE_PENALTY = 2;
+
     private final AuthenticationService authenticationService;
     private final TweetRepository tweetRepository;
     private final TweetEmbeddingRepository tweetEmbeddingRepository;
     private final UserInteractionEventRepository userInteractionEventRepository;
+    private final UserRepository userRepository;
+    private final TrendingService trendingService;
 
     @Override
     @Transactional(readOnly = true)
@@ -64,23 +79,24 @@ public class PersonalizationServiceImpl implements PersonalizationService {
 
         Map<String, Double> userTagScore = buildUserTagScore(interactions);
         double[] userVector = buildUserVector(interactions);
+        Map<String, Double> trendScores24h = trendingService.getNormalizedTrendScores24h();
+        Set<Long> followingIds = new HashSet<>(userRepository.getFollowingIdsByUserId(userId));
         Map<Long, ScoredTweet> scored = new HashMap<>();
 
         for (Tweet tweet : candidates) {
             double[] tweetVector = getOrBuildTweetVector(tweet);
-            double similarity = cosineSimilarity(userVector, tweetVector);
-            double freshness = freshnessScore(tweet.getDateTime());
-            double popularity = popularityScore(tweet);
-            double teacherPriority = teacherPriorityScore(tweet);
+            double semanticSimilarity = cosineSimilarity(userVector, tweetVector);
             Set<String> tweetTags = extractTags(tweet.getText());
-            double contentTagBoost = contentTagScore(tweetTags, userTagScore);
+            Long authorId = tweet.getUser() == null ? null : tweet.getUser().getId();
 
-            double baseScore = (0.40 * similarity)
-                    + (0.20 * freshness)
-                    + (0.15 * popularity)
-                    + (0.10 * teacherPriority)
-                    + (0.15 * contentTagBoost);
-            scored.put(tweet.getId(), new ScoredTweet(tweet, tweetTags, baseScore));
+            double baseScore = (WEIGHT_SEMANTIC_SIMILARITY * semanticSimilarity)
+                    + (WEIGHT_TREND_BOOST_24H * trendingService.trendBoostForTags(tweetTags, trendScores24h))
+                    + (WEIGHT_FRESHNESS * freshnessScore(tweet.getDateTime()))
+                    + (WEIGHT_POPULARITY * popularityScore(tweet))
+                    + (WEIGHT_SOCIAL_GRAPH * socialGraphScore(authorId, followingIds))
+                    + (WEIGHT_TAG_AFFINITY * tagAffinityScore(tweetTags, userTagScore));
+
+            scored.put(tweet.getId(), new ScoredTweet(tweet, tweetTags, authorId, baseScore));
         }
 
         List<ScoredTweet> ranked = applyDiversityAndSort(scored.values(), pageable.getOffset() + pageable.getPageSize());
@@ -254,17 +270,14 @@ public class PersonalizationServiceImpl implements PersonalizationService {
         return 1.0 - Math.exp(-(likes + (1.5 * retweets) + (2.0 * replies)) / 10.0);
     }
 
-    private double teacherPriorityScore(Tweet tweet) {
-        String role = tweet.getUser() == null || tweet.getUser().getRole() == null
-                ? ""
-                : tweet.getUser().getRole().toLowerCase(Locale.ROOT);
-        return (role.contains("teacher")
-                || role.contains("lecturer")
-                || role.contains("professor")
-                || role.contains("admin")) ? 1.0 : 0.0;
+    private double socialGraphScore(Long authorId, Set<Long> followingIds) {
+        if (authorId == null || followingIds.isEmpty()) {
+            return 0.0;
+        }
+        return followingIds.contains(authorId) ? 1.0 : 0.0;
     }
 
-    private double contentTagScore(Set<String> tweetTags, Map<String, Double> userTagScore) {
+    private double tagAffinityScore(Set<String> tweetTags, Map<String, Double> userTagScore) {
         if (tweetTags.isEmpty() || userTagScore.isEmpty()) {
             return 0.0;
         }
@@ -280,16 +293,25 @@ public class PersonalizationServiceImpl implements PersonalizationService {
                 .collect(Collectors.toList());
         List<ScoredTweet> result = new ArrayList<>();
         Map<String, Integer> tagSeen = new HashMap<>();
+        Map<Long, Integer> authorSeen = new HashMap<>();
 
         for (ScoredTweet candidate : sorted) {
-            double penalty = candidate.tags().stream()
+            double tagPenalty = candidate.tags().stream()
                     .mapToInt(tag -> tagSeen.getOrDefault(tag, 0))
-                    .sum() * 0.05;
-            double finalScore = candidate.baseScore() - penalty;
-            result.add(new ScoredTweet(candidate.tweet(), candidate.tags(), finalScore));
+                    .sum() * DIVERSITY_TAG_PENALTY;
+            double authorPenalty = 0.0;
+            if (candidate.authorId() != null
+                    && authorSeen.getOrDefault(candidate.authorId(), 0) >= MAX_TWEETS_PER_AUTHOR_BEFORE_PENALTY) {
+                authorPenalty = DIVERSITY_AUTHOR_PENALTY;
+            }
+            double finalScore = candidate.baseScore() - tagPenalty - authorPenalty;
+            result.add(new ScoredTweet(candidate.tweet(), candidate.tags(), candidate.authorId(), finalScore));
 
             for (String tag : candidate.tags()) {
                 tagSeen.merge(tag, 1, Integer::sum);
+            }
+            if (candidate.authorId() != null) {
+                authorSeen.merge(candidate.authorId(), 1, Integer::sum);
             }
             if (result.size() >= limit) {
                 break;
@@ -348,11 +370,13 @@ public class PersonalizationServiceImpl implements PersonalizationService {
     private static class ScoredTweet {
         private final Tweet tweet;
         private final Set<String> tags;
+        private final Long authorId;
         private final double baseScore;
 
-        private ScoredTweet(Tweet tweet, Set<String> tags, double baseScore) {
+        private ScoredTweet(Tweet tweet, Set<String> tags, Long authorId, double baseScore) {
             this.tweet = tweet;
             this.tags = tags;
+            this.authorId = authorId;
             this.baseScore = baseScore;
         }
 
@@ -362,6 +386,10 @@ public class PersonalizationServiceImpl implements PersonalizationService {
 
         public Set<String> tags() {
             return tags;
+        }
+
+        public Long authorId() {
+            return authorId;
         }
 
         public double baseScore() {

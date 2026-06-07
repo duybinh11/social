@@ -84,6 +84,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("SELECT follower.id FROM User user LEFT JOIN user.followers follower WHERE user.id = :userId")
     List<Long> getUserFollowersIds(Long userId);
 
+    @Query("SELECT following.id FROM User user LEFT JOIN user.following following WHERE user.id = :userId")
+    List<Long> getFollowingIdsByUserId(Long userId);
+
     @Query("SELECT f.id AS id, f.fullName AS fullName, f.username AS username, f.about AS about, avatar AS avatar, " +
             "f.privateProfile AS privateProfile, f.mutedDirectMessages AS mutedDirectMessages " +
             "FROM User user " +

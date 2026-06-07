@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,6 +46,13 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
             "AND tweet.deleted = false " +
             "ORDER BY tweet.dateTime DESC")
     List<Tweet> findCandidateTweets(Pageable pageable);
+
+    @Query("SELECT tweet FROM Tweet tweet " +
+            "WHERE tweet.addressedUsername IS NULL " +
+            "AND tweet.deleted = false " +
+            "AND tweet.dateTime >= :from " +
+            "AND tweet.dateTime < :to")
+    List<Tweet> findTweetsPostedBetween(LocalDateTime from, LocalDateTime to);
 
     @Query("SELECT t FROM Tweet t " +
             "LEFT JOIN t.user u " +
