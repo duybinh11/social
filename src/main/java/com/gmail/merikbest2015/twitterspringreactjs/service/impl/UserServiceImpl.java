@@ -1,7 +1,5 @@
 package com.gmail.merikbest2015.twitterspringreactjs.service.impl;
 
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.gmail.merikbest2015.twitterspringreactjs.enums.NotificationType;
 import com.gmail.merikbest2015.twitterspringreactjs.exception.ApiRequestException;
 import com.gmail.merikbest2015.twitterspringreactjs.model.*;
@@ -14,9 +12,9 @@ import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.user.*
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.user.FollowerUserProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.user.MutedUserProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.service.AuthenticationService;
+import com.gmail.merikbest2015.twitterspringreactjs.service.LocalImageStorageService;
 import com.gmail.merikbest2015.twitterspringreactjs.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -27,9 +25,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -44,10 +39,7 @@ public class UserServiceImpl implements UserService {
     private final RetweetRepository retweetRepository;
     private final LikeTweetRepository likeTweetRepository;
     private final NotificationRepository notificationRepository;
-    private final AmazonS3 amazonS3client;
-
-    @Value("${amazon.s3.bucket.name}")
-    private String bucketName;
+    private final LocalImageStorageService localImageStorageService;
 
     @Override
     public UserProfileProjection getUserById(Long userId) {
@@ -173,18 +165,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public Image uploadImage(MultipartFile multipartFile) {
         Image image = new Image();
-        if (multipartFile != null) {
-            File file = new File(multipartFile.getOriginalFilename());
-            try (FileOutputStream fos = new FileOutputStream(file)) {
-                fos.write(multipartFile.getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            String fileName = UUID.randomUUID() + "_" + multipartFile.getOriginalFilename();
-            amazonS3client.putObject(new PutObjectRequest(bucketName, fileName, file));
-            image.setSrc(amazonS3client.getUrl(bucketName, fileName).toString());
-            file.delete();
-        }
+        image.setSrc(localImageStorageService.store(multipartFile));
         return imageRepository.save(image);
     }
 

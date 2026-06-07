@@ -45,7 +45,7 @@ public interface AuthUserProjection {
     @Value("#{target.following.size()}")
     Integer getFollowingSize();
 
-    @Value("#{target.followerRequests.size()}")
+    @Value("0")
     Integer getFollowerRequestsSize();
 
     @Value("#{target.unreadMessages.size()}")
