@@ -16,7 +16,7 @@ import UploadImages from '../UploadImages/UploadImages';
 import {uploadImage} from "../../util/uploadImage";
 import {fetchReplyTweet} from "../../store/ducks/tweet/actionCreators";
 import {useAddTweetFormStyles} from "./AddTweetFormStyles";
-import {GifIcon, PullIcon} from "../../icons";
+import {PullIcon} from "../../icons";
 import Poll, {PollInitialState, pollInitialState} from "./Poll/Poll";
 import Reply from "./Reply/Reply";
 import Quote from "../Quote/Quote";
@@ -207,7 +207,6 @@ const AddTweetForm: FC<AddTweetFormProps> = (
             <div className={classes.footer}>
                 <div className={classes.footerWrapper}>
                     <UploadImages onChangeImages={setImages}/>
-                    <ActionIconButton actionText={"GIF"} icon={GifIcon} size={"medium"}/>
                     {(buttonName !== "Trả lời") && (
                         <div className={classes.quoteImage}>
                             <ActionIconButton

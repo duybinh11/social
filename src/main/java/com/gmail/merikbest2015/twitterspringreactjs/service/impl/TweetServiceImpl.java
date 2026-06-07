@@ -444,7 +444,7 @@ public class TweetServiceImpl implements TweetService {
     @SneakyThrows
     private boolean parseMetadataFromURL(Tweet tweet) {
         Pattern urlRegex = Pattern.compile("https?:\\/\\/?[\\w\\d\\._\\-%\\/\\?=&#]+", Pattern.CASE_INSENSITIVE);
-        Pattern imgRegex = Pattern.compile("\\.(jpeg|jpg|gif|png)$", Pattern.CASE_INSENSITIVE);
+        Pattern imgRegex = Pattern.compile("\\.(jpeg|jpg|png)$", Pattern.CASE_INSENSITIVE);
         String text = tweet.getText();
         Matcher matcher = urlRegex.matcher(text);
 

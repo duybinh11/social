@@ -205,16 +205,12 @@ describe("AddTweetForm", () => {
         testHoverIcon(0, "Phương tiện");
     });
 
-    it("should hover GIF icon and render Hover Action", () => {
-        testHoverIcon(1, "GIF");
-    });
-
     it("should hover Poll icon and render Hover Action", () => {
-        testHoverIcon(2, "Bình chọn");
+        testHoverIcon(1, "Bình chọn");
     });
 
     it("should hover Emoji icon and render Hover Action", () => {
-        testHoverIcon(3, "Emoji");
+        testHoverIcon(2, "Emoji");
     });
 
     const testHoverIcon = (itemIndex: number, actionText: string): void => {
