@@ -10,10 +10,9 @@ export const useRegistrationModalStyles = makeStyles((theme: Theme) => ({
     logoIcon: {
         margin: "0 auto",
         width: 30,
-        "& svg": {
+        "& img": {
             height: "1.75rem",
             width: "1.75rem",
-            color: theme.palette.primary.main,
         },
     },
     title: {
@@ -23,10 +22,6 @@ export const useRegistrationModalStyles = makeStyles((theme: Theme) => ({
     inputWrapper: {
         display: "flex",
         justifyContent: "space-between",
-    },
-    phoneLink: {
-        display: "inline-block",
-        margin: "16px 0 32px 0",
     },
     footer: {
         marginBottom: 47,

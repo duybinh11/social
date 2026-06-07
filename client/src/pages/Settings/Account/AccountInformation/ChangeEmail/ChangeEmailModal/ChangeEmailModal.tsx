@@ -6,7 +6,7 @@ import {Button, Checkbox, Dialog, DialogContent, Link as MuiLink, Typography} fr
 import * as yup from "yup";
 
 import {useChangeEmailModalStyles} from "./ChangeEmailModalStyles";
-import {TweetIcon} from "../../../../../../icons";
+import VkuLogo from "../../../../../../components/VkuLogo/VkuLogo";
 import {
     selectUserIsError,
     selectUserIsLoading,
@@ -53,7 +53,7 @@ const ChangeEmailModal: FC<ChangeEmailModalProps> = ({visible, onClose}): ReactE
         <Dialog transitionDuration={0} open={visible} onClose={onClose} className={classes.dialog}>
             <DialogContent className={classes.content}>
                 <div className={classes.logoIcon}>
-                    {TweetIcon}
+                    <VkuLogo height={37} width={37}/>
                 </div>
                 <div>
                     <Typography variant={"h3"} component={"div"}>

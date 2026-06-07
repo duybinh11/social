@@ -19,10 +19,10 @@ describe("Đăng nhập", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<Login/>, mockStore);
 
-        expect(wrapper.text().includes("Đăng nhập Twitter")).toBe(true);
+        expect(wrapper.text().includes("Đăng nhập VKU")).toBe(true);
         expect(wrapper.find(Button).text().includes("Đăng nhập")).toBe(true);
         expect(wrapper.text().includes("Quên mật khẩu?")).toBe(true);
-        expect(wrapper.text().includes("Đăng ký Twitter")).toBe(true);
+        expect(wrapper.text().includes("Đăng ký")).toBe(true);
     });
 
     it("should submit Login form", () => {

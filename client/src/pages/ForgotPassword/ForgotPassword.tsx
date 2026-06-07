@@ -1,6 +1,6 @@
 import React, {FC, ReactElement} from 'react';
 import {Route} from "react-router-dom";
-import TwitterIcon from "@material-ui/icons/Twitter";
+import VkuLogo from "../../components/VkuLogo/VkuLogo";
 import {Typography} from "@material-ui/core";
 
 import {useForgotPasswordStyles} from "./ForgotPasswordStyles";
@@ -25,7 +25,7 @@ const ForgotPassword: FC = (): ReactElement => {
             <div className={classes.header}>
                 <div className={classes.headerWrapper}>
                     <span style={{marginTop: 10}}>
-                        <TwitterIcon/>
+                        <VkuLogo height={25} width={25}/>
                     </span>
                     <Typography variant={"body1"} component={"span"}>
                         Đặt lại mật khẩu

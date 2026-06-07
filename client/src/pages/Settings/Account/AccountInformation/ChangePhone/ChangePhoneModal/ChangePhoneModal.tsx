@@ -15,7 +15,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import {useChangePhoneModalStyles} from "./ChangePhoneModalStyles";
-import {TweetIcon} from "../../../../../../icons";
+import VkuLogo from "../../../../../../components/VkuLogo/VkuLogo";
 import {ChangeInfoTextField} from "../../../../ChangeInfoTextField/ChangeInfoTextField";
 import {FilledSelect} from "../../../../../../components/FilledSelect/FilledSelect";
 import {
@@ -75,7 +75,7 @@ const ChangePhoneModal: FC<ChangePhoneModalProps> = ({visible, onClose}): ReactE
         <Dialog transitionDuration={0} open={visible} onClose={onClose} className={classes.dialog}>
             <DialogContent className={classes.content}>
                 <div className={classes.logoIcon}>
-                    {TweetIcon}
+                    <VkuLogo height={37} width={37}/>
                 </div>
                 <div>
                     <Typography variant={"h3"} component={"div"}>

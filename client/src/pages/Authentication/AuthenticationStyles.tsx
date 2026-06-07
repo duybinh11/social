@@ -51,13 +51,17 @@ export const useAuthenticationStyles= makeStyles((theme) => ({
         fontSize: 32,
         marginRight: 15
     },
-    leftSideTwitterIcon: {
+    leftSideLogo: {
         position: 'absolute',
         left: '50%',
         top: '53%',
         transform: 'translate(-50%, -50%)',
-        width: '350%',
-        height: '350%',
+        width: '80%',
+        height: '80%',
+        maxWidth: 420,
+        maxHeight: 420,
+        opacity: 0.15,
+        objectFit: 'contain',
     },
     rightSide: {
         display: 'flex',
@@ -68,8 +72,8 @@ export const useAuthenticationStyles= makeStyles((theme) => ({
     rightSideWrapper: {
         width: 380
     },
-    rightSideTwitterIcon: {
-        fontSize: 45
+    rightSideLogo: {
+        marginBottom: 4,
     },
     rightSideTittle: {
         fontWeight: 700,

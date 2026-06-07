@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {History, LocationState} from "history";
 import {Link, useHistory} from "react-router-dom";
 import {Button, Typography} from "@material-ui/core";
-import TwitterIcon from "@material-ui/icons/Twitter";
+import VkuLogo from "../../components/VkuLogo/VkuLogo";
 
 import {LoginTextField} from "./LoginInputField";
 import {useLoginStyles} from "./LoginStyles";
@@ -48,10 +48,10 @@ const Login: FC = (): ReactElement => {
     return (
         <div className={classes.container}>
             <div>
-                <TwitterIcon/>
+                <VkuLogo height={45} width={45}/>
             </div>
             <Typography variant={"h4"} component={"div"}>
-                Đăng nhập Twitter
+                Đăng nhập VKU
             </Typography>
             {(errorStatus) && (
                 <Typography variant={"body1"} component={"div"} className={classes.error}>
@@ -97,7 +97,7 @@ const Login: FC = (): ReactElement => {
                 {" · "}
                 <Typography variant={"body1"} component={"span"}>
                     <Link to={ACCOUNT_SIGNIN}>
-                        Đăng ký Twitter
+                        Đăng ký
                     </Link>
                 </Typography>
             </div>

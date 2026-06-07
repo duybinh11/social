@@ -1,6 +1,6 @@
 import React, {FC, ReactElement} from 'react';
 import {Avatar, Button, Dialog, DialogContent, Typography} from "@material-ui/core";
-import TwitterIcon from "@material-ui/icons/Twitter";
+import VkuLogo from "../../../components/VkuLogo/VkuLogo";
 
 import {useProfilePictureModalStyles} from "./ProfilePictureModalStyles";
 import {DEFAULT_PROFILE_IMG} from "../../../util/url";
@@ -30,7 +30,7 @@ const ProfilePictureModal: FC<ProfilePictureModalProps> = (
         <Dialog transitionDuration={0} open={open} onClose={onClose}>
             <DialogContent className={classes.container}>
                 <div className={classes.logoIcon}>
-                    <TwitterIcon/>
+                    <VkuLogo height={34} width={34}/>
                 </div>
                 <Typography variant={"h3"} component={"div"} className={classes.title}>
                     Chọn ảnh đại diện

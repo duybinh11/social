@@ -1,5 +1,5 @@
 import React, {FC, ReactElement, useState} from 'react';
-import TwitterIcon from "@material-ui/icons/Twitter";
+import VkuLogo from "../../../components/VkuLogo/VkuLogo";
 import {Button, Dialog, DialogContent, Link as MuiLink, Typography} from "@material-ui/core";
 
 import {useEmailVerificationModalStyles} from "./EmailVerificationModalStyles";
@@ -37,7 +37,7 @@ const EmailVerificationModal: FC<CustomizeModalProps> = ({email, open, onClose, 
         >
             <DialogContent style={{paddingTop: 0, paddingBottom: 0}} className={classes.container}>
                 <div className={classes.logoIcon}>
-                    <TwitterIcon/>
+                    <VkuLogo height={28} width={28}/>
                 </div>
                 <Typography variant={"h3"} component={"div"}>
                     Chúng tôi đã gửi mã cho bạn

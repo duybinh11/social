@@ -1,8 +1,8 @@
 import React, {ChangeEvent, FC, ReactElement, ReactNode, useState} from 'react';
 import {Controller, useForm} from "react-hook-form";
-import {Button, Dialog, FormControl, InputLabel, Link as MuiLink, Typography} from "@material-ui/core";
+import {Button, Dialog, FormControl, InputLabel, Typography} from "@material-ui/core";
 import DialogContent from "@material-ui/core/DialogContent";
-import TwitterIcon from "@material-ui/icons/Twitter"
+import VkuLogo from "../../components/VkuLogo/VkuLogo";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -108,7 +108,7 @@ const RegistrationModal: FC<RegistrationModalProps> = (
         >
             <DialogContent style={{paddingTop: 0, paddingBottom: 0}} className={classes.container}>
                 <div className={classes.logoIcon}>
-                    <TwitterIcon/>
+                    <VkuLogo height={28} width={28}/>
                 </div>
                 <div>
                     <Typography variant={"h3"} component={"div"} className={classes.title}>
@@ -149,15 +149,9 @@ const RegistrationModal: FC<RegistrationModalProps> = (
                                 )}
                             />
                         </FormControl>
-                        <MuiLink className={classes.phoneLink} href="#" variant="body1">
-                            Dùng số điện thoại
-                        </MuiLink>
                         <div className={classes.footer}>
                             <Typography variant={"h6"} component={"div"}>
                                 Ngày sinh
-                            </Typography>
-                            <Typography variant={"subtitle1"} component={"div"}>
-                                Thông tin này sẽ không hiển thị công khai. Xác nhận tuổi của bạn, kể cả khi tài khoản dùng cho doanh nghiệp, thú cưng hay mục đích khác.
                             </Typography>
                             <FormControl variant="filled" className={classes.formControl}>
                                 <InputLabel htmlFor="select-month">

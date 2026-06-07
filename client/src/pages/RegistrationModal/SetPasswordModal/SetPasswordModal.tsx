@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {Button, Dialog, DialogContent, Typography} from "@material-ui/core";
 import {useForm, Controller} from "react-hook-form";
-import TwitterIcon from "@material-ui/icons/Twitter";
+import VkuLogo from "../../../components/VkuLogo/VkuLogo";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -59,7 +59,7 @@ const SetPasswordModal: FC<SetPasswordProps> = ({email, open, onClose}): ReactEl
         >
             <DialogContent style={{paddingTop: 0, paddingBottom: 0}} className={classes.container}>
                 <div className={classes.logoIcon}>
-                    <TwitterIcon/>
+                    <VkuLogo height={28} width={28}/>
                 </div>
                 <Typography variant={"h3"} component={"div"}>
                     Bạn cần mật khẩu

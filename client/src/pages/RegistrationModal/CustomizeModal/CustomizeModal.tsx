@@ -1,6 +1,6 @@
 import React, {FC, ReactElement} from 'react';
 import {Button, Dialog, DialogContent, Link as MuiLink, Radio, Typography} from "@material-ui/core";
-import TwitterIcon from "@material-ui/icons/Twitter";
+import VkuLogo from "../../../components/VkuLogo/VkuLogo";
 
 import {useCustomizeModalStyles} from "./CustomizeModalStyles";
 import {useGlobalStyles} from "../../../util/globalClasses";
@@ -27,7 +27,7 @@ const CustomizeModal: FC<CustomizeModalProps> = ({open, onClose, onOpenCreateAcc
         >
             <DialogContent style={{paddingTop: 0, paddingBottom: 0}} className={classes.container}>
                 <div className={classes.logoIcon}>
-                    <TwitterIcon/>
+                    <VkuLogo height={28} width={28}/>
                 </div>
                 <Typography variant={"h3"} component={"div"} className={classes.title}>
                     Tùy chỉnh trải nghiệm

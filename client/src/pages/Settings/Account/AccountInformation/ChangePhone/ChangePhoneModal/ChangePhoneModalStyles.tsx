@@ -27,9 +27,9 @@ export const useChangePhoneModalStyles = makeStyles((theme: Theme) => ({
     logoIcon: {
         margin: "0 auto",
         width: 53,
-        "& svg": {
+        "& img": {
             height: "2.30em",
-            color: theme.palette.primary.main,
+            width: "2.30em",
         },
     },
     infoWrapper: {

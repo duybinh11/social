@@ -16,10 +16,9 @@ export const useEmailVerificationModalStyles = makeStyles((theme: Theme) => ({
     logoIcon: {
         margin: "0 auto",
         width: 30,
-        "& svg": {
+        "& img": {
             height: "1.75rem",
             width: "1.75rem",
-            color: theme.palette.primary.main,
         },
     },
     emailLinkWrapper: {

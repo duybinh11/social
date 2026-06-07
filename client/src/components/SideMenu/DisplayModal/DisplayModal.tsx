@@ -4,7 +4,8 @@ import {CheckCircle, RadioButtonUnchecked} from "@material-ui/icons";
 import {useDispatch} from "react-redux";
 
 import {useDisplayModalStyles} from "./DisplayModalStyles";
-import {CheckIcon, TweetIcon, VerifiedIcon} from "../../../icons";
+import VkuLogo from "../../VkuLogo/VkuLogo";
+import {CheckIcon, VerifiedIcon} from "../../../icons";
 import {DisplayProps} from "../../../types/display";
 import {updateBackgroundColor, updateColorScheme} from "../../../store/ducks/user/actionCreators";
 import {BackgroundTheme, ColorScheme} from "../../../store/types/common";
@@ -89,7 +90,7 @@ const DisplayModal: FC<DisplayModalProps & DisplayProps> = (
                     <div>
                         <div className={classes.tweetIconWrapper}>
                             <span className={classes.tweetIcon}>
-                                {TweetIcon}
+                                <VkuLogo height={27} width={27}/>
                             </span>
                         </div>
                     </div>

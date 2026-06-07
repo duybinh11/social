@@ -1,6 +1,6 @@
 import React, {ReactElement, useState} from 'react';
 import DialogContent from "@material-ui/core/DialogContent";
-import TwitterIcon from "@material-ui/icons/Twitter";
+import VkuLogo from "../../VkuLogo/VkuLogo";
 import Typography from "@material-ui/core/Typography";
 import {Button, ListItem} from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
@@ -43,7 +43,7 @@ const LogoutModal = (): ReactElement => {
             <Dialog open={visibleLogoutModal} onClose={onCloseLogoutModal}>
                 <DialogContent style={{padding: 0}}>
                     <div className={classes.modalWrapper}>
-                        <TwitterIcon/>
+                        <VkuLogo height={32} width={32}/>
                         <Typography variant={"h5"} component={"div"}>
                             Đăng xuất khỏi Twitter?
                         </Typography>

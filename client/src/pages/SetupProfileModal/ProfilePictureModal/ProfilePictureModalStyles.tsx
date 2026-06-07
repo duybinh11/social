@@ -10,9 +10,9 @@ export const useProfilePictureModalStyles = makeStyles((theme) => ({
     logoIcon: {
         margin: "0 auto",
         width: 30,
-        "& svg": {
-            fontSize: 34,
-            color: theme.palette.primary.main,
+        "& img": {
+            height: 34,
+            width: 34,
         },
     },
     title: {

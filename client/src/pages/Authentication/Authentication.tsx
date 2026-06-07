@@ -1,7 +1,7 @@
 import React, {FC, ReactElement, useState} from 'react';
 import {useHistory} from "react-router-dom";
-import TwitterIcon from '@material-ui/icons/Twitter';
 import {Button, List, ListItem, Typography} from '@material-ui/core';
+import VkuLogo from "../../components/VkuLogo/VkuLogo";
 
 import {useAuthenticationStyles} from "./AuthenticationStyles";
 import {CommunityIcon, ReplyIcon, SearchIcon} from "../../icons";
@@ -53,7 +53,7 @@ const Authentication: FC = (): ReactElement => {
     return (
         <div className={classes.wrapper}>
             <section className={classes.leftSide}>
-                <TwitterIcon color="primary" className={classes.leftSideTwitterIcon}/>
+                <VkuLogo className={classes.leftSideLogo} alt=""/>
                 <List className={classes.leftSideListInfo}>
                     <ListItem>
                         <Typography variant="h6">
@@ -74,12 +74,12 @@ const Authentication: FC = (): ReactElement => {
             </section>
             <section className={classes.rightSide}>
                 <div className={classes.rightSideWrapper}>
-                    <TwitterIcon color="primary" className={classes.rightSideTwitterIcon}/>
+                    <VkuLogo height={45} width={45} className={classes.rightSideLogo}/>
                     <Typography className={classes.rightSideTittle} variant="h4">
-                        Xem chuyện gì đang xảy ra trên thế giới
+                        Xem chuyện gì đang xảy ra trên VKU
                     </Typography>
                     <Typography>
-                        <b>Tham gia Twitter ngay hôm nay!</b>
+                        <b>Tham gia VKU Social ngay hôm nay!</b>
                     </Typography>
                     <br/>
                     <Button

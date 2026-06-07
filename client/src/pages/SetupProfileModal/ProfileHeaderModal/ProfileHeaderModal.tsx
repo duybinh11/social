@@ -1,7 +1,7 @@
 import React, {FC, ReactElement} from 'react';
 import {useSelector} from "react-redux";
 import {Avatar, Button, Dialog, DialogContent, Typography} from "@material-ui/core";
-import TwitterIcon from "@material-ui/icons/Twitter";
+import VkuLogo from "../../../components/VkuLogo/VkuLogo";
 
 import {useProfileHeaderModalStyles} from "./ProfileHeaderModalStyles";
 import UploadProfileImage from "../../../components/EditProfileModal/UploadProfileImage";
@@ -36,7 +36,7 @@ const ProfileHeaderModal: FC<ProfileHeaderModalProps> = (
         <Dialog transitionDuration={0} open={open} onClose={onClose} hideBackdrop>
             <DialogContent className={classes.container}>
                 <div className={classes.logoIcon}>
-                    <TwitterIcon/>
+                    <VkuLogo height={34} width={34}/>
                 </div>
                 <Typography variant={"h3"} component={"div"} className={classes.title}>
                     Chọn ảnh bìa

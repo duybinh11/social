@@ -65,8 +65,7 @@ export const useSideMenuStyles = makeStyles((theme: Theme) => ({
         "& .MuiIconButton-root": {
             minWidth: 52,
             minHeight: 52,
-            "& svg" : {
-                color: theme.palette.primary.main,
+            "& img": {
                 height: "2rem",
                 width: "2rem"
             },

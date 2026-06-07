@@ -21,9 +21,9 @@ import {
     NotificationsIconFilled,
     ProfileIcon,
     ProfileIconFilled,
-    SettingsIcon,
-    TweetIcon
+    SettingsIcon
 } from "../../icons";
+import VkuLogo from "../VkuLogo/VkuLogo";
 import UserSideProfile from "../UserSideProfile/UserSideProfile";
 import {
     selectUserDataFollowerRequestsSize,
@@ -120,7 +120,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                     <NavLink to={HOME} activeClassName={"selected"}>
                         <div className={classes.logoIcon}>
                             <IconButton color="primary">
-                                {TweetIcon}
+                                <VkuLogo height={32} width={32}/>
                             </IconButton>
                         </div>
                     </NavLink>
