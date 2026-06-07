@@ -12,11 +12,11 @@ describe("MembersAndFollowers", () => {
     const mockRootState = createMockRootState(LoadingStatus.LOADED);
 
     it("should open/close Members Modal Window", () => {
-        testOpenAndCloseModalWindow("#listMembers", "List members");
+        testOpenAndCloseModalWindow("#listMembers", "Thành viên danh sách");
     });
 
     it("should open/close Followers Modal Window", () => {
-        testOpenAndCloseModalWindow("#listFollowers", "List followers");
+        testOpenAndCloseModalWindow("#listFollowers", "Người theo dõi danh sách");
     });
 
     const testOpenAndCloseModalWindow = (itemId: string, modalTitle: string) => {

@@ -33,15 +33,14 @@ const CustomizeModal: FC<CustomizeModalProps> = ({open, onClose, onOpenCreateAcc
                     Tùy chỉnh trải nghiệm
                 </Typography>
                 <Typography component={"div"} className={classes.subtitle}>
-                    Track where you see Twitter content across the web
+                    Theo dõi nơi bạn xem nội dung Twitter trên web
                 </Typography>
                 <Typography variant={"subtitle1"} component={"div"} className={classes.text}>
-                    Twitter uses this data to personalize your experience. This web browsing history will never be
-                    stored with your name, email, or phone number.
+                    Twitter dùng dữ liệu này để cá nhân hóa trải nghiệm. Lịch sử duyệt web sẽ không bao giờ được lưu cùng tên, email hoặc số điện thoại của bạn.
                 </Typography>
                 <Radio className={classes.radio} color="primary" checked/>
                 <Typography variant={"body1"} component={"div"}>
-                    {"For more details about these settings, visit the "}
+                    {"Để biết thêm chi tiết về cài đặt này, truy cập "}
                     <MuiLink href={NEW_ACCOUNT_SETTINGS} variant="body1" target="_blank" rel="noopener">
                         Trung tâm trợ giúp
                     </MuiLink>.

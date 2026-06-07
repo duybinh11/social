@@ -28,7 +28,7 @@ const TweetActions: FC<TweetActionsProps> = memo(({retweetsUserIds, tweetId, act
             {isTweetRetweetedByUser && userProfileId ? (
                 <TweetActionResult
                     action={TweetActionResults.RETWEET}
-                    text={((myProfileId === userProfileId) ? ("You") : (fullName)) + " Retweeted"}
+                    text={((myProfileId === userProfileId) ? ("Bạn") : (fullName)) + " đã đăng lại"}
                 />
             ) : null}
             {((myProfilePinnedTweetId === tweetId || userProfilePinnedTweetId === tweetId) && activeTab === 0) && (

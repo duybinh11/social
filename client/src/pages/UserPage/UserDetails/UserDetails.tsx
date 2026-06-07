@@ -55,7 +55,7 @@ const UserDetails = memo((): ReactElement => {
                     {birthday && (
                         <ListItem>
                             <Typography variant={"subtitle1"} component={"span"}>
-                                Date of Birth: {birthday}
+                                Ngày sinh: {birthday}
                             </Typography>
                         </ListItem>
                     )}
@@ -63,7 +63,7 @@ const UserDetails = memo((): ReactElement => {
                         <ListItem>
                             <>{CalendarIcon}</>
                             <Typography variant={"subtitle1"} component={"span"}>
-                                Joined: {format(new Date(registrationDate!), "MMMM yyyy")}
+                                Tham gia: {format(new Date(registrationDate!), "MMMM yyyy")}
                             </Typography>
                         </ListItem>
                     )}

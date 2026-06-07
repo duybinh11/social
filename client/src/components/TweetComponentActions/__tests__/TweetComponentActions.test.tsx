@@ -41,8 +41,8 @@ describe("TweetComponentActions", () => {
         expect(wrapper.text().includes(`Mute @${mockUserTweetAdditionalInfo.user.username}`)).toBe(true);
         expect(wrapper.find("#blockIcon").exists()).toBeTruthy();
         expect(wrapper.text().includes(`Block @${mockUserTweetAdditionalInfo.user.username}`)).toBe(true);
-        expect(wrapper.text().includes("Embed Tweet")).toBe(true);
-        expect(wrapper.text().includes("Report Tweet")).toBe(true);
+        expect(wrapper.text().includes("Nhúng tweet")).toBe(true);
+        expect(wrapper.text().includes("Báo cáo tweet")).toBe(true);
     });
 
     it("should render my profile tweet actions", () => {
@@ -53,8 +53,8 @@ describe("TweetComponentActions", () => {
         expect(wrapper.text().includes("Xóa")).toBe(true);
         expect(wrapper.text().includes("Ghim lên hồ sơ")).toBe(true);
         expect(wrapper.text().includes(`Add/remove @${mockMyTweetAdditionalInfo.user.username} from Lists`)).toBe(true);
-        expect(wrapper.text().includes("Change who can reply")).toBe(true);
-        expect(wrapper.text().includes("Embed Tweet")).toBe(true);
+        expect(wrapper.text().includes("Thay đổi ai có thể trả lời")).toBe(true);
+        expect(wrapper.text().includes("Nhúng tweet")).toBe(true);
     });
 
     it("should render unpin tweet action", () => {
@@ -68,23 +68,23 @@ describe("TweetComponentActions", () => {
     });
 
     it("should click open and close Pin Tweet Component Actions Modal", () => {
-        testTweetComponentActionsModal("#pin", 1, "Pin");
+        testTweetComponentActionsModal("#pin", 1, "Ghim");
     });
 
     it("should click EVERYONE can reply", () => {
-        testClickChangeReplyType(0, ReplyType.EVERYONE, "Everyone can reply now");
+        testClickChangeReplyType(0, ReplyType.EVERYONE, "Mọi người có thể trả lời ngay");
     });
 
     it("should click FOLLOW can reply", () => {
-        testClickChangeReplyType(1, ReplyType.FOLLOW, "People you follow can reply now");
+        testClickChangeReplyType(1, ReplyType.FOLLOW, "Người bạn theo dõi có thể trả lời ngay");
     });
 
     it("should click Pin Tweet", () => {
-        testPinTweet(9, "Your Tweet was pinned to your profile.");
+        testPinTweet(9, "Tweet đã được ghim lên hồ sơ của bạn.");
     });
 
     it("should click Unpin Tweet", () => {
-        testPinTweet(102, "Your Tweet was unpinned from your profile.");
+        testPinTweet(102, "Tweet đã được bỏ ghim khỏi hồ sơ của bạn.");
     });
 
     it("should click Delete Tweet", () => {
@@ -133,7 +133,7 @@ describe("TweetComponentActions", () => {
     });
 
     it("should click Mute user", () => {
-        testClickMuteUser("#muteIcon", "Tắt tiếng", "muted");
+        testClickMuteUser("#muteIcon", "Tắt tiếng", "đã tắt tiếng");
     });
 
     it("should click Unmute user", () => {
@@ -147,11 +147,11 @@ describe("TweetComponentActions", () => {
                 }
             }
         };
-        testClickMuteUser("#unmuteIcon", "Bật tiếng", "unmuted", mockUserTweetState);
+        testClickMuteUser("#unmuteIcon", "Bật tiếng", "đã bật tiếng", mockUserTweetState);
     });
 
     it("should click Block user", () => {
-        testClickBlockUser("#blockIcon", "Chặn", "blocked");
+        testClickBlockUser("#blockIcon", "Chặn", "đã chặn");
     });
 
     it("should click Unblock user", () => {
@@ -165,7 +165,7 @@ describe("TweetComponentActions", () => {
                 }
             }
         };
-        testClickBlockUser("#unblockIcon", "Bỏ chặn", "unblocked", mockUserTweetState);
+        testClickBlockUser("#unblockIcon", "Bỏ chặn", "đã bỏ chặn", mockUserTweetState);
     });
 
     it("should click open and close BlockUserModal", () => {
@@ -232,7 +232,7 @@ describe("TweetComponentActions", () => {
         wrapper.find(TweetComponentActionsModal).find(Button).at(1).simulate("click");
         expect(mockDispatchFn).nthCalledWith(3, {payload: 9, type: actionType});
         expect(mockDispatchFn).nthCalledWith(4, {
-            payload: "Your Tweet was deleted",
+            payload: "Tweet của bạn đã bị xóa",
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     };
@@ -257,7 +257,7 @@ describe("TweetComponentActions", () => {
             type: UserActionsType.PROCESS_USER_TO_MUTELIST
         });
         expect(mockDispatchFn).nthCalledWith(4, {
-            payload: `@${mockUserTweetAdditionalInfo.user.username} has been ${snackbarText}.`,
+            payload: `@${mockUserTweetAdditionalInfo.user.username} ${snackbarText}.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     };
@@ -276,7 +276,7 @@ describe("TweetComponentActions", () => {
             type: UserActionsType.PROCESS_USER_TO_BLOCKLIST
         });
         expect(mockDispatchFn).nthCalledWith(4, {
-            payload: `@${mockUserTweetAdditionalInfo.user.username} has been ${snackbarText}.`,
+            payload: `@${mockUserTweetAdditionalInfo.user.username} ${snackbarText}.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     };

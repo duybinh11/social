@@ -22,9 +22,9 @@ const PinTweetButton: FC<PinTweetButtonProps> = memo(({tweetId, onCloseActionsDr
     const onPinUserTweet = (): void => {
         dispatch(fetchPinTweet(tweetId));
         if (isTweetPinned) {
-            dispatch(setOpenSnackBar("Your Tweet was unpinned from your profile."));
+            dispatch(setOpenSnackBar("Tweet đã được bỏ ghim khỏi hồ sơ của bạn."));
         } else {
-            dispatch(setOpenSnackBar("Your Tweet was pinned to your profile."));
+            dispatch(setOpenSnackBar("Tweet đã được ghim lên hồ sơ của bạn."));
         }
         setVisibleTweetPinModal(false);
         onCloseActionsDropdown();
@@ -51,7 +51,7 @@ const PinTweetButton: FC<PinTweetButtonProps> = memo(({tweetId, onCloseActionsDr
                 </Typography>
             </ListItem>
             <TweetComponentActionsModal
-                modalTitle={"Pin"}
+                modalTitle={"Ghim"}
                 isTweetPinned={isTweetPinned}
                 visibleTweetComponentActionsModal={visibleTweetPinModal}
                 onCloseTweetComponentActionsModal={onCloseTweetComponentActionsModal}

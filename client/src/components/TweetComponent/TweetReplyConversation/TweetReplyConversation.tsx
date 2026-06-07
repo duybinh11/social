@@ -17,7 +17,7 @@ const TweetReplyConversation = memo((): ReactElement => {
                 </div>
             </div>
             <Typography variant={"subtitle2"} component={"span"}>
-                You can reply to this conversation
+                Bạn có thể trả lời cuộc trò chuyện này
             </Typography>
         </>
     );

@@ -26,8 +26,8 @@ describe("FollowerRequestsItem", () => {
         expect(wrapper.text().includes(mockUser.fullName)).toBe(true);
         expect(wrapper.text().includes(mockUser.username)).toBe(true);
         expect(wrapper.text().includes(mockUser.about)).toBe(true);
-        expect(wrapper.find(Button).at(0).text().includes("Decline")).toBe(true);
-        expect(wrapper.find(Button).at(1).text().includes("Accept")).toBe(true);
+        expect(wrapper.find(Button).at(0).text().includes("Từ chối")).toBe(true);
+        expect(wrapper.find(Button).at(1).text().includes("Chấp nhận")).toBe(true);
     });
 
     it("should click decline Follower Request", () => {

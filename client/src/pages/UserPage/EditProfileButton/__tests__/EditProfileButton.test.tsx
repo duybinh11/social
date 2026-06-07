@@ -22,7 +22,7 @@ describe("EditProfileButton", () => {
 
     it("should open/close SetupProfileModal", () => {
         const wrapper = mountWithStore(<EditProfileButton/>, mockRootState);
-        expect(wrapper.text().includes("Setup profile")).toBe(true);
+        expect(wrapper.text().includes("Thiết lập hồ sơ")).toBe(true);
         expect(wrapper.find(SetupProfileModal).prop("visible")).toBe(false);
         wrapper.find(Button).simulate("click");
         expect(wrapper.find(SetupProfileModal).prop("visible")).toBe(true);
@@ -35,7 +35,7 @@ describe("EditProfileButton", () => {
             ...mockRootState,
             user: {...mockRootState.user, data: {...mockUser, profileCustomized: true}}
         });
-        expect(wrapper.text().includes("Edit profile")).toBe(true);
+        expect(wrapper.text().includes("Sửa hồ sơ")).toBe(true);
         expect(wrapper.find(EditProfileModal).prop("visible")).toBe(false);
         wrapper.find(Button).simulate("click");
         expect(wrapper.find(EditProfileModal).prop("visible")).toBe(true);

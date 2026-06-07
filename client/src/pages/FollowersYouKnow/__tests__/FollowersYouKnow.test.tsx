@@ -35,7 +35,7 @@ describe("FollowersYouKnow", () => {
         setImmediate(() => {
             wrapper.update();
             done();
-            expect(wrapper.text().includes("Followers you know")).toBe(true);
+            expect(wrapper.text().includes("Người theo dõi bạn quen")).toBe(true);
             expect(wrapper.text().includes(mockMyProfile.fullName)).toBe(true);
             expect(wrapper.text().includes(`@${mockMyProfile.username}`)).toBe(true);
             expect(wrapper.find(UsersItem).length).toEqual(2);
@@ -53,7 +53,7 @@ describe("FollowersYouKnow", () => {
             expect(wrapper.text().includes(mockMyProfile.fullName)).toBe(true);
             expect(wrapper.text().includes(`@${mockMyProfile.username}`)).toBe(true);
             expect(wrapper.text().includes(`@${mockMyProfile.username} doesn’t have any followers you know yet`)).toBe(true);
-            expect(wrapper.text().includes("When someone you know follows them, they’ll be listed here.")).toBe(true);
+            expect(wrapper.text().includes("Khi ai đó bạn quen theo dõi họ, họ sẽ hiện ở đây.")).toBe(true);
             expect(mockDispatchFn).toHaveBeenCalledWith({payload: mockUserId, type: UserProfileActionsType.FETCH_USER});
         });
     });

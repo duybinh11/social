@@ -17,7 +17,7 @@ const DiscoverLists = (): ReactElement => {
     return (
         <Paper id={"list"} className={classes.newLists} variant="outlined">
             <Typography variant="h5" className={globalClasses.itemInfoWrapper}>
-                Discover new Lists
+                Khám phá danh sách mới
             </Typography>
             {isListsLoading ? (
                 <div style={{padding: "59px 0px"}}>

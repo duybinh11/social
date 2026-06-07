@@ -58,7 +58,7 @@ export function* processListMemberRequest({payload}: ProcessUserToListMembersAct
         yield put(setUserToList({userId: payload.userId, isUserAdded: data, isSuggested: payload.isSuggested}));
         yield put(setMembersSize(data));
     } catch (error) {
-        yield put(setOpenSnackBar("You aren’t allowed to add this member to this List."));
+        yield put(setOpenSnackBar("Bạn không được phép thêm thành viên này vào danh sách."));
         yield put(setLoadingSuggestedState(LoadingStatus.ERROR));
     }
 }

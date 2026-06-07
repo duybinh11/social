@@ -101,7 +101,7 @@ describe("FullTweet", () => {
             tweet: {...mockStore.tweet, tweet: undefined, loadingState: LoadingStatus.ERROR}
         });
 
-        expect(wrapper.text().includes("Hmm...this page doesn’t exist.")).toBe(true);
+        expect(wrapper.text().includes("Hmm... trang này không tồn tại.")).toBe(true);
         expect(wrapper.text().includes("Hãy thử tìm nội dung khác.")).toBe(true);
     });
 
@@ -199,7 +199,7 @@ describe("FullTweet", () => {
 
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
         expect(wrapper.find(HoverAction).at(4).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).at(4).prop("actionText")).toBe("Unlike");
+        expect(wrapper.find(HoverAction).at(4).prop("actionText")).toBe("Bỏ thích");
     });
 
     it("should reset FullTweet State", () => {
@@ -217,7 +217,7 @@ describe("FullTweet", () => {
 
         expect(wrapper.find(TweetActionResult).at(0).exists()).toBeTruthy();
         expect(wrapper.find(TweetActionResult).at(0).prop("action")).toBe(TweetActionResults.RETWEET);
-        expect(wrapper.find(TweetActionResult).at(0).prop("text")).toBe("You Retweeted");
+        expect(wrapper.find(TweetActionResult).at(0).prop("text")).toBe("Bạn đã đăng lại");
         expect(wrapper.find(TweetActionResult).at(1).exists()).toBeTruthy();
         expect(wrapper.find(TweetActionResult).at(1).prop("action")).toBe(TweetActionResults.PIN);
         expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Tweet đã ghim");

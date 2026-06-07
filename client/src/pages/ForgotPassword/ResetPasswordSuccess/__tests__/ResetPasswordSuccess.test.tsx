@@ -20,10 +20,10 @@ describe("ResetPasswordSuccess", () => {
             done();
             expect(pushSpy).toHaveBeenCalled();
             expect(pushSpy).toHaveBeenCalledWith(ACCOUNT_LOGIN);
-            expect(wrapper.text().includes("You’re all set. You've successfully changed your password.")).toBe(true);
-            expect(wrapper.text().includes("Take a moment to review the applications that have access to your account. Revoke those you don't recognize or no longer use.")).toBe(true);
-            expect(wrapper.text().includes("This makes it easy to get back into your account if you're ever locked out.")).toBe(true);
-            expect(wrapper.text().includes("Continue to Twitter")).toBe(true);
+            expect(wrapper.text().includes("Xong rồi. Bạn đã đổi mật khẩu thành công.")).toBe(true);
+            expect(wrapper.text().includes("Hãy xem lại các ứng dụng có quyền truy cập tài khoản. Thu hồi quyền với ứng dụng không quen hoặc không còn dùng.")).toBe(true);
+            expect(wrapper.text().includes("Điều này giúp bạn dễ dàng lấy lại tài khoản nếu bị khóa.")).toBe(true);
+            expect(wrapper.text().includes("Tiếp tục vào Twitter")).toBe(true);
         });
     });
 });

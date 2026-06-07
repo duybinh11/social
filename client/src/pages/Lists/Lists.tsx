@@ -14,7 +14,7 @@ const Lists = (): ReactElement => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        document.title = "Lists / Twitter";
+        document.title = "Danh sách / Twitter";
         dispatch(fetchLists());
         dispatch(fetchUserLists());
 

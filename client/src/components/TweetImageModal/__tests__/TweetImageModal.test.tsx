@@ -139,7 +139,7 @@ describe("TweetImageModal", () => {
     });
 
     it("should hover Unlike icon and render Hover Action", () => {
-        testHoverIcon(2, "Unlike");
+        testHoverIcon(2, "Bỏ thích");
     });
 
     it("should hover Like icon and render Hover Action", () => {

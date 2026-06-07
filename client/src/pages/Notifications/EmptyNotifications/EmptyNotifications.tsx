@@ -17,9 +17,9 @@ const EmptyNotifications: FC<EmptyNotificationsProps> = ({isNotification}): Reac
             </Typography>
             <Typography variant={"subtitle1"} component={"div"}>
                 {isNotification ? (
-                    "From like to Retweets and whole lot more, this is where all the actions happens."
+                    "Từ lượt thích đến đăng lại và nhiều hơn nữa, đây là nơi mọi hoạt động diễn ra."
                 ) : (
-                    "When someone mentions you, you’ll find it here."
+                    "Khi ai đó nhắc đến bạn, bạn sẽ thấy ở đây."
                 )}
             </Typography>
         </div>

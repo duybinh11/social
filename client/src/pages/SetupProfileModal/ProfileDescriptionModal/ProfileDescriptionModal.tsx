@@ -31,16 +31,16 @@ const ProfileDescriptionModal: FC<ProfileDescriptionModalProps> = (
                     <TwitterIcon/>
                 </div>
                 <Typography variant={"h3"} component={"div"}>
-                    Describe yourself
+                    Mô tả bản thân
                 </Typography>
                 <Typography variant={"subtitle1"} component={"div"}>
-                    What makes you special? Don't think too hard, just have fun with it.
+                    Điều gì làm bạn đặc biệt? Đừng suy nghĩ quá, hãy thoải mái.
                 </Typography>
                 <ProfileDescriptionInput
                     value={text}
                     onChange={(event) => onChangeText(event.target.value)}
                     name={"about"}
-                    label={"Your bio"}
+                    label={"Tiểu sử của bạn"}
                     maxTextLength={160}
                 />
                 <Button

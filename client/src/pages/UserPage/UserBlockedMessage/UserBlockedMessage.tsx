@@ -13,10 +13,10 @@ const UserBlockedMessage = memo((): ReactElement => {
     return (
         <div className={classes.privateProfileInfo}>
             <Typography variant={"h4"} component={"div"}>
-                You’re blocked
+                Bạn đã bị chặn
             </Typography>
             <Typography variant={"subtitle1"} component={"div"}>
-                {`You can’t follow or see @${username}’s Tweets.`}
+                {`Bạn không thể theo dõi hoặc xem tweet của @${username}.`}
                 <MuiLink href={SOMEONE_BLOCKED_ME_ON_TWITTER} variant="subtitle1" target="_blank" rel="noopener">
                     Tìm hiểu thêm
                 </MuiLink>

@@ -32,19 +32,19 @@ const FindEmail: FC = (): ReactElement => {
             {error ? (
                 <>
                     <Typography component={"div"} className={classes.warning}>
-                        We couldn't find your account with that information
+                        Chúng tôi không tìm thấy tài khoản với thông tin đó
                     </Typography>
                     <Typography variant={"body1"} component={"div"} className={classes.text}>
-                        Please try searching for your email, phone number or username again.
+                        Vui lòng thử tìm lại email, số điện thoại hoặc tên người dùng.
                     </Typography>
                 </>
             ) : (
                 <>
                     <Typography variant={"h3"} component={"div"}>
-                        Find your Twitter account
+                        Tìm tài khoản Twitter của bạn
                     </Typography>
                     <Typography variant={"body1"} component={"div"} className={classes.text}>
-                        Enter your email, phone number, or username.
+                        Nhập email, số điện thoại hoặc tên người dùng.
                     </Typography>
                 </>
             )}

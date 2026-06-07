@@ -37,7 +37,7 @@ describe("RegistrationModal", () => {
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
         expect(wrapper.text().includes("Tạo tài khoản của bạn")).toBe(true);
         expect(wrapper.text().includes("Dùng số điện thoại")).toBe(true);
-        expect(wrapper.text().includes("Date of birth")).toBe(true);
+        expect(wrapper.text().includes("Ngày sinh")).toBe(true);
         expect(wrapper.text().includes("Tháng")).toBe(true);
         expect(wrapper.text().includes("Ngày")).toBe(true);
         expect(wrapper.text().includes("Năm")).toBe(true);

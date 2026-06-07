@@ -13,7 +13,7 @@ const ChangeReplyButton: FC<ChangeReplyButton> = memo(({handleClickReplyDropdown
         <ListItem id={"clickReplyDropdown"} onClick={handleClickReplyDropdown}>
             <>{ReplyIcon}</>
             <Typography variant={"body1"} component={"span"}>
-                Change who can reply
+                Thay đổi ai có thể trả lời
             </Typography>
         </ListItem>
     );

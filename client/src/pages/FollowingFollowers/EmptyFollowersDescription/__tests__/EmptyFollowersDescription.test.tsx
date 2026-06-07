@@ -11,28 +11,28 @@ describe("EmptyFollowersDescription", () => {
 
     it("should render my profile following empty message", () => {
         const wrapper = mountWithStore(<EmptyFollowersDescription activeTab={0}/>, mockRootState);
-        expect(wrapper.text().includes("You aren’t following anyone yet")).toBe(true);
-        expect(wrapper.text().includes("When you do, they’ll be listed here and you’ll see their Tweets in your timeline.")).toBe(true);
-        expect(wrapper.find(Button).at(0).text()).toEqual("Find people to follow");
+        expect(wrapper.text().includes("Bạn chưa theo dõi ai")).toBe(true);
+        expect(wrapper.text().includes("Khi bạn theo dõi, họ sẽ hiện ở đây và tweet của họ sẽ xuất hiện trên dòng thời gian.")).toBe(true);
+        expect(wrapper.find(Button).at(0).text()).toEqual("Tìm người để theo dõi");
     });
 
     it("should render my profile followers empty message", () => {
         const wrapper = mountWithStore(<EmptyFollowersDescription activeTab={1}/>, mockRootState);
-        expect(wrapper.text().includes("You don’t have any followers yet")).toBe(true);
-        expect(wrapper.text().includes("When someone follows you, you’ll see them here.")).toBe(true);
+        expect(wrapper.text().includes("Bạn chưa có người theo dõi")).toBe(true);
+        expect(wrapper.text().includes("Khi ai đó theo dõi bạn, bạn sẽ thấy họ ở đây.")).toBe(true);
     });
 
     it("should render user profile following empty message", () => {
         const mockState = {...mockRootState, userProfile: {...mockRootState.userProfile, user: mockUserProfile}}
         const wrapper = mountWithStore(<EmptyFollowersDescription activeTab={0}/>, mockState);
         expect(wrapper.text().includes(`@${mockUserProfile.username} isn’t following anyone`)).toBe(true);
-        expect(wrapper.text().includes("When they do, they’ll be listed here.")).toBe(true);
+        expect(wrapper.text().includes("Khi họ theo dõi, họ sẽ hiện ở đây.")).toBe(true);
     });
 
     it("should render user profile followers empty message", () => {
         const mockState = {...mockRootState, userProfile: {...mockRootState.userProfile, user: mockUserProfile}}
         const wrapper = mountWithStore(<EmptyFollowersDescription activeTab={1}/>, mockState);
         expect(wrapper.text().includes(`@${mockUserProfile.username} doesn’t have any followers`)).toBe(true);
-        expect(wrapper.text().includes("When someone follows them, they’ll be listed here.")).toBe(true);
+        expect(wrapper.text().includes("Khi ai đó theo dõi họ, họ sẽ hiện ở đây.")).toBe(true);
     });
 });

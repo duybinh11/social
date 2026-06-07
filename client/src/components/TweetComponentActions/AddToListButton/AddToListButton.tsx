@@ -25,7 +25,7 @@ const AddToListButton: FC<AddToListButtonProps> = memo(({userId, username}): Rea
             <ListItem id={"openListsModal"} onClick={onOpenListsModal}>
                 <>{AddListsIcon}</>
                 <Typography variant={"body1"} component={"span"}>
-                    {`Add/remove @${username} from Lists`}
+                    {`Thêm/xóa @${username} khỏi danh sách`}
                 </Typography>
             </ListItem>
             <ListsModal userId={userId} visible={visibleListsModal} onClose={onCloseListsModal}/>

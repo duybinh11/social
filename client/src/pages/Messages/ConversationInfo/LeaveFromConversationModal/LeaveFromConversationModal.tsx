@@ -27,11 +27,10 @@ const LeaveFromConversationModal: FC<LeaveFromConversationModalProps> = (
             <DialogContent style={{padding: 0}}>
                 <div className={classes.modalWrapper}>
                     <Typography variant={"h5"} component={"div"}>
-                        Leave conversation?
+                        Rời cuộc trò chuyện?
                     </Typography>
                     <Typography variant={"subtitle1"} component={"div"}>
-                        This conversation will be deleted from your inbox. Other people in the conversation will still
-                        be able to see it.
+                        Cuộc trò chuyện sẽ bị xóa khỏi hộp thư của bạn. Người khác trong cuộc trò chuyện vẫn có thể xem.
                     </Typography>
                     <Button
                         className={classes.blockButton}
@@ -41,7 +40,7 @@ const LeaveFromConversationModal: FC<LeaveFromConversationModalProps> = (
                         size="large"
                         fullWidth
                     >
-                        Leave
+                        Rời
                     </Button>
                     <Button
                         onClick={onClose}

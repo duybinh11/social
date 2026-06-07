@@ -47,7 +47,7 @@ const LeaveConversationComponent: FC<LeaveConversationComponentProps> = memo((
                 onClick={handleClickOpenLeaveFromConversationModal}
             >
                 <Typography variant={"body1"} component={"span"}>
-                    Leave conversation
+                    Rời cuộc trò chuyện
                 </Typography>
             </div>
             <LeaveFromConversationModal

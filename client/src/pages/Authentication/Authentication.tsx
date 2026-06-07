@@ -57,17 +57,17 @@ const Authentication: FC = (): ReactElement => {
                 <List className={classes.leftSideListInfo}>
                     <ListItem>
                         <Typography variant="h6">
-                            <>{SearchIcon}</> Follow your interests.
+                            <>{SearchIcon}</> Theo dõi sở thích của bạn.
                         </Typography>
                     </ListItem>
                     <ListItem>
                         <Typography variant="h6">
-                            <>{CommunityIcon}</> Hear what people are talking about.
+                            <>{CommunityIcon}</> Nghe mọi người đang nói gì.
                         </Typography>
                     </ListItem>
                     <ListItem>
                         <Typography variant="h6">
-                            <>{ReplyIcon}</> Join the conversation.
+                            <>{ReplyIcon}</> Tham gia cuộc trò chuyện.
                         </Typography>
                     </ListItem>
                 </List>

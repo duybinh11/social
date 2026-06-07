@@ -26,11 +26,11 @@ describe("PinTweetButton", () => {
     });
 
     it("should click pin tweet", () => {
-        testClickDeleteTweet(1, "Ghim lên hồ sơ", "Your Tweet was pinned to your profile.");
+        testClickDeleteTweet(1, "Ghim lên hồ sơ", "Tweet đã được ghim lên hồ sơ của bạn.");
     });
 
     it("should click unpin tweet", () => {
-        testClickDeleteTweet(102, "Bỏ ghim khỏi hồ sơ", "Your Tweet was unpinned from your profile.");
+        testClickDeleteTweet(102, "Bỏ ghim khỏi hồ sơ", "Tweet đã được bỏ ghim khỏi hồ sơ của bạn.");
     });
 
     const testClickDeleteTweet = (tweetId: number, textMessage: string, snackbarMessage: string): void => {

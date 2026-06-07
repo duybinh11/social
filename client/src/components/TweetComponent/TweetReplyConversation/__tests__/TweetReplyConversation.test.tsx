@@ -7,6 +7,6 @@ import TweetReplyConversation from "../TweetReplyConversation";
 describe("TweetReplyConversation", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<TweetReplyConversation/>, createMockRootState(LoadingStatus.SUCCESS));
-        expect(wrapper.text().includes("You can reply to this conversation")).toBe(true);
+        expect(wrapper.text().includes("Bạn có thể trả lời cuộc trò chuyện này")).toBe(true);
     });
 });

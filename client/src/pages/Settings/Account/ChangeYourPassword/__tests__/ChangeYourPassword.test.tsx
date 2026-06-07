@@ -28,7 +28,7 @@ describe("ChangeYourPassword", () => {
 
     it("should change password and submit", (done) => {
         const mockAdapter = new MockAdapter(axios);
-        const mockSuccessMessage = "Your password has been successfully updated.";
+        const mockSuccessMessage = "Mật khẩu của bạn đã được cập nhật thành công.";
         const wrapper = mountWithStore(<ChangeYourPassword/>, mockStore);
 
         submitChangePasswordForm(wrapper);

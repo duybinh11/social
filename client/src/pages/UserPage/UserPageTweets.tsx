@@ -45,16 +45,16 @@ const UserPageTweets: FC<UserPageTweetsProps> = memo(({activeTab, page, loadUser
                 <div className={classes.textWrapper}>
                     <Typography variant={"h5"}>
                         {(userProfileId === myProfileId) ? (
-                            "You haven’t any Tweets yet"
+                            "Bạn chưa có tweet nào"
                         ) : (
-                            `@${username} hasn’t any Tweets`
+                            `@${username} chưa có tweet nào`
                         )}
                     </Typography>
                     <Typography variant={"subtitle1"}>
                         {userProfileId === myProfileId ? (
-                            "When you send Tweets, they will show up here."
+                            "Khi bạn đăng tweet, chúng sẽ hiện ở đây."
                         ) : (
-                            "When they do, their Tweets show up here."
+                            "Khi họ đăng tweet, chúng sẽ hiện ở đây."
                         )}
                     </Typography>
                     {(userProfileId === myProfileId) && (
@@ -65,7 +65,7 @@ const UserPageTweets: FC<UserPageTweetsProps> = memo(({activeTab, page, loadUser
                             color="primary"
                             size="medium"
                         >
-                            Send Tweet
+                            Đăng tweet
                         </Button>
                     )}
                 </div>
@@ -75,16 +75,16 @@ const UserPageTweets: FC<UserPageTweetsProps> = memo(({activeTab, page, loadUser
                 <div className={classes.textWrapper}>
                     <Typography variant={"h5"}>
                         {(userProfileId === myProfileId) ? (
-                            "You haven’t any replies yet"
+                            "Bạn chưa có trả lời nào"
                         ) : (
-                            `@${username} hasn’t any replies`
+                            `@${username} chưa có trả lời nào`
                         )}
                     </Typography>
                     <Typography variant={"subtitle1"}>
                         {(userProfileId === myProfileId) ? (
-                            "When you reply Tweets, they will show up here."
+                            "Khi bạn trả lời tweet, chúng sẽ hiện ở đây."
                         ) : (
-                            "When they do, their replies show up here."
+                            "Khi họ trả lời tweet, chúng sẽ hiện ở đây."
                         )}
                     </Typography>
                 </div>
@@ -94,16 +94,16 @@ const UserPageTweets: FC<UserPageTweetsProps> = memo(({activeTab, page, loadUser
                 <div className={classes.textWrapper}>
                     <Typography variant={"h5"}>
                         {(userProfileId === myProfileId) ? (
-                            "You haven’t Tweeted any photos yet"
+                            "Bạn chưa đăng ảnh nào"
                         ) : (
-                            `@${username} hasn’t Tweeted any photos`
+                            `@${username} chưa đăng ảnh nào`
                         )}
                     </Typography>
                     <Typography variant={"subtitle1"}>
                         {(userProfileId === myProfileId) ? (
-                            "When you send Tweets with photos in them, it will show up here."
+                            "Khi bạn đăng tweet có ảnh, chúng sẽ hiện ở đây."
                         ) : (
-                            "When they do, their photos will show up here."
+                            "Khi họ đăng ảnh, chúng sẽ hiện ở đây."
                         )}
                     </Typography>
                     {(userProfileId === myProfileId) && (
@@ -114,7 +114,7 @@ const UserPageTweets: FC<UserPageTweetsProps> = memo(({activeTab, page, loadUser
                             color="primary"
                             size="medium"
                         >
-                            Tweet a photo
+                            Đăng ảnh
                         </Button>
                     )}
                 </div>
@@ -124,16 +124,16 @@ const UserPageTweets: FC<UserPageTweetsProps> = memo(({activeTab, page, loadUser
                 <div className={classes.textWrapper}>
                     <Typography variant={"h5"}>
                         {(userProfileId === myProfileId) ? (
-                            "You don’t have any likes yet"
+                            "Bạn chưa thích tweet nào"
                         ) : (
-                            `@${username} hasn’t liked any Tweets`
+                            `@${username} chưa thích tweet nào`
                         )}
                     </Typography>
                     <Typography variant={"subtitle1"}>
                         {(userProfileId === myProfileId) ? (
-                            "Tap the heart on any Tweet to show it some love. When you do, it’ll show up here."
+                            "Nhấn trái tim trên bất kỳ tweet nào để thể hiện sự yêu thích. Khi bạn làm vậy, chúng sẽ hiện ở đây."
                         ) : (
-                            "When they do, those Tweets will show up here."
+                            "Khi họ thích tweet, chúng sẽ hiện ở đây."
                         )}
                     </Typography>
                 </div>

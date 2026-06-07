@@ -13,11 +13,11 @@ describe("MuteUserButton", () => {
     });
 
     it("should click mute", () => {
-        testClickButton(false, "#muteIcon", "Tắt tiếng", "muted");
+        testClickButton(false, "#muteIcon", "Tắt tiếng", "đã tắt tiếng");
     });
 
     it("should click unmute", () => {
-        testClickButton(true, "#unmuteIcon", "Bật tiếng", "unmuted");
+        testClickButton(true, "#unmuteIcon", "Bật tiếng", "đã bật tiếng");
     });
 
     const testClickButton = (isUserMuted: boolean, iconId: string, text: string, snackbarText: string): void => {
@@ -36,7 +36,7 @@ describe("MuteUserButton", () => {
             type: UserActionsType.PROCESS_USER_TO_MUTELIST
         });
         expect(mockDispatchFn).nthCalledWith(2, {
-            payload: `@test_username has been ${snackbarText}.`,
+            payload: `@test_username ${snackbarText}.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     };

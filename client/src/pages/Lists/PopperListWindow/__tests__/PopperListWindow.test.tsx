@@ -44,7 +44,7 @@ describe("PopperListWindow", () => {
 
         expect(wrapper.find(MembersAndFollowersModal).exists()).toBeTruthy();
         expect(wrapper.find(MembersAndFollowersModal).prop("visible")).toBe(true);
-        expect(wrapper.find(MembersAndFollowersModal).prop("title")).toBe("List members");
+        expect(wrapper.find(MembersAndFollowersModal).prop("title")).toBe("Thành viên danh sách");
 
         wrapper.find(MembersAndFollowersModal).find(CloseButton).find(IconButton).simulate("click");
         expect(wrapper.find(MembersAndFollowersModal).prop("visible")).toBe(false);
@@ -56,7 +56,7 @@ describe("PopperListWindow", () => {
 
         expect(wrapper.find(MembersAndFollowersModal).exists()).toBeTruthy();
         expect(wrapper.find(MembersAndFollowersModal).prop("visible")).toBe(true);
-        expect(wrapper.find(MembersAndFollowersModal).prop("title")).toBe("List followers");
+        expect(wrapper.find(MembersAndFollowersModal).prop("title")).toBe("Người theo dõi danh sách");
     });
 
     it("should click follow Lists", () => {

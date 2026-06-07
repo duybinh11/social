@@ -32,7 +32,7 @@ export interface EditListModalFormProps {
 }
 
 export const EditListModalFormSchema = yup.object().shape({
-    name: yup.string().min(1, "Name can’t be blank").required(),
+    name: yup.string().min(1, "Tên không được để trống").required(),
 });
 
 const EditListModal: FC<EditListModalProps> = ({visible, onClose}): ReactElement | null => {
@@ -129,7 +129,7 @@ const EditListModal: FC<EditListModalProps> = ({visible, onClose}): ReactElement
                             defaultValue=""
                             render={({field: {onChange, value}}) => (
                                 <CreateListsModalInput
-                                    label={"Description"}
+                                    label={"Mô tả"}
                                     name={"description"}
                                     onChange={onChange}
                                     value={value}
@@ -140,7 +140,7 @@ const EditListModal: FC<EditListModalProps> = ({visible, onClose}): ReactElement
                         <div className={classes.footer}>
                             <div className={classes.footerWrapper}>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Make private
+                                    Đặt riêng tư
                                 </Typography>
                                 <Checkbox
                                     checked={isListPrivate}
@@ -150,7 +150,7 @@ const EditListModal: FC<EditListModalProps> = ({visible, onClose}): ReactElement
                                 />
                             </div>
                             <Typography variant={"subtitle2"} component={"div"}>
-                                When you make a List private, only you can see it.
+                                Khi đặt danh sách riêng tư, chỉ bạn mới xem được.
                             </Typography>
                         </div>
                         <ManageMembersModal/>

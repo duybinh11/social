@@ -34,7 +34,7 @@ export interface EditProfileFormProps {
 }
 
 export const EditProfileFormSchema = yup.object().shape({
-    username: yup.string().min(1, "Name can’t be blank").required(),
+    username: yup.string().min(1, "Tên không được để trống").required(),
 });
 
 const EditProfileModal: FC<EditProfileModalProps> = ({visible, onClose}): ReactElement | null => {
@@ -76,7 +76,7 @@ const EditProfileModal: FC<EditProfileModalProps> = ({visible, onClose}): ReactE
             <form onSubmit={handleSubmit(onSubmit)}>
                 <DialogTitle id="form-dialog-title">
                     <CloseButton onClose={onClose}/>
-                    Edit Profile
+                    Sửa hồ sơ
                     <Button
                         className={classes.button}
                         type="submit"

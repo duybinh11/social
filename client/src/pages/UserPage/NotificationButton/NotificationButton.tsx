@@ -20,7 +20,7 @@ const NotificationButton = memo((): ReactElement => {
     return (
         <span className={globalClasses.userPageIconButton}>
             <ActionIconButton
-                actionText={isSubscriber ? "Turn off notifications" : "Notify"}
+                actionText={isSubscriber ? "Tắt thông báo" : "Nhận thông báo"}
                 icon={isSubscriber ? NotificationsAddFilledIcon : NotificationsAddIcon}
                 onClick={handleSubscribeToNotifications}
             />

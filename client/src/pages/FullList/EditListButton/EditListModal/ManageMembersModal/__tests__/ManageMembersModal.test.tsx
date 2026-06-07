@@ -38,9 +38,9 @@ describe("ManageMembersModal", () => {
         expect(wrapper.find(Dialog).exists()).toBeTruthy();
         wrapper.find("#onOpenManageMembersModal").at(0).simulate("click");
         expect(wrapper.find(Spinner).exists()).toBe(true);
-        expect(wrapper.text().includes("Manage members")).toBe(true);
+        expect(wrapper.text().includes("Quản lý thành viên")).toBe(true);
         expect(wrapper.find(Tab).at(0).text().includes(`Members (${mockFullList.membersSize})`)).toBe(true);
-        expect(wrapper.find(Tab).at(1).text().includes("Suggested")).toBe(true);
+        expect(wrapper.find(Tab).at(1).text().includes("Gợi ý")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             type: ListMembersActionsType.RESET_LIST_MEMBERS_STATE
         });
@@ -75,8 +75,8 @@ describe("ManageMembersModal", () => {
         wrapper.find("#onOpenManageMembersModal").at(0).simulate("click");
         expect(wrapper.find(Spinner).exists()).toBe(false);
         expect(wrapper.find(ManageMembersItem).length).toEqual(0);
-        expect(wrapper.text().includes("There isn’t anyone in this List")).toBe(true);
-        expect(wrapper.text().includes("When people get added, they’ll show up here.")).toBe(true);
+        expect(wrapper.text().includes("Chưa có ai trong danh sách này")).toBe(true);
+        expect(wrapper.text().includes("Khi có người được thêm, họ sẽ hiện ở đây.")).toBe(true);
     });
 
     it("should reset List Members State", () => {
@@ -118,8 +118,8 @@ describe("ManageMembersModal", () => {
         expect(wrapper.find(Spinner).exists()).toBe(false);
         expect(wrapper.find(ManageMembersInput).exists()).toBe(true);
         expect(wrapper.find(ManageMembersItem).length).toEqual(0);
-        expect(wrapper.text().includes("There aren’t any suggested members")).toBe(true);
-        expect(wrapper.text().includes("To see suggestions to add to this List, try searching for accounts.")).toBe(true);
+        expect(wrapper.text().includes("Chưa có thành viên gợi ý")).toBe(true);
+        expect(wrapper.text().includes("Để xem gợi ý thêm vào danh sách, hãy thử tìm tài khoản.")).toBe(true);
     });
 
     it("should click on Members tab", () => {

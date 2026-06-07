@@ -16,7 +16,7 @@ describe("PollInput", () => {
                 id={"choice1"}
                 onChange={mockOnChange}
                 value={"25"}
-                label={"Choice 1"}
+                label={"Lựa chọn 1"}
             />, mockRootState);
         wrapper.find(PollInputField).at(0).find("input").at(0).simulate("change", {target: {value: "test poll 1"}});
         expect(mockOnChange).toHaveBeenCalled();
@@ -29,7 +29,7 @@ describe("PollInput", () => {
                 id={"choice1"}
                 onChange={jest.fn()}
                 value={"1111111111111111111111111"}
-                label={"Choice 1"}
+                label={"Lựa chọn 1"}
             />, mockRootState);
         wrapper.find(PollInputField).at(0).find("input").at(0).simulate("focus");
         expect(wrapper.find(InputLabel).at(0).text().includes("25 / 25")).toBe(true);

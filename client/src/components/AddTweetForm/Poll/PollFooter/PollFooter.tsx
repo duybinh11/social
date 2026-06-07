@@ -13,7 +13,7 @@ const PollFooter: FC<PollFooterProps> = memo(({onClosePoll}): ReactElement => {
     return (
         <Paper id={"removePoll"} onClick={onClosePoll} className={classes.footer} variant="outlined">
             <Typography variant={"body1"} component={"div"}>
-                Remove poll
+                Xóa bình chọn
             </Typography>
         </Paper>
     );

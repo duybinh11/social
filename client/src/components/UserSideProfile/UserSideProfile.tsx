@@ -97,7 +97,7 @@ const UserSideProfile: FC = (): ReactElement | null => {
                         <Divider component="li"/>
                         <ListItem>
                             <Typography variant="body1" component="div">
-                                Add an existing account
+                                Thêm tài khoản hiện có
                             </Typography>
                         </ListItem>
                         <Divider component="li"/>

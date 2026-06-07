@@ -38,43 +38,43 @@ describe("UserPageTweets", () => {
     });
 
     it("should render Add Tweet Modal on click Send button and close", () => {
-        testAddTweetModal(0, "Send Tweet");
+        testAddTweetModal(0, "Đăng tweet");
     });
 
     it("should render Add Tweet Modal on click Tweet a photo button and close", () => {
-        testAddTweetModal(2, "Tweet a photo");
+        testAddTweetModal(2, "Đăng ảnh");
     });
 
     it("should render empty tweets message on Tweets tab my profile", () => {
-        testTitleWithEmptyTweet(0, true, "You haven’t any Tweets yet", "When you send Tweets, they will show up here.")
+        testTitleWithEmptyTweet(0, true, "Bạn chưa có tweet nào", "Khi bạn đăng tweet, chúng sẽ hiện ở đây.")
     });
 
     it("should render empty tweets message on Tweets tab user profile", () => {
-        testTitleWithEmptyTweet(0, false, `@${mockUserProfile.username} hasn’t any Tweets`, "When they do, their Tweets show up here.")
+        testTitleWithEmptyTweet(0, false, `@${mockUserProfile.username} chưa có tweet nào`, "Khi họ đăng tweet, chúng sẽ hiện ở đây.")
     });
 
     it("should render empty tweets message on Tweets & replies tab my profile", () => {
-        testTitleWithEmptyTweet(1, true, "You haven’t any replies yet", "When you reply Tweets, they will show up here.")
+        testTitleWithEmptyTweet(1, true, "Bạn chưa có trả lời nào", "Khi bạn trả lời tweet, chúng sẽ hiện ở đây.")
     });
 
     it("should render empty tweets message on Tweets & replies tab user profile", () => {
-        testTitleWithEmptyTweet(1, false, `@${mockUserProfile.username} hasn’t any replies`, "When they do, their replies show up here.")
+        testTitleWithEmptyTweet(1, false, `@${mockUserProfile.username} chưa có trả lời nào`, "Khi họ trả lời tweet, chúng sẽ hiện ở đây.")
     });
 
     it("should render empty tweets message on Media tab my profile", () => {
-        testTitleWithEmptyTweet(2, true, "You haven’t Tweeted any photos yet", "When you send Tweets with photos in them, it will show up here.")
+        testTitleWithEmptyTweet(2, true, "Bạn chưa đăng ảnh nào", "Khi bạn đăng tweet có ảnh, chúng sẽ hiện ở đây.")
     });
 
     it("should render empty tweets message on Media tab user profile", () => {
-        testTitleWithEmptyTweet(2, false, `@${mockUserProfile.username} hasn’t Tweeted any photos`, "When they do, their photos will show up here.")
+        testTitleWithEmptyTweet(2, false, `@${mockUserProfile.username} chưa đăng ảnh nào`, "Khi họ đăng ảnh, chúng sẽ hiện ở đây.")
     });
 
     it("should render empty tweets message on Likes tab my profile", () => {
-        testTitleWithEmptyTweet(3, true, "You don’t have any likes yet", "Tap the heart on any Tweet to show it some love. When you do, it’ll show up here.")
+        testTitleWithEmptyTweet(3, true, "Bạn chưa thích tweet nào", "Nhấn trái tim trên bất kỳ tweet nào để thể hiện sự yêu thích. Khi bạn làm vậy, chúng sẽ hiện ở đây.")
     });
 
     it("should render empty tweets message on Likes tab user profile", () => {
-        testTitleWithEmptyTweet(3, false, `@${mockUserProfile.username} hasn’t liked any Tweets`, "When they do, those Tweets will show up here.")
+        testTitleWithEmptyTweet(3, false, `@${mockUserProfile.username} chưa thích tweet nào`, "Khi họ thích tweet, chúng sẽ hiện ở đây.")
     });
 
     const testAddTweetModal = (activeTab: number, buttonText: string): void => {

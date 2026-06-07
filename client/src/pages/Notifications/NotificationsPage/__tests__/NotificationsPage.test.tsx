@@ -41,7 +41,7 @@ describe("NotificationsPage", () => {
     it("should render empty All Notifications", () => {
         const wrapper = mountWithStore(<NotificationsPage/>, mockStore);
         expect(wrapper.text().includes("Chưa có gì để xem")).toBe(true);
-        expect(wrapper.text().includes("From like to Retweets and whole lot more, this is where all the actions happens.")).toBe(true);
+        expect(wrapper.text().includes("Từ lượt thích đến đăng lại và nhiều hơn nữa, đây là nơi mọi hoạt động diễn ra.")).toBe(true);
     });
 
     it("should render NotificationAuthorItem and NotificationItem", () => {

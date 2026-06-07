@@ -20,7 +20,7 @@ describe("TweetLikeIconButton", () => {
 
     it("should render unlike icon", () => {
         const wrapper = mountWithStore(<TweetLikeIconButton/>, mockRootState);
-        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Unlike");
+        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Bỏ thích");
         expect(wrapper.find("#likeIcon").exists()).toBeTruthy();
         wrapper.find(IconButton).at(0).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {payload: {tweetId: 2}, type: TweetsActionType.LIKE_TWEET});

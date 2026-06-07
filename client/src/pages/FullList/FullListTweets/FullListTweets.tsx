@@ -38,8 +38,8 @@ const FullListTweets = memo((): ReactElement => {
         <InfiniteScrollWrapper dataLength={tweets.length} pagesCount={pagesCount} loadItems={loadTweets}>
             {(tweets.length === 0 && isTweetsLoaded) ? (
                 <EmptyPageDescription
-                    title={"There aren’t any Tweets in this List"}
-                    subtitle={"When anyone in this List Tweets, they’ll show up here."}
+                    title={"Chưa có tweet nào trong danh sách này"}
+                    subtitle={"Khi ai đó trong danh sách đăng tweet, chúng sẽ hiện ở đây."}
                 />
             ) : (
                 <>

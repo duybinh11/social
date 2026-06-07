@@ -31,24 +31,24 @@ const TweetComponentActionsModal: FC<TweetComponentActionsModalProps> = (
                 <div className={classes.modalWrapper}>
                     <Typography variant={"h5"}>
                         {(modalTitle === "Xóa") ? (
-                            "Delete Tweet?"
+                            "Xóa tweet?"
                         ) : (
                             isTweetPinned ? (
-                                "Unpin Tweet from profile?"
+                                "Bỏ ghim tweet khỏi hồ sơ?"
                             ) : (
-                                "Pin Tweet to profile?"
+                                "Ghim tweet lên hồ sơ?"
                             )
                         )}
                     </Typography>
                     <Typography variant={"subtitle1"}>
                         {(modalTitle === "Xóa") ? (
-                            "This can’t be undone and it will be removed from your profile, " +
-                            "the timeline of any accounts that follow you, and from Twitter search results."
+                            "Không thể hoàn tác và tweet sẽ bị xóa khỏi hồ sơ, " +
+                            "dòng thời gian của người theo dõi bạn và kết quả tìm kiếm Twitter."
                         ) : (
                             isTweetPinned ? (
-                                "This will no longer appear automatically at the top of your profile."
+                                "Tweet sẽ không còn tự động hiện ở đầu hồ sơ của bạn."
                             ) : (
-                                "This will appear at the top of your profile and replace any previously pinned Tweet."
+                                "Tweet sẽ hiện ở đầu hồ sơ và thay thế tweet đã ghim trước đó."
                             )
                         )}
                     </Typography>
@@ -74,7 +74,7 @@ const TweetComponentActionsModal: FC<TweetComponentActionsModalProps> = (
                             {(modalTitle === "Xóa") ? (
                                 "Xóa"
                             ) : (
-                                isTweetPinned ? ("Unpin") : ("Pin")
+                                isTweetPinned ? ("Bỏ ghim") : ("Ghim")
                             )}
                         </Button>
                     </div>

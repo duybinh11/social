@@ -24,7 +24,7 @@ describe("UsersListModal", () => {
 
     it("should render Liked users", () => {
         const wrapper = mountUsersListModal(UsersListModalAction.LIKED);
-        expect(wrapper.text().includes("Liked by")).toBe(true);
+        expect(wrapper.text().includes("Được thích bởi")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: {tweetId: 1, pageNumber: 0},
             type: TweetActionType.FETCH_LIKED_USERS
@@ -34,7 +34,7 @@ describe("UsersListModal", () => {
 
     it("should render Retweeted users", () => {
         const wrapper = mountUsersListModal(UsersListModalAction.RETWEETED);
-        expect(wrapper.text().includes("Retweeted by")).toBe(true);
+        expect(wrapper.text().includes("Được đăng lại bởi")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: {tweetId: 1, pageNumber: 0},
             type: TweetActionType.FETCH_RETWEETED_USERS

@@ -109,8 +109,8 @@ const DisplayModal: FC<DisplayModalProps & DisplayProps> = (
                             </Typography>
                         </div>
                         <Typography variant={"body1"} component={"div"} className={classes.tweetText}>
-                            At the heart of Twitter are short messages called Tweets — just like this one — which can
-                            include photos, videos, links, text, hashtags, and mentions like <span
+                            Trung tâm của Twitter là các tin nhắn ngắn gọi là Tweet — giống như tin này — có thể
+                            bao gồm ảnh, video, liên kết, văn bản, hashtag và đề cập như <span
                             className={classes.tweetLink}>@Twitter</span>
                         </Typography>
                     </div>

@@ -26,8 +26,8 @@ describe("ListsModal", () => {
 
         expect(mockDispatchFn).toHaveBeenCalledWith({payload: 1, type: ListsActionType.FETCH_SIMPLE_LISTS});
 
-        expect(wrapper.text().includes("Pick a List")).toBe(true);
-        expect(wrapper.text().includes("Create a new List")).toBe(true);
+        expect(wrapper.text().includes("Chọn danh sách")).toBe(true);
+        expect(wrapper.text().includes("Tạo danh sách mới")).toBe(true);
         expect(wrapper.find(Button).at(0).text().includes("Lưu")).toBe(true);
         expect(wrapper.find(Spinner).exists()).toBe(true);
     });

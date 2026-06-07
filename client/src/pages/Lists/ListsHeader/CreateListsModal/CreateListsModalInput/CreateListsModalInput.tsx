@@ -54,8 +54,8 @@ const CreateListsModalInput: FC<CreateListsModalInputProps> = (
                 }}
                 onFocus={onFocus}
                 onBlur={onBlur}
-                multiline={label === "Description"}
-                rows={label === "Description" ? 3 : 1}
+                multiline={label === "Mô tả"}
+                rows={label === "Mô tả" ? 3 : 1}
                 fullWidth
             />
         </div>

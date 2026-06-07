@@ -27,7 +27,7 @@ describe("ListsApi", () => {
     const mockAdapter = new MockAdapter(axios);
     const mockListNotFound = "Không tìm thấy danh sách";
     const mockListError = "Độ dài tên danh sách không hợp lệ";
-    const mockUserBLocked = "User with ID:1 is blocked";
+    const mockUserBLocked = "Người dùng có ID:1 đã bị chặn";
 
     beforeEach(() => mockAdapter.reset());
 
@@ -83,7 +83,7 @@ describe("ListsApi", () => {
 
     describe("should fetch ListsApi.deleteList", () => {
         it("[200] should delete list Success", () => {
-            testApiCall(mockAdapter, "onDelete", `${API_LISTS}/1`, 200, "List id:1 deleted.", ListsApi.deleteList, 1);
+            testApiCall(mockAdapter, "onDelete", `${API_LISTS}/1`, 200, "Danh sách id:1 đã bị xóa.", ListsApi.deleteList, 1);
         });
 
         it("[400] should delete list bad request", () => {
@@ -115,7 +115,7 @@ describe("ListsApi", () => {
         const mockAddUserRequest = {userId: 1, lists: [{listId: 1, isMemberInList: true}]};
 
         it("[200] should add user to lists Success", () => {
-            testApiCall(mockAdapter, "onPost", API_LISTS_ADD_USER, 200, "User added to lists success.", ListsApi.addUserToLists, mockAddUserRequest);
+            testApiCall(mockAdapter, "onPost", API_LISTS_ADD_USER, 200, "Đã thêm người dùng vào danh sách thành công.", ListsApi.addUserToLists, mockAddUserRequest);
         });
 
         it("[404] should list not found", () => {

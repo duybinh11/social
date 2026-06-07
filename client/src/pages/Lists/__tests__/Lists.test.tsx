@@ -39,10 +39,10 @@ describe("Danh sách", () => {
     it("should render loading Spinner", () => {
         const wrapper = mountWithStore(<Lists/>, createMockRootState());
 
-        expect(global.window.document.title).toBe("Lists / Twitter");
+        expect(global.window.document.title).toBe("Danh sách / Twitter");
         expect(wrapper.find(Spinner).at(0).exists()).toBe(true);
         expect(wrapper.find(Spinner).at(1).exists()).toBe(true);
-        expect(wrapper.text().includes("Discover new Lists")).toBe(true);
+        expect(wrapper.text().includes("Khám phá danh sách mới")).toBe(true);
         expect(wrapper.text().includes("Danh sách của tôi")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {type: ListsActionType.FETCH_LISTS});
         expect(mockDispatchFn).nthCalledWith(2, {type: ListsActionType.FETCH_USER_LISTS});
@@ -84,7 +84,7 @@ describe("Danh sách", () => {
 
         expect(wrapper.find(HoverAction).exists()).toBeTruthy();
         expect(wrapper.find(HoverAction).prop("visible")).toBe(true);
-        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Create");
+        expect(wrapper.find(HoverAction).prop("actionText")).toBe("Tạo");
     });
 
     it("should reset Lists State", () => {

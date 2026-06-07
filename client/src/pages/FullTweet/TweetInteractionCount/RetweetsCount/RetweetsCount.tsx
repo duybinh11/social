@@ -29,7 +29,7 @@ const RetweetsCount = memo((): ReactElement => {
                             {retweetsCount}
                         </Typography>
                         <Typography variant={"subtitle1"} component={"span"}>
-                            Retweets
+                            Đăng lại
                         </Typography>
                     </div>
                 </a>

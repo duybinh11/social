@@ -25,7 +25,7 @@ const MuteUserButton: FC<MuteUserButtonProps> = memo((
 
     const onMuteUser = (): void => {
         dispatch(processUserToMuteList({userId, tweetId}));
-        dispatch(setOpenSnackBar(`@${username} has been ${isUserMuted ? "unmuted" : "muted"}.`));
+        dispatch(setOpenSnackBar(`@${username} ${isUserMuted ? "đã bật tiếng" : "đã tắt tiếng"}.`));
     };
 
     return (

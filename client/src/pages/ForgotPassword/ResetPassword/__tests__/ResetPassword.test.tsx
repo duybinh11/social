@@ -25,13 +25,13 @@ describe("ResetPassword", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<ResetPassword/>, mockStore);
 
-        expect(wrapper.text().includes("Reset your password")).toBe(true);
+        expect(wrapper.text().includes("Đặt lại mật khẩu")).toBe(true);
         expect(wrapper.find(Avatar).prop("src")).toEqual(mockUser?.avatar.src);
         expect(wrapper.text().includes(`${mockUser?.fullName}`)).toBe(true);
         expect(wrapper.text().includes(`@${mockUser?.username}`)).toBe(true);
-        expect(wrapper.text().includes("Enter your new password")).toBe(true);
-        expect(wrapper.text().includes("Enter your password one more time")).toBe(true);
-        expect(wrapper.text().includes("Resetting your password will log you out of all your active Twitter sessions.")).toBe(true);
+        expect(wrapper.text().includes("Nhập mật khẩu mới")).toBe(true);
+        expect(wrapper.text().includes("Nhập lại mật khẩu")).toBe(true);
+        expect(wrapper.text().includes("Đặt lại mật khẩu sẽ đăng xuất bạn khỏi mọi phiên Twitter đang hoạt động.")).toBe(true);
         expect(wrapper.find(Button).at(0).text()).toEqual("Đặt lại mật khẩu");
     });
 
@@ -46,7 +46,7 @@ describe("ResetPassword", () => {
         setImmediate(() => {
             wrapper.update();
             done();
-            expect(wrapper.text().includes("Too short")).toBe(true);
+            expect(wrapper.text().includes("Quá ngắn")).toBe(true);
             expect(wrapper.text().includes("Mật khẩu không khớp.")).toBe(true);
         });
     });

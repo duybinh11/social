@@ -17,7 +17,7 @@ describe("NotificationInfoHeader", () => {
 
     it("should render Liked info header", () => {
         const wrapper = mountWithStore(<NotificationInfoHeader/>, mockNotification);
-        expect(wrapper.text().includes(`Likedby ${mockNotificationInfo.user.fullName}`)).toBe(true);
+        expect(wrapper.text().includes(`Đã thíchbởi ${mockNotificationInfo.user.fullName}`)).toBe(true);
     });
 
     it("should render Retweeted info header", () => {
@@ -29,6 +29,6 @@ describe("NotificationInfoHeader", () => {
             }
         };
         const wrapper = mountWithStore(<NotificationInfoHeader/>, mockStore);
-        expect(wrapper.text().includes(`Retweetedby ${mockNotificationInfo.user.fullName}`)).toBe(true);
+        expect(wrapper.text().includes(`Đã đăng lạibởi ${mockNotificationInfo.user.fullName}`)).toBe(true);
     });
 });

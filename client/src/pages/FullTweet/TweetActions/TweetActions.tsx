@@ -13,7 +13,7 @@ const TweetActions = memo((): ReactElement => {
     return (
         <>
             {isTweetRetweeted && (
-                <TweetActionResult action={TweetActionResults.RETWEET} text={"You Retweeted"}/>
+                <TweetActionResult action={TweetActionResults.RETWEET} text={"Bạn đã đăng lại"}/>
             )}
             {(pinnedTweetId === tweetId) && (
                 <TweetActionResult action={TweetActionResults.PIN} text={"Tweet đã ghim"}/>

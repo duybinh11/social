@@ -16,7 +16,7 @@ const UserPrivateProfileMessage = memo((): ReactElement => {
                 Các tweet này được bảo vệ
             </Typography>
             <Typography variant={"subtitle1"} component={"div"}>
-                {`Only approved followers can see @${username}’s Tweets. To request access, click Follow. `}
+                {`Chỉ người theo dõi được duyệt mới xem được tweet của @${username}. Để yêu cầu quyền truy cập, nhấn Theo dõi. `}
                 <MuiLink href={PUBLIC_AND_PROTECTED_TWEETS} variant="subtitle1" target="_blank" rel="noopener">
                     Tìm hiểu thêm
                 </MuiLink>

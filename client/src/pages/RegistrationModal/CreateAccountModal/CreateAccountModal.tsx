@@ -53,7 +53,7 @@ const CreateAccountModal: FC<CustomizeModalProps> = (
         >
             <DialogContent style={{paddingTop: 0, paddingBottom: 0}} className={classes.container}>
                 <Typography component={"div"} className={classes.title}>
-                    Step 3 of 5
+                    Bước 3 / 5
                 </Typography>
                 {isLoading ? (
                     <Spinner/>
@@ -86,21 +86,21 @@ const CreateAccountModal: FC<CustomizeModalProps> = (
                             />
                         </div>
                         <Typography variant={"body1"} component={"div"} className={classes.text}>
-                            {"By signing up, you agree to the "}
+                            {"Khi đăng ký, bạn đồng ý với "}
                             <MuiLink href={TWITTER_TOS_NEW} variant="body1" target="_blank" rel="noopener">
                                 Điều khoản dịch vụ
                             </MuiLink>
-                            {" and "}
+                            {" và "}
                             <MuiLink href={TWITTER_PRIVACY} variant="body1" target="_blank" rel="noopener">
                                 Chính sách quyền riêng tư
                             </MuiLink>
-                            {", including "}
+                            {", bao gồm "}
                             <MuiLink href={TWITTER_COOKIES} variant="body1" target="_blank" rel="noopener">
-                                Cookie Use
+                                Sử dụng cookie
                             </MuiLink>
-                            {". Others will be able to find you by email or phone number when provided · "}
+                            {". Người khác có thể tìm bạn qua email hoặc số điện thoại nếu bạn cung cấp · "}
                             <MuiLink href={TWITTER_PRIVACY} variant="body1" target="_blank" rel="noopener">
-                                Privacy Options
+                                Tùy chọn quyền riêng tư
                             </MuiLink>
                         </Typography>
                         <Button

@@ -44,8 +44,8 @@ describe("UserApi", () => {
     const mockAdapter = new MockAdapter(axios);
     const mockUserErrorResponse = "Không tìm thấy người dùng";
     const mockTweetErrorResponse = "Không tìm thấy tweet";
-    const mockUserNotFound = "User (id:1) not found";
-    const mockUserBlocked = "User (id:1) is blocked";
+    const mockUserNotFound = "Không tìm thấy người dùng (id:1)";
+    const mockUserBlocked = "Người dùng (id:1) đã bị chặn";
     const mockPageable = {userId: 1, page: 1};
 
     beforeEach(() => mockAdapter.reset());
@@ -157,7 +157,7 @@ describe("UserApi", () => {
 
     describe("should fetch UserApi.acceptFollowRequest", () => {
         it("[200] should accept followRequest Success", () => {
-            testApiCall(mockAdapter, "onGet", `${API_USER_FOLLOW_ACCEPT}/1`, 200, "User (id:1) accepted.", UserApi.acceptFollowRequest, 1);
+            testApiCall(mockAdapter, "onGet", `${API_USER_FOLLOW_ACCEPT}/1`, 200, "Đã chấp nhận người dùng (id:1).", UserApi.acceptFollowRequest, 1);
         });
 
         it("[404] should user not found", () => {
@@ -167,7 +167,7 @@ describe("UserApi", () => {
 
     describe("should fetch UserApi.declineFollowRequest", () => {
         it("[200] should decline followRequest Success", () => {
-            testApiCall(mockAdapter, "onGet", `${API_USER_FOLLOW_DECLINE}/1`, 200, "User (id:1) declined.", UserApi.declineFollowRequest, 1);
+            testApiCall(mockAdapter, "onGet", `${API_USER_FOLLOW_DECLINE}/1`, 200, "Đã từ chối người dùng (id:1).", UserApi.declineFollowRequest, 1);
         });
 
         it("[404] should user not found", () => {

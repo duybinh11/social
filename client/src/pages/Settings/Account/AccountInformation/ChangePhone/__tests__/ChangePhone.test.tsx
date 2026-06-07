@@ -19,8 +19,8 @@ describe("ChangePhone", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<ChangePhone/>, mockStore);
 
-        expect(wrapper.text().includes("Update phone number")).toBe(true);
-        expect(wrapper.text().includes("Delete phone number")).toBe(true);
+        expect(wrapper.text().includes("Cập nhật số điện thoại")).toBe(true);
+        expect(wrapper.text().includes("Xóa số điện thoại")).toBe(true);
         expect(wrapper.find(ChangeInfoTextField).prop("value")).toBe(`${getPhoneCode(mockStore.user.data?.countryCode)}${mockStore.user.data?.phone}`);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: LoadingStatus.NEVER,

@@ -39,7 +39,7 @@ const MembersAndFollowersModal: FC<MembersAndFollowersModalProps> = (
 
     useEffect(() => {
         if (visible) {
-            if (title === "List members") {
+            if (title === "Thành viên danh sách") {
                 dispatch(fetchListMembers({listId, listOwnerId}));
             } else {
                 dispatch(fetchListFollowers({listId, listOwnerId}));
@@ -74,15 +74,15 @@ const MembersAndFollowersModal: FC<MembersAndFollowersModalProps> = (
                         ))
                     ) : (
                         <EmptyPageDescription
-                            title={(title === "List members") ? (
-                                "There isn’t anyone in this List"
+                            title={(title === "Thành viên danh sách") ? (
+                                "Chưa có ai trong danh sách này"
                             ) : (
-                                "There aren’t any followers of this List"
+                                "Chưa có người theo dõi danh sách này"
                             )}
-                            subtitle={(title === "List members") ? (
-                                "When people get added, they’ll show up here."
+                            subtitle={(title === "Thành viên danh sách") ? (
+                                "Khi có người được thêm, họ sẽ hiện ở đây."
                             ) : (
-                                "When people follow, they’ll show up here."
+                                "Khi có người theo dõi, họ sẽ hiện ở đây."
                             )}
                         />
                     )

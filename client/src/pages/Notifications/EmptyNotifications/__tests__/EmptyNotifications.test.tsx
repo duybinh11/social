@@ -10,12 +10,12 @@ describe("EmptyNotifications", () => {
     it("should render empty Notification message", () => {
         const wrapper = mountWithStore(<EmptyNotifications isNotification={true} />, mockStore);
         expect(wrapper.text().includes("Chưa có gì để xem")).toBe(true);
-        expect(wrapper.text().includes("From like to Retweets and whole lot more, this is where all the actions happens.")).toBe(true);
+        expect(wrapper.text().includes("Từ lượt thích đến đăng lại và nhiều hơn nữa, đây là nơi mọi hoạt động diễn ra.")).toBe(true);
     });
     
     it("should render empty Mentions message", () => {
         const wrapper = mountWithStore(<EmptyNotifications isNotification={false} />, mockStore);
         expect(wrapper.text().includes("Chưa có gì để xem")).toBe(true);
-        expect(wrapper.text().includes("When someone mentions you, you’ll find it here.")).toBe(true);
+        expect(wrapper.text().includes("Khi ai đó nhắc đến bạn, bạn sẽ thấy ở đây.")).toBe(true);
     });
 });

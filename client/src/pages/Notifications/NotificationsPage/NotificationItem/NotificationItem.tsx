@@ -70,11 +70,11 @@ const NotificationItem: FC<NotificationItemProps> = memo(({notification}): React
                         </Typography>
                         <Typography variant={"body1"} component={"span"}>
                             {(notification.notificationType === NotificationType.FOLLOW) ? (
-                                <>followed you</>
+                                <>đã theo dõi bạn</>
                             ) : (
                                 (notification.notificationType === NotificationType.LISTS) ? (
                                     <>
-                                        {"added you to their List "}
+                                        {"đã thêm bạn vào danh sách "}
                                         <Typography variant={"h6"} component={"span"}>
                                             {notification.list.name}
                                         </Typography>
@@ -82,14 +82,14 @@ const NotificationItem: FC<NotificationItemProps> = memo(({notification}): React
                                 ) : (
                                     <>
                                         {(notification.notificationType === NotificationType.LIKE) ? (
-                                            "liked"
+                                            "đã thích"
                                         ) : (
                                             (notification.notificationType === NotificationType.REPLY) ? (
-                                                "replied to"
+                                                "đã trả lời"
                                             ) : (
-                                                "Retweeted"
+                                                "Đã đăng lại"
                                             )
-                                        )} your Tweet
+                                        )} tweet của bạn
                                     </>
                                 )
                             )}

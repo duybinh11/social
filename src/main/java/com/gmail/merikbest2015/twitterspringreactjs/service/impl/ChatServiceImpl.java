@@ -190,9 +190,9 @@ public class ChatServiceImpl implements ChatService {
             chatMessageRepository.deleteAll(chat.getMessages());
             chatParticipantRepository.deleteAll(chat.getParticipants());
             chatRepository.delete(chat);
-            return "Chat successfully deleted";
+            return "Đã xóa cuộc trò chuyện thành công";
         }
-        return "Successfully left the chat";
+        return "Đã rời cuộc trò chuyện thành công";
     }
 
     private boolean isParticipantBlocked(User user, User participant) {

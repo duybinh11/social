@@ -114,7 +114,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         attributes.put("registrationCode", code);
         System.out.println("Activation Code: " + code);
         mailSender.sendMessageHtml(user.getEmail(), subject, template, attributes);
-        return "Registration code sent successfully";
+        return "Đã gửi mã đăng ký thành công";
     }
 
     @Override
@@ -123,7 +123,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         UserCommonProjection user = userRepository.findCommonUserByActivationCode(code)
                 .orElseThrow(() -> new ApiRequestException("Không tìm thấy mã kích hoạt.", HttpStatus.NOT_FOUND));
         userRepository.updateActivationCode(null, user.getId());
-        return "User successfully activated.";
+        return "Kích hoạt tài khoản thành công.";
     }
 
     @Override
@@ -159,7 +159,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public String findEmail(String email) {
         userRepository.findCommonUserByEmail(email)
                 .orElseThrow(() -> new ApiRequestException("Không tìm thấy email", HttpStatus.NOT_FOUND));
-        return "Reset password code is send to your E-mail";
+        return "Mã đặt lại mật khẩu đã được gửi đến email của bạn";
     }
 
     @Override
@@ -175,13 +175,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .orElseThrow(() -> new ApiRequestException("Không tìm thấy email", HttpStatus.NOT_FOUND));
         userRepository.updatePasswordResetCode(UUID.randomUUID().toString().substring(0, 7), user.getId());
 
-        String subject = "Password reset";
+        String subject = "Đặt lại mật khẩu";
         String template = "password-reset-template";
         Map<String, Object> attributes = new HashMap<>();
         attributes.put("fullName", user.getFullName());
         attributes.put("passwordResetCode", user.getPasswordResetCode());
         mailSender.sendMessageHtml(user.getEmail(), subject, template, attributes);
-        return "Reset password code is send to your E-mail";
+        return "Mã đặt lại mật khẩu đã được gửi đến email của bạn";
     }
 
     @Override
@@ -192,7 +192,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .orElseThrow(() -> new InputFieldException(HttpStatus.NOT_FOUND, Map.of("email", "Không tìm thấy email")));
         userRepository.updatePassword(passwordEncoder.encode(password), user.getId());
         userRepository.updatePasswordResetCode(null, user.getId());
-        return "Password successfully changed!";
+        return "Đổi mật khẩu thành công!";
     }
 
     @Override
@@ -206,7 +206,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
         checkMatchPasswords(password, password2);
         userRepository.updatePassword(passwordEncoder.encode(password), userId);
-        return "Your password has been successfully updated.";
+        return "Mật khẩu của bạn đã được cập nhật thành công.";
     }
 
     private void checkMatchPasswords(String password, String password2) {

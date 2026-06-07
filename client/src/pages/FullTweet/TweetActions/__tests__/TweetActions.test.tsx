@@ -11,7 +11,7 @@ describe("TweetActions", () => {
 
     it("should render Retweeted TweetActionResult", () => {
         const wrapper = mountWithStore(<TweetActions/>, mockRootStore);
-        expect(wrapper.find(TweetActionResult).at(0).prop("text")).toBe("You Retweeted");
+        expect(wrapper.find(TweetActionResult).at(0).prop("text")).toBe("Bạn đã đăng lại");
     });
 
     it("should render Pinned TweetActionResult", () => {

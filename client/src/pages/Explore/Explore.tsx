@@ -185,7 +185,7 @@ const Explore: FC = (): ReactElement => {
                         </div>
                         <MainSearchTextField
                             variant="outlined"
-                            placeholder="Explore Twitter"
+                            placeholder="Khám phá Twitter"
                             onChange={(event) => setText(event.target.value)}
                             value={text}
                             InputProps={{

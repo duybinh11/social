@@ -73,20 +73,20 @@ const Poll: FC<PollProps> = ({pollData, setPollData, visiblePoll, onClose}): Rea
                     <Grid md={(pollInputSize !== 2) ? (11) : (12)} item>
                         <PollInput
                             id={"choice1"}
-                            label={"Choice 1"}
+                            label={"Lựa chọn 1"}
                             value={choice1}
                             onChange={changeChoice}
                         />
                         <PollInput
                             id={"choice2"}
-                            label={"Choice 2"}
+                            label={"Lựa chọn 2"}
                             value={choice2}
                             onChange={changeChoice}
                         />
                         {(pollInputSize >= 1) && (
                             <PollInput
                                 id={"choice3"}
-                                label={"Choice 3 (optional)"}
+                                label={"Lựa chọn 3 (tùy chọn)"}
                                 value={choice3}
                                 onChange={changeChoice}
                             />
@@ -94,7 +94,7 @@ const Poll: FC<PollProps> = ({pollData, setPollData, visiblePoll, onClose}): Rea
                         {(pollInputSize === 2) && (
                             <PollInput
                                 id={"choice3"}
-                                label={"Choice 4 (optional)"}
+                                label={"Lựa chọn 4 (tùy chọn)"}
                                 value={choice4}
                                 onChange={changeChoice}
                             />
@@ -107,11 +107,11 @@ const Poll: FC<PollProps> = ({pollData, setPollData, visiblePoll, onClose}): Rea
             </div>
             <Paper className={classes.pollLength} variant="outlined">
                 <Typography variant={"body1"} component={"div"} className={classes.pollLengthTitle}>
-                    Poll length
+                    Thời lượng bình chọn
                 </Typography>
                 <PollSelect
                     id={"day"}
-                    title={"Days"}
+                    title={"Ngày"}
                     value={day}
                     onChange={changeChoice}
                     showOptions={showOptions}
@@ -119,7 +119,7 @@ const Poll: FC<PollProps> = ({pollData, setPollData, visiblePoll, onClose}): Rea
                 />
                 <PollSelect
                     id={"hour"}
-                    title={"Hours"}
+                    title={"Giờ"}
                     value={hour}
                     onChange={changeChoice}
                     showOptions={showOptions}
@@ -127,7 +127,7 @@ const Poll: FC<PollProps> = ({pollData, setPollData, visiblePoll, onClose}): Rea
                 />
                 <PollSelect
                     id={"minute"}
-                    title={"Minutes"}
+                    title={"Phút"}
                     value={minute}
                     onChange={changeChoice}
                     showOptions={showOptions}

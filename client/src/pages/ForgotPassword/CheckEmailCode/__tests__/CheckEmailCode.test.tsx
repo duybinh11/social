@@ -19,8 +19,8 @@ describe("CheckEmailCode", () => {
         const wrapper = mountWithStore(<CheckEmailCode/>, mockStore);
 
         expect(wrapper.text().includes("Kiểm tra email của bạn")).toBe(true);
-        expect(wrapper.text().includes("You'll receive a code to verify here so you can reset your account password.")).toBe(true);
-        expect(wrapper.text().includes("If you don't see the email, check other places it might be, like your junk, spam, social, or other folders.")).toBe(true);
+        expect(wrapper.text().includes("Bạn sẽ nhận mã xác minh tại đây để đặt lại mật khẩu.")).toBe(true);
+        expect(wrapper.text().includes("Nếu không thấy email, hãy kiểm tra thư rác, spam hoặc thư mục khác.")).toBe(true);
         expect(wrapper.find(Button).at(0).text()).toEqual("Xác minh");
         expect(wrapper.find(MuiLink).at(0).text()).toEqual("Didn’t receive your code?");
     });
@@ -56,7 +56,7 @@ describe("CheckEmailCode", () => {
         setImmediate(() => {
             wrapper.update();
             done();
-            expect(wrapper.text().includes("Incorrect code. Please try again.")).toBe(true);
+            expect(wrapper.text().includes("Mã không đúng. Vui lòng thử lại.")).toBe(true);
         });
     });
 
@@ -67,6 +67,6 @@ describe("CheckEmailCode", () => {
         input.simulate("change", {target: {value: ""}});
         wrapper.find(Button).at(0).simulate("submit");
 
-        expect(wrapper.text().includes("Incorrect code. Please try again.")).toBe(true);
+        expect(wrapper.text().includes("Mã không đúng. Vui lòng thử lại.")).toBe(true);
     });
 });

@@ -17,11 +17,11 @@ describe("BlockButton", () => {
     });
 
     it("should click unblock user", () => {
-        testClickButton(true, "unblocked");
+        testClickButton(true, "đã bỏ chặn");
     });
 
     it("should click block user", () => {
-        testClickButton(false, "blocked");
+        testClickButton(false, "đã chặn");
     });
 
     it("should click and open/close BlockUserModal", () => {
@@ -71,7 +71,7 @@ describe("BlockButton", () => {
             type: UserActionsType.PROCESS_USER_TO_BLOCKLIST
         });
         expect(mockDispatchFn).toHaveBeenNthCalledWith(2, {
-            payload: `@test_name has been ${message}.`,
+            payload: `@test_name ${message}.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     };

@@ -26,7 +26,7 @@ describe("ForgotPassword", () => {
             return pathMap;
         }, {});
 
-        expect(wrapper.text().includes("Password Reset")).toBe(true);
+        expect(wrapper.text().includes("Đặt lại mật khẩu")).toBe(true);
         expect(pathMap[ACCOUNT_FORGOT]).toBe(FindEmail);
         expect(pathMap[ACCOUNT_FORGOT_SEND_PASSWORD_RESET]).toBe(ResetPasswordOption);
         expect(pathMap[ACCOUNT_FORGOT_CONFIRM_PIN_RESET]).toBe(CheckEmailCode);

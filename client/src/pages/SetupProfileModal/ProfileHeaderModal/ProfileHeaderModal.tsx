@@ -39,10 +39,10 @@ const ProfileHeaderModal: FC<ProfileHeaderModalProps> = (
                     <TwitterIcon/>
                 </div>
                 <Typography variant={"h3"} component={"div"} className={classes.title}>
-                    Pick a header
+                    Chọn ảnh bìa
                 </Typography>
                 <Typography variant={"subtitle1"} component={"div"}>
-                    People who visit your profile will see it. Show your style.
+                    Người xem hồ sơ sẽ thấy ảnh này. Thể hiện phong cách của bạn.
                 </Typography>
                 <div className={classes.wallpaperWrapper}>
                     <img

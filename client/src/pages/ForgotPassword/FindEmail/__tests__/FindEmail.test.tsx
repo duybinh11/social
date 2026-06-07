@@ -17,8 +17,8 @@ describe("FindEmail", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<FindEmail/>, mockStore);
 
-        expect(wrapper.text().includes("Find your Twitter account")).toBe(true);
-        expect(wrapper.text().includes("Enter your email, phone number, or username.")).toBe(true);
+        expect(wrapper.text().includes("Tìm tài khoản Twitter của bạn")).toBe(true);
+        expect(wrapper.text().includes("Nhập email, số điện thoại hoặc tên người dùng.")).toBe(true);
         expect(wrapper.find(Button).at(0).text()).toEqual("Tìm kiếm");
     });
 
@@ -53,8 +53,8 @@ describe("FindEmail", () => {
         setImmediate(() => {
             wrapper.update();
             done();
-            expect(wrapper.text().includes("We couldn't find your account with that information")).toBe(true);
-            expect(wrapper.text().includes("Please try searching for your email, phone number or username again.")).toBe(true);
+            expect(wrapper.text().includes("Chúng tôi không tìm thấy tài khoản với thông tin đó")).toBe(true);
+            expect(wrapper.text().includes("Vui lòng thử tìm lại email, số điện thoại hoặc tên người dùng.")).toBe(true);
         });
     });
 });

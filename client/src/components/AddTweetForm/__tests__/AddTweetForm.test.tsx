@@ -66,7 +66,7 @@ describe("AddTweetForm", () => {
                 }, type: TweetsActionType.ADD_TWEET
             });
             expect(mockDispatchFn).nthCalledWith(2, {
-                payload: "Your tweet was sent.",
+                payload: "Tweet của bạn đã được gửi.",
                 type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
             });
         });
@@ -101,7 +101,7 @@ describe("AddTweetForm", () => {
                 }, type: TweetsActionType.ADD_POLL
             });
             expect(mockDispatchFn).nthCalledWith(2, {
-                payload: "Your tweet was sent.",
+                payload: "Tweet của bạn đã được gửi.",
                 type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
             });
         });
@@ -135,7 +135,7 @@ describe("AddTweetForm", () => {
                 }, type: TweetsActionType.ADD_QUOTE_TWEET
             });
             expect(mockDispatchFn).nthCalledWith(2, {
-                payload: "Your tweet was sent.",
+                payload: "Tweet của bạn đã được gửi.",
                 type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
             });
         });
@@ -173,7 +173,7 @@ describe("AddTweetForm", () => {
                 }, type: TweetActionType.FETCH_REPLY_TWEET
             });
             expect(mockDispatchFn).nthCalledWith(2, {
-                payload: "Your tweet was sent.",
+                payload: "Tweet của bạn đã được gửi.",
                 type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
             });
         });

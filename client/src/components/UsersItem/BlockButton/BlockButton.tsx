@@ -31,7 +31,7 @@ const BlockButton: FC<BlockButtonProps> = ({user}): ReactElement => {
     const onBlockUser = (): void => {
         dispatch(processUserToBlocklist({userId: user?.id!}));
         setVisibleBlockUserModal(false);
-        dispatch(setOpenSnackBar(`@${user?.username} has been ${user?.isUserBlocked ? "unblocked" : "blocked"}.`));
+        dispatch(setOpenSnackBar(`@${user?.username} ${user?.isUserBlocked ? "đã bỏ chặn" : "đã chặn"}.`));
     };
 
     return (

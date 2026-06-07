@@ -30,9 +30,9 @@ describe("EditListModal", () => {
         expect(wrapper.find(Dialog).at(0).prop("open")).toBe(true);
         expect(wrapper.text().includes("Sửa danh sách")).toBe(true);
         expect(wrapper.find(Button).at(0).text().includes("Xong")).toBe(true);
-        expect(wrapper.text().includes("Make private")).toBe(true);
-        expect(wrapper.text().includes("When you make a List private, only you can see it.")).toBe(true);
-        expect(wrapper.text().includes("Manage members")).toBe(true);
+        expect(wrapper.text().includes("Đặt riêng tư")).toBe(true);
+        expect(wrapper.text().includes("Khi đặt danh sách riêng tư, chỉ bạn mới xem được.")).toBe(true);
+        expect(wrapper.text().includes("Quản lý thành viên")).toBe(true);
         expect(wrapper.text().includes("Xóa danh sách")).toBe(true);
     });
 

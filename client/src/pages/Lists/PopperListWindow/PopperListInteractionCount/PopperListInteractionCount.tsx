@@ -19,14 +19,14 @@ const PopperListInteractionCount = memo((): ReactElement => {
         event.preventDefault();
         event.stopPropagation();
         setVisibleMembersAndFollowersModal(true);
-        setModalWindowTitle("List members");
+        setModalWindowTitle("Thành viên danh sách");
     };
 
     const onOpenFollowersModalWindow = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>): void => {
         event.preventDefault();
         event.stopPropagation();
         setVisibleMembersAndFollowersModal(true);
-        setModalWindowTitle("List followers");
+        setModalWindowTitle("Người theo dõi danh sách");
     };
 
     const onCloseModalWindow = (): void => {

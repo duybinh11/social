@@ -14,7 +14,7 @@ const ReportUserComponent: FC<ReportUserComponentProps> = memo(({username}): Rea
     return (
         <div className={classnames(classes.conversationInfoButton, classes.blockUser)}>
             <Typography variant={"body1"} component={"span"}>
-                Report @{username}
+                Báo cáo @{username}
             </Typography>
         </div>
     );

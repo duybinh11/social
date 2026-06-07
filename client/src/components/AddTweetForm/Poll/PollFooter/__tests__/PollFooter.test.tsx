@@ -13,6 +13,6 @@ describe("PollFooter", () => {
         const wrapper = mountWithStore(<PollFooter onClosePoll={mockOnClosePoll}/>, mockStore);
         wrapper.find(Paper).simulate("click");
         expect(mockOnClosePoll).toHaveBeenCalled();
-        expect(wrapper.text().includes("Remove poll")).toBe(true);
+        expect(wrapper.text().includes("Xóa bình chọn")).toBe(true);
     });
 });

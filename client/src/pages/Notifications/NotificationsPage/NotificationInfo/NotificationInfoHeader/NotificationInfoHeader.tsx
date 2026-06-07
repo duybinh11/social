@@ -20,10 +20,10 @@ const NotificationInfoHeader = memo((): ReactElement => {
             {!isLoading && (
                 <div>
                     <Typography variant="h5" component={"div"}>
-                        {notificationType === NotificationType.LIKE ? "Liked" : "Retweeted"}
+                        {notificationType === NotificationType.LIKE ? "Đã thích" : "Đã đăng lại"}
                     </Typography>
                     <Typography variant="caption" component={"div"}>
-                        by {userFullName}
+                        bởi {userFullName}
                     </Typography>
                 </div>
             )}

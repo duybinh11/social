@@ -8,7 +8,7 @@ import UserBlockedMessage from "../UserBlockedMessage";
 describe("UserBlockedMessage", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<UserBlockedMessage/>, createMockRootState(LoadingStatus.SUCCESS));
-        expect(wrapper.text().includes("You’re blocked")).toBe(true);
+        expect(wrapper.text().includes("Bạn đã bị chặn")).toBe(true);
         expect(wrapper.text().includes(`You can’t follow or see @${mockUser.username}’s Tweets.`)).toBe(true);
     });
 });

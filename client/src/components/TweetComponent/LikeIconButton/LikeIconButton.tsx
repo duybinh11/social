@@ -31,7 +31,7 @@ const LikeIconButton: FC<TweetLikeIconButtonProps> = memo((
     return (
         <div className={classes.likeIcon}>
             <ActionIconButton
-                actionText={isTweetLiked ? "Unlike" : "Thích"}
+                actionText={isTweetLiked ? "Bỏ thích" : "Thích"}
                 icon={isTweetLiked ? LikeIcon : LikeOutlinedIcon}
                 onClick={handleLike}
             />

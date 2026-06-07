@@ -467,8 +467,8 @@ public class TweetControllerTest {
     @DisplayName("[200] POST /api/v1/tweets/poll - Create tweet with poll")
     public void createTweetWithPoll() throws Exception {
         List<String> pollChoiceList = new ArrayList<>();
-        pollChoiceList.add("Choice 1");
-        pollChoiceList.add("Choice 2");
+        pollChoiceList.add("Lựa chọn 1");
+        pollChoiceList.add("Lựa chọn 2");
         TweetRequest tweetRequest = new TweetRequest();
         tweetRequest.setText(TEST_TWEET_TEXT);
         tweetRequest.setReplyType(ReplyType.EVERYONE);
@@ -511,7 +511,7 @@ public class TweetControllerTest {
     @DisplayName("[400] POST /api/v1/tweets/poll - Should incorrect poll choices size is 1")
     public void createTweetWithPoll_ShouldIncorrectPoolChoicesSizeIs1() throws Exception {
         List<String> pollChoiceList = new ArrayList<>();
-        pollChoiceList.add("Choice 1");
+        pollChoiceList.add("Lựa chọn 1");
         TweetRequest tweetRequest = new TweetRequest();
         tweetRequest.setText(TEST_TWEET_TEXT);
         tweetRequest.setReplyType(ReplyType.EVERYONE);
@@ -530,8 +530,8 @@ public class TweetControllerTest {
     @DisplayName("[400] POST /api/v1/tweets/poll - Should incorrect poll choices size is 5")
     public void createTweetWithPoll_ShouldIncorrectPoolChoicesSizeIs5() throws Exception {
         List<String> pollChoiceList = new ArrayList<>();
-        pollChoiceList.add("Choice 1");
-        pollChoiceList.add("Choice 2");
+        pollChoiceList.add("Lựa chọn 1");
+        pollChoiceList.add("Lựa chọn 2");
         pollChoiceList.add("Choice 3");
         pollChoiceList.add("Choice 4");
         pollChoiceList.add("Choice 5");
@@ -553,7 +553,7 @@ public class TweetControllerTest {
     @DisplayName("[400] POST /api/v1/tweets/poll - Should incorrect poll choices text length is 0")
     public void createTweetWithPoll_ShouldIncorrectPoolChoicesTextLengthIs0() throws Exception {
         List<String> pollChoiceList = new ArrayList<>();
-        pollChoiceList.add("Choice 1");
+        pollChoiceList.add("Lựa chọn 1");
         pollChoiceList.add("");
         TweetRequest tweetRequest = new TweetRequest();
         tweetRequest.setText(TEST_TWEET_TEXT);
@@ -573,7 +573,7 @@ public class TweetControllerTest {
     @DisplayName("[400] POST /api/v1/tweets/poll - Should incorrect poll choices text length more than 25")
     public void createTweetWithPoll_ShouldIncorrectPoolChoicesTextLengthMoreThan25() throws Exception {
         List<String> pollChoiceList = new ArrayList<>();
-        pollChoiceList.add("Choice 1");
+        pollChoiceList.add("Lựa chọn 1");
         pollChoiceList.add(LINK_DESCRIPTION);
         TweetRequest tweetRequest = new TweetRequest();
         tweetRequest.setText(TEST_TWEET_TEXT);
@@ -594,7 +594,7 @@ public class TweetControllerTest {
     public void deleteTweet() throws Exception {
         mockMvc.perform(delete(URL_TWEETS_BASIC + "/40"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", is("Your Tweet was deleted")));
+                .andExpect(jsonPath("$", is("Tweet của bạn đã bị xóa")));
     }
 
     @Test

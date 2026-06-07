@@ -41,8 +41,8 @@ describe("ProfileHeaderModal", () => {
             />, mockRootState);
 
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
-        expect(wrapper.text().includes("Pick a header")).toBe(true);
-        expect(wrapper.text().includes("People who visit your profile will see it. Show your style.")).toBe(true);
+        expect(wrapper.text().includes("Chọn ảnh bìa")).toBe(true);
+        expect(wrapper.text().includes("Người xem hồ sơ sẽ thấy ảnh này. Thể hiện phong cách của bạn.")).toBe(true);
         expect(wrapper.find("img").at(0).prop("src")).toBe("");
         expect(wrapper.find(Avatar).prop("src")).toEqual(DEFAULT_PROFILE_IMG);
         expect(wrapper.text().includes(mockUser!.fullName)).toBe(true);

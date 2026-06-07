@@ -13,7 +13,7 @@ describe("UserNotFound", () => {
         expect(wrapper.find(BackButton).exists()).toBeTruthy();
         expect(wrapper.find(Avatar).exists()).toBeTruthy();
         expect(wrapper.text().includes("Hồ sơ")).toBe(true);
-        expect(wrapper.text().includes("This account doesn’t exist")).toBe(true);
-        expect(wrapper.text().includes("Try searching for another.")).toBe(true);
+        expect(wrapper.text().includes("Tài khoản này không tồn tại")).toBe(true);
+        expect(wrapper.text().includes("Hãy thử tìm tài khoản khác.")).toBe(true);
     });
 });

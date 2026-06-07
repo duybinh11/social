@@ -32,7 +32,7 @@ const ChangeYourPassword = (): ReactElement => {
     });
 
     useEffect(() => {
-        document.title = "Change your password / Twitter";
+        document.title = "Đổi mật khẩu / Twitter";
     }, []);
 
     const onSubmit = (data: ChangeYourPasswordFormProps): void => {

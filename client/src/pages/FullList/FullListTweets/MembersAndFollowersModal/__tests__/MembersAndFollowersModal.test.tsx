@@ -23,7 +23,7 @@ describe("MembersAndFollowersModal", () => {
                 listId={mockFullList.id}
                 listOwnerId={mockFullList.listOwner.id}
                 visible={false}
-                title={"List members"}
+                title={"Thành viên danh sách"}
                 onClose={jest.fn()}
             />, mockStore);
 
@@ -36,12 +36,12 @@ describe("MembersAndFollowersModal", () => {
                 listId={mockFullList.id}
                 listOwnerId={mockFullList.listOwner.id}
                 visible={true}
-                title={"List members"}
+                title={"Thành viên danh sách"}
                 onClose={jest.fn()}
             />, createMockRootState(LoadingStatus.LOADING));
 
         expect(wrapper.find(Dialog).exists()).toBeTruthy();
-        expect(wrapper.text().includes("List members")).toBe(true);
+        expect(wrapper.text().includes("Thành viên danh sách")).toBe(true);
         expect(wrapper.find(Spinner).exists()).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: {listId: 3, listOwnerId: 2},
@@ -55,12 +55,12 @@ describe("MembersAndFollowersModal", () => {
                 listId={mockFullList.id}
                 listOwnerId={mockFullList.listOwner.id}
                 visible={true}
-                title={"List followers"}
+                title={"Người theo dõi danh sách"}
                 onClose={jest.fn()}
             />, createMockRootState(LoadingStatus.LOADING));
 
         expect(wrapper.find(Dialog).exists()).toBeTruthy();
-        expect(wrapper.text().includes("List followers")).toBe(true);
+        expect(wrapper.text().includes("Người theo dõi danh sách")).toBe(true);
         expect(wrapper.find(Spinner).exists()).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: {listId: 3, listOwnerId: 2},
@@ -74,7 +74,7 @@ describe("MembersAndFollowersModal", () => {
                 listId={mockFullList.id}
                 listOwnerId={mockFullList.listOwner.id}
                 visible={true}
-                title={"List followers"}
+                title={"Người theo dõi danh sách"}
                 onClose={jest.fn()}
             />, {
                 ...mockStore,
@@ -95,7 +95,7 @@ describe("MembersAndFollowersModal", () => {
                 listId={mockFullList.id}
                 listOwnerId={mockFullList.listOwner.id}
                 visible={true}
-                title={"List members"}
+                title={"Thành viên danh sách"}
                 onClose={jest.fn()}
             />, {
                 ...mockStore,
@@ -107,8 +107,8 @@ describe("MembersAndFollowersModal", () => {
             });
 
         expect(wrapper.find(Dialog).exists()).toBeTruthy();
-        expect(wrapper.text().includes("There isn’t anyone in this List")).toBe(true);
-        expect(wrapper.text().includes("When people get added, they’ll show up here.")).toBe(true);
+        expect(wrapper.text().includes("Chưa có ai trong danh sách này")).toBe(true);
+        expect(wrapper.text().includes("Khi có người được thêm, họ sẽ hiện ở đây.")).toBe(true);
     });
 
     it("should render empty list followers message", () => {
@@ -117,7 +117,7 @@ describe("MembersAndFollowersModal", () => {
                 listId={mockFullList.id}
                 listOwnerId={mockFullList.listOwner.id}
                 visible={true}
-                title={"List followers"}
+                title={"Người theo dõi danh sách"}
                 onClose={jest.fn()}
             />, {
                 ...mockStore,
@@ -129,8 +129,8 @@ describe("MembersAndFollowersModal", () => {
             });
 
         expect(wrapper.find(Dialog).exists()).toBeTruthy();
-        expect(wrapper.text().includes("There aren’t any followers of this List")).toBe(true);
-        expect(wrapper.text().includes("When people follow, they’ll show up here.")).toBe(true);
+        expect(wrapper.text().includes("Chưa có người theo dõi danh sách này")).toBe(true);
+        expect(wrapper.text().includes("Khi có người theo dõi, họ sẽ hiện ở đây.")).toBe(true);
     });
 
     it("should click on Dialog window", () => {
@@ -139,7 +139,7 @@ describe("MembersAndFollowersModal", () => {
                 listId={mockFullList.id}
                 listOwnerId={mockFullList.listOwner.id}
                 visible={true}
-                title={"List followers"}
+                title={"Người theo dõi danh sách"}
                 onClose={jest.fn()}
             />, mockStore);
         wrapper.find(Dialog).simulate("click");
@@ -153,7 +153,7 @@ describe("MembersAndFollowersModal", () => {
                 listId={mockFullList.id}
                 listOwnerId={mockFullList.listOwner.id}
                 visible={false}
-                title={"List members"}
+                title={"Thành viên danh sách"}
                 onClose={jest.fn()}
             />, mockStore);
         wrapper.unmount();

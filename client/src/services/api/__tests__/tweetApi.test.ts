@@ -90,7 +90,7 @@ describe("TweetApi", () => {
 
     describe("should fetch TweetApi.deleteTweet", () => {
         it("[200] should delete tweet Success", () => {
-            testApiCall(mockAdapter, "onDelete", `${API_TWEETS}/1`, 200, "Your Tweet was deleted", TweetApi.deleteTweet, 1);
+            testApiCall(mockAdapter, "onDelete", `${API_TWEETS}/1`, 200, "Tweet của bạn đã bị xóa", TweetApi.deleteTweet, 1);
         });
 
         it("[404] should return tweet Not Found", () => {

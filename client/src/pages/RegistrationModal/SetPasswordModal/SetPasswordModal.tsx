@@ -62,10 +62,10 @@ const SetPasswordModal: FC<SetPasswordProps> = ({email, open, onClose}): ReactEl
                     <TwitterIcon/>
                 </div>
                 <Typography variant={"h3"} component={"div"}>
-                    You'll need a password
+                    Bạn cần mật khẩu
                 </Typography>
                 <Typography variant={"subtitle1"} component={"div"}>
-                    Make sure it’s 8 characters or more.
+                    Đảm bảo có ít nhất 8 ký tự.
                 </Typography>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div style={{marginTop: 10}}>

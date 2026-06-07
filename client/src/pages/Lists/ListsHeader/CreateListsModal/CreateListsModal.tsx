@@ -28,7 +28,7 @@ interface CreateListsModalFormProps {
 }
 
 const CreateListsModalFormSchema = yup.object().shape({
-    name: yup.string().min(1, "List Name can’t be blank").required(),
+    name: yup.string().min(1, "Tên danh sách không được để trống").required(),
 });
 
 const CreateListsModal: FC<CreateListsModalProps> = ({visible, onClose}): ReactElement | null => {
@@ -65,7 +65,7 @@ const CreateListsModal: FC<CreateListsModalProps> = ({visible, onClose}): ReactE
             <form onSubmit={handleSubmit(onSubmit)}>
                 <DialogTitle id="form-dialog-title">
                     <CloseButton onClose={onClose}/>
-                    Create a new List
+                    Tạo danh sách mới
                     <Button
                         className={classes.button}
                         disabled={!watch("name")}
@@ -107,7 +107,7 @@ const CreateListsModal: FC<CreateListsModalProps> = ({visible, onClose}): ReactE
                             defaultValue=""
                             render={({field: {onChange, value}}) => (
                                 <CreateListsModalInput
-                                    label={"Description"}
+                                    label={"Mô tả"}
                                     name={"description"}
                                     onChange={onChange}
                                     value={value}
@@ -118,7 +118,7 @@ const CreateListsModal: FC<CreateListsModalProps> = ({visible, onClose}): ReactE
                         <div className={classes.footer}>
                             <div className={classes.footerWrapper}>
                                 <Typography variant={"body1"} component={"div"}>
-                                    Make private
+                                    Đặt riêng tư
                                 </Typography>
                                 <Controller
                                     name="isPrivate"
@@ -135,7 +135,7 @@ const CreateListsModal: FC<CreateListsModalProps> = ({visible, onClose}): ReactE
                                 />
                             </div>
                             <Typography variant={"subtitle2"} component={"div"}>
-                                When you make a List private, only you can see it.
+                                Khi đặt danh sách riêng tư, chỉ bạn mới xem được.
                             </Typography>
                         </div>
                     </div>

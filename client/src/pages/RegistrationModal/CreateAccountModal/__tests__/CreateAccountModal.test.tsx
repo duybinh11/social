@@ -36,7 +36,7 @@ describe("CreateAccountModal", () => {
             />, mockStore);
 
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
-        expect(wrapper.text().includes("Step 3 of 5")).toBe(true);
+        expect(wrapper.text().includes("Bước 3 / 5")).toBe(true);
         expect(wrapper.text().includes("Tạo tài khoản của bạn")).toBe(true);
         expect(wrapper.find(RegistrationInputField).at(0).prop("value")).toBe("test_username");
         expect(wrapper.find(RegistrationInputField).at(1).prop("value")).toBe("test@test.test");

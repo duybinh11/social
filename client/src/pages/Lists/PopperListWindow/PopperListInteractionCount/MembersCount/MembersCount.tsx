@@ -13,7 +13,7 @@ const MembersCount = memo((): ReactElement => {
                 {membersSize}
             </Typography>
             <Typography variant={"subtitle1"} component={"span"}>
-                {" Members"}
+                {" Thành viên"}
             </Typography>
         </>
     );

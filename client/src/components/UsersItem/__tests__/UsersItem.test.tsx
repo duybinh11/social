@@ -115,7 +115,7 @@ describe("UsersItem", () => {
             type: UserActionsType.PROCESS_USER_TO_BLOCKLIST
         });
         expect(mockDispatchFn).nthCalledWith(2, {
-            payload: `@${mockUserItem.username} has been unblocked.`,
+            payload: `@${mockUserItem.username} đã bỏ chặn.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });

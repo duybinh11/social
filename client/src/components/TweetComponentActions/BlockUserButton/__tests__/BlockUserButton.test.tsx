@@ -31,11 +31,11 @@ describe("BlockUserButton", () => {
     });
 
     it("should click unblock user", () => {
-        testClickButton(true, "#unblockIcon", "Bỏ chặn", "unblocked");
+        testClickButton(true, "#unblockIcon", "Bỏ chặn", "đã bỏ chặn");
     });
 
     it("should click block user", () => {
-        testClickButton(false, "#blockIcon", "Chặn", "blocked");
+        testClickButton(false, "#blockIcon", "Chặn", "đã chặn");
     });
 
     const testClickButton = (isUserBlocked: boolean, iconId: string, blockMessage: string, snackbarMessage: string) => {
@@ -55,7 +55,7 @@ describe("BlockUserButton", () => {
             type: UserActionsType.PROCESS_USER_TO_BLOCKLIST
         });
         expect(mockDispatchFn).nthCalledWith(2, {
-            payload: `@test_username has been ${snackbarMessage}.`,
+            payload: `@test_username ${snackbarMessage}.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     };

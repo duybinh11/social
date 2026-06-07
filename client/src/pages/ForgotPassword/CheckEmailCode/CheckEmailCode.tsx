@@ -38,19 +38,19 @@ const CheckEmailCode: FC = (): ReactElement => {
                 Kiểm tra email của bạn
             </Typography>
             <Typography variant={"body1"} component={"div"} className={classes.text}>
-                You'll receive a code to verify here so you can reset your account password.
+                Bạn sẽ nhận mã xác minh tại đây để đặt lại mật khẩu.
             </Typography>
             <form onSubmit={verifyResetCode}>
                 <ForgotPasswordTextField
                     error={error}
-                    placeholder="Enter your code"
+                    placeholder="Nhập mã của bạn"
                     variant="outlined"
                     onChange={handleChangeResetCode}
                     value={resetCode}
                 />
                 {error && (
                     <Typography component={"div"} className={classes.errorMessage}>
-                        Incorrect code. Please try again.
+                        Mã không đúng. Vui lòng thử lại.
                     </Typography>
                 )}
                 <Button
@@ -65,11 +65,10 @@ const CheckEmailCode: FC = (): ReactElement => {
             </form>
             <div>
                 <Typography variant={"body1"} component={"div"} className={classes.footerText}>
-                    If you don't see the email, check other places it might be, like your junk, spam, social,
-                    or other folders.
+                    Nếu không thấy email, hãy kiểm tra thư rác, spam hoặc thư mục khác.
                 </Typography>
                 <MuiLink href={REGAIN_ACCESS} variant="subtitle2" target="_blank" rel="noopener">
-                    Didn’t receive your code?
+                    Không nhận được mã?
                 </MuiLink>
             </div>
         </>

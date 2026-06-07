@@ -37,11 +37,10 @@ const UnfollowModal: FC<UnfollowModalProps> = (
             <DialogContent style={{padding: 0}}>
                 <div className={classes.modalWrapper}>
                     <Typography variant={"h5"} component={"div"}>
-                        Unfollow {fullName}?
+                        Bỏ theo dõi {fullName}?
                     </Typography>
                     <Typography variant={"subtitle1"} component={"div"}>
-                        {infoText ?? "Their Tweets will no longer show up in your home timeline. You can still view their" +
-                            " profile, unless their Tweets are protected."}
+                        {infoText ?? "Tweet của họ sẽ không còn hiện trên dòng thời gian. Bạn vẫn có thể xem hồ sơ, trừ khi tweet được bảo vệ."}
                     </Typography>
                     <div className={classes.modalButtonWrapper}>
                         <Button

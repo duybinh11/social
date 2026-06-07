@@ -11,7 +11,7 @@ describe("PollSelect", () => {
         const wrapper = mountWithStore(
             <PollSelect
                 id={"day"}
-                title={"Days"}
+                title={"Ngày"}
                 value={1}
                 onChange={mockOnChange}
                 showOptions={mockShowOptions}

@@ -30,16 +30,16 @@ const ResetPasswordOption: FC = (): ReactElement => {
     return (
         <>
             <Typography variant={"h3"} component={"div"}>
-                How do you want to reset your password?
+                Bạn muốn đặt lại mật khẩu bằng cách nào?
             </Typography>
             <Typography variant={"body1"} component={"div"} className={classes.text}>
-                You can use the information associated with your account.
+                Bạn có thể dùng thông tin liên kết với tài khoản.
             </Typography>
             <form className={classes.formWrapper} onSubmit={sendResetCode}>
                 <div className={classes.emailWrapper}>
                     <Radio className={classes.radio} checked color="primary"/>
                     <Typography variant={"body1"} component={"span"}>
-                        {"Send an email to "}
+                        {"Gửi email đến "}
                     </Typography>
                     <Typography variant={"h6"} component={"span"}>
                         {location.state.email}
@@ -57,7 +57,7 @@ const ResetPasswordOption: FC = (): ReactElement => {
                 </Button>
             </form>
             <MuiLink href={REGAIN_ACCESS} variant="subtitle2" target="_blank" rel="noopener">
-                Don’t have access to these?
+                Không truy cập được?
             </MuiLink>
         </>
     );

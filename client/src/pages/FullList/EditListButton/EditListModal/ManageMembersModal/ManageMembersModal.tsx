@@ -83,7 +83,7 @@ const ManageMembersModal = (): ReactElement => {
                 variant={"body1"}
                 component={"div"}
             >
-                Manage members
+                Quản lý thành viên
                 <>{ForwardArrowIcon}</>
             </Typography>
             <Dialog
@@ -96,13 +96,13 @@ const ManageMembersModal = (): ReactElement => {
                     <IconButton onClick={onCloseManageMembersModal} color="primary" size="small">
                         <>{ArrowIcon}</>
                     </IconButton>
-                    Manage members
+                    Quản lý thành viên
                 </DialogTitle>
                 <DialogContent className={classes.content}>
                     <div className={classes.tabs}>
                         <Tabs value={activeTab} indicatorColor="primary" textColor="primary" onChange={handleChangeTab}>
-                            <Tab className={classes.tab} label={`Members (${list?.membersSize})`}/>
-                            <Tab className={classes.tab} label="Suggested"/>
+                            <Tab className={classes.tab} label={`Thành viên (${list?.membersSize})`}/>
+                            <Tab className={classes.tab} label="Gợi ý"/>
                         </Tabs>
                     </div>
                     {(activeTab === 0) ? (
@@ -120,8 +120,8 @@ const ManageMembersModal = (): ReactElement => {
                                 ))
                             ) : (
                                 <EmptyPageDescription
-                                    title={"There isn’t anyone in this List"}
-                                    subtitle={"When people get added, they’ll show up here."}
+                                    title={"Chưa có ai trong danh sách này"}
+                                    subtitle={"Khi có người được thêm, họ sẽ hiện ở đây."}
                                 />
                             )
                         )
@@ -153,8 +153,8 @@ const ManageMembersModal = (): ReactElement => {
                                 ))
                             ) : (
                                 <EmptyPageDescription
-                                    title={"There aren’t any suggested members"}
-                                    subtitle={"To see suggestions to add to this List, try searching for accounts."}
+                                    title={"Chưa có thành viên gợi ý"}
+                                    subtitle={"Để xem gợi ý thêm vào danh sách, hãy thử tìm tài khoản."}
                                 />
                             )}
                         </div>

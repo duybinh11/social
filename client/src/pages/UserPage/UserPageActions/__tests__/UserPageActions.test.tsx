@@ -22,9 +22,9 @@ describe("UserPageActions", () => {
     it("should click and open User Page Actions", () => {
         const {wrapper} = createWrapper();
         expect(wrapper.text().includes(`Add/remove @${mockUserProfile.username} from Lists`)).toBe(true);
-        expect(wrapper.text().includes("View Moments")).toBe(true);
-        expect(wrapper.text().includes("Share profile via...")).toBe(true);
-        expect(wrapper.text().includes("Copy link to profile")).toBe(true);
+        expect(wrapper.text().includes("Xem Moments")).toBe(true);
+        expect(wrapper.text().includes("Chia sẻ hồ sơ qua...")).toBe(true);
+        expect(wrapper.text().includes("Sao chép liên kết hồ sơ")).toBe(true);
         expect(wrapper.text().includes(`Mute @${mockUserProfile.username}`)).toBe(true);
         expect(wrapper.text().includes(`Block @${mockUserProfile.username}`)).toBe(true);
         expect(wrapper.text().includes(`Report @${mockUserProfile.username}`)).toBe(true);
@@ -43,7 +43,7 @@ describe("UserPageActions", () => {
         const {wrapper} = createWrapper();
         wrapper.find("#copyLinkToProfile").at(0).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {
-            payload: "Copied to clipboard",
+            payload: "Đã sao chép vào bộ nhớ tạm",
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });

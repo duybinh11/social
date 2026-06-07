@@ -34,7 +34,7 @@ describe("TweetComponent", () => {
     it("should render retweeted by My profile", () => {
         const {wrapper} = createTweetComponentWrapper();
         expect(wrapper.find(TweetActionResult).exists()).toBeTruthy();
-        expect(wrapper.find(TweetActionResult).at(0).prop("text")).toBe("You Retweeted");
+        expect(wrapper.find(TweetActionResult).at(0).prop("text")).toBe("Bạn đã đăng lại");
         expect(wrapper.find(TweetActionResult).at(0).prop("action")).toBe(TweetActionResults.RETWEET);
     });
 
@@ -50,7 +50,7 @@ describe("TweetComponent", () => {
         const mockState = {...mockRootState, userProfile: {...mockRootState.userProfile, user: mockUserProfile}}
         const {wrapper} = createTweetComponentWrapper(mockState);
         expect(wrapper.find(TweetActionResult).exists()).toBeTruthy();
-        expect(wrapper.find(TweetActionResult).at(0).prop("text")).toBe(`${mockUserProfile.fullName} Retweeted`);
+        expect(wrapper.find(TweetActionResult).at(0).prop("text")).toBe(`${mockUserProfile.fullName} đã đăng lại`);
         expect(wrapper.find(TweetActionResult).at(0).prop("action")).toBe(TweetActionResults.RETWEET);
     });
 
@@ -135,7 +135,7 @@ describe("TweetComponent", () => {
         };
         const {wrapper} = createTweetComponentWrapper(mockRootState, mockTweet);
         expect(wrapper.find("#followReplyIcon").exists()).toBeTruthy();
-        expect(wrapper.text().includes("You can reply to this conversation")).toBe(true);
+        expect(wrapper.text().includes("Bạn có thể trả lời cuộc trò chuyện này")).toBe(true);
     });
 
     it("should render empty Follow Reply", () => {
@@ -271,7 +271,7 @@ describe("TweetComponent", () => {
     });
 
     it("should hover and leave unlike IconButton", () => {
-        testHoverIconButton(3, "Unlike");
+        testHoverIconButton(3, "Bỏ thích");
     });
 
     it("should change tweet styles", () => {

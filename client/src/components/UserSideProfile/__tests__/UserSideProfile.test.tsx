@@ -24,14 +24,14 @@ describe("UserSideProfile", () => {
         expect(wrapper.find(Avatar).at(0).prop("src")).toBe(mockUser.avatar.src);
         expect(wrapper.text().includes(mockUser.fullName)).toBe(true);
         expect(wrapper.text().includes(`@${mockUser.username}`)).toBe(true);
-        expect(wrapper.text().includes("Add an existing account")).toBe(true);
+        expect(wrapper.text().includes("Thêm tài khoản hiện có")).toBe(true);
         expect(wrapper.text().includes(`Log out @${mockUser.username}`)).toBe(true);
     });
 
     it("should click handleClosePopup", () => {
         const wrapper = mountWithStore(<UserSideProfile/>, mockRootState);
         wrapper.find("div").at(0).simulate("click");
-        expect(wrapper.text().includes("Add an existing account")).toBe(true);
+        expect(wrapper.text().includes("Thêm tài khoản hiện có")).toBe(true);
         expect(wrapper.text().includes(`Log out @${mockUser.username}`)).toBe(true);
         // @ts-ignore
         wrapper.find(Popover).prop("onClose")(jest.fn());

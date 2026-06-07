@@ -13,26 +13,26 @@ describe("Bình chọn", () => {
     it("should render correctly and click Add Poll Choice Button", () => {
         const {wrapper} = createPollWrapper();
 
-        expect(wrapper.find(PollInput).at(0).prop("label")).toBe("Choice 1");
-        expect(wrapper.find(PollInput).at(1).prop("label")).toBe("Choice 2");
+        expect(wrapper.find(PollInput).at(0).prop("label")).toBe("Lựa chọn 1");
+        expect(wrapper.find(PollInput).at(1).prop("label")).toBe("Lựa chọn 2");
         expect(wrapper.find(PollInput).at(2).exists()).toBeFalsy();
         expect(wrapper.find(PollInput).at(3).exists()).toBeFalsy();
 
         wrapper.find("#addPollChoiceButton").at(0).find(IconButton).simulate("click");
 
-        expect(wrapper.find(PollInput).at(2).prop("label")).toBe("Choice 3 (optional)");
+        expect(wrapper.find(PollInput).at(2).prop("label")).toBe("Lựa chọn 3 (tùy chọn)");
         expect(wrapper.find(PollInput).at(3).exists()).toBeFalsy();
 
         wrapper.find("#addPollChoiceButton").at(0).find(IconButton).simulate("click");
 
-        expect(wrapper.find(PollInput).at(2).prop("label")).toBe("Choice 3 (optional)");
-        expect(wrapper.find(PollInput).at(3).prop("label")).toBe("Choice 4 (optional)");
+        expect(wrapper.find(PollInput).at(2).prop("label")).toBe("Lựa chọn 3 (tùy chọn)");
+        expect(wrapper.find(PollInput).at(3).prop("label")).toBe("Lựa chọn 4 (tùy chọn)");
         expect(wrapper.find("#addPollChoiceButton").exists()).toBeFalsy();
-        expect(wrapper.text().includes("Poll length")).toBe(true);
-        expect(wrapper.text().includes("Days")).toBe(true);
-        expect(wrapper.text().includes("Hours")).toBe(true);
-        expect(wrapper.text().includes("Minutes")).toBe(true);
-        expect(wrapper.text().includes("Remove poll")).toBe(true);
+        expect(wrapper.text().includes("Thời lượng bình chọn")).toBe(true);
+        expect(wrapper.text().includes("Ngày")).toBe(true);
+        expect(wrapper.text().includes("Giờ")).toBe(true);
+        expect(wrapper.text().includes("Phút")).toBe(true);
+        expect(wrapper.text().includes("Xóa bình chọn")).toBe(true);
     });
 
     it("should change poll input and select date", () => {

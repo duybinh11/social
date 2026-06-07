@@ -37,7 +37,7 @@ const LogoutModal = (): ReactElement => {
         <>
             <ListItem id={"onOpenLogoutModal"} onClick={onOpenLogoutModal}>
                 <Typography variant="body1" component="div">
-                    Log out @{username}
+                    Đăng xuất @{username}
                 </Typography>
             </ListItem>
             <Dialog open={visibleLogoutModal} onClose={onCloseLogoutModal}>
@@ -45,11 +45,10 @@ const LogoutModal = (): ReactElement => {
                     <div className={classes.modalWrapper}>
                         <TwitterIcon/>
                         <Typography variant={"h5"} component={"div"}>
-                            Log out of Twitter?
+                            Đăng xuất khỏi Twitter?
                         </Typography>
                         <Typography variant={"subtitle1"} component={"div"}>
-                            You can always log back in at any time. If you just want to switch accounts,
-                            you can do that by adding an existing account.
+                            Bạn có thể đăng nhập lại bất cứ lúc nào. Nếu chỉ muốn đổi tài khoản, hãy thêm tài khoản hiện có.
                         </Typography>
                         <div className={classes.modalButtonWrapper}>
                             <Button

@@ -107,7 +107,7 @@ public class ListsServiceImpl implements ListsService {
             imageRepository.delete(list.getWallpaper());
         }
         listsRepository.delete(list);
-        return "List id:" + list.getId() + " deleted.";
+        return "Danh sách id:" + list.getId() + " đã bị xóa.";
     }
 
     @Override
@@ -168,7 +168,7 @@ public class ListsServiceImpl implements ListsService {
                 list.getMembers().remove(user);
             }
         });
-        return "User added to lists success.";
+        return "Đã thêm người dùng vào danh sách thành công.";
     }
 
     @Override
@@ -287,7 +287,7 @@ public class ListsServiceImpl implements ListsService {
         boolean isPresent = userRepository.isUserBlocked(userId, supposedBlockedUserId);
 
         if (isPresent) {
-            throw new ApiRequestException("User with ID:" + supposedBlockedUserId + " is blocked", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Người dùng có ID:" + supposedBlockedUserId + " đã bị chặn", HttpStatus.BAD_REQUEST);
         }
     }
 

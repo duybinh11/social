@@ -12,15 +12,14 @@ const ResetPasswordSuccess: FC = (): ReactElement => {
     return (
         <>
             <Typography variant={"h3"} component={"div"}>
-                You’re all set. You've successfully changed your password.
+                Xong rồi. Bạn đã đổi mật khẩu thành công.
             </Typography>
             <div className={classes.infoWrapper}>
                 <MuiLink href={DEVELOPER_ACCOUNT} variant="body1" target="_blank" rel="noopener">
-                    Review your applications
+                    Xem lại ứng dụng
                 </MuiLink>
                 <Typography variant={"body1"} component={"div"}>
-                    Take a moment to review the applications that have access to your account. Revoke those you don't
-                    recognize or no longer use.
+                    Hãy xem lại các ứng dụng có quyền truy cập tài khoản. Thu hồi quyền với ứng dụng không quen hoặc không còn dùng.
                 </Typography>
             </div>
             <div className={classes.infoWrapper}>
@@ -28,12 +27,12 @@ const ResetPasswordSuccess: FC = (): ReactElement => {
                     Thêm số điện thoại vào tài khoản
                 </MuiLink>
                 <Typography variant={"body1"} component={"div"}>
-                    This makes it easy to get back into your account if you're ever locked out.
+                    Điều này giúp bạn dễ dàng lấy lại tài khoản nếu bị khóa.
                 </Typography>
             </div>
             <div className={classes.footer}>
                 <MuiLink variant="subtitle2" to={ACCOUNT_LOGIN} component={Link}>
-                    Continue to Twitter
+                    Tiếp tục vào Twitter
                 </MuiLink>
             </div>
         </>

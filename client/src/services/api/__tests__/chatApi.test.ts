@@ -125,7 +125,7 @@ describe("ChatApi", () => {
         const mockURL = `${API_CHAT_LEAVE}/1/1`;
 
         it("[200] should leave from conversation Success", () => {
-            const mockResponse = "Successfully left the chat";
+            const mockResponse = "Đã rời cuộc trò chuyện thành công";
             testApiCall(mockAdapter, "onGet", mockURL, 200, mockResponse, ChatApi.leaveFromConversation, mockRequest);
         });
 

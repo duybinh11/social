@@ -25,10 +25,10 @@ const UserNotFound: FC = (): ReactElement => {
             </div>
             <div className={classes.info}>
                 <Typography variant={"h4"} component={"div"}>
-                    This account doesn’t exist
+                    Tài khoản này không tồn tại
                 </Typography>
                 <Typography variant={"subtitle1"} component={"div"}>
-                    Try searching for another.
+                    Hãy thử tìm tài khoản khác.
                 </Typography>
             </div>
         </Paper>

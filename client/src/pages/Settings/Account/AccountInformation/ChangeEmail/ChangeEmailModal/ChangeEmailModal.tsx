@@ -27,7 +27,7 @@ interface EmailFormProps {
 }
 
 const SetEmailFormSchema = yup.object().shape({
-    email: yup.string().email("Invalid mail").required("Vui lòng nhập địa chỉ email hợp lệ."),
+    email: yup.string().email("Email không hợp lệ").required("Vui lòng nhập địa chỉ email hợp lệ."),
 });
 
 const ChangeEmailModal: FC<ChangeEmailModalProps> = ({visible, onClose}): ReactElement | null => {
@@ -60,8 +60,7 @@ const ChangeEmailModal: FC<ChangeEmailModalProps> = ({visible, onClose}): ReactE
                         Đổi email
                     </Typography>
                     <Typography variant={"subtitle1"} component={"div"}>
-                        {`Your current email is ${myProfileEmail}. What would you like to update it to? Your email
-                        is not displayed in your public profile on Twitter.`}
+                        {`Email hiện tại là ${myProfileEmail}. Bạn muốn đổi thành gì? Email không hiển thị trên hồ sơ công khai Twitter.`}
                     </Typography>
                 </div>
                 <form onSubmit={(!getValues("email") || errors.email) ? onClose : handleSubmit(onSubmit)}>
@@ -74,7 +73,7 @@ const ChangeEmailModal: FC<ChangeEmailModalProps> = ({visible, onClose}): ReactE
                                 inputMode="email"
                                 id="email"
                                 name="email"
-                                label="Your email"
+                                label="Email của bạn"
                                 variant="filled"
                                 onChange={onChange}
                                 value={value}
@@ -87,7 +86,7 @@ const ChangeEmailModal: FC<ChangeEmailModalProps> = ({visible, onClose}): ReactE
                     />
                     <div className={classes.infoWrapper}>
                         <Typography variant={"body1"} component={"span"}>
-                            {"Let people who have your email address find and connect with you on Twitter. "}
+                            {"Cho phép người có email của bạn tìm và kết nối với bạn trên Twitter. "}
                             <MuiLink href={EMAIL_AND_PHONE_DISCOVERABILITY_SETTINGS} variant="body1" target="_blank" rel="noopener">
                                 Tìm hiểu thêm
                             </MuiLink>

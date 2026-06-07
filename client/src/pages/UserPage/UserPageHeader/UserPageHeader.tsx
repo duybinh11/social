@@ -30,7 +30,7 @@ const UserPageHeader: FC<UserPageHeaderProps> = memo(({activeTab}): ReactElement
     const showTweetCount = (): string => {
         if (userProfileId) {
             if (activeTab === 2) {
-                return `${mediaTweetCount} ${(mediaTweetCount === 1) ? "Photo" : "Photos"}`;
+                return `${mediaTweetCount} ${(mediaTweetCount === 1) ? "Ảnh" : "Ảnh"}`;
             } else if (activeTab === 3) {
                 return `${likeCount} ${(likeCount === 1) ? "Thích" : "Lượt thích"}`;
             } else {

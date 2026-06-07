@@ -28,8 +28,8 @@ describe("SetPasswordModal", () => {
             />, mockStore, history);
 
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
-        expect(wrapper.text().includes("You'll need a password")).toBe(true);
-        expect(wrapper.text().includes("Make sure it’s 8 characters or more.")).toBe(true);
+        expect(wrapper.text().includes("Bạn cần mật khẩu")).toBe(true);
+        expect(wrapper.text().includes("Đảm bảo có ít nhất 8 ký tự.")).toBe(true);
         expect(wrapper.find(Button).text().includes("Tiếp")).toBe(true);
         
         wrapper.find(RegistrationInputField).find("input").simulate("change", {target: {value: "test_password"}});

@@ -52,7 +52,7 @@ const FollowerRequestsItem: FC<FollowerRequestsItemProps> = memo(({user, onClose
                             size="small"
                             fullWidth
                         >
-                            Decline
+                            Từ chối
                         </Button>
                     </div>
                     <div className={classNames(classes.buttonItemWrapper, classes.acceptButton)}>
@@ -63,7 +63,7 @@ const FollowerRequestsItem: FC<FollowerRequestsItemProps> = memo(({user, onClose
                             size="small"
                             fullWidth
                         >
-                            Accept
+                            Chấp nhận
                         </Button>
                     </div>
                 </div>

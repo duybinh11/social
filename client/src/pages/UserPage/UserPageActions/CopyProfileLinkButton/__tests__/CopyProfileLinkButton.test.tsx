@@ -16,9 +16,9 @@ describe("CopyProfileLinkButton", () => {
     it("should copy Link To Profile", () => {
         const wrapper = mountWithStore(<CopyProfileLinkButton onCloseUserPageActions={jest.fn()}/>, mockRootState);
         wrapper.find("#copyLinkToProfile").at(0).simulate("click");
-        expect(wrapper.text().includes("Copy link to profile")).toBe(true);
+        expect(wrapper.text().includes("Sao chép liên kết hồ sơ")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
-            payload: "Copied to clipboard",
+            payload: "Đã sao chép vào bộ nhớ tạm",
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });

@@ -79,7 +79,7 @@ const FollowingFollowers: FC = (): ReactElement => {
     };
 
     const fetchUsers = (activeTabIndex: number): void => {
-        document.title = `People ${activeTabIndex ? "following" : "followed"} by ${fullName} (@${username}) / Twitter`;
+        document.title = `${activeTabIndex ? "Đang theo dõi" : "Người theo dõi"} của ${fullName} (@${username}) / Twitter`;
         setActiveTab(activeTabIndex);
         const user = {userId: params.id, page: 0};
         dispatch(resetUsersState());

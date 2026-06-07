@@ -25,8 +25,8 @@ interface RegistrationFormProps {
 }
 
 const RegistrationFormSchema = yup.object().shape({
-    username: yup.string().min(1, "What is your name?").required(),
-    email: yup.string().email("Invalid mail").required("Vui lòng nhập địa chỉ email hợp lệ."),
+    username: yup.string().min(1, "Tên của bạn là gì?").required(),
+    email: yup.string().email("Email không hợp lệ").required("Vui lòng nhập địa chỉ email hợp lệ."),
 });
 
 const RegistrationModal: FC<RegistrationModalProps> = (
@@ -154,11 +154,10 @@ const RegistrationModal: FC<RegistrationModalProps> = (
                         </MuiLink>
                         <div className={classes.footer}>
                             <Typography variant={"h6"} component={"div"}>
-                                Date of birth
+                                Ngày sinh
                             </Typography>
                             <Typography variant={"subtitle1"} component={"div"}>
-                                This will not be shown publicly. Confirm your own age, even if this account is for a
-                                business, a pet, or something else.
+                                Thông tin này sẽ không hiển thị công khai. Xác nhận tuổi của bạn, kể cả khi tài khoản dùng cho doanh nghiệp, thú cưng hay mục đích khác.
                             </Typography>
                             <FormControl variant="filled" className={classes.formControl}>
                                 <InputLabel htmlFor="select-month">

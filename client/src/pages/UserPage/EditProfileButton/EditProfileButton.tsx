@@ -48,7 +48,7 @@ const EditProfileButton = memo((): ReactElement => {
                 variant="outlined"
                 size="large"
             >
-                {myProfileCustomized ? "Edit profile" : "Setup profile"}
+                {myProfileCustomized ? "Sửa hồ sơ" : "Thiết lập hồ sơ"}
             </Button>
             <EditProfileModal visible={visibleEditProfile} onClose={onCloseEditProfile}/>
             <SetupProfileModal visible={visibleSetupProfile} onClose={onCloseSetupProfile}/>

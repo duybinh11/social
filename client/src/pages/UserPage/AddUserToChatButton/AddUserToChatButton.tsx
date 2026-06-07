@@ -22,7 +22,7 @@ const AddUserToChatButton = memo((): ReactElement => {
 
     return (
         <span className={globalClasses.userPageIconButton}>
-            <ActionIconButton actionText={"Message"} icon={MessagesIcon} onClick={handleClickAddUserToChat}/>
+            <ActionIconButton actionText={"Tin nhắn"} icon={MessagesIcon} onClick={handleClickAddUserToChat}/>
         </span>
     );
 });

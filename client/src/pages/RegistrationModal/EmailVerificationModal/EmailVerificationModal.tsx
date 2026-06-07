@@ -43,7 +43,7 @@ const EmailVerificationModal: FC<CustomizeModalProps> = ({email, open, onClose, 
                     Chúng tôi đã gửi mã cho bạn
                 </Typography>
                 <Typography variant={"subtitle1"} component={"div"}>
-                    {`Enter it below to verify ${email}.`}
+                    {`Nhập mã bên dưới để xác minh ${email}.`}
                 </Typography>
                 <div style={{marginTop: 10}}>
                     <RegistrationInputField
@@ -57,7 +57,7 @@ const EmailVerificationModal: FC<CustomizeModalProps> = ({email, open, onClose, 
                     />
                 </div>
                 <MuiLink variant="subtitle2" href="#" className={classes.emailLinkWrapper}>
-                    Didn't receive email?
+                    Không nhận được email?
                 </MuiLink>
                 <div className={classes.buttonWrapper}>
                     <Button

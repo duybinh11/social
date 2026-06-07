@@ -32,7 +32,7 @@ const AddReplyToTweet = memo((): ReactElement => {
             ) ? (
                 <>
                     <Typography variant={"subtitle1"} className={classes.replyWrapper}>
-                        {"Replying to "}
+                        {"Trả lời cho "}
                         <Link to={`${PROFILE}/${tweetUserId}`}>
                             @{tweetUserUsername}
                         </Link>

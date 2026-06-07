@@ -22,7 +22,7 @@ describe("UserTweets", () => {
     });
 
     it("should click tweet Tab and fetch user tweets", () => {
-        testClickTab(1, "Tweets & replies", UserTweetsActionType.FETCH_RETWEETS_AND_REPLIES);
+        testClickTab(1, "Tweet & trả lời", UserTweetsActionType.FETCH_RETWEETS_AND_REPLIES);
     });
 
     it("should click tweet Tab and fetch user tweets", () => {

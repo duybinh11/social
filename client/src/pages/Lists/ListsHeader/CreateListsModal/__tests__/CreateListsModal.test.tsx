@@ -26,10 +26,10 @@ describe("CreateListsModal", () => {
         const wrapper = mountWithStore(<CreateListsModal visible={true} onClose={jest.fn()}/>, mockStore);
 
         expect(wrapper.find(Dialog).exists()).toBeTruthy();
-        expect(wrapper.text().includes("Create a new List")).toBe(true);
+        expect(wrapper.text().includes("Tạo danh sách mới")).toBe(true);
         expect(wrapper.find(Button).at(0).text().includes("Tiếp")).toBe(true);
-        expect(wrapper.text().includes("Make private")).toBe(true);
-        expect(wrapper.text().includes("When you make a List private, only you can see it.")).toBe(true);
+        expect(wrapper.text().includes("Đặt riêng tư")).toBe(true);
+        expect(wrapper.text().includes("Khi đặt danh sách riêng tư, chỉ bạn mới xem được.")).toBe(true);
     });
     
     it("should submit create list form", (done) => {

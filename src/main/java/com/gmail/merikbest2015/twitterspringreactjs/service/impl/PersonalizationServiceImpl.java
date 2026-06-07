@@ -113,7 +113,7 @@ public class PersonalizationServiceImpl implements PersonalizationService {
     @Transactional
     public void indexTweetEmbedding(Long tweetId) {
         Tweet tweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Tweet not found for embedding"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Không tìm thấy tweet để tạo embedding"));
         double[] vector = buildEmbedding(tweet.getText());
         String serialized = serializeVector(vector);
         TweetEmbedding embedding = tweetEmbeddingRepository.findByTweet_Id(tweetId).orElseGet(TweetEmbedding::new);
@@ -128,7 +128,7 @@ public class PersonalizationServiceImpl implements PersonalizationService {
     public void trackInteraction(Long tweetId, InteractionType interactionType, Integer dwellSeconds) {
         User user = authenticationService.getAuthenticatedUser();
         Tweet tweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Tweet not found for event"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Không tìm thấy tweet cho sự kiện"));
         UserInteractionEvent event = new UserInteractionEvent();
         event.setUser(user);
         event.setTweet(tweet);

@@ -13,7 +13,7 @@ describe("ConnectToUsers", () => {
     it("should render loading spinner", () => {
         const wrapper = mountWithStore(
             <ConnectToUsers 
-                title={"Followers you know"} 
+                title={"Người theo dõi bạn quen"} 
                 isUsersLoading={true} 
                 users={[]}
             />, mockRootState);
@@ -24,13 +24,13 @@ describe("ConnectToUsers", () => {
     it("should render UsersItem list", () => {
         const wrapper = mountWithStore(
             <ConnectToUsers
-                title={"Followers you know"}
+                title={"Người theo dõi bạn quen"}
                 isUsersLoading={true}
                 users={mockUsers}
             />, mockRootState);
 
         expect(wrapper.find(Spinner).exists()).toBe(true);
-        expect(wrapper.text().includes("Followers you know")).toBe(true);
+        expect(wrapper.text().includes("Người theo dõi bạn quen")).toBe(true);
         expect(wrapper.find(UsersItem).length).toEqual(2);
     });
 });

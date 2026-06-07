@@ -33,8 +33,8 @@ describe("ProfileDescriptionModal", () => {
             />, mockRootState);
 
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
-        expect(wrapper.text().includes("Describe yourself")).toBe(true);
-        expect(wrapper.text().includes("What makes you special? Don't think too hard, just have fun with it.")).toBe(true);
+        expect(wrapper.text().includes("Mô tả bản thân")).toBe(true);
+        expect(wrapper.text().includes("Điều gì làm bạn đặc biệt? Đừng suy nghĩ quá, hãy thoải mái.")).toBe(true);
         expect(wrapper.find(Button).text().includes("Bỏ qua")).toBe(true);
     });
 

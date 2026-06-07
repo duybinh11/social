@@ -19,7 +19,7 @@ describe("ChangeEmail", () => {
         const wrapper = mountWithStore(<ChangeEmail/>, mockStore);
         
         expect(wrapper.find(ChangeInfoTextField).prop("value")).toBe(mockStore.user.data?.email);
-        expect(wrapper.text().includes("Update email address")).toBe(true);
+        expect(wrapper.text().includes("Cập nhật địa chỉ email")).toBe(true);
     });
 
     it("should open and close ChangeEmailModal", () => {

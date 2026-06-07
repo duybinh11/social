@@ -17,7 +17,7 @@ const AddReplyToTweet = (): ReactElement => {
     return (
         <>
             <Typography variant={"subtitle1"} component={"div"} className={classes.replyWrapper}>
-                {"Replying to "}
+                {"Trả lời cho "}
                 <Link to={`${PROFILE}/${tweetUserId}`}>
                     @{username}
                 </Link>

@@ -98,9 +98,9 @@ describe("FollowingFollowers", () => {
         expect(global.window.document.title).toBe(documentTitleText("followed", mockMyProfile?.fullName, mockMyProfile?.username));
         expect(wrapper.text().includes(mockMyProfile.fullName)).toBe(true);
         expect(wrapper.text().includes(`@${mockMyProfile.username}`)).toBe(true);
-        expect(wrapper.text().includes("You aren’t following anyone yet")).toBe(true);
-        expect(wrapper.text().includes("When you do, they’ll be listed here and you’ll see their Tweets in your timeline.")).toBe(true);
-        expect(wrapper.find(Button).at(0).text()).toEqual("Find people to follow");
+        expect(wrapper.text().includes("Bạn chưa theo dõi ai")).toBe(true);
+        expect(wrapper.text().includes("Khi bạn theo dõi, họ sẽ hiện ở đây và tweet của họ sẽ xuất hiện trên dòng thời gian.")).toBe(true);
+        expect(wrapper.find(Button).at(0).text()).toEqual("Tìm người để theo dõi");
         expect(wrapper.find(UsersItem).length).toEqual(0);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: parseInt(mockMyProfileId),
@@ -122,8 +122,8 @@ describe("FollowingFollowers", () => {
         expect(global.window.document.title).toBe(documentTitleText("following", mockMyProfile?.fullName, mockMyProfile?.username));
         expect(wrapper.text().includes(mockMyProfile.fullName)).toBe(true);
         expect(wrapper.text().includes(`@${mockMyProfile.username}`)).toBe(true);
-        expect(wrapper.text().includes("You don’t have any followers yet")).toBe(true);
-        expect(wrapper.text().includes("When someone follows you, you’ll see them here.")).toBe(true);
+        expect(wrapper.text().includes("Bạn chưa có người theo dõi")).toBe(true);
+        expect(wrapper.text().includes("Khi ai đó theo dõi bạn, bạn sẽ thấy họ ở đây.")).toBe(true);
         expect(wrapper.find(UsersItem).length).toEqual(0);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: parseInt(mockMyProfileId),
@@ -216,7 +216,7 @@ describe("FollowingFollowers", () => {
         expect(wrapper.text().includes(mockUserProfile.fullName)).toBe(true);
         expect(wrapper.text().includes(`@${mockUserProfile.username}`)).toBe(true);
         expect(wrapper.text().includes(`@${mockUserProfile.username} isn’t following anyone`)).toBe(true);
-        expect(wrapper.text().includes("When they do, they’ll be listed here.")).toBe(true);
+        expect(wrapper.text().includes("Khi họ theo dõi, họ sẽ hiện ở đây.")).toBe(true);
         expect(wrapper.find(UsersItem).length).toEqual(0);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: parseInt(mockUserProfileId),
@@ -239,7 +239,7 @@ describe("FollowingFollowers", () => {
         expect(wrapper.text().includes(mockUserProfile.fullName)).toBe(true);
         expect(wrapper.text().includes(`@${mockUserProfile.username}`)).toBe(true);
         expect(wrapper.text().includes(`@${mockUserProfile.username} doesn’t have any followers`)).toBe(true);
-        expect(wrapper.text().includes("When someone follows them, they’ll be listed here.")).toBe(true);
+        expect(wrapper.text().includes("Khi ai đó theo dõi họ, họ sẽ hiện ở đây.")).toBe(true);
         expect(wrapper.find(UsersItem).length).toEqual(0);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: parseInt(mockUserProfileId),

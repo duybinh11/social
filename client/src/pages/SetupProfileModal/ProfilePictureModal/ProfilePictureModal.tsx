@@ -33,10 +33,10 @@ const ProfilePictureModal: FC<ProfilePictureModalProps> = (
                     <TwitterIcon/>
                 </div>
                 <Typography variant={"h3"} component={"div"} className={classes.title}>
-                    Pick a profile picture
+                    Chọn ảnh đại diện
                 </Typography>
                 <Typography variant={"subtitle1"} component={"div"}>
-                    Have a favorite selfie? Upload it now.
+                    Có ảnh selfie yêu thích? Tải lên ngay.
                 </Typography>
                 <div className={classes.avatarWrapper}>
                     <UploadProfileImage

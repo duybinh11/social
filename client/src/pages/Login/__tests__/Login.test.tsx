@@ -50,7 +50,7 @@ describe("Đăng nhập", () => {
         const wrapper = mountWithStore(<Login/>, createMockRootState(LoadingStatus.ERROR));
 
         expect(wrapper.text().includes("The username and password you entered did not match our records. " +
-            "Please double-check and try again.")).toBe(true);
+            "Vui lòng kiểm tra lại.")).toBe(true);
     });
 
     it("should component unmount", () => {

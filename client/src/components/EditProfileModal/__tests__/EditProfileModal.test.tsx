@@ -23,7 +23,7 @@ describe("EditProfileModal", () => {
     it("should render correctly Edit Profile Modal", () => {
         const wrapper = mountWithStore(<EditProfileModal visible={true} onClose={jest.fn()}/>, mockRootState);
         
-        expect(wrapper.text().includes("Edit Profile")).toBe(true);
+        expect(wrapper.text().includes("Sửa hồ sơ")).toBe(true);
         expect(wrapper.find("img").at(0).prop("src")).toBe(mockUser.wallpaper.src);
         expect(wrapper.find(Avatar).prop("src")).toBe(mockUser.avatar.src);
         expect(wrapper.find(TweeterInput).at(0).prop("value")).toBe(mockUser.username);

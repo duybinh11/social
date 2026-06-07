@@ -27,10 +27,10 @@ const TweetReplyInfo = (): ReactElement => {
                         </div>
                         <div className={classes.replyTextInfoWrapper}>
                             <Typography variant={"h6"} component={"div"}>
-                                Who can reply?
+                                Ai có thể trả lời?
                             </Typography>
                             <Typography variant={"body1"} component={"div"}>
-                                People @{tweetUserFullName} follows can reply
+                                Người @{tweetUserFullName} theo dõi có thể trả lời
                             </Typography>
                         </div>
                     </div>

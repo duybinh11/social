@@ -55,7 +55,7 @@ const UsersListModal: FC<UsersListModalProps> = (
 
     useEffect(() => {
         if (visible) {
-            setTitle(isLiked ? "Liked by" : "Retweeted by");
+            setTitle(isLiked ? "Được thích bởi" : "Được đăng lại bởi");
             loadUsers(0);
         }
     }, [visible]);

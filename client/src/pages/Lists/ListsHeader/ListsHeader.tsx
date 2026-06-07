@@ -37,7 +37,7 @@ const ListsHeader = (): ReactElement => {
                 </div>
             )}
             <div className={classes.iconGroup}>
-                <ActionIconButton onClick={onOpenCreateListModal} actionText={"Create"} icon={AddListsIcon}/>
+                <ActionIconButton onClick={onOpenCreateListModal} actionText={"Tạo"} icon={AddListsIcon}/>
             </div>
             <CreateListsModal visible={visibleCreateListModal} onClose={onCloseCreateListModal}/>
         </PageHeaderWrapper>

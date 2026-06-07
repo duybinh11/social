@@ -46,7 +46,7 @@ describe("ChangeEmailModal", () => {
             wrapper.update();
             done();
             wrapper.find(Button).simulate("submit");
-            expect(wrapper.find(ChangeInfoTextField).prop("helperText")).toBe("Invalid mail");
+            expect(wrapper.find(ChangeInfoTextField).prop("helperText")).toBe("Email không hợp lệ");
         });
     });
 });

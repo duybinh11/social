@@ -95,9 +95,9 @@ const TweetComponentActions: FC<TweetComponentActionsProps> = memo(({tweetId, is
         let snackBarMessage;
 
         if (replyType === ReplyType.EVERYONE) {
-            snackBarMessage = "Everyone can reply now";
+            snackBarMessage = "Mọi người có thể trả lời ngay";
         } else {
-            snackBarMessage = "People you follow can reply now";
+            snackBarMessage = "Người bạn theo dõi có thể trả lời ngay";
         }
         dispatch(setOpenSnackBar(snackBarMessage));
         handleClickReplyDropdown();
@@ -131,7 +131,7 @@ const TweetComponentActions: FC<TweetComponentActionsProps> = memo(({tweetId, is
                                             <ListItem>
                                                 <>{EmbedTweetIcon}</>
                                                 <Typography variant={"body1"} component={"span"}>
-                                                    Embed Tweet
+                                                    Nhúng tweet
                                                 </Typography>
                                             </ListItem>
                                         </>
@@ -166,13 +166,13 @@ const TweetComponentActions: FC<TweetComponentActionsProps> = memo(({tweetId, is
                                             <ListItem>
                                                 <>{EmbedTweetIcon}</>
                                                 <Typography variant={"body1"} component={"span"}>
-                                                    Embed Tweet
+                                                    Nhúng tweet
                                                 </Typography>
                                             </ListItem>
                                             <ListItem>
                                                 <>{ReportIcon}</>
                                                 <Typography variant={"body1"} component={"span"}>
-                                                    Report Tweet
+                                                    Báo cáo tweet
                                                 </Typography>
                                             </ListItem>
                                         </>

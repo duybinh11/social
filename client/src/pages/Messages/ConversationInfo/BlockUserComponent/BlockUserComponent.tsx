@@ -26,7 +26,7 @@ const BlockUserComponent: FC<BlockUserComponentProps> = memo((
             onClick={onOpenBlockUserModal}
         >
             <Typography variant={"body1"} component={"span"}>
-                {isUserBlocked ? "Unblock " : "Block "} @{username}
+                {isUserBlocked ? "Bỏ chặn " : "Chặn "} @{username}
             </Typography>
         </div>
     );

@@ -34,7 +34,7 @@ const ChangeEmail: FC = (): ReactElement => {
         <>
             <div className={classes.textFieldWrapper}>
                 <ChangeInfoTextField
-                    label="Current"
+                    label="Hiện tại"
                     type="text"
                     variant="filled"
                     value={myProfileEmail}
@@ -49,7 +49,7 @@ const ChangeEmail: FC = (): ReactElement => {
                 onClick={onOpenChangeEmailModal}
             >
                 <Typography variant={"body1"} component={"span"}>
-                    Update email address
+                    Cập nhật địa chỉ email
                 </Typography>
             </div>
             {visibleChangeEmailModal && (

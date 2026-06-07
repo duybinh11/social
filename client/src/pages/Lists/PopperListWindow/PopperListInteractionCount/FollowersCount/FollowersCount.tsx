@@ -13,7 +13,7 @@ const FollowersCount = memo((): ReactElement => {
                 {followersSize}
             </Typography>
             <Typography variant={"subtitle1"} component={"span"}>
-                {" Followers"}
+                {" Người theo dõi"}
             </Typography>
         </>
     );

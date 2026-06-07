@@ -19,7 +19,7 @@ const ProfileUpdatedModal: FC<ProfileUpdatedModalProps> = ({open, onClose, onSub
                     <TwitterIcon/>
                 </div>
                 <Typography variant={"h3"} component={"div"} className={classes.title}>
-                    Your profile is updated
+                    Hồ sơ của bạn đã được cập nhật
                 </Typography>
                 <div className={classes.buttonWrapper}>
                     <Button
@@ -29,7 +29,7 @@ const ProfileUpdatedModal: FC<ProfileUpdatedModalProps> = ({open, onClose, onSub
                         color="primary"
                         size="medium"
                     >
-                        See profile
+                        Xem hồ sơ
                     </Button>
                 </div>
             </DialogContent>

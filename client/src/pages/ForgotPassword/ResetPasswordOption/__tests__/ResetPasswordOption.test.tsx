@@ -23,8 +23,8 @@ describe("ResetPasswordOption", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<ResetPasswordOption/>, mockStore);
 
-        expect(wrapper.text().includes("How do you want to reset your password?")).toBe(true);
-        expect(wrapper.text().includes("You can use the information associated with your account.")).toBe(true);
+        expect(wrapper.text().includes("Bạn muốn đặt lại mật khẩu bằng cách nào?")).toBe(true);
+        expect(wrapper.text().includes("Bạn có thể dùng thông tin liên kết với tài khoản.")).toBe(true);
         expect(wrapper.text().includes(`Send an email to ${mockUser?.email}`)).toBe(true);
         expect(wrapper.find(Button).at(0).text()).toEqual("Tiếp");
     });

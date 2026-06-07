@@ -35,18 +35,18 @@ const FollowerGroup: FC<FollowerGroupProps> = ({userId, sameFollowers}): ReactEl
                                 ))}
                             </AvatarGroup>
                             <Typography variant={"subtitle2"} component={"span"} className={classes.followedTextInfo}>
-                                {"Followed by "}
+                                {"Được theo dõi bởi "}
                                 {sameFollowers?.slice(0, 2).map((follower, index, array) => (
                                     `${follower.username}${(array.length !== index + 1) ? "," : ""} `
                                 ))}
-                                {(sameFollowers?.length! > 2) && `and ${sameFollowers?.length! - 2} others you follow`}
+                                {(sameFollowers?.length! > 2) && `và ${sameFollowers?.length! - 2} người bạn theo dõi khác`}
                             </Typography>
                         </Link>
                     </div>
                 ) : (
                     (userId !== myProfileId) && (
                         <Typography variant={"subtitle2"} component={"div"} className={classes.noFollowedTextInfo}>
-                            Not followed by anyone you’re following
+                            Không được theo dõi bởi ai bạn đang theo dõi
                         </Typography>
                     )
                 )

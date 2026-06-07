@@ -68,14 +68,14 @@ const ListsModal: FC<ListsModalProps> = ({userId, visible, onClose}): ReactEleme
             <form onSubmit={onSubmit}>
                 <DialogTitle>
                     <CloseButton onClose={onClose}/>
-                    Pick a List
+                    Chọn danh sách
                     <Button type="submit" variant="contained" color="primary" size="small">
                         Lưu
                     </Button>
                 </DialogTitle>
                 <DialogContent className={classes.content}>
                     <Typography variant={"body1"} component={"div"} className={classes.createList}>
-                        Create a new List
+                        Tạo danh sách mới
                     </Typography>
                     <div className={classes.list}>
                         {isSimpleListsLoading ? (

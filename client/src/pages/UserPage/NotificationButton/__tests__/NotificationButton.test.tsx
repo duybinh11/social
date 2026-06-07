@@ -17,7 +17,7 @@ describe("NotificationButton", () => {
 
     it("should click subscribe", () => {
         const wrapper = mountWithStore(<NotificationButton/>, mockRootState);
-        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Notify");
+        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Nhận thông báo");
         wrapper.find(ActionIconButton).find(IconButton).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {payload: 2, type: UserProfileActionsType.PROCESS_SUBSCRIBE});
     });
@@ -30,7 +30,7 @@ describe("NotificationButton", () => {
                 user: {...mockRootState.userProfile.user, isSubscriber: true}
             }
         });
-        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Turn off notifications");
+        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Tắt thông báo");
         wrapper.find(ActionIconButton).find(IconButton).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {payload: 2, type: UserProfileActionsType.PROCESS_SUBSCRIBE});
     });

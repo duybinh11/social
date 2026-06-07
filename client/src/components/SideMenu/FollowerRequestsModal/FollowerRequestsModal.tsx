@@ -65,8 +65,8 @@ const FollowerRequestsModal: FC<FollowerRequestsModalProps> = ({visible, onClose
                         (!isFollowerRequestsLoading && !followerRequests.length) ? (
                             <div className={globalClasses.contentWrapper}>
                                 <EmptyPageDescription
-                                    title={"You don’t have any follower requests"}
-                                    subtitle={"When someone requests to follow you, it’ll show up here."}
+                                    title={"Bạn chưa có yêu cầu theo dõi nào"}
+                                    subtitle={"Khi ai đó yêu cầu theo dõi bạn, sẽ hiện ở đây."}
                                 />
                             </div>
                         ) : (

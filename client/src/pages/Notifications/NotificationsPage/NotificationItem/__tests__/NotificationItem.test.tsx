@@ -31,7 +31,7 @@ describe("NotificationItem", () => {
         expect(wrapper.find("#follow").exists()).toBe(true);
         expect(wrapper.find(Avatar).prop("alt")).toBe(mockNotificationFollow.user.avatar.src);
         expect(wrapper.find(Avatar).prop("src")).toBe(mockNotificationFollow.user.avatar.src);
-        expect(wrapper.text().includes(`${mockNotificationFollow.user.username} followed you`)).toBe(true);
+        expect(wrapper.text().includes(`${mockNotificationFollow.user.username} đã theo dõi bạn`)).toBe(true);
     });
 
     it("should render like NotificationItem", () => {
@@ -40,7 +40,7 @@ describe("NotificationItem", () => {
 
         expect(wrapper.find(LinkWrapper).at(0).find(Link).at(0).prop("to")).toBe(`${NOTIFICATION}/${mockNotificationLike.id}`);
         expect(wrapper.find("#like").exists()).toBe(true);
-        expect(wrapper.text().includes(`${mockNotificationLike.user.username} liked your Tweet`)).toBe(true);
+        expect(wrapper.text().includes(`${mockNotificationLike.user.username} đã thích tweet của bạn`)).toBe(true);
         expect(wrapper.text().includes("#myCat")).toBe(true);
         expect(wrapper.find(Emoji).prop("emoji")).toBe("smile_cat");
     });
@@ -56,7 +56,7 @@ describe("NotificationItem", () => {
 
         expect(wrapper.find("#retweet").exists()).toBe(true);
         expect(wrapper.find(Avatar).prop("src")).toBe(DEFAULT_PROFILE_IMG);
-        expect(wrapper.text().includes(`${mockNotificationRetweet.user.username} Retweeted your Tweet`)).toBe(true);
+        expect(wrapper.text().includes(`${mockNotificationRetweet.user.username} Đã đăng lại tweet của bạn`)).toBe(true);
     });
 
     it("should hover user link and click", () => {

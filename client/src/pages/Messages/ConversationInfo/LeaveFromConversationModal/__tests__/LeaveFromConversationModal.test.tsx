@@ -13,8 +13,8 @@ describe("LeaveFromConversationModal", () => {
                 onClose={jest.fn()}
                 visible
             />);
-        expect(wrapper.text().includes("Leave conversation?")).toBe(true);
-        expect(wrapper.text().includes("This conversation will be deleted from your inbox.")).toBe(true);
+        expect(wrapper.text().includes("Rời cuộc trò chuyện?")).toBe(true);
+        expect(wrapper.text().includes("Cuộc trò chuyện sẽ bị xóa khỏi hộp thư của bạn.")).toBe(true);
     });
 
     it("should render empty Dialog", () => {

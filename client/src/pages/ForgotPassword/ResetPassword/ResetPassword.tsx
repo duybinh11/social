@@ -20,7 +20,7 @@ interface ResetPasswordFormProps {
 }
 
 const ResetPasswordFormSchema = yup.object().shape({
-    password: yup.string().min(6, "Too short").required(),
+    password: yup.string().min(6, "Quá ngắn").required(),
     password2: yup.string().oneOf([yup.ref("password")], "Mật khẩu không khớp."),
 });
 
@@ -41,7 +41,7 @@ const ResetPassword: FC = (): ReactElement => {
     return (
         <>
             <Typography component={"div"} className={classes.title}>
-                Reset your password
+                Đặt lại mật khẩu
             </Typography>
             <div className={classes.userInfoWrapper}>
                 <Avatar
@@ -59,14 +59,14 @@ const ResetPassword: FC = (): ReactElement => {
                 </div>
             </div>
             <Typography variant={"body1"} component={"div"} className={classes.resetPasswordText}>
-                Strong passwords include numbers, letters, and punctuation marks.
+                Mật khẩu mạnh gồm số, chữ cái và ký tự đặc biệt.
                 <a href={ACCOUNT_SECURITY_TIPS} target={"_blank"}>
                     Tìm hiểu thêm
                 </a>
             </Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Typography variant={"h6"} component={"div"} className={classes.enterPasswordText}>
-                    Enter your new password
+                    Nhập mật khẩu mới
                 </Typography>
                 <Controller
                     name="password"
@@ -92,7 +92,7 @@ const ResetPassword: FC = (): ReactElement => {
                     {errors.password?.message}
                 </Typography>
                 <Typography variant={"h6"} component={"div"} className={classes.enterPasswordText}>
-                    Enter your password one more time
+                    Nhập lại mật khẩu
                 </Typography>
                 <Controller
                     name="password2"
@@ -124,11 +124,11 @@ const ResetPassword: FC = (): ReactElement => {
                         color="primary"
                     />
                     <Typography variant={"body1"} component={"span"}>
-                        Remember me
+                        Ghi nhớ đăng nhập
                     </Typography>
                 </div>
                 <Typography variant={"body1"} component={"div"} className={classes.text}>
-                    Resetting your password will log you out of all your active Twitter sessions.
+                    Đặt lại mật khẩu sẽ đăng xuất bạn khỏi mọi phiên Twitter đang hoạt động.
                 </Typography>
                 <Button
                     className={classes.button}

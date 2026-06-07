@@ -294,7 +294,7 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         user.getFollowerRequests().remove(currentUser);
         user.getFollowers().add(currentUser);
-        return "User (id:" + userId + ") accepted.";
+        return "Đã chấp nhận người dùng (id:" + userId + ").";
     }
 
     @Override
@@ -304,7 +304,7 @@ public class UserServiceImpl implements UserService {
         User currentUser = userRepository.findById(userId)
                 .orElseThrow(() -> new ApiRequestException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
         user.getFollowerRequests().remove(currentUser);
-        return "User (id:" + userId + ") declined.";
+        return "Đã từ chối người dùng (id:" + userId + ").";
     }
 
     @Override
@@ -393,7 +393,7 @@ public class UserServiceImpl implements UserService {
         boolean userExist = userRepository.isUserExist(userId);
 
         if (!userExist) {
-            throw new ApiRequestException("User (id:" + userId + ") not found", HttpStatus.NOT_FOUND);
+            throw new ApiRequestException("Không tìm thấy người dùng (id:" + userId + ")", HttpStatus.NOT_FOUND);
         }
     }
 
@@ -402,7 +402,7 @@ public class UserServiceImpl implements UserService {
         boolean userBlocked = userRepository.isUserBlocked(userId, authUserId);
 
         if (userBlocked) {
-            throw new ApiRequestException("User (id:" + authUserId + ") is blocked", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Người dùng (id:" + authUserId + ") đã bị chặn", HttpStatus.BAD_REQUEST);
         }
     }
 

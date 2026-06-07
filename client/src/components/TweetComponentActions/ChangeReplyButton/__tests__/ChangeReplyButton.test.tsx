@@ -9,6 +9,6 @@ describe("ChangeReplyButton", () => {
         const wrapper = mountWithStore(<ChangeReplyButton handleClickReplyDropdown={mockHandleClickReplyDropdown}/>);
         wrapper.find("#clickReplyDropdown").at(0).simulate("click");
         expect(mockHandleClickReplyDropdown).toHaveBeenCalled();
-        expect(wrapper.text().includes("Change who can reply")).toBe(true);
+        expect(wrapper.text().includes("Thay đổi ai có thể trả lời")).toBe(true);
     });
 });

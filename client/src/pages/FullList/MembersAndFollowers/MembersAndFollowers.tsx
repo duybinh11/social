@@ -22,12 +22,12 @@ const MembersAndFollowers = memo((): ReactElement => {
 
     const onOpenMembersModalWindow = (): void => {
         setVisibleMembersAndFollowersModal(true);
-        setModalWindowTitle("List members");
+        setModalWindowTitle("Thành viên danh sách");
     };
 
     const onOpenFollowersModalWindow = (): void => {
         setVisibleMembersAndFollowersModal(true);
-        setModalWindowTitle("List followers");
+        setModalWindowTitle("Người theo dõi danh sách");
     };
 
     const onCloseModalWindow = (): void => {
@@ -42,7 +42,7 @@ const MembersAndFollowers = memo((): ReactElement => {
                     {membersSize}
                 </Typography>
                 <Typography variant={"subtitle1"} component={"span"}>
-                    {" Members"}
+                    {" Thành viên"}
                 </Typography>
             </span>
             <span id={"listFollowers"} onClick={onOpenFollowersModalWindow} className={classes.listMembers}>
@@ -50,7 +50,7 @@ const MembersAndFollowers = memo((): ReactElement => {
                     {followersSize}
                 </Typography>
                 <Typography variant={"subtitle1"} component={"span"}>
-                    {" Followers"}
+                    {" Người theo dõi"}
                 </Typography>
            </span>
             <MembersAndFollowersModal

@@ -40,7 +40,7 @@ const ChangePhone: FC = (): ReactElement => {
         <>
             <div className={classes.textFieldWrapper}>
                 <ChangeInfoTextField
-                    label="Current"
+                    label="Hiện tại"
                     type="text"
                     variant="filled"
                     value={`${getPhoneCode(countryCode)}${phone}`}
@@ -55,12 +55,12 @@ const ChangePhone: FC = (): ReactElement => {
                 onClick={onOpenChangePhoneModal}
             >
                 <Typography variant={"body1"} component={"span"}>
-                    Update phone number
+                    Cập nhật số điện thoại
                 </Typography>
             </div>
             <div className={classes.deletePhoneNumber}>
                 <Typography variant={"body1"} component={"span"}>
-                    Delete phone number
+                    Xóa số điện thoại
                 </Typography>
             </div>
             {visibleChangePhoneModal && <ChangePhoneModal visible={visibleChangePhoneModal} onClose={onCloseChangePhoneModal}/>}

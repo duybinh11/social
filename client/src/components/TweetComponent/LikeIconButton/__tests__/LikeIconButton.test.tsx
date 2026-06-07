@@ -37,7 +37,7 @@ describe("LikeIconButton", () => {
                 isTweetLiked
                 likedTweetsCount={0}
             />, mockRootState);
-        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Unlike");
+        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Bỏ thích");
         expect(wrapper.find(ActionIconButton).prop("icon")).toBe(LikeIcon);
         expect(wrapper.find("#likedTweetsCount").exists()).toBeFalsy();
     });

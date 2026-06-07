@@ -24,30 +24,30 @@ const EmptyFollowersDescription: FC<EmptyFollowersDescriptionProps> = memo(({act
             <Typography variant={"h5"} component={"div"}>
                 {(isMyProfile) ? (
                     (activeTab === 0) ? (
-                        "You aren’t following anyone yet"
+                        "Bạn chưa theo dõi ai"
                     ) : (
-                        "You don’t have any followers yet"
+                        "Bạn chưa có người theo dõi"
                     )
                 ) : (
                     (activeTab === 0) ? (
-                        `@${username} isn’t following anyone`
+                        `@${username} chưa theo dõi ai`
                     ) : (
-                        `@${username} doesn’t have any followers`
+                        `@${username} chưa có người theo dõi`
                     )
                 )}
             </Typography>
             <Typography variant={"subtitle1"} component={"div"}>
                 {(isMyProfile) ? (
                     (activeTab === 0) ? (
-                        "When you do, they’ll be listed here and you’ll see their Tweets in your timeline."
+                        "Khi bạn theo dõi, họ sẽ hiện ở đây và tweet của họ sẽ xuất hiện trên dòng thời gian."
                     ) : (
-                        "When someone follows you, you’ll see them here."
+                        "Khi ai đó theo dõi bạn, bạn sẽ thấy họ ở đây."
                     )
                 ) : (
                     (activeTab === 0) ? (
-                        "When they do, they’ll be listed here."
+                        "Khi họ theo dõi, họ sẽ hiện ở đây."
                     ) : (
-                        "When someone follows them, they’ll be listed here."
+                        "Khi ai đó theo dõi họ, họ sẽ hiện ở đây."
                     )
                 )}
             </Typography>
@@ -59,7 +59,7 @@ const EmptyFollowersDescription: FC<EmptyFollowersDescriptionProps> = memo(({act
                     color="primary"
                     size="small"
                 >
-                    Find people to follow
+                    Tìm người để theo dõi
                 </Button>
             )}
         </div>

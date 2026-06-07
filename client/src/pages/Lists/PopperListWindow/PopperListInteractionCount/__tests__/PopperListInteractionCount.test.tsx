@@ -14,11 +14,11 @@ describe("PopperListInteractionCount", () => {
     const mockListDetail = {...mockStore, listDetail: {...mockStore.listDetail, item: mockUserFullList}};
 
     it("should open/close members modal", () => {
-        testModal("#openMembersModalWindow", "List members");
+        testModal("#openMembersModalWindow", "Thành viên danh sách");
     });
 
     it("should open.close followers modal", () => {
-        testModal("#openFollowersModalWindow", "List followers");
+        testModal("#openFollowersModalWindow", "Người theo dõi danh sách");
     });
 
     const testModal = (itemId: string, title: string): void => {

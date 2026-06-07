@@ -21,7 +21,7 @@ describe("TweetErrorPage", () => {
             ...mockStore,
             tweet: {...mockStore.tweet, errorMessage: "Không tìm thấy tweet"}
         });
-        expect(wrapper.text().includes("Hmm...this page doesn’t exist.")).toBe(true);
+        expect(wrapper.text().includes("Hmm... trang này không tồn tại.")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: "Không tìm thấy tweet",
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR

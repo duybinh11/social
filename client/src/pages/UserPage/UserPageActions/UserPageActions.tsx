@@ -45,10 +45,10 @@ const UserPageActions = memo((): ReactElement => {
                             {!isPrivateProfile && (
                                 <>
                                     <AddUserToListsButton/>
-                                    <UserItemAction title={"View Moments"} icon={MomentsIcon}/>
+                                    <UserItemAction title={"Xem Moments"} icon={MomentsIcon}/>
                                     {!isUserBlocked && (
                                         <>
-                                            <UserItemAction title={"Share profile via..."} icon={ShareIcon}/>
+                                            <UserItemAction title={"Chia sẻ hồ sơ qua..."} icon={ShareIcon}/>
                                             <CopyProfileLinkButton onCloseUserPageActions={handleClickAway}/>
                                         </>
                                     )}
@@ -58,7 +58,7 @@ const UserPageActions = memo((): ReactElement => {
                                 <MuteUserButton onCloseUserPageActions={handleClickAway}/>
                             )}
                             <BlockUserButton/>
-                            <UserItemAction title={`Report @${username}`} icon={ReportIcon}/>
+                            <UserItemAction title={`Báo cáo @${username}`} icon={ReportIcon}/>
                         </List>
                     </div>
                 )}

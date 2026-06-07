@@ -13,7 +13,7 @@ const TweetReplyingUsername: FC<TweetReplyingUsernameProps> = memo(({addressedId
     return (
         <object>
             <Typography variant={"subtitle1"} component={"div"}>
-                {"Replying to "}
+                {"Trả lời cho "}
                 <MuiLink variant="subtitle1" to={`${PROFILE}/${addressedId}`} component={Link}>
                     @{addressedUsername}
                 </MuiLink>

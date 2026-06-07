@@ -57,8 +57,8 @@ const ChangeCountry: FC = (): ReactElement => {
                     </FilledSelect>
                 </FormControl>
                 <Typography variant={"subtitle2"} component={"div"}>
-                    {"This is the primary country associated with your account. Your country helps us to customize " +
-                    "your Twitter experience. "}
+                    {"Đây là quốc gia chính liên kết với tài khoản của bạn. Quốc gia giúp chúng tôi tùy chỉnh " +
+                    "trải nghiệm Twitter của bạn. "}
                     <MuiLink href={HOW_TO_CHANGE_COUNTRY_SETTINGS} variant="subtitle2" target="_blank" rel="noopener">
                         Tìm hiểu thêm
                     </MuiLink>

@@ -50,10 +50,10 @@ const DeleteListModal = (): ReactElement => {
                 <DialogContent style={{padding: 0}}>
                     <div className={classes.modalWrapper}>
                         <Typography variant={"h5"} component={"div"}>
-                            Delete List?
+                            Xóa danh sách?
                         </Typography>
                         <Typography variant={"subtitle1"} component={"div"}>
-                            This can’t be undone and you’ll lose your List.
+                            Không thể hoàn tác và bạn sẽ mất danh sách này.
                         </Typography>
                         <div className={classes.modalButtonWrapper}>
                             <Button

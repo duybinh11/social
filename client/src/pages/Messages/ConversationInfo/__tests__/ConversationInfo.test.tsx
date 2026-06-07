@@ -32,7 +32,7 @@ describe("ConversationInfo", () => {
         const wrapper = mountWithStore(<ConversationInfo participantId={1} chatId={1}/>, createMockRootState());
 
         expect(wrapper.find(Spinner).exists()).toBe(true);
-        expect(wrapper.text().includes("Conversation info")).toBe(true);
+        expect(wrapper.text().includes("Thông tin cuộc trò chuyện")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
             payload: {participantId: 1, chatId: 1},
             type: UserProfileActionsType.FETCH_CHAT_PARTICIPANT
@@ -50,7 +50,7 @@ describe("ConversationInfo", () => {
         expect(wrapper.text().includes(`Snooze notifications from ${mockUserProfile.fullName}`)).toBe(true);
         expect(wrapper.text().includes(`Block  @${mockUserProfile.username}`)).toBe(true);
         expect(wrapper.text().includes(`Report @${mockUserProfile.username}`)).toBe(true);
-        expect(wrapper.text().includes("Leave conversation")).toBe(true);
+        expect(wrapper.text().includes("Rời cuộc trò chuyện")).toBe(true);
     });
 
     it("should block participant", () => {
@@ -69,7 +69,7 @@ describe("ConversationInfo", () => {
             type: UserActionsType.PROCESS_USER_TO_BLOCKLIST
         });
         expect(mockDispatchFn).nthCalledWith(3, {
-            payload: `@${mockUserProfile?.username!} has been blocked.`,
+            payload: `@${mockUserProfile?.username!} đã chặn.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });
@@ -157,13 +157,13 @@ describe("ConversationInfo", () => {
         const pushSpy = jest.spyOn(history, "push");
         const wrapper = mountWithStore(<ConversationInfo participantId={1} chatId={1}/>, mockUserProfileStore, history);
 
-        expect(wrapper.find("#leaveFromConversation").text().includes("Leave conversation")).toBe(true);
+        expect(wrapper.find("#leaveFromConversation").text().includes("Rời cuộc trò chuyện")).toBe(true);
         expect(wrapper.find(LeaveFromConversationModal).prop("visible")).toBe(false);
 
         wrapper.find("#leaveFromConversation").simulate("click");
 
         expect(wrapper.find(LeaveFromConversationModal).prop("visible")).toBe(true);
-        expect(wrapper.find(LeaveFromConversationModal).find(Button).at(0).text().includes("Leave")).toBe(true);
+        expect(wrapper.find(LeaveFromConversationModal).find(Button).at(0).text().includes("Rời")).toBe(true);
 
         wrapper.find(LeaveFromConversationModal).find(Button).at(0).simulate("click");
 
@@ -178,7 +178,7 @@ describe("ConversationInfo", () => {
     it("should open leave conversation modal and close", () => {
         const wrapper = mountWithStore(<ConversationInfo participantId={1} chatId={1}/>, mockUserProfileStore);
 
-        expect(wrapper.find("#leaveFromConversation").text().includes("Leave conversation")).toBe(true);
+        expect(wrapper.find("#leaveFromConversation").text().includes("Rời cuộc trò chuyện")).toBe(true);
         expect(wrapper.find(LeaveFromConversationModal).prop("visible")).toBe(false);
 
         wrapper.find("#leaveFromConversation").simulate("click");

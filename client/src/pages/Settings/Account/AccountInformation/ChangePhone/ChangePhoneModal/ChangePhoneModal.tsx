@@ -37,7 +37,7 @@ interface PhoneFormProps {
 }
 
 const SetPhoneFormSchema = yup.object().shape({
-    phone: yup.string().matches(/^[0-9]\d{8}$/, "Please enter a valid phone number.").required(),
+    phone: yup.string().matches(/^[0-9]\d{8}$/, "Vui lòng nhập số điện thoại hợp lệ.").required(),
 });
 
 const ChangePhoneModal: FC<ChangePhoneModalProps> = ({visible, onClose}): ReactElement | null => {
@@ -82,14 +82,14 @@ const ChangePhoneModal: FC<ChangePhoneModalProps> = ({visible, onClose}): ReactE
                         Đổi số điện thoại
                     </Typography>
                     <Typography variant={"subtitle1"} component={"div"}>
-                        {`Your current phone number is ${phoneCode !== "" ? phoneCode : "none"}${myProfilePhone}. What would you like to update it to?`}
+                        {`Số điện thoại hiện tại là ${phoneCode !== "" ? phoneCode : "none"}${myProfilePhone}. Bạn muốn đổi thành gì?`}
                     </Typography>
                 </div>
                 <form onSubmit={(!getValues("phone") || !!errors.phone) ? onClose : handleSubmit(onSubmit)}>
                     <div className={classes.selectWrapper}>
                         <FormControl variant="filled">
                             <InputLabel htmlFor="select-country-code">
-                                Country code
+                                Mã quốc gia
                             </InputLabel>
                             <FilledSelect
                                 variant="filled"
@@ -98,7 +98,7 @@ const ChangePhoneModal: FC<ChangePhoneModalProps> = ({visible, onClose}): ReactE
                                 native
                                 value={countryCode}
                                 onChange={changeCountryCode}
-                                label="Country code"
+                                label="Mã quốc gia"
                                 fullWidth
                             >
                                 <option aria-label="None"/>
@@ -115,7 +115,7 @@ const ChangePhoneModal: FC<ChangePhoneModalProps> = ({visible, onClose}): ReactE
                                 inputMode="tel"
                                 id="phone"
                                 name="phone"
-                                label="Your phone number"
+                                label="Số điện thoại của bạn"
                                 variant="filled"
                                 onChange={onChange}
                                 value={value}
@@ -128,7 +128,7 @@ const ChangePhoneModal: FC<ChangePhoneModalProps> = ({visible, onClose}): ReactE
                     />
                     <div className={classes.infoWrapper}>
                         <Typography variant={"body1"} component={"span"}>
-                            {"Let people who have your phone number find and connect with you on Twitter. "}
+                            {"Cho phép người có số điện thoại của bạn tìm và kết nối với bạn trên Twitter. "}
                             <MuiLink href={EMAIL_AND_PHONE_DISCOVERABILITY_SETTINGS} variant="body1" target="_blank" rel="noopener">
                                 Tìm hiểu thêm
                             </MuiLink>

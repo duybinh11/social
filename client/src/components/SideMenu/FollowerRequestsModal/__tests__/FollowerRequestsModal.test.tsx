@@ -21,8 +21,8 @@ describe("FollowerRequestsModal", () => {
         const wrapper = mountWithStore(<FollowerRequestsModal visible={true} onClose={jest.fn()}/>, mockRootState);
 
         expect(wrapper.text().includes("Yêu cầu theo dõi")).toBe(true);
-        expect(wrapper.text().includes("You don’t have any follower requests")).toBe(true);
-        expect(wrapper.text().includes("When someone requests to follow you, it’ll show up here.")).toBe(true);
+        expect(wrapper.text().includes("Bạn chưa có yêu cầu theo dõi nào")).toBe(true);
+        expect(wrapper.text().includes("Khi ai đó yêu cầu theo dõi bạn, sẽ hiện ở đây.")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {payload: 0, type: FollowerRequestsActionsType.FETCH_FOLLOWER_REQUESTS});
     });
 

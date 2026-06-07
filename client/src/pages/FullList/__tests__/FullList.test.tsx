@@ -63,8 +63,8 @@ describe("FullList", () => {
             tweets: {...mockStore.tweets, items: [], pagesCount: 1},
         });
 
-        expect(wrapper.text().includes("There aren’t any Tweets in this List")).toBe(true);
-        expect(wrapper.text().includes("When anyone in this List Tweets, they’ll show up here.")).toBe(true);
+        expect(wrapper.text().includes("Chưa có tweet nào trong danh sách này")).toBe(true);
+        expect(wrapper.text().includes("Khi ai đó trong danh sách đăng tweet, chúng sẽ hiện ở đây.")).toBe(true);
         expect(wrapper.find(TweetComponent).length).toEqual(0);
     });
 
@@ -73,7 +73,7 @@ describe("FullList", () => {
         wrapper.find("#listMembers").at(0).simulate("click");
         
         expect(wrapper.find(MembersAndFollowersModal).prop("visible")).toBe(true);
-        expect(wrapper.find(MembersAndFollowersModal).prop("title")).toBe("List members");
+        expect(wrapper.find(MembersAndFollowersModal).prop("title")).toBe("Thành viên danh sách");
     });
 
     it("should render Followers Modal Window", () => {
@@ -81,7 +81,7 @@ describe("FullList", () => {
         wrapper.find("#listFollowers").at(0).simulate("click");
 
         expect(wrapper.find(MembersAndFollowersModal).prop("visible")).toBe(true);
-        expect(wrapper.find(MembersAndFollowersModal).prop("title")).toBe("List followers");
+        expect(wrapper.find(MembersAndFollowersModal).prop("title")).toBe("Người theo dõi danh sách");
     });
 
     it("should render Edit List Modal Window", () => {

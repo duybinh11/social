@@ -23,8 +23,8 @@ describe("DeleteListModal", () => {
         const wrapper = mountWithStore(<DeleteListModal/>);
         wrapper.find("#onOpenDeleteListModal").at(0).simulate("click");
         expect(wrapper.find(Dialog).exists()).toBeTruthy();
-        expect(wrapper.text().includes("Delete List?")).toBe(true);
-        expect(wrapper.text().includes("This can’t be undone and you’ll lose your List.")).toBe(true);
+        expect(wrapper.text().includes("Xóa danh sách?")).toBe(true);
+        expect(wrapper.text().includes("Không thể hoàn tác và bạn sẽ mất danh sách này.")).toBe(true);
         expect(wrapper.find(Button).at(0).text().includes("Hủy")).toBe(true);
         expect(wrapper.find(Button).at(1).text().includes("Xóa")).toBe(true);
     });

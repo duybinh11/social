@@ -72,12 +72,12 @@ const NotificationsPage: FC = (): ReactElement => {
                                             component={"div"}
                                             className={classes.notificationInfoText}
                                         >
-                                            {"New Tweet notifications for "}
+                                            {"Thông báo tweet mới cho "}
                                             <Typography variant={"h6"} component={"span"}>
                                                 {tweetAuthors[0].fullName}
                                             </Typography>
                                             {(tweetAuthors.length > 2) ? (
-                                                ` and ${tweetAuthors.length - 1} others`
+                                                ` và ${tweetAuthors.length - 1} người khác`
                                             ) : (
                                                 (tweetAuthors.length === 2) && (
                                                     <>
@@ -86,7 +86,7 @@ const NotificationsPage: FC = (): ReactElement => {
                                                             component={"span"}
                                                             className={classes.notificationInfoText}
                                                         >
-                                                            {" and "}
+                                                            {" và "}
                                                         </Typography>
                                                         <Typography variant={"h6"} component={"span"}>
                                                             {tweetAuthors[1].fullName}

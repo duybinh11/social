@@ -110,7 +110,7 @@ const AddTweetForm: FC<AddTweetFormProps> = (
                 replyType: replyType
             }));
         }
-        dispatch(setOpenSnackBar("Your tweet was sent."));
+        dispatch(setOpenSnackBar("Tweet của bạn đã được gửi."));
         setText('');
         setImages([]);
         setVisiblePoll(false);
@@ -133,7 +133,7 @@ const AddTweetForm: FC<AddTweetFormProps> = (
             userId: params.userId,
         }));
 
-        dispatch(setOpenSnackBar("Your tweet was sent."));
+        dispatch(setOpenSnackBar("Tweet của bạn đã được gửi."));
         setText("");
         setImages([]);
 
@@ -159,7 +159,7 @@ const AddTweetForm: FC<AddTweetFormProps> = (
             replyType: replyType
         }));
 
-        dispatch(setOpenSnackBar("Your tweet was sent."));
+        dispatch(setOpenSnackBar("Tweet của bạn đã được gửi."));
         setText("");
         setImages([]);
 
@@ -193,7 +193,7 @@ const AddTweetForm: FC<AddTweetFormProps> = (
                     <TextareaAutosize
                         onChange={handleChangeTextarea}
                         className={classes.contentTextarea}
-                        placeholder={visiblePoll ? "Ask a question..." : title}
+                        placeholder={visiblePoll ? "Đặt câu hỏi..." : title}
                         value={text}
                         maxRows={maxRows}
                         minRows={images.length !== 0 ? 1 : minRows}

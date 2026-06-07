@@ -27,7 +27,7 @@ const BlockUserButton: FC<BlockUserButtonProps> = memo((
 
     const onBlockUser = (): void => {
         dispatch(processUserToBlocklist({userId, tweetId}));
-        dispatch(setOpenSnackBar(`@${username} has been ${isUserBlocked ? "unblocked" : "blocked"}.`));
+        dispatch(setOpenSnackBar(`@${username} ${isUserBlocked ? "đã bỏ chặn" : "đã chặn"}.`));
         setVisibleBlockUserModal(false);
     };
 

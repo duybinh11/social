@@ -17,7 +17,7 @@ const CopyProfileLinkButton: FC<CopyProfileLinkButtonProps> = memo(({onCloseUser
     const location = useLocation();
 
     const onCopyLinkToProfile = (): void => {
-        dispatch(setOpenSnackBar("Copied to clipboard"));
+        dispatch(setOpenSnackBar("Đã sao chép vào bộ nhớ tạm"));
         onCloseUserPageActions();
     };
 
@@ -26,7 +26,7 @@ const CopyProfileLinkButton: FC<CopyProfileLinkButtonProps> = memo(({onCloseUser
             <ListItem id={"copyLinkToProfile"} onClick={onCopyLinkToProfile}>
                 <>{LinkIcon}</>
                 <Typography component={"span"}>
-                    Copy link to profile
+                    Sao chép liên kết hồ sơ
                 </Typography>
             </ListItem>
         </CopyToClipboard>

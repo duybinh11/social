@@ -32,7 +32,7 @@ describe("ProfileUpdatedModal", () => {
 
         expect(mockOnSubmit).toHaveBeenCalled();
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
-        expect(wrapper.text().includes("Your profile is updated")).toBe(true);
-        expect(wrapper.find(Button).text().includes("See profile")).toBe(true);
+        expect(wrapper.text().includes("Hồ sơ của bạn đã được cập nhật")).toBe(true);
+        expect(wrapper.find(Button).text().includes("Xem hồ sơ")).toBe(true);
     });
 });

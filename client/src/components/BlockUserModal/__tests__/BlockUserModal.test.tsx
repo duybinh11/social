@@ -22,7 +22,7 @@ describe("BlockUserModal", () => {
         wrapper.find(Dialog).simulate("click");
 
         expect(wrapper.text().includes("Bỏ chặn")).toBe(true);
-        expect(wrapper.text().includes("They will be able to follow you and view your Tweets.")).toBe(true);
+        expect(wrapper.text().includes("Họ sẽ có thể theo dõi bạn và xem tweet của bạn.")).toBe(true);
         expect(wrapper.find(Button).at(0).text().includes("Bỏ chặn")).toBe(true);
         expect(wrapper.find(Button).at(1).text().includes("Hủy")).toBe(true);
     });

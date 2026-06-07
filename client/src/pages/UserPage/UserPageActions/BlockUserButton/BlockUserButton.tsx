@@ -30,7 +30,7 @@ const BlockUserButton = memo((): ReactElement => {
     const onBlockUser = (): void => {
         dispatch(processUserToBlocklist({userId: userProfileId!}));
         setVisibleBlockUserModal(false);
-        dispatch(setOpenSnackBar(`@${username} has been ${isUserBlocked ? "unblocked" : "blocked"}.`));
+        dispatch(setOpenSnackBar(`@${username} ${isUserBlocked ? "đã bỏ chặn" : "đã chặn"}.`));
     };
 
     return (

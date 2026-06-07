@@ -19,7 +19,7 @@ const SnoozeNotifications: FC<SnoozeNotificationsProps> = memo(({fullName}): Rea
             </Typography>
             <div className={classes.switchWrapper}>
                 <Typography variant={"body1"} component={"span"}>
-                    {`Snooze notifications from ${fullName}`}
+                    {`Tạm tắt thông báo từ ${fullName}`}
                 </Typography>
                 <Switch checked={false}/>
             </div>

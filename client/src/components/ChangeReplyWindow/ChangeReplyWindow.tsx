@@ -17,10 +17,10 @@ const ChangeReplyWindow: FC<ChangeReplyWindowProps> = memo(({replyType, onChange
         <div className={classes.dropdown}>
             <div className={classes.infoWrapper}>
                 <Typography variant={"h6"} component={"div"}>
-                    Who can reply?
+                    Ai có thể trả lời?
                 </Typography>
                 <Typography variant={"subtitle1"} component={"div"}>
-                    Choose who can reply to this Tweet.
+                    Chọn ai có thể trả lời tweet này.
                 </Typography>
             </div>
             <List component="nav" aria-label="main mailbox folders">

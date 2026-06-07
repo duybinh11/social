@@ -68,8 +68,8 @@ describe("UserPage", () => {
         const wrapper = mountWithStore(<UserPage/>, mockEmptyUser);
 
         expect(wrapper.find(UserNotFound).exists()).toBe(true);
-        expect(wrapper.text().includes("This account doesn’t exist")).toBe(true);
-        expect(wrapper.text().includes("Try searching for another.")).toBe(true);
+        expect(wrapper.text().includes("Tài khoản này không tồn tại")).toBe(true);
+        expect(wrapper.text().includes("Hãy thử tìm tài khoản khác.")).toBe(true);
     });
 
     it("should render correctly My profile when tweets loading", () => {
@@ -111,7 +111,7 @@ describe("UserPage", () => {
         expect(wrapper.find(Tab).at(0).prop("selected")).toBe(true);
         expect(wrapper.find(Tab).at(0).text().includes("Đăng")).toBe(true);
         expect(wrapper.find(Tab).at(1).prop("selected")).toBe(false);
-        expect(wrapper.find(Tab).at(1).text().includes("Tweets & replies")).toBe(true);
+        expect(wrapper.find(Tab).at(1).text().includes("Tweet & trả lời")).toBe(true);
         expect(wrapper.find(Tab).at(2).prop("selected")).toBe(false);
         expect(wrapper.find(Tab).at(2).text().includes("Phương tiện")).toBe(true);
         expect(wrapper.find(Tab).at(3).prop("selected")).toBe(false);
@@ -123,7 +123,7 @@ describe("UserPage", () => {
     });
 
     it("should click Tweets & replies Tab and fetch user tweets", () => {
-        testClickTab(1, `${mockUser.tweetCount} Tweets`, "Tweets & replies", UserTweetsActionType.FETCH_RETWEETS_AND_REPLIES);
+        testClickTab(1, `${mockUser.tweetCount} Tweets`, "Tweet & trả lời", UserTweetsActionType.FETCH_RETWEETS_AND_REPLIES);
     });
 
     it("should click Media Tab and fetch user tweets", () => {
@@ -169,7 +169,7 @@ describe("UserPage", () => {
         });
 
         expect(wrapper.find(SetupProfileModal).prop("visible")).toBe(false);
-        expect(wrapper.find(Button).at(0).text()).toEqual("Setup profile");
+        expect(wrapper.find(Button).at(0).text()).toEqual("Thiết lập hồ sơ");
 
         wrapper.find(Button).at(0).simulate("click");
         expect(wrapper.find(SetupProfileModal).prop("visible")).toBe(true);
@@ -189,7 +189,7 @@ describe("UserPage", () => {
         });
 
         expect(wrapper.find(EditProfileModal).prop("visible")).toBe(false);
-        expect(wrapper.find(Button).at(0).text()).toEqual("Edit profile");
+        expect(wrapper.find(Button).at(0).text()).toEqual("Sửa hồ sơ");
 
         wrapper.find(Button).at(0).simulate("click");
         expect(wrapper.find(EditProfileModal).prop("visible")).toBe(true);
@@ -281,7 +281,7 @@ describe("UserPage", () => {
     });
 
     it("should hover Message icon and render Hover Action", () => {
-        testHoverAction(2, "Message");
+        testHoverAction(2, "Tin nhắn");
     });
 
     it("should click mute user", () => {
@@ -294,7 +294,7 @@ describe("UserPage", () => {
             type: UserActionsType.PROCESS_USER_TO_MUTELIST
         });
         expect(mockDispatchFn).nthCalledWith(5, {
-            payload: `@${mockUserProfile.username} has been muted.`,
+            payload: `@${mockUserProfile.username} đã tắt tiếng.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });
@@ -308,7 +308,7 @@ describe("UserPage", () => {
             }
         });
 
-        expect(wrapper.text().includes("You have muted Tweets from this account.")).toBe(true);
+        expect(wrapper.text().includes("Bạn đã tắt tiếng tweet từ tài khoản này.")).toBe(true);
 
         wrapper.find("#unmuteUser").at(0).simulate("click");
 
@@ -317,7 +317,7 @@ describe("UserPage", () => {
             type: UserActionsType.PROCESS_USER_TO_MUTELIST
         });
         expect(mockDispatchFn).nthCalledWith(5, {
-            payload: `@${mockUserProfile.username} has been unmuted.`,
+            payload: `@${mockUserProfile.username} đã bật tiếng.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });
@@ -337,7 +337,7 @@ describe("UserPage", () => {
             type: UserActionsType.PROCESS_USER_TO_BLOCKLIST
         });
         expect(mockDispatchFn).nthCalledWith(5, {
-            payload: `@${mockUserProfile.username} has been blocked.`,
+            payload: `@${mockUserProfile.username} đã chặn.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });
@@ -370,7 +370,7 @@ describe("UserPage", () => {
             type: UserActionsType.PROCESS_USER_TO_BLOCKLIST
         });
         expect(mockDispatchFn).nthCalledWith(5, {
-            payload: `@${mockUserProfile.username} has been unblocked.`,
+            payload: `@${mockUserProfile.username} đã bỏ chặn.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });
@@ -400,11 +400,11 @@ describe("UserPage", () => {
     });
 
     it("should hover Subscribe icon and render Hover Action", () => {
-        testHoverAction(3, "Notify");
+        testHoverAction(3, "Nhận thông báo");
     });
 
     it("should hover Unsubscribe icon and render Hover Action", () => {
-        testHoverAction(3, "Turn off notifications", {
+        testHoverAction(3, "Tắt thông báo", {
             ...mockUserProfileState,
             userProfile: {
                 ...mockUserProfileState.userProfile,

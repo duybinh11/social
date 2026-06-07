@@ -50,7 +50,7 @@ const ConversationInfo: FC<ConversationInfoProps> = ({participantId, chatId}): R
         event.preventDefault();
         dispatch(processUserToBlocklist({userId: chatParticipant?.id!}));
         setVisibleBlockUserModal(false);
-        dispatch(setOpenSnackBar(`@${chatParticipant?.username!} has been ${chatParticipant?.isUserBlocked ? "unblocked" : "blocked"}.`));
+        dispatch(setOpenSnackBar(`@${chatParticipant?.username!} ${chatParticipant?.isUserBlocked ? "đã bỏ chặn" : "đã chặn"}.`));
     }, [chatParticipant?.id]);
 
     const onOpenBlockUserModal = useCallback((): void => {

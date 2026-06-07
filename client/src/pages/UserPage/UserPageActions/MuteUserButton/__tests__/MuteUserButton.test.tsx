@@ -24,7 +24,7 @@ describe("MuteUserButton", () => {
             type: UserActionsType.PROCESS_USER_TO_MUTELIST
         });
         expect(mockDispatchFn).nthCalledWith(2, {
-            payload: `@${mockMyProfile.username} has been muted.`,
+            payload: `@${mockMyProfile.username} đã tắt tiếng.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });
@@ -44,7 +44,7 @@ describe("MuteUserButton", () => {
             type: UserActionsType.PROCESS_USER_TO_MUTELIST
         });
         expect(mockDispatchFn).nthCalledWith(2, {
-            payload: `@${mockMyProfile.username} has been unmuted.`,
+            payload: `@${mockMyProfile.username} đã bật tiếng.`,
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });

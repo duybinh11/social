@@ -60,7 +60,7 @@ describe("NotificationInfo", () => {
         };
         const wrapper = mountWithStore(<NotificationInfo/>, mockNotificationRetweet);
         
-        expect(wrapper.text().includes("Retweeted")).toBe(true);
+        expect(wrapper.text().includes("Đã đăng lại")).toBe(true);
         expect(wrapper.text().includes(`by ${mockNotificationInfo.user.fullName}`)).toBe(true);
     });
     

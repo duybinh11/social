@@ -65,13 +65,13 @@ const FollowersYouKnow: FC = (): ReactElement => {
                 (!isLoading && (overallFollowers.length === 0)) ? (
                     <div className={globalClasses.contentWrapper}>
                         <EmptyPageDescription
-                            title={`@${userProfile?.username} doesn’t have any followers you know yet`}
-                            subtitle={"When someone you know follows them, they’ll be listed here."}
+                            title={`@${userProfile?.username} chưa có người theo dõi mà bạn quen`}
+                            subtitle={"Khi ai đó bạn quen theo dõi họ, họ sẽ hiện ở đây."}
                         />
                     </div>
                 ) : (
                     <ConnectToUsers
-                        title={"Followers you know"}
+                        title={"Người theo dõi bạn quen"}
                         isUsersLoading={isLoading}
                         users={overallFollowers}
                     />

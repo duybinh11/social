@@ -30,7 +30,7 @@ const DeleteTweetButton: FC<DeleteTweetButtonProps> = memo((
         } else {
             dispatch(fetchDeleteTweet(tweetId));
         }
-        dispatch(setOpenSnackBar("Your Tweet was deleted"));
+        dispatch(setOpenSnackBar("Tweet của bạn đã bị xóa"));
         setVisibleDeleteTweetModal(false);
         onCloseActionsDropdown();
     };

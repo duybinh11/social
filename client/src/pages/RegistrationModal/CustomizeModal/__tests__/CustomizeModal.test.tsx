@@ -21,7 +21,7 @@ describe("CustomizeModal", () => {
         
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
         expect(wrapper.text().includes("Tùy chỉnh trải nghiệm")).toBe(true);
-        expect(wrapper.text().includes("Track where you see Twitter content across the web")).toBe(true);
+        expect(wrapper.text().includes("Theo dõi nơi bạn xem nội dung Twitter trên web")).toBe(true);
         expect(wrapper.find(Button).text().includes("Tiếp")).toBe(true);
         expect(mockOnOpenCreateAccount).toHaveBeenCalled();
         expect(mockOnOpenCreateAccount).toHaveBeenCalledWith(true);

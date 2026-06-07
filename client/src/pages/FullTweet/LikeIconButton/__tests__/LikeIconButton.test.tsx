@@ -23,7 +23,7 @@ describe("LikeIconButton", () => {
         const wrapper = mountWithStore(<LikeIconButton/>, mockRootStore);
         wrapper.find(ActionIconButton).find(IconButton).simulate("click");
         expect(mockDispatchFn).nthCalledWith(1, {payload: {tweetId: 9}, type: TweetsActionType.LIKE_TWEET});
-        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Unlike");
+        expect(wrapper.find(ActionIconButton).prop("actionText")).toBe("Bỏ thích");
         expect(wrapper.find(ActionIconButton).prop("icon")).toBe(LikeIcon);
     });
 

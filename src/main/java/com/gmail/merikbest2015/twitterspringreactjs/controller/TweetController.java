@@ -197,7 +197,7 @@ public class TweetController {
             @RequestParam(required = false) Integer dwellSeconds
     ) {
         personalizationService.trackInteraction(tweetId, type, dwellSeconds);
-        return ResponseEntity.ok("Interaction tracked");
+        return ResponseEntity.ok("Đã ghi nhận tương tác");
     }
 
 }

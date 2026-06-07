@@ -38,8 +38,8 @@ describe("ProfilePictureModal", () => {
             />, mockRootState);
 
         expect(wrapper.find(Dialog).prop("open")).toBe(true);
-        expect(wrapper.text().includes("Pick a profile picture")).toBe(true);
-        expect(wrapper.text().includes("Have a favorite selfie? Upload it now.")).toBe(true);
+        expect(wrapper.text().includes("Chọn ảnh đại diện")).toBe(true);
+        expect(wrapper.text().includes("Có ảnh selfie yêu thích? Tải lên ngay.")).toBe(true);
         expect(wrapper.find(Avatar).prop("src")).toEqual(DEFAULT_PROFILE_IMG);
         expect(wrapper.find(Button).text().includes("Bỏ qua")).toBe(true);
     });

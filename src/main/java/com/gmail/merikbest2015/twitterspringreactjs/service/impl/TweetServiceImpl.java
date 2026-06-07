@@ -170,7 +170,7 @@ public class TweetServiceImpl implements TweetService {
             }
         });
         tweet.setDeleted(true);
-        return "Your Tweet was deleted";
+        return "Tweet của bạn đã bị xóa";
     }
 
     @Override
