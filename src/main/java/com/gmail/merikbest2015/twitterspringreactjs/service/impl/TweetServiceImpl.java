@@ -3,6 +3,7 @@ package com.gmail.merikbest2015.twitterspringreactjs.service.impl;
 import com.gmail.merikbest2015.twitterspringreactjs.enums.LinkCoverSize;
 import com.gmail.merikbest2015.twitterspringreactjs.enums.NotificationType;
 import com.gmail.merikbest2015.twitterspringreactjs.enums.ReplyType;
+import com.gmail.merikbest2015.twitterspringreactjs.enums.InteractionType;
 import com.gmail.merikbest2015.twitterspringreactjs.exception.ApiRequestException;
 import com.gmail.merikbest2015.twitterspringreactjs.model.*;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.*;
@@ -11,6 +12,7 @@ import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.tweet.TweetsProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.projection.user.UserProjection;
 import com.gmail.merikbest2015.twitterspringreactjs.service.AuthenticationService;
+import com.gmail.merikbest2015.twitterspringreactjs.service.PersonalizationService;
 import com.gmail.merikbest2015.twitterspringreactjs.service.TweetService;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -51,6 +53,7 @@ public class TweetServiceImpl implements TweetService {
     private final PollRepository pollRepository;
     private final PollChoiceRepository pollChoiceRepository;
     private final RestTemplate restTemplate;
+    private final PersonalizationService personalizationService;
 
     @Value("${google.api.url}")
     private String googleApiUrl;
@@ -60,7 +63,7 @@ public class TweetServiceImpl implements TweetService {
 
     @Override
     public Page<TweetProjection> getTweets(Pageable pageable) {
-        return tweetRepository.findAllTweets(pageable);
+        return personalizationService.getPersonalizedTweets(pageable);
     }
 
     @Override
@@ -218,6 +221,7 @@ public class TweetServiceImpl implements TweetService {
             isTweetLiked = true;
         }
         Notification notification = notificationHandler(user, tweet, NotificationType.LIKE);
+        personalizationService.trackInteraction(tweetId, InteractionType.LIKE, null);
         return Map.of("notification", notification, "isTweetLiked", isTweetLiked);
     }
 
@@ -248,6 +252,7 @@ public class TweetServiceImpl implements TweetService {
             isTweetRetweeted = true;
         }
         Notification notification = notificationHandler(user, tweet, NotificationType.RETWEET);
+        personalizationService.trackInteraction(tweetId, InteractionType.RETWEET, null);
         return Map.of("notification", notification, "isTweetRetweeted", isTweetRetweeted);
     }
 
@@ -261,6 +266,7 @@ public class TweetServiceImpl implements TweetService {
         Tweet replyTweet = createTweet(reply);
         parentTweet.getReplies().add(replyTweet);
         Notification notification = replyNotificationHandler(replier, parentTweet, replyTweet);
+        personalizationService.trackInteraction(tweetId, InteractionType.COMMENT, null);
         return Map.of(
                 "tweet", getTweetById(replyTweet.getId()),
                 "notification", notification,
@@ -278,6 +284,7 @@ public class TweetServiceImpl implements TweetService {
         quote.setQuoteTweet(tweet);
         Tweet createdTweet = createTweet(quote);
         tweet.getQuotes().add(createdTweet);
+        personalizationService.indexTweetEmbedding(createdTweet.getId());
         return getTweetById(createdTweet.getId());
     }
 
@@ -409,6 +416,7 @@ public class TweetServiceImpl implements TweetService {
             notifications.add(notification);
             notificationRepository.save(notification);
         });
+        personalizationService.indexTweetEmbedding(createdTweet.getId());
         return createdTweet;
     }
 

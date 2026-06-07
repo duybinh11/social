@@ -9,7 +9,7 @@ import TweetComponent from "../../components/TweetComponent/TweetComponent";
 import {useHomeStyles} from './HomeStyles';
 import AddTweetForm from '../../components/AddTweetForm/AddTweetForm';
 import {
-    fetchFollowersTweets,
+    fetchTweets,
     resetTweets,
 } from "../../store/ducks/tweets/actionCreators";
 import {selectIsTweetsLoading, selectPagesCount, selectTweetsItems} from "../../store/ducks/tweets/selectors";
@@ -46,13 +46,13 @@ const Home: FC = (): ReactElement => {
     useEffect(() => {
         if (isUserLoaded && location.pathname !== SEARCH && !initialTweetsLoaded.current) {
             initialTweetsLoaded.current = true;
-            dispatch(fetchFollowersTweets(0));
+            dispatch(fetchTweets(0));
             setPage(1);
         }
     }, [dispatch, isUserLoaded, location.pathname]);
 
     const loadTweets = (): void => {
-        dispatch(fetchFollowersTweets(page));
+        dispatch(fetchTweets(page));
         setPage(prevState => prevState + 1);
     };
 

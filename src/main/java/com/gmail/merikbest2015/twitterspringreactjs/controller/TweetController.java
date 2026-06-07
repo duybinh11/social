@@ -9,8 +9,10 @@ import com.gmail.merikbest2015.twitterspringreactjs.dto.response.notification.No
 import com.gmail.merikbest2015.twitterspringreactjs.dto.response.HeaderResponse;
 import com.gmail.merikbest2015.twitterspringreactjs.dto.response.tweet.TweetAdditionalInfoResponse;
 import com.gmail.merikbest2015.twitterspringreactjs.dto.response.tweet.TweetResponse;
+import com.gmail.merikbest2015.twitterspringreactjs.enums.InteractionType;
 import com.gmail.merikbest2015.twitterspringreactjs.mapper.TweetMapper;
 import com.gmail.merikbest2015.twitterspringreactjs.enums.ReplyType;
+import com.gmail.merikbest2015.twitterspringreactjs.service.PersonalizationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -28,6 +30,7 @@ public class TweetController {
 
     private final TweetMapper tweetMapper;
     private final SimpMessagingTemplate messagingTemplate;
+    private final PersonalizationService personalizationService;
 
     @GetMapping
     public ResponseEntity<List<TweetResponse>> getTweets(@PageableDefault(size = 10) Pageable pageable) {
@@ -191,6 +194,16 @@ public class TweetController {
         messagingTemplate.convertAndSend("/topic/tweet/" + tweet.getId(), tweet);
         messagingTemplate.convertAndSend("/topic/user/update/tweet/" + tweet.getUser().getId(), tweet);
         return ResponseEntity.ok(tweet);
+    }
+
+    @PostMapping("/{tweetId}/interaction")
+    public ResponseEntity<String> trackInteraction(
+            @PathVariable Long tweetId,
+            @RequestParam InteractionType type,
+            @RequestParam(required = false) Integer dwellSeconds
+    ) {
+        personalizationService.trackInteraction(tweetId, type, dwellSeconds);
+        return ResponseEntity.ok("Interaction tracked");
     }
 
 }

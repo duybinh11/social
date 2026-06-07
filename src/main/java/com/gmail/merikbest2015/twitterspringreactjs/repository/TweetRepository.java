@@ -39,6 +39,13 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
             "ORDER BY tweet.dateTime DESC")
     Page<TweetProjection> findAllTweets(Pageable pageable);
 
+    @Query("SELECT tweet FROM Tweet tweet " +
+            "LEFT JOIN FETCH tweet.user user " +
+            "WHERE tweet.addressedUsername IS NULL " +
+            "AND tweet.deleted = false " +
+            "ORDER BY tweet.dateTime DESC")
+    List<Tweet> findCandidateTweets(Pageable pageable);
+
     @Query("SELECT t FROM Tweet t " +
             "LEFT JOIN t.user u " +
             "WHERE t.deleted = false " +
