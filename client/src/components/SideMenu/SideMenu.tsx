@@ -220,7 +220,7 @@ const SideMenu: FC<DisplayProps> = ({changeBackgroundColor, changeColorScheme}):
                                         <span>{ListsIcon}</span>
                                     )}
                                     <Typography variant={"h5"}>
-                                        Danh sách
+                                        Bạn bè
                                     </Typography>
                                 </>
                             </Hidden>

@@ -31,24 +31,24 @@ const TweetComponentActionsModal: FC<TweetComponentActionsModalProps> = (
                 <div className={classes.modalWrapper}>
                     <Typography variant={"h5"}>
                         {(modalTitle === "Xóa") ? (
-                            "Xóa tweet?"
+                            "Xóa bài viết?"
                         ) : (
                             isTweetPinned ? (
-                                "Bỏ ghim tweet khỏi hồ sơ?"
+                                "Bỏ ghim bài viết khỏi hồ sơ?"
                             ) : (
-                                "Ghim tweet lên hồ sơ?"
+                                "Ghim bài viết lên hồ sơ?"
                             )
                         )}
                     </Typography>
                     <Typography variant={"subtitle1"}>
                         {(modalTitle === "Xóa") ? (
-                            "Không thể hoàn tác và tweet sẽ bị xóa khỏi hồ sơ, " +
-                            "dòng thời gian của người theo dõi bạn và kết quả tìm kiếm Twitter."
+                            "Không thể hoàn tác và bài viết sẽ bị xóa khỏi hồ sơ, " +
+                            "dòng thời gian của người theo dõi bạn và kết quả tìm kiếm."
                         ) : (
                             isTweetPinned ? (
-                                "Tweet sẽ không còn tự động hiện ở đầu hồ sơ của bạn."
+                                "Bài viết sẽ không còn tự động hiện ở đầu hồ sơ của bạn."
                             ) : (
-                                "Tweet sẽ hiện ở đầu hồ sơ và thay thế tweet đã ghim trước đó."
+                                "Bài viết sẽ hiện ở đầu hồ sơ và thay thế bài viết đã ghim trước đó."
                             )
                         )}
                     </Typography>

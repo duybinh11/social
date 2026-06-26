@@ -110,7 +110,7 @@ const AddTweetForm: FC<AddTweetFormProps> = (
                 replyType: replyType
             }));
         }
-        dispatch(setOpenSnackBar("Tweet của bạn đã được gửi."));
+        dispatch(setOpenSnackBar("Bài viết của bạn đã được gửi."));
         setText('');
         setImages([]);
         setVisiblePoll(false);
@@ -133,7 +133,7 @@ const AddTweetForm: FC<AddTweetFormProps> = (
             userId: params.userId,
         }));
 
-        dispatch(setOpenSnackBar("Tweet của bạn đã được gửi."));
+        dispatch(setOpenSnackBar("Bài viết của bạn đã được gửi."));
         setText("");
         setImages([]);
 
@@ -159,7 +159,7 @@ const AddTweetForm: FC<AddTweetFormProps> = (
             replyType: replyType
         }));
 
-        dispatch(setOpenSnackBar("Tweet của bạn đã được gửi."));
+        dispatch(setOpenSnackBar("Bài viết của bạn đã được gửi."));
         setText("");
         setImages([]);
 

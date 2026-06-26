@@ -22,7 +22,7 @@ const TrendsItem: FC<TrendsItemProps> = ({tag}): ReactElement => {
                         primary={tag.tagName}
                         secondary={
                             <Typography component="span" variant="body2" color="textSecondary">
-                                {tag.tweetsQuantity} Tweets
+                                {tag.tweetsQuantity} bài viết
                             </Typography>
                         }
                     />

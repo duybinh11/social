@@ -111,7 +111,7 @@ describe("UserPage", () => {
         expect(wrapper.find(Tab).at(0).prop("selected")).toBe(true);
         expect(wrapper.find(Tab).at(0).text().includes("Đăng")).toBe(true);
         expect(wrapper.find(Tab).at(1).prop("selected")).toBe(false);
-        expect(wrapper.find(Tab).at(1).text().includes("Tweet & trả lời")).toBe(true);
+        expect(wrapper.find(Tab).at(1).text().includes("Bài viết & trả lời")).toBe(true);
         expect(wrapper.find(Tab).at(2).prop("selected")).toBe(false);
         expect(wrapper.find(Tab).at(2).text().includes("Phương tiện")).toBe(true);
         expect(wrapper.find(Tab).at(3).prop("selected")).toBe(false);
@@ -123,7 +123,7 @@ describe("UserPage", () => {
     });
 
     it("should click Tweets & replies Tab and fetch user tweets", () => {
-        testClickTab(1, `${mockUser.tweetCount} Tweets`, "Tweet & trả lời", UserTweetsActionType.FETCH_RETWEETS_AND_REPLIES);
+        testClickTab(1, `${mockUser.tweetCount} Tweets`, "Bài viết & trả lời", UserTweetsActionType.FETCH_RETWEETS_AND_REPLIES);
     });
 
     it("should click Media Tab and fetch user tweets", () => {
@@ -308,7 +308,7 @@ describe("UserPage", () => {
             }
         });
 
-        expect(wrapper.text().includes("Bạn đã hạn chế tweet từ tài khoản này.")).toBe(true);
+        expect(wrapper.text().includes("Bạn đã hạn chế bài viết từ tài khoản này.")).toBe(true);
 
         wrapper.find("#unmuteUser").at(0).simulate("click");
 

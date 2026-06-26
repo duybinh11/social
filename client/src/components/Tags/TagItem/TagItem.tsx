@@ -19,7 +19,7 @@ const TagItem: FC<TagItemProps> = ({tag, classes}): ReactElement => {
                     primary={tag.tagName}
                     secondary={
                         <Typography component="span" variant="body2" color="textSecondary">
-                            {tag.tweetsQuantity} Tweets
+                            {tag.tweetsQuantity} bài viết
                         </Typography>
                     }
                 />

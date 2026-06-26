@@ -28,7 +28,7 @@ const UserUnmuteMessage = memo((): ReactElement => {
             {userProfileId && (
                 isUserMuted && (
                     <Typography variant={"subtitle1"} component={"div"} className={classes.description}>
-                        {"Bạn đã hạn chế tweet từ tài khoản này. "}
+                        {"Bạn đã hạn chế bài viết từ tài khoản này. "}
                         <Typography
                             id={"unmuteUser"}
                             className={classes.unfollowLink}

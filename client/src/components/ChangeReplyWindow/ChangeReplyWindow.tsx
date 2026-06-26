@@ -20,7 +20,7 @@ const ChangeReplyWindow: FC<ChangeReplyWindowProps> = memo(({replyType, onChange
                     Ai có thể trả lời?
                 </Typography>
                 <Typography variant={"subtitle1"} component={"div"}>
-                    Chọn ai có thể trả lời tweet này.
+                    Chọn ai có thể trả lời bài viết này.
                 </Typography>
             </div>
             <List component="nav" aria-label="main mailbox folders">

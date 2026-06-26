@@ -43,7 +43,7 @@ import {UserApi} from "../userApi";
 describe("UserApi", () => {
     const mockAdapter = new MockAdapter(axios);
     const mockUserErrorResponse = "Không tìm thấy người dùng";
-    const mockTweetErrorResponse = "Không tìm thấy tweet";
+    const mockTweetErrorResponse = "Không tìm thấy bài viết";
     const mockUserNotFound = "Không tìm thấy người dùng (id:1)";
     const mockUserBlocked = "Người dùng (id:1) đã bị chặn";
     const mockPageable = {userId: 1, page: 1};

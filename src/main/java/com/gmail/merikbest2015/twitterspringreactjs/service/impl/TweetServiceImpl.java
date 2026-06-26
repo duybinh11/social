@@ -60,10 +60,10 @@ public class TweetServiceImpl implements TweetService {
     @Override
     public TweetProjection getTweetById(Long tweetId) {
         TweetProjection tweet = tweetRepository.findTweetById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy bài viết", HttpStatus.NOT_FOUND));
 
         if (tweet.isDeleted()) {
-            throw new ApiRequestException("Rất tiếc, tweet này đã bị xóa.", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Rất tiếc, bài viết này đã bị xóa.", HttpStatus.BAD_REQUEST);
         }
         return tweet;
     }
@@ -71,10 +71,10 @@ public class TweetServiceImpl implements TweetService {
     @Override
     public TweetAdditionalInfoProjection getTweetAdditionalInfoById(Long tweetId) {
         TweetAdditionalInfoProjection additionalInfo = tweetRepository.getTweetAdditionalInfoById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy bài viết", HttpStatus.NOT_FOUND));
 
         if (additionalInfo.isDeleted()) {
-            throw new ApiRequestException("Rất tiếc, tweet này đã bị xóa.", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Rất tiếc, bài viết này đã bị xóa.", HttpStatus.BAD_REQUEST);
         }
         return additionalInfo;
     }
@@ -165,7 +165,7 @@ public class TweetServiceImpl implements TweetService {
         Tweet tweet = user.getTweets().stream()
                 .filter(t -> t.getId().equals(tweetId))
                 .findFirst()
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy bài viết", HttpStatus.NOT_FOUND));
         if (user.getPinnedTweet() != null && user.getPinnedTweet().getId().equals(tweetId)) {
             user.setPinnedTweet(null);
         }
@@ -180,7 +180,7 @@ public class TweetServiceImpl implements TweetService {
             }
         });
         tweet.setDeleted(true);
-        return "Tweet của bạn đã bị xóa";
+        return "Bài viết của bạn đã bị xóa";
     }
 
     @Override
@@ -197,7 +197,7 @@ public class TweetServiceImpl implements TweetService {
     public Map<String, Object> likeTweet(Long tweetId) {
         User user = authenticationService.getAuthenticatedUser();
         Tweet tweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy bài viết", HttpStatus.NOT_FOUND));
         List<LikeTweet> likedTweets = user.getLikedTweets();
         Optional<LikeTweet> likedTweet = likedTweets.stream()
                 .filter(t -> t.getTweet().getId().equals(tweet.getId()))
@@ -228,7 +228,7 @@ public class TweetServiceImpl implements TweetService {
     public Map<String, Object> retweet(Long tweetId) {
         User user = authenticationService.getAuthenticatedUser();
         Tweet tweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy bài viết", HttpStatus.NOT_FOUND));
         List<Retweet> retweets = user.getRetweets();
         Optional<Retweet> retweet = retweets.stream()
                 .filter(t -> t.getTweet().getId().equals(tweet.getId()))
@@ -258,7 +258,7 @@ public class TweetServiceImpl implements TweetService {
     @Transactional
     public Map<String, Object> replyTweet(Long tweetId, Tweet reply) {
         Tweet parentTweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy bài viết", HttpStatus.NOT_FOUND));
         User replier = authenticationService.getAuthenticatedUser();
         reply.setAddressedTweetId(tweetId);
         Tweet replyTweet = createTweet(reply);
@@ -276,7 +276,7 @@ public class TweetServiceImpl implements TweetService {
     @Transactional
     public TweetProjection quoteTweet(Long tweetId, Tweet quote) {
         Tweet tweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy bài viết", HttpStatus.NOT_FOUND));
         User user = authenticationService.getAuthenticatedUser();
         user.setTweetCount(user.getTweetCount() + 1);
         quote.setQuoteTweet(tweet);
@@ -293,12 +293,12 @@ public class TweetServiceImpl implements TweetService {
             throw new ApiRequestException("Loại trả lời không được hỗ trợ", HttpStatus.BAD_REQUEST);
         }
         Tweet tweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy bài viết", HttpStatus.NOT_FOUND));
         User user = authenticationService.getAuthenticatedUser();
         user.getTweets().stream()
                 .filter(userTweet -> userTweet.getId().equals(tweet.getId()))
                 .findFirst()
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy bài viết", HttpStatus.NOT_FOUND));
         tweet.setReplyType(replyType);
         return getTweetById(tweet.getId());
     }
@@ -311,10 +311,10 @@ public class TweetServiceImpl implements TweetService {
         PollChoice pollChoice = pollChoiceRepository.findById(pollChoiceId)
                 .orElseThrow(() -> new ApiRequestException("Không tìm thấy lựa chọn bình chọn", HttpStatus.NOT_FOUND));
         Tweet tweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy bài viết", HttpStatus.NOT_FOUND));
 
         if (!tweet.getPoll().getId().equals(poll.getId())) {
-            throw new ApiRequestException("Bình chọn trong tweet không tồn tại", HttpStatus.NOT_FOUND);
+            throw new ApiRequestException("Bình chọn trong bài viết không tồn tại", HttpStatus.NOT_FOUND);
         }
         User user = authenticationService.getAuthenticatedUser();
         List<PollChoice> pollChoices = tweet.getPoll().getPollChoices().stream()
@@ -389,7 +389,7 @@ public class TweetServiceImpl implements TweetService {
     @Transactional
     public Tweet createTweet(Tweet tweet) {
         if (tweet.getText().length() == 0 || tweet.getText().length() > 280) {
-            throw new ApiRequestException("Độ dài nội dung tweet không hợp lệ", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Độ dài nội dung bài viết không hợp lệ", HttpStatus.BAD_REQUEST);
         }
         User user = authenticationService.getAuthenticatedUser();
         tweet.setUser(user);

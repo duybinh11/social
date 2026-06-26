@@ -26,7 +26,7 @@ const QuotesCount = memo((): ReactElement => {
                             {quotesCount}
                         </Typography>
                         <Typography variant={"subtitle1"} component={"span"}>
-                            Tweet trích dẫn
+                            Bài viết trích dẫn
                         </Typography>
                     </div>
                 </a>

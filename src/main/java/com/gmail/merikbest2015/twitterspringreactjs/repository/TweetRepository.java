@@ -62,6 +62,23 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
             "ORDER BY tweet.dateTime DESC")
     List<Tweet> findCandidateTweetsExcludingUsers(List<Long> mutedUserIds, Pageable pageable);
 
+    @Query("SELECT DISTINCT tagTweet FROM Tag tag " +
+            "JOIN tag.tweets tagTweet " +
+            "LEFT JOIN FETCH tagTweet.user user " +
+            "WHERE tag.tagName IN :tagNames " +
+            "AND tagTweet.addressedUsername IS NULL " +
+            "AND tagTweet.deleted = false " +
+            "ORDER BY tagTweet.dateTime DESC")
+    List<Tweet> findCandidateTweetsByTagNames(List<String> tagNames, Pageable pageable);
+
+    @Query("SELECT DISTINCT tweet FROM Tweet tweet " +
+            "LEFT JOIN FETCH tweet.user user " +
+            "WHERE tweet.addressedUsername IS NULL " +
+            "AND tweet.deleted = false " +
+            "AND user.id IN :userIds " +
+            "ORDER BY tweet.dateTime DESC")
+    List<Tweet> findCandidateTweetsByUserIds(List<Long> userIds, Pageable pageable);
+
     @Query("SELECT tweet FROM Tweet tweet " +
             "WHERE tweet.addressedUsername IS NULL " +
             "AND tweet.deleted = false " +

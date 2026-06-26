@@ -46,7 +46,7 @@ const ChatMessage: FC<ChatMessageProps> = memo(({message, isParticipantMessage})
                 <div>
                     {message.tweet && (
                         message.tweet.isDeleted ? (
-                            <div>Tweet đã bị xóa</div>
+                            <div>Bài viết đã bị xóa</div>
                         ) : (
                             <div className={classes.tweetContainer}>
                                 <Link to={`${HOME_TWEET}/${message.tweet.id}`}>

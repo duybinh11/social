@@ -44,9 +44,9 @@ const BlockUserModal: FC<BlockUserModalProps> = (
                 </Typography>
                 <Typography variant={"subtitle1"} component={"div"} className={classes.text}>
                     {isUserBlocked ? (
-                        "Họ sẽ có thể theo dõi bạn và xem tweet của bạn."
+                        "Họ sẽ có thể theo dõi bạn và xem bài viết của bạn."
                     ) : (
-                        `Họ sẽ không thể theo dõi hoặc xem tweet của bạn, và bạn sẽ không thấy tweet hay thông báo từ @${username}.`
+                        `Họ sẽ không thể theo dõi hoặc xem bài viết của bạn, và bạn sẽ không thấy bài viết hay thông báo từ @${username}.`
                     )}
                 </Typography>
                 <Button

@@ -39,7 +39,7 @@ const EmptyFollowersDescription: FC<EmptyFollowersDescriptionProps> = memo(({act
             <Typography variant={"subtitle1"} component={"div"}>
                 {(isMyProfile) ? (
                     (activeTab === 0) ? (
-                        "Khi bạn theo dõi, họ sẽ hiện ở đây và tweet của họ sẽ xuất hiện trên dòng thời gian."
+                        "Khi bạn theo dõi, họ sẽ hiện ở đây và bài viết của họ sẽ xuất hiện trên dòng thời gian."
                     ) : (
                         "Khi ai đó theo dõi bạn, bạn sẽ thấy họ ở đây."
                     )

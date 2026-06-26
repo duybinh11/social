@@ -30,7 +30,7 @@ describe("ChatMessage", () => {
     it("should render participant message with deleted tweet", () => {
         const mockMessageDeletedTweet = {...mockUserMessageWithTweet, tweet: {...mockUserMessageWithTweet.tweet, isDeleted: true}};
         const wrapper = mountWithStore(<ChatMessage message={mockMessageDeletedTweet} isParticipantMessage/>, mockChatStore);
-        expect(wrapper.text().includes("Tweet đã bị xóa")).toBe(true);
+        expect(wrapper.text().includes("Bài viết đã bị xóa")).toBe(true);
     });
 
     it("should render my message", () => {

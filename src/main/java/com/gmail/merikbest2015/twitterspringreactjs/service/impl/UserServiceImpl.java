@@ -329,7 +329,7 @@ public class UserServiceImpl implements UserService {
     public Long processPinTweet(Long tweetId) {
         User user = authenticationService.getAuthenticatedUser();
         Tweet tweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy bài viết", HttpStatus.NOT_FOUND));
 
         if (user.getPinnedTweet() == null || !user.getPinnedTweet().getId().equals(tweet.getId())) {
             user.setPinnedTweet(tweet);

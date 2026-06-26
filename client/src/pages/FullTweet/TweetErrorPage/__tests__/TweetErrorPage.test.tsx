@@ -19,11 +19,11 @@ describe("TweetErrorPage", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<TweetErrorPage/>, {
             ...mockStore,
-            tweet: {...mockStore.tweet, errorMessage: "Không tìm thấy tweet"}
+            tweet: {...mockStore.tweet, errorMessage: "Không tìm thấy bài viết"}
         });
         expect(wrapper.text().includes("Hmm... trang này không tồn tại.")).toBe(true);
         expect(mockDispatchFn).nthCalledWith(1, {
-            payload: "Không tìm thấy tweet",
+            payload: "Không tìm thấy bài viết",
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     });

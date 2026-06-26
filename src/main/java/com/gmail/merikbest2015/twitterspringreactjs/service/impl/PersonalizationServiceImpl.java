@@ -5,6 +5,7 @@ import com.gmail.merikbest2015.twitterspringreactjs.model.Tweet;
 import com.gmail.merikbest2015.twitterspringreactjs.model.TweetEmbedding;
 import com.gmail.merikbest2015.twitterspringreactjs.model.User;
 import com.gmail.merikbest2015.twitterspringreactjs.model.UserInteractionEvent;
+import com.gmail.merikbest2015.twitterspringreactjs.repository.LikeTweetRepository;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.TweetEmbeddingRepository;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.TweetRepository;
 import com.gmail.merikbest2015.twitterspringreactjs.repository.UserInteractionEventRepository;
@@ -14,6 +15,12 @@ import com.gmail.merikbest2015.twitterspringreactjs.service.AuthenticationServic
 import com.gmail.merikbest2015.twitterspringreactjs.service.MutedUsersFilterService;
 import com.gmail.merikbest2015.twitterspringreactjs.service.PersonalizationService;
 import com.gmail.merikbest2015.twitterspringreactjs.service.TrendingService;
+import com.gmail.merikbest2015.twitterspringreactjs.service.personalization.FeedCandidateRetriever;
+import com.gmail.merikbest2015.twitterspringreactjs.service.personalization.FeedPersona;
+import com.gmail.merikbest2015.twitterspringreactjs.service.personalization.RankingWeights;
+import com.gmail.merikbest2015.twitterspringreactjs.service.personalization.TagVocabularyService;
+import com.gmail.merikbest2015.twitterspringreactjs.service.personalization.UserInterestProfile;
+import com.gmail.merikbest2015.twitterspringreactjs.service.personalization.UserInterestProfileBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -26,31 +33,20 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class PersonalizationServiceImpl implements PersonalizationService {
 
-    private static final List<String> IT_TAGS = List.of(
-            "java", "spring", "react", "dsa", "devops", "database", "career", "cpp", "python", "javascript",
-            "typescript", "ai", "ml", "oop", "api", "docker", "kubernetes", "sql", "nosql", "git"
-    );
-    private static final Pattern TAG_PATTERN = Pattern.compile("(#\\w+)\\b");
-
-    private static final double WEIGHT_SEMANTIC_SIMILARITY = 0.35;
-    private static final double WEIGHT_TREND_BOOST_24H = 0.15;
-    private static final double WEIGHT_FRESHNESS = 0.15;
-    private static final double WEIGHT_POPULARITY = 0.15;
-    private static final double WEIGHT_SOCIAL_GRAPH = 0.10;
-    private static final double WEIGHT_TAG_AFFINITY = 0.10;
-
-    private static final double DIVERSITY_TAG_PENALTY = 0.05;
-    private static final double DIVERSITY_AUTHOR_PENALTY = 0.15;
-    private static final int MAX_TWEETS_PER_AUTHOR_BEFORE_PENALTY = 2;
+    private static final int INTERACTION_LOOKBACK = 500;
 
     private final AuthenticationService authenticationService;
     private final TweetRepository tweetRepository;
@@ -59,6 +55,10 @@ public class PersonalizationServiceImpl implements PersonalizationService {
     private final UserRepository userRepository;
     private final TrendingService trendingService;
     private final MutedUsersFilterService mutedUsersFilterService;
+    private final TagVocabularyService tagVocabularyService;
+    private final FeedCandidateRetriever feedCandidateRetriever;
+    private final LikeTweetRepository likeTweetRepository;
+    private final UserInterestProfileBuilder userInterestProfileBuilder;
 
     @Override
     @Transactional(readOnly = true)
@@ -69,39 +69,58 @@ public class PersonalizationServiceImpl implements PersonalizationService {
         } catch (Exception exception) {
             return tweetRepository.findAllTweets(pageable);
         }
-        List<Tweet> candidates = loadCandidateTweets(userId);
+
+        List<Long> mutedUserIds = mutedUsersFilterService.getMutedUserIdsForAuthUser();
+        Set<Long> mutedUserIdSet = new HashSet<>(mutedUserIds);
+        List<UserInteractionEvent> interactions = userInteractionEventRepository.findRecentByUserId(
+                userId, PageRequest.of(0, INTERACTION_LOOKBACK));
+        UserInterestProfile profile = userInterestProfileBuilder.build(interactions);
+        Map<String, Double> trendScores24h = trendingService.getNormalizedTrendScores24h();
+
+        List<Tweet> candidates = feedCandidateRetriever.retrieveCandidates(
+                userId, mutedUserIdSet,
+                profile.getRecentTagScores(),
+                profile.getLongTermTagScores(),
+                trendScores24h);
+        Set<Long> likedTweetIds = new HashSet<>(likeTweetRepository.findLikedTweetIdsByUserId(userId));
+        candidates = excludeLikedTweets(candidates, likedTweetIds);
         if (candidates.isEmpty()) {
             return Page.empty(pageable);
         }
 
-        List<UserInteractionEvent> interactions = userInteractionEventRepository.findRecentByUserId(userId);
+        FeedPersona persona = detectPersona(interactions);
+        RankingWeights weights = RankingWeights.forPersona(persona);
+
         if (interactions.isEmpty()) {
             return fallbackByRecency(candidates, pageable);
         }
 
-        Map<String, Double> userTagScore = buildUserTagScore(interactions);
-        double[] userVector = buildUserVector(interactions);
-        Map<String, Double> trendScores24h = trendingService.getNormalizedTrendScores24h();
+        Map<Long, Double> authorAffinity = profile.getBlendedAuthorAffinity();
+        double[] userVector = profile.getBlendedUserVector();
+        Map<String, Double> userTagScore = profile.getBlendedTagScores();
         Set<Long> followingIds = new HashSet<>(userRepository.getFollowingIdsByUserId(userId));
         Map<Long, ScoredTweet> scored = new HashMap<>();
 
         for (Tweet tweet : candidates) {
-            double[] tweetVector = getOrBuildTweetVector(tweet);
+            double[] tweetVector = tagVocabularyService.getOrBuildTweetVector(tweet);
             double semanticSimilarity = cosineSimilarity(userVector, tweetVector);
-            Set<String> tweetTags = extractTags(tweet.getText());
+            Set<String> tweetTags = tagVocabularyService.extractTags(tweet);
             Long authorId = tweet.getUser() == null ? null : tweet.getUser().getId();
 
-            double baseScore = (WEIGHT_SEMANTIC_SIMILARITY * semanticSimilarity)
-                    + (WEIGHT_TREND_BOOST_24H * trendingService.trendBoostForTags(tweetTags, trendScores24h))
-                    + (WEIGHT_FRESHNESS * freshnessScore(tweet.getDateTime()))
-                    + (WEIGHT_POPULARITY * popularityScore(tweet))
-                    + (WEIGHT_SOCIAL_GRAPH * socialGraphScore(authorId, followingIds))
-                    + (WEIGHT_TAG_AFFINITY * tagAffinityScore(tweetTags, userTagScore));
+            double baseScore = (weights.getSemanticSimilarity() * semanticSimilarity)
+                    + (weights.getTrendBoost() * trendingService.trendBoostForTags(tweetTags, trendScores24h))
+                    + (weights.getFreshness() * freshnessScore(tweet.getDateTime()))
+                    + (weights.getPopularity() * popularityScore(tweet))
+                    + (weights.getSocialGraph() * socialGraphScore(authorId, followingIds))
+                    + (weights.getTagAffinity() * tagAffinityScore(tweetTags, userTagScore))
+                    + (weights.getAuthorAffinity() * authorAffinityScore(authorId, authorAffinity));
 
-            scored.put(tweet.getId(), new ScoredTweet(tweet, tweetTags, authorId, baseScore));
+            scored.put(tweet.getId(), new ScoredTweet(tweet, baseScore));
         }
 
-        List<ScoredTweet> ranked = applyDiversityAndSort(scored.values(), pageable.getOffset() + pageable.getPageSize());
+        List<ScoredTweet> ranked = scored.values().stream()
+                .sorted(Comparator.comparingDouble(ScoredTweet::baseScore).reversed())
+                .collect(Collectors.toList());
         List<TweetProjection> pageItems = ranked.stream()
                 .skip(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -116,8 +135,8 @@ public class PersonalizationServiceImpl implements PersonalizationService {
     public void indexTweetEmbedding(Long tweetId) {
         Tweet tweet = tweetRepository.findById(tweetId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Không tìm thấy tweet để tạo embedding"));
-        double[] vector = buildEmbedding(tweet.getText());
-        String serialized = serializeVector(vector);
+        double[] vector = tagVocabularyService.buildEmbedding(tweet);
+        String serialized = tagVocabularyService.serializeVector(vector);
         TweetEmbedding embedding = tweetEmbeddingRepository.findByTweet_Id(tweetId).orElseGet(TweetEmbedding::new);
         embedding.setTweet(tweet);
         embedding.setVectorData(serialized);
@@ -139,12 +158,14 @@ public class PersonalizationServiceImpl implements PersonalizationService {
         userInteractionEventRepository.save(event);
     }
 
-    private List<Tweet> loadCandidateTweets(Long userId) {
-        List<Long> mutedUserIds = mutedUsersFilterService.getMutedUserIdsForAuthUser();
-        if (mutedUserIds.isEmpty()) {
-            return tweetRepository.findCandidateTweets(PageRequest.of(0, 300));
+    private FeedPersona detectPersona(List<UserInteractionEvent> interactions) {
+        if (interactions.isEmpty() || interactions.size() < 10) {
+            return FeedPersona.NEW_USER;
         }
-        return tweetRepository.findCandidateTweetsExcludingUsers(mutedUserIds, PageRequest.of(0, 300));
+        if (interactions.size() >= 50) {
+            return FeedPersona.ENGAGED;
+        }
+        return FeedPersona.DEFAULT;
     }
 
     private Page<TweetProjection> fallbackByRecency(List<Tweet> candidates, Pageable pageable) {
@@ -157,115 +178,13 @@ public class PersonalizationServiceImpl implements PersonalizationService {
         return new PageImpl<>(items, pageable, candidates.size());
     }
 
-    private Map<String, Double> buildUserTagScore(List<UserInteractionEvent> interactions) {
-        Map<String, Double> scores = new HashMap<>();
-        for (UserInteractionEvent event : interactions.stream().limit(600).collect(Collectors.toList())) {
-            double eventWeight = interactionWeight(event.getInteractionType());
-            double recencyMultiplier = recencyMultiplier(event.getEventTime());
-            Set<String> tags = extractTags(event.getTweet().getText());
-            for (String tag : tags) {
-                scores.merge(tag, eventWeight * recencyMultiplier, Double::sum);
-            }
+    private List<Tweet> excludeLikedTweets(List<Tweet> candidates, Set<Long> likedTweetIds) {
+        if (likedTweetIds.isEmpty()) {
+            return candidates;
         }
-        return scores;
-    }
-
-    private double[] buildUserVector(List<UserInteractionEvent> interactions) {
-        double[] vector = new double[IT_TAGS.size()];
-        double totalWeight = 0.0;
-        for (UserInteractionEvent event : interactions.stream().limit(400).collect(Collectors.toList())) {
-            double weight = interactionWeight(event.getInteractionType()) * recencyMultiplier(event.getEventTime());
-            double[] eventVector = getOrBuildTweetVector(event.getTweet());
-            for (int i = 0; i < vector.length; i++) {
-                vector[i] += eventVector[i] * weight;
-            }
-            totalWeight += weight;
-        }
-        if (totalWeight > 0) {
-            for (int i = 0; i < vector.length; i++) {
-                vector[i] /= totalWeight;
-            }
-        }
-        return normalize(vector);
-    }
-
-    private double[] getOrBuildTweetVector(Tweet tweet) {
-        Optional<TweetEmbedding> existing = tweetEmbeddingRepository.findByTweet_Id(tweet.getId());
-        if (existing.isPresent()) {
-            return deserializeVector(existing.get().getVectorData());
-        }
-        return normalize(buildEmbedding(tweet.getText()));
-    }
-
-    private double[] buildEmbedding(String text) {
-        double[] vector = new double[IT_TAGS.size()];
-        String normalized = text == null ? "" : text.toLowerCase(Locale.ROOT);
-        for (int i = 0; i < IT_TAGS.size(); i++) {
-            String token = IT_TAGS.get(i);
-            int count = countOccurrences(normalized, token);
-            vector[i] = count;
-        }
-        Set<String> hashtags = extractTags(normalized);
-        for (String hashtag : hashtags) {
-            int idx = IT_TAGS.indexOf(hashtag);
-            if (idx >= 0) {
-                vector[idx] += 2.0;
-            }
-        }
-        return normalize(vector);
-    }
-
-    private int countOccurrences(String source, String token) {
-        int count = 0;
-        int index = 0;
-        while (index != -1) {
-            index = source.indexOf(token, index);
-            if (index != -1) {
-                count++;
-                index += token.length();
-            }
-        }
-        return count;
-    }
-
-    private Set<String> extractTags(String text) {
-        Set<String> tags = new HashSet<>();
-        String normalized = text == null ? "" : text.toLowerCase(Locale.ROOT);
-        Matcher matcher = TAG_PATTERN.matcher(normalized);
-        while (matcher.find()) {
-            String tag = matcher.group(1).replace("#", "");
-            tags.add(tag);
-        }
-        for (String knownTag : IT_TAGS) {
-            if (normalized.contains(knownTag)) {
-                tags.add(knownTag);
-            }
-        }
-        return tags;
-    }
-
-    private double interactionWeight(InteractionType type) {
-        switch (type) {
-            case CLICK:
-                return 1.0;
-            case READ:
-                return 2.0;
-            case LIKE:
-                return 3.0;
-            case COMMENT:
-                return 3.5;
-            case SAVE:
-                return 4.0;
-            case RETWEET:
-                return 2.5;
-            default:
-                return 1.0;
-        }
-    }
-
-    private double recencyMultiplier(LocalDateTime eventTime) {
-        long hours = Math.max(1, Duration.between(eventTime, LocalDateTime.now()).toHours());
-        return 1.0 / Math.log(hours + 2.0);
+        return candidates.stream()
+                .filter(tweet -> tweet.getId() != null && !likedTweetIds.contains(tweet.getId()))
+                .collect(Collectors.toList());
     }
 
     private double freshnessScore(LocalDateTime tweetTime) {
@@ -297,45 +216,20 @@ public class PersonalizationServiceImpl implements PersonalizationService {
         return matched / (matched + 5.0);
     }
 
-    private List<ScoredTweet> applyDiversityAndSort(Collection<ScoredTweet> scoredTweets, long limit) {
-        List<ScoredTweet> sorted = scoredTweets.stream()
-                .sorted(Comparator.comparingDouble(ScoredTweet::baseScore).reversed())
-                .collect(Collectors.toList());
-        List<ScoredTweet> result = new ArrayList<>();
-        Map<String, Integer> tagSeen = new HashMap<>();
-        Map<Long, Integer> authorSeen = new HashMap<>();
-
-        for (ScoredTweet candidate : sorted) {
-            double tagPenalty = candidate.tags().stream()
-                    .mapToInt(tag -> tagSeen.getOrDefault(tag, 0))
-                    .sum() * DIVERSITY_TAG_PENALTY;
-            double authorPenalty = 0.0;
-            if (candidate.authorId() != null
-                    && authorSeen.getOrDefault(candidate.authorId(), 0) >= MAX_TWEETS_PER_AUTHOR_BEFORE_PENALTY) {
-                authorPenalty = DIVERSITY_AUTHOR_PENALTY;
-            }
-            double finalScore = candidate.baseScore() - tagPenalty - authorPenalty;
-            result.add(new ScoredTweet(candidate.tweet(), candidate.tags(), candidate.authorId(), finalScore));
-
-            for (String tag : candidate.tags()) {
-                tagSeen.merge(tag, 1, Integer::sum);
-            }
-            if (candidate.authorId() != null) {
-                authorSeen.merge(candidate.authorId(), 1, Integer::sum);
-            }
-            if (result.size() >= limit) {
-                break;
-            }
+    private double authorAffinityScore(Long authorId, Map<Long, Double> authorAffinity) {
+        if (authorId == null || authorAffinity.isEmpty()) {
+            return 0.0;
         }
-        result.sort(Comparator.comparingDouble(ScoredTweet::baseScore).reversed());
-        return result;
+        double score = authorAffinity.getOrDefault(authorId, 0.0);
+        return score / (score + 8.0);
     }
 
     private double cosineSimilarity(double[] left, double[] right) {
+        int length = Math.min(left.length, right.length);
         double dot = 0.0;
         double leftNorm = 0.0;
         double rightNorm = 0.0;
-        for (int i = 0; i < left.length; i++) {
+        for (int i = 0; i < length; i++) {
             dot += left[i] * right[i];
             leftNorm += left[i] * left[i];
             rightNorm += right[i] * right[i];
@@ -346,60 +240,17 @@ public class PersonalizationServiceImpl implements PersonalizationService {
         return dot / (Math.sqrt(leftNorm) * Math.sqrt(rightNorm));
     }
 
-    private double[] normalize(double[] vector) {
-        double norm = 0.0;
-        for (double value : vector) {
-            norm += value * value;
-        }
-        if (norm == 0.0) {
-            return vector;
-        }
-        double denom = Math.sqrt(norm);
-        double[] normalized = new double[vector.length];
-        for (int i = 0; i < vector.length; i++) {
-            normalized[i] = vector[i] / denom;
-        }
-        return normalized;
-    }
-
-    private String serializeVector(double[] vector) {
-        return Arrays.stream(vector)
-                .mapToObj(value -> String.format(Locale.ROOT, "%.8f", value))
-                .collect(Collectors.joining(","));
-    }
-
-    private double[] deserializeVector(String vectorData) {
-        String[] parts = vectorData.split(",");
-        double[] vector = new double[parts.length];
-        for (int i = 0; i < parts.length; i++) {
-            vector[i] = Double.parseDouble(parts[i]);
-        }
-        return vector;
-    }
-
     private static class ScoredTweet {
         private final Tweet tweet;
-        private final Set<String> tags;
-        private final Long authorId;
         private final double baseScore;
 
-        private ScoredTweet(Tweet tweet, Set<String> tags, Long authorId, double baseScore) {
+        private ScoredTweet(Tweet tweet, double baseScore) {
             this.tweet = tweet;
-            this.tags = tags;
-            this.authorId = authorId;
             this.baseScore = baseScore;
         }
 
         public Tweet tweet() {
             return tweet;
-        }
-
-        public Set<String> tags() {
-            return tags;
-        }
-
-        public Long authorId() {
-            return authorId;
         }
 
         public double baseScore() {

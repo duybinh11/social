@@ -28,7 +28,7 @@ describe("QuoteIconButton", () => {
         wrapper.find(IconButton).simulate("click");
 
         expect(wrapper.text().includes("Hoàn tác đăng lại")).toBe(true);
-        expect(wrapper.text().includes("Tweet trích dẫn")).toBe(true);
+        expect(wrapper.text().includes("Bài viết trích dẫn")).toBe(true);
         expect(wrapper.find("#retweetOutlinedIcon").exists()).toBeTruthy();
         expect(wrapper.find("#quoteTweetIcon").exists()).toBeTruthy();
     });

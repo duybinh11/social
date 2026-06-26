@@ -63,7 +63,7 @@ describe("FullList", () => {
             tweets: {...mockStore.tweets, items: [], pagesCount: 1},
         });
 
-        expect(wrapper.text().includes("Chưa có tweet nào trong danh sách này")).toBe(true);
+        expect(wrapper.text().includes("Chưa có bài viết nào trong danh sách này")).toBe(true);
         expect(wrapper.text().includes("Khi ai đó trong danh sách đăng tweet, chúng sẽ hiện ở đây.")).toBe(true);
         expect(wrapper.find(TweetComponent).length).toEqual(0);
     });

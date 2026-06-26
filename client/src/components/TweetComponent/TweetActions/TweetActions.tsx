@@ -32,7 +32,7 @@ const TweetActions: FC<TweetActionsProps> = memo(({retweetsUserIds, tweetId, act
                 />
             ) : null}
             {((myProfilePinnedTweetId === tweetId || userProfilePinnedTweetId === tweetId) && activeTab === 0) && (
-                <TweetActionResult action={TweetActionResults.PIN} text={"Tweet đã ghim"}/>
+                <TweetActionResult action={TweetActionResults.PIN} text={"Bài viết đã ghim"}/>
             )}
         </>
     );

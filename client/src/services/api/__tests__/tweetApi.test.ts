@@ -22,7 +22,7 @@ import {ReplyType} from "../../../store/types/common";
 
 describe("TweetApi", () => {
     const mockAdapter = new MockAdapter(axios);
-    const tweetNotFoundError = "Không tìm thấy tweet";
+    const tweetNotFoundError = "Không tìm thấy bài viết";
     const mockAddTweetRequest = {text: "test", images: [], replyType: ReplyType.EVERYONE};
     const mockNotificationTweet = {id: 1, text: "test", user: {id: 1}, notificationCondition: true};
     const tweetActionRequest = {tweetId: 1, userId: 1};
@@ -84,13 +84,13 @@ describe("TweetApi", () => {
         });
 
         it("[400] should return Incorrect tweet text length", () => {
-            testApiCall(mockAdapter, "onPost", API_TWEETS, 400, "Độ dài nội dung tweet không hợp lệ", TweetApi.createTweet, mockAddTweetRequest);
+            testApiCall(mockAdapter, "onPost", API_TWEETS, 400, "Độ dài nội dung bài viết không hợp lệ", TweetApi.createTweet, mockAddTweetRequest);
         });
     });
 
     describe("should fetch TweetApi.deleteTweet", () => {
         it("[200] should delete tweet Success", () => {
-            testApiCall(mockAdapter, "onDelete", `${API_TWEETS}/1`, 200, "Tweet của bạn đã bị xóa", TweetApi.deleteTweet, 1);
+            testApiCall(mockAdapter, "onDelete", `${API_TWEETS}/1`, 200, "Bài viết của bạn đã bị xóa", TweetApi.deleteTweet, 1);
         });
 
         it("[404] should return tweet Not Found", () => {

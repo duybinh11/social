@@ -40,7 +40,7 @@ const UnfollowModal: FC<UnfollowModalProps> = (
                         Bỏ theo dõi {fullName}?
                     </Typography>
                     <Typography variant={"subtitle1"} component={"div"}>
-                        {infoText ?? "Tweet của họ sẽ không còn hiện trên dòng thời gian. Bạn vẫn có thể xem hồ sơ, trừ khi tweet được bảo vệ."}
+                        {infoText ?? "Bài viết của họ sẽ không còn hiện trên dòng thời gian. Bạn vẫn có thể xem hồ sơ, trừ khi bài viết được bảo vệ."}
                     </Typography>
                     <div className={classes.modalButtonWrapper}>
                         <Button

@@ -76,9 +76,9 @@ describe("tweet actions", () => {
         payload: LoadingStatus.LOADING
     });
 
-    testAction(setErrorMessage, setErrorMessage("Không tìm thấy tweet"), {
+    testAction(setErrorMessage, setErrorMessage("Không tìm thấy bài viết"), {
         type: TweetActionType.SET_ERROR_MESSAGE,
-        payload: "Không tìm thấy tweet"
+        payload: "Không tìm thấy bài viết"
     });
 
     testAction(fetchReplyTweet, fetchReplyTweet({tweetId: 1} as ReplyTweet), {

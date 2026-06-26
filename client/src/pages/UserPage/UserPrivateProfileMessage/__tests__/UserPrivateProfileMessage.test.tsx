@@ -7,6 +7,6 @@ import UserPrivateProfileMessage from "../UserPrivateProfileMessage";
 describe("UserPrivateProfileMessage", () => {
     it("should render correctly", () => {
         const wrapper = mountWithStore(<UserPrivateProfileMessage/>, createMockRootState(LoadingStatus.SUCCESS));
-        expect(wrapper.text().includes("Các tweet này được bảo vệ")).toBe(true);
+        expect(wrapper.text().includes("Các bài viết này được bảo vệ")).toBe(true);
     });
 });

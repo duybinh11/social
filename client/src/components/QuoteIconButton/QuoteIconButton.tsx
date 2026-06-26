@@ -85,7 +85,7 @@ const QuoteIconButton: FC<QuoteTweetProps> = memo((
                             <ListItem id={"clickOpenAddTweet"} onClick={handleClickOpenAddTweet}>
                                 <>{QuoteTweetIcon}</>
                                 <Typography variant={"body1"} component={"span"}>
-                                    Tweet trích dẫn
+                                    Bài viết trích dẫn
                                 </Typography>
                             </ListItem>
                         </List>

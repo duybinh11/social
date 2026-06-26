@@ -17,7 +17,7 @@ const StartConversation = memo(({onStartConversation}: StartConversationProps): 
             </Typography>
             <Typography variant={"body1"} component={"div"} className={classes.messagesText}>
                 Tin nhắn trực tiếp là cuộc trò chuyện riêng tư giữa bạn và người khác trên Twitter.
-                Chia sẻ tweet, phương tiện và nhiều hơn nữa!
+                Chia sẻ bài viết, phương tiện và nhiều hơn nữa!
             </Typography>
             <Button
                 onClick={onStartConversation}

@@ -41,8 +41,8 @@ describe("TweetComponentActions", () => {
         expect(wrapper.text().includes(`Hạn chế @${mockUserTweetAdditionalInfo.user.username}`)).toBe(true);
         expect(wrapper.find("#blockIcon").exists()).toBeTruthy();
         expect(wrapper.text().includes(`Block @${mockUserTweetAdditionalInfo.user.username}`)).toBe(true);
-        expect(wrapper.text().includes("Nhúng tweet")).toBe(true);
-        expect(wrapper.text().includes("Báo cáo tweet")).toBe(true);
+        expect(wrapper.text().includes("Nhúng bài viết")).toBe(true);
+        expect(wrapper.text().includes("Báo cáo bài viết")).toBe(true);
     });
 
     it("should render my profile tweet actions", () => {
@@ -54,7 +54,7 @@ describe("TweetComponentActions", () => {
         expect(wrapper.text().includes("Ghim lên hồ sơ")).toBe(true);
         expect(wrapper.text().includes(`Add/remove @${mockMyTweetAdditionalInfo.user.username} from Lists`)).toBe(true);
         expect(wrapper.text().includes("Thay đổi ai có thể trả lời")).toBe(true);
-        expect(wrapper.text().includes("Nhúng tweet")).toBe(true);
+        expect(wrapper.text().includes("Nhúng bài viết")).toBe(true);
     });
 
     it("should render unpin tweet action", () => {
@@ -80,11 +80,11 @@ describe("TweetComponentActions", () => {
     });
 
     it("should click Pin Tweet", () => {
-        testPinTweet(9, "Tweet đã được ghim lên hồ sơ của bạn.");
+        testPinTweet(9, "Bài viết đã được ghim lên hồ sơ của bạn.");
     });
 
     it("should click Unpin Tweet", () => {
-        testPinTweet(102, "Tweet đã được bỏ ghim khỏi hồ sơ của bạn.");
+        testPinTweet(102, "Bài viết đã được bỏ ghim khỏi hồ sơ của bạn.");
     });
 
     it("should click Delete Tweet", () => {
@@ -232,7 +232,7 @@ describe("TweetComponentActions", () => {
         wrapper.find(TweetComponentActionsModal).find(Button).at(1).simulate("click");
         expect(mockDispatchFn).nthCalledWith(3, {payload: 9, type: actionType});
         expect(mockDispatchFn).nthCalledWith(4, {
-            payload: "Tweet của bạn đã bị xóa",
+            payload: "Bài viết của bạn đã bị xóa",
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     };

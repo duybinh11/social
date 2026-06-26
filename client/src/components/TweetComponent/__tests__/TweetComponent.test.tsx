@@ -42,7 +42,7 @@ describe("TweetComponent", () => {
         const mockState = {...mockRootState, user: {...mockRootState.user, data: {...mockUser, pinnedTweetId: 9}}}
         const {wrapper} = createTweetComponentWrapper(mockState, mockFullTweet, 0);
         expect(wrapper.find(TweetActionResult).exists()).toBeTruthy();
-        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Tweet đã ghim");
+        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Bài viết đã ghim");
         expect(wrapper.find(TweetActionResult).at(1).prop("action")).toBe(TweetActionResults.PIN);
     });
 
@@ -61,7 +61,7 @@ describe("TweetComponent", () => {
         }
         const {wrapper} = createTweetComponentWrapper(mockState, mockFullTweet, 0);
         expect(wrapper.find(TweetActionResult).exists()).toBeTruthy();
-        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Tweet đã ghim");
+        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Bài viết đã ghim");
         expect(wrapper.find(TweetActionResult).at(1).prop("action")).toBe(TweetActionResults.PIN);
     });
 

@@ -20,6 +20,6 @@ describe("TrendsItem", () => {
         expect(pushSpy).toHaveBeenCalled();
         expect(pushSpy).toHaveBeenCalledWith({pathname: "/search", state: {tag: mockTag.tagName}});
         expect(wrapper.find(ListItemText).prop("primary")).toBe(mockTag.tagName);
-        expect(wrapper.text().includes(`${mockTag.tweetsQuantity} Tweets`)).toBe(true);
+        expect(wrapper.text().includes(`${mockTag.tweetsQuantity} bài viết`)).toBe(true);
     });
 });

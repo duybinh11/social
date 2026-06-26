@@ -220,7 +220,7 @@ describe("FullTweet", () => {
         expect(wrapper.find(TweetActionResult).at(0).prop("text")).toBe("Bạn đã đăng lại");
         expect(wrapper.find(TweetActionResult).at(1).exists()).toBeTruthy();
         expect(wrapper.find(TweetActionResult).at(1).prop("action")).toBe(TweetActionResults.PIN);
-        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Tweet đã ghim");
+        expect(wrapper.find(TweetActionResult).at(1).prop("text")).toBe("Bài viết đã ghim");
         expect(wrapper.find(SmallLinkPreview).at(0).exists()).toBeTruthy();
     });
 

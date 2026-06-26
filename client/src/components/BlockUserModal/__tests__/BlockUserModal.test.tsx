@@ -11,7 +11,7 @@ describe("BlockUserModal", () => {
         const wrapper = initializeWrapper(true, false);
         
         expect(wrapper.text().includes("Chặn")).toBe(true);
-        expect(wrapper.text().includes("They will not be able to follow you or view your Tweets, and you will not see Tweets or notifications from @John Doe.")).toBe(true);
+        expect(wrapper.text().includes("Họ sẽ không thể theo dõi hoặc xem bài viết của bạn, và bạn sẽ không thấy bài viết hay thông báo từ @John Doe.")).toBe(true);
         expect(wrapper.find(Button).at(0).text().includes("Chặn")).toBe(true);
         expect(wrapper.find(Button).at(1).text().includes("Hủy")).toBe(true);
     });
@@ -22,7 +22,7 @@ describe("BlockUserModal", () => {
         wrapper.find(Dialog).simulate("click");
 
         expect(wrapper.text().includes("Bỏ chặn")).toBe(true);
-        expect(wrapper.text().includes("Họ sẽ có thể theo dõi bạn và xem tweet của bạn.")).toBe(true);
+        expect(wrapper.text().includes("Họ sẽ có thể theo dõi bạn và xem bài viết của bạn.")).toBe(true);
         expect(wrapper.find(Button).at(0).text().includes("Bỏ chặn")).toBe(true);
         expect(wrapper.find(Button).at(1).text().includes("Hủy")).toBe(true);
     });

@@ -15,7 +15,7 @@ describe("TagItem", () => {
     it("should render loading Spinner", () => {
         const wrapper = mountWithStore(<TagItem tag={mockTag}/>, mockRootState);
         expect(wrapper.text().includes(mockTag.tagName)).toBe(true);
-        expect(wrapper.text().includes(`${mockTag.tweetsQuantity} Tweets`)).toBe(true);
+        expect(wrapper.text().includes(`${mockTag.tweetsQuantity} bài viết`)).toBe(true);
     });
 
     it("should click link", () => {

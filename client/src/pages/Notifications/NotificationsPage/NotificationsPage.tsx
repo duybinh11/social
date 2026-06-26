@@ -72,7 +72,7 @@ const NotificationsPage: FC = (): ReactElement => {
                                             component={"div"}
                                             className={classes.notificationInfoText}
                                         >
-                                            {"Thông báo tweet mới cho "}
+                                            {"Thông báo bài viết mới cho "}
                                             <Typography variant={"h6"} component={"span"}>
                                                 {tweetAuthors[0].fullName}
                                             </Typography>

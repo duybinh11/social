@@ -99,7 +99,7 @@ describe("ChatApi", () => {
         });
 
         it("[404] should tweet not found", () => {
-            testApiCall(mockAdapter, "onPost", API_CHAT_ADD_MESSAGE_TWEET, 404, "Không tìm thấy tweet", ChatApi.addMessageWithTweet, mockRequest);
+            testApiCall(mockAdapter, "onPost", API_CHAT_ADD_MESSAGE_TWEET, 404, "Không tìm thấy bài viết", ChatApi.addMessageWithTweet, mockRequest);
         });
     });
 

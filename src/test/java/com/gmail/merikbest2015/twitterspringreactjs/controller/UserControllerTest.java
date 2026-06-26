@@ -834,7 +834,7 @@ public class UserControllerTest {
     public void processPinTweet_ShouldTweetNotFound() throws Exception {
         mockMvc.perform(get(URL_USER_BASIC + "/pin/tweet/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
+                .andExpect(jsonPath("$", is("Không tìm thấy bài viết")));
     }
 
     @Test

@@ -126,7 +126,7 @@ public class ChatServiceImpl implements ChatService {
     public Map<String, Object> addMessageWithTweet(String text, Long tweetId, List<Long> usersIds) {
         User author = authenticationService.getAuthenticatedUser();
         Tweet tweet = tweetRepository.findById(tweetId)
-                .orElseThrow(() -> new ApiRequestException("Không tìm thấy tweet", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException("Không tìm thấy bài viết", HttpStatus.NOT_FOUND));
         List<User> users = userRepository.findByIdIn(usersIds);
         List<Long> chatParticipantsIds = new ArrayList<>();
         ChatMessage chatMessage = new ChatMessage();

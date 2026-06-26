@@ -89,7 +89,7 @@ const NotificationItem: FC<NotificationItemProps> = memo(({notification}): React
                                             ) : (
                                                 "Đã đăng lại"
                                             )
-                                        )} tweet của bạn
+                                        )} bài viết của bạn
                                     </>
                                 )
                             )}

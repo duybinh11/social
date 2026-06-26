@@ -131,7 +131,7 @@ const TweetComponentActions: FC<TweetComponentActionsProps> = memo(({tweetId, is
                                             <ListItem>
                                                 <>{EmbedTweetIcon}</>
                                                 <Typography variant={"body1"} component={"span"}>
-                                                    Nhúng tweet
+                                                    Nhúng bài viết
                                                 </Typography>
                                             </ListItem>
                                         </>
@@ -166,13 +166,13 @@ const TweetComponentActions: FC<TweetComponentActionsProps> = memo(({tweetId, is
                                             <ListItem>
                                                 <>{EmbedTweetIcon}</>
                                                 <Typography variant={"body1"} component={"span"}>
-                                                    Nhúng tweet
+                                                    Nhúng bài viết
                                                 </Typography>
                                             </ListItem>
                                             <ListItem>
                                                 <>{ReportIcon}</>
                                                 <Typography variant={"body1"} component={"span"}>
-                                                    Báo cáo tweet
+                                                    Báo cáo bài viết
                                                 </Typography>
                                             </ListItem>
                                         </>

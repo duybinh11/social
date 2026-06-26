@@ -22,9 +22,9 @@ const PinTweetButton: FC<PinTweetButtonProps> = memo(({tweetId, onCloseActionsDr
     const onPinUserTweet = (): void => {
         dispatch(fetchPinTweet(tweetId));
         if (isTweetPinned) {
-            dispatch(setOpenSnackBar("Tweet đã được bỏ ghim khỏi hồ sơ của bạn."));
+            dispatch(setOpenSnackBar("Bài viết đã được bỏ ghim khỏi hồ sơ của bạn."));
         } else {
-            dispatch(setOpenSnackBar("Tweet đã được ghim lên hồ sơ của bạn."));
+            dispatch(setOpenSnackBar("Bài viết đã được ghim lên hồ sơ của bạn."));
         }
         setVisibleTweetPinModal(false);
         onCloseActionsDropdown();

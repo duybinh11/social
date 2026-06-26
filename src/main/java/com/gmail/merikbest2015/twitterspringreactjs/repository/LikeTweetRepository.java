@@ -8,8 +8,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface LikeTweetRepository extends JpaRepository<LikeTweet, Long> {
+
+    @Query("SELECT likeTweet.tweet.id FROM LikeTweet likeTweet " +
+            "WHERE likeTweet.user.id = :userId " +
+            "AND likeTweet.tweet.deleted = false")
+    List<Long> findLikedTweetIdsByUserId(Long userId);
 
     @Query("SELECT likeTweet FROM LikeTweet likeTweet " +
             "LEFT JOIN likeTweet.user user " +

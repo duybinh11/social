@@ -52,7 +52,7 @@ describe("DeleteTweetButton", () => {
             type: tweetActionType
         });
         expect(mockDispatchFn).nthCalledWith(2, {
-            payload: "Tweet của bạn đã bị xóa",
+            payload: "Bài viết của bạn đã bị xóa",
             type: ActionSnackbarTypes.SET_OPEN_SNACKBAR
         });
     };

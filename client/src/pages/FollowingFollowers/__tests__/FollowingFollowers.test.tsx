@@ -99,7 +99,7 @@ describe("FollowingFollowers", () => {
         expect(wrapper.text().includes(mockMyProfile.fullName)).toBe(true);
         expect(wrapper.text().includes(`@${mockMyProfile.username}`)).toBe(true);
         expect(wrapper.text().includes("Bạn chưa theo dõi ai")).toBe(true);
-        expect(wrapper.text().includes("Khi bạn theo dõi, họ sẽ hiện ở đây và tweet của họ sẽ xuất hiện trên dòng thời gian.")).toBe(true);
+        expect(wrapper.text().includes("Khi bạn theo dõi, họ sẽ hiện ở đây và bài viết của họ sẽ xuất hiện trên dòng thời gian.")).toBe(true);
         expect(wrapper.find(Button).at(0).text()).toEqual("Tìm người để theo dõi");
         expect(wrapper.find(UsersItem).length).toEqual(0);
         expect(mockDispatchFn).nthCalledWith(1, {

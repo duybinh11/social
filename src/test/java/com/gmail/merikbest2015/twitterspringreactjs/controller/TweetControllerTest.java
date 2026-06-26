@@ -108,7 +108,7 @@ public class TweetControllerTest {
     public void getTweetById_ShouldNotFound() throws Exception {
         mockMvc.perform(get(URL_TWEETS_BASIC + "/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
+                .andExpect(jsonPath("$", is("Không tìm thấy bài viết")));
     }
 
     @Test
@@ -117,7 +117,7 @@ public class TweetControllerTest {
     public void getTweetById_ShouldTweetDeleted() throws Exception {
         mockMvc.perform(get(URL_TWEETS_BASIC + "/49"))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Rất tiếc, tweet này đã bị xóa.")));
+                .andExpect(jsonPath("$", is("Rất tiếc, bài viết này đã bị xóa.")));
     }
 
     @Test
@@ -143,7 +143,7 @@ public class TweetControllerTest {
     public void getTweetAdditionalInfoById_ShouldNotFound() throws Exception {
         mockMvc.perform(get(URL_TWEETS_BASIC + "/99/info"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
+                .andExpect(jsonPath("$", is("Không tìm thấy bài viết")));
     }
 
     @Test
@@ -152,7 +152,7 @@ public class TweetControllerTest {
     public void getTweetAdditionalInfoById_ShouldTweetDeleted() throws Exception {
         mockMvc.perform(get(URL_TWEETS_BASIC + "/49/info"))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Rất tiếc, tweet này đã bị xóa.")));
+                .andExpect(jsonPath("$", is("Rất tiếc, bài viết này đã bị xóa.")));
     }
 
     @Test
@@ -333,7 +333,7 @@ public class TweetControllerTest {
                         .content(mapper.writeValueAsString(tweetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Độ dài nội dung tweet không hợp lệ")));
+                .andExpect(jsonPath("$", is("Độ dài nội dung bài viết không hợp lệ")));
     }
 
     @Test
@@ -348,7 +348,7 @@ public class TweetControllerTest {
                         .content(mapper.writeValueAsString(tweetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$", is("Độ dài nội dung tweet không hợp lệ")));
+                .andExpect(jsonPath("$", is("Độ dài nội dung bài viết không hợp lệ")));
     }
 
     @Test
@@ -594,7 +594,7 @@ public class TweetControllerTest {
     public void deleteTweet() throws Exception {
         mockMvc.perform(delete(URL_TWEETS_BASIC + "/40"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", is("Tweet của bạn đã bị xóa")));
+                .andExpect(jsonPath("$", is("Bài viết của bạn đã bị xóa")));
     }
 
     @Test
@@ -603,7 +603,7 @@ public class TweetControllerTest {
     public void deleteTweet_ShouldTweetNotFoundById() throws Exception {
         mockMvc.perform(delete(URL_TWEETS_BASIC + "/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
+                .andExpect(jsonPath("$", is("Không tìm thấy bài viết")));
     }
 
     @Test
@@ -656,7 +656,7 @@ public class TweetControllerTest {
     public void likeTweet_ShouldTweetNotFoundById() throws Exception {
         mockMvc.perform(get(URL_TWEETS_BASIC + "/like/2/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
+                .andExpect(jsonPath("$", is("Không tìm thấy bài viết")));
     }
 
     @Test
@@ -689,7 +689,7 @@ public class TweetControllerTest {
     public void retweet_ShouldTweetNotFound() throws Exception {
         mockMvc.perform(get(URL_TWEETS_BASIC + "/retweet/2/99"))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
+                .andExpect(jsonPath("$", is("Không tìm thấy bài viết")));
     }
 
     @Test
@@ -736,7 +736,7 @@ public class TweetControllerTest {
                         .content(mapper.writeValueAsString(tweetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
+                .andExpect(jsonPath("$", is("Không tìm thấy bài viết")));
     }
 
     @Test
@@ -791,7 +791,7 @@ public class TweetControllerTest {
                         .content(mapper.writeValueAsString(tweetRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
+                .andExpect(jsonPath("$", is("Không tìm thấy bài viết")));
     }
 
     @Test
@@ -833,7 +833,7 @@ public class TweetControllerTest {
         mockMvc.perform(get(URL_TWEETS_BASIC + "/reply/change/2/99")
                         .param("replyType", String.valueOf(ReplyType.FOLLOW)))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
+                .andExpect(jsonPath("$", is("Không tìm thấy bài viết")));
     }
 
     @Test
@@ -843,7 +843,7 @@ public class TweetControllerTest {
         mockMvc.perform(get(URL_TWEETS_BASIC + "/reply/change/2/41")
                         .param("replyType", String.valueOf(ReplyType.FOLLOW)))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
+                .andExpect(jsonPath("$", is("Không tìm thấy bài viết")));
     }
 
     @Test
@@ -932,7 +932,7 @@ public class TweetControllerTest {
                         .content(mapper.writeValueAsString(voteRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Không tìm thấy tweet")));
+                .andExpect(jsonPath("$", is("Không tìm thấy bài viết")));
     }
 
     @Test
@@ -948,7 +948,7 @@ public class TweetControllerTest {
                         .content(mapper.writeValueAsString(voteRequest))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$", is("Bình chọn trong tweet không tồn tại")));
+                .andExpect(jsonPath("$", is("Bình chọn trong bài viết không tồn tại")));
     }
 
 }

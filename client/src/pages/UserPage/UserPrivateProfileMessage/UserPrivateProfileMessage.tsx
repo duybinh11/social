@@ -13,10 +13,10 @@ const UserPrivateProfileMessage = memo((): ReactElement => {
     return (
         <div className={classes.privateProfileInfo}>
             <Typography variant={"h4"} component={"div"}>
-                Các tweet này được bảo vệ
+                Các bài viết này được bảo vệ
             </Typography>
             <Typography variant={"subtitle1"} component={"div"}>
-                {`Chỉ người theo dõi được duyệt mới xem được tweet của @${username}. Để yêu cầu quyền truy cập, nhấn Theo dõi. `}
+                {`Chỉ người theo dõi được duyệt mới xem được bài viết của @${username}. Để yêu cầu quyền truy cập, nhấn Theo dõi. `}
                 <MuiLink href={PUBLIC_AND_PROTECTED_TWEETS} variant="subtitle1" target="_blank" rel="noopener">
                     Tìm hiểu thêm
                 </MuiLink>
